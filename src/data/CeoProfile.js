@@ -35,7 +35,7 @@ export const CEOS = [
     image: "/ceos/7.png"
   }
 ];
-
+     
 
 export const COMPANY_PROFILES = [
   {
