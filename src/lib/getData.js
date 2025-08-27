@@ -5,7 +5,7 @@ export async function getData(endpoint) {
     : `${process.env.STRAPI_URL}/api/${endpoint}?populate=*`;
 
   try {
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url);
 
     if (!res.ok) {
       throw new Error(`❌ Failed to fetch ${endpoint}: ${res.status}`);
