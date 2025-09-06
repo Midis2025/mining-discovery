@@ -117,16 +117,34 @@
   }
 }
 
-/* Desktops (already optimized, but just in case) */
-@media (min-width: 769px) {
+/* Desktop responsive - already optimized for laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
   .topbar {
     flex-direction: row;
     justify-content: space-between;
+    padding: 12px 25px;
   }
 
   .dropdown-links {
     flex-direction: row;
-    gap: 15px;
+    gap: 12px;
+    padding: 10px 25px;
+  }
+}
+
+/* Kindle (landscape orientation) */
+@media (min-width: 800px) and (max-width: 1200px) and (orientation: landscape) {
+  .topbar {
+    padding: 10px 20px;
+  }
+  
+  .topbar h1 {
+    font-size: 18px;
+  }
+  
+  .dropdown-links {
+    gap: 10px;
+    font-size: 13px;
   }
 }
 
@@ -364,7 +382,7 @@
       color: #8d6d2a;
     }
 
-    /* Responsive */
+    /* Responsive for main header */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -407,6 +425,108 @@
         width: 100%;
       }
     }
+
+/* Desktop responsive (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-header {
+    padding: 10px;
+  }
+  
+  .logo {
+    height: 60px;
+  }
+  
+  .nav-links {
+    gap: 18px;
+  }
+  
+  .nav-links a {
+    font-size: 14px;
+  }
+  
+  .header-buttons {
+    padding-right: 12px;
+  }
+  
+  .login-btn,
+  .subscribe-btn {
+    padding: 4px 12px;
+    font-size: 13px;
+  }
+  
+  .search-box {
+    width: 150px;
+    margin-right: 12px;
+  }
+  
+  .social-icons {
+    gap: 8px;
+    padding-left: 12px;
+  }
+  
+  .social-icons img {
+    height: 20px;
+  }
+}
+
+/* Tablet specific adjustments */
+@media (min-width: 481px) and (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .logo-social {
+    padding-left: 0;
+  }
+  
+  .nav-links {
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .header-buttons {
+    padding-right: 0;
+    justify-content: center;
+  }
+  
+  .search-bar-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .search-bar-bg {
+    width: 60%;
+  }
+}
+
+/* Kindle responsive (800px - 1200px landscape) */
+@media (min-width: 800px) and (max-width: 1200px) and (orientation: landscape) {
+  .main-header {
+    padding: 8px;
+  }
+  
+  .logo {
+    height: 55px;
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .nav-links a {
+    font-size: 13px;
+  }
+  
+  .search-box {
+    width: 140px;
+  }
+  
+  .search-bar-bg {
+    width: 65%;
+  }
+}
+
 /* main-header */
 /* === Header / Dropdown Toggle === */
     .topbar {
@@ -464,20 +584,6 @@
     .dropdown-links.show {
       display: flex;
     }
-
-   
-
-
-
-
-
-
-
-    
-
-
-
-
 
 .container2 {
   padding: 12px;
@@ -576,17 +682,394 @@ h2{
         background: white;
         color: black;
     }
-    @media(max-width: 768px) {
-        .container {
-            flex-direction: column;
-        }
-        .sidebar {
-            order: 2;
-        }
-        .main {
-            order: 1;
-        }
-    }
+
+/* Mobile First - Base styles (320px+) */
+.container2 {
+  padding: 6px;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.leftslidebar {
+  max-height: 300px;
+}
+
+.left-card {
+  max-width: 100%;
+  padding: 8px;
+}
+
+.grid {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.card {
+  height: 220px;
+  padding: 8px;
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+}
+
+.name {
+  font-size: 14px;
+}
+
+.title {
+  font-size: 11px;
+}
+
+/* Small phones (320px - 480px) */
+@media (max-width: 480px) {
+  .container2 {
+    padding: 4px;
+    gap: 6px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 6px;
+  }
+  
+  .card {
+    height: 200px;
+    padding: 6px;
+  }
+  
+  .card img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .name {
+    font-size: 13px;
+  }
+  
+  .title {
+    font-size: 10px;
+  }
+}
+
+/* Regular phones (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container2 {
+    padding: 6px;
+    gap: 10px;
+    max-width: 100%;
+  }
+  
+  .leftslidebar {
+    max-height: 350px;
+  }
+  
+  .left-card {
+    max-width: 160px;
+    padding: 10px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  
+  .card {
+    height: 240px;
+    padding: 8px;
+  }
+  
+  .card img {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .name {
+    font-size: 15px;
+  }
+  
+  .title {
+    font-size: 12px;
+  }
+}
+
+/* Tablets (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container2 {
+    padding: 10px;
+    gap: 15px;
+    max-width: 980px;
+  }
+  
+  .leftslidebar {
+    max-height: 420px;
+  }
+  
+  .left-card {
+    max-width: 200px;
+    padding: 15px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+  }
+  
+  .card {
+    height: 280px;
+    padding: 12px;
+  }
+  
+  .card img {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .name {
+    font-size: 19px;
+  }
+  
+  .title {
+    font-size: 14px;
+  }
+}
+
+/* Kindle responsive for main content (800px - 1200px landscape) */
+@media (min-width: 800px) and (max-width: 1200px) and (orientation: landscape) {
+  .container2 {
+    padding: 8px;
+    gap: 12px;
+    max-width: 1100px;
+  }
+  
+  .leftslidebar {
+    max-height: 400px;
+  }
+  
+  .left-card {
+    max-width: 180px;
+    padding: 12px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  
+  .card {
+    height: 260px;
+    padding: 10px;
+  }
+  
+  .card img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .name {
+    font-size: 18px;
+  }
+  
+  .title {
+    font-size: 13px;
+  }
+}
+
+/* Desktop (1025px - 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container2 {
+    padding: 15px;
+    gap: 20px;
+    max-width: 1200px;
+  }
+  
+  .leftslidebar {
+    max-height: 500px;
+  }
+  
+  .left-card {
+    max-width: 220px;
+    padding: 18px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    height: 320px;
+    padding: 15px;
+  }
+  
+  .card img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .name {
+    font-size: 22px;
+  }
+  
+  .title {
+    font-size: 16px;
+  }
+}
+
+/* Large Desktop (1281px - 1600px) */
+@media (min-width: 1281px) and (max-width: 1600px) {
+  .container2 {
+    padding: 20px;
+    gap: 25px;
+    max-width: 1400px;
+  }
+  
+  .leftslidebar {
+    max-height: 550px;
+  }
+  
+  .left-card {
+    max-width: 250px;
+    padding: 22px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
+  
+  .card {
+    height: 360px;
+    padding: 18px;
+  }
+  
+  .card img {
+    width: 170px;
+    height: 170px;
+  }
+  
+  .name {
+    font-size: 24px;
+  }
+  
+  .title {
+    font-size: 18px;
+  }
+}
+
+/* Extra Large Desktop (1601px+) */
+@media (min-width: 1601px) {
+  .container2 {
+    padding: 25px;
+    gap: 30px;
+    max-width: 2100px;
+  }
+  
+  .leftslidebar {
+    max-height: 600px;
+  }
+  
+  .left-card {
+    max-width: 280px;
+    padding: 25px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+  }
+  
+  .card {
+    height: 400px;
+    padding: 20px;
+  }
+  
+  .card img {
+    width: 190px;
+    height: 190px;
+  }
+  
+  .name {
+    font-size: 26px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+}
+
+/* Special cases for better user experience */
+
+/* Portrait tablets */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .container2 {
+    padding: 12px;
+    gap: 18px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  
+  .card {
+    height: 300px;
+    padding: 14px;
+  }
+  
+  .card img {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* High resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1200px), 
+       (min-resolution: 192dpi) and (min-width: 1200px) {
+  .card img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  .name, .title {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* For users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card, .left-card {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .container2 {
+    padding: 10px;
+    max-width: 100%;
+  }
+  
+  .leftslidebar {
+    display: none;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .card {
+    height: auto;
+    page-break-inside: avoid;
+    border: 1px solid #ccc;
+  }
+}
+
+
+
        .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
@@ -613,7 +1096,7 @@ h2{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1300px;
+  /* max-width: 1300px; */
   margin: auto;
   gap: 30px;
 }
@@ -730,19 +1213,186 @@ h2{
   color: #aaa;
 }
 
-/* -------- RESPONSIVE -------- */
+/* -------- FOOTER RESPONSIVE -------- */
 
-@media (max-width: 1024px) {
+/* Desktop responsive (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
   .footer-container {
-    padding: 50px 30px 25px;
+    padding: 45px 30px 25px;
+  }
+  
+  .footer-content {
+    gap: 25px;
+    max-width: 1000px;
+  }
+  
+  .footer-left {
+    min-width: 250px;
+    padding-right: 30px;
+  }
+  
+  .footer-left p {
+    font-size: 18px;
+    max-width: 500px;
+  }
+  
+  .footer-center {
+    min-width: 180px;
+  }
+  
+  .footer-center li {
+    font-size: 14px;
+  }
+  
+  .footer-right {
+    min-width: 250px;
+    padding-left: 15px;
+  }
+  
+  .footer-right img {
+    height: 50px;
+    width: 85px;
+  }
+  
+  .search-boxs {
+    width: 150px;
+  }
+  
+  .social-iconss img {
+    height: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-container {
+    padding: 50px 35px 25px;
   }
   .footer-content {
     gap: 25px;
   }
 }
 
-@media (max-width: 768px) {
- 
+/* Tablet responsive */
+@media (min-width: 481px) and (max-width: 768px) {
+  .footer-container {
+    padding: 40px 25px 20px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .footer-left, .footer-center, .footer-right {
+    padding: 0;
+    min-width: 100%;
+    max-width: 500px;
+  }
+  
+  .footer-left p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+  
+  .footer-center {
+    order: 2;
+  }
+  
+  .footer-right {
+    order: 3;
+    justify-content: center;
+  }
+  
+  .divider {
+    display: none;
+  }
+  
+  .search-boxs {
+    width: 60%;
+    max-width: 300px;
+  }
+  
+  .search-bar-container-lasts {
+    padding-top: 20px;
+  }
+}
+
+/* Kindle responsive */
+@media (min-width: 800px) and (max-width: 1200px) and (orientation: landscape) {
+  .footer-container {
+    padding: 35px 25px 20px;
+  }
+  
+  .footer-content {
+    gap: 20px;
+    max-width: 1100px;
+  }
+  
+  .footer-left {
+    min-width: 240px;
+    padding-right: 25px;
+  }
+  
+  .footer-left p {
+    font-size: 16px;
+    max-width: 450px;
+  }
+  
+  .footer-center {
+    min-width: 170px;
+  }
+  
+  .footer-center li {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-right {
+    min-width: 240px;
+    padding-left: 10px;
+  }
+  
+  .footer-right img {
+    height: 45px;
+    width: 75px;
+  }
+  
+  .search-boxs {
+    width: 140px;
+  }
+  
+  .social-iconss img {
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-left img,
+  .footer-right img {
+    height: 26px;
+    width: 29px;
+  }
+
+  .footer-left p {
+    font-size: 14px;
+  }
+
+  .footer-center li,
+  .footer-left .socials i {
+    font-size: 14px;
+  }
+
+  .footer-center li:first-child {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    margin-top: 30px;
+  }
+  
   .footer-container {
     padding: 40px 20px 20px;
   }
@@ -771,33 +1421,6 @@ h2{
 
   .search-boxs {
     width: 50%;
-  }
- 
-}
-
-@media (max-width: 480px) {
-  .footer-left img,
-  .footer-right img {
-    height: 26px;
-    width: 29px;
-  }
-
-  .footer-left p {
-    font-size: 14px;
-  }
-
-  .footer-center li,
-  .footer-left .socials i {
-    font-size: 14px;
-  }
-
-  .footer-center li:first-child {
-    font-size: 15px;
-  }
-
-  .footer-bottom {
-    font-size: 12px;
-    margin-top: 30px;
   }
 }
 
@@ -842,17 +1465,24 @@ h2{
 <div class="search-bar-bg">
   <div class="scrolling-track">
     <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+      
+       <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
     </div>
     <!-- Duplicate content for seamless loop -->
     <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+       <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+       <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
     </div>
   </div>
 </div>
@@ -988,12 +1618,7 @@ Astra Exploration Inc..</div>
                 <div class="title">CEO and Director of Phenom Resources</div>
         <p>Profile</p>
             </div>
-            <div class="card">
-                    <img src="./image/Group 141.png" alt="Zayn Kalyan">
-                <div class="name">Name</div>
-                <div class="title">CEO of</div>
-            <p>Profile</p>
-            </div>
+          
         </div>
     </div>
 </div>
@@ -1064,6 +1689,40 @@ let scrollInterval = setInterval(() => {
         sidebar.scrollTop += scrollStep;
     }
 }, 30); // speed interval (ms)
+
+// Toggle mobile menu
+function toggleMenu() {
+  const navMenu = document.getElementById('navMenu');
+  const headerButtons = document.getElementById('headerButtons');
+  const searchContainer = document.getElementById('searchContainer');
+  const header = document.querySelector('.main-header');
+  
+  header.classList.toggle('mobile-active');
+}
+
+// Toggle dropdown menu
+function toggleDropdown() {
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const newsToggle = document.getElementById('newsToggle');
+  
+  dropdownMenu.classList.toggle('show');
+  newsToggle.classList.toggle('rotate');
+}
+
+// Animated search placeholder
+const searchTexts = ['Search gold prices', 'Search mining news', 'Search companies', 'Search stocks'];
+let currentIndex = 0;
+
+function animateSearchText() {
+  const animatedText = document.getElementById('animatedText');
+  if (animatedText) {
+    animatedText.textContent = searchTexts[currentIndex];
+    currentIndex = (currentIndex + 1) % searchTexts.length;
+  }
+}
+
+// Change text every 3 seconds
+setInterval(animateSearchText, 3000);
 </script>
 
 </body>

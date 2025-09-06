@@ -18,18 +18,45 @@
     
     }
 
-    .first-header {
-      padding: 20px;
-      height: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      background-color: #2E2E2E;
-      font-size: 16px;
-    }
+   .first-header {
+  height: 50px; /* ek line ke height ke barabar */
+  overflow: hidden;
+  position: relative;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-slider {
+  display: flex;
+  flex-direction: column;
+  animation: slideNews 8s infinite;
+}
+
+.news-slider p {
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+/* Animation - each step stops text at center */
+@keyframes slideNews {
+  0%, 20%   { transform: translateY(30px); }        /* 1st text */
+  25%, 45%  { transform: translateY(-30px); }    /* 2nd text */
+  50%, 70%  { transform: translateY(-30px); }   /* 3rd text */
+  75%, 95%  { transform: translateY(-30px); }   /* 4th text */
+  100%      { transform: translateY(0); }        /* loop back */
+}
+
     .first-header:hover{
       text-decoration: underline;
+    color: white;
     }
 
    .main-header {
@@ -442,7 +469,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1300px;
+  /* max-width: 1300px; */
   margin: auto;
   gap: 30px;
 }
@@ -712,9 +739,15 @@
     </style>
 </head>
 <body>
-     <div class="first-header">
-    <p>SOME IMPORTANT HIGHLIGHTED NEWS</p>
+    <div class="first-header">
+  <div class="news-slider">
+    <p>THE MINING INVESTMENT EVENT</p>
+    
+    <p>THE MINING INVESTMENT EVENT</p>
+    <p>SAVE THE DATE -JUNE 2-4 2026</p>
+    <p>Some important highlighted news 4</p>
   </div>
+</div>
  <header class="main-header">
     <div class="header-top">
      <div class="logo-social">
@@ -751,22 +784,30 @@
         
       </div>
 <div class="search-bar-bg">
-  <div class="scrolling-track">
-    <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
-    </div>
-    <!-- Duplicate content for seamless loop -->
-    <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
-    </div>
-  </div>
-</div>
+        <div class="scrolling-track">
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+          <!-- Duplicate content for seamless loop -->
+           <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+            <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+            <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+            <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+        </div>
+      </div>
 
 
      <div class="search-box">

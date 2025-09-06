@@ -15,21 +15,45 @@
       font-family: 'Pontano Sans', sans-serif;
     
     }
-       .first-header {
-      padding: 20px;
-      height: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      background-color: #2E2E2E;
-      font-size: 16px;
-    }
-    .first-header p{
-        color: white;
-    }
+     .first-header {
+  height: 50px; /* ek line ke height ke barabar */
+  overflow: hidden;
+  position: relative;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-slider {
+  display: flex;
+  flex-direction: column;
+  animation: slideNews 8s infinite;
+}
+
+.news-slider p {
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+/* Animation - each step stops text at center */
+@keyframes slideNews {
+  0%, 20%   { transform: translateY(30px); }        /* 1st text */
+  25%, 45%  { transform: translateY(-30px); }    /* 2nd text */
+  50%, 70%  { transform: translateY(-30px); }   /* 3rd text */
+  75%, 95%  { transform: translateY(-30px); }   /* 4th text */
+  100%      { transform: translateY(0); }        /* loop back */
+}
+
     .first-header:hover{
       text-decoration: underline;
+    color: white;
     }
 
 .main-header {
@@ -408,6 +432,9 @@
   .dropdown-links a {
     margin: 5px 0;
   }
+   .left-panel{
+    display: none;
+  }
 }
 
 /* Tablets */
@@ -424,6 +451,7 @@
     gap: 12px;
     padding: 12px 20px;
   }
+ 
 }
 
 /* Desktops (already optimized, but just in case) */
@@ -586,17 +614,37 @@
   flex-direction: column;
   align-items: center;
 }
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .heads h1 {
+    font-size: 18px;
+  }
+
+  .footer-slide img {
+    height: 28px;
+  }
+
+  .footer-slide .row {
+    gap: 10px;
+    padding: 10px;
+  }
+  
+}
     @media (max-width: 768px) {
   .container {
     flex-direction: column;
     padding: 15px;
   }
 
-  .left-panel,
+  
   .middle-panel,
   .right-panel {
     width: 100%;
     padding-right: 0;
+  }
+   .left-panel{
+    display: none;
   }
 
   h1 {
@@ -626,37 +674,53 @@
   }
 }
 
-/* Phones */
-@media (max-width: 768px) {
-  .heads h1 {
-    font-size: 20px;
-  }
 
-  .footer-slide .row {
+
+
+
+
+
+/* Large Desktop (≤ 1300px) */
+@media (min-width: 1920px) {
+  .container {
+    padding: 20px;
     gap: 15px;
-    padding: 15px;
   }
 
-  .footer-slide img {
-    height: 30px;
+  .left-panel {
+    width: 25%;  /* slightly wider */
+    padding-right: 15px;
   }
+
+  .middle-panel {
+    width: 70%;  /* keep balance */
+  }
+
+  .right-panel {
+    width: 25%;
+  }
+
+  h1, h2 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .grid-2 {
+    gap: 15px;
+  }
+  .change {
+padding-left: 30%;
+  }
+
+.section{
+  padding: 20px;
+}
 }
 
-/* Small Phones */
-@media (max-width: 480px) {
-  .heads h1 {
-    font-size: 18px;
-  }
-
-  .footer-slide img {
-    height: 28px;
-  }
-
-  .footer-slide .row {
-    gap: 10px;
-    padding: 10px;
-  }
-}
  .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
@@ -683,7 +747,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1300px;
+  /* max-width: 1300px; */
   margin: auto;
   gap: 30px;
 }
@@ -878,10 +942,16 @@ p span{
   </style>
 </head>
 <body>
-     <div class="first-header">
-    <p>SOME IMPORTANT HIGHLIGHTED NEWS</p>
+   
+ <div class="first-header">
+  <div class="news-slider">
+    <p>THE MINING INVESTMENT EVENT</p>
+    
+    <p>THE MINING INVESTMENT EVENT</p>
+    <p>SAVE THE DATE -JUNE 2-4 2026</p>
+    <p>Some important highlighted news 4</p>
   </div>
- 
+</div>
 
   <header class="main-header">
     <div class="header-top">
@@ -921,17 +991,25 @@ p span{
 <div class="search-bar-bg">
   <div class="scrolling-track">
     <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+    <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
     </div>
     <!-- Duplicate content for seamless loop -->
     <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+    <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+     <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+     <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
     </div>
   </div>
 </div>

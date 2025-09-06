@@ -425,77 +425,78 @@
     gap: 15px;
   }
 }
-  .page-container {
-    display: flex;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 20px;
-    gap: 20px;
-  }
+ /* === Base Styles (Desktop Default) === */
+.page-container {
+  display: flex;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+}
 
-  /* Sidebar */
-  .sidebar {
-    flex: 0 0 220px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  .sidebar img {
-    width: 100%;
-    border-radius: 8px;
-    display: block;
-  }
+/* Sidebar */
+.sidebar {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-  /* Main Content */
-  .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-  .video-card {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
-  }
+.sidebar img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
 
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 
- .video-thumbnail {
-    position: relative;
-    width: 100%;
-    height: 180px; /* fixed height for all thumbnails */
-    cursor: pointer;
-    overflow: hidden;
-  }
+.video-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
 
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  cursor: pointer;
+  overflow: hidden;
+}
 
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  transition: transform 0.3s ease;
+}
 
-  .video-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 0; /* no extra rounding inside the card */
-    transition: transform 0.3s ease;
-  }
 .video-thumbnail:hover img {
   transform: scale(1.03);
 }
+
 .video-info {
-    padding: 10px;
-  }
+  padding: 10px;
+}
 
-  .video-info h4 {
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0;
-    margin-top: 8px;
-    color: white;
-    line-height: 1.4;
-  }
-
+.video-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  margin-top: 8px;
+  color: white;
+  line-height: 1.4;
+}
 
 .play-button {
   position: absolute;
@@ -516,42 +517,44 @@
   color: #222;
 }
 
-  /* Section Header */
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .section-header h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 0;
-  }
-  .view-more {
-    background: #000;
-    color: #fff;
-    padding: 4px 14px;
-    border: none;
-    border-radius: 20px;
-    font-size: 13px;
-    cursor: pointer;
-  }
-  .view-more:hover {
-    background: #333;
-  }
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
 
-  /* Card Container */
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
+.section-header h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
 
-  /* Cards */
-  /* Cards */
+.view-more {
+  background: #000;
+  color: #fff;
+  padding: 4px 14px;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.view-more:hover {
+  background: #333;
+}
+
+/* Card Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Cards */
 .card {
-  background: #000; /* Black background */
+  background: #000;
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
@@ -561,7 +564,7 @@
 }
 
 .cards {
-  background: #000; /* Black background */
+  background: #000;
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
@@ -570,16 +573,17 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
- .cards img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: contain; /* Changed from cover to contain */
-   background-color: white;
-    border: 3px solid #8d6d2a;
-    padding: 5px; /* Space between image and border */
-    margin-top: 10px;
+.cards img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: white;
+  border: 3px solid #8d6d2a;
+  padding: 5px;
+  margin-top: 10px;
 }
+
 .card-content {
   padding: 12px;
 }
@@ -587,110 +591,621 @@
 .card-content h3 {
   font-size: 24px;
   margin: 0 0 5px;
-  color: #fff; /* White text */
+  color: #fff;
 }
 
 .card-content p {
   font-size: 13px;
-  color: #ccc; /* Light grey text */
+  color: #ccc;
   margin: 0;
 }
-.card img{
+
+.card img {
   padding-top: 15px;
 }
 
-/* Tablets (max-width: 1024px) → 2 per row */
-@media (max-width: 1024px) {
+/* CEO Profile Images Circular */
+.profile-card img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 15px auto 10px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Video Cards */
+.video-card {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 283px;
+  border-radius: 10px;
+  flex: 1 1 calc(33.33% - 20px);
+  max-width: calc(33.33% - 20px);
+  cursor: pointer;
+}
+
+.video-card i {
+  color: #ffcc00;
+  font-size: 40px;
+}
+
+/* === Large Desktop (1921px and above) === */
+@media (min-width: 1921px) {
+  .page-container {
+    max-width: 2200px;
+    padding: 50px;
+    gap: 30px;
+  }
+  
+  .sidebar {
+    flex: 0 0 280px;
+    gap: 20px;
+  }
+  
+  .main-content {
+    gap: 50px;
+  }
+  
+  .section-header h2 {
+    font-size: 28px;
+  }
+  
+  .view-more {
+    font-size: 16px;
+    padding: 8px 20px;
+  }
+  
+  .video-thumbnail {
+    height: 240px;
+  }
+  
+  .play-button {
+    font-size: 40px;
+    padding: 15px 20px;
+  }
+  
+  .video-title {
+    font-size: 18px;
+  }
+  
+  .cards img {
+    width: 150px;
+    height: 150px;
+    border: 4px solid #8d6d2a;
+    padding: 8px;
+  }
+  
+  .card-content h3 {
+    font-size: 28px;
+  }
+  
+  .card-content p {
+    font-size: 16px;
+  }
+  
+  .video-card {
+    height: 350px;
+  }
+  
+  .video-card i {
+    font-size: 50px;
+  }
+  
+  .card-container {
+    gap: 30px;
+  }
+}
+
+/* === Desktop (1441px to 1920px) === */
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .page-container {
+    max-width: 1600px;
+    padding: 40px;
+    gap: 25px;
+  }
+  
+  .sidebar {
+    flex: 0 0 250px;
+    gap: 18px;
+  }
+  
+  .main-content {
+    gap: 45px;
+  }
+  
+  .section-header h2 {
+    font-size: 24px;
+  }
+  
+  .view-more {
+    font-size: 15px;
+    padding: 6px 18px;
+  }
+  
+  .video-thumbnail {
+    height: 200px;
+  }
+  
+  .play-button {
+    font-size: 35px;
+    padding: 12px 18px;
+  }
+  
+  .video-title {
+    font-size: 17px;
+  }
+  
+  .cards img {
+    width: 135px;
+    height: 135px;
+    border: 3px solid #8d6d2a;
+    padding: 6px;
+  }
+  
+  .card-content h3 {
+    font-size: 26px;
+  }
+  
+  .card-content p {
+    font-size: 15px;
+  }
+  
+  .video-card {
+    height: 320px;
+  }
+  
+  .video-card i {
+    font-size: 45px;
+  }
+  
+  .card-container {
+    gap: 25px;
+  }
+}
+
+/* === Standard Desktop (1200px to 1440px) === */
+@media (min-width: 1200px) and (max-width: 1440px) {
+  .page-container {
+    padding: 35px;
+    gap: 22px;
+  }
+  
+  .sidebar {
+    flex: 0 0 230px;
+    gap: 16px;
+  }
+  
+  .main-content {
+    gap: 42px;
+  }
+  
+  .section-header h2 {
+    font-size: 22px;
+  }
+  
+  .view-more {
+    font-size: 14px;
+    padding: 5px 16px;
+  }
+  
+  .video-thumbnail {
+    height: 190px;
+  }
+  
+  .play-button {
+    font-size: 32px;
+    padding: 11px 16px;
+  }
+  
+  .video-title {
+    font-size: 16px;
+  }
+  
+  .cards img {
+    width: 125px;
+    height: 125px;
+  }
+  
+  .card-content h3 {
+    font-size: 25px;
+  }
+  
+  .card-content p {
+    font-size: 14px;
+  }
+  
+  .video-card {
+    height: 300px;
+  }
+  
+  .video-card i {
+    font-size: 42px;
+  }
+}
+
+/* === Large Tablet Landscape (1025px to 1199px) === */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .page-container {
+    padding: 30px;
+    gap: 20px;
+  }
+  
+  .sidebar {
+    flex: 0 0 200px;
+    gap: 15px;
+  }
+  
+  .section-header h2 {
+    font-size: 21px;
+  }
+  
+  .view-more {
+    font-size: 13px;
+    padding: 4px 15px;
+  }
+  
+  .video-thumbnail {
+    height: 170px;
+  }
+  
+  .play-button {
+    font-size: 30px;
+  }
+  
+  .video-title {
+    font-size: 15px;
+  }
+  
+  .cards img {
+    width: 115px;
+    height: 115px;
+  }
+  
+  .card-content h3 {
+    font-size: 23px;
+  }
+  
+  .card-content p {
+    font-size: 13px;
+  }
+  
+  .video-card {
+    height: 270px;
+  }
+  
+  .video-card i {
+    font-size: 38px;
+  }
+  
   .card,
   .cards {
     flex: 1 1 calc(50% - 20px);
     max-width: calc(50% - 20px);
   }
+  
+  .video-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
 }
 
-/* Mobile (max-width: 768px) → 1 per row */
-@media (max-width: 768px) {
+/* === Tablet Portrait and Kindle (769px to 1024px) === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .page-container {
+    flex-direction: column;
+    padding: 25px;
+    gap: 18px;
+  }
+  
+  .sidebar {
+    flex-direction: row;
+    flex: none;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .sidebar img {
+    width: 400px;
+    flex-shrink: 0;
+  }
+  
+  .section-header h2 {
+    font-size: 20px;
+  }
+  
+  .view-more {
+    font-size: 13px;
+    padding: 4px 14px;
+  }
+  
+  .video-thumbnail {
+    height: 160px;
+  }
+  
+  .play-button {
+    font-size: 28px;
+  }
+  
+  .video-title {
+    font-size: 14px;
+  }
+  
+  .cards img,
+  .card img {
+    width: 110px;
+    height: 110px;
+  }
+  
+  .card-content h3 {
+    font-size: 22px;
+  }
+  
+  .card-content p {
+    font-size: 12px;
+  }
+  
+  .video-card {
+    height: 250px;
+  }
+  
+  .video-card i {
+    font-size: 36px;
+  }
+  
   .card,
   .cards {
-    flex: 1 1 100%;
-    max-width: 100%;
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
   }
+  
+  .video-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
 
+/* === Small Tablet and Large Phone (577px to 768px) === */
+@media (min-width: 577px) and (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+  }
+  
+  .sidebar {
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+  }
+  
+  .sidebar img {
+    width: 300px;
+    flex-shrink: 0;
+  }
+  
+  .section-header h2 {
+    font-size: 19px;
+  }
+  
+  .view-more {
+    font-size: 12px;
+    padding: 3px 12px;
+  }
+  
+  .video-thumbnail {
+    height: 150px;
+  }
+  
+  .play-button {
+    font-size: 26px;
+  }
+  
+  .video-title {
+    font-size: 13px;
+  }
+  
   .cards img,
   .card img {
     width: 100px;
     height: 100px;
   }
-
+  
   .card-content h3 {
     font-size: 20px;
   }
-
+  
   .card-content p {
-    font-size: 12px;
+    font-size: 11px;
+  }
+  
+  .video-card {
+    height: 220px;
+  }
+  
+  .video-card i {
+    font-size: 34px;
+  }
+  
+  /* Two per row on small tablets */
+  .card,
+  .cards {
+    flex: 1 1 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+  }
+  
+  .video-card {
+    flex: 1 1 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+  }
+  
+  .card-container {
+    gap: 15px;
   }
 }
 
-
-  /* CEO Profile Images Circular */
-  .profile-card img {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    margin: 15px auto 10px;
-    display: block;
-    object-fit: cover;
+/* === Mobile Phones (up to 576px) === */
+@media (max-width: 576px) {
+  .page-container {
+    flex-direction: column;
+    padding: 15px;
+    gap: 12px;
   }
-
-  /* Video Cards */
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .section-header h2 {
+    font-size: 18px;
+  }
+  
+  .view-more {
+    font-size: 11px;
+    padding: 3px 10px;
+    align-self: flex-end;
+  }
+  
+  .video-thumbnail {
+    height: 140px;
+  }
+  
+  .play-button {
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+  
+  .video-title {
+    font-size: 12px;
+  }
+  
+  .cards img,
+  .card img {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .card-content {
+    padding: 10px;
+  }
+  
+  .card-content h3 {
+    font-size: 18px;
+  }
+  
+  .card-content p {
+    font-size: 10px;
+  }
+  
   .video-card {
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 283px;
-    border-radius: 10px;
-    flex: 1 1 calc(33.33% - 20px);
-    max-width: calc(33.33% - 20px);
-    cursor: pointer;
+    height: 200px;
   }
+  
   .video-card i {
-    color: #ffcc00;
-    font-size: 40px;
+    font-size: 30px;
   }
+  
+  /* ONE PER ROW ON MOBILE */
+  .card,
+  .cards {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 15px;
+  }
+  
+  .video-card {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 15px;
+  }
+  
+  .card-container {
+    gap: 12px;
+    flex-direction: column;
+  }
+}
 
-  /* Responsive */
-  @media (max-width: 992px) {
-    .page-container {
-      flex-direction: column;
-    }
-    .card {
-      flex: 1 1 calc(50% - 20px);
-      max-width: calc(50% - 20px);
-    }
-    .video-card {
-      flex: 1 1 calc(50% - 20px);
-      max-width: calc(50% - 20px);
-    }
+/* === Very Small Mobile (320px to 399px) === */
+@media (max-width: 399px) {
+  .page-container {
+    padding: 12px;
+    gap: 10px;
   }
+  
+  .section-header h2 {
+    font-size: 16px;
+  }
+  
+  .view-more {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+  
+  .video-thumbnail {
+    height: 120px;
+  }
+  
+  .play-button {
+    font-size: 20px;
+    padding: 6px 10px;
+  }
+  
+  .video-title {
+    font-size: 11px;
+  }
+  
+  .cards img,
+  .card img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .card-content {
+    padding: 8px;
+  }
+  
+  .card-content h3 {
+    font-size: 16px;
+  }
+  
+  .card-content p {
+    font-size: 9px;
+  }
+  
+  .video-card {
+    height: 180px;
+  }
+  
+  .video-card i {
+    font-size: 26px;
+  }
+  
+  .card-container {
+    gap: 10px;
+  }
+}
 
-  @media (max-width: 600px) {
-    .card {
-      flex: 1 1 100%;
-      max-width: 100%;
-    }
-    .video-card {
-      flex: 1 1 100%;
-      max-width: 100%;
-    }
-    .sidebar {
-     display: none;
-    }
-    .sidebar img {
-      width: 150px;
-      flex-shrink: 0;
-    }
+/* Force single column on all mobile devices */
+@media (max-width: 720px) {
+  .card,
+  .cards,
+  .video-card {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
   }
+  
+  .card-container {
+    flex-direction: column !important;
+  }
+}
    
       .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
@@ -718,7 +1233,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1300px;
+  /* max-width: 1300px; */
   margin: auto;
   gap: 30px;
 }
@@ -1028,17 +1543,19 @@
 <div class="search-bar-bg">
   <div class="scrolling-track">
     <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
     </div>
     <!-- Duplicate content for seamless loop -->
     <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+     <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
     </div>
   </div>
 </div>

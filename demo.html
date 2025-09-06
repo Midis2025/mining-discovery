@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimedia & YouTube</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    /* === Main Banner Card === */
+    .banner-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .banner-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .banner-content {
+      padding: 15px 20px;
+    }
+
+    .banner-content p {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    /* === Playlist Grid === */
+    .playlist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .playlist-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease;
+    }
+
+    .playlist-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .playlist-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .playlist-card p {
+      padding: 10px 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    /* === Button === */
+    .btn-more {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid #c6a14a;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #c6a14a;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-more:hover {
+      background: #c6a14a;
+      color: #fff;
+    }
+
+    .btn-wrap {
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Multimedia & YouTube</h2>
+
+    <!-- Banner Section -->
+    <div class="banner-card">
+      <img src="./image/firstcard.avif" alt="Main Banner">
+      <div class="banner-content">
+        <p><strong>Digihost</strong> has officially announced a joint celebration with the New York State Energy Research and Development Authority (NYSERDA) to advance the development of cutting-edge blockchain technology.</p>
+      </div>
+    </div>
+
+    <!-- Playlist Section -->
+    <div class="playlist">
+      <div class="playlist-card">
+        <img src="https://via.placeholder.com/400x200.png?text=Video+1" alt="Video 1">
+        <p>Finance Minds, Project Updates - Saudi Arabia Project Insights</p>
+      </div>
+      <div class="playlist-card">
+        <img src="https://via.placeholder.com/400x200.png?text=Video+2" alt="Video 2">
+        <p>Finance Minds, Project Updates - Saudi Arabia Project Insights</p>
+      </div>
+      <div class="playlist-card">
+        <img src="https://via.placeholder.com/400x200.png?text=Video+3" alt="Video 3">
+        <p>Finance Minds, Project Updates - Saudi Arabia Project Insights</p>
+      </div>
+    </div>
+
+    <!-- Show More Button -->
+    <div class="btn-wrap">
+      <button class="btn-more">Show More <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</body>
+</html>

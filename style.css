@@ -44,18 +44,45 @@
   font-weight: bold;
   box-shadow: 0 0 5px #333;
 }
-    .first-header {
-      padding: 20px;
-      height: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      background-color: #2E2E2E;
-      font-size: 12px;
-    }
+.first-header {
+  height: 50px; /* ek line ke height ke barabar */
+  overflow: hidden;
+  position: relative;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-slider {
+  display: flex;
+  flex-direction: column;
+  animation: slideNews 8s infinite;
+}
+
+.news-slider p {
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+/* Animation - each step stops text at center */
+@keyframes slideNews {
+  0%, 20%   { transform: translateY(30px); }        /* 1st text */
+  25%, 45%  { transform: translateY(-30px); }    /* 2nd text */
+  50%, 70%  { transform: translateY(-30px); }   /* 3rd text */
+  75%, 95%  { transform: translateY(-30px); }   /* 4th text */
+  100%      { transform: translateY(0); }        /* loop back */
+}
+
     .first-header:hover{
       text-decoration: underline;
+    color: white;
     }
     /* main-header */
 
@@ -426,7 +453,8 @@
   gap: 20px;
   background-color: white;
   max-width: 1300px;
-  margin: 20px auto;
+  width: 100%;
+  
   justify-content: center;
 }
 
@@ -484,6 +512,11 @@
   margin-top: 12px;
   font-weight: bold;
 }
+.read-more-main{
+  color:#AE8B4C;
+  font-weight: bold;
+  text-decoration: none;
+}
 
 .author {
   font-size: 14px;
@@ -530,22 +563,83 @@
   color: #666;
 }
 
-/* Desktop - keep 3 columns */
-@media screen and (min-width: 1024px) {
+
+
+/* 💻 Large desktop / 2K+ resolution (2560px and above) */
+@media (min-width: 1920px) {
   .container2 {
-    flex-wrap: nowrap;
-    justify-content: space-between;
+    max-width: 1800px;   /* prevent content from stretching too much */
+    gap: 30px;           /* add more spacing between sections */
+    padding: 20px;
   }
+
   .left-card {
-    max-width: 250px;
+    max-width: 200px;    /* make side card a bit wider */
   }
+
   .main-card {
-    max-width: 700px;
+    flex: 2.5;           /* give more space to main card */
+    min-width: 300px;
   }
+
+  .main-card h2 {
+    font-size: 24px;     /* slightly bigger title */
+  }
+
+  .main-card p {
+    font-size: 17px;     /* improve readability */
+  }
+
   .latest-section {
-    max-width: 300px;
+    min-width: 350px;    /* wider for balance */
+  }
+
+  .latest-section h3 {
+    font-size: 22px;
+  }
+
+  .latest-item p {
+    font-size: 15px;
   }
 }
+
+
+/* ========================= */
+/* 4K / Ultra-wide screens */
+/* ========================= */
+@media (min-width: 1920px) {
+  .container2 {
+    max-width: 1800px;  /* container expand karega */
+    gap: 30px;          /* thoda zyada spacing */
+    padding: 20px;
+  }
+
+  .left-card {
+    max-width: 300px;
+    padding: 25px;
+  }
+
+  .main-card {
+    min-width: 350px;
+  }
+
+  .main-card h2 {
+    font-size: 24px;
+  }
+
+  .main-card p {
+    font-size: 17px;
+  }
+
+  .latest-section h3 {
+    font-size: 24px;
+  }
+
+  .latest-item p {
+    font-size: 16px;
+  }
+}
+
 
 /* Tablets (768px and above) */
 @media (min-width: 768px) {
@@ -579,6 +673,32 @@
   }
 }
 
+/* 🖥️ 4K Screens (2560px and above) */
+@media (min-width: 2560px) {
+  .container2 {
+    max-width: 2400px;   /* aur zyada wide */
+    gap: 40px;           
+    padding: 30px;
+  }
+
+  .left-card {
+    max-width: 400px;
+    padding: 30px;
+  }
+
+  .main-card {
+    flex: 3;
+    min-width: 400px;
+  }
+
+  .main-card h2 { font-size: 28px; }
+  .main-card p { font-size: 18px; }
+
+  .latest-section { min-width: 400px; }
+  .latest-section h3 { font-size: 26px; }
+  .latest-item p { font-size: 18px; }
+}
+
 /* Mobile screens (less than 768px) */
 @media (max-width: 767px) {
   .leftslidebar{
@@ -600,6 +720,7 @@
     margin: 10px 0;
   }
 }
+
     /* container3 */
     .container3 {
       display: flex;
@@ -791,6 +912,44 @@
   display: flex;
   flex-direction: column;
 }
+/* 💻 Large desktop / 2K resolution (2560px and above) */
+@media (min-width: 1920px) {
+  .carousel-wrapper {
+    max-width: 2000px;   /* center carousel, prevent stretching */
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .carousel {
+    gap: 20px;           /* more spacing between cards */
+    padding-bottom: 20px;
+  }
+
+  .team-card {
+    min-width: 700px;    /* wider cards */
+    border-radius: 14px;
+  }
+
+  .team-card img {
+    height: 200px;       /* bigger image */
+    border-radius: 12px;
+  }
+
+  .team-card p {
+    font-size: 18px;     /* larger readable text */
+    line-height: 1.6;
+  }
+
+  .team-card small {
+    font-size: 15px;     /* slightly bigger subtitle */
+  }
+
+  .nav {
+    font-size: 28px;     /* bigger arrows */
+    padding: 14px 18px;
+  }
+}
+
 
 
     /* Tablet View */
@@ -842,9 +1001,14 @@
       padding: 30px;
       flex-wrap: wrap;
     }
+    .logo-img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
 
     .left-ad {
-      width: 250px;
+      
       
       padding: 20px;
       border-radius: 8px;
@@ -853,11 +1017,7 @@
       flex-shrink: 0;
     }
 
-    .logo-img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-    }
+    
 
     .left-ad a {
       color: #f9a825;
@@ -971,6 +1131,7 @@
       background-color: white;
       
     }
+    
 
     /* 🔁 Responsive Breakpoints */
     @media (max-width: 1024px) {
@@ -1029,13 +1190,64 @@
         font-size: 13px;
       }
     }
-    .container6 {
-        background-color: white;
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      gap: 20px;
-    }
+  
+    
+    /* 💻 Large desktop screens (2K / 2560px and above) */
+@media (min-width: 1920px) {
+  .sponsored-section {
+    max-width: 1800px;   /* keep content centered */
+    margin: 0 auto;
+    gap: 30px;
+    padding: 40px;
+  }
+
+  .left-ad {
+    flex-basis: 340px;   /* wider sidebar */
+    font-size: 16px;
+    height: auto;  
+    width: 300px;      /* let it adjust naturally */
+  }
+
+  .content-area h2 {
+    font-size: 26px;     /* bigger section title */
+  }
+
+  .top-post {
+    gap: 30px;
+    padding: 25px;
+  }
+
+  .post-text {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .btn-more {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+
+  /* ✅ Fix card grid for big screens */
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr); /* exactly 4 cards per row */
+    gap: 30px;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .card1 {
+    padding: 20px;
+  }
+
+  .card1 img {
+    height: 200px; /* bigger images */
+  }
+
+  .card1 h4 {
+    font-size: 16px;
+  }
+}
+
 /* container5 */
  .container5 {
   display: flex;
@@ -1257,6 +1469,71 @@
         text-align: center;
       }
     }
+    /* 💻 Large Desktop - 1920px and above (good for 2560x2120 screens) */
+@media (min-width: 1920px) {
+  .container5 {
+    max-width: 2000px;   /* center layout */
+    margin: 0 auto;
+    gap: 50px;
+    padding-top: 60px;
+  }
+
+  /* Left Section - Videos */
+  .left-section {
+    flex: 0.4;    /* narrower for balance */
+    padding: 30px;
+  }
+
+  .left-heading {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .video-thumbnail img {
+    height: 260px;   /* bigger thumbnails */
+  }
+
+  .play-button {
+    font-size: 45px;
+    padding: 20px 25px;
+  }
+
+  .video-title {
+    font-size: 20px;
+    margin-top: 14px;
+  }
+
+  /* Right Section - News */
+  .right-section {
+    flex: 0.6;
+    padding: 35px;
+  }
+
+  .right-heading {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .right-box {
+    padding: 22px 28px;
+    margin-bottom: 20px;
+  }
+
+  .right-box h4 {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .right-box span {
+    font-size: 14px;
+  }
+
+  .more-btn {
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+}
+
    
     .container8 {
       max-width: 1100px;
@@ -1302,8 +1579,8 @@
 }
 
     .precious-metals img {
-      width: 250px;
-      height: auto;
+      width: 145px;
+      height: 145px;
       object-fit: cover;
     }
 
@@ -1341,7 +1618,7 @@
 
     
 .more-btn {
-  align-self: flex-end;
+  align-self: flex-end; /* right side me button */
   border: 1px solid #AC8A4A;
   color: #AC8A4A;
   font-weight: 700;
@@ -1355,6 +1632,7 @@
   transition: all 0.3s ease;
   cursor: pointer;
 }
+
 
    more-btn:hover {
   background-color: #ac8a4a;
@@ -1378,7 +1656,7 @@
       padding: 18px 20px;
       font-size: 14px;
       font-weight: 700;
-      margin-bottom: 40px;
+      
       position: relative;
     }
 
@@ -1498,6 +1776,100 @@ border-radius: 10px;
         align-self: flex-start;
       }
     }
+    /* === Ultra-Wide Desktop (2560px and up) === */
+@media (min-width: 1920px) {
+  .container8 {
+    max-width: 2000px;   /* expand container for large screens */
+    padding: 50px 40px 80px;
+  }
+
+  .banner img {
+    margin-bottom: 50px;
+    border-radius: 12px;
+  }
+
+  h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+
+  /* Precious Metals Section */
+  .precious-metals {
+    margin-bottom: 60px;
+    gap: 30px;
+  }
+
+  .precious-metals img {
+    width: 320px; /* bigger image for large screen */
+  }
+
+  .precious-content {
+    padding: 30px 40px;
+  }
+
+  .precious-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .more-btn {
+    font-size: 16px;
+    padding: 10px 22px;
+    border-radius: 12px;
+  }
+
+  /* World News */
+  .world-news {
+    font-size: 18px;
+    padding: 24px 28px;
+    margin-bottom: 50px;
+  }
+
+  .world-news small {
+    font-size: 14px;
+  }
+
+  .world-news .author {
+    font-size: 14px;
+  }
+
+  /* Split Section */
+  .split-section {
+    gap: 60px;
+    margin-bottom: 50px;
+  }
+
+  .corporate-news .card {
+    padding: 22px 28px;
+    font-size: 16px;
+  }
+
+  .corporate-news small,
+  .corporate-news .author {
+    font-size: 13px;
+  }
+
+  /* Magazine Grid */
+  .magazine {
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .magazine img {
+    height: 360px;
+  }
+
+  /* Box adjustments */
+  .box1, .box2 {
+    border-radius: 14px;
+  }
+
+  .content {
+    padding: 30px;
+    font-size: 16px;
+  }
+}
+
     /* .section-wrapper {
       margin: 20px;
       background: #f5f5f5;
@@ -1806,7 +2178,7 @@ border-radius: 10px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 30px;
-      max-width: 1200px;
+      
       margin: auto;
     }
 
@@ -1905,7 +2277,7 @@ border-radius: 10px;
       }
     } */
      .logo-slider {
-  background: linear-gradient(to right, #C4B496, #F0E5D8); /* optional gradient */
+ 
   overflow: hidden;
   white-space: nowrap;
   padding: 20px 0;
@@ -1931,12 +2303,16 @@ border-radius: 10px;
   padding-bottom: 12px;
 }
 .slide {
-  width: 260px;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10px;
+     width: 190px;
+    flex-shrink: 0;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
 }
 
 .slide img {
@@ -1981,7 +2357,7 @@ border-radius: 10px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1300px;
+ 
   margin: auto;
   gap: 30px;
 }

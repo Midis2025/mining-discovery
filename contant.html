@@ -18,6 +18,46 @@
       background-color: #f9f9f9;
       color: #333;
     }
+    .first-header {
+  height: 50px; /* ek line ke height ke barabar */
+  overflow: hidden;
+  position: relative;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-slider {
+  display: flex;
+  flex-direction: column;
+  animation: slideNews 8s infinite;
+}
+
+.news-slider p {
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+/* Animation - each step stops text at center */
+@keyframes slideNews {
+  0%, 20%   { transform: translateY(30px); }        /* 1st text */
+  25%, 45%  { transform: translateY(-30px); }    /* 2nd text */
+  50%, 70%  { transform: translateY(-30px); }   /* 3rd text */
+  75%, 95%  { transform: translateY(-30px); }   /* 4th text */
+  100%      { transform: translateY(0); }        /* loop back */
+}
+
+    .first-header:hover{
+      text-decoration: underline;
+    color: white;
+    }
  .main-header {
       margin-bottom: 10px;
       background-color: #fff;
@@ -58,7 +98,7 @@
 
       text-decoration: none;
       color: #000;
-      font-weight: bold;
+     
       transition: color 0.3s;
     }
 
@@ -251,6 +291,69 @@
       cursor: pointer;
       color: #8d6d2a;
     }
+    /* Nest Hub / Tablet screens (769px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .header-top {
+   
+    justify-content: space-between;
+    padding: 10px 15px;
+  }
+
+  .logo {
+    height: 55px; /* logo chhota */
+  }
+
+  .hamburger {
+    display: block; /* hamburger show */
+  }
+
+  /* Hide these by default on Nest Hub */
+  .nav-links,
+  .header-buttons,
+  .search-bar-container {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    background: #fff;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-links a {
+    padding: 8px 0;
+    font-size: 16px;
+  }
+
+  /* Show on hamburger click */
+  .mobile-active .nav-links,
+  .mobile-active .header-buttons,
+  .mobile-active .search-bar-container {
+    display: flex;
+    gap: 15px;
+  }
+
+  .search-box {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .search-bar-bg {
+    width: 100%; /* full width ticker */
+  }
+
+  .search-box input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .social-icons {
+    gap: 8px;
+    padding-left: 0;
+  }
+}
+
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -378,6 +481,45 @@
       height: 250px;
       border: none;
     }
+   
+@media (max-width: 1024px) {
+  .container {
+    gap: 20px; /* kam gap rakho */
+    padding: 15px;
+  }
+
+  .contact-form,
+  .contact-info {
+    flex: 1 1 100%; /* full width par aa jayega */
+  }
+
+  .contact-form h2,
+  .contact-info h2 {
+    font-size: 22px; /* thoda chhota */
+  }
+
+  form input, form textarea {
+    padding: 10px; /* kam padding for better fit */
+  }
+
+  form button {
+    width: 100%; /* button full width */
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .contact-info p {
+    font-size: 15px;
+  }
+
+  iframe {
+    height: 200px; /* thoda chhota map */
+  }
+  .divider{
+ display: none;
+  }
+}
+
 
     @media (max-width: 768px) {
       .container {
@@ -410,7 +552,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1300px;
+  /* max-width: 1300px; */
   margin: auto;
   gap: 30px;
 }
@@ -600,10 +742,20 @@
   </style>
 </head>
 <body>
-  <header class="main-header">
+  <div class="first-header">
+  <div class="news-slider">
+    <p>THE MINING INVESTMENT EVENT</p>
+    
+    <p>THE MINING INVESTMENT EVENT</p>
+    <p>SAVE THE DATE -JUNE 2-4 2026</p>
+    <p>Some important highlighted news 4</p>
+  </div>
+</div>
+    <header class="main-header">
     <div class="header-top">
-     <div class="logo-social">
-        <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
+      <div class="logo-social">
+        <a href="./index.html"> <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+       
       </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -619,8 +771,8 @@
       </div>
 
       <div class="header-buttons" id="headerButtons">
-    <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
-       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a> 
+        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
+        <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
       </div>
     </div>
 
@@ -628,39 +780,47 @@
       <div class="social-icons">
         <img src="./image/Group.png">
         <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
+        <img src="./image/Group (1).png">
+        <img src="./image/Group (2).png">
+        <img src="./image/Group (3).png">
+
+
+
       </div>
-<div class="search-bar-bg">
-  <div class="scrolling-track">
-    <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
-    </div>
-    <!-- Duplicate content for seamless loop -->
-    <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
-    </div>
-  </div>
-</div>
+      <div class="search-bar-bg">
+        <div class="scrolling-track">
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+          <!-- Duplicate content for seamless loop -->
+           <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+            <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+            <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+            <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
+         
+          </div>
+        </div>
+      </div>
 
 
-     <div class="search-box">
-    <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
-      <span id="animatedText">Search gold prices</span>
-    </div>
-    <button class="search-icon"><i class="fas fa-search"></i></button>
-  </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <div class="animated-text-container">
+          <span id="animatedText">Search gold prices</span>
+        </div>
+        <button class="search-icon"><i class="fas fa-search"></i></button>
+      </div>
     </div>
   </header>
    <div class="contact">
@@ -751,6 +911,15 @@
     </div>
   </div>
  <script>
+    const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+  const searchBar = document.querySelector(".search-bar-container");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    searchBar.classList.toggle("active");
+  });
+
         const form = document.getElementById('contactForm');
         const responseDiv = document.getElementById('response');
         const submitBtn = document.getElementById('submitBtn');
