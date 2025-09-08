@@ -448,7 +448,7 @@ body {
 
 
 .middle-panel {
-  width: 53%;
+  width: 70%;
 }
 
 
@@ -750,6 +750,27 @@ h2 {
         padding: 0 10px;
       }
     }
+    /* ✅ Large desktop / 1920px and above */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1800px;   /* prevents content stretching */
+    margin: 0 auto;
+    gap: 30px;
+  }
+
+  .philosophy {
+    grid-template-columns: repeat(3, 1fr); /* optional 4 columns */
+    gap: 50px;
+  }
+
+  .workflow {
+    gap: 60px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+}
    .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;

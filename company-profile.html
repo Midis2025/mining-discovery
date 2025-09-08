@@ -418,43 +418,20 @@
     justify-content: center;
 }
 
-.leftslidebar {
-    max-height: clamp(400px, 60vh, 700px);
-    overflow-y: auto;
-    padding-right: 5px;
-    scrollbar-width: thin;
-    scrollbar-color: #8d6d2a transparent;
+.left-sidebar,
+
+.right-sidebar {
+  width: 280px; /* full width for mobile */
+}
+.left-sidebar .box {
+  background: white;
+  padding: 12px;
+  margin-bottom: 15px;
 }
 
-/* Scrollbar styling for Chrome, Edge, Safari */
-.leftslidebar::-webkit-scrollbar {
-    width: clamp(4px, 0.5vw, 8px);
-}
-
-.leftslidebar::-webkit-scrollbar-thumb {
-    background-color: #8d6d2a;
-    border-radius: 10px;
-}
-
-.leftslidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-/* Left card styling */
-.left-card {
-    flex: 1;
-    min-width: 200px;
-    max-width: clamp(200px, 25vw, 280px);
-    background: #fff;
-    padding: clamp(15px, 2.5vw, 25px);
-    border-radius: clamp(8px, 1vw, 12px);
-    text-align: center;
-}
-
-.left-card img {
-    max-width: 100%;
-    height: auto;
-    padding-top: clamp(5px, 1vw, 15px);
+.left-sidebar .box img {
+  width: 100%;
+  height: auto;
 }
 
 h2 {
@@ -1027,49 +1004,13 @@ h2 {
   </div>
 <div class="container2">
      <!-- Left Sidebar -->
-   <div class="leftslidebar">
- <!-- Left Info Card -->
-    <div class="left-card">
-      <img src="./image/image (2).png" alt="Company Logo" />
+   <div class="left-sidebar">
+      <div class="box">
+
+        <div id="advertisements"></div>
+      </div>
+
     </div>
-   
-     <div class="left-card">
-        <img src="./image/banners.webp" alt="US Gold Logo" class="logo-img" />
-      
-       
-      </div>
-      
-   
-      <div class="left-card">
-        <img src="./image/banner3.webp" alt="US Gold Logo" class="logo-img"/>
-      
-       
-      </div> <div class="left-card">
-        <img src="./image/mrngbanner2.webp" alt="US Gold Logo" class="logo-img" />
-      
-       
-      </div> <div class="left-card">
-        <img src="./image/mrngbanner.webp" alt="US Gold Logo" class="logo-img"/>
-      
-       
-      </div> <div class="left-card">
-        <img src="./image/banner2.webp" alt="US Gold Logo" class="logo-img" />
-      
-       
-      </div> <div class="left-card">
-        <img src="./image/Untitled design (1).png" alt="US Gold Logo" class="logo-img" />
-      
-       
-      </div>
-       
-      
-       <div class="left-card">
-        <img src="./image/Untitled design (1).png" alt="US Gold Logo" class="logo-img"/>
-      
-       
-      </div>
- 
-</div>
    
 
     <!-- Main Content -->
@@ -1215,5 +1156,37 @@ Silver Inc.</div>
     </div>
   </div>
   <script src="./script.js"></script>
+   <script>// show  extra news
+    document.getElementById("showMoreBtn").addEventListener("click", function () {
+      const extraNews = document.querySelectorAll(".extra-news");
+
+      extraNews.forEach(section => {
+        section.style.display = "block"; // Keep natural block layout
+        section.style.opacity = "0"; // Start invisible
+        section.style.transition = "opacity 0.4s ease"; // Smooth fade
+        requestAnimationFrame(() => {
+          section.style.opacity = "1"; // Fade in
+        });
+      });
+
+      this.style.display = "none"; // Hide button after showing
+    });
+    // show extra news</script>
+
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/projects.js"></script>
+  <script src="./js/reports.js"></script>
+  <script src="./js/news.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      loadAdvertisements();
+      loadProjects();
+      loadReports();
+      newsCategory();
+
+    });
+  </script>
 </body>
 </html>

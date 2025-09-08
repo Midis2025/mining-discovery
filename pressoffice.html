@@ -594,6 +594,40 @@
     font-size: 11px;
   }
 }
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1800px;   /* expand but keep centered */
+    gap: 30px;           /* add more breathing room */
+    padding: 30px;
+  }
+
+  .left-sidebar,
+  .right-sidebar {
+    width: 520px;        /* slightly bigger sidebars */
+  }
+
+  .main {
+    width: auto;         /* let it flex naturally */
+  }
+
+  .section-box img {
+    height: 160px;       /* bigger visuals for large screens */
+  }
+
+  .card {
+    padding: 25px;       /* more padding for readability */
+    gap: 25px;
+  }
+
+  .card img {
+    width: 100px;
+  }
+
+  .card-content p {
+    font-size: 16px;     /* improve readability on big screens */
+  }
+}
  .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
