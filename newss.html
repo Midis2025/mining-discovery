@@ -19,44 +19,70 @@
     }
 
     .first-header {
-  height: 50px; /* ek line ke height ke barabar */
-  overflow: hidden;
-  position: relative;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      height: 50px;
+      /* ek line ke height ke barabar */
+      overflow: hidden;
+      position: relative;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.news-slider {
-  display: flex;
-  flex-direction: column;
-  animation: slideNews 8s infinite;
-}
+    .news-slider {
+      display: flex;
+      flex-direction: column;
+      animation: slideNews 8s infinite;
+    }
 
-.news-slider p {
-  height: 50px;
-  line-height: 50px;
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  width: 100%;
-}
+    .news-slider p {
+      height: 50px;
+      line-height: 50px;
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      width: 100%;
+    }
 
-/* Animation - each step stops text at center */
-@keyframes slideNews {
-  0%, 20%   { transform: translateY(30px); }        /* 1st text */
-  25%, 45%  { transform: translateY(-30px); }    /* 2nd text */
-  50%, 70%  { transform: translateY(-30px); }   /* 3rd text */
-  75%, 95%  { transform: translateY(-30px); }   /* 4th text */
-  100%      { transform: translateY(0); }        /* loop back */
-}
+    /* Animation - each step stops text at center */
+    @keyframes slideNews {
 
-    .first-header:hover{
+      0%,
+      20% {
+        transform: translateY(30px);
+      }
+
+      /* 1st text */
+      25%,
+      45% {
+        transform: translateY(-30px);
+      }
+
+      /* 2nd text */
+      50%,
+      70% {
+        transform: translateY(-30px);
+      }
+
+      /* 3rd text */
+      75%,
+      95% {
+        transform: translateY(-30px);
+      }
+
+      /* 4th text */
+      100% {
+        transform: translateY(0);
+      }
+
+      /* loop back */
+    }
+
+    .first-header:hover {
       text-decoration: underline;
-    color: white;
+      color: white;
     }
 
     .main-header {
@@ -607,7 +633,7 @@
       width: 100%;
       border-radius: 12px;
       overflow: hidden;
-    
+
 
     }
 
@@ -627,63 +653,65 @@
       padding: 10px 0;
       font-size: 14px;
     }
-.section-box {
-  border: 1px solid #ddd;
-  background: #fff;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.section-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
+    .section-box {
+      border: 1px solid #ddd;
+      background: #fff;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.section-box img {
-  width: 100%;
-  height: 130px;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
-}
-.section-box p {
-  margin: 10px;
-  font-size: 15px;
-  color: #333;
-  font-weight: 500;
-  line-height: 1.4;
-}
+    .section-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-box img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .section-box p {
+      margin: 10px;
+      font-size: 15px;
+      color: #333;
+      font-weight: 500;
+      line-height: 1.4;
+    }
 
 
-.gold-news {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-bottom: 30px;
-}
+    .gold-news {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 30px;
+    }
 
-.gold-card {
-  flex: 1;
-  min-width: 150px;
-  border-radius: 10px;
- background: #AC8A4A4F;
-  border: 1px solid #ddd;
-  text-align: center;
-}
+    .gold-card {
+      flex: 1;
+      min-width: 150px;
+      border-radius: 10px;
+      background: #AC8A4A4F;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
 
-.gold-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
+    .gold-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
 
-.gold-card p {
-  padding: 10px;
-  font-weight: bold;
-}
+    .gold-card p {
+      padding: 10px;
+      font-weight: bold;
+    }
 
 
 
@@ -698,7 +726,7 @@
       .card-text {
         font-size: 15px;
       }
-      
+
 
     }
 
@@ -715,82 +743,86 @@
     }
 
 
-#nextNewsContainer{
-  display: flex;
-  gap: 20px;
-}
-/* Card container */
-.gold-cards {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
+    #nextNewsContainer {
+      display: flex;
+      gap: 20px;
+    }
 
-/* Card styling */
-.gold-card {
-  flex: 1 1 30%;
-  max-width: 300px;
-  border-radius: 12px;
-  background: #f2e6d0;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
-}
+    /* Card container */
+    .gold-cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-.gold-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
+    /* Card styling */
+    .gold-card {
+      flex: 1 1 30%;
+      max-width: 300px;
+      border-radius: 12px;
+      background: #f2e6d0;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    }
 
-.gold-card-content {
-  padding: 12px;
-  background: #f2e6d0;
-}
+    .gold-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
 
-.gold-card-content h3 {
-  margin: 0 0 10px 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #000;
-}
+    .gold-card-content {
+      padding: 12px;
+      background: #f2e6d0;
+    }
 
-.gold-card-content p {
-  margin: 0;
-  font-size: 14px;
-  color: #333;
-}
-.cate {
-  display: flex;
-  gap: 450px;/* heading left, button right */
-  align-items: center;            /* vertically align */
-}
+    .gold-card-content h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .gold-card-content p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .cate {
+      display: flex;
+      gap: 450px;
+      /* heading left, button right */
+      align-items: center;
+      /* vertically align */
+    }
 
 
 
-/* Show more button */
-.btn {
-  text-align: right;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
+    /* Show more button */
+    .btn {
+      text-align: right;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
 
-.btn-more {
-  background: transparent;
-  border: 1px solid #ac8a4a;
-  color: #ac8a4a;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .btn-more {
+      background: transparent;
+      border: 1px solid #ac8a4a;
+      color: #ac8a4a;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.btn-more:hover {
-  background: #ac8a4a;
-  color: #fff;
-}
+    .btn-more:hover {
+      background: #ac8a4a;
+      color: #fff;
+    }
 
     /* === Responsive: Tablet === */
     @media (max-width: 992px) {
@@ -798,12 +830,13 @@
         flex-direction: column;
       }
 
-    
+
       .right-sidebar,
       .main-content {
         width: 100%;
       }
-      .left-sidebar{
+
+      .left-sidebar {
         display: none;
       }
 
@@ -843,15 +876,17 @@
       .custom-line {
         width: 100%;
       }
-      #nextNewsContainer{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;  /* poore phone screen ke center me */
-    padding: 21px;
 
-}
+      #nextNewsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        /* poore phone screen ke center me */
+        padding: 21px;
+
+      }
     }
 
     /* === Responsive: Phone === */
@@ -882,27 +917,29 @@
       .gold-news {
         gap: 15px;
       }
-      .cate{
+
+      .cate {
         gap: inherit;
       }
     }
 
-    
-/* 💻 Desktop screens */
-@media (min-width: 1025px) {
-  .gold-card {
-    flex: 1 1 calc(33.33% - 20px); /* 3 cards in a row */
-    max-width: 481px;
-  }
 
-  #nextNewsContainer {
-    justify-content: flex-start;
-  }
+    /* 💻 Desktop screens */
+    @media (min-width: 1025px) {
+      .gold-card {
+        flex: 1 1 calc(33.33% - 20px);
+        /* 3 cards in a row */
+        max-width: 481px;
+      }
 
-  .btn {
-    text-align: right;
-  }
-}
+      #nextNewsContainer {
+        justify-content: flex-start;
+      }
+
+      .btn {
+        text-align: right;
+      }
+    }
 
 
     .footer-container {
@@ -1064,7 +1101,8 @@
       .footer-content {
         gap: 25px;
       }
-      .divider{
+
+      .divider {
         display: none;
       }
     }
@@ -1219,14 +1257,14 @@
 
 <body>
   <div class="first-header">
-  <div class="news-slider">
-    <p>THE MINING INVESTMENT EVENT</p>
-    
-    <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE -JUNE 2-4 2026</p>
-    <p>Some important highlighted news 4</p>
+    <div class="news-slider">
+      <p>THE MINING INVESTMENT EVENT</p>
+
+      <p>THE MINING INVESTMENT EVENT</p>
+      <p>SAVE THE DATE -JUNE 2-4 2026</p>
+      <p>Some important highlighted news 4</p>
+    </div>
   </div>
-</div>
   <header class="main-header">
     <div class="header-top">
       <div class="logo-social">
@@ -1262,28 +1300,33 @@
 
 
       </div>
-    <div class="search-bar-bg">
+      <div class="search-bar-bg">
         <div class="scrolling-track">
           <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
           <!-- Duplicate content for seamless loop -->
-           <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
         </div>
       </div>
@@ -1341,12 +1384,12 @@
 
       <div class="gold-news">
         <div class="cate">
-  <h2 id="nextCategoryTitle"></h2>
-        <div class="btn">
-          <button type="button" class="btn-more">show more <i class="fa-solid fa-arrow-right"></i></button>
+          <h2 id="nextCategoryTitle"></h2>
+          <div class="btn">
+            <button type="button" class="btn-more">show more <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
         </div>
-        </div>
-      
+
         <div id="nextNewsContainer"></div>
       </div>
     </div>

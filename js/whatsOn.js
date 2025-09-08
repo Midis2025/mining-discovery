@@ -1,6 +1,7 @@
 async function loadWhatsOn() {
   const url =
     "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=whats-on&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][populate][image]=true";
+
   const container = document.getElementById("whatsOn");
   if (!container) return;
 
@@ -11,7 +12,7 @@ async function loadWhatsOn() {
 
     console.log("payload", payload);
 
-    // Strapi v5 flat → payload.data[0].news_sections; v4 fallback included
+    // Strapi v5 flat → payload.data[0].news_sections; v4 fallback
     let sections = payload?.data?.[0]?.news_sections;
     if (!Array.isArray(sections)) {
       const v4Data = payload?.data?.[0]?.attributes?.news_sections?.data || [];
@@ -22,32 +23,42 @@ async function loadWhatsOn() {
       container.insertAdjacentHTML("beforeend", `<p>No news found.</p>`);
       return;
     }
- const sortedSections = sections.sort((a, b) => {
+
+    const sortedSections = sections.sort((a, b) => {
       const dateA = new Date(a.publish_on || 0).getTime();
       const dateB = new Date(b.publish_on || 0).getTime();
       return dateB - dateA; // descending order (newest first)
     });
 
-    // Build 5 cards
+    // Build 5 clickable list items
     const cardsHtml = sortedSections
       .slice(0, 5)
       .map((item) => {
         const title = item.title || "Untitled";
         const author = (item.author || "").trim().replace(/^by:\s*/i, "");
         const dateStr = formatDate(item.publish_on);
-        const imgUrl = getImageUrl(item) || "./image/slider2.png"; // fallback to your static image
+        const imgUrl = getImageUrl(item) || "./image/slider2.png"; // fallback
+        const docId = item.documentId || "";
 
         return `
-       <ul>
-              <li>${escapeHtml(title)}</li>
-            
-            </ul>
-      `;
+          <ul class="whats-on-item">
+            <li>
+              ${
+                docId
+                  ? `<a href="news-details.html?id=${docId}" class="whats-link">${escapeHtml(title)}</a>`
+                  : escapeHtml(title)
+              }
+              <br>
+              <small>${dateStr}</small>
+              <div class="author">By: ${escapeHtml(author || "Unknown")}</div>
+            </li>
+          </ul>
+        `;
       })
       .join("");
 
-    // Keep any existing header; only (re)render cards
-    container.querySelectorAll(".team-card").forEach((el) => el.remove());
+    // Clear old items before inserting new
+    container.querySelectorAll(".whats-on-item").forEach((el) => el.remove());
     container.insertAdjacentHTML("beforeend", cardsHtml);
   } catch (err) {
     console.error(err);
@@ -60,7 +71,6 @@ async function loadWhatsOn() {
 
 // --- helpers ---
 function getImageUrl(item) {
-  // Try common media field names and shapes (v5/v4, single/array)
   let m = item?.image ?? item?.cover ?? item?.thumbnail ?? null;
   if (!m) return null;
   if (Array.isArray(m)) m = m[0] || null;

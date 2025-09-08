@@ -43,7 +43,7 @@ async function loadLatestNews() {
       const author = rawAuthor.trim().replace(/^by:\s*/i, "") || "ARRAS MINERALS";
       const description = featuredItem.short_description || "";
       const docId = featuredItem.documentId || "";
-      
+
       // Get image URL
       const imageUrl = featuredItem.image?.data?.attributes?.url || 
                       featuredItem.image?.url || 
@@ -62,10 +62,14 @@ async function loadLatestNews() {
         : "";
 
       mainCardContainer.innerHTML = `
-        <div >
+        <div>
           <img src="${absoluteImageUrl}" alt="${title}" />
           <div class="main-card-content">
-            <h2>${title}</h2>
+            <h2>
+              ${docId 
+                ? `<a href="news-details.html?id=${docId}" class="main-title-link">${title}</a>` 
+                : title}
+            </h2>
             <p>${description}</p>
             ${docId ? `<a href="news-details.html?id=${docId}" class="read-more-main">Read Full Article</a>` : ''}
             <p class="date"><span>${dateStr}</span> By: ${author}</p>
@@ -82,6 +86,7 @@ async function loadLatestNews() {
         const title = item.title || "Untitled";
         const rawAuthor = item.author || "";
         const author = rawAuthor.trim().replace(/^by:\s*/i, "") || null;
+        const docId = item.documentId || "";
 
         const dateStr = item.publish_on
           ? new Date(item.publish_on).toLocaleDateString()
@@ -89,7 +94,9 @@ async function loadLatestNews() {
 
         return `
           <div class="latest-item">
-            ${title}
+            ${docId 
+              ? `<a href="news-details.html?id=${docId}" class="latest-title-link">${title}</a>` 
+              : title}
             <p class="date">
               ${dateStr}${author ? ` <span class="author">By: ${author}</span>` : ""}
             </p>

@@ -13,15 +13,15 @@
 
 <body>
 
-<div class="first-header">
-  <div class="news-slider">
-    <p>THE MINING INVESTMENT EVENT</p>
-    
-    <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE -JUNE 2-4 2026</p>
-    <p>Some important highlighted news 4</p>
+  <div class="first-header">
+    <div class="news-slider">
+      <p>THE MINING INVESTMENT EVENT</p>
+
+      <p>THE MINING INVESTMENT EVENT</p>
+      <p>SAVE THE DATE -JUNE 2-4 2026</p>
+      <p>Some important highlighted news 4</p>
+    </div>
   </div>
-</div>
 
 
 
@@ -64,25 +64,30 @@
       <div class="search-bar-bg">
         <div class="scrolling-track">
           <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
           <!-- Duplicate content for seamless loop -->
-           <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
         </div>
       </div>
@@ -124,7 +129,7 @@
       </div>
 
 
-     
+
 
     </div>
     <div class="main-container">
@@ -151,7 +156,7 @@
 
         <!-- Main Content -->
         <div class="main-content">
-        <div class="banner" id="bannerContainer">
+          <div class="banner" id="bannerContainer">
             <!-- Banner image will be injected here -->
           </div>
 
@@ -212,7 +217,7 @@
                     <small>By: Gold Hunter Resources</small>
                   </div>
                 </div>
-             
+
                 <div class="team-card">
                   <img src="./image/slider2.png" alt="card" />
                   <p>Power Metallic Wins Exploration Rights</p>
@@ -375,9 +380,9 @@
       </div>
       <div class="container8">
         <!-- Banner -->
-       <div class="banner" id="bannerContainer">
-            <!-- Banner image will be injected here -->
-          </div>
+        <div class="banner" id="bannerContainer">
+          <!-- Banner image will be injected here -->
+        </div>
 
 
         <div class="task">
@@ -441,25 +446,25 @@
 
           <div class="magazine">
             <!-- <h2 >Magazine</h2> -->
-            <div class="box1">
-              <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_43cfa992 (1).png" alt="Magazine 1">
-              <div class="content">
-                <h4>Monthy Magzine June 
-Edition 2025 </h4>
-                 <button></button>
-              
+            <div id="magazines-home" class="magazines-wrapper">
+              <!-- Placeholder boxes (script will replace with real magazines) -->
+              <div class="box1 magazine-box">
+                <img src="./image/slider2.png" alt="Magazine 1">
+                <div class="content">
+                  <h4>Loading Magazine...</h4>
+                  <button disabled>Loading...</button>
+                </div>
+              </div>
+
+              <div class="box2 magazine-box">
+                <img src="./image/slider2.png" alt="Magazine 2">
+                <div class="content">
+                  <h4>Loading Magazine...</h4>
+                  <button disabled>Loading...</button>
+                </div>
               </div>
             </div>
 
-            <div class="box2">
-              <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_58a107de.png" alt="Magazine 1">
-              <div class="content">
-                <h4>Monthy Magzine July
-Edition 2025 </h4>
-                <button></button>
-              </div>
-
-            </div>
 
           </div>
         </div>
@@ -645,7 +650,7 @@ Edition 2025 </h4>
         <div class="slide">
           <img src="./image/ARRAS 1.png" alt="Astra" width="130" height="100" />
         </div>
-      
+
         <div class="slide">
           <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
         </div>
@@ -678,7 +683,7 @@ Edition 2025 </h4>
         <div class="slide">
           <img src="./image/us gold 1.png" alt="Astra" width="130" height="100" />
         </div>
-       
+
         <div class="slide">
           <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
         </div>
@@ -782,37 +787,37 @@ Edition 2025 </h4>
       loadWhatsOn();
     });
   </script>
- 
 
-<script>
-  function searchNews() {
-    const query = document.getElementById("searchInput").value.toLowerCase().trim();
 
-    // keyword → URL mapping
-    const pages = {
-      "gold": "gold.html",
-      "silver": "silver.html",
-      "copper": "cooper.html",
-       "latestnews": "newss.html",
+  <script>
+    function searchNews() {
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+      // keyword → URL mapping
+      const pages = {
+        "gold": "gold.html",
+        "silver": "silver.html",
+        "copper": "cooper.html",
+        "latestnews": "newss.html",
         "magazin": "magzin.html",
-      "metal": "metal.html",
-       "morning": "morning.html",
-         "podcast": "podcast.html",
+        "metal": "metal.html",
+        "morning": "morning.html",
+        "podcast": "podcast.html",
         "popularnews": "popular.html",
-      "pressoffice": "pressoffice.html",
-       "globalnews": "Global.html",
-       
-      
-      // aur bhi add kar sakte ho
-    };
+        "pressoffice": "pressoffice.html",
+        "globalnews": "Global.html",
 
-    if (pages[query]) {
-      window.location.href = pages[query]; // match mil gaya to redirect
-    } else {
-      alert("No news page found for: " + query);
+
+        // aur bhi add kar sakte ho
+      };
+
+      if (pages[query]) {
+        window.location.href = pages[query]; // match mil gaya to redirect
+      } else {
+        alert("No news page found for: " + query);
+      }
     }
-  }
-</script>
+  </script>
 
 
 </body>

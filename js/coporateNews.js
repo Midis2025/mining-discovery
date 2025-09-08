@@ -1,6 +1,7 @@
 async function loadCorporateNews() {
   const url =
     "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=corporate-news&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][populate][image]=true";
+
   const corporateNewsContainer = document.getElementById("corporateNews");
 
   try {
@@ -17,13 +18,22 @@ async function loadCorporateNews() {
     });
 
     const view = sortedSections.slice(0, 5).map((item) => {
+      const title = item.title || "Untitled";
+      const author = item.author || "Unknown";
+      const date = formatDate(item.publish_on);
+      const docId = item.documentId || "";
+
       return `
-      <div class="card-news">
-          <p>${item.title || "Untitled"}</p>
-          <small>${formatDate(item.publish_on)}</small><br>
-          <div class="author">By: ${escapeHtml(item.author || "Unknown")}</div>
+        <div class="card-news">
+          <p>
+            ${docId 
+              ? `<a href="news-details.html?id=${docId}" class="corporate-link">${title}</a>` 
+              : title}
+          </p>
+          <small>${date}</small><br>
+          <div class="author">By: ${escapeHtml(author)}</div>
         </div>
-    `;
+      `;
     });
 
     corporateNewsContainer.innerHTML = view.join("");
