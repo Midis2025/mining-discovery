@@ -356,11 +356,11 @@ body {
         padding: 15px;
     }
     /* Sidebar Left */
-    .sidebar-left img {
-        width: 100%;
-        border-radius: 8px;
-        margin-bottom: 15px;
-    }
+  .left-sidebar,
+
+.right-sidebar {
+  width: 200px; /* full width for mobile */
+}
     /* Main Content */
     .main-content {
         display: flex;
@@ -463,7 +463,10 @@ body {
     }
 .banner img{
   height: 200px;
-  width: 350px;
+  width: 340px;
+}
+.sidebar-left{
+  display: none;
 }
     /* Main content sabse upar */
     .main-content {
@@ -834,17 +837,19 @@ body {
 <div class="search-bar-bg">
   <div class="scrolling-track">
     <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+    <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
     </div>
     <!-- Duplicate content for seamless loop -->
     <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+ <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
     </div>
   </div>
 </div>
@@ -887,10 +892,12 @@ body {
 
  <div class="container">
     <!-- Left Sidebar -->
-    <div class="sidebar-left">
-        <img src="./image/banner2.webp" alt="Left Ad">
-        <img src="./image/banner3.webp" alt="Left Ad">
-      
+   <div class="left-sidebar">
+      <div class="box">
+
+        <div id="advertisements"></div>
+      </div>
+
     </div>
 
     <!-- Main Content -->
@@ -1024,5 +1031,37 @@ read more.....</div>
     </div>
   </div>
   <script src="./script.js"></script>
+  <script>// show  extra news
+    document.getElementById("showMoreBtn").addEventListener("click", function () {
+      const extraNews = document.querySelectorAll(".extra-news");
+
+      extraNews.forEach(section => {
+        section.style.display = "block"; // Keep natural block layout
+        section.style.opacity = "0"; // Start invisible
+        section.style.transition = "opacity 0.4s ease"; // Smooth fade
+        requestAnimationFrame(() => {
+          section.style.opacity = "1"; // Fade in
+        });
+      });
+
+      this.style.display = "none"; // Hide button after showing
+    });
+    // show extra news</script>
+
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/projects.js"></script>
+  <script src="./js/reports.js"></script>
+  <script src="./js/news.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      loadAdvertisements();
+      loadProjects();
+      loadReports();
+      newsCategory();
+
+    });
+  </script>
 </body>
 </html>

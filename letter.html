@@ -447,20 +447,69 @@
   gap: 20px;
 }
 
-.left-sidebar {
-  width: 20%;
-}
 
+.left-sidebar,
+
+.right-sidebar {
+  width: 280px; /* full width for mobile */
+}
 .left-sidebar .box {
   background: white;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 12px;
+  margin-bottom: 15px;
 }
 
 .left-sidebar .box img {
   width: 100%;
   height: auto;
 }
+ .heading {
+  padding-bottom:10px ;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-left: 10px;
+    }
+     button {
+
+
+       border: 1px solid #AC8A4A;
+      padding: 5px;
+      border-radius: 20px;
+      background-color: white;
+      color: #AC8A4A;
+    }
+    
+
+.section-box {
+  border: 1px solid #ddd;
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-box img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+.section-box p {
+  margin: 10px;
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
 
 .main-content {
   width: 60%;
@@ -673,7 +722,7 @@ form select {
        padding-left: 44px;
       
 }
-/* Agar placeholder text ka bhi color black karna ho */
+
 form input::placeholder,
 form textarea::placeholder {
     color: black;
@@ -769,6 +818,9 @@ form textarea::placeholder {
     padding: 15px;
     gap: 15px;
   }
+  .left-sidebar{
+    display: none;
+  }
 
   .news-card {
     gap: 10px;
@@ -792,7 +844,156 @@ form textarea::placeholder {
     gap: 15px;
   }
 }
+/* === Default (Laptop / Small Desktop) === */
+.container {
+  display: flex;
+  padding: 30px;
+  gap: 20px;
+}
 
+/* === Tablet (768px – 992px) === */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .left-sidebar,
+  .right-sidebar,
+  .main-content {
+    width: 100%;
+  }
+
+  .news-card {
+    flex-direction: column;
+  }
+
+  .news-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .gold-news {
+    flex-direction: column;
+  }
+
+  .gold-card {
+    width: 100%;
+  }
+
+  .custom-line {
+    width: 80%;
+  }
+}
+
+/* === Kindle / Small Tablets (600px – 768px) === */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .main-content {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .section-box img {
+    height: 100px;
+  }
+
+  .gold-card img {
+    height: 150px;
+  }
+
+  .custom-line {
+    width: 90%;
+  }
+}
+
+/* === Mobile (up to 480px) === */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .news-card {
+    gap: 10px;
+  }
+
+  .gold-card img {
+    height: 120px;
+  }
+
+  .custom-line {
+    width: 100%;
+  }
+}
+
+/* === Large Desktop (1920px+) === */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 2000px;
+    margin: auto;
+    gap: 40px;
+  }
+  .page-title{
+    font-size: 32px;
+    padding-bottom: 20px;
+  }
+  .form h3{
+    font
+  }
+
+  .left-sidebar {
+    width: 320px;
+  }
+
+  .right-sidebar {
+    width: 340px;
+  }
+
+  .main-content {
+    max-width: 1000px;
+    padding: 40px;
+  }
+
+  .news-card img {
+    width: 260px;
+    height: 180px;
+  }
+
+  .section-box img {
+    height: 180px;
+  }
+
+  .gold-card img {
+    height: 250px;
+  }
+
+  .section-box p,
+  .gold-card p {
+    font-size: 18px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .custom-line {
+    width: 700px;
+  }
+}
  
       .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
@@ -1112,16 +1313,15 @@ form textarea::placeholder {
   <!-- Content Section -->
   <div class="container">
     <!-- Left -->
-    <div class="left-sidebar">
+      <!-- Left Panel -->
+  <div class="left-sidebar">
       <div class="box">
-       
-        <img src="./image/image (2) - Copy.png" alt="">
+
+        <div id="advertisements"></div>
       </div>
-      <div class="box">
-       
-        <img src="./image/image (4) - Copy.png" alt="">
-      </div>
+
     </div>
+
 
     <!-- Main -->
  
@@ -1161,44 +1361,40 @@ form textarea::placeholder {
       </div>
 
       <!-- Thank you section -->
-      <div class="thank-you">
+      <!-- <div class="thank-you">
         <h3>Thank you</h3>
         <p>Thank you for signing up to the Mining Discovery Review newsletter. Keep an eye on your inbox for the next newsletter.</p>
-      </div>
+      </div> -->
     </main>
 
 
     <!-- Right -->
-    <div class="right-sidebar">
+   <div class="right-sidebar">
       <div class="heading">
- <h3>Projects</h3>
-         <button type="button" class="gold-btn">show more</button>
+        <h3>Projects</h3>
+        <a href="./project.html"><button type="button" class="gold-btn">show more<i
+              class="fa-solid fa-arrow-right"></i></button>
+        </a>
       </div>
-      <div class="section-box">
-       
-      <img src="./image/pexels-tomfisk-2101137.png" alt="">
-        <p>Gold Eagle Corp Latest Exploration</p>
-      </div>
-      <div class="section-box">
-       
-      <img src="./image/pexels-tomfisk-2101137.png" alt="">
-        <p>Gold Eagle Corp Latest Exploration</p>
-      </div>
-      <div class="section-box">
-        
-      <img src="./image/pexels-tomfisk-2101137.png" alt="">
-        <p>Gold Eagle Corp Latest Exploration</p>
-      </div>
-         <div class="report">
-  <h3>Reports</h3>
-        
-              <button type="button" class="gold-btn">show more</button>
+      <div class="card-container">
+        <div class="card-border">
+          <div id="projects"></div>
         </div>
-      <div class="section-box">
 
-      <img src="./image/pexels-castorlystock-5139206 1.png" alt="">
-        <p>Global Mining Report 2025</p>
+
+
+
+        <div class="heading">
+          <h3>Reports</h3>
+          <a href="./project.html"><button type="button" class="gold-btn">show more<i
+                class="fa-solid fa-arrow-right"></i></button>
+          </a>
+        </div>
       </div>
+      <div class="card-border">
+        <div id="reports"></div>
+      </div>
+
     </div>
   </div>
 <!-- Footer Section -->
@@ -1212,6 +1408,7 @@ form textarea::placeholder {
      
    
       <!-- Left -->
+       
         
       <div class="footer-left">
        
@@ -1363,6 +1560,38 @@ function clearForm() {
 
 
 <script src="./script.js"></script>
+<script>// show  extra news
+    document.getElementById("showMoreBtn").addEventListener("click", function () {
+      const extraNews = document.querySelectorAll(".extra-news");
+
+      extraNews.forEach(section => {
+        section.style.display = "block"; // Keep natural block layout
+        section.style.opacity = "0"; // Start invisible
+        section.style.transition = "opacity 0.4s ease"; // Smooth fade
+        requestAnimationFrame(() => {
+          section.style.opacity = "1"; // Fade in
+        });
+      });
+
+      this.style.display = "none"; // Hide button after showing
+    });
+    // show extra news</script>
+
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/projects.js"></script>
+  <script src="./js/reports.js"></script>
+  <script src="./js/news.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      loadAdvertisements();
+      loadProjects();
+      loadReports();
+      newsCategory();
+
+    });
+  </script>
 
 </body>
 </html>

@@ -1,65 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mining Discovery Magazine</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
- 
-<style>* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff;
-  color: #222;
-}
-.first-header {
-  height: 50px; /* ek line ke height ke barabar */
-  overflow: hidden;
-  position: relative;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.news-slider {
-  display: flex;
-  flex-direction: column;
-  animation: slideNews 8s infinite;
-}
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #222;
+    }
 
-.news-slider p {
-  height: 50px;
-  line-height: 50px;
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  width: 100%;
-}
+    .first-header {
+      height: 50px;
+      /* ek line ke height ke barabar */
+      overflow: hidden;
+      position: relative;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-/* Animation - each step stops text at center */
-@keyframes slideNews {
-  0%, 20%   { transform: translateY(30px); }        /* 1st text */
-  25%, 45%  { transform: translateY(-30px); }    /* 2nd text */
-  50%, 70%  { transform: translateY(-30px); }   /* 3rd text */
-  75%, 95%  { transform: translateY(-30px); }   /* 4th text */
-  100%      { transform: translateY(0); }        /* loop back */
-}
+    .news-slider {
+      display: flex;
+      flex-direction: column;
+      animation: slideNews 8s infinite;
+    }
 
-    .first-header:hover{
+    .news-slider p {
+      height: 50px;
+      line-height: 50px;
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Animation - each step stops text at center */
+    @keyframes slideNews {
+
+      0%,
+      20% {
+        transform: translateY(30px);
+      }
+
+      /* 1st text */
+      25%,
+      45% {
+        transform: translateY(-30px);
+      }
+
+      /* 2nd text */
+      50%,
+      70% {
+        transform: translateY(-30px);
+      }
+
+      /* 3rd text */
+      75%,
+      95% {
+        transform: translateY(-30px);
+      }
+
+      /* 4th text */
+      100% {
+        transform: translateY(0);
+      }
+
+      /* loop back */
+    }
+
+    .first-header:hover {
       text-decoration: underline;
-    color: white;
+      color: white;
     }
 
     .main-header {
-      
+
       background-color: #fff;
       padding: 12px;
       border-bottom: 1px solid #ddd;
@@ -73,7 +102,7 @@ body {
     }
 
     .logo-social {
-      
+
       padding-top: 5px;
       display: flex;
       justify-content: center;
@@ -84,21 +113,21 @@ body {
 
     .logo {
       height: 70px;
-      
+
     }
 
     .nav-links {
       display: flex;
       gap: 24px;
       flex-wrap: wrap;
-      
+
     }
 
     .nav-links a {
 
       text-decoration: none;
       color: #000;
-     
+
       transition: color 0.3s;
     }
 
@@ -111,7 +140,7 @@ body {
       gap: 10px;
       flex-wrap: wrap;
       padding-right: 16px;
-      
+
     }
 
     .login-btn,
@@ -129,68 +158,71 @@ body {
     }
 
     .subscribe-btn {
-     background-color: #8d6d2a;
+      background-color: #8d6d2a;
     }
 
-   
- .search-bar-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding-top: 5px;
-}
-.search-bar-container-lasts{
-  padding-top: 100px;
-}
 
-.search-bar-bg {
-  background-color: #2e2e2e;
-  height: 24px;
-  border-radius: 20px;
-  
-  width: 70%;
-  overflow: hidden;
-  position: relative;
-}
+    .search-bar-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-top: 5px;
+    }
 
-.scrolling-track {
-  display: flex;
-  width: max-content;
-  animation: scroll-loop 8s linear infinite;
+    .search-bar-container-lasts {
+      padding-top: 100px;
+    }
+
+    .search-bar-bg {
+      background-color: #2e2e2e;
+      height: 24px;
+      border-radius: 20px;
+
+      width: 70%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .scrolling-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-loop 8s linear infinite;
       padding-top: 3px;
       gap: 24px;
-}
+    }
 
-.scrolling-content {
-  display: flex;
-  white-space: nowrap;
-  color: white;
-  gap: 24px;
-  font-size: 12px;
-}
+    .scrolling-content {
+      display: flex;
+      white-space: nowrap;
+      color: white;
+      gap: 24px;
+      font-size: 12px;
+    }
 
-.up {
-  color: #22ed00;
-}
-.down {
-  color: #ff0000;
-}
+    .up {
+      color: #22ed00;
+    }
 
-@keyframes scroll-loop {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+    .down {
+      color: #ff0000;
+    }
+
+    @keyframes scroll-loop {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
 
-.search-box {
+    .search-box {
       position: relative;
       width: 174px;
       margin-right: 16px;
-      
+
     }
 
     .search-box input {
@@ -239,18 +271,22 @@ body {
         transform: translateY(100%);
         opacity: 0;
       }
+
       10% {
         transform: translateY(0);
         opacity: 1;
       }
+
       40% {
         transform: translateY(0);
         opacity: 1;
       }
+
       50% {
         transform: translateY(-100%);
         opacity: 0;
       }
+
       100% {
         transform: translateY(-100%);
         opacity: 0;
@@ -258,26 +294,26 @@ body {
     }
 
     /* Hide animated text when user types */
-    .search-box input:focus + .animated-text-container,
-    .search-box input:not(:placeholder-shown) + .animated-text-container {
+    .search-box input:focus+.animated-text-container,
+    .search-box input:not(:placeholder-shown)+.animated-text-container {
       display: none;
     }
- 
+
 
     .social-icons {
-      
+
       display: flex;
       align-items: center;
       gap: 10px;
       padding-left: 16px;
-    
-      
+
+
     }
 
     .social-icons i {
-     background-color: black;
-      
-     
+      background-color: black;
+
+
       color: #8d6d2a;
       font-size: 18px;
       cursor: pointer;
@@ -331,14 +367,14 @@ body {
       .social-icon {
         margin-bottom: -20px;
       }
+
       .search-bar-bg {
         width: 100%;
       }
     }
-/* main-header */
-/* === Header / Dropdown Toggle === */
-   
-   
+
+    /* main-header */
+    /* === Header / Dropdown Toggle === */
 
 
 
@@ -346,628 +382,720 @@ body {
 
 
 
-    
 
-/* main-header */
-/* === Header / Dropdown Toggle === */
+
+
+
+    /* main-header */
+    /* === Header / Dropdown Toggle === */
 
 
 
 
     /* === Header / Dropdown Toggle === */
-.topbar {
-  background:black;
-  color: #fff;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  flex-wrap: wrap;
+    .topbar {
+      background: black;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .topbar h1 {
+      font-size: 20px;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .topbar h1 i {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .topbar h1.rotate i {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-links {
+      display: none;
+      background: #1f1f1f;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 14px;
+      border-top: 1px solid #333;
+    }
+
+    .dropdown-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
+
+    .dropdown-links a:hover,
+    .dropdown-links a.active {
+      color: gold;
+      border-bottom: 2px solid gold;
+      padding-bottom: 3px;
+    }
+
+    .dropdown-links.show {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /* === Media Queries === */
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+      }
+
+      .topbar h1 {
+        font-size: 18px;
+        gap: 6px;
+      }
+
+      .dropdown-links {
+        flex-direction: column;
+        padding: 10px 15px;
+        gap: 8px;
+        font-size: 13px;
+      }
+
+      .dropdown-links a {
+        margin: 5px 0;
+      }
+    }
+
+    /* Tablets */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 20px;
+      }
+
+      .dropdown-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 20px;
+      }
+    }
+
+    /* Desktops (already optimized, but just in case) */
+    @media (min-width: 769px) {
+      .topbar {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .dropdown-links {
+        flex-direction: row;
+        gap: 15px;
+      }
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #111;
+      padding: 12px 20px;
+    }
+
+    .nav-links {
+      list-style: none;
+
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .main-container {
+      display: flex;
+      padding: 20px 30px;
+      gap: 30px;
+    }
+
+    /* Sidebar */
+   .left-sidebar,
+
+.right-sidebar {
+  width: 280px; /* full width for mobile */
+}
+.left-sidebar .box {
+  background: white;
+  padding: 12px;
+  margin-bottom: 15px;
 }
 
-.topbar h1 {
-  font-size: 20px;
-  font-weight: normal;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.topbar h1 i {
-  font-size: 12px;
-  transition: transform 0.3s ease;
-}
-
-.topbar h1.rotate i {
-  transform: rotate(180deg);
-}
-
-.dropdown-links {
-  display: none;
-  background: #1f1f1f;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 14px;
-  border-top: 1px solid #333;
-}
-
-.dropdown-links a {
-  color: #ccc;
-  text-decoration: none;
-  margin-right: 15px;
-  transition: 0.3s;
-}
-
-.dropdown-links a:hover,
-.dropdown-links a.active {
-  color: gold;
-  border-bottom: 2px solid gold;
-  padding-bottom: 3px;
-}
-
-.dropdown-links.show {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* === Media Queries === */
-
-/* Small phones */
-@media (max-width: 480px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 15px;
-  }
-
-  .topbar h1 {
-    font-size: 18px;
-    gap: 6px;
-  }
-
-  .dropdown-links {
-    flex-direction: column;
-    padding: 10px 15px;
-    gap: 8px;
-    font-size: 13px;
-  }
-
-  .dropdown-links a {
-    margin: 5px 0;
-  }
-}
-
-/* Tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-  }
-
-  .dropdown-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px 20px;
-  }
-}
-
-/* Desktops (already optimized, but just in case) */
-@media (min-width: 769px) {
-  .topbar {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .dropdown-links {
-    flex-direction: row;
-    gap: 15px;
-  }
-}
-/* Navbar */
-.navbar {
-  background-color: #111;
-  padding: 12px 20px;
-}
-
-.nav-links {
-  list-style: none;
- 
-  justify-content: center;
-  gap: 25px;
-}
-
-.nav-links li a {
-  color: #fff;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-/* Layout */
-.main-container {
-  display: flex;
-  padding: 20px 30px;
-  gap: 30px;
-}
-
-/* Sidebar */
-.left-sidebar {
-  width: 180px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Main Content */
-.magazine-section {
-  flex: 1;
-}
-
-.dropdown-heading {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.magazine-grid {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.magazine-info {
-  flex: 1;
-}
-
-.magazine-info h3 {
-  font-size: 32px;
-  margin-bottom: 6px;
-}
-
-.produced-by {
- 
-  margin-bottom: 10px;
-  color: #8d6d2a;
-  font-size: 20px;
-}
-
-.desc {
-  font-size: 17px;
-  margin-bottom: 14px;
-}
-
-.features-list {
-  padding-left: 20px;
-  list-style: disc;
-  margin-bottom: 18px;
-  font-size: 17px;
-}
-.features-list li {
-     color: #8d6d2a;
-}
-
-.buttons {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.btn {
-  padding: 10px 15px;
-  font-size: 13px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  background-color: #8d6d2a;
-}
-
-.btn.dark {
-  background: #8d6d2a;
-  color: #fff;
-}
-
-.btn.gold {
-  background: #8d6d2a;
-   
-  color: #fff;
-}
-
-.btn.subscribe {
-  background: #111;
-  color: white;
-  width: 50%;
-  margin-top: 8px;
-}
-.btns{
-margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
-    margin-left: -40px;
-
-}
-
-
-
-/* Magazine Cover */
-.magazine-cover img {
-  width: 300px;
-  border-radius: 4px;
-}
-
-/* Editions */
-.editions-title {
-  font-size: 22px;
-  margin: 40px 0 20px;
-}
-
-.editions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  padding: 20px;
-}
-
-.edition-card {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 
-    0 4px 8px rgba(0, 0, 0, 0.08),   /* soft close shadow */
-    0 8px 20px rgba(0, 0, 0, 0.12),  /* deeper spread shadow */
-    0 12px 40px rgba(255, 165, 0, 0.15); /* subtle orange glow */
-  text-align: center;
-  padding-bottom: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.edition-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.edition-card img.thumb {
+.left-sidebar .box img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-bottom: 1px solid #ddd;
+  height: auto;
 }
+ .heading {
+  padding-bottom:10px ;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-left: 10px;
+    }
+     button {
 
-.edition-card h3 {
-  font-size: 18px;
-  margin: 15px 0 10px;
-  color: #333;
-}
 
-
-
-.edition-card button {
-  margin-top: 8px;
-  padding: 8px 12px;
-  font-size: 13px;
-  background: #111;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-/* Ultra small screens (360px and below) */
-@media (max-width: 360px) {
-  .logo {
-    height: 50px;
-  }
-
-  .nav-links {
-    gap: 10px;
-  }
-
-  .dropdown-heading {
-    font-size: 18px;
-  }
-
-  .magazine-info h3 {
-    font-size: 18px;
-  }
-
-  .desc,
-  .features-list {
-    font-size: 13px;
-  }
-
-  .btn {
-    font-size: 12px;
-    padding: 8px 12px;
-  }
-
-  .search-box input {
-    font-size: 12px;
-  }
-
-  .scrolling-content {
-    font-size: 12px;
-  }
-}
-
-/* === Mobile Devices (Up to 480px) === */
-@media (max-width: 480px) {
-  .main-container {
-    flex-direction: column;
-    padding: 25px;
-  }
-
-  .left-sidebar {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .magazine-cover img {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .magazine-grid {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .magazine-info h3 {
-    font-size: 20px;
-  }
-
-  .btn {
-    width: 60%;
-    text-align: center;
+       border: 1px solid #AC8A4A;
+      padding: 5px;
+      border-radius: 20px;
+      background-color: white;
+      color: #AC8A4A;
+    }
     
-  }
-
-  .editions-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .edition-card img {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .edition-card button {
-    width: 100%;
-  }
-}
-   .footer-container {
-  background-image: url(./image/footer-bg\ 1.png);
-  background-size: cover;
-  background-position: center;
-  padding: 60px 40px 30px;
-  color: #fff;
-  position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.social-iconss{
-  padding-bottom: 10px;
-}
-
-.divider {
-  width: 1px;
-  background: #444;
-  height: 60%;
-  position: absolute;
-  left: 50%;
-  top: 10%;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  /* max-width: 1300px; */
-  margin: auto;
-  gap: 30px;
-}
-
-.footer-left {
-  flex: 1;
-  min-width: 280px;
-  padding-right: 40px;
-}
-
-.social-iconss img {
-  height: 24px;
-}
-
-.footer-left p {
-  font-size: 20px;
-  
-  
-
-  max-width: 580px;
-  color: #ddd;
-}
-
-.footer-left .socials {
-  margin-top: 20px;
-}
-
-.footer-left .socials i {
-  margin-right: 15px;
-  font-size: 20px;
-  color: #ccc;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.footer-left .socials i:hover {
-  color: orange;
-}
-
-.footer-center {
-  min-width: 220px;
-  padding-left: 20px;
-}
-
-.footer-center ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-center li {
-  margin-bottom: 12px;
-  font-size: 15px;
-  color: #ccc;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.footer-center li:first-child {
-  font-weight: bold;
-  color: orange;
-  font-size: 16px;
-  margin-bottom: 18px;
-}
-
-.footer-center li:hover {
-  color: orange;
-}
-
-.footer-right {
-  flex: 1;
-  min-width: 280px;
-  padding-left: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-}
-
-.footer-right img {
-  height: 60px;
-  width: 100px;
-  object-fit: contain;
-  padding: 10px;
-  background: #fff;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
-
-.footer-right img:hover {
-  transform: scale(1.05);
-}
-
-.search-boxs {
-  position: relative;
-  width: 180px;
- 
-}
-
-.search-boxs input {
-  width: 100%;
-  height: 25px;
-  padding: 5px 15px;
-  padding-right: 35px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  outline: none;
-}
 
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 13px;
-  color: #aaa;
-}
 
-/* -------- RESPONSIVE -------- */
+    /* Main Content */
+    .magazine-section {
+      flex: 1;
+    }
 
-@media (max-width: 1024px) {
-  .footer-container {
-    padding: 50px 30px 25px;
-  }
-  .footer-content {
-    gap: 25px;
-  }
-}
+    .dropdown-heading {
+      font-size: 30px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      display: inline-block;
+      /* content jitna hi lega */
+      border-bottom: 2px solid #000;
+      padding-bottom: 4px;
+      /* thoda gap niche */
 
-@media (max-width: 768px) {
- 
-  .footer-container {
-    padding: 40px 20px 20px;
-  }
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-  }
 
-  .footer-left, .footer-center, .footer-right {
-    padding: 0;
-    min-width: 100%;
-  }
+    }
 
-  .footer-right {
-    justify-content: flex-start;
-  }
+    .magazine-grid {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
 
-  .divider {
-    display: none;
-  }
+    .magazine-info {
+      flex: 1;
+    }
 
-  .footer-left p {
-    max-width: 100%;
-  }
+    .magazine-info h3 {
+      font-size: 32px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
 
-  .search-boxs {
-    width: 50%;
-  }
- 
-}
+    .produced-by {
 
-@media (max-width: 480px) {
-  .footer-left img,
-  .footer-right img {
-    height: 26px;
-    width: 29px;
-  }
+      margin-bottom: 10px;
+      color: #8d6d2a;
+      font-size: 20px;
+    }
 
-  .footer-left p {
-    font-size: 14px;
-  }
+    .desc {
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
 
-  .footer-center li,
-  .footer-left .socials i {
-    font-size: 14px;
-  }
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 30px;
+    }
 
-  .footer-center li:first-child {
-    font-size: 15px;
-  }
+    .features-list li {
+      display: none;
+      /* sab hide kar do pehle */
+    }
 
-  .footer-bottom {
-    font-size: 12px;
-    margin-top: 30px;
-  }
-}
+    .features-list li:nth-child(-n+3) {
+      display: list-item;
+      /* sirf pehle 2 show karo */
+    }
 
-</style>
+    .toggle-btn {
+      cursor: pointer;
+      color: #8d6d2a;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .features-list li {
+      color: #8d6d2a;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      font-size: 13px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background-color: #8d6d2a;
+    }
+
+    .btn.dark {
+      background: #8d6d2a;
+      color: #fff;
+    }
+
+    .btn.gold {
+      background: #8d6d2a;
+
+      color: #fff;
+    }
+
+    .btn.subscribe {
+      background: #111;
+      color: white;
+      width: 50%;
+      margin-top: 8px;
+    }
+
+    .btns {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-left: -40px;
+
+    }
+
+
+
+    /* Magazine Cover */
+    .magazine-cover img {
+      width: 300px;
+      border-radius: 4px;
+    }
+
+    /* Editions */
+    .editions-title {
+      font-size: 32px;
+      margin: 40px 0 20px;
+      font-weight: 600;
+      text-align: center;
+
+      border-top: 2px solid #000;
+
+
+    }
+
+    .editions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 20px;
+    }
+
+    .edition-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.08),
+        /* soft close shadow */
+        0 8px 20px rgba(0, 0, 0, 0.12),
+        /* deeper spread shadow */
+        0 12px 40px rgba(255, 165, 0, 0.15);
+      /* subtle orange glow */
+      text-align: center;
+      padding-bottom: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .edition-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .edition-card img.thumb {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .edition-card h3 {
+      font-size: 18px;
+      margin: 15px 0 10px;
+      color: #333;
+    }
+
+
+
+    .edition-card button {
+      margin-top: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      background: #111;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Ultra small screens (360px and below) */
+    @media (max-width: 360px) {
+      .logo {
+        height: 50px;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .dropdown-heading {
+        font-size: 18px;
+      }
+
+      .magazine-info h3 {
+        font-size: 18px;
+      }
+
+      .desc,
+      .features-list {
+        font-size: 13px;
+      }
+
+      .btn {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
+      .search-box input {
+        font-size: 12px;
+      }
+
+      .scrolling-content {
+        font-size: 12px;
+      }
+    }
+
+    /* === Mobile Devices (Up to 480px) === */
+    @media (max-width: 480px) {
+      .left-sidebar {
+        display: none;
+      }
+
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      .main-container {
+        flex-direction: column;
+        padding: 25px;
+      }
+
+      .left-sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .magazine-cover img {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .magazine-grid {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .magazine-info h3 {
+        font-size: 20px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+
+      }
+
+      .editions-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .edition-card img {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .edition-card button {
+        width: 100%;
+      }
+    }
+
+    .footer-container {
+      background-image: url(./image/footer-bg\ 1.png);
+      background-size: cover;
+      background-position: center;
+      padding: 60px 40px 30px;
+      color: #fff;
+      position: relative;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .social-iconss {
+      padding-bottom: 10px;
+    }
+
+    .divider {
+      width: 1px;
+      background: #444;
+      height: 60%;
+      position: absolute;
+      left: 50%;
+      top: 10%;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      /* max-width: 1300px; */
+      margin: auto;
+      gap: 30px;
+    }
+
+    .footer-left {
+      flex: 1;
+      min-width: 280px;
+      padding-right: 40px;
+    }
+
+    .social-iconss img {
+      height: 24px;
+    }
+
+    .footer-left p {
+      font-size: 20px;
+
+
+
+      max-width: 580px;
+      color: #ddd;
+    }
+
+    .footer-left .socials {
+      margin-top: 20px;
+    }
+
+    .footer-left .socials i {
+      margin-right: 15px;
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .footer-left .socials i:hover {
+      color: orange;
+    }
+
+    .footer-center {
+      min-width: 220px;
+      padding-left: 20px;
+    }
+
+    .footer-center ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-center li {
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .footer-center li:first-child {
+      font-weight: bold;
+      color: orange;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    .footer-center li:hover {
+      color: orange;
+    }
+
+    .footer-right {
+      flex: 1;
+      min-width: 280px;
+      padding-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .footer-right img {
+      height: 60px;
+      width: 100px;
+      object-fit: contain;
+      padding: 10px;
+      background: #fff;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .footer-right img:hover {
+      transform: scale(1.05);
+    }
+
+    .search-boxs {
+      position: relative;
+      width: 180px;
+
+    }
+
+    .search-boxs input {
+      width: 100%;
+      height: 25px;
+      padding: 5px 15px;
+      padding-right: 35px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
+
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    /* -------- RESPONSIVE -------- */
+
+    @media (max-width: 1024px) {
+      .footer-container {
+        padding: 50px 30px 25px;
+      }
+
+      .footer-content {
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .footer-container {
+        padding: 40px 20px 20px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+      }
+
+      .footer-left,
+      .footer-center,
+      .footer-right {
+        padding: 0;
+        min-width: 100%;
+      }
+
+      .footer-right {
+        justify-content: flex-start;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .footer-left p {
+        max-width: 100%;
+      }
+
+      .search-boxs {
+        width: 50%;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+
+      .footer-left img,
+      .footer-right img {
+        height: 26px;
+        width: 29px;
+      }
+
+      .footer-left p {
+        font-size: 14px;
+      }
+
+      .footer-center li,
+      .footer-left .socials i {
+        font-size: 14px;
+      }
+
+      .footer-center li:first-child {
+        font-size: 15px;
+      }
+
+      .footer-bottom {
+        font-size: 12px;
+        margin-top: 30px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-     
+
   <!-- Top Navbar -->
-        <div class="first-header">
-  <div class="news-slider">
-    <p>THE MINING INVESTMENT EVENT</p>
-    
-    <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE -JUNE 2-4 2026</p>
-    <p>Some important highlighted news 4</p>
+  <div class="first-header">
+    <div class="news-slider">
+      <p>THE MINING INVESTMENT EVENT</p>
+
+      <p>THE MINING INVESTMENT EVENT</p>
+      <p>SAVE THE DATE -JUNE 2-4 2026</p>
+      <p>Some important highlighted news 4</p>
+    </div>
   </div>
-</div>                                                                                                                                                                                                                                                                                                               
-    <header class="main-header">
+  <header class="main-header">
     <div class="header-top">
-     <div class="logo-social">
-           <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+      <div class="logo-social">
+        <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
       </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -983,8 +1111,8 @@ margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: ce
       </div>
 
       <div class="header-buttons" id="headerButtons">
-    <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
-       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a> 
+        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
+        <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
       </div>
     </div>
 
@@ -992,51 +1120,56 @@ margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: ce
       <div class="social-icons">
         <img src="./image/Group.png">
         <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
+        <img src="./image/Group (1).png">
+        <img src="./image/Group (2).png">
+        <img src="./image/Group (3).png">
+
+
+
       </div>
-  <div class="search-bar-bg">
+      <div class="search-bar-bg">
         <div class="scrolling-track">
           <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
           <!-- Duplicate content for seamless loop -->
-           <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
         </div>
       </div>
 
 
-     <div class="search-box">
-    <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
-      <span id="animatedText">Search gold prices</span>
-    </div>
-    <button class="search-icon"><i class="fas fa-search"></i></button>
-  </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <div class="animated-text-container">
+          <span id="animatedText">Search gold prices</span>
+        </div>
+        <button class="search-icon"><i class="fas fa-search"></i></button>
+      </div>
     </div>
   </header>
 
-  
+
 
 
   <div class="topbar">
@@ -1047,37 +1180,44 @@ margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: ce
   </div>
 
   <!-- Dropdown Links -->
-   <div class="dropdown-links" id="dropdownMenu">
+  <div class="dropdown-links" id="dropdownMenu">
     <a href="./magzin.html">Magzine</a>
     <a href="./ceo.html">CEO Profile</a>
     <a href="./weekly.html">Weekly Newsletter</a>
     <a href="./company-profile.html">Company Profile</a>
     <a href="./Digitaledition.html">Digital Edition</a>
     <a href="./webinar.html">Webinar Recording</a>
-   
-   
+
+
   </div>
 
   <!-- Main Content -->
   <div class="main-container">
     <!-- Left Sidebar Ads -->
-    <aside class="left-sidebar">
-            <img src="./image/Untitled design (1).png" alt="">
-            <img src="./image/image (4) - Copy.png" alt="">
-    </aside>
+ <div class="left-sidebar">
+      <div class="box">
+
+        <div id="advertisements"></div>
+      </div>
+
+    </div>
 
     <!-- Main Magazine Section -->
     <main class="magazine-section">
-      <h2 class="dropdown-heading">Magazine 2025 ▼</h2>
+      <h2 class="dropdown-heading">Magazine 2025 </h2>
 
       <div class="magazine-grid">
         <div class="magazine-info">
           <h3>Monthly Magazine July Edition 2025</h3>
           <p class="produced-by">Produced by Mining Discovery</p>
           <p class="desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   </p>
-   <p>view more ▼</p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+          <p class="toggle-btn">View more ▼</p>
           <ul class="features-list">
             <li>Exclusive CEO Interview: Future of Sustainable Mining...</li>
             <li>Exploration Hotspots in Latin America...</li>
@@ -1087,85 +1227,67 @@ margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: ce
             <li>Small Mining Companies Growth...</li>
           </ul>
 
-        <!-- Black subscribe button stays below the magazine grid -->
+          <!-- Black subscribe button stays below the magazine grid -->
 
-<div class="button">
-  <button class="btn subscribe">Subscribe to Get the Access</button>
-</div>
+          <div class="button">
+            <button class="btn subscribe">Subscribe to Get the Access</button>
+          </div>
         </div>
 
         <div class="magazine-cover">
-          <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_43cfa992.png" alt="Magazine Cover" id="mainMagazine" />
-           <!-- Yellow buttons placed directly under the image -->
- <div class="btns">
+          <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_43cfa992.png" alt="Magazine Cover"
+            id="mainMagazine" />
+          <!-- Yellow buttons placed directly under the image -->
+          <div class="btns">
 
-    <button class="btn">Subscribe to Get the Access</button>
-    <button class="btn">Subscribe to Get the Access</button>
-  </div>
+            <button class="btn">Subscribe to Get the Access</button>
+            <button class="btn">Subscribe to Get the Access</button>
+          </div>
 
         </div>
-       
+
 
       </div>
-     
+
 
       <!-- Editions 2025 Section -->
       <h2 class="editions-title">Editions 2025</h2>
-      <div class="editions-grid">
-        <div class="edition-card">
-         <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_58a107de.png" class="thumb"  />
-         <p>June Edition </p>
-          <button>View More</button>
-        </div>
-        <div class="edition-card">
-          <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_58a107de.png" class="thumb"  />
-          <p>September Edition </p>
-          <button>View More</button>
-        </div>
-        <div class="edition-card">
-           <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_58a107de.png" class="thumb"  />
-           <p>October Edition</p>
-          <button>View More</button>
-        </div>
-        <div class="edition-card">
-         <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_58a107de.png" class="thumb"  />
-         <p>November Edition</p>
-          <button>View More</button>
-        </div>
-     
-      </div>
+      <div class="editions-grid" id="magazines-container"></div>
+
+
     </main>
   </div>
   <div class="footer-container">
     <div class="footers">
-       <img src="./discoverylogo.jpg" alt="Mining Discovery Logo"  height="70px" />
+      <img src="./discoverylogo.jpg" alt="Mining Discovery Logo" height="70px" />
     </div>
     <div class="footer-content">
 
-     
-   
-      <!-- Left -->
-        
-      <div class="footer-left">
-       
-        <p>
-          Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
-        </p>
-         <div class="search-bar-container-lasts" id="searchContainer">
-      <div class="social-iconss">
-        <img src="./image/Group.png" >
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-      </div>
 
-      <div class="search-boxs">
-        <input type="text" id="searchInput" placeholder="Search..." />
-        <button class="search-icon"><i class="fas fa-search"></i></button>
-      </div>
-       <div class="divider"></div>
-    </div>
+
+      <!-- Left -->
+
+      <div class="footer-left">
+
+        <p>
+          Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an
+          interactive mining website for mining companies, mining associations and mining executives globally.
+        </p>
+        <div class="search-bar-container-lasts" id="searchContainer">
+          <div class="social-iconss">
+            <img src="./image/Group.png">
+            <img src="./image/Group (4).png">
+            <img src="./image/Group (1).png">
+            <img src="./image/Group (2).png">
+            <img src="./image/Group (3).png">
+          </div>
+
+          <div class="search-boxs">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button class="search-icon"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="divider"></div>
+        </div>
       </div>
 
       <!-- Center -->
@@ -1181,9 +1303,9 @@ margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: ce
         </ul>
       </div>
 
-    
-      
-     
+
+
+
 
     </div>
 
@@ -1191,17 +1313,68 @@ margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: ce
       © 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
     </div>
   </div>
-<script src="./script.js"></script>
-<script>  // Sab thumbnails ko select karo
-  const thumbs = document.querySelectorAll('.thumb');
-  const mainMagazine = document.getElementById('mainMagazine');
+  <script src="./script.js"></script>
+  <script>  // Sab thumbnails ko select karo
+    const thumbs = document.querySelectorAll('.thumb');
+    const mainMagazine = document.getElementById('mainMagazine');
 
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      // Badi magazine ka src update karo
-      mainMagazine.src = thumb.src;
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        // Badi magazine ka src update karo
+        mainMagazine.src = thumb.src;
+      });
     });
-  });
-</script>
+    const toggleBtn = document.querySelector(".toggle-btn");
+    const featuresList = document.querySelector(".features-list");
+    let expanded = false;
+
+    toggleBtn.addEventListener("click", () => {
+      expanded = !expanded;
+
+      if (expanded) {
+        featuresList.querySelectorAll("li").forEach(li => li.style.display = "list-item");
+        toggleBtn.textContent = "View less ▲";
+      } else {
+        featuresList.querySelectorAll("li").forEach((li, index) => {
+          li.style.display = index < 2 ? "list-item" : "none";
+        });
+        toggleBtn.textContent = "View more ▼";
+      }
+    });
+  </script>
+  <script src="./js/magazine.js"></script>
+  <script>// show  extra news
+    document.getElementById("showMoreBtn").addEventListener("click", function () {
+      const extraNews = document.querySelectorAll(".extra-news");
+
+      extraNews.forEach(section => {
+        section.style.display = "block"; // Keep natural block layout
+        section.style.opacity = "0"; // Start invisible
+        section.style.transition = "opacity 0.4s ease"; // Smooth fade
+        requestAnimationFrame(() => {
+          section.style.opacity = "1"; // Fade in
+        });
+      });
+
+      this.style.display = "none"; // Hide button after showing
+    });
+    // show extra news</script>
+
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/projects.js"></script>
+  <script src="./js/reports.js"></script>
+  <script src="./js/news.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      loadAdvertisements();
+      loadProjects();
+      loadReports();
+      newsCategory();
+
+    });
+  </script>
 </body>
+
 </html>

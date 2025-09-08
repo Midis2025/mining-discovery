@@ -492,7 +492,7 @@
     }
 
     .left-sidebar {
-      width: 20%;
+      width: 300px;
     }
 
     .left-sidebar .box {
@@ -761,11 +761,13 @@
   font-size: 14px;
   color: #333;
 }
-.cate{
+.cate {
   display: flex;
-  justify-content:end;
-  
+  gap: 450px;/* heading left, button right */
+  align-items: center;            /* vertically align */
 }
+
+
 
 /* Show more button */
 .btn {
@@ -846,6 +848,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;  /* poore phone screen ke center me */
+    padding: 21px;
+
 }
     }
 
@@ -876,6 +881,9 @@
 
       .gold-news {
         gap: 15px;
+      }
+      .cate{
+        gap: inherit;
       }
     }
 

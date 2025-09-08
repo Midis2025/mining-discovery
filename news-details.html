@@ -1148,16 +1148,8 @@ span{
     <!-- Left -->
     <div class="left-sidebar">
       <div class="box">
-       
-        <img src="./image/image (2) - Copy.png" alt="">
-      </div>
-      <div class="box">
-       
-        <img src="./image/image (4) - Copy.png" alt="">
-      </div>
-       <div class="box">
-       
-        <img src="./image/image (4) - Copy.png" alt="">
+
+        <div id="advertisements"></div>
       </div>
     </div>
 
@@ -1271,48 +1263,37 @@ story in the Dryden Gold District.” To view the source version of this press r
      </div>
 
     <!-- Right -->
+   <!-- Right -->
     <div class="right-sidebar">
-       <div class="heading">
- <h3>Projects</h3>
-      <a href="./project.html"><button type="button" class="gold-btn">show more<i class="fa-solid fa-arrow-right"></i></button>
-</a>       </div>
-    <div class="card-container">
- <div class="card-border">
-    <img src="./image/slidr1.png" alt="Project Image">
-    <div class="card-text">Arizona news latest project</div>
-  </div>
+      <div class="heading">
+        <h3>Projects</h3>
+        <a href="./project.html"><button type="button" class="gold-btn">show more<i
+              class="fa-solid fa-arrow-right"></i></button>
+        </a>
+      </div>
+      <div class="card-container">
+        <div class="card-border">
+          <div id="projects"></div>
+        </div>
 
 
 
 
- <div class="card-border">
-    <img src="./image/project1.jpg" alt="Project Image">
-    <div class="card-text">Arizona news latest project</div>
-  </div>
-
-  <div class="card-border">
-    <img src="./image/project2.png" alt="Project Image">
-    <div class="card-text">US Gold Crop. latest project</div>
-  </div>
-
-    
-     <div class="heading">
- <h3>Report</h3>
-      <a href="./research.html"><button type="button" class="gold-btn">show more<i class="fa-solid fa-arrow-right"></i></button>
-   </a>    </div>
-       <div class="card-border">
-    <img src="./image/0a11d81c2f8bf91d05c58c9bd53b0d3380afc2eb-2048x1536.jpg.png" alt="Project Image">
-    <div class="card-text">Phenom research report</div>
-  </div>
-   <div class="card-border">
-    <img src="./image/1acc554425c617900596f5e2ef75925751a61869-1200x600.jpg.png" alt="Project Image">
-    <div class="card-text">Arras mineral reports</div>
-  </div>
-    </div>  
-
+        <div class="heading">
+          <h3>Reports</h3>
+          <a href="./project.html"><button type="button" class="gold-btn">show more<i
+                class="fa-solid fa-arrow-right"></i></button>
+          </a>
+        </div>
+      </div>
+      <div class="card-border">
+        <div id="reports"></div>
+      </div>
 
     </div>
   </div>
+
+  
 <!-- Footer Section -->
   <div class="footer-container">
     <div class="footers">
@@ -1392,14 +1373,23 @@ story in the Dryden Gold District.” To view the source version of this press r
 // show extra news</script>
 
 <script src="./js/news-details.js"></script>
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/projects.js"></script>
+  <script src="./js/reports.js"></script>
+  <script src="./js/news.js"></script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
 
-    loadNewsDetails();
+      loadAdvertisements();
+      loadProjects();
+      loadReports();
+       loadNewsDetails();
 
-  });
-</script>
+    });
+  </script>
+
+
 
 </body>
 </html>

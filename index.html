@@ -93,7 +93,7 @@
         <div class="animated-text-container">
           <span id="animatedText">Search gold prices</span>
         </div>
-        <button class="search-icon"><i class="fas fa-search"></i></button>
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
       </div>
     </div>
   </header>
@@ -151,8 +151,8 @@
 
         <!-- Main Content -->
         <div class="main-content">
-          <div class="banner">
-            <img src="./image/Untitled design.png" alt="Banner" />
+        <div class="banner" id="bannerContainer">
+            <!-- Banner image will be injected here -->
           </div>
 
           <h2>Most Read</h2>
@@ -264,7 +264,7 @@
             <div class="card-grid">
               <!-- Card 1 -->
               <div class="card1">
-                <img src="./image/0a11d81c2f8bf91d05c58c9bd53b0d3380afc2eb-2048x1536.jpg.png" />
+                <img src="./image/mrng22.png" />
                 <span class="tag-post">SPONSORED POST</span>
                 <h4>Power Metallic Provides an Update on Summer 2025 Exploration Programs at Nisk Project</h4>
                 <a href="./Sponsored.html"> <button class="btn-more">More <i class="fas fa-angle-right"></i></button>
@@ -273,7 +273,7 @@
 
               <!-- Card 2 -->
               <div class="card1">
-                <img src="./image/0a11d81c2f8bf91d05c58c9bd53b0d3380afc2eb-2048x1536.jpg.png" />
+                <img src="./image/s2.png" />
                 <span class="tag-post">SPONSORED POST</span>
                 <h4>Arizona Gold & Silver Drilling Intersects 5.58 Metres Grading 1.27 Grams Per Tonne Gold...</h4>
                 <a href="./Sponsored.html"> <button class="btn-more">More <i class="fas fa-angle-right"></i></button>
@@ -282,7 +282,7 @@
 
               <!-- Card 3 -->
               <div class="card1">
-                <img src="./image/0a11d81c2f8bf91d05c58c9bd53b0d3380afc2eb-2048x1536.jpg.png" />
+                <img src="./image/project1.jpg" />
                 <span class="tag-post">SPONSORED POST</span>
                 <h4>Phenom Increases Private Placement Financing Up To $1,850,000
                   Phenom Increases Private Placement Financing Up To $1,850,000
@@ -301,7 +301,7 @@
               </div>
               <!-- Card 3 -->
               <div class="card1">
-                <img src="./image/0a11d81c2f8bf91d05c58c9bd53b0d3380afc2eb-2048x1536.jpg.png" />
+                <img src="./image/project2.png" />
                 <span class="tag-post">SPONSORED POST</span>
                 <h4>Phenom Increases Private Placement Financing Up To $1,850,000
                   Phenom Increases Private Placement Financing Up To $1,850,000
@@ -375,9 +375,9 @@
       </div>
       <div class="container8">
         <!-- Banner -->
-        <div class="banner">
-          <img src="./image/image (1).png" alt="Top Banner" />
-        </div>
+       <div class="banner" id="bannerContainer">
+            <!-- Banner image will be injected here -->
+          </div>
 
 
         <div class="task">
@@ -440,23 +440,23 @@
           </div>
 
           <div class="magazine">
-            <h2 style="display: none;">Magazine</h2>
+            <!-- <h2 >Magazine</h2> -->
             <div class="box1">
-              <img src="./image/USDC.png" alt="Magazine 1">
+              <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_43cfa992 (1).png" alt="Magazine 1">
               <div class="content">
-                <h4>USDC</h4>
-                <P>june 13,2015</P>
-                <p>by:Unknown</p>
+                <h4>Monthy Magzine June 
+Edition 2025 </h4>
+                 <button></button>
+              
               </div>
             </div>
 
             <div class="box2">
-              <img src="./image/USDC.png" alt="Magazine 1">
+              <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_58a107de.png" alt="Magazine 1">
               <div class="content">
-                <h4>USDC</h4>
-                <P>june 13,2015</P>
-                <p>by:Unknown</p>
-
+                <h4>Monthy Magzine July
+Edition 2025 </h4>
+                <button></button>
               </div>
 
             </div>
@@ -767,6 +767,7 @@
   <script src="./js/advertisment.js"></script>
   <script src="./js/annoucements.js"></script>
   <script src="./js/whatsOn.js"></script>
+  <script src="./js/Home-Advertisments.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -781,6 +782,38 @@
       loadWhatsOn();
     });
   </script>
+ 
+
+<script>
+  function searchNews() {
+    const query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    // keyword → URL mapping
+    const pages = {
+      "gold": "gold.html",
+      "silver": "silver.html",
+      "copper": "cooper.html",
+       "latestnews": "newss.html",
+        "magazin": "magzin.html",
+      "metal": "metal.html",
+       "morning": "morning.html",
+         "podcast": "podcast.html",
+        "popularnews": "popular.html",
+      "pressoffice": "pressoffice.html",
+       "globalnews": "Global.html",
+       
+      
+      // aur bhi add kar sakte ho
+    };
+
+    if (pages[query]) {
+      window.location.href = pages[query]; // match mil gaya to redirect
+    } else {
+      alert("No news page found for: " + query);
+    }
+  }
+</script>
+
 
 </body>
 

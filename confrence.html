@@ -113,7 +113,7 @@ body {
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 8s linear infinite;
+  animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
 }
 
@@ -357,6 +357,7 @@ body {
 .head{
     font-size: 20px;
     color: white;
+    padding: 10px;
 }
   
 .para{
@@ -375,39 +376,96 @@ body {
 .subtext{
   color: #c2922b;
 }
+.left-sidebar,
 
-.left-panel,
-.middle-panel,
-.right-panel {
+.right-sidebar {
+  width: 280px; /* full width for mobile */
+}
+.left-sidebar .box {
+  background: white;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.left-sidebar .box img {
+  width: 100%;
+  height: auto;
+}
+ .heading {
+  padding-bottom:10px ;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-left: 10px;
+    }
+     button {
+
+
+       border: 1px solid #AC8A4A;
+      padding: 5px;
+      border-radius: 20px;
+      background-color: white;
+      color: #AC8A4A;
+    }
+    
+
+.section-box {
+  border: 1px solid #ddd;
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-box img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+.section-box p {
+  margin: 10px;
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.gold-news {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 20px;
 }
 
-.left-panel,
-.right-panel {
-  width: 22%;
-}
 
 .middle-panel {
   width: 53%;
 }
 
-.left-panel img,
-.right-panel img {
-  width: 100%;
-  border-radius: 8px;
-}
+
 
 .middle-panel h1 {
-  font-size: 24px;
+  border-bottom: 2px solid black;
+  font-size: 30px;
   color: #000;
   margin-bottom: 10px;
 }
 
 .subtext {
-  font-size: 20px;
+  font-size:20px;
   margin-bottom: 20px;
+}
+.heading h3{
+  font-size: 18px;
 }
 
 .top-cards {
@@ -473,7 +531,8 @@ body {
 }
 
 .philosophy div {
- 
+ width:300px;
+ height: 120px;
   padding: 10px;
   text-align: center;
   border-radius: 6px;
@@ -483,6 +542,7 @@ body {
   background-color: #AC8A4A;
   
 }
+
 .black{
   background-color: black;
   color: white;
@@ -551,7 +611,11 @@ span{
   }
 
   .philosophy {
-    grid-template-columns: 1fr;
+     display: grid;               /* enable grid */
+  grid-template-columns: 1fr;  /* single column on phone */
+  justify-items: center;       /* horizontally center items */
+  text-align: center;          /* center text inside items */
+  gap: 20px;  
   }
 }
 h2 {
@@ -600,7 +664,7 @@ h2 {
 
     .step p {
       font-size: 13px;
-      color: #888;
+      color:#8d6d2a;
       line-height: 1.4;
     }
 
@@ -617,6 +681,7 @@ h2 {
     .published li {
       margin: 10px 0;
       font-size: 15px;
+      color: black;
     }
 
     .published li::before {
@@ -647,6 +712,7 @@ h2 {
       font-size: 15px;
       margin-bottom: 15px;
       line-height: 1.5;
+      color: black;
     }
 
     .why-choose li::before {
@@ -1000,11 +1066,12 @@ h2 {
   <div class="container">
     
     <!-- Left Panel -->
-    <div class="left-panel">
-      <img src="./image/mrngbanner2.webp" alt="left-1">
-      <img src="./image/mrngbanner.webp" alt="left-2">
-      <img src="./image/Untitled design (1).png" alt="left-3">
-    
+     <div class="left-sidebar">
+      <div class="box">
+
+        <div id="advertisements"></div>
+      </div>
+
     </div>
 
     <!-- Middle Panel -->
@@ -1050,25 +1117,28 @@ Capturing insights from industry leaders</p> </div>
    <h2>How It Works</h2>
   <div class="workflow">
     <div class="step">
-      <i class="fas fa-calendar-alt"></i>
+     <img src="./image/vector/Vector (7).png">
+   
       <h4>Pre-Event Coordination</h4>
       <p>Logistics, scheduling,<br>speaker line-up</p>
     </div>
 
     <div class="step">
-      <i class="fas fa-video"></i>
+       <img src="./image/vector/Vector (8).png">
+    
       <h4>Live Coverage</h4>
       <p>Blogs, visuals,<br>social snippets</p>
     </div>
 
     <div class="step">
-      <i class="fas fa-file-alt"></i>
+       <img src="./image/vector/Group 102.png">
+    
       <h4>Post-Event Content Creation</h4>
       <p>Feature article,<br>video summary</p>
     </div>
 
     <div class="step">
-      <i class="fas fa-share-alt"></i>
+      <img src="./image/vector/Group 101.png">
       <h4>Cross-Channel Distribution</h4>
       <p>Website, newsletter,<br>social, magazine</p>
     </div>
@@ -1112,14 +1182,32 @@ Capturing insights from industry leaders</p> </div>
     </div>
 
     <!-- Right Panel -->
-    <div class="right-panel">
-      <div class="section-title">Projects</div>
-      <img src="./image/pexels-afterdark-31543888.png" alt="project-1">
-      <img src="./image/ann1.png" alt="project-2">
+        <div class="right-sidebar">
+      <div class="heading">
+        <h3>Projects</h3>
+        <a href="./project.html"><button type="button" class="gold-btn">show more<i
+              class="fa-solid fa-arrow-right"></i></button>
+        </a>
+      </div>
+      <div class="card-container">
+        <div class="card-border">
+          <div id="projects"></div>
+        </div>
 
-      <div class="section-title">Reports</div>
-      <img src="./image/ann4.png" alt="report-1">
-      <img src="./image/ann2.png" alt="report-2">
+
+
+
+        <div class="heading">
+          <h3>Reports</h3>
+          <a href="./project.html"><button type="button" class="gold-btn">show more<i
+                class="fa-solid fa-arrow-right"></i></button>
+          </a>
+        </div>
+      </div>
+      <div class="card-border">
+        <div id="reports"></div>
+      </div>
+
     </div>
 
   </div>
@@ -1180,5 +1268,37 @@ Capturing insights from industry leaders</p> </div>
     </div>
   </div>
   <script src="./script.js"></script>
+  <script>// show  extra news
+    document.getElementById("showMoreBtn").addEventListener("click", function () {
+      const extraNews = document.querySelectorAll(".extra-news");
+
+      extraNews.forEach(section => {
+        section.style.display = "block"; // Keep natural block layout
+        section.style.opacity = "0"; // Start invisible
+        section.style.transition = "opacity 0.4s ease"; // Smooth fade
+        requestAnimationFrame(() => {
+          section.style.opacity = "1"; // Fade in
+        });
+      });
+
+      this.style.display = "none"; // Hide button after showing
+    });
+    // show extra news</script>
+
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/projects.js"></script>
+  <script src="./js/reports.js"></script>
+  <script src="./js/news.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      loadAdvertisements();
+      loadProjects();
+      loadReports();
+      newsCategory();
+
+    });
+  </script>
 </body>
 </html>
