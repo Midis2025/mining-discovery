@@ -15,8 +15,7 @@
     }
 
     body {
-      background-color: #f9f9f9;
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
     }
     .main-header {
       background-color: #fff;
@@ -56,12 +55,12 @@
     .nav-links a {
       text-decoration: none;
       color: #000;
-      font-weight: 500;
+      
       transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      color: #8d6d2a;
+      color: #AE8A4C;
     }
 
     .header-buttons {
@@ -82,11 +81,11 @@
     }
 
     .login-btn {
-      background-color: #8d6d2a;
+      background-color: #AE8A4C;
     }
 
     .subscribe-btn {
-      background-color: #000;
+      background-color: #AE8A4C;
     }
 
    
@@ -98,7 +97,7 @@
 }
 
 .search-bar-bg {
-  background-color: #2e2e2e;
+  background-color: #292929;
   height: 24px;
   border-radius: 20px;
   margin-bottom: 10px;
@@ -110,7 +109,7 @@
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 8s linear infinite;
+  animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
 }
 
@@ -176,7 +175,7 @@
       color: #999;
       font-size: 14px;
       overflow: hidden;
-      height: 16px;
+      height: 18px;
     }
 
     .animated-text-container span {
@@ -228,7 +227,7 @@
      background-color: black;
       
      
-      color: #8d6d2a;
+      color: #AE8A4C;
       font-size: 18px;
       cursor: pointer;
     }
@@ -239,7 +238,7 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #8d6d2a;
+      color: #AE8A4C;
     }
 
     /* Responsive */
@@ -334,8 +333,8 @@
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
+      color: #AE8A4C;
+      border-bottom: 2px solid #AE8A4C;
       padding-bottom: 3px;
     }
 
@@ -344,7 +343,62 @@
     }
 
    
+/* Desktops (already optimized, but just in case) */
+@media (min-width: 769px) {
+  .topbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
+  .dropdown-links {
+    flex-direction: row;
+    gap: 15px;
+  }
+}
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  .dropdown-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+ 
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .topbar h1 {
+    font-size: 18px;
+    gap: 6px;
+  }
+
+  .dropdown-links {
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .dropdown-links a {
+    margin: 5px 0;
+  }
+   .left-panel{
+    display: none;
+  }
+}
 
 
 
@@ -367,11 +421,29 @@
       padding: 20px;
       gap: 20px;
     }
-
     .left-sidebar,
-
 .right-sidebar {
-  width: 280px; /* full width for mobile */
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+.fa-solid{
+  padding-left: 10px;
 }
 .left-sidebar .box {
   background: white;
@@ -393,11 +465,11 @@
      button {
 
 
-       border: 1px solid #AC8A4A;
+       border: 1px solid #AE8A4C;
       padding: 5px;
       border-radius: 20px;
       background-color: white;
-      color: #AC8A4A;
+      color: #AE8A4C;
     }
     
 
@@ -429,6 +501,15 @@
   font-weight: 500;
   line-height: 1.4;
 }
+.section-box  a {
+  color: #000000;          /* black by default */
+  text-decoration: none;   /* optional: remove underline */
+  transition: color 0.3s ease;
+}
+
+.section-box  a:hover {
+  color:#AE8A4C;            /* brown on hover */
+}
 
     .sidebar p {
       font-size: 14px;
@@ -437,6 +518,18 @@
 
     .main {
       width: 55%;
+        height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
     }
 
     .main h2 {
@@ -514,6 +607,60 @@
       padding: 8px 12px;
       font-size: 14px;
     }
+    /* ✅ Mobile Responsive (≤768px) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  /* Sidebars niche aa jayenge */
+  
+  .right-sidebar {
+    width: 100%;
+    
+  }
+  .left-sidebar{
+    display: none;
+  }
+
+  /* Main content sabse upar */
+  .main {
+    width: 100%;
+   
+  }
+
+  .section-box img {
+    height: auto; /* image ko adjust karne ke liye */
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .card img {
+    width: 80px;
+  }
+}
+
+/* ✅ Small Mobiles (≤480px) */
+@media (max-width: 480px) {
+  .section-title h3 {
+    font-size: 16px;
+  }
+
+  .card-content p,
+  .sidebar p {
+    font-size: 12px;
+  }
+
+  .card img {
+    width: 60px;
+  }
+}
 /* =========================
    Responsive Styles
    ========================= */
@@ -632,18 +779,20 @@
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
-  padding: 60px 40px 30px;
+  padding: 60px 100px 30px;
   color: #fff;
   position: relative;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .social-iconss{
   padding-bottom: 10px;
+  display: flex;
+  gap: 15px;
 }
 
 .divider {
   width: 1px;
-  background: #444;
+  background: #d9d9d9;
   height: 60%;
   position: absolute;
   left: 50%;
@@ -654,7 +803,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
- 
+ padding-top: 30px;
   margin: auto;
   gap: 30px;
 }
@@ -691,14 +840,13 @@
 }
 
 .footer-left .socials i:hover {
-  color: orange;
+  color: #AE8A4C;
 }
 
 .footer-center {
   min-width: 220px;
   padding-left: 20px;
 }
-
 .footer-center ul {
   list-style: none;
   padding: 0;
@@ -706,21 +854,22 @@
 
 .footer-center li {
   margin-bottom: 12px;
+}
+
+.footer-center a {
   font-size: 15px;
   color: #ccc;
-  cursor: pointer;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-center li:first-child {
-  font-weight: bold;
-  color: orange;
+.footer-center li:first-child a {
+  
   font-size: 16px;
-  margin-bottom: 18px;
 }
 
-.footer-center li:hover {
-  color: orange;
+.footer-center a:hover {
+  color: #AE8A4C;
 }
 
 .footer-right {
@@ -763,7 +912,7 @@
   outline: none;
 }
 .search-bar-container-lasts {
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 
@@ -864,7 +1013,7 @@
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+       <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -918,15 +1067,15 @@
     </div>
   </header>
      <!-- Header + Dropdown -->
+    <!-- Header + Dropdown -->
   <div class="topbar">
-    <h1 onclick="toggleDropdown()" id="newsToggle">
+    <h1 onclick="serviceDropdown()" id="serviceToggle">
       Services
       <i class="fas fa-chevron-down"></i>
     </h1>
   </div>
-
-  <!-- Dropdown Links -->
- <div class="dropdown-links" id="dropdownMenu">
+<!-- Dropdown Links -->
+   <div class="dropdown-links" id="dropdownMenu2">
     <a href="./service.html">Investor Campaigns</a>
     <a href="./multimedia.html">Multimedia & you tube</a>
     <a href="./newsynd.html">News Syndication</a>
@@ -939,9 +1088,10 @@
     <a href="./letter.html">Newsletter & Email Blasts</a>
     <a href="./paid.html">Paid Ad Campaigns</a>
     <a href="./pressoffice.html">Press Office</a>
-  
-  
+
 </div>
+
+
   <div class="container">
 
     <!-- Sidebar -->
@@ -968,7 +1118,7 @@
       </div>
 
       <div class="card">
-        <img src="./image/ASTRA.png" alt="Logo" />
+        <img src="./image/download (1).png" alt="Logo" />
         <div class="card-content">
           <h4>Noble Plains Uranium Corp.</h4>
          <p>A U.S.-based uranium exploration company developing ISR-compatible projects in states like Wyoming. Noble Plains upgrades historic uranium assets and quickly advances compliant NI 43‑101 resources. They aim to meet rising domestic uranium demand through capital-efficient, environmentally friendly In Situ Recovery operations.</p>
@@ -977,7 +1127,7 @@
       </div>
 
       <div class="card" >
-        <img src="./image/loyalist icon black-04 1.png" alt="Logo" />
+        <img src="./image/ASTRA.png" alt="Logo" />
         <div class="card-content">
           <h4>Astra Exploration Inc.</h4>
         <p>A U.S.-based uranium exploration company developing ISR-compatible projects in states like Wyoming. Noble Plains upgrades historic uranium assets and quickly advances compliant NI 43‑101 resources. They aim to meet rising domestic uranium demand through capital-efficient, environmentally friendly In Situ Recovery operations.</p>
@@ -985,7 +1135,7 @@
         <button>View More</button>
       </div>
         <div class="card" >
-        <img src="./image/download 1.png" alt="Logo" />
+        <img src="./image/loyalist icon black-04 1.png" alt="Logo" />
         <div class="card-content">
           <h4>Loyalist Exploration Ltd.</h4>
         <p>A U.S.-based uranium exploration company developing ISR-compatible projects in states like Wyoming. Noble Plains upgrades historic uranium assets and quickly advances compliant NI 43‑101 resources. They aim to meet rising domestic uranium demand through capital-efficient, environmentally friendly In Situ Recovery operations.</p>
@@ -1010,23 +1160,16 @@
         <button>View More</button>
       </div>
         <div class="card" >
-        <img src="./image/DIGIPOWER X.png" alt="Logo" />
+        <img src="./image/image 1.png" alt="Logo" />
         <div class="card-content">
           <h4>Guanajuato Silver Company Ltd.</h4>
          <p>Focused on reactivating precious metal mines in Mexico’s historically rich Guanajuato region, the company owns five mines and three production facilities. Its El Cubo Mine serves as the hub of a hub‑and‑spoke strategy centered in one of the world’s oldest silver camps. Operated by a fully Mexican management team.</p>
         </div>
         <button>View More</button>
       </div>
-       <div class="card">
-        
-        <div class="card-content">
-          <h4>Aurion Resources</h4>
-          <p>Aurion is a well-funded Canadian explorer in Finland’s Central Lapland Greenstone Belt. With proprietary gold discoveries at Risti and JVs with B2Gold, Kinross, and KoBold Metals, Aurion focuses on high-grade, near-surface prospects and critical mineral potential. Their Risti property alone includes meter-scale intercepts exceeding 789 g/t gold.</p>
-  </div>
-        <button>View More</button>
-      </div>
+     
        <div class="card" >
-        
+          <img src="./image/Aurion.png" alt="Logo" />
         <div class="card-content">
           <h4>Gold Hunter Resources Inc</h4>
           <p>Developing Newfoundland’s Great Northern Project—a consolidated district-scale gold zone spanning nearly 50 km. The company controls 18 known mineralized zones and benefits from supportive regional infrastructure and regulatory regimes. Its team has achieved previous success in delivering shareholder value through strategic district consolidation.</p>
@@ -1034,7 +1177,7 @@
         <button>View More</button>
       </div>
        <div class="card" >
-        
+          <img src="./image/DIGIPOWER X.png" alt="Logo" />
         <div class="card-content">
           <h4>Digipower X</h4>
           <p>With multiple sites, including our state-of-the-art combined cycle and high-capacity substations, we tap into and enhance the energy grid, supporting both industrial clients and broader energy markets.</p>
@@ -1050,7 +1193,7 @@
         <button>View More</button>
       </div>
        <div class="card" >
-        <img src="./image/ARRAS 1.png" alt="Logo" />
+        <img src="./image/us gold 1.png" alt="Logo" />
         <div class="card-content">
           <h4>U.S Gold Corp</h4>
           <p>Specializes in gold exploration and development across the United States, including the flagship CK Gold Project in Wyoming. CEO George Bee leads a team with extensive mine-building experience, and the company aims for permitting milestones and near-term production. Further projects include Keystone in Nevada and Challis in Idaho.</p>
@@ -1058,7 +1201,7 @@
         <button>View More</button>
       </div>
        <div class="card" >
-        <img src="./image/ARRAS 1.png" alt="Logo" />
+        <img src="./image/arizona  1.png" alt="Logo" />
         <div class="card-content">
           <h4>Arizona Gold & Silver Inc.</h4>
           <p>Specializes in gold exploration and development across the United States, including the flagship CK Gold Project in Wyoming. CEO George Bee leads a team with extensive mine-building experience, and the company aims for permitting milestones and near-term production. Further projects include Keystone in Nevada and Challis in Idaho.</p>
@@ -1128,23 +1271,22 @@
               <input type="text" id="searchInput" placeholder="Search..." />
               <button class="search-icon"><i class="fas fa-search"></i></button>
             </div>
-            <div class="divider"></div>
+        
           </div>
         </div>
 
         <!-- Center -->
-        <div class="footer-center">
-          <ul>
-            <li>HOME</li>
-            <li>ABOUT US</li>
-            <li>MARKETING VIDEOS</li>
-            <li>SUBSCRIPTION</li>
-            <li>APPS</li>
-            <li>COMMENT GUIDELINE</li>
-            <li>LEGAL NOTICE</li>
-          </ul>
-        </div>
-
+      <div class="footer-center">
+ <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+ <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
 
 
 

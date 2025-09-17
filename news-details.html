@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>News Section</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -16,7 +17,8 @@
       font-family: 'Pontano Sans', sans-serif;
       background: white;
     }
-        .first-header {
+
+    .first-header {
       padding: 20px;
       height: 24px;
       display: flex;
@@ -26,7 +28,8 @@
       background-color: #2E2E2E;
       font-size: 16px;
     }
-    .first-header:hover{
+
+    .first-header:hover {
       text-decoration: underline;
     }
 
@@ -44,7 +47,7 @@
     }
 
     .logo-social {
-      
+
       padding-top: 5px;
       display: flex;
       justify-content: center;
@@ -55,14 +58,14 @@
 
     .logo {
       height: 70px;
-      
+
     }
 
     .nav-links {
       display: flex;
       gap: 24px;
       flex-wrap: wrap;
-      
+
     }
 
     .nav-links a {
@@ -82,7 +85,7 @@
       gap: 10px;
       flex-wrap: wrap;
       padding-right: 16px;
-      
+
     }
 
     .login-btn,
@@ -90,7 +93,7 @@
       padding: 5px 15px;
       border: none;
       border-radius: 15px;
-      font-weight: bold;
+   
       cursor: pointer;
       color: black;
     }
@@ -100,68 +103,71 @@
     }
 
     .subscribe-btn {
-     background-color: #8d6d2a;
+      background-color: #8d6d2a;
     }
 
-   
- .search-bar-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding-top: 5px;
-}
-.search-bar-container-lasts{
-  padding-top: 100px;
-}
 
-.search-bar-bg {
-  background-color: #2e2e2e;
-  height: 24px;
-  border-radius: 20px;
-  
-  width: 70%;
-  overflow: hidden;
-  position: relative;
-}
+    .search-bar-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-top: 5px;
+    }
 
-.scrolling-track {
-  display: flex;
-  width: max-content;
-  animation: scroll-loop 8s linear infinite;
+    .search-bar-container-lasts {
+      padding-top: 100px;
+    }
+
+    .search-bar-bg {
+      background-color: #2e2e2e;
+      height: 24px;
+      border-radius: 20px;
+
+      width: 70%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .scrolling-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
       gap: 24px;
-}
+    }
 
-.scrolling-content {
-  display: flex;
-  white-space: nowrap;
-  color: white;
-  gap: 24px;
-  font-size: 12px;
-}
+    .scrolling-content {
+      display: flex;
+      white-space: nowrap;
+      color: white;
+      gap: 24px;
+      font-size: 12px;
+    }
 
-.up {
-  color: #22ed00;
-}
-.down {
-  color: #ff0000;
-}
+    .up {
+      color: #22ed00;
+    }
 
-@keyframes scroll-loop {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+    .down {
+      color: #ff0000;
+    }
+
+    @keyframes scroll-loop {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
 
-.search-box {
+    .search-box {
       position: relative;
       width: 174px;
       margin-right: 16px;
-      
+
     }
 
     .search-box input {
@@ -210,18 +216,22 @@
         transform: translateY(100%);
         opacity: 0;
       }
+
       10% {
         transform: translateY(0);
         opacity: 1;
       }
+
       40% {
         transform: translateY(0);
         opacity: 1;
       }
+
       50% {
         transform: translateY(-100%);
         opacity: 0;
       }
+
       100% {
         transform: translateY(-100%);
         opacity: 0;
@@ -229,26 +239,26 @@
     }
 
     /* Hide animated text when user types */
-    .search-box input:focus + .animated-text-container,
-    .search-box input:not(:placeholder-shown) + .animated-text-container {
+    .search-box input:focus+.animated-text-container,
+    .search-box input:not(:placeholder-shown)+.animated-text-container {
       display: none;
     }
- 
+
 
     .social-icons {
-      
+
       display: flex;
       align-items: center;
       gap: 10px;
       padding-left: 16px;
-    
-      
+
+
     }
 
     .social-icons i {
-     background-color: black;
-      
-     
+      background-color: black;
+
+
       color: #8d6d2a;
       font-size: 18px;
       cursor: pointer;
@@ -302,198 +312,274 @@
       .social-icon {
         margin-bottom: -20px;
       }
+
       .search-bar-bg {
         width: 100%;
       }
     }
-/* main-header */
-/* === Header / Dropdown Toggle === */
-  
-
-    
-
-   
-   
-
-
-
-
-
-
-
-    
-
-
-
 
 
 
     /* === Header / Dropdown Toggle === */
-.topbar {
-  background: black;
- 
-  color: #fff;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  flex-wrap: wrap;
-}
+    .topbar {
+      background: black;
 
-.topbar h1 {
-  font-size: 20px;
-  font-weight: normal;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      flex-wrap: wrap;
+    }
 
-.topbar h1 i {
-  font-size: 12px;
-  transition: transform 0.3s ease;
-}
+    .topbar h1 {
+      font-size: 20px;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
 
-.topbar h1.rotate i {
-  transform: rotate(180deg);
-}
+    .topbar h1 i {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
 
-.dropdown-links {
-  display: none;
-  background: #1f1f1f;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 14px;
-  border-top: 1px solid #333;
-}
+    .topbar h1.rotate i {
+      transform: rotate(180deg);
+    }
 
-.dropdown-links a {
-  color: #ccc;
-  text-decoration: none;
-  margin-right: 15px;
-  transition: 0.3s;
-}
+    .dropdown-links {
+      display: none;
+      background: #1f1f1f;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 14px;
+      border-top: 1px solid #333;
+    }
 
-.dropdown-links a:hover,
-.dropdown-links a.active {
-  color: gold;
-  border-bottom: 2px solid gold;
-  padding-bottom: 3px;
-}
+    .dropdown-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
 
-.dropdown-links.show {
-  display: flex;
-  flex-wrap: wrap;
-}
+    .dropdown-links a:hover,
+    .dropdown-links a.active {
+      color: gold;
+      border-bottom: 2px solid gold;
+      padding-bottom: 3px;
+    }
 
-/* === Media Queries === */
+    .dropdown-links.show {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-/* Small phones */
-@media (max-width: 480px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 15px;
-  }
+    /* === Media Queries === */
 
-  .topbar h1 {
-    font-size: 18px;
-    gap: 6px;
-  }
+    /* Small phones */
+    @media (max-width: 480px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+      }
 
-  .dropdown-links {
-    flex-direction: column;
-    padding: 10px 15px;
-    gap: 8px;
-    font-size: 13px;
-  }
+      .topbar h1 {
+        font-size: 18px;
+        gap: 6px;
+      }
 
-  .dropdown-links a {
-    margin: 5px 0;
-  }
-}
+      .dropdown-links {
+        flex-direction: column;
+        padding: 10px 15px;
+        gap: 8px;
+        font-size: 13px;
+      }
 
-/* Tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-  }
+      .dropdown-links a {
+        margin: 5px 0;
+      }
+    }
 
-  .dropdown-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px 20px;
-  }
-}
+    /* Tablets */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 20px;
+      }
 
-/* Desktops (already optimized, but just in case) */
-@media (min-width: 769px) {
-  .topbar {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+      .dropdown-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 20px;
+      }
+    }
 
-  .dropdown-links {
-    flex-direction: row;
-    gap: 15px;
-  }
-}
+    /* Desktops (already optimized, but just in case) */
+    @media (min-width: 769px) {
+      .topbar {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .dropdown-links {
+        flex-direction: row;
+        gap: 15px;
+      }
+    }
 
     /* === Main Layout === */
     /* Base Styles - Desktop (default) */
-.container {
-  display: flex;
-  padding: 30px;
-  gap: 20px;
+    .container {
+      display: flex;
+      padding: 30px;
+      gap: 20px;
+    }
+
+   .left-sidebar,
+.right-sidebar {
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
 }
 
-.left-sidebar {
-  width: 20%;
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
 }
 
-.left-sidebar .box {
-  background: white;
-  padding: 15px;
-  margin-bottom: 20px;
-}
+    .left-sidebar .box {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
 
-.left-sidebar .box img {
-  width: 100%;
-  height: auto;
-}
+    .left-sidebar .box img {
+      width: 100%;
+      height: auto;
+    }
 
-.main-content {
+   .main-content {
   width: 60%;
   max-width: 1200px;
-  margin: 10px;
+  margin: 20px auto;           /* centers the div */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 20px;
   background: #fff;
+  box-sizing: border-box;      /* keeps padding inside */
+  overflow-wrap: break-word;   /* wrap long words */
+  word-wrap: break-word;
+  line-height: 1.6;
 }
 
-/* Text spacing */
+/* 🔹 Reset all child elements so email HTML doesn't break */
+.main-content * {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* 🔹 Responsive images / tables / iframes */
+.main-content img,
+.main-content iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* 🔹 Tables */
+.main-content table {
+  width: 100% !important;       /* force table to fit */
+  border-collapse: collapse;
+  table-layout: fixed;          /* keep table inside container */
+  word-break: break-word;       /* break long words */
+}
+
+.main-content td,
+.main-content th {
+  word-break: break-word;
+  white-space: normal;
+  padding: 6px;
+}
+
+/* 🔹 Paragraph spacing */
 .main-content p {
-  padding: 10px;
+  margin: 10px 0;
+  padding: 0;
 }
 
-/* Heading style */
-h2 {
+/* 🔹 Heading style */
+.main-content h2 {
   border-bottom: 2px solid #333;
   padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* Section box */
+.section-box {
+  border: 1px solid #ddd;
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-box img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.section-box p {
+  margin: 10px;
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.section-box a {
+  color: #ae8a4c;
+  text-decoration: none;
 }
 
 /* 📱 Mobile (up to 600px) */
 @media (max-width: 600px) {
   .main-content {
-    width: 95%;   /* take almost full width */
+    width: 95%;
     padding: 15px;
   }
-  h2 {
+
+  .left-sidebar {
+    display: none;
+  }
+
+  .main-content h2 {
     font-size: 1.2rem;
   }
 }
@@ -501,10 +587,15 @@ h2 {
 /* 📱➡️💻 Tablets (601px to 992px) */
 @media (min-width: 601px) and (max-width: 992px) {
   .main-content {
-    width: 80%;   /* medium width */
+    width: 85%;
     padding: 18px;
   }
-  h2 {
+
+  .left-sidebar {
+    display: none;
+  }
+
+  .main-content h2 {
     font-size: 1.5rem;
   }
 }
@@ -513,98 +604,97 @@ h2 {
 @media (min-width: 993px) {
   .main-content {
     width: 60%;
+    height: auto;
   }
-  h2 {
+
+  .main-content h2 {
     font-size: 1.8rem;
   }
 }
 
 
-.fa-solid{
-  padding-left: 10px;
-}
-.main-content h2 {
-  margin-bottom: 15px;
-}
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+    }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-}
-span{
- color: #8d6d2a;
-}
+    span {
+      color:white;
+    }
 
-.btn-more,
-.gold-btn {
-  border: 1px solid #AC8A4A;
-  padding: 5px;
-  border-radius: 20px;
-  background-color: white;
-  color: #AC8A4A;
-}
+    .btn-more,
+    .gold-btn {
+      border: 1px solid #AC8A4A;
+      padding: 5px;
+      border-radius: 20px;
+      background-color: white;
+      color: #AC8A4A;
+    }
 
-.gold-btn {
-  margin-bottom: 10px;
-}
+    .gold-btn {
+      margin-bottom: 10px;
+    }
 
-.heading,
-.report,
-.gold {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding-left: 10px;
-}
+    .heading,
+    .report,
+    .gold {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-left: 10px;
+    }
 
-.news-card {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-  background: #D9D9D9;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-}
+    .news-card {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      background: #D9D9D9;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
 
-.news-card img {
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  object-fit: cover;
-}
+    .news-card img {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
 
-.text-content {
- 
-  padding: 10px;
-}
-.text-content p{
-  padding-top: 10px;
-  line-height: 26px;
-}
-.right-sidebar {
-  width: 20%;
-  padding: 10px;
- 
-  border-radius: 12px;
-  font-family: 'Segoe UI', sans-serif;
-}
-.card-container{
+    .text-content {
 
-  display:flex;
-  flex-direction: column;
-  gap: 15px;
+      padding: 10px;
+    }
 
-}
+    .text-content p {
+      padding-top: 10px;
+      line-height: 26px;
+    }
 
-       .card-border {
+    /* .right-sidebar {
+      width: 20%;
+      padding: 10px;
+
+      border-radius: 12px;
+      font-family: 'Segoe UI', sans-serif;
+    } */
+
+    .card-container {
+
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+    }
+
+    .card-border {
       position: relative;
       width: 100%;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
      
+
     }
 
     .card-border img {
@@ -617,7 +707,7 @@ span{
       position: absolute;
       bottom: 0;
       width: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
       color: #fff;
       text-align: center;
       padding: 10px 0;
@@ -629,10 +719,11 @@ span{
       .card-container {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .card-text {
         font-size: 15px;
       }
-     
+
     }
 
     /* Desktop (900px and above) → 3 cards per row */
@@ -640,132 +731,143 @@ span{
       .card-container {
         grid-template-columns: repeat(3, 1fr);
       }
+
       .card-text {
         font-size: 16px;
       }
-      
+
     }
 
 
 
-.gold-news {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-bottom: 30px;
-}
+    .gold-news {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 30px;
+    }
 
-.gold-card {
-  flex: 1;
-  min-width: 150px;
-  border-radius: 10px;
- background: #AC8A4A4F;
-  border: 1px solid #ddd;
-  text-align: center;
-}
+    .gold-card {
+      flex: 1;
+      min-width: 150px;
+      border-radius: 10px;
+      background: #AC8A4A4F;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
 
-.gold-card img {
-  width: 100%;
-  height: 200px;
+    .gold-card img {
+      width: 100%;
+      height: 200px;
 
-}
+    }
 
-.gold-card p {
-  padding: 10px;
-  
-}
+    .gold-card p {
+      padding: 10px;
 
-/* === Responsive: Tablet === */
-@media (max-width: 992px) {
-  .container {
-    flex-direction: column;
-  }
+    }
 
-  .left-sidebar,
-  .right-sidebar,
-  .main-content {
-    width: 100%;
-  }
+    /* === Responsive: Tablet === */
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+      }
 
-  .news-card {
-    flex-direction: column;
-  }
+      .left-sidebar,
+      .right-sidebar
+      {
+        width: 100%;
+      }
+       .main-content{
+        width: 95%;
+       }
 
-  .news-card img {
-    width: 100%;
-    height: auto;
-  }
+      .news-card {
+        flex-direction: column;
+      }
 
-  .gold-news {
-    flex-direction: column;
-  }
+      .news-card img {
+        width: 100%;
+        height: auto;
+      }
 
-  .gold-card {
-    width: 100%;
-  }
-}
-.custom-line{
-  width: 540px;
-   border: 1px solid #333;
-    margin-top: 10px;
-}
-/* Tablet */
-@media (max-width: 768px) {
-  .custom-line {
-    width: 80%;
-  }
-}
+      .gold-news {
+        flex-direction: column;
+      }
 
-/* Mobile */
-@media (max-width: 480px) {
-  .custom-line {
-    width: 100%;
-  }
-}
-/* === Responsive: Phone === */
-@media (max-width: 576px) {
-  .container {
-    padding: 15px;
-    gap: 15px;
-  }
+      .gold-card {
+        width: 100%;
+      }
+    }
 
-  .news-card {
-    gap: 10px;
-  }
+    .custom-line {
+      width: 540px;
+      border: 1px solid #333;
+      margin-top: 10px;
+    }
 
-  .text-content {
-    padding: 10px;
-  }
+    /* Tablet */
+    @media (max-width: 768px) {
+      .custom-line {
+        width: 80%;
+      }
+    }
 
-  .gold-card img {
-    height: auto;
-  }
+    /* Mobile */
+    @media (max-width: 480px) {
+      .custom-line {
+        width: 100%;
+      }
+    }
 
-  .btn-more,
-  .gold-btn {
-    font-size: 14px;
-    padding: 4px 10px;
-  }
+    /* === Responsive: Phone === */
+    @media (max-width: 576px) {
+      .container {
+        padding: 15px;
+        gap: 15px;
+      }
 
-  .gold-news {
-    gap: 15px;
-  }
-}
+      .news-card {
+        gap: 10px;
+      }
+
+      .text-content {
+        padding: 10px;
+      }
+
+      .gold-card img {
+        height: auto;
+      }
+
+      .btn-more,
+      .gold-btn {
+        font-size: 14px;
+        padding: 4px 10px;
+      }
+
+      .gold-news {
+        gap: 15px;
+      }
+    }
 
 
- 
-       .footer-container {
+
+    
+    .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
-  padding: 60px 40px 30px;
+  padding: 60px 100px 30px;
   color: #fff;
   position: relative;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .social-iconss{
   padding-bottom: 10px;
+      display: flex
+;
+    gap: 15px;
 }
 
 .divider {
@@ -781,7 +883,7 @@ span{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1300px;
+ 
   margin: auto;
   gap: 30px;
 }
@@ -818,7 +920,7 @@ span{
 }
 
 .footer-left .socials i:hover {
-  color: #AC8A4A;
+  color: orange;
 }
 
 .footer-center {
@@ -833,23 +935,24 @@ span{
 
 .footer-center li {
   margin-bottom: 12px;
+}
+
+.footer-center a {
   font-size: 15px;
   color: #ccc;
-  cursor: pointer;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-center li:first-child {
+.footer-center li:first-child a {
   font-weight: bold;
-  color: #AC8A4A;
+  color: #AE8A4C;
   font-size: 16px;
-  margin-bottom: 18px;
 }
 
-.footer-center li:hover {
-  color:#AC8A4A;
+.footer-center a:hover {
+  color: #AE8A4C;
 }
-
 .footer-right {
   flex: 1;
   min-width: 280px;
@@ -910,51 +1013,38 @@ span{
 }
 
 @media (max-width: 768px) {
- .footers{
-      display: flex
-;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 10px;
- }
+ 
+  .footer-container {
+    padding: 40px 20px 20px;
+  }
   .footer-content {
     flex-direction: column;
-    align-items: center;   /* Center kar diya */
-    text-align: center;    /* Text bhi center ho jayega */
+    align-items: flex-start;
     gap: 40px;
   }
 
-  .footer-left, 
-  .footer-center, 
-  .footer-right {
+  .footer-left, .footer-center, .footer-right {
     padding: 0;
     min-width: 100%;
-    text-align: center;  /* Ye bhi zaroori hai */
-   
-
   }
- .search-bar-container-lasts {
-    margin-top: -80px;
-}
 
   .footer-right {
-    justify-content: center; /* images center m aayengi */
+    justify-content: flex-start;
+  }
+
+  .divider {
+    display: none;
   }
 
   .footer-left p {
     max-width: 100%;
-    margin: 0 auto; /* text ko bhi center me laane ke liye */
   }
 
   .search-boxs {
-    width: 70%;  /* chhoti screen ke hisaab se thoda bada */
-    margin: 0 auto;
+    width: 50%;
   }
-  .divider{
-    display: none;
-  }
+ 
 }
-
 
 @media (max-width: 480px) {
   .footer-left img,
@@ -981,6 +1071,7 @@ span{
     margin-top: 30px;
   }
 }
+
     
     /* Modal Styles */
     .modal {
@@ -1055,23 +1146,25 @@ span{
     
 
 
- /* footer */
- 
- 
- 
 
 
- /* footer */
- 
- 
- 
-    
+
+
+
+    /* footer */
+
+
+
+
+
+    /* footer */
   </style>
 </head>
+
 <body>
-     <header class="main-header">
+  <header class="main-header">
     <div class="header-top">
-     <div class="logo-social">
+      <div class="logo-social">
         <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
       </div>
       <button class="hamburger" onclick="toggleMenu()">
@@ -1088,8 +1181,8 @@ span{
       </div>
 
       <div class="header-buttons" id="headerButtons">
-    <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
-       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a> 
+        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
+        <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
       </div>
     </div>
 
@@ -1097,51 +1190,53 @@ span{
       <div class="social-icons">
         <img src="./image/Group.png">
         <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
+        <img src="./image/Group (1).png">
+        <img src="./image/Group (2).png">
+        <img src="./image/Group (3).png">
+
+
+
       </div>
-<div class="search-bar-bg">
-  <div class="scrolling-track">
-    <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
-    </div>
-    <!-- Duplicate content for seamless loop -->
-    <div class="scrolling-content">
-      <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-      <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
-    </div>
-  </div>
-</div>
+      <div class="search-bar-bg">
+        <div class="scrolling-track">
+          <div class="scrolling-content">
+          <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+          </div>
+          <!-- Duplicate content for seamless loop -->
+          <div class="scrolling-content">
+       <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
+          </div>
+        </div>
+      </div>
 
 
-     <div class="search-box">
-    <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
-      <span id="animatedText">Search gold prices</span>
-    </div>
-    <button class="search-icon"><i class="fas fa-search"></i></button>
-  </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <div class="animated-text-container">
+          <span id="animatedText">Search gold prices</span>
+        </div>
+        <button class="search-icon"><i class="fas fa-search"></i></button>
+      </div>
     </div>
   </header>
-  
+
   <!-- Header + Dropdown -->
   <div class="topbar">
-   
-      headline of the news
-    
+
+    Headline of the news
+
     </h1>
   </div>
 
-  
+
 
   <!-- Content Section -->
   <div class="container">
@@ -1155,115 +1250,11 @@ span{
 
     <!-- Main -->
     <div class="main-content" id="newsDetails">
-      <h1>Canada ( This is the Example of new and this will uploaded from backend.)</h1>
-      <p>Investors look ahead to potentially market-moving news as the Federal Reserve’s annual Jackson Hole symposium begins later
-today, with focus on Chair Jerome Powell’s speech on Friday. Futures tracking Canada’s main stock index fell, in line with Wall
-Street futures as investors turned cautious. European equities edged lower while Japan’s Nikkei fell for a third straight session as
-investors booked profits. The Shanghai benchmark hit a decade high, led by fintech and stablecoin-related gains, on signs of a
-policy shift in Beijing. The U.S. dollar was little changed as investors watched for risks to central bank independence after President
-Donald Trump's latest remarks. Gold edged lower after the Fed’s July meeting minutes signaled rates will stay steady. Oil prices
-rose on strong U.S. demand signals and uncertainty over the Ukraine war</p>
-       <p>Pasofino Gold Limited (TSXV: VEIN) (OTCQB: EFRGF) (FSE: N07A) announce that it has engaged Independent Trading Group
-(ITG), Inc., ("ITG") to provide market making services for the common shares in the capital of the Company (the "Common Shares").
-
-Pursuant to the engagement, the Company and ITG have entered into a market making services agreement (the "Agreement"),
-under which ITG will provide market making services in accordance with Policy 3.4  Investor Relations, Promotional and MarketMaking Activities("Policy 3.4") of the TSX Venture Exchange (the "TSXV"). These services include conducting trading activities with
-the objective of maintaining a reasonable market and improving the liquidity and trading quality of the Common Shares across the
-TSXV and other trading venues</p>
-        <p>The Agreement became effective on May 14, 2025, prior to the approval of the TSXV. It is still in effect as of the date hereof and
-will remain in effect subject to TSXV approval. Under the Agreement, ITG will receive a monthly compensation of C$5,000, plus
-applicable taxes, payable by the Company in advance and as of the date hereof, the Company has paid ITG an aggregate of
-C$17,857.14. The Agreement is for an initial term of one (1) month and will automatically renew for additional one-month terms
-until terminated by either party with 30 days' notice. The Agreement does not contain any performance-based compensation and
-ITG will not receive any shares or options, or other securities of the Company as compensation. No indirect compensation is
-provided under the Agreement. ITG is responsible for all costs it incurs in connection with the market-making services.
-
-As of the date hereof, ITG and the Company are unrelated and unaffiliated entities operating at arm's length, and as of the effective
-date of the Agreement and the date hereof, neither ITG nor its principals hold, or have ever held, any interest, directly or indirectly,
-in the securities of the Company.</p>
-         <p>ABOUT PASOFINO GOLD LTD.
-
-Pasofino Gold Limited is a Canadian-based mineral exploration company listed on the TSX Venture Exchange (VEIN).
-
-Pasofino, through its wholly-owned subsidiary, owns 100% of the Dugbe Gold Project (prior to the issuance of the Government of
-Liberia's 10% carried interest).
-
-Neither the TSX Venture Exchange nor its Regulation Services Provider (as that term is defined in the policies of the TSX Venture
-Exchange) accepts responsibility for the adequacy or accuracy of this release.
-
-To view the source version of this press release, please visit https://www.newsfilecorp.com/release/263274
-
-SOURCE Pasofino Gold Limited https://api.newsfilecorp.com/newsinfo/263274/130</p>
-<p>Snipp Interactive Inc. (TSXV: SPN)(OTC PINK:SNIPF), a global provider of digital marketing promotions, rebates and loyalty
-solutions, announces its financial results for the three months ended June 30, 2025 ("Q2 2025") and for the six months ended
-June 30, 2025 ("H1 2025"). All results are reported under International Financial Reporting Standards ("IFRS") and in US dollars. A
-copy of the complete unaudited interim financial statements and management's discussion and analysis are available on SEDAR+
-(www.sedarplus.ca).
-
-The Company also announces conference call details for investors taking place on Thursday, August 21st, 2025, at 10:00am
-Eastern Time (US) to discuss the Company's recent financial results and plans for the year.
-
-The conference call will be available via the following weblink or dial-in options.
-
-Weblink: https://v.ringcentral.com/join/076779338 or
-
-One tap to join audio only from a smartphone:
-
-+16504191505,,076779338# United States (San Mateo, CA)
-
-Or dial:
-
-+1 (650) 4191505 United States (San Mateo, CA)
-
-Access Code / Meeting ID: 076779338
-
-Parties joining from other locations can refer to additional dial-in numbers based on your location listed at the following website
-and use the same Meeting ID referenced above: https://v.ringcentral.com/teleconference View the original press release on
-ACCESS Newswire
-
- 
-
-CDN Maverick Capital Corp. (CSE: CDN) (OTCQB: AXVEF) (FSE: 338B)  announce the expansion of its land packages in James
-Bay, Quebec with the addition of 170 new mineral claims, comprising 98 claims at Chabinoche and 72 at Poncheville, totaling
-9,222 hectares (Figure 1). Including the Nottaway claims, Maverick has now secured over 14,782 hectares (~147.8 km²) through
-staking. These claims are primarily located along interpreted southern extensions of the Frotet-Evans Greenstone Belt ("FEGB"), a
-prolific Archean terrane that hosts major deposits such as Troilus (Au-Cu), Moblan (Li), and Q2 Metals' recent Cisco LCT pegmatite
-discovery.
-
-Simon Studer, Interim CEO of Maverick states: "Maverick identified a clear opportunity to secure ground with outstanding
-geological context that has not yet received the systematic work it deserves. The timing was perfect to bring these targets under
-our control and to continue to advance our generative business plan in the James Bay area systematically. This expansion gives us
-exposure to multiple commodities and discovery opportunities with solid geological foundations.” To view the source version of
-this press release, please visit https://www.newsfilecorp.com/release/263222
-
- 
-
-Dryden Gold Corp. (TSXV: DRY) (OTCQB: DRYGF) (FSE: X7W) report results from its ongoing drill 2025 program on the Elora
-Gold System ("Elora"). The new results are from the Jubilee Zone ("Jubilee") and Jubilee HHanging Wall ("HW") shown in Figure 1.
-These drill results are part of the Company's fully funded 15,000-meter 2025 drill campaign targeting the Elora Gold System as
-well as regional targets and extensive field work.
-
-Drill Highlights:
-
-Drill hole DRG-25-016 intercepted 8.68 g/t over 9.40 meters including two separate high-grade zones of 20.50 g/t gold over 1.30
-meters and 26.40 g/t gold over 1.40 meters at Jubilee
-
-Drill hole DRG-25-013 intercepted 3.41 g/t over 5.25 meters including 8.01 g/t gold over 2.50 meters in the HW4 at Jubilee
-
-The Company has now identified four gold-bearing hanging wall structures parallel to the Jubilee Zone
-
-Trey Wasser, CEO of Dryden Gold, comments, "We are extremely pleased with our continued drill success in the Gold Rock Target
-Area. The Elora Gold System is growing in width, depth and along strike with every drill hole. Discovering a fourth hanging wall
-structure at Jubilee with significant grade is exciting and adds to our "Red Lake" theme. Regional work is also progressing with
-three drill holes completed in a "first pass" drill test at Sherridon and with channel samples from Hyndman now in the assay lab.
-With the closing of our recent financing, drilling will continue well into 2026 with an additional 20,000 meters of drilling and more
-field work throughout the Gold Rock Camp and at regional targets. Over the next 12 months we intend to really unlock the gold
-story in the Dryden Gold District.” To view the source version of this press release, please visit</p>
-
-     </div>
+  
+    </div>
 
     <!-- Right -->
-   <!-- Right -->
+    <!-- Right -->
     <div class="right-sidebar">
       <div class="heading">
         <h3>Projects</h3>
@@ -1293,86 +1284,87 @@ story in the Dryden Gold District.” To view the source version of this press r
     </div>
   </div>
 
-  
-<!-- Footer Section -->
-  <div class="footer-container">
-    <div class="footers">
-       <img src="./discoverylogo.jpg" alt="Mining Discovery Logo"  height="70px" />
-    </div>
-    <div class="footer-content">
 
-     
-   
-      <!-- Left -->
-        
-      <div class="footer-left">
-       
-        <p>
-          Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
-        </p>
-         <div class="search-bar-container-lasts" id="searchContainer">
-      <div class="social-iconss">
-        <img src="./image/Group.png" >
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
+  <!-- Footer Section -->
+ <div class="footer-container">
+      <div class="footers">
+        <img src="./discoverylogo.jpg" alt="Mining Discovery Logo" height="70px" />
+      </div>
+      <div class="footer-content">
+
+
+
+        <!-- Left -->
+
+        <div class="footer-left">
+
+          <p>
+            Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an
+            interactive mining website for mining companies, mining associations and mining executives globally.
+          </p>
+          <div class="search-bar-container-lasts" id="searchContainer">
+            <div class="social-iconss">
+              <img src="./image/Group.png">
+              <img src="./image/Group (4).png">
+              <img src="./image/Group (1).png">
+              <img src="./image/Group (2).png">
+              <img src="./image/Group (3).png">
+            </div>
+
+            <div class="search-boxs">
+              <input type="text" id="searchInput" placeholder="Search..." />
+              <button class="search-icon"><i class="fas fa-search"></i></button>
+            </div>
+          
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="footer-center">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="newss.html">MARKETING VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="ceo.html">APPS</a></li>
+    <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
+
+
+
+
+
       </div>
 
-      <div class="search-boxs">
-        <input type="text" id="searchInput" placeholder="Search..." />
-        <button class="search-icon"><i class="fas fa-search"></i></button>
+      <div class="footer-bottom">
+        © 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
       </div>
-       <div class="divider"></div>
     </div>
-      </div>
-
-      <!-- Center -->
-      <div class="footer-center">
-        <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>MARKETING VIDEOS</li>
-          <li>SUBSCRIPTION</li>
-          <li>APPS</li>
-          <li>COMMENT GUIDELINE</li>
-          <li>LEGAL NOTICE</li>
-        </ul>
-      </div>
-
-    
-      
-     
-
-    </div>
-
-    <div class="footer-bottom">
-      ©️ 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
-    </div>
-  </div>
 
 
   </footer>
   </div>
   <script src="./script.js"></script>
-<script>// show  extra news
- document.getElementById("showMoreBtn").addEventListener("click", function() {
-    const extraNews = document.querySelectorAll(".extra-news");
+  <script>// show  extra news
+    document.getElementById("showMoreBtn").addEventListener("click", function () {
+      const extraNews = document.querySelectorAll(".extra-news");
 
-    extraNews.forEach(section => {
+      extraNews.forEach(section => {
         section.style.display = "block"; // Keep natural block layout
         section.style.opacity = "0"; // Start invisible
         section.style.transition = "opacity 0.4s ease"; // Smooth fade
         requestAnimationFrame(() => {
-            section.style.opacity = "1"; // Fade in
+          section.style.opacity = "1"; // Fade in
         });
+      });
+
+      this.style.display = "none"; // Hide button after showing
     });
+    // show extra news</script>
 
-    this.style.display = "none"; // Hide button after showing
-});
-// show extra news</script>
-
-<script src="./js/news-details.js"></script>
+  <script src="./js/news-details.js"></script>
   <script src="./js/advertisment.js"></script>
   <script src="./js/projects.js"></script>
   <script src="./js/reports.js"></script>
@@ -1384,7 +1376,7 @@ story in the Dryden Gold District.” To view the source version of this press r
       loadAdvertisements();
       loadProjects();
       loadReports();
-       loadNewsDetails();
+      loadNewsDetails();
 
     });
   </script>
@@ -1392,4 +1384,5 @@ story in the Dryden Gold District.” To view the source version of this press r
 
 
 </body>
+
 </html>

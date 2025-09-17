@@ -56,12 +56,12 @@ body {
     .nav-links a {
       text-decoration: none;
       color: #000;
-      font-weight: 500;
+     
       transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      color: #8d6d2a;
+      color:  #ae8a4c;
     }
 
     .header-buttons {
@@ -82,7 +82,7 @@ body {
     }
 
     .login-btn {
-      background-color: #8d6d2a;
+      background-color:  #ae8a4c;
     }
 
     .subscribe-btn {
@@ -97,7 +97,7 @@ body {
   
 }
 .search-bar-container-lasts{
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .search-bar-bg {
@@ -124,12 +124,6 @@ body {
   font-size: 14px;
 }
 
-.up {
-  color: #22ed00;
-}
-.down {
-  color: #ff0000;
-}
 
 @keyframes scroll-loop {
   0% {
@@ -160,7 +154,7 @@ body {
     .search-icon {
       position: absolute;
       right: 10px;
-      top: 50%;
+      top: 46%;
       transform: translateY(-50%);
       background: none;
       border: none;
@@ -179,7 +173,7 @@ body {
       color: #999;
       font-size: 14px;
       overflow: hidden;
-      height: 16px;
+      height: 18px;
     }
 
     .animated-text-container span {
@@ -231,7 +225,7 @@ body {
      background-color: black;
       
      
-      color: #8d6d2a;
+      color:  #ae8a4c;
       font-size: 18px;
       cursor: pointer;
     }
@@ -242,7 +236,7 @@ body {
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #8d6d2a;
+      color:  #ae8a4c;
     }
 
     /* Responsive */
@@ -338,32 +332,76 @@ body {
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
+      color:   #ae8a4c;
+      border-bottom: 2px solid   #ae8a4c;
       padding-bottom: 3px;
     }
 
     .dropdown-links.show {
       display: flex;
     }
+/* Desktops (already optimized, but just in case) */
+@media (min-width: 769px) {
+  .topbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
+  .dropdown-links {
+    flex-direction: row;
+    gap: 15px;
+  }
+}
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  .dropdown-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+ 
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .topbar h1 {
+    font-size: 18px;
+    gap: 6px;
+  }
+
+  .dropdown-links {
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .dropdown-links a {
+    margin: 5px 0;
+  }
+   .left-panel{
+    display: none;
+  }
+}
    
 
 
 
 
 
-
-.head{
-    font-size: 20px;
-    color: white;
-    padding: 10px;
-}
-  
-.para{
-    color: #AC8A4A;
-    font-size: 15px;
-}
 
 
 
@@ -374,13 +412,33 @@ body {
  
 }
 .subtext{
-  color: #c2922b;
+  color:  #ae8a4c;
 }
 .left-sidebar,
-
 .right-sidebar {
-  width: 280px; /* full width for mobile */
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
 }
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+.fa-solid {
+    padding-left: 10px;
+}
+
 .left-sidebar .box {
   background: white;
   padding: 12px;
@@ -401,13 +459,24 @@ body {
      button {
 
 
-       border: 1px solid #AC8A4A;
+       border: 1px solid  #ae8a4c;
       padding: 5px;
       border-radius: 20px;
       background-color: white;
-      color: #AC8A4A;
+      color:  #ae8a4c;
     }
     
+
+.head{
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+}
+  
+.para{
+    color:  #ae8a4c;
+    font-size: 15px;
+}
 
 .section-box {
   border: 1px solid #ddd;
@@ -437,6 +506,15 @@ body {
   font-weight: 500;
   line-height: 1.4;
 }
+.section-box  a {
+  color: #000000;          /* black by default */
+  text-decoration: none;   /* optional: remove underline */
+  transition: color 0.3s ease;
+}
+
+.section-box  a:hover {
+  color: #ae8a4c;            /* brown on hover */
+}
 
 .gold-news {
   display: flex;
@@ -449,19 +527,31 @@ body {
 
 .middle-panel {
   width: 70%;
+    height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
 }
 
 
 
 .middle-panel h1 {
   border-bottom: 2px solid black;
-  font-size: 30px;
-  color: #000;
+  font-size: 28px;
+ 
   margin-bottom: 10px;
 }
 
 .subtext {
-  font-size:20px;
+  font-size:18px;
   margin-bottom: 20px;
 }
 .heading h3{
@@ -492,7 +582,7 @@ body {
 .section-title {
   text-align: center;
   font-weight: bold;
-  color: #c2922b;
+  color:  #ae8a4c;
   font-size: 16px;
   margin: 30px 0 15px;
   text-transform: uppercase;
@@ -518,7 +608,7 @@ body {
 }
 
 .solution-grid i {
-  color: #c2922b;
+  color:  #ae8a4c;
   font-size: 20px;
   margin-bottom: 5px;
 }
@@ -527,11 +617,11 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
-  margin-top: 15px;
+ 
 }
 
 .philosophy div {
- width:300px;
+ width:345px;
  height: 120px;
   padding: 10px;
   text-align: center;
@@ -539,7 +629,7 @@ body {
   font-size: 14px;
 }
  .color{
-  background-color: #AC8A4A;
+  background-color:  #ae8a4c;
   
 }
 
@@ -553,9 +643,40 @@ body {
 .chnage{
   color: #c2922b;
 }
-span{
+.para {
+  opacity: 0;
+  visibility: hidden;
+  margin-top: 10px;
+  transition: all 0.3s ease-in-out;
+  color: black;
+}
+.para2{
+    opacity: 0;
+  visibility: hidden;
+  margin-top: 10px;
+  transition: all 0.3s ease-in-out;
   color: white;
 }
+
+.philosophy div:hover .para {
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+}
+.philosophy div:hover .para2 {
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+}
+
+.philosophy div:hover .head {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* span{
+  color: white;
+} */
 .midis-box {
   margin-top: 40px;
   text-align: center;
@@ -573,52 +694,13 @@ span{
 }
 
 .midis-logo .orange {
-  color: orange;
+  color:  #ae8a4c;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .left-panel{
-    display: none;
-  }
-  .subtext{
-    text-align: center;
-  }
-  .middle-panel h1{
-    text-align: center;
-  }
-  .container {
-    flex-direction: column;
-    padding: 15px;
-  }
 
-  .left-panel,
-  .middle-panel,
-  .right-panel {
-    width: 100%;
-  }
 
-  .top-cards {
-    flex-direction: column;
-  }
-
-  .card {
-    width: 100%;
-  }
-
-  .solution-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .philosophy {
-     display: grid;               /* enable grid */
-  grid-template-columns: 1fr;  /* single column on phone */
-  justify-items: center;       /* horizontally center items */
-  text-align: center;          /* center text inside items */
-  gap: 20px;  
-  }
-}
 h2 {
+  padding-top: 20px;
       font-size: 20px;
       margin-bottom: 25px;
       position: relative;
@@ -630,9 +712,9 @@ h2 {
       position: absolute;
       left: 0;
       bottom: -5px;
-      width: 30px;
+      width: 130px;
       height: 2px;
-      background-color: #e6b364;
+      background-color:  #ae8a4c;
     }
 
     .workflow {
@@ -664,7 +746,7 @@ h2 {
 
     .step p {
       font-size: 13px;
-      color:#8d6d2a;
+      color: #ae8a4c;
       line-height: 1.4;
     }
 
@@ -679,25 +761,22 @@ h2 {
     }
 
     .published li {
-      margin: 10px 0;
+      margin: 16px 0;
       font-size: 15px;
       color: black;
+      padding-left: 20px;
     }
 
     .published li::before {
       content: '\2713';
-      color: #e6b364;
+      color: #ae8a4c;
       margin-right: 10px;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .workflow {
-        flex-direction: column;
-        gap: 30px;
-        align-items: center;
-      }
-    }
+    
+
+ 
+    
     .why-choose {
       margin-bottom: 30px;
       border-bottom: 2px solid black;
@@ -709,15 +788,16 @@ h2 {
     }
 
     .why-choose li {
-      font-size: 15px;
+      font-size: 16px;
       margin-bottom: 15px;
       line-height: 1.5;
       color: black;
+      padding-left: 20px;
     }
 
     .why-choose li::before {
       content: '\2713';
-      color: #e6b364;
+      color:  #ae8a4c;
       margin-right: 10px;
     }
 
@@ -733,15 +813,130 @@ h2 {
       font-weight: 500;
       margin-bottom: 20px;
     }
+    .snapshot h3{
+      border-bottom: 2px solid #ae8a4c ;
+      display: inline-block;
+    }
 
     .quote {
      
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.6;
       color:black;
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
+    }
+    .container1 h2 {
+    
+  font-size: 20px;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+    
+/* Very Small Devices (mobile < 480px: small phones) */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .head {
+    font-size: 16px;
+  }
+
+  .para {
+    font-size: 13px;
+  }
+
+  .middle-panel h1 {
+    font-size: 20px;
+  }
+
+  .subtext {
+    font-size: 14px;
+  }
+
+  .section-box p {
+    font-size: 13px;
+  }
+
+  .step h4 {
+    font-size: 14px;
+  }
+
+  .step p {
+    font-size: 12px;
+  }
+
+  .quote {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+}
+/* Phones (large & small screens) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+
+  .right-sidebar,
+  .middle-panel {
+    width: 100%;
+  }
+   .left-sidebar{
+    display: none;
+  }
+  .container1 h2 {
+    text-align: center;
+    display: block;
+    margin: 0 auto 25px auto; 
+  }
+
+  .container1 h2::after {
+    left: 50%;
+    transform: translateX(-50%); /* underline भी center */
+  }
+
+  .top-cards {
+    flex-direction: column;
+  }
+   .philosophy {
+    grid-template-columns: 1fr; /* single column */
+     justify-items: center;       /* center align */
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .solution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heading h3 {
+    font-size: 16px;
+  }
+
+  .middle-panel h1 {
+    font-size: 24px;
+  }
+
+  .subtext {
+    font-size: 16px;
+  }
+}
+
+       /* Responsive */
+    @media (max-width: 768px) {
+      .workflow {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+      }
     }
 
     @media (max-width: 768px) {
@@ -768,20 +963,29 @@ h2 {
   }
 
   h2 {
-    font-size: 28px;
+    font-size: 20px;
+  }
+  .published ul li {
+    font-size: 20px;
+  }
+  .why-choose ul li{
+      font-size: 20px;
   }
 }
-   .footer-container {
+.footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
-  padding: 60px 40px 30px;
+  padding: 60px 100px 30px;
   color: #fff;
   position: relative;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .social-iconss{
   padding-bottom: 10px;
+      display: flex
+;
+    gap: 15px;
 }
 
 .divider {
@@ -797,7 +1001,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  /* max-width: 1300px; */
+   padding-top: 30px;
   margin: auto;
   gap: 30px;
 }
@@ -834,13 +1038,15 @@ h2 {
 }
 
 .footer-left .socials i:hover {
-  color: orange;
+  color:  #ae8a4c;
 }
 
 .footer-center {
   min-width: 220px;
   padding-left: 20px;
 }
+
+
 
 .footer-center ul {
   list-style: none;
@@ -849,21 +1055,22 @@ h2 {
 
 .footer-center li {
   margin-bottom: 12px;
+}
+
+.footer-center a {
   font-size: 15px;
   color: #ccc;
-  cursor: pointer;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-center li:first-child {
-  font-weight: bold;
-  color: orange;
+.footer-center li:first-child a {
+
   font-size: 16px;
-  margin-bottom: 18px;
 }
 
-.footer-center li:hover {
-  color: orange;
+.footer-center a:hover {
+  color:  #ae8a4c;
 }
 
 .footer-right {
@@ -986,9 +1193,7 @@ h2 {
 }
 
     
-
-
-
+  
  </style>
 </head>
 <body>
@@ -996,7 +1201,7 @@ h2 {
   <header class="main-header">
     <div class="header-top">
      <div class="logo-social">
-        <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
+        <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
       </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -1005,7 +1210,7 @@ h2 {
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+         <a href="./morning.html">Evening Chatter</a>
         <a href=".//miningpage/index.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -1019,15 +1224,12 @@ h2 {
 
     <div class="search-bar-container" id="searchContainer">
       <div class="social-icons">
-        <img src="./image/Group.png">
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
-      </div>
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 <div class="search-bar-bg">
   <div class="scrolling-track">
     <div class="scrolling-content">
@@ -1059,15 +1261,15 @@ h2 {
     </div>
   </header>
     <!-- Header + Dropdown -->
+  <!-- Header + Dropdown -->
   <div class="topbar">
-    <h1 onclick="toggleDropdown()" id="newsToggle">
+    <h1 onclick="serviceDropdown()" id="serviceToggle">
       Services
       <i class="fas fa-chevron-down"></i>
     </h1>
   </div>
-
 <!-- Dropdown Links -->
-   <div class="dropdown-links" id="dropdownMenu">
+   <div class="dropdown-links" id="dropdownMenu2">
     <a href="./service.html">Investor Campaigns</a>
     <a href="./multimedia.html">Multimedia & you tube</a>
     <a href="./newsynd.html">News Syndication</a>
@@ -1080,9 +1282,9 @@ h2 {
     <a href="./letter.html">Newsletter & Email Blasts</a>
     <a href="./paid.html">Paid Ad Campaigns</a>
     <a href="./pressoffice.html">Press Office</a>
-  
-  
+
 </div>
+
 
   <div class="container">
     
@@ -1106,34 +1308,35 @@ h2 {
     
 
      <div class="heading">
-      <h3>What’s Included</h3>
+      <h2>What’s Included</h2>
      </div>
-      <div class="philosophy">
-        <div class="color">
-         <p class="head"> On-Site Reporting</p>
-         <p >
-Build long-term digital visibility and engagement without paid promotions the sustainable way to grow.
-        </div>
-        <div class="black">
-          <p class="head">Speaker Interviews</p>
-          <p class="para">Speaker Interviews
-Capturing insights from industry leaders</p> </div>
-        <div class="black">
-          <p class="head">Daily Session Recaps</p>
-          <p class="para">Summaries of key panels, workshops, and announcements.</p>  </div>
-        <div class="color">
-          <p class="head">Photo & Video Coverage</p>
-          <p>Professional visuals and short video highlights.</p>
-        </div>
-        <div class="color">
-          <p class="head">Post-Event Editorial</p>
-          <p>In-depth feature articles or press wrap-ups.</p>
-        </div>
-        <div class="black">
-          <p class="head">Distribution Amplification</p>
-          <p class="para">Featured in newsletters, social platforms, and the website’s news feed.</p>
-        </div>
-      </div>
+    <div class="philosophy">
+  <div class="color">
+    <p class="head">On-Site Reporting</p>
+    <p class="para">Build long-term digital visibility and engagement without paid promotions..</p>
+  </div>
+  <div class="black">
+    <p class="head">Speaker Interviews</p>
+    <p class="para2">Capturing insights from industry leaders</p>
+  </div>
+  <div class="color">
+    <p class="head">Daily Session Recaps</p>
+    <p class="para">Summaries of key panels, workshops, and announcements.</p>
+  </div>
+  <div class="black">
+    <p class="head">Speaker Interviews</p>
+    <p class="para2">Capturing insights from industry leaders</p>
+  </div>
+  <div class="color">
+    <p class="head">Post-Event Editorial</p>
+    <p class="para">In-depth feature articles or press wrap-ups.</p>
+  </div>
+  <div class="black">
+    <p class="head">Distribution Amplification</p>
+    <p class="para2">Featured in newsletters, social platforms, and the website’s news feed.</p>
+  </div>
+</div>
+
 <div class="container1">
    <h2>How It Works</h2>
   <div class="workflow">
@@ -1191,7 +1394,7 @@ Capturing insights from industry leaders</p> </div>
  
 
   <div class="snapshot">
-    <h2>Client Success Snapshot</h2></div>
+    <h3>Client Success Snapshot</h3></div>
 
   <div class="quote">
     “At Mining Discovery, our coverage of the Latin America Mining Forum included live sessions, exclusive interviews with CEOs, and a post-event feature that increased readership by 40%.”
@@ -1249,35 +1452,34 @@ Capturing insights from industry leaders</p> </div>
           Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
         </p>
          <div class="search-bar-container-lasts" id="searchContainer">
-      <div class="social-iconss">
-        <img src="./image/Group.png" >
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-      </div>
+       <div class="social-iconss">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 
       <div class="search-boxs">
         <input type="text" id="searchInput" placeholder="Search..." />
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
-       <div class="divider"></div>
+    
     </div>
       </div>
 
       <!-- Center -->
-      <div class="footer-center">
-        <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>MARKETING VIDEOS</li>
-          <li>SUBSCRIPTION</li>
-          <li>APPS</li>
-          <li>COMMENT GUIDELINE</li>
-          <li>LEGAL NOTICE</li>
-        </ul>
-      </div>
-
+    <div class="footer-center">
+ <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+    <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
     
       
      

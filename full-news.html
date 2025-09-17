@@ -131,7 +131,7 @@
     .scrolling-track {
       display: flex;
       width: max-content;
-      animation: scroll-loop 8s linear infinite;
+      animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
       gap: 24px;
     }
@@ -464,9 +464,27 @@
       gap: 20px;
     }
 
-    .left-sidebar {
-      width: 20%;
-    }
+    .left-sidebar,
+.right-sidebar {
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
 
     .left-sidebar .box {
       background: white;
@@ -487,6 +505,39 @@
       padding: 20px;
       background: #fff;
     }
+     .section-box {
+      border: 1px solid #ddd;
+      background: #fff;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-box img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .section-box p {
+      margin: 10px;
+      font-size: 15px;
+      color: #333;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+     .section-box a{
+      color: #ae8a4c;
+      text-decoration: none;
+     }
 
     /* Text spacing */
     .main-content p {
@@ -553,7 +604,7 @@
     }
 
     span {
-      color: #8d6d2a;
+      color:white;
     }
 
     .btn-more,
@@ -625,7 +676,7 @@
       width: 100%;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    
 
     }
 
@@ -782,244 +833,226 @@
 
 
 
-    .footer-container {
-      background-image: url(./image/footer-bg\ 1.png);
-      background-size: cover;
-      background-position: center;
-      padding: 60px 40px 30px;
-      color: #fff;
-      position: relative;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+  .footer-container {
+  background-image: url(./image/footer-bg\ 1.png);
+  background-size: cover;
+  background-position: center;
+  padding: 60px 100px 30px;
+  color: #fff;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.social-iconss{
+  padding-bottom: 10px;
+      display: flex
+;
+    gap: 15px;
+}
 
-    .social-iconss {
-      padding-bottom: 10px;
-    }
+.divider {
+  width: 1px;
+  background: #444;
+  height: 60%;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+}
 
-    .divider {
-      width: 1px;
-      background: #444;
-      height: 60%;
-      position: absolute;
-      left: 50%;
-      top: 10%;
-    }
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+ 
+  margin: auto;
+  gap: 30px;
+}
 
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      max-width: 1300px;
-      margin: auto;
-      gap: 30px;
-    }
+.footer-left {
+  flex: 1;
+  min-width: 280px;
+  padding-right: 40px;
+}
 
-    .footer-left {
-      flex: 1;
-      min-width: 280px;
-      padding-right: 40px;
-    }
+.social-iconss img {
+  height: 24px;
+}
 
-    .social-iconss img {
-      height: 24px;
-    }
+.footer-left p {
+  font-size: 20px;
+  
+  
 
-    .footer-left p {
-      font-size: 20px;
+  max-width: 580px;
+  color: #ddd;
+}
 
+.footer-left .socials {
+  margin-top: 20px;
+}
 
+.footer-left .socials i {
+  margin-right: 15px;
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
 
-      max-width: 580px;
-      color: #ddd;
-    }
+.footer-left .socials i:hover {
+  color:#8d6d2a;
+}
 
-    .footer-left .socials {
-      margin-top: 20px;
-    }
+.footer-center {
+  min-width: 220px;
+  padding-left: 20px;
+}
 
-    .footer-left .socials i {
-      margin-right: 15px;
-      font-size: 20px;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
 
-    .footer-left .socials i:hover {
-      color: #AC8A4A;
-    }
+.footer-center li {
+  margin-bottom: 12px;
+}
 
-    .footer-center {
-      min-width: 220px;
-      padding-left: 20px;
-    }
+.footer-center a {
+  font-size: 15px;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
 
-    .footer-center ul {
-      list-style: none;
-      padding: 0;
-    }
+.footer-center li:first-child a {
+  font-weight: bold;
+  color: #AE8A4C;
+  font-size: 16px;
+}
 
-    .footer-center li {
-      margin-bottom: 12px;
-      font-size: 15px;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
+.footer-center a:hover {
+  color: #AE8A4C;
+}
 
-    .footer-center li:first-child {
-      font-weight: bold;
-      color: #AC8A4A;
-      font-size: 16px;
-      margin-bottom: 18px;
-    }
+.footer-right {
+  flex: 1;
+  min-width: 280px;
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
 
-    .footer-center li:hover {
-      color: #AC8A4A;
-    }
+.footer-right img {
+  height: 60px;
+  width: 100px;
+  object-fit: contain;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
 
-    .footer-right {
-      flex: 1;
-      min-width: 280px;
-      padding-left: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      align-items: center;
-    }
+.footer-right img:hover {
+  transform: scale(1.05);
+}
 
-    .footer-right img {
-      height: 60px;
-      width: 100px;
-      object-fit: contain;
-      padding: 10px;
-      background: #fff;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
+.search-boxs {
+  position: relative;
+  width: 180px;
+ 
+}
 
-    .footer-right img:hover {
-      transform: scale(1.05);
-    }
-
-    .search-boxs {
-      position: relative;
-      width: 180px;
-
-    }
-
-    .search-boxs input {
-      width: 100%;
-      height: 25px;
-      padding: 5px 15px;
-      padding-right: 35px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      outline: none;
-    }
-
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 13px;
-      color: #aaa;
-    }
-
-    /* -------- RESPONSIVE -------- */
-
-    @media (max-width: 1024px) {
-      .footer-container {
-        padding: 50px 30px 25px;
-      }
-
-      .footer-content {
-        gap: 25px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .footers {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 10px;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        align-items: center;
-        /* Center kar diya */
-        text-align: center;
-        /* Text bhi center ho jayega */
-        gap: 40px;
-      }
-
-      .footer-left,
-      .footer-center,
-      .footer-right {
-        padding: 0;
-        min-width: 100%;
-        text-align: center;
-        /* Ye bhi zaroori hai */
+.search-boxs input {
+  width: 100%;
+  height: 25px;
+  padding: 5px 15px;
+  padding-right: 35px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
 
 
-      }
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #aaa;
+}
 
-      .search-bar-container-lasts {
-        margin-top: -80px;
-      }
+/* -------- RESPONSIVE -------- */
 
-      .footer-right {
-        justify-content: center;
-        /* images center m aayengi */
-      }
+@media (max-width: 1024px) {
+  .footer-container {
+    padding: 50px 30px 25px;
+  }
+  .footer-content {
+    gap: 25px;
+  }
+}
 
-      .footer-left p {
-        max-width: 100%;
-        margin: 0 auto;
-        /* text ko bhi center me laane ke liye */
-      }
+@media (max-width: 768px) {
+ 
+  .footer-container {
+    padding: 40px 20px 20px;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
 
-      .search-boxs {
-        width: 70%;
-        /* chhoti screen ke hisaab se thoda bada */
-        margin: 0 auto;
-      }
+  .footer-left, .footer-center, .footer-right {
+    padding: 0;
+    min-width: 100%;
+  }
 
-      .divider {
-        display: none;
-      }
-    }
+  .footer-right {
+    justify-content: flex-start;
+  }
 
+  .divider {
+    display: none;
+  }
 
-    @media (max-width: 480px) {
+  .footer-left p {
+    max-width: 100%;
+  }
 
-      .footer-left img,
-      .footer-right img {
-        height: 26px;
-        width: 29px;
-      }
+  .search-boxs {
+    width: 50%;
+  }
+ 
+}
 
-      .footer-left p {
-        font-size: 14px;
-      }
+@media (max-width: 480px) {
+  .footer-left img,
+  .footer-right img {
+    height: 26px;
+    width: 29px;
+  }
 
-      .footer-center li,
-      .footer-left .socials i {
-        font-size: 14px;
-      }
+  .footer-left p {
+    font-size: 14px;
+  }
 
-      .footer-center li:first-child {
-        font-size: 15px;
-      }
+  .footer-center li,
+  .footer-left .socials i {
+    font-size: 14px;
+  }
 
-      .footer-bottom {
-        font-size: 12px;
-        margin-top: 30px;
-      }
-    }
+  .footer-center li:first-child {
+    font-size: 15px;
+  }
 
+  .footer-bottom {
+    font-size: 12px;
+    margin-top: 30px;
+  }
+}
+
+    
     /* Modal Styles */
     .modal {
       display: none;
@@ -1037,7 +1070,7 @@
 
     .modal-content {
       position: relative;
-
+      
       padding: 10px;
       border-radius: 12px;
       width: 90%;
@@ -1090,6 +1123,10 @@
       }
     }
 
+    
+
+
+
 
 
 
@@ -1129,30 +1166,29 @@
     </div>
 
     <div class="search-bar-container" id="searchContainer">
-      <div class="social-icons">
-        <img src="./image/Group.png">
-        <img src="./image/Group (4).png">
-        <img src="./image/Group (1).png">
-        <img src="./image/Group (2).png">
-        <img src="./image/Group (3).png">
-
-
-
-      </div>
+       <div class="social-icons">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
       <div class="search-bar-bg">
         <div class="scrolling-track">
           <div class="scrolling-content">
-            <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-            <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-            <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-            <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+           <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
           </div>
           <!-- Duplicate content for seamless loop -->
           <div class="scrolling-content">
-            <span>Gold (Au) $3,378/oz <span class="down">-0.36%</span> &nbsp;&nbsp;&nbsp;</span>
-            <span>Silver (Ag) $28.34/oz <span class="up">+0.45%</span> &nbsp;&nbsp;&nbsp;</span>
-            <span>Copper (Cu) $4.12/lb <span class="down">-0.12%</span> &nbsp;&nbsp;&nbsp;</span>
-            <span>Platinum (Pt) $1,085/oz <span class="up">+0.87%</span> &nbsp;&nbsp;&nbsp;</span>
+            <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
+         </span>
           </div>
         </div>
       </div>
@@ -1245,33 +1281,33 @@
         </p>
         <div class="search-bar-container-lasts" id="searchContainer">
           <div class="social-iconss">
-            <img src="./image/Group.png">
-            <img src="./image/Group (4).png">
-            <img src="./image/Group (1).png">
-            <img src="./image/Group (2).png">
-            <img src="./image/Group (3).png">
-          </div>
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 
           <div class="search-boxs">
             <input type="text" id="searchInput" placeholder="Search..." />
             <button class="search-icon"><i class="fas fa-search"></i></button>
           </div>
-          <div class="divider"></div>
+         
         </div>
       </div>
 
       <!-- Center -->
-      <div class="footer-center">
-        <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>MARKETING VIDEOS</li>
-          <li>SUBSCRIPTION</li>
-          <li>APPS</li>
-          <li>COMMENT GUIDELINE</li>
-          <li>LEGAL NOTICE</li>
-        </ul>
-      </div>
+    <div class="footer-center">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="newss.html">MARKETING VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="ceo.html">APPS</a></li>
+  <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
 
 
 

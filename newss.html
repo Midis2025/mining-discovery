@@ -124,7 +124,7 @@
 
       text-decoration: none;
       color: #000;
-      font-weight: bold;
+    
       transition: color 0.3s;
     }
 
@@ -167,7 +167,7 @@
     }
 
     .search-bar-container-lasts {
-      padding-top: 100px;
+      padding-top: 50px;
     }
 
     .search-bar-bg {
@@ -183,7 +183,7 @@
     .scrolling-track {
       display: flex;
       width: max-content;
-      animation: scroll-loop 8s linear infinite;
+      animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
       gap: 24px;
     }
@@ -215,11 +215,11 @@
     }
 
 
-    .search-box {
+   .search-box {
       position: relative;
       width: 174px;
       margin-right: 16px;
-
+      
     }
 
     .search-box input {
@@ -247,21 +247,23 @@
 
     /* Animated text */
     .animated-text-container {
-      position: absolute;
-      left: 15px;
-      top: 30%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: #999;
-      font-size: 14px;
-      overflow: hidden;
-      height: 16px;
-    }
+       position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 14px;
+    overflow: hidden;
+    height: 20px;
+}
+    
 
     .animated-text-container span {
       display: block;
       animation: slideText 3s ease-in-out infinite;
     }
+
 
     @keyframes slideText {
       0% {
@@ -442,8 +444,8 @@
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
+      color: #8d6d2a;
+      border-bottom: 2px solid #8d6d2a;
       padding-bottom: 3px;
     }
 
@@ -513,13 +515,31 @@
     /* Base Styles - Desktop (default) */
     .container {
       display: flex;
-      padding: 30px;
+      padding: 20px;
       gap: 20px;
     }
 
-    .left-sidebar {
-      width: 300px;
-    }
+.left-sidebar,
+.right-sidebar {
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+ 
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
 
     .left-sidebar .box {
       background: white;
@@ -533,6 +553,18 @@
     }
 
     .main-content {
+       height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+ 
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
       width: 60%;
     }
 
@@ -546,6 +578,7 @@
 
     .main-content h2 {
       margin-bottom: 15px;
+  text-transform:capitalize;
     }
 
     /* .btn {
@@ -562,6 +595,9 @@
     a {
       color: #8d6d2a;
       text-decoration: none;
+    }
+    #animatedText{
+     color: #999;
     }
 
     .btn-more,
@@ -617,7 +653,8 @@
       padding: 10px;
 
       border-radius: 12px;
-      font-family: 'Segoe UI', sans-serif;
+  
+
     }
 
     .card-container {
@@ -697,7 +734,7 @@
       flex: 1;
       min-width: 150px;
       border-radius: 10px;
-      background: #AC8A4A4F;
+      background:#D9D9D9;
       border: 1px solid #ddd;
       text-align: center;
     }
@@ -710,7 +747,12 @@
 
     .gold-card p {
       padding: 10px;
-      font-weight: bold;
+  
+    }
+    .gold-card h3{
+      padding-top: 10px;
+      font-weight: 500;
+
     }
 
 
@@ -760,7 +802,7 @@
       flex: 1 1 30%;
       max-width: 300px;
       border-radius: 12px;
-      background: #f2e6d0;
+      /* background: #f2e6d0; */
       overflow: hidden;
       text-align: center;
       box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
@@ -919,7 +961,7 @@
       }
 
       .cate {
-        gap: inherit;
+        gap: 60px;
       }
     }
 
@@ -946,14 +988,16 @@
       background-image: url(./image/footer-bg\ 1.png);
       background-size: cover;
       background-position: center;
-      padding: 60px 40px 30px;
+      padding: 60px 100px 30px;
       color: #fff;
       position: relative;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
     }
 
     .social-iconss {
       padding-bottom: 10px;
+      display: flex;
+      gap: 15px;
     }
 
     .divider {
@@ -967,6 +1011,7 @@
 
     .footer-content {
       display: flex;
+        padding-top: 30px;
       justify-content: space-between;
       flex-wrap: wrap;
       /* max-width: 1300px; */
@@ -1014,29 +1059,30 @@
       padding-left: 20px;
     }
 
-    .footer-center ul {
-      list-style: none;
-      padding: 0;
-    }
+   .footer-center ul {
+  list-style: none;
+  padding: 0;
+}
 
-    .footer-center li {
-      margin-bottom: 12px;
-      font-size: 15px;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
+.footer-center li {
+  margin-bottom: 12px;
+}
 
-    .footer-center li:first-child {
-      font-weight: bold;
-      color: orange;
-      font-size: 16px;
-      margin-bottom: 18px;
-    }
+.footer-center a {
+  font-size: 15px;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
 
-    .footer-center li:hover {
-      color: orange;
-    }
+.footer-center li:first-child a {
+
+  font-size: 16px;
+}
+
+.footer-center a:hover {
+  color: #AE8A4C;
+}
 
     .footer-right {
       flex: 1;
@@ -1087,7 +1133,7 @@
     }
 
     .search-bar-container-lasts {
-      padding-top: 100px;
+      padding-top: 50px;
     }
 
 
@@ -1277,7 +1323,7 @@
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+         <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -1290,16 +1336,13 @@
     </div>
 
     <div class="search-bar-container" id="searchContainer">
-      <div class="social-icons">
-        <img src="./image/Group.png">
-        <img src="./image/Group (4).png">
-        <img src="./image/Group (1).png">
-        <img src="./image/Group (2).png">
-        <img src="./image/Group (3).png">
-
-
-
-      </div>
+     <div class="social-icons">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
       <div class="search-bar-bg">
         <div class="scrolling-track">
           <div class="scrolling-content">
@@ -1442,34 +1485,33 @@
         </p>
         <div class="search-bar-container-lasts" id="searchContainer">
           <div class="social-iconss">
-            <img src="./image/Group.png">
-            <img src="./image/Group (4).png">
-            <img src="./image/Group (1).png">
-            <img src="./image/Group (2).png">
-            <img src="./image/Group (3).png">
-          </div>
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 
           <div class="search-boxs">
             <input type="text" id="searchInput" placeholder="Search..." />
             <button class="search-icon"><i class="fas fa-search"></i></button>
           </div>
-          <div class="divider"></div>
+          
         </div>
       </div>
 
       <!-- Center -->
-      <div class="footer-center">
-        <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>MARKETING VIDEOS</li>
-          <li>SUBSCRIPTION</li>
-          <li>APPS</li>
-          <li>COMMENT GUIDELINE</li>
-          <li>LEGAL NOTICE</li>
-        </ul>
-      </div>
-
+     
+<div class="footer-center">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+    <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+</div>
 
 
 

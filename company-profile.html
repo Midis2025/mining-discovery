@@ -8,7 +8,7 @@
 
 <style>
     body {
-        font-family: Arial, sans-serif;
+       font-family: 'Pontano Sans', sans-serif;
         margin: 0;
         padding: 0;
         background: #fff;
@@ -95,7 +95,7 @@
   padding-top: 5px;
 }
 .search-bar-container-lasts{
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .search-bar-bg {
@@ -111,7 +111,7 @@
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 8s linear infinite;
+  animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
       gap: 24px;
 }
@@ -149,7 +149,7 @@
     }
 
     .search-box input {
-      width: 80%;
+      width: 70%;
       height: 15px;
       padding: 5px 15px;
       padding-right: 35px;
@@ -181,7 +181,7 @@
       color: #999;
       font-size: 14px;
       overflow: hidden;
-      height: 16px;
+      height: 18px;
     }
 
     .animated-text-container span {
@@ -295,7 +295,7 @@
 .topbar {
   background:black;
   color: #fff;
-  padding: 15px 20px;
+  padding: 5px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -340,8 +340,8 @@
 
 .dropdown-links a:hover,
 .dropdown-links a.active {
-  color: gold;
-  border-bottom: 2px solid gold;
+  color: #ae8a4c;
+  border-bottom: 2px solid #ae8a4c;
   padding-bottom: 3px;
 }
 
@@ -414,14 +414,30 @@
     gap: clamp(10px, 2vw, 25px);
     background-color: white;
     max-width: min(95vw, 1400px);
-    margin: clamp(10px, 2vw, 25px) auto;
+  
     justify-content: center;
 }
 
 .left-sidebar,
-
 .right-sidebar {
-  width: 280px; /* full width for mobile */
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
 }
 .left-sidebar .box {
   background: white;
@@ -436,16 +452,29 @@
 
 h2 {
     margin-bottom: 0;
-    padding-bottom: clamp(5px, 1vw, 10px);
-    border-bottom: 3px solid #8d6d2a;
+ 
+    border-bottom: 2px solid #8d6d2a;
     display: inline-block;
     margin-bottom: clamp(15px, 2vw, 25px);
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+   font-size: 28px;
 }
 
 .main {
     flex: 3;
     min-width: 300px;
+      height: calc(200vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+ 
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+    
 }
 
 .grid {
@@ -492,7 +521,7 @@ h2 {
     object-fit: contain;
     border: 3px solid #8d6d2a;
     padding: 5px;
-    background-color: black;
+  
     margin-bottom: clamp(8px, 1.5vw, 15px);
 }
 
@@ -530,9 +559,15 @@ h2 {
     color: black;
     transform: translateY(-1px);
 }
+/* 📱 Small phones (≤375px) */
+@media (max-width: 375px) {
+.left-sidebar{
+  display: none;
+}
+}
 
 /* Small phones (320px - 480px) */
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
     .container2 {
         flex-direction: column;
         padding: 10px;
@@ -560,7 +595,31 @@ h2 {
         grid-template-columns: 1fr;
         gap: 15px;
     }
+} */
+@media (min-width: 320px) and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    height: auto;
+    padding: 10px;
+  }
+ .left-sidebar{
+  display: none;
+ }
+  .card img {
+    width: 90px;
+    height: 90px;
+  }
+  .name {
+    font-size: 16px;
+  }
+  .title {
+    font-size: 13px;
+  }
 }
+
 
 /* Tablets (481px - 768px) */
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -588,7 +647,7 @@ h2 {
 /* Desktop (1025px - 1440px) */
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
     .container2 {
-        max-width: 90vw;
+        max-width: 94vw;
         padding: 20px;
     }
     
@@ -701,220 +760,227 @@ h2 {
 
 
 
+.footer-container {
+      background-image: url(./image/footer-bg\ 1.png);
+      background-size: cover;
+      background-position: center;
+      padding: 60px 100px 30px;
+      color: #fff;
+      position: relative;
+     
+    }
 
-    .footer-container {
-  background-image: url(./image/footer-bg\ 1.png);
-  background-size: cover;
-  background-position: center;
-  padding: 60px 40px 30px;
-  color: #fff;
-  position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.social-iconss{
-  padding-bottom: 10px;
-}
+    .social-iconss {
+      padding-bottom: 10px;
+      display: flex;
+      gap: 15px;
+    }
 
-.divider {
-  width: 1px;
-  background: #444;
-  height: 60%;
-  position: absolute;
-  left: 50%;
-  top: 10%;
-}
+    .divider {
+      width: 1px;
+      background: #444;
+      height: 60%;
+      position: absolute;
+      left: 50%;
+      top: 10%;
+    }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  max-width: 1300px;
-  margin: auto;
-  gap: 30px;
-}
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      /* max-width: 1300px; */
+      margin: auto;
+      gap: 30px;
+    }
 
-.footer-left {
-  flex: 1;
-  min-width: 280px;
-  padding-right: 40px;
-}
+    .footer-left {
+      flex: 1;
+      min-width: 280px;
+      padding-right: 40px;
+    }
 
-.social-iconss img {
-  height: 24px;
-}
+    .social-iconss img {
+      height: 24px;
+    }
 
-.footer-left p {
-  font-size: 20px;
-  
-  
+    .footer-left p {
+      font-size: 20px;
 
-  max-width: 580px;
-  color: #ddd;
-}
 
-.footer-left .socials {
-  margin-top: 20px;
-}
 
-.footer-left .socials i {
-  margin-right: 15px;
-  font-size: 20px;
-  color: #ccc;
-  cursor: pointer;
-  transition: color 0.3s;
-}
+      max-width: 580px;
+      color: #ddd;
+    }
 
-.footer-left .socials i:hover {
-  color: orange;
-}
+    .footer-left .socials {
+      margin-top: 20px;
+    }
 
-.footer-center {
-  min-width: 220px;
-  padding-left: 20px;
-}
+    .footer-left .socials i {
+      margin-right: 15px;
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
 
-.footer-center ul {
+    .footer-left .socials i:hover {
+      color:#ae8a4c;
+    }
+
+    .footer-center {
+      min-width: 220px;
+      padding-left: 20px;
+    }
+
+   .footer-center ul {
   list-style: none;
   padding: 0;
 }
 
 .footer-center li {
   margin-bottom: 12px;
+}
+
+.footer-center a {
   font-size: 15px;
   color: #ccc;
-  cursor: pointer;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-center li:first-child {
-  font-weight: bold;
-  color: orange;
+.footer-center li:first-child a {
+ 
   font-size: 16px;
-  margin-bottom: 18px;
 }
 
-.footer-center li:hover {
-  color: orange;
+.footer-center a:hover {
+  color: #AE8A4C;
 }
+    .footer-right {
+      flex: 1;
+      min-width: 280px;
+      padding-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+    }
 
-.footer-right {
-  flex: 1;
-  min-width: 280px;
-  padding-left: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-}
+    .footer-right img {
+      height: 60px;
+      width: 100px;
+      object-fit: contain;
+      padding: 10px;
+      background: #fff;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
 
-.footer-right img {
-  height: 60px;
-  width: 100px;
-  object-fit: contain;
-  padding: 10px;
-  background: #fff;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
+    .footer-right img:hover {
+      transform: scale(1.05);
+    }
 
-.footer-right img:hover {
-  transform: scale(1.05);
-}
+    .search-boxs {
+      position: relative;
+      width: 180px;
 
-.search-boxs {
-  position: relative;
-  width: 180px;
- 
-}
+    }
 
-.search-boxs input {
-  width: 100%;
-  height: 25px;
-  padding: 5px 15px;
-  padding-right: 35px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  outline: none;
-}
+    .search-boxs input {
+      width: 70%;
+      height: 10px;
+      padding: 5px 15px;
+      padding-right: 35px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
 
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 13px;
-  color: #aaa;
-}
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+    }
 
-/* -------- RESPONSIVE -------- */
+    /* -------- RESPONSIVE -------- */
 
-@media (max-width: 1024px) {
-  .footer-container {
-    padding: 50px 30px 25px;
-  }
-  .footer-content {
-    gap: 25px;
-  }
-}
+    @media (max-width: 1024px) {
+      .footer-container {
+        padding: 50px 30px 25px;
+      }
 
-@media (max-width: 768px) {
- 
-  .footer-container {
-    padding: 40px 20px 20px;
-  }
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-  }
+      .footer-content {
+        gap: 25px;
+      }
+    }
 
-  .footer-left, .footer-center, .footer-right {
-    padding: 0;
-    min-width: 100%;
-  }
+    @media (max-width: 768px) {
 
-  .footer-right {
-    justify-content: flex-start;
-  }
+      .footer-container {
+        padding: 40px 20px 20px;
+      }
 
-  .divider {
-    display: none;
-  }
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+      }
 
-  .footer-left p {
-    max-width: 100%;
-  }
+      .footer-left,
+      .footer-center,
+      .footer-right {
+        padding: 0;
+        min-width: 100%;
+      }
 
-  .search-boxs {
-    width: 50%;
-  }
- 
-}
+      .footer-right {
+        justify-content: flex-start;
+      }
 
-@media (max-width: 480px) {
-  .footer-left img,
-  .footer-right img {
-    height: 26px;
-    width: 29px;
-  }
+      .divider {
+        display: none;
+      }
 
-  .footer-left p {
-    font-size: 14px;
-  }
+      .footer-left p {
+        max-width: 100%;
+      }
 
-  .footer-center li,
-  .footer-left .socials i {
-    font-size: 14px;
-  }
+      .search-boxs {
+        width: 50%;
+      }
 
-  .footer-center li:first-child {
-    font-size: 15px;
-  }
+    }
 
-  .footer-bottom {
-    font-size: 12px;
-    margin-top: 30px;
-  }
-}
+    @media (max-width: 480px) {
+
+      .footer-left img,
+      .footer-right img {
+        height: 26px;
+        width: 29px;
+      }
+
+      .footer-left p {
+        font-size: 14px;
+      }
+
+      .footer-center li,
+      .footer-left .socials i {
+        font-size: 14px;
+      }
+
+      .footer-center li:first-child {
+        font-size: 15px;
+      }
+
+      .footer-bottom {
+        font-size: 12px;
+        margin-top: 30px;
+      }
+    }
 
 </style>
 </head>
@@ -931,7 +997,7 @@ h2 {
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+        <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -945,15 +1011,12 @@ h2 {
 
     <div class="search-bar-container" id="searchContainer">
       <div class="social-icons">
-        <img src="./image/Group.png">
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
-      </div>
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 <div class="search-bar-bg">
   <div class="scrolling-track">
     <div class="scrolling-content">
@@ -984,23 +1047,23 @@ h2 {
   </div>
     </div>
   </header>
-      <div class="topbar">
-    <h1 onclick="toggleDropdown()" id="newsToggle">
-      Magzine
+   <div class="topbar">
+    <h1 onclick="magazineDropdown()" id="magazineToggle">
+      Magazine
       <i class="fas fa-chevron-down"></i>
     </h1>
   </div>
 
   <!-- Dropdown Links -->
-   <div class="dropdown-links" id="dropdownMenu">
+  <div class="dropdown-links" id="dropdownMenu3">
     <a href="./magzin.html">Magzine</a>
     <a href="./ceo.html">CEO Profile</a>
-    <a href="./letter.html">Newsletter </a>
+    <a href="./weekly.html">Weekly Newsletter</a>
     <a href="./company-profile.html">Company Profile</a>
     <a href="./Digitaledition.html">Digital Edition</a>
     <a href="./webinar.html">Webinar Recording</a>
-    <a href="./weekly.html">Monthly Newsletter</a>
-   
+
+
   </div>
 <div class="container2">
      <!-- Left Sidebar -->
@@ -1015,7 +1078,7 @@ h2 {
 
     <!-- Main Content -->
     <div class="main">
-        <h2>Comapany Profile</h2>
+        <h2>Company Profile</h2>
         <div class="grid">
             <div class="card">
                 <img src="./image/phenom.png" alt="George Bee">
@@ -1080,7 +1143,7 @@ Silver Inc.</div>
             </div>
              <div class="card">
                  <img src="./image/loyalist icon black-04 1 (1).png" alt="Zayn Kalyan">
-                <div class="name">Zayn KalyanLoyalist Exploration Ltd..</div>
+                <div class="name">Loyalist Exploration Ltd..</div>
                 
                  <p>profile</p>
             </div>
@@ -1091,7 +1154,7 @@ Silver Inc.</div>
                  <p>profile</p>
             </div>
               <div class="card">
-                 <img src="./image/us gold.png" alt="Zayn Kalyan"  class="black">
+                 <img src="./image/Company Logo/us gold black-01-01.png" alt="Zayn Kalyan"  class="black">
                 <div class="name">U.S Gold Corp.</div>
                 
                  <p>profile</p>
@@ -1116,34 +1179,34 @@ Silver Inc.</div>
           Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
         </p>
          <div class="search-bar-container-lasts" id="searchContainer">
-      <div class="social-iconss">
-        <img src="./image/Group.png" >
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-      </div>
+       <div class="social-iconss">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 
       <div class="search-boxs">
         <input type="text" id="searchInput" placeholder="Search..." />
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
-       <div class="divider"></div>
+       
     </div>
       </div>
 
       <!-- Center -->
       <div class="footer-center">
-        <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>MARKETING VIDEOS</li>
-          <li>SUBSCRIPTION</li>
-          <li>APPS</li>
-          <li>COMMENT GUIDELINE</li>
-          <li>LEGAL NOTICE</li>
-        </ul>
-      </div>
+ <ul>
+      <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+  <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
 
     
       

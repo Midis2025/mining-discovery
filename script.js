@@ -13,6 +13,19 @@ function toggleDropdown() {
   if (header) header.classList.toggle("rotate");
 }
 
+function serviceDropdown() {
+      const dropdown = document.getElementById("dropdownMenu2");
+      const header = document.getElementById("serviceToggle");
+      dropdown.classList.toggle("show");
+      header.classList.toggle("rotate");
+    }
+
+    function magazineDropdown() {
+      const dropdown = document.getElementById("dropdownMenu3");
+      const header = document.getElementById("magazineToggle");
+      dropdown.classList.toggle("show");
+      header.classList.toggle("rotate");
+    }
 /* -------------------------
    CAROUSELS
 ------------------------- */
@@ -52,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Search gold prices",
     "Search silver value",
     "Search copper rates",
-    "Search platinum updates",
+   
     "Search latest news",
   ];
 
@@ -228,7 +241,7 @@ async function loadTopMagazines() {
           <img src="${imgUrl}" alt="${title}">
           <div class="content">
             <h4>${title} (${publishDate})</h4>
-            <button onclick="window.open('${pdfUrl}', '_blank')">View PDF</button>
+            <button onclick="window.open('${pdfUrl}', '_blank')">View More</button>
           </div>
         </div>`;
     });
@@ -241,3 +254,38 @@ async function loadTopMagazines() {
 }
 
 document.addEventListener("DOMContentLoaded", loadTopMagazines);
+// video slider
+function loadIframe(el) {
+  const videoId = el.getAttribute("data-video"); // unique ID per card
+  const card = el.closest(".video-card");
+
+  const iframeWrapper = document.createElement("div");
+  iframeWrapper.classList.add("video-iframe-wrapper");
+
+  iframeWrapper.innerHTML = `
+    <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+    <button class="close-btn" onclick="closeIframe(this, '${videoId}', '${el.querySelector("img").src}')">×</button>
+  `;
+
+  el.replaceWith(iframeWrapper);
+}
+
+function closeIframe(btn, videoId, thumbnail) {
+  const wrapper = btn.parentElement;
+  const card = wrapper.closest(".video-card");
+
+  card.querySelector(".video-info").insertAdjacentHTML("afterbegin", `
+    <div class="video-thumbnail" data-video="${videoId}" onclick="loadIframe(this)">
+      <img src="${thumbnail}" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+  `);
+
+  wrapper.remove();
+}
+

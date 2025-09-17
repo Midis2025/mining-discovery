@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>News Section</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -16,45 +17,72 @@
       font-family: 'Pontano Sans', sans-serif;
       background: white;
     }
-     .first-header {
-  height: 50px; /* ek line ke height ke barabar */
-  overflow: hidden;
-  position: relative;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.news-slider {
-  display: flex;
-  flex-direction: column;
-  animation: slideNews 8s infinite;
-}
+    .first-header {
+      height: 50px;
+      /* ek line ke height ke barabar */
+      overflow: hidden;
+      position: relative;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.news-slider p {
-  height: 50px;
-  line-height: 50px;
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  width: 100%;
-}
+    .news-slider {
+      display: flex;
+      flex-direction: column;
+      animation: slideNews 8s infinite;
+    }
 
-/* Animation - each step stops text at center */
-@keyframes slideNews {
-  0%, 20%   { transform: translateY(30px); }        /* 1st text */
-  25%, 45%  { transform: translateY(-30px); }    /* 2nd text */
-  50%, 70%  { transform: translateY(-30px); }   /* 3rd text */
-  75%, 95%  { transform: translateY(-30px); }   /* 4th text */
-  100%      { transform: translateY(0); }        /* loop back */
-}
+    .news-slider p {
+      height: 50px;
+      line-height: 50px;
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      width: 100%;
+    }
 
-    .first-header:hover{
+    /* Animation - each step stops text at center */
+    @keyframes slideNews {
+
+      0%,
+      20% {
+        transform: translateY(30px);
+      }
+
+      /* 1st text */
+      25%,
+      45% {
+        transform: translateY(-30px);
+      }
+
+      /* 2nd text */
+      50%,
+      70% {
+        transform: translateY(-30px);
+      }
+
+      /* 3rd text */
+      75%,
+      95% {
+        transform: translateY(-30px);
+      }
+
+      /* 4th text */
+      100% {
+        transform: translateY(0);
+      }
+
+      /* loop back */
+    }
+
+    .first-header:hover {
       text-decoration: underline;
-    color: white;
+      color: white;
     }
 
     .main-header {
@@ -71,7 +99,7 @@
     }
 
     .logo-social {
-      
+
       padding-top: 5px;
       display: flex;
       justify-content: center;
@@ -82,21 +110,21 @@
 
     .logo {
       height: 70px;
-      
+
     }
 
     .nav-links {
       display: flex;
       gap: 24px;
       flex-wrap: wrap;
-      
+
     }
 
     .nav-links a {
 
       text-decoration: none;
       color: #000;
-      font-weight: bold;
+
       transition: color 0.3s;
     }
 
@@ -109,7 +137,7 @@
       gap: 10px;
       flex-wrap: wrap;
       padding-right: 16px;
-      
+
     }
 
     .login-btn,
@@ -127,64 +155,67 @@
     }
 
     .subscribe-btn {
-     background-color: #8d6d2a;
+      background-color: #8d6d2a;
     }
 
-   
- .search-bar-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding-top: 5px;
-}
-.search-bar-container-lasts{
-  padding-top: 100px;
-}
 
-.search-bar-bg {
-  background-color: #2e2e2e;
-  height: 24px;
-  border-radius: 20px;
-  
-  width: 70%;
-  overflow: hidden;
-  position: relative;
-}
+    .search-bar-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-top: 5px;
+    }
 
-.scrolling-track {
-  display: flex;
-  width: max-content;
-  animation: scroll-loop 8s linear infinite;
+    .search-bar-container-lasts {
+      padding-top: 50px;
+    }
+
+    .search-bar-bg {
+      background-color: #2e2e2e;
+      height: 24px;
+      border-radius: 20px;
+
+      width: 70%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .scrolling-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
       gap: 24px;
-}
+    }
 
-.scrolling-content {
-  display: flex;
-  white-space: nowrap;
-  color: white;
-  gap: 24px;
-  font-size: 12px;
-}
+    .scrolling-content {
+      display: flex;
+      white-space: nowrap;
+      color: white;
+      gap: 24px;
+      font-size: 12px;
+    }
 
-.up {
-  color: #22ed00;
-}
-.down {
-  color: #ff0000;
-}
+    .up {
+      color: #22ed00;
+    }
 
-@keyframes scroll-loop {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+    .down {
+      color: #ff0000;
+    }
+
+    @keyframes scroll-loop {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
 
-.search-box {
+    .search-box {
       position: relative;
       width: 174px;
       margin-right: 16px;
@@ -216,20 +247,18 @@
 
     /* Animated text */
     .animated-text-container {
-      position: absolute;
-      left: 15px;
-      top: 30%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: #999;
-      font-size: 14px;
-      overflow: hidden;
-      height: 16px;
-    }
-
-    .animated-text-container span {
-      display: block;
-      animation: slideText 3s ease-in-out infinite;
+       position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 14px;
+    overflow: hidden;
+    height: 20px;
+}
+    #animatedText{
+       color: #999;
     }
 
     @keyframes slideText {
@@ -237,18 +266,22 @@
         transform: translateY(100%);
         opacity: 0;
       }
+
       10% {
         transform: translateY(0);
         opacity: 1;
       }
+
       40% {
         transform: translateY(0);
         opacity: 1;
       }
+
       50% {
         transform: translateY(-100%);
         opacity: 0;
       }
+
       100% {
         transform: translateY(-100%);
         opacity: 0;
@@ -256,26 +289,26 @@
     }
 
     /* Hide animated text when user types */
-    .search-box input:focus + .animated-text-container,
-    .search-box input:not(:placeholder-shown) + .animated-text-container {
+    .search-box input:focus+.animated-text-container,
+    .search-box input:not(:placeholder-shown)+.animated-text-container {
       display: none;
     }
- 
+
 
     .social-icons {
-      
+
       display: flex;
       align-items: center;
       gap: 10px;
       padding-left: 16px;
-    
-      
+
+
     }
 
     .social-icons i {
-     background-color: black;
-      
-     
+      background-color: black;
+
+
       color: #8d6d2a;
       font-size: 18px;
       cursor: pointer;
@@ -329,605 +362,660 @@
       .social-icon {
         margin-bottom: -20px;
       }
+
       .search-bar-bg {
         width: 100%;
       }
     }
-/* main-header */
-/* === Header / Dropdown Toggle === */
-.topbar {
-  background: #1f1f1f;
-  color: #fff;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  flex-wrap: wrap;
-}
 
-.topbar h1 {
-  font-size: 20px;
-  font-weight: normal;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
+    /* main-header */
+    /* === Header / Dropdown Toggle === */
+    .topbar {
+      background: #1f1f1f;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      flex-wrap: wrap;
+    }
 
-.topbar h1 i {
-  font-size: 12px;
-  transition: transform 0.3s ease;
-}
+    .topbar h1 {
+      font-size: 20px;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
 
-.topbar h1.rotate i {
-  transform: rotate(180deg);
-}
+    .topbar h1 i {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
 
-.dropdown-links {
-  display: none;
-  background: #1f1f1f;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 14px;
-  border-top: 1px solid #333;
-}
+    .topbar h1.rotate i {
+      transform: rotate(180deg);
+    }
 
-.dropdown-links a {
-  color: #ccc;
-  text-decoration: none;
-  margin-right: 15px;
-  transition: 0.3s;
-}
+    .dropdown-links {
+      display: none;
+      background: #1f1f1f;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 14px;
+      border-top: 1px solid #333;
+    }
 
-.dropdown-links a:hover,
-.dropdown-links a.active {
-  color: gold;
-  border-bottom: 2px solid gold;
-  padding-bottom: 3px;
-}
+    .dropdown-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
 
-.dropdown-links.show {
-  display: flex;
-  flex-wrap: wrap;
-}
-/* === Media Queries === */
+    .dropdown-links a:hover,
+    .dropdown-links a.active {
+      color: gold;
+      border-bottom: 2px solid gold;
+      padding-bottom: 3px;
+    }
+
+    .dropdown-links.show {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /* === Media Queries === */
 
 
-/* === Media Queries === */
+    /* === Media Queries === */
 
-/* Small phones */
-@media (max-width: 480px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 15px;
-  }
+    /* Small phones */
+    @media (max-width: 480px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+      }
 
-  .topbar h1 {
-    font-size: 18px;
-    gap: 6px;
-  }
+      .topbar h1 {
+        font-size: 18px;
+        gap: 6px;
+      }
 
-  .dropdown-links {
-    flex-direction: column;
-    padding: 10px 15px;
-    gap: 8px;
-    font-size: 13px;
-  }
+      .dropdown-links {
+        flex-direction: column;
+        padding: 10px 15px;
+        gap: 8px;
+        font-size: 13px;
+      }
 
-  .dropdown-links a {
-    margin: 5px 0;
-  }
-}
+      .dropdown-links a {
+        margin: 5px 0;
+      }
+    }
 
-/* Tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-  }
+    /* Tablets */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 20px;
+      }
 
-  .dropdown-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px 20px;
-  }
-}
+      .dropdown-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 20px;
+      }
+    }
 
-/* Desktops (already optimized, but just in case) */
-@media (min-width: 769px) {
-  .topbar {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+    /* Desktops (already optimized, but just in case) */
+    @media (min-width: 769px) {
+      .topbar {
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
-  .dropdown-links {
-    flex-direction: row;
-    gap: 15px;
-  }
-}
+      .dropdown-links {
+        flex-direction: row;
+        gap: 15px;
+      }
+    }
 
 
     /* === Main Layout === */
     /* Base Styles - Desktop (default) */
-.container {
-  display: flex;
-  padding: 30px;
-  gap: 20px;
-}
-
-.left-sidebar {
-  width: 20%;
-}
-
-.left-sidebar .box {
-  background: white;
-  padding: 15px;
-  margin-bottom: 20px;
-}
-
-.left-sidebar .box img {
-  width: 100%;
-  height: auto;
-}
-
-.main-content {
-  width: 60%;
-}
-
-h2 {
-  border-bottom: 2px solid #333;
-}
-
-.main-content h2 {
-  margin-bottom: 15px;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-}
-span{
- color: #8d6d2a;
-}
-
-a{
-  color: #8d6d2a;
-  text-decoration: none;
-}
-.btn-more,
-.gold-btn {
-  border: 1px solid #AC8A4A;
-  padding: 5px;
-  border-radius: 20px;
-  background-color: white;
-  color: #AC8A4A;
-}
-
-.gold-btn {
-  margin-bottom: 10px;
-}
-
-.heading,
-.report,
-.gold {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.news-card {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-  background: #D9D9D9;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-}
-
-.news-card img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.text-content {
-  padding: 10px;
-}
-.text-content p{
-  padding-top: 10px;
-line-height: 26px;
-}
-.right-sidebar {
-  width: 20%;
-  padding: 20px;
- 
-  border-radius: 12px;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.section-box {
-  border: 1px solid #ddd;
-  background: #fff;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.section-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.section-box img {
-  width: 100%;
-  height: 130px;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
-}
-.section-box p {
-  margin: 10px;
-  font-size: 15px;
-  color: #333;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-
-.gold-news {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-bottom: 30px;
-}
-
-.gold-card {
-  flex: 1;
-  min-width: 150px;
-  border-radius: 10px;
- background: #AC8A4A4F;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-
-.gold-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.gold-card p {
-  padding: 10px;
-  font-weight: bold;
-}
-.custom-line{
-  width: 540px;
-   border: 1px solid #333;
-    margin-top: 10px;
-}
-/* Tablet */
-@media (max-width: 768px) {
-  .custom-line {
-    width: 80%;
-  }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-  .custom-line {
-    width: 100%;
-  }
-  .left-sidebar{
-    display: none;
-  }
-}
-
-/* === Responsive: Tablet === */
-@media (max-width: 992px) {
-  .container {
-    flex-direction: column;
-  }
-
-
-  .right-sidebar,
-  .main-content {
-    width: 100%;
-  }
-    .left-sidebar{
-      display: none;
+    .container {
+      display: flex;
+      padding: 30px;
+      gap: 20px;
     }
 
-  .news-card {
-    flex-direction: column;
-  }
+    .left-sidebar,
+    .right-sidebar {
+      width: 280px;
+      height: calc(100vh - 120px);
+      position: sticky;
+      top: 100px;
+      overflow-y: auto;
+      background: #fff;
+     
+      border-radius: 6px;
+      padding: 10px;
 
-  .news-card img {
-    width: 100%;
-    height: auto;
-  }
+      /* Hide scrollbar */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE & Edge */
+    }
 
-  .gold-news {
-    flex-direction: column;
-  }
+    .left-sidebar::-webkit-scrollbar,
+    .right-sidebar::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari */
+    }
 
-  .gold-card {
-    width: 100%;
-  }
-}
+    .left-sidebar .box {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
 
-/* === Responsive: Phone === */
-@media (max-width: 576px) {
-  .container {
-    padding: 15px;
-    gap: 15px;
-  }
+    .left-sidebar .box img {
+      width: 100%;
+      height: auto;
+    }
 
-  .news-card {
-    gap: 10px;
-  }
-
-  .text-content {
-    padding: 10px;
-  }
-
-  .gold-card img {
-    height: auto;
-  }
-
-  .btn-more,
-  .gold-btn {
-    font-size: 14px;
-    padding: 4px 10px;
-  }
-
-  .gold-news {
-    gap: 15px;
-  }
-}
-
-   .footer-container {
-  background-image: url(./image/footer-bg\ 1.png);
-  background-size: cover;
-  background-position: center;
-  padding: 60px 40px 30px;
-  color: #fff;
-  position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.social-iconss{
-  padding-bottom: 10px;
-}
-
-.divider {
-  width: 1px;
-  background: #444;
-  height: 60%;
-  position: absolute;
-  left: 50%;
-  top: 10%;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  /* max-width: 1300px; */
-  margin: auto;
-  gap: 30px;
-}
-
-.footer-left {
-  flex: 1;
-  min-width: 280px;
-  padding-right: 40px;
-}
-
-.social-iconss img {
-  height: 24px;
-}
-
-.footer-left p {
-  font-size: 20px;
-  
-  
-
-  max-width: 580px;
-  color: #ddd;
-}
-
-.footer-left .socials {
-  margin-top: 20px;
-}
-
-.footer-left .socials i {
-  margin-right: 15px;
-  font-size: 20px;
-  color: #ccc;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.footer-left .socials i:hover {
-  color: orange;
-}
-
-.footer-center {
-  min-width: 220px;
-  padding-left: 20px;
-}
-
-.footer-center ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-center li {
-  margin-bottom: 12px;
-  font-size: 15px;
-  color: #ccc;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.footer-center li:first-child {
-  font-weight: bold;
-  color: orange;
-  font-size: 16px;
-  margin-bottom: 18px;
-}
-
-.footer-center li:hover {
-  color: orange;
-}
-
-.footer-right {
-  flex: 1;
-  min-width: 280px;
-  padding-left: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-}
-
-.footer-right img {
-  height: 60px;
-  width: 100px;
-  object-fit: contain;
-  padding: 10px;
+    .main-content {
+      width: 60%;
+           height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
   background: #fff;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
-
-.footer-right img:hover {
-  transform: scale(1.05);
-}
-
-.search-boxs {
-  position: relative;
-  width: 180px;
  
-}
-
-.search-boxs input {
-  width: 100%;
-  height: 25px;
-  padding: 5px 15px;
-  padding-right: 35px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  outline: none;
-}
-
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 13px;
-  color: #aaa;
-}
-
-/* -------- RESPONSIVE -------- */
-
-@media (max-width: 1024px) {
-  .footer-container {
-    padding: 50px 30px 25px;
-  }
-  .footer-content {
-    gap: 25px;
-  }
-}
-
-@media (max-width: 768px) {
+  border-radius: 6px;
  
-  .footer-container {
-    padding: 40px 20px 20px;
-  }
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-  }
 
-  .footer-left, .footer-center, .footer-right {
-    padding: 0;
-    min-width: 100%;
-  }
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+      width: 60%;
+    }
 
-  .footer-right {
-    justify-content: flex-start;
-  }
+    h2 {
+      border-bottom: 2px solid #333;
+    }
 
-  .divider {
-    display: none;
-  }
+    .main-content h2 {
+      margin-bottom: 15px;
+      text-transform: capitalize;
+    }
 
-  .footer-left p {
-    max-width: 100%;
-  }
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+    }
 
-  .search-boxs {
-    width: 50%;
-  }
- 
-}
+    span {
+      color: #8d6d2a;
+    }
 
-@media (max-width: 480px) {
-  .footer-left img,
-  .footer-right img {
-    height: 26px;
-    width: 29px;
-  }
+    a {
+      color: #8d6d2a;
+      text-decoration: none;
+    }
 
-  .footer-left p {
-    font-size: 14px;
-  }
+    .btn-more,
+    .gold-btn {
+      border: 1px solid #AC8A4A;
+      padding: 5px;
+      border-radius: 20px;
+      background-color: white;
+      color: #AC8A4A;
+    }
 
-  .footer-center li,
-  .footer-left .socials i {
-    font-size: 14px;
-  }
+    .gold-btn {
+      margin-bottom: 10px;
+    }
 
-  .footer-center li:first-child {
-    font-size: 15px;
-  }
+    .heading,
+    .report,
+    .gold {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
 
-  .footer-bottom {
-    font-size: 12px;
-    margin-top: 30px;
-  }
-}
+    .news-card {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      background: #D9D9D9;
+      border-radius: 10px;
+      border: 1px solid #ddd;
 
+    }
+
+    .news-card img {
+      width: 205px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .text-content {
+      padding: 10px;
+    }
+
+    .text-content p {
+      padding-top: 10px;
+      line-height: 26px;
+    }
+
+    .right-sidebar {
+      width: 20%;
+      padding: 20px;
+
+      border-radius: 12px;
+      
+    }
+
+    .section-box {
+      border: 1px solid #ddd;
+      background: #fff;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-box img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .section-box p {
+      margin: 10px;
+      font-size: 15px;
+      color: #333;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+
+    .gold-news {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 30px;
+    }
+
+    .gold-card {
+      flex: 1;
+      min-width: 150px;
+      border-radius: 10px;
+      background: #AC8A4A4F;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .gold-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .gold-card p {
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .custom-line {
+      width: 540px;
+      border: 1px solid #333;
+      margin-top: 10px;
+    }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .custom-line {
+        width: 80%;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .custom-line {
+        width: 100%;
+      }
+
+      .left-sidebar {
+        display: none;
+      }
+    }
+
+    /* === Responsive: Tablet === */
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+      }
+
+
+      .right-sidebar,
+      .main-content {
+        width: 100%;
+      }
+
+      .left-sidebar {
+        display: none;
+      }
+
+      .news-card {
+        flex-direction: column;
+      }
+
+      .news-card img {
+        width: 100%;
+        height: auto;
+      }
+
+      .gold-news {
+        flex-direction: column;
+      }
+
+      .gold-card {
+        width: 100%;
+      }
+    }
+
+    /* === Responsive: Phone === */
+    @media (max-width: 576px) {
+      .container {
+        padding: 15px;
+        gap: 15px;
+      }
+
+      .news-card {
+        gap: 10px;
+      }
+
+      .text-content {
+        padding: 10px;
+      }
+
+      .gold-card img {
+        height: auto;
+      }
+
+      .btn-more,
+      .gold-btn {
+        font-size: 14px;
+        padding: 4px 10px;
+      }
+
+      .gold-news {
+        gap: 15px;
+      }
+    }
+
+    .footer-container {
+      background-image: url(./image/footer-bg\ 1.png);
+      background-size: cover;
+      background-position: center;
+      padding: 60px 100px 30px;
+      color: #fff;
+      position: relative;
+     
+    }
+
+    .social-iconss {
+      padding-bottom: 10px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .divider {
+      width: 1px;
+      background: #444;
+      height: 60%;
+      position: absolute;
+      left: 50%;
+      top: 10%;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      /* max-width: 1300px; */
+      margin: auto;
+      padding-top: 20px;
+      gap: 30px;
+    }
+
+    .footer-left {
+      flex: 1;
+      min-width: 280px;
+      padding-right: 40px;
+    }
+
+    .social-iconss img {
+      height: 24px;
+    }
+
+    .footer-left p {
+      font-size: 20px;
+
+
+
+      max-width: 580px;
+      color: #ddd;
+    }
+
+    .footer-left .socials {
+      margin-top: 20px;
+    }
+
+    .footer-left .socials i {
+      margin-right: 15px;
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .footer-left .socials i:hover {
+      color: orange;
+    }
+
+    .footer-center {
+      min-width: 220px;
+      padding-left: 20px;
+    }
+
+    .footer-center ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-center li {
+      margin-bottom: 12px;
+    }
+
+    .footer-center a {
+      font-size: 15px;
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-center li:first-child a {
     
- 
-    
+      font-size: 16px;
+    }
+
+    .footer-center a:hover {
+      color: #AE8A4C;
+    }
+
+    .footer-right {
+      flex: 1;
+      min-width: 280px;
+      padding-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .footer-right img {
+      height: 60px;
+      width: 100px;
+      object-fit: contain;
+      padding: 10px;
+      background: #fff;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .footer-right img:hover {
+      transform: scale(1.05);
+    }
+
+    .search-boxs {
+      position: relative;
+      width: 180px;
+
+    }
+
+    .search-boxs input {
+      width: 100%;
+      height: 25px;
+      padding: 5px 15px;
+      padding-right: 35px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
+
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    /* -------- RESPONSIVE -------- */
+
+    @media (max-width: 1024px) {
+      .footer-container {
+        padding: 50px 30px 25px;
+      }
+
+      .footer-content {
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .footer-container {
+        padding: 40px 20px 20px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+      }
+
+      .footer-left,
+      .footer-center,
+      .footer-right {
+        padding: 0;
+        min-width: 100%;
+      }
+
+      .footer-right {
+        justify-content: flex-start;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .footer-left p {
+        max-width: 100%;
+      }
+
+      .search-boxs {
+        width: 50%;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+
+      .footer-left img,
+      .footer-right img {
+        height: 26px;
+        width: 29px;
+      }
+
+      .footer-left p {
+        font-size: 14px;
+      }
+
+      .footer-center li,
+      .footer-left .socials i {
+        font-size: 14px;
+      }
+
+      .footer-center li:first-child {
+        font-size: 15px;
+      }
+
+      .footer-bottom {
+        font-size: 12px;
+        margin-top: 30px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="first-header">
-  <div class="news-slider">
-    <p>THE MINING INVESTMENT EVENT</p>
-    
-    <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE -JUNE 2-4 2026</p>
-    <p>Some important highlighted news 4</p>
+    <div class="news-slider">
+      <p>THE MINING INVESTMENT EVENT</p>
+
+      <p>THE MINING INVESTMENT EVENT</p>
+      <p>SAVE THE DATE -JUNE 2-4 2026</p>
+      <p>Some important highlighted news 4</p>
+    </div>
   </div>
-</div>
-    <header class="main-header">
+  <header class="main-header">
     <div class="header-top">
-     <div class="logo-social">
-          <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+      <div class="logo-social">
+        <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
       </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -936,77 +1024,83 @@ line-height: 26px;
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+        <a href="./morning.html">Evening
+           Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
       </div>
 
       <div class="header-buttons" id="headerButtons">
-    <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
-       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a> 
+        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
+        <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
       </div>
     </div>
 
     <div class="search-bar-container" id="searchContainer">
       <div class="social-icons">
-        <img src="./image/Group.png">
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
+        <a
+          href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img
+            src="./image/Group.png"></a>
+        <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+        <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+        <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+        <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img
+            src="./image/Group (3).png"></a>
       </div>
- <div class="search-bar-bg">
+      <div class="search-bar-bg">
         <div class="scrolling-track">
           <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
           <!-- Duplicate content for seamless loop -->
-           <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
-            <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025</p>
-         
+          <div class="scrolling-content">
+            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
+              2025</p>
+
           </div>
         </div>
       </div>
 
 
-     <div class="search-box">
-    <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
-      <span id="animatedText">Search gold prices</span>
-    </div>
-    <button class="search-icon"><i class="fas fa-search"></i></button>
-  </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <div class="animated-text-container">
+          <span id="animatedText">Search gold prices</span>
+        </div>
+        <button class="search-icon"><i class="fas fa-search"></i></button>
+      </div>
     </div>
   </header>
-  
+
   <!-- Header + Dropdown -->
   <div class="topbar">
-    <h1 >
-      Morning Chatter
-     
+    <h1>
+      Evening Chatter
+
     </h1>
   </div>
 
   <!-- Dropdown Links -->
-   <div class="dropdown-links" id="dropdownMenu">
-       <a href="./newss.html">Latest News</a>
+  <div class="dropdown-links" id="dropdownMenu">
+    <a href="./newss.html">Latest News</a>
     <a href="./gold.html">Gold News</a>
     <a href="./silver.html">Silver News</a>
     <a href="./cooper.html">Copper News</a>
@@ -1014,7 +1108,7 @@ line-height: 26px;
     <a href="./corporate.html">Corporate News</a>
     <a href="./world.html">World News</a>
     <a href="./leader.html">Leadership Thoughts</a>
-    <a href="./morning.html">Morning Chatter</a>
+    <a href="./morning.html">Evening Chatter</a>
     <a href="./Announcement.html">Announcement</a>
     <a href="./popular.html">Popular This Week</a>
     <a href="./project.html">Projects</a>
@@ -1030,102 +1124,107 @@ line-height: 26px;
         <img src="./image/mrngbanner.webp" alt="">
       </div>
       <div class="box">
-       
+
         <img src="./image/mrngbanner2.webp" alt="">
       </div>
     </div>
 
     <!-- Main -->
     <div class="main-content">
-      <h2>Morning chatter</h2>
+      <h2>Evening Chatter</h2>
 
       <div id="morningChatterNews"></div>
-      <div class="extra-news"style="display: none;">
- 
-       <img src="./image/mrng33.png" alt="">
-        <div class="text-content">
-          <h3>U.S. Gold Corp. Proud Sponsor the 129th </h3>
-        <hr class="custom-line">
-       <p>U.S. Gold Corp. is proud to be a Copper Boot sponsor at the world's largest outdoor rodeo Days - July 18-27, in celebration of Cheyenne's authentic western heritage and community roots read more.....</p>
-    <span>July 23, 2025</span>
-         <p> By:  U.
-       
-      </div>
 
-      </div>
-      
-     
-    
-      <div class="btn"><button type="button" class="btn-more" id="showMoreBtn" >show more</button></div>
- 
+
+
+
+      <div class="btn"><button type="button" class="btn-more" id="showMoreBtn">show more</button></div>
+
     </div>
 
     <!-- Right -->
-   <div class="right-sidebar">
-       <div class="heading">
- <h3>Projects</h3>
-       <button type="button" class="gold-btn">show more</button>
+     <div class="right-sidebar">
+      <div class="heading">
+        <h3>Projects</h3>
+        <a href="./project.html"><button type="button" class="gold-btn">show more<i
+              class="fa-solid fa-arrow-right"></i></button>
+        </a>
       </div>
-      <div id="projects"></div>
-      
-      
-      
-     <div class="heading">
- <h3>Report</h3>
-       <button type="button" class="gold-btn">show more</button>
+      <div class="card-container">
+        <div class="card-border">
+          <div id="projects"></div>
+        </div>
+
+
+
+
+        <div class="heading">
+          <h3>Reports</h3>
+          <a href="./project.html"><button type="button" class="gold-btn">show more<i
+                class="fa-solid fa-arrow-right"></i></button>
+          </a>
+        </div>
       </div>
-      <div id="reports"></div>
+      <div class="card-border">
+        <div id="reports"></div>
+      </div>
+
     </div>
   </div>
-<!-- Footer Section -->
+
+
+  <!-- Footer Section -->
   <div class="footer-container">
     <div class="footers">
-       <img src="./discoverylogo.jpg" alt="Mining Discovery Logo"  height="70px" />
+      <img src="./discoverylogo.jpg" alt="Mining Discovery Logo" height="70px" />
     </div>
     <div class="footer-content">
 
-     
-   
-      <!-- Left -->
-        
-      <div class="footer-left">
-       
-        <p>
-          Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
-        </p>
-         <div class="search-bar-container-lasts" id="searchContainer">
-      <div class="social-iconss">
-        <img src="./image/Group.png" >
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-      </div>
 
-      <div class="search-boxs">
-        <input type="text" id="searchInput" placeholder="Search..." />
-        <button class="search-icon"><i class="fas fa-search"></i></button>
-      </div>
-       <div class="divider"></div>
-    </div>
+
+      <!-- Left -->
+
+      <div class="footer-left">
+
+        <p>
+          Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an
+          interactive mining website for mining companies, mining associations and mining executives globally.
+        </p>
+        <div class="search-bar-container-lasts" id="searchContainer">
+          <div class="social-iconss">
+            <a
+              href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img
+                src="./image/Group.png"></a>
+            <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+            <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+            <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+            <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img
+                src="./image/Group (3).png"></a>
+          </div>
+
+          <div class="search-boxs">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button class="search-icon"><i class="fas fa-search"></i></button>
+          </div>
+
+        </div>
       </div>
 
       <!-- Center -->
+
       <div class="footer-center">
         <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>MARKETING VIDEOS</li>
-          <li>SUBSCRIPTION</li>
-          <li>APPS</li>
-          <li>COMMENT GUIDELINE</li>
-          <li>LEGAL NOTICE</li>
+             <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+    <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
         </ul>
       </div>
 
-    
-      
-     
+
 
     </div>
 
@@ -1137,10 +1236,25 @@ line-height: 26px;
 
   </footer>
   </div>
-  
 
-<!-- <script src="./script.js"></script> -->
- <script src="./script.js"></script>
-<script src="./js/advertisment.js"></script>
-<script src="./js/morningchatter.js"></script>
-<script src="./js/projects.js"></script>
+
+  <!-- <script src="./script.js"></script> -->
+  <script src="./script.js"></script>
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/morningchatter.js"></script>
+  <script src="./js/projects.js"></script>
+   <script src="./js/reports.js"></script>
+
+
+     <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      loadAdvertisements();
+      loadProjects();
+      loadReports();
+      newsCategory();
+    });
+  </script>
+
+</body>
+</html>

@@ -56,7 +56,7 @@ body {
     .nav-links a {
       text-decoration: none;
       color: #000;
-      font-weight: 500;
+    
       transition: color 0.3s;
     }
 
@@ -97,7 +97,7 @@ body {
   
 }
 .search-bar-container-lasts{
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .search-bar-bg {
@@ -113,7 +113,7 @@ body {
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 8s linear infinite;
+  animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
 }
 
@@ -179,7 +179,7 @@ body {
       color: #999;
       font-size: 14px;
       overflow: hidden;
-      height: 16px;
+      height: 18px;
     }
 
     .animated-text-container span {
@@ -338,8 +338,8 @@ body {
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
+      color:  #8d6d2a;
+      border-bottom: 2px solid  #8d6d2a;
       padding-bottom: 3px;
     }
 
@@ -347,7 +347,62 @@ body {
       display: flex;
     }
 
-   
+   /* Desktops (already optimized, but just in case) */
+@media (min-width: 769px) {
+  .topbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .dropdown-links {
+    flex-direction: row;
+    gap: 15px;
+  }
+}
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  .dropdown-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+ 
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .topbar h1 {
+    font-size: 18px;
+    gap: 6px;
+  }
+
+  .dropdown-links {
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .dropdown-links a {
+    margin: 5px 0;
+  }
+   .left-panel{
+    display: none;
+  }
+}
 
 
 
@@ -379,12 +434,43 @@ body {
 
 .middle-panel {
   width: 70%;
+    height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
 }
 
 .left-sidebar,
-
 .right-sidebar {
-  width: 280px; /* full width for mobile */
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+.fa-solid {
+    padding-left: 10px;
 }
 .left-sidebar .box {
   background: white;
@@ -442,6 +528,15 @@ body {
   font-weight: 500;
   line-height: 1.4;
 }
+.section-box  a {
+  color: #000000;          /* black by default */
+  text-decoration: none;   /* optional: remove underline */
+  transition: color 0.3s ease;
+}
+
+.section-box  a:hover {
+  color:#AE8A4C;            /* brown on hover */
+}
 
 
 .middle-panel h1 {
@@ -469,6 +564,7 @@ body {
   text-align: center;
   font-size: 12px;
   padding-bottom: 10px;
+  height: fit-content;
 }
 .card p{
   font-size: 16px;
@@ -543,9 +639,9 @@ body {
   color: #c2922b;
 }
 
-span {
+/* span {
   color: white;
-}
+} */
 
 /* ---------------- RESPONSIVE STYLES ---------------- */
 
@@ -578,6 +674,20 @@ span {
     text-align: center;
         border-bottom: 2px solid black;
   }
+  .left-sidebar{
+  display: none;
+}
+
+  .middle-panel
+   {
+    width: 100%;
+  }
+  
+  .right-sidebar
+ {
+  padding: 10px;
+    width: 100%;
+  }
 
   .subtext {
     font-size: 12px;
@@ -604,18 +714,20 @@ span {
 }
 
 
- 
-.footer-container {
+    .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
-  padding: 60px 40px 30px;
+  padding: 60px 100px 30px;
   color: #fff;
   position: relative;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .social-iconss{
   padding-bottom: 10px;
+      display: flex
+;
+    gap: 15px;
 }
 
 .divider {
@@ -631,7 +743,7 @@ span {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
- 
+ padding-top: 30px;
   margin: auto;
   gap: 30px;
 }
@@ -683,21 +795,22 @@ span {
 
 .footer-center li {
   margin-bottom: 12px;
+}
+
+.footer-center a {
   font-size: 15px;
   color: #ccc;
-  cursor: pointer;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-center li:first-child {
-  font-weight: bold;
-  color: orange;
+.footer-center li:first-child a {
+  
   font-size: 16px;
-  margin-bottom: 18px;
 }
 
-.footer-center li:hover {
-  color: orange;
+.footer-center a:hover {
+  color: #AE8A4C;
 }
 
 .footer-right {
@@ -819,6 +932,115 @@ span {
   }
 }
 
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      
+      padding: 10px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 960px;
+      max-height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .fp-iframe {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        max-width: 400px;
+        padding: 10px;
+      }
+
+      .fp-iframe {
+        height: 65vh;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        top: 5px;
+        right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .fp-iframe {
+        height: 55vh;
+      }
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+                         
+ /* footer */
+ 
+ 
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
 
  </style>
 </head>
@@ -827,7 +1049,7 @@ span {
   <header class="main-header">
     <div class="header-top">
      <div class="logo-social">
-        <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
+        <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
       </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -836,7 +1058,7 @@ span {
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+         <a href="./morning.html">Evening Chatter</a>
         <a href=".//miningpage/index.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -890,15 +1112,15 @@ span {
     </div>
   </header>
     <!-- Header + Dropdown -->
+  <!-- Header + Dropdown -->
   <div class="topbar">
-    <h1 onclick="toggleDropdown()" id="newsToggle">
+    <h1 onclick="serviceDropdown()" id="serviceToggle">
       Services
       <i class="fas fa-chevron-down"></i>
     </h1>
   </div>
-
 <!-- Dropdown Links -->
- <div class="dropdown-links" id="dropdownMenu">
+   <div class="dropdown-links" id="dropdownMenu2">
     <a href="./service.html">Investor Campaigns</a>
     <a href="./multimedia.html">Multimedia & you tube</a>
     <a href="./newsynd.html">News Syndication</a>
@@ -911,8 +1133,7 @@ span {
     <a href="./letter.html">Newsletter & Email Blasts</a>
     <a href="./paid.html">Paid Ad Campaigns</a>
     <a href="./pressoffice.html">Press Office</a>
-  
-  
+
 </div>
 
   <div class="container">
@@ -1031,22 +1252,23 @@ span {
               <input type="text" id="searchInput" placeholder="Search..." />
               <button class="search-icon"><i class="fas fa-search"></i></button>
             </div>
-            <div class="divider"></div>
+          
           </div>
         </div>
 
         <!-- Center -->
-        <div class="footer-center">
-          <ul>
-            <li>HOME</li>
-            <li>ABOUT US</li>
-            <li>MARKETING VIDEOS</li>
-            <li>SUBSCRIPTION</li>
-            <li>APPS</li>
-            <li>COMMENT GUIDELINE</li>
-            <li>LEGAL NOTICE</li>
-          </ul>
-        </div>
+         <div class="footer-center">
+ <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+  <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
+        
 
 
 

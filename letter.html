@@ -68,7 +68,7 @@
 
       text-decoration: none;
       color: #000;
-      font-weight: bold;
+     
       transition: color 0.3s;
     }
 
@@ -110,7 +110,7 @@
   padding-top: 5px;
 }
 .search-bar-container-lasts{
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .search-bar-bg {
@@ -126,7 +126,7 @@
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 8s linear infinite;
+  animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
       gap: 24px;
 }
@@ -196,7 +196,7 @@
       color: #999;
       font-size: 14px;
       overflow: hidden;
-      height: 16px;
+      height: 18px;
     }
 
     .animated-text-container span {
@@ -373,8 +373,8 @@
 
 .dropdown-links a:hover,
 .dropdown-links a.active {
-  color: gold;
-  border-bottom: 2px solid gold;
+  color:  #8d6d2a;
+  border-bottom: 2px solid  #8d6d2a;
   padding-bottom: 3px;
 }
 
@@ -449,9 +449,28 @@
 
 
 .left-sidebar,
-
 .right-sidebar {
-  width: 280px; /* full width for mobile */
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+.fa-solid{
+  padding-left: 10px;
 }
 .left-sidebar .box {
   background: white;
@@ -509,10 +528,31 @@
   font-weight: 500;
   line-height: 1.4;
 }
+.section-box  a {
+  color: #000000;          /* black by default */
+  text-decoration: none;   /* optional: remove underline */
+  transition: color 0.3s ease;
+}
+
+.section-box  a:hover {
+  color:#AE8A4C;            /* brown on hover */
+}
 
 
 .main-content {
-  width: 60%;
+  width: 70%;
+    height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
 }
 
 h2 {
@@ -531,9 +571,9 @@ h2 {
   align-items: center;
   background-color: white;
 }
-span{
+/* span{
  color: white;
-}
+} */
 
 .btn-more,
 .gold-btn {
@@ -996,17 +1036,20 @@ form textarea::placeholder {
   }
 }
  
-      .footer-container {
+     .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
-  padding: 60px 40px 30px;
+  padding: 60px 100px 30px;
   color: #fff;
   position: relative;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .social-iconss{
   padding-bottom: 10px;
+      display: flex
+;
+    gap: 15px;
 }
 
 .divider {
@@ -1022,7 +1065,7 @@ form textarea::placeholder {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  /* max-width: 1300px; */
+ padding-top: 30px;
   margin: auto;
   gap: 30px;
 }
@@ -1074,21 +1117,22 @@ form textarea::placeholder {
 
 .footer-center li {
   margin-bottom: 12px;
+}
+
+.footer-center a {
   font-size: 15px;
   color: #ccc;
-  cursor: pointer;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-center li:first-child {
-  font-weight: bold;
-  color: orange;
+.footer-center li:first-child a {
+ 
   font-size: 16px;
-  margin-bottom: 18px;
 }
 
-.footer-center li:hover {
-  color: orange;
+.footer-center a:hover {
+  color: #AE8A4C;
 }
 
 .footer-right {
@@ -1138,10 +1182,6 @@ form textarea::placeholder {
   font-size: 13px;
   color: #aaa;
 }
-.search-bar-container-lasts{
-  padding-top: 100px;
-}
-
 
 /* -------- RESPONSIVE -------- */
 
@@ -1214,6 +1254,113 @@ form textarea::placeholder {
   }
 }
 
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      
+      padding: 10px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 960px;
+      max-height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .fp-iframe {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        max-width: 400px;
+        padding: 10px;
+      }
+
+      .fp-iframe {
+        height: 65vh;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        top: 5px;
+        right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .fp-iframe {
+        height: 55vh;
+      }
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+                         
+ /* footer */
+ 
+ 
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
  
     
   </style>
@@ -1231,7 +1378,7 @@ form textarea::placeholder {
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+ <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -1286,15 +1433,16 @@ form textarea::placeholder {
   </header>
   
   <!-- Header + Dropdown -->
+    <!-- Header + Dropdown -->
+   
   <div class="topbar">
-    <h1 onclick="toggleDropdown()" id="newsToggle">
+    <h1 onclick="serviceDropdown()" id="serviceToggle">
       Services
       <i class="fas fa-chevron-down"></i>
     </h1>
   </div>
-
-  <!-- Dropdown Links -->
-  <div class="dropdown-links" id="dropdownMenu">
+<!-- Dropdown Links -->
+   <div class="dropdown-links" id="dropdownMenu2">
     <a href="./service.html">Investor Campaigns</a>
     <a href="./multimedia.html">Multimedia & you tube</a>
     <a href="./newsynd.html">News Syndication</a>
@@ -1307,9 +1455,11 @@ form textarea::placeholder {
     <a href="./letter.html">Newsletter & Email Blasts</a>
     <a href="./paid.html">Paid Ad Campaigns</a>
     <a href="./pressoffice.html">Press Office</a>
-  
-  
+
 </div>
+  <!-- Dropdown Links -->
+ 
+ 
 
   <!-- Content Section -->
   <div class="container">
@@ -1429,23 +1579,22 @@ form textarea::placeholder {
         <input type="text" id="searchInput" placeholder="Search..." />
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
-       <div class="divider"></div>
+      
     </div>
       </div>
 
       <!-- Center -->
       <div class="footer-center">
-        <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>MARKETING VIDEOS</li>
-          <li>SUBSCRIPTION</li>
-          <li>APPS</li>
-          <li>COMMENT GUIDELINE</li>
-          <li>LEGAL NOTICE</li>
-        </ul>
-      </div>
-
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+    <li><a href=".html">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
     
       
      

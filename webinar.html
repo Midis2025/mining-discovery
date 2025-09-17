@@ -9,7 +9,7 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+          font-family: 'Pontano Sans', sans-serif;
             margin: 0;
             padding: 0;
            
@@ -97,7 +97,7 @@
   padding-top: 5px;
 }
 .search-bar-container-lasts{
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .search-bar-bg {
@@ -113,7 +113,7 @@
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 8s linear infinite;
+  animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
       gap: 24px;
 }
@@ -151,7 +151,7 @@
     }
 
     .search-box input {
-      width: 80%;
+      width: 70%;
       height: 15px;
       padding: 5px 15px;
       padding-right: 35px;
@@ -183,7 +183,7 @@
       color: #999;
       font-size: 14px;
       overflow: hidden;
-      height: 16px;
+      height: 18px;
     }
 
     .animated-text-container span {
@@ -297,7 +297,7 @@
 .topbar {
   background:black;
   color: #fff;
-  padding: 15px 20px;
+  padding: 5px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -342,8 +342,8 @@
 
 .dropdown-links a:hover,
 .dropdown-links a.active {
-  color: gold;
-  border-bottom: 2px solid gold;
+  color:#AE8A4C;
+  border-bottom: 2px solid #AE8A4C;
   padding-bottom: 3px;
 }
 
@@ -412,10 +412,26 @@
         .container {
             display: flex;
         }
-     .left-sidebar,
-
+.left-sidebar,
 .right-sidebar {
-  width: 280px; /* full width for mobile */
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
 }
 .left-sidebar .box {
   background: white;
@@ -429,6 +445,19 @@
 }
         .main-content {
             flex: 1;
+            padding: 20px;
+              height: calc(200vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+ 
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
         }
         header, section {
             padding: 20px;
@@ -439,19 +468,38 @@
             color: white;
             padding: 30px;
         }
+        .banner h1{
+          font-size: 28px;
+          border-bottom: 2px solid #8d6d2a;
+          display: inline-block;
+        
+        }
+        .banner p{
+          font-size: 18px;
+        }
         .banner button {
             margin: 10px;
             padding: 10px 20px;
             background-color:#8d6d2a;
             border: none;
             cursor: pointer;
-            font-weight: bold;
+          font-size: 18px;
             border-radius: 30px;
+            color: white;
+        }
+       
+        .heading h2{
+          font-size: 28px;
+          border-bottom: 2px solid #8d6d2a;
+          display: inline-block;
         }
         .next-session {
          background-color:#8d6d2a;
             padding: 20px;
             color: white;
+        }
+        .next-session p{
+          color: black;
         }
         .why-attend, .speakers, .how-it-works, .past-recordings {
             background-color: white;
@@ -459,8 +507,30 @@
             padding: 20px;
             max-width: 900px;
             border-radius: 10px;
+            
          
         }
+        .why-attend h2{
+           border-bottom: 2px solid #8d6d2a;
+           display: inline-block;
+           font-size: 28px;
+        }
+          .speakers h2{
+           border-bottom: 2px solid #8d6d2a;
+           display: inline-block;
+            font-size: 28px;
+        }
+          .how-it-works h2{
+           border-bottom: 2px solid #8d6d2a;
+           display: inline-block;
+            font-size: 28px;
+        }
+          .past-recordings h2{
+           border-bottom: 2px solid #8d6d2a;
+           display: inline-block;
+            font-size: 28px;
+        }
+        
         .chips {
             display: flex;
             justify-content: center;
@@ -468,11 +538,11 @@
             margin-top: 10px;
         }
         .chip {
-            background: black;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
+               background: black;
+    color: white;
+    padding: 11px 32px;
+    border-radius: 20px;
+    font-size: 18px;
         }
         .speakers-grid {
             display: flex;
@@ -483,7 +553,7 @@
        .speaker {
         background: #292929;
         color: white;
-        padding: 15px;
+        padding: 50px;
         border-radius: 8px;
         text-align: center;
         height: 300px;
@@ -513,7 +583,7 @@
             color:#8d6d2a;
             padding: 10px 20px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 15px;
             width: 400px;
         }
         .videos {
@@ -592,6 +662,11 @@
             margin: 10px;
            
         }
+        .cta-section h2{
+          font-size: 28px;
+          border-bottom:2px solid #8d6d2a ;
+        display: inline-block;
+        }
         .cta-section a {
             color: #8d6d2a;
             display: block;
@@ -607,6 +682,137 @@
             font-weight: bold;
             cursor: pointer;
         }
+        /* 📱 Small phones (≤375px) */
+/* ================== Responsive ================== */
+
+/* Phones (up to 480px) */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .left-sidebar,
+  .right-sidebar {
+    display: none;
+  }
+
+  .banner {
+    padding: 20px;
+    font-size: 14px;
+  }
+  .banner button {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .why-attend, .speakers, .how-it-works, .past-recordings {
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .chips {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .speakers-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .speaker {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  .speaker img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .step {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .videos {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .video-thumbnail {
+    height: 150px;
+  }
+  .video-info h4 {
+    font-size: 13px;
+  }
+
+  .cta-section {
+    padding: 15px;
+    margin: 5px;
+  }
+  .cta-section button {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Larger Phones / Small Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .left-sidebar,
+  .right-sidebar {
+    display: none;
+  }
+
+  .speakers-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .speaker {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+    height: auto;
+  }
+  .speaker img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .step {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .videos {
+    flex-wrap: wrap;
+  }
+  .video-card {
+    flex: 1 1 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+  }
+  .video-thumbnail {
+    height: 160px;
+  }
+  .video-info h4 {
+    font-size: 14px;
+  }
+}
+
         /* Responsive styles for phones */
 @media (max-width: 768px) {
 
@@ -707,220 +913,228 @@
   }
 }
 
-           
-        .footer-container {
-  background-image: url(./image/footer-bg\ 1.png);
-  background-size: cover;
-  background-position: center;
-  padding: 60px 40px 30px;
-  color: #fff;
-  position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.social-iconss{
-  padding-bottom: 10px;
-}
+   .footer-container {
+      background-image: url(./image/footer-bg\ 1.png);
+      background-size: cover;
+      background-position: center;
+      padding: 60px 100px 30px;
+      color: #fff;
+      position: relative;
+ 
+    }
 
-.divider {
-  width: 1px;
-  background: #444;
-  height: 60%;
-  position: absolute;
-  left: 50%;
-  top: 10%;
-}
+    .social-iconss {
+      padding-bottom: 10px;
+      display: flex;
+      gap: 15px;
+    }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  /* max-width: 1300px; */
-  margin: auto;
-  gap: 30px;
-}
+    .divider {
+      width: 1px;
+      background: #444;
+      height: 60%;
+      position: absolute;
+      left: 50%;
+      top: 10%;
+    }
 
-.footer-left {
-  flex: 1;
-  min-width: 280px;
-  padding-right: 40px;
-}
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      /* max-width: 1300px; */
+      margin: auto;
+      gap: 30px;
+    }
 
-.social-iconss img {
-  height: 24px;
-}
+    .footer-left {
+      flex: 1;
+      min-width: 280px;
+      padding-right: 40px;
+    }
 
-.footer-left p {
-  font-size: 20px;
-  
-  
+    .social-iconss img {
+      height: 24px;
+    }
 
-  max-width: 580px;
-  color: #ddd;
-}
+    .footer-left p {
+      font-size: 20px;
 
-.footer-left .socials {
-  margin-top: 20px;
-}
 
-.footer-left .socials i {
-  margin-right: 15px;
-  font-size: 20px;
-  color: #ccc;
-  cursor: pointer;
-  transition: color 0.3s;
-}
 
-.footer-left .socials i:hover {
-  color: #8d6d2a;
-}
+      max-width: 580px;
+      color: #ddd;
+    }
 
-.footer-center {
-  min-width: 220px;
-  padding-left: 20px;
-}
+    .footer-left .socials {
+      margin-top: 20px;
+    }
 
-.footer-center ul {
+    .footer-left .socials i {
+      margin-right: 15px;
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .footer-left .socials i:hover {
+      color: orange;
+    }
+
+    .footer-center {
+      min-width: 220px;
+      padding-left: 20px;
+    }
+
+   .footer-center ul {
   list-style: none;
   padding: 0;
 }
 
 .footer-center li {
   margin-bottom: 12px;
+}
+
+.footer-center a {
   font-size: 15px;
   color: #ccc;
-  cursor: pointer;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-center li:first-child {
-  font-weight: bold;
-  color:#8d6d2a;
+.footer-center li:first-child a {
+ 
   font-size: 16px;
-  margin-bottom: 18px;
 }
 
-.footer-center li:hover {
-  color: #8d6d2a;
+.footer-center a:hover {
+  color: #AE8A4C;
 }
 
-.footer-right {
-  flex: 1;
-  min-width: 280px;
-  padding-left: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-}
+    .footer-right {
+      flex: 1;
+      min-width: 280px;
+      padding-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+    }
 
-.footer-right img {
-  height: 60px;
-  width: 100px;
-  object-fit: contain;
-  padding: 10px;
-  background: #fff;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
+    .footer-right img {
+      height: 60px;
+      width: 100px;
+      object-fit: contain;
+      padding: 10px;
+      background: #fff;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
 
-.footer-right img:hover {
-  transform: scale(1.05);
-}
+    .footer-right img:hover {
+      transform: scale(1.05);
+    }
 
-.search-boxs {
-  position: relative;
-  width: 180px;
- 
-}
+    .search-boxs {
+      position: relative;
+      width: 180px;
 
-.search-boxs input {
-  width: 75%;
-  
-  padding: 5px 15px;
-  padding-right: 35px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  outline: none;
-}
+    }
+
+    .search-boxs input {
+      width: 70%;
+      height: 10px;
+      padding: 5px 15px;
+      padding-right: 35px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
 
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 13px;
-  color: #aaa;
-}
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+    }
 
-/* -------- RESPONSIVE -------- */
+    /* -------- RESPONSIVE -------- */
 
-@media (max-width: 1024px) {
-  .footer-container {
-    padding: 50px 30px 25px;
-  }
-  .footer-content {
-    gap: 25px;
-  }
-}
+    @media (max-width: 1024px) {
+      .footer-container {
+        padding: 50px 30px 25px;
+      }
 
-@media (max-width: 768px) {
- 
-  .footer-container {
-    padding: 40px 20px 20px;
-  }
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-  }
+      .footer-content {
+        gap: 25px;
+      }
+    }
 
-  .footer-left, .footer-center, .footer-right {
-    padding: 0;
-    min-width: 100%;
-  }
+    @media (max-width: 768px) {
 
-  .footer-right {
-    justify-content: flex-start;
-  }
+      .footer-container {
+        padding: 40px 20px 20px;
+      }
 
-  .divider {
-    display: none;
-  }
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+      }
 
-  .footer-left p {
-    max-width: 100%;
-  }
+      .footer-left,
+      .footer-center,
+      .footer-right {
+        padding: 0;
+        min-width: 100%;
+      }
 
-  .search-boxs {
-    width: 50%;
-  }
- 
-}
+      .footer-right {
+        justify-content: flex-start;
+      }
 
-@media (max-width: 480px) {
-  .footer-left img,
-  .footer-right img {
-    height: 26px;
-    width: 29px;
-  }
+      .divider {
+        display: none;
+      }
 
-  .footer-left p {
-    font-size: 14px;
-  }
+      .footer-left p {
+        max-width: 100%;
+      }
 
-  .footer-center li,
-  .footer-left .socials i {
-    font-size: 14px;
-  }
+      .search-boxs {
+        width: 50%;
+      }
 
-  .footer-center li:first-child {
-    font-size: 15px;
-  }
+    }
 
-  .footer-bottom {
-    font-size: 12px;
-    margin-top: 30px;
-  }
-}
+    @media (max-width: 480px) {
+
+      .footer-left img,
+      .footer-right img {
+        height: 26px;
+        width: 29px;
+      }
+
+      .footer-left p {
+        font-size: 14px;
+      }
+
+      .footer-center li,
+      .footer-left .socials i {
+        font-size: 14px;
+      }
+
+      .footer-center li:first-child {
+        font-size: 15px;
+      }
+
+      .footer-bottom {
+        font-size: 12px;
+        margin-top: 30px;
+      }
+    }
     </style>
 </head>
 <body>
@@ -936,7 +1150,7 @@
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+         <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -949,16 +1163,13 @@
     </div>
 
     <div class="search-bar-container" id="searchContainer">
-      <div class="social-icons">
-        <img src="./image/Group.png">
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
-      </div>
+       <div class="social-icons">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 <div class="search-bar-bg">
   <div class="scrolling-track">
     <div class="scrolling-content">
@@ -989,23 +1200,23 @@
   </div>
     </div>
   </header>
-    <div class="topbar">
-    <h1 onclick="toggleDropdown()" id="newsToggle">
-      Magzine
+   <div class="topbar">
+    <h1 onclick="magazineDropdown()" id="magazineToggle">
+      Magazine
       <i class="fas fa-chevron-down"></i>
     </h1>
   </div>
 
   <!-- Dropdown Links -->
-   <div class="dropdown-links" id="dropdownMenu">
+  <div class="dropdown-links" id="dropdownMenu3">
     <a href="./magzin.html">Magzine</a>
     <a href="./ceo.html">CEO Profile</a>
-    <a href="./letter.html">Newsletter </a>
+    <a href="./weekly.html">Weekly Newsletter</a>
     <a href="./company-profile.html">Company Profile</a>
     <a href="./Digitaledition.html">Digital Edition</a>
     <a href="./webinar.html">Webinar Recording</a>
-    <a href="./weekly.html">Monthly Newsletter</a>
-   
+
+
   </div>
 <div class="container">
    <div class="left-sidebar">
@@ -1031,6 +1242,7 @@
             <h2>Next Live Session: The Future of Gold & Copper Mining in 2025</h2>
             <p>Oct 14th | 3:00pm - 4:00pm PDT</p>
             <p>Get expert insights on gold and copper market trends, investment opportunities, and sustainable mining practices driving the industry's future.</p>
+            <p>Speakers: John Smith – Senior Mining Analyst, Global Metals Group, Priya Sharma – ESG & Sustainability Expert, Mining Innovations Ltd</p>
         </section>
 
         <section class="why-attend">
@@ -1062,10 +1274,10 @@
         <section class="how-it-works">
             <h2>How It Works</h2>
             <div class="steps">
-                <div class="step">Register Online</div>
-                <div class="step">Join the Live Session</div>
-                <div class="step">Engage & Learn</div>
-                <div class="step">Watch Again</div>
+                <div class="step">Register Online - Fill out our quick sign-up form.</div>
+                <div class="step">Join the Live Session - Receive your unique webinar link.</div>
+                <div class="step">Engage & Learn - Participate in Q&A and download resources.</div>
+                <div class="step">Watch Again - Access our on-demand library anytime.</div>
             </div>
         </section>
 
@@ -1139,35 +1351,34 @@
           Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
         </p>
          <div class="search-bar-container-lasts" id="searchContainer">
-      <div class="social-iconss">
-        <img src="./image/Group.png" >
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-      </div>
+     <div class="social-iconss">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 
       <div class="search-boxs">
         <input type="text" id="searchInput" placeholder="Search..." />
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
-       <div class="divider"></div>
+      \
     </div>
       </div>
 
       <!-- Center -->
-      <div class="footer-center">
-        <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>MARKETING VIDEOS</li>
-          <li>SUBSCRIPTION</li>
-          <li>APPS</li>
-          <li>COMMENT GUIDELINE</li>
-          <li>LEGAL NOTICE</li>
-        </ul>
-      </div>
-
+     <div class="footer-center">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="newss.html">MARKETING VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="ceo.html">APPS</a></li>
+    <li><a href=".html">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
     
       
      

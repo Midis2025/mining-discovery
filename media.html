@@ -56,7 +56,7 @@ body {
     .nav-links a {
       text-decoration: none;
       color: #000;
-      font-weight: 500;
+    
       transition: color 0.3s;
     }
 
@@ -97,7 +97,7 @@ body {
   
 }
 .search-bar-container-lasts{
-  padding-top:100px ;
+  padding-top:50px ;
 }
 
 .search-bar-bg {
@@ -113,7 +113,7 @@ body {
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 8s linear infinite;
+  animation: scroll-loop 20s linear infinite;
       padding-top: 3px;
 }
 
@@ -179,7 +179,7 @@ body {
       color: #999;
       font-size: 14px;
       overflow: hidden;
-      height: 16px;
+      height: 18px;
     }
 
     .animated-text-container span {
@@ -338,8 +338,8 @@ body {
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
+      color:  #8d6d2a;
+      border-bottom: 2px solid  #8d6d2a;
       padding-bottom: 3px;
     }
 
@@ -347,7 +347,62 @@ body {
       display: flex;
     }
 
-   
+   /* Desktops (already optimized, but just in case) */
+@media (min-width: 769px) {
+  .topbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .dropdown-links {
+    flex-direction: row;
+    gap: 15px;
+  }
+}
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  .dropdown-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+ 
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .topbar h1 {
+    font-size: 18px;
+    gap: 6px;
+  }
+
+  .dropdown-links {
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .dropdown-links a {
+    margin: 5px 0;
+  }
+   .left-panel{
+    display: none;
+  }
+}
 
 
 
@@ -373,6 +428,18 @@ body {
 
 .middle-panel {
   width: 70%;
+    height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
 }
 
 
@@ -386,6 +453,9 @@ body {
   background: white;
   padding: 12px;
   margin-bottom: 15px;
+}
+.fa-solid {
+    padding-left: 10px;
 }
 
 .left-sidebar .box img {
@@ -439,7 +509,15 @@ body {
   line-height: 1.4;
 }
 
+.section-box  a {
+  color: #000000;          /* black by default */
+  text-decoration: none;   /* optional: remove underline */
+  transition: color 0.3s ease;
+}
 
+.section-box  a:hover {
+  color:#AE8A4C;            /* brown on hover */
+}
 .middle-panel h1 {
   font-size: 24px;
   color: #000;
@@ -541,9 +619,9 @@ body {
 .chnage{
   color: #c2922b;
 }
-span{
+/* span{
   color: white;
-}
+} */
 .midis-box {
   margin-top: 40px;
   text-align: center;
@@ -563,7 +641,100 @@ span{
 .midis-logo .orange {
   color: orange;
 }
+@media (max-width: 375px) {
+  .container {
+    flex-direction: column;   /* stack sidebars + middle panel */
+    padding: 12px;
+    gap: 15px;
+  }
 
+  .left-sidebar,
+  .right-sidebar,
+  .middle-panel {
+    width: 100%;              /* full width on mobile */
+  }
+
+  .middle-panel h1 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .subtext {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+ 
+
+  button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .section-box img {
+    height: 100px;
+  }
+
+  .section-box p {
+    font-size: 13px;
+  }
+
+  .top-cards {
+    flex-direction: column;   /* stack cards */
+  }
+
+  .card {
+    width: 100%;              /* each card full width */
+    font-size: 11px;
+  }
+
+  .solution-grid {
+    grid-template-columns: 1fr;  /* single column */
+    gap: 10px;
+  }
+
+  .solution-grid div {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  .philosophy {
+    grid-template-columns: 1fr;  /* stack philosophy items */
+    gap: 12px;
+  }
+
+  .philosophy div {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .section-title {
+    font-size: 14px;
+    margin: 20px 0 10px;
+  }
+
+  .hello {
+    font-size: 9px;
+  }
+
+  .midis-box {
+    padding: 15px;
+    font-size: 14px;
+    margin-top: 25px;
+  }
+
+  .midis-logo {
+    font-size: 20px;
+    margin-top: 8px;
+  }
+}
+
+ @media (max-width: 375px) {
+ .left-sidebar{
+  display: none;
+ }
+ 
+}
 /* Responsive */
 @media (max-width: 768px) {
   .left-panel{
@@ -602,17 +773,175 @@ span{
     grid-template-columns: 1fr;
   }
 }
-   .footer-container {
+/* ================= BASE (Desktop default) ================= */
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+  max-width: 2000px;
+  margin: auto;
+}
+
+.middle-panel {
+  width: 70%;
+}
+
+.left-sidebar,
+.right-sidebar {
+  width: 280px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+
+/* ================= TABLETS (iPad, Kindle, <=1024px) ================= */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .middle-panel,
+  .left-sidebar,
+  .right-sidebar {
+    width: 100%;
+  }
+
+  .top-cards {
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 48%; /* 2 per row */
+  }
+
+  .solution-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .philosophy {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .philosophy div {
+    max-width: 400px;
+  }
+}
+
+/* ================= MOBILES (<=768px) ================= */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .middle-panel,
+
+  .right-sidebar {
+    width: 100%;
+  }
+  .left-sidebar{
+    display: none;
+  }
+
+ 
+
+  .middle-panel h1 {
+    font-size: 20px;
+  }
+
+  .subtext {
+    font-size: 16px;
+  }
+
+  .top-cards {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .solution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .hello {
+    font-size: 12px;
+  }
+}
+
+/* ================= SMALL MOBILES (<=480px) ================= */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .middle-panel h1 {
+    font-size: 18px;
+  }
+
+  .subtext {
+    font-size: 14px;
+  }
+
+  .section-box p {
+    font-size: 13px;
+  }
+
+  .card {
+    font-size: 11px;
+  }
+
+  .hello {
+    font-size: 11px;
+  }
+
+  .midis-box {
+    font-size: 16px;
+    padding: 20px;
+  }
+}
+
+      .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
-  padding: 60px 40px 30px;
+  padding: 60px 100px 30px;
   color: #fff;
   position: relative;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .social-iconss{
   padding-bottom: 10px;
+      display: flex
+;
+    gap: 15px;
 }
 
 .divider {
@@ -628,7 +957,7 @@ span{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
- 
+ padding-top: 30px;
   margin: auto;
   gap: 30px;
 }
@@ -673,6 +1002,7 @@ span{
   padding-left: 20px;
 }
 
+
 .footer-center ul {
   list-style: none;
   padding: 0;
@@ -680,21 +1010,22 @@ span{
 
 .footer-center li {
   margin-bottom: 12px;
+}
+
+.footer-center a {
   font-size: 15px;
   color: #ccc;
-  cursor: pointer;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-center li:first-child {
-  font-weight: bold;
-  color: orange;
+.footer-center li:first-child a {
+
   font-size: 16px;
-  margin-bottom: 18px;
 }
 
-.footer-center li:hover {
-  color: orange;
+.footer-center a:hover {
+  color: #AE8A4C;
 }
 
 .footer-right {
@@ -890,6 +1221,113 @@ span{
     
 
 
+
+
+
+
+
+
+
+
+
+                         
+ /* footer */
+ 
+ 
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      
+      padding: 10px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 960px;
+      max-height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .fp-iframe {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        max-width: 400px;
+        padding: 10px;
+      }
+
+      .fp-iframe {
+        height: 65vh;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        top: 5px;
+        right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .fp-iframe {
+        height: 55vh;
+      }
+    }
+
+    
+
+
  /* footer */
  
  
@@ -903,7 +1341,8 @@ span{
   <header class="main-header">
     <div class="header-top">
      <div class="logo-social">
-        <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
+     <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+    
       </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -912,7 +1351,7 @@ span{
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
+     <a href="./morning.html">Evening Chatter</a>
         <a href=".//miningpage/index.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -925,16 +1364,13 @@ span{
     </div>
 
     <div class="search-bar-container" id="searchContainer">
-      <div class="social-icons">
-        <img src="./image/Group.png">
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
-      </div>
+       <div class="social-icons">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 <div class="search-bar-bg">
   <div class="scrolling-track">
     <div class="scrolling-content">
@@ -966,15 +1402,15 @@ span{
     </div>
   </header>
     <!-- Header + Dropdown -->
+  <!-- Header + Dropdown -->
   <div class="topbar">
-    <h1 onclick="toggleDropdown()" id="newsToggle">
+    <h1 onclick="serviceDropdown()" id="serviceToggle">
       Services
       <i class="fas fa-chevron-down"></i>
     </h1>
   </div>
-
 <!-- Dropdown Links -->
-  <div class="dropdown-links" id="dropdownMenu">
+   <div class="dropdown-links" id="dropdownMenu2">
     <a href="./service.html">Investor Campaigns</a>
     <a href="./multimedia.html">Multimedia & you tube</a>
     <a href="./newsynd.html">News Syndication</a>
@@ -987,9 +1423,9 @@ span{
     <a href="./letter.html">Newsletter & Email Blasts</a>
     <a href="./paid.html">Paid Ad Campaigns</a>
     <a href="./pressoffice.html">Press Office</a>
-  
-  
+
 </div>
+
 
   <div class="container">
     
@@ -1097,34 +1533,33 @@ reports and growth suggestions..</p>
             interactive mining website for mining companies, mining associations and mining executives globally.
           </p>
           <div class="search-bar-container-lasts" id="searchContainer">
-            <div class="social-iconss">
-              <img src="./image/Group.png">
-              <img src="./image/Group (4).png">
-              <img src="./image/Group (1).png">
-              <img src="./image/Group (2).png">
-              <img src="./image/Group (3).png">
+          <div class="social-iconss">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
             </div>
-
             <div class="search-boxs">
               <input type="text" id="searchInput" placeholder="Search..." />
               <button class="search-icon"><i class="fas fa-search"></i></button>
             </div>
-            <div class="divider"></div>
+          
           </div>
         </div>
 
         <!-- Center -->
-        <div class="footer-center">
-          <ul>
-            <li>HOME</li>
-            <li>ABOUT US</li>
-            <li>MARKETING VIDEOS</li>
-            <li>SUBSCRIPTION</li>
-            <li>APPS</li>
-            <li>COMMENT GUIDELINE</li>
-            <li>LEGAL NOTICE</li>
-          </ul>
-        </div>
+   <div class="footer-center">
+   <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+    <li><a href=".html">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
 
 
 
