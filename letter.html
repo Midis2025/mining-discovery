@@ -126,7 +126,7 @@
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 20s linear infinite;
+ animation: scroll-loop 30s linear infinite;
       padding-top: 3px;
       gap: 24px;
 }
@@ -1402,24 +1402,10 @@ form textarea::placeholder {
         
       </div>
 <div class="search-bar-bg">
-  <div class="scrolling-track">
-    <div class="scrolling-content">
-     <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
-         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
-         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
-         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
-         </span>
-    </div>
-    <!-- Duplicate content for seamless loop -->
-    <div class="scrolling-content">
-       <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
-         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
-         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
-         </span> <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5, 2025
-         </span>
-    </div>
-  </div>
-</div>
+        <div class="scrolling-track" id="newsTicker">
+          <!-- News titles will be inserted here -->
+        </div>
+      </div>
 
 
      <div class="search-box">
@@ -1442,18 +1428,18 @@ form textarea::placeholder {
     </h1>
   </div>
 <!-- Dropdown Links -->
-   <div class="dropdown-links" id="dropdownMenu2">
+  <div class="dropdown-links" id="dropdownMenu2">
     <a href="./service.html">Investor Campaigns</a>
-    <a href="./multimedia.html">Multimedia & you tube</a>
+    <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Multimedia & you tube</a>
     <a href="./newsynd.html">News Syndication</a>
     <a href="./confrence.html">Conference Media Coverage</a>
     <a href="./branding.html">Digital Branding</a>
-    <a href="./Global.html">Global Outreach</a>
-    <a href="./media.html">Social Media Growth
-</a>
-    <a href="./podcast.html">Podcast & Interview Features</a>
+    <!-- <a href="./Global.html">Global Outreach</a> -->
+    <!-- <a href="./media.html">Social Media Growth
+</a> -->
+    <!-- <a href="./podcast.html">Podcast & Interview Features</a> -->
     <a href="./letter.html">Newsletter & Email Blasts</a>
-    <a href="./paid.html">Paid Ad Campaigns</a>
+    <!-- <a href="./paid.html">Paid Ad Campaigns</a> -->
     <a href="./pressoffice.html">Press Office</a>
 
 </div>
@@ -1465,13 +1451,13 @@ form textarea::placeholder {
   <div class="container">
     <!-- Left -->
       <!-- Left Panel -->
-  <div class="left-sidebar">
+  <!-- <div class="left-sidebar">
       <div class="box">
 
         <div id="advertisements"></div>
       </div>
 
-    </div>
+    </div> -->
 
 
     <!-- Main -->
@@ -1520,7 +1506,7 @@ form textarea::placeholder {
 
 
     <!-- Right -->
-   <div class="right-sidebar">
+   <!-- <div class="right-sidebar">
       <div class="heading">
         <h3>Projects</h3>
         <a href="./project.html"><button type="button" class="gold-btn">show more<i
@@ -1546,7 +1532,7 @@ form textarea::placeholder {
         <div id="reports"></div>
       </div>
 
-    </div>
+    </div> -->
   </div>
 <!-- Footer Section -->
 <!-- Footer Section -->
@@ -1740,6 +1726,13 @@ function clearForm() {
       loadReports();
       newsCategory();
 
+    });
+  </script>
+     <script src="./js/latestNews.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadLatestNews();
+      
     });
   </script>
 

@@ -186,7 +186,7 @@
     .scrolling-track {
       display: flex;
       width: max-content;
-      animation: scroll-loop 20s linear infinite;
+ animation: scroll-loop 30s linear infinite;
       padding-top: 3px;
       gap: 24px;
     }
@@ -1159,33 +1159,8 @@
               <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
             </div>
       <div class="search-bar-bg">
-        <div class="scrolling-track">
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
-          <!-- Duplicate content for seamless loop -->
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
+        <div class="scrolling-track" id="newsTicker">
+          <!-- News titles will be inserted here -->
         </div>
       </div>
 
@@ -1217,7 +1192,7 @@
     <a href="./weekly.html">Weekly Newsletter</a>
     <a href="./company-profile.html">Company Profile</a>
     <a href="./Digitaledition.html">Digital Edition</a>
-    <a href="./webinar.html">Webinar Recording</a>
+    <!-- <a href="./webinar.html">Webinar Recording</a> -->
 
 
   </div>
@@ -1225,13 +1200,13 @@
   <!-- Main Content -->
   <div class="main-container">
     <!-- Left Sidebar Ads -->
- <div class="left-sidebar">
+ <!-- <div class="left-sidebar">
       <div class="box">
 
         <div id="advertisements"></div>
       </div>
 
-    </div>
+    </div> -->
 
     <!-- Main Magazine Section -->
     <main class="magazine-section">
@@ -1404,6 +1379,13 @@
       loadReports();
       newsCategory();
 
+    });
+  </script>
+   <script src="./js/latestNews.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadLatestNews();
+      
     });
   </script>
 </body>

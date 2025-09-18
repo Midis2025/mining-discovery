@@ -26,6 +26,8 @@ function serviceDropdown() {
       dropdown.classList.toggle("show");
       header.classList.toggle("rotate");
     }
+    // subscribe popup
+    
 /* -------------------------
    CAROUSELS
 ------------------------- */

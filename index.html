@@ -35,14 +35,35 @@
         <i class="fas fa-bars"></i>
       </button>
 
-      <div class="nav-links" id="navMenu">
+     <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
-        <a href="./newss.html">News Section</a>
+        <!-- <a href="./newss.html">News Section</a> -->
+          <div class="dropdown">
+    <a href="./newss.html" class="dropbtn">News Section</a>
+       <div class="menu-panel">
+      <a href="#" class="menu-item">Latest News</a>
+      <a href="#" class="menu-item">Evening Chatter</a>
+      <a href="#" class="menu-item">Gold News</a>
+      <a href="#" class="menu-item">Announcement</a>
+      <a href="#" class="menu-item">Silver News</a>
+      <a href="#" class="menu-item">Popular This Week</a>
+      <a href="#" class="menu-item">Copper News</a>
+      <a href="#" class="menu-item">Projects</a>
+      <a href="#" class="menu-item">Precious Metals</a>
+      <a href="#" class="menu-item">Research Reports</a>
+      <a href="#" class="menu-item">Corporate News</a>
+      <a href="#" class="menu-item">Sponsored Post</a>
+      <a href="#" class="menu-item">World News</a>
+      <a href="#" class="menu-item">What’s On</a>
+      <a href="#" class="menu-item">Leadership Thoughts</a>
+    </div>
+ 
+  </div>
         <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
-      </div>
+      </div> 
 
       <div class="header-buttons" id="headerButtons">
         <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
@@ -58,34 +79,9 @@
               <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
               <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
             </div>
-      <div class="search-bar-bg">
-        <div class="scrolling-track">
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
-          <!-- Duplicate content for seamless loop -->
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
-          <div class="scrolling-content">
-            <p>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025</p>
-
-          </div>
+    <div class="search-bar-bg">
+        <div class="scrolling-track" id="newsTicker">
+          <!-- News titles will be inserted here -->
         </div>
       </div>
 
@@ -112,6 +108,27 @@
         allowfullscreen></iframe>
     </div>
   </div>
+  <!-- Popup Overlay -->
+  <div class="popup-overlay" id="popup2">
+    <div class="subscribe-box">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <img src="./image/LOGO FOR Print 3.png" alt="Logo">
+      <h2>Stay Updated</h2>
+      <p>Join our newsletter & magazine updates 🚀</p>
+
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Enter Your Email">
+        <button onclick="subscribe()">Subscribe</button>
+      </div>
+      <small style="color:#aaa;">We respect your privacy. No spam ✨</small>
+    </div>
+  </div>
+
+
+
+
+
+
   <div class="fullweb">
     <div class="leftslidebar">
       <!-- Left Info Card -->
@@ -437,11 +454,15 @@
 
 <div class="video-card">
   <div class="video-info">
+    <!-- Thumbnail preview -->
     <div class="video-thumbnail" data-video="dQw4w9WgXcQ" onclick="loadIframe(this)">
-      <img src="https://i.ytimg.com/an_webp/oatZKT-CB_k/mqdefault_6s.webp?du=3000&sqp=CK27o8YG&rs=AOn4CLAYTDCCtFGKZ4FObGh15WxndKmX1Q" alt="Video Thumbnail">
+      <img src="./image/fourcard.avif" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <p>Mining Insights</p>
+
+    <!-- Video title and description -->
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
   </div>
 </div>
 
@@ -718,7 +739,29 @@
   </footer>
 
 
+<script>
+  // Show popup only once for the entire site visit (using localStorage)
+  window.onload = function () {
+    if (!localStorage.getItem("subscribedPopupShown")) {
+      document.getElementById("popup").style.display = "flex";
+      localStorage.setItem("subscribedPopupShown", "true");
+    }
+  };
 
+  function closePopup() {
+    document.getElementById("popup2").style.display = "none";
+  }
+
+  function subscribe() {
+    const email = document.getElementById('email').value;
+    if (email.trim() === "") {
+      alert("⚠️ Please enter your email.");
+    } else {
+      alert("✅ Thank you for subscribing, " + email + "!");
+      closePopup();
+    }
+  }
+</script>
 
   <script src="./script.js"></script>
   <script src="./js/latestNews.js"></script>
@@ -748,35 +791,6 @@
   </script>
 
 
-  <script>
-    function searchNews() {
-      const query = document.getElementById("searchInput").value.toLowerCase().trim();
-
-      // keyword → URL mapping
-      const pages = {
-        "gold": "gold.html",
-        "silver": "silver.html",
-        "copper": "cooper.html",
-        "latestnews": "newss.html",
-        "magazin": "magzin.html",
-        "metal": "metal.html",
-        "morning": "morning.html",
-        "podcast": "podcast.html",
-        "popularnews": "popular.html",
-        "pressoffice": "pressoffice.html",
-        "globalnews": "Global.html",
-
-
-        // aur bhi add kar sakte ho
-      };
-
-      if (pages[query]) {
-        window.location.href = pages[query]; // match mil gaya to redirect
-      } else {
-        alert("No news page found for: " + query);
-      }
-    }
-  </script>
 
 
 </body>

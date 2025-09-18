@@ -16,13 +16,13 @@ async function loadSponsoredPosts() {
       return;
     }
 
-    // 🟢 Top Post
+    // 🟢 Top Post - Made fully clickable
     const top = posts[0];
     topPostContainer.innerHTML = `
-      <div class="sec1">
+      <div class="sec1 clickable-post" data-url="./news-details.html?id=${top.id}&category=sponsored-post" style="cursor: pointer;">
         <img src="${top.image?.url || top.image?.formats?.small?.url || './image/placeholder.jpg'}" />
       </div>
-      <div class="sec2">
+      <div class="sec2 clickable-post" data-url="./news-details.html?id=${top.id}&category=sponsored-post" style="cursor: pointer;">
         <span class="tag">SPONSORED POST</span>
         <p class="post-text">${top.short_description || ''}</p>
         <a href="./news-details.html?id=${top.id}&category=sponsored-post">
@@ -31,12 +31,12 @@ async function loadSponsoredPosts() {
       </div>
     `;
 
-    // 🟢 Grid Cards
+    // 🟢 Grid Cards - Made fully clickable
     gridContainer.innerHTML = posts
       .slice(1, 6)
       .map(
         (post) => `
-          <div class="card1">
+          <div class="card1 clickable-post" data-url="./news-details.html?id=${post.id}&category=sponsored-post" style="cursor: pointer;">
             <img src="${post.image?.url || post.image?.formats?.small?.url || './image/placeholder.jpg'}" />
             <span class="tag-post">SPONSORED POST</span>
             <h4>${post.title}</h4>
@@ -47,6 +47,22 @@ async function loadSponsoredPosts() {
         `
       )
       .join("");
+
+    // Add click event listeners to all clickable posts
+    document.querySelectorAll('.clickable-post').forEach(element => {
+      element.addEventListener('click', function(e) {
+        // Prevent navigation if clicking on the button or link directly
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
+          return;
+        }
+        
+        const url = this.getAttribute('data-url');
+        if (url) {
+          window.location.href = url;
+        }
+      });
+    });
+
   } catch (err) {
     console.error("Error loading sponsored posts", err);
   }
