@@ -77,7 +77,7 @@
     }
 
     .subscribe-box img {
-      width: 80px;
+      width: 200px;
       margin-bottom: 15px;
       animation: float 3s ease-in-out infinite;
     }
@@ -255,6 +255,7 @@
       height: 70px;
       
     }
+   
 
     .nav-links {
       display: flex;
