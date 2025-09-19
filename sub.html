@@ -853,17 +853,19 @@
     height: auto;
   }
 }
-       .footer-container {
+ .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
-  padding: 60px 40px 30px;
+  padding: 60px 100px 30px;
   color: #fff;
   position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ 
 }
 .social-iconss{
   padding-bottom: 10px;
+  display: flex;
+  gap: 15px;
 }
 
 .divider {
@@ -876,10 +878,11 @@
 }
 
 .footer-content {
+  padding-top: 30px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-
+  /* max-width: 1300px; */
   margin: auto;
   gap: 30px;
 }
@@ -919,11 +922,6 @@
   color: orange;
 }
 
-.footer-center {
-  min-width: 220px;
-  padding-left: 20px;
-}
-
 .footer-center ul {
   list-style: none;
   padding: 0;
@@ -941,13 +939,14 @@
 }
 
 .footer-center li:first-child a {
-  
+
   font-size: 16px;
 }
 
 .footer-center a:hover {
   color: #AE8A4C;
 }
+
 .footer-right {
   flex: 1;
   min-width: 280px;
@@ -995,10 +994,6 @@
   font-size: 13px;
   color: #aaa;
 }
-.search-bar-container-lasts{
-  padding-top: 100px;
-}
-
 
 /* -------- RESPONSIVE -------- */
 
@@ -1070,7 +1065,83 @@
     margin-top: 30px;
   }
 }
-  </style>
+
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      
+      padding: 10px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 960px;
+      max-height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .fp-iframe {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        max-width: 400px;
+        padding: 10px;
+      }
+
+      .fp-iframe {
+        height: 65vh;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        top: 5px;
+        right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .fp-iframe {
+        height: 55vh;
+      }
+    }
+
+    
+
+
+ /* footer */
+ </style>
 </head>
 <body>
       <header class="main-header">
@@ -1220,7 +1291,10 @@
 
    
   </div>
-    <div class="footer-container">
+   
+
+  <!-- Footer Section -->
+  <div class="footer-container">
     <div class="footers">
        <img src="./discoverylogo.jpg" alt="Mining Discovery Logo"  height="70px" />
     </div>
@@ -1236,7 +1310,7 @@
           Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
         </p>
          <div class="search-bar-container-lasts" id="searchContainer">
-       <div class="social-icons">
+       <div class="social-iconss">
               <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
              <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
               <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
@@ -1248,22 +1322,23 @@
         <input type="text" id="searchInput" placeholder="Search..." />
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
-    
+     
     </div>
       </div>
 
       <!-- Center -->
-    <div class="footer-center">
+     <div class="footer-center">
   <ul>
-    <li><a href="index.html">HOME</a></li>
+      <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="newss.html">MARKETING VIDEOS</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
     <li><a href="sub.html">SUBSCRIPTION</a></li>
-    <li><a href="ceo.html">APPS</a></li>
-    <li><a href=".html">COMMENT GUIDELINE</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+    <li><a href="">COMMENT GUIDELINE</a></li>
     <li><a href="multimedia.html">LEGAL NOTICE</a></li>
   </ul>
 </div>
+
     
       
      
@@ -1274,5 +1349,15 @@
       © 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

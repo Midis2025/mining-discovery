@@ -110,7 +110,7 @@ function buildNewsCard({
       <div class="text-content">
         <h3>${safeTitle}</h3>
         <hr class="custom-line">
-        <p>${safeDesc} <span><a href="javascript:void(0)" class="read-more-inline">read more.....</a></span></p>
+        <p>${safeDesc} <span><a href="javascript:void(0)" class="read-more-inline"></a></span></p>
         <span>${safeDate}</span>
         <p>${safeAuthor || "ARRAS MINERALS"}</p>
       </div>

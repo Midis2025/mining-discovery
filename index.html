@@ -549,20 +549,20 @@
           <div class="column">
             <h3>Press Office</h3>
             <ul>
-             <li><a href="https://www.phenomresources.com/">Phenom Resources</a></li>
-             <li><a href="https://nobleplains.com/">Noble Plains Uranium Corp.</a></li>
-            <li><a href="https://astra-exploration.com/">Astra Exploration Inc.</a></li>
-            <li><a href="https://loyalistexploration.com/">Loyalist Exploration</a>
+             <li><a href="https://www.phenomresources.com/news/">Phenom Resources</a></li>
+             <li><a href="https://nobleplains.com/news-releases">Noble Plains Uranium Corp.</a></li>
+            <li><a href="https://astra-exploration.com/news/">Astra Exploration Inc.</a></li>
+            <li><a href="https://loyalistexploration.com/news">Loyalist Exploration</a>
               </li>
               <li>Mining Discovery</li>
               
               <li><a href="https://www.powermetallic.com/">Power Metallic</a>
               </li>
-              <li><a href="https://www.usgoldcorp.com/">U.S. Gold</a></li>
-              <li><a href="https://aurionresources.com/">Aurion</a></li>
-              <li><a href="https://arizonagoldsilver.com/">Arizona</a></li>
-              <li><a href="https://www.gsilver.com/">Guanajuato Silver Company Ltd.</a></li>
-              <li><a href="https://www.digipowerx.com/">Digipower X</a></li>
+              <li><a href="https://www.powermetallic.com/news/">U.S. Gold</a></li>
+              <li><a href="https://aurionresources.com/news/2025/">Aurion</a></li>
+              <li><a href="https://arizonagoldsilver.com/news-releases-2/">Arizona</a></li>
+              <li><a href="https://www.gsilver.com/news/new-2025">Guanajuato Silver Company Ltd.</a></li>
+              <li><a href="https://www.digipowerx.com/press-releases">Digipower X</a></li>
             </ul>
           </div>
 
@@ -740,11 +740,15 @@
 
 
 <script>
-  // Show popup only once for the entire site visit (using localStorage)
+  // Show popup only once per session (using sessionStorage)
   window.onload = function () {
-    if (!localStorage.getItem("subscribedPopupShown")) {
-      document.getElementById("popup").style.display = "flex";
-      localStorage.setItem("subscribedPopupShown", "true");
+    if (!sessionStorage.getItem("subscribedPopupShown")) {
+      setTimeout(() => {
+        document.getElementById("popup2").style.display = "flex";
+        sessionStorage.setItem("subscribedPopupShown", "true");
+      }, 7000); // 7 sec delay
+    } else {
+      document.getElementById("popup2").style.display = "none";
     }
   };
 

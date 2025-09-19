@@ -123,11 +123,14 @@ window.addEventListener("load", () => {
 
   const youtubeLink = "https://www.youtube.com/embed/pzxdSK6t2Eo?autoplay=1";
 
-  // Show popup after 4 seconds
-  setTimeout(() => {
-    youtubeIframe.src = youtubeLink;
-    popup.style.display = "block";
-  }, 4000);
+  // Check if popup already shown in this session
+  if (!sessionStorage.getItem("youtubePopupShown")) {
+    setTimeout(() => {
+      youtubeIframe.src = youtubeLink;
+      popup.style.display = "block";
+      sessionStorage.setItem("youtubePopupShown", "true"); // mark as shown
+    }, 4000);
+  }
 
   // Close popup
   closeBtn.addEventListener("click", () => {
