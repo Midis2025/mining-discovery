@@ -408,345 +408,236 @@
 }
 
    /* Base styles - Mobile First Approach */
-.container2 {
-    padding: clamp(8px, 2vw, 20px);
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(10px, 2vw, 25px);
-    background-color: white;
-    max-width: min(95vw, 1400px);
-  
-    justify-content: center;
-}
 
-.left-sidebar,
-.right-sidebar {
-  width: 280px;
-  height: calc(100vh - 120px);
-  position: sticky;
-  top: 100px;
-  overflow-y: auto;
-  background: #fff;
- 
-  border-radius: 6px;
-  padding: 10px;
 
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
-}
 
-.left-sidebar::-webkit-scrollbar,
-.right-sidebar::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari */
-}
-.left-sidebar .box {
-  background: white;
-  padding: 12px;
-  margin-bottom: 15px;
-}
-
-.left-sidebar .box img {
-  width: 100%;
-  height: auto;
-}
 
 h2 {
-    margin-bottom: 0;
- 
-    border-bottom: 2px solid #8d6d2a;
-    display: inline-block;
-    margin-bottom: clamp(15px, 2vw, 25px);
-   font-size: 28px;
-}
-
-.main {
-    flex: 3;
-  
-    
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 20vw, 280px), 1fr));
-    gap: clamp(15px, 2vw, 25px);
-    justify-content: center;
-}
-
-.card {
-    background: #292929;
-    color: white;
-    padding: clamp(12px, 2vw, 20px);
-    border-radius: clamp(6px, 1vw, 10px);
-    text-align: center;
-    min-height: clamp(250px, 35vw, 320px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card img {
-    width: clamp(100px, 15vw, 170px);
-    height: clamp(100px, 15vw, 170px);
-    border-radius: 50%;
-    object-fit: contain;
-    background-color: white;
-    border: 3px solid #8d6d2a;
-    padding: 5px;
-    margin-bottom: clamp(8px, 1.5vw, 15px);
-}
-
-.card p {
-    color: #8d6d2a;
-    font-size: clamp(0.85rem, 1.8vw, 1rem);
-    margin: clamp(5px, 1vw, 8px) 0;
-}
-
-.card .black {
-    width: clamp(100px, 15vw, 170px);
-    height: clamp(100px, 15vw, 170px);
-    border-radius: 50%;
-    object-fit: contain;
-    border: 3px solid #8d6d2a;
-    padding: 5px;
-  
-    margin-bottom: clamp(8px, 1.5vw, 15px);
-}
-
-.name {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    margin: clamp(8px, 1.5vw, 12px) 0 clamp(3px, 0.8vw, 6px);
-    font-weight: bold;
-    line-height: 1.3;
-}
-
-.title {
-    font-size: clamp(0.85rem, 1.8vw, 1rem);
-    color: #8d6d2a;
-    min-height: clamp(30px, 5vw, 45px);
-    font-weight: 500;
-    line-height: 1.4;
-    margin-bottom: clamp(8px, 1.5vw, 12px);
-}
-
-.profile-btn {
-    display: inline-block;
-    background: none;
-    border: 1px solid white;
-    padding: clamp(5px, 1vw, 8px) clamp(10px, 2vw, 15px);
-    color: white;
-    margin-top: clamp(5px, 1vw, 12px);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: clamp(0.8rem, 1.6vw, 0.95rem);
-    border-radius: 4px;
-}
-
-.profile-btn:hover {
-    background: white;
-    color: black;
-    transform: translateY(-1px);
-}
-/* 📱 Small phones (≤375px) */
-@media (max-width: 375px) {
-.left-sidebar{
-  display: none;
-}
-}
-
-/* Small phones (320px - 480px) */
-/* @media screen and (max-width: 480px) {
-    .container2 {
-        flex-direction: column;
-        padding: 10px;
-        gap: 15px;
+      text-align: left;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px 30px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      display: inline-block;
     }
-    .leftslidebar{
-      display: none;
-    }
-    
-    .left-card {
-        max-width: 100%;
-        order: 2;
-    }
-    
-    .main {
-        order: 1;
-    }
-    .main h2{
+
+    .ceo-profile {
+      max-width: 1100px;
+      margin: 20px auto;
+      background: #2b2b2b;
+      border-radius: 10px;
+      padding: 20px;
       display: flex;
-      justify-content: center;
-      text-align: center;
+      align-items: center;
+      color: #fff;
+      gap: 20px;
+      flex-wrap: wrap;
     }
-    
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-} */
-@media (min-width: 320px) and (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 12px;
-  }
-  .card {
-    height: auto;
-    padding: 10px;
-  }
- .left-sidebar{
-  display: none;
- }
-  .card img {
-    width: 90px;
-    height: 90px;
-  }
-  .name {
-    font-size: 16px;
-  }
-  .title {
-    font-size: 13px;
-  }
+
+.ceo-profile img {
+  width: 200px;              /* bada circle */
+  height: 200px;
+  border-radius: 50%;        /* circle */
+  border: 5px solid #fff;
+  flex-shrink: 0;
+  object-fit: contain;       /* logo distort/cut nahi hoga */
+  background: #fff;          /* safe white bg */
+  padding: 10px;             /* thoda gap logo aur circle border me */
 }
 
 
-/* Tablets (481px - 768px) */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    }
-    
-    .left-card {
-        min-width: 180px;
-        max-width: 240px;
-    }
-}
+    .ceo-info {
+      flex: 1;
 
-/* Small laptops and large tablets (769px - 1024px) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .container2 {
-        max-width: 95vw;
     }
-    
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
-}
 
-/* Desktop (1025px - 1440px) */
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-    .container2 {
-        max-width: 94vw;
-        padding: 20px;
+    .ceo-info h3 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: bold;
+      
     }
-    
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 22px;
-    }
-}
 
-/* Large Desktop (1441px - 1920px) */
-@media screen and (min-width: 1441px) and (max-width: 1920px) {
-    .container2 {
-        max-width: 85vw;
-        padding: 25px;
+    .ceo-info p {
+      margin: 8px 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color:#ae8a4c;
     }
-    
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 25px;
-    }
-    
-    .card {
-        min-height: 340px;
-    }
-}
 
-/* Ultra-wide screens (1921px+) */
-@media screen and (min-width: 1921px) {
-    .container2 {
-        max-width: 2100px;
-        padding: 30px;
-        gap:30px;
-    }
-    
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 30px;
-    }
-    
-    h2 {
-        font-size: 2rem;
-    }
-}
-
-/* Kindle and e-readers (600px - 800px width, typically) */
-@media screen and (min-width: 600px) and (max-width: 800px) and (orientation: portrait) {
-    .container2 {
-        flex-direction: column;
-        max-width: 95vw;
-    }
-    
-    .left-card {
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-    
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 18px;
-    }
-}
-
-/* Landscape orientation adjustments */
-@media screen and (orientation: landscape) and (max-height: 600px) {
-    .card {
-        min-height: auto;
-        padding: 10px;
-    }
-    
-    .card img,
-    .card .black {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .leftslidebar {
-        max-height: 80vh;
-    }
-}
-
-/* High DPI displays */
-@media screen and (-webkit-min-device-pixel-ratio: 2), 
-       screen and (min-resolution: 192dpi) {
-    .card img,
-    .card .black {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
-}
-
-/* Accessibility - Reduced motion */
-@media (prefers-reduced-motion: reduce) {
     .profile-btn {
-        transition: none;
+      display: inline-block;
+      background: #cfa44a;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: 0.3s;
+      text-decoration: none;
     }
-    
+
     .profile-btn:hover {
-        transform: none;
+      background: #b48c34;
     }
+
+    .more-profile-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    
+    }
+
+    /* Slider container */
+    .slider-container {
+      position: relative;
+      max-width: 1100px;
+      margin: auto;
+      overflow: hidden;
+      padding: 20px 40px;
+    }
+
+    .profiles {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .profile-card {
+      flex: 0 0 25%;
+      max-width: 25%;
+      background: #2b2b2b;
+      border-radius: 10px;
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      margin: 0 10px;
+      transition: transform 0.3s;
+      box-sizing: border-box;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-5px);
+    }
+
+  .profile-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;       /* circle shape */
+  border: 2px solid #fff;
+  margin-bottom: 10px;
+  object-fit: contain;      /* image full dikhegi, cut nahi hogi */
+  background: #fff;         /* extra space white ho jayega */
+  padding: 5px;             /* thoda gap taaki image circle ke andar ache se aaye */
 }
 
 
+    .profile-card h4 {
+      margin: 8px 0 4px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .profile-card small {
+      display: block;
+      color: #ccc;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .profile-card .profile-btn {
+      background: #cfa44a;
+      font-size: 12px;
+      padding: 5px 12px;
+    }
+
+    /* Slider buttons */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #cfa44a;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: bold;
+      z-index: 100;
+      transition: 0.3s;
+    }
+
+    .arrow:hover {
+      background: #b48c34;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .profile-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 18px;
+        margin: 15px;
+      }
+      .ceo-profile {
+        flex-direction: column;
+        text-align: center;
+        margin: 10px;
+      }
+      .ceo-profile img {
+        margin-bottom: 15px;
+      }
+      .ceo-info h3 {
+        font-size: 20px;
+      }
+      .profile-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin: 0 5px;
+      }
+      .arrow {
+        padding: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 16px;
+      }
+      .ceo-info p {
+        font-size: 13px;
+      }
+      .profile-card img {
+        width: 70px;
+        height: 70px;
+      }
+      .arrow {
+        padding: 6px;
+      }
+    }
 
 
+   
 
-
-
-    
-
-
+    /* Left card styling */
+  
 
 
 .footer-container {
@@ -1041,100 +932,111 @@ h2 {
 
   </div>
 <div class="container2">
-     <!-- Left Sidebar -->
-   <!-- <div class="left-sidebar">
-      <div class="box">
-
-        <div id="advertisements"></div>
-      </div>
-
-    </div> -->
+   
    
 
     <!-- Main Content -->
     <div class="main">
-        <h2>Company Profile</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="./image/phenom.png" alt="George Bee">
-                <div class="name">Phenom Resource</div>
+          <div class="ceo-container">
+ <h2>Company Profile</h2>
 
-             <p>profile</p>
-            </div>
-            <div class="card">
-                <img src="./image/ASTRA.png" alt="Michel Amar">
-              <div class="name">Astra Exploration Inc.</div>
-              
-                  <p>profile</p>
-            </div>
-            <div class="card">
-                <img src="./image/Aurion.png" alt="Mike Stark">
-                <div class="name">Aurion Resources.</div>
-              <p>profile</p>
-            </div>
-            <div class="card">
-                <img src="./image/DIGIPOWER X.png" alt="Zayn Kalyan">
-                <div class="name">Digipower X.</div>
-          
-              <p>profile</p>
-            </div>
-            <div class="card">
-            <img src="./image/mD new logo 6.png" alt="Zayn Kalyan">
-                <div class="name">Mining Discovery</div>
-         
-                  <p>profile</p>
-            </div>
-            <div class="card">
-           <img src="./image/download (1).png" alt="Zayn Kalyan">
-                <div class="name">Noble Plains 
-Uranium Corp.</div>
-             
-                <p>profile</p>
-            </div>
-            <div class="card">
-                <img src="./image/logo recreation-01.png" alt="Zayn Kalyan">
-                <div class="name">Power Metalic</div>
-             
-                <p>profile</p>
-            </div>
-            <div class="card">
-              <img src="./image/ARRAS 1.png" alt="Zayn Kalyan">
-                <div class="name">Arras Minerals Corp.</div>
-              
-                 <p>profile</p>
-            </div>
-            <div class="card">
-                 <img src="./image/arizona  1.png" alt="Zayn Kalyan">
-                <div class="name">Arizona Gold & 
-Silver Inc.</div>
-                
-                 <p>profile</p>
-            </div>
-             <div class="card">
-                 <img src="./image/image 1.png" alt="Zayn Kalyan">
-                <div class="name">Guanajuato Silver Company Ltd..</div>
-                
-                 <p>profile</p>
-            </div>
-             <div class="card">
-                 <img src="./image/loyalist icon black-04 1 (1).png" alt="Zayn Kalyan">
-                <div class="name">Loyalist Exploration Ltd..</div>
-                
-                 <p>profile</p>
-            </div>
-             <div class="card">
-                 <img src="./image/image 2.png" alt="Zayn Kalyan">
-                <div class="name">Gold Hunter Resources Inc.</div>
-                
-                 <p>profile</p>
-            </div>
-              <div class="card">
-                 <img src="./image/Company Logo/us gold black-01-01.png" alt="Zayn Kalyan"  class="black">
-                <div class="name">U.S Gold Corp.</div>
-                
-                 <p>profile</p>
-            </div>
-        </div>
+  <!-- Big Profile Card -->
+<div class="ceo-profile" id="mainProfile">
+  <img src="./image/Company Logo/ASTRA.png" alt="CEO" id="mainProfileImg">
+  <div class="ceo-info">
+    <h3 id="mainProfileName">Phenom Resource</h3>
+    <small id="mainProfileTitle">Mining & Exploration Company</small>
+    <p id="mainProfileDesc">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <a href="#" class="profile-btn" id="mainProfileBtn">Profile</a>
+  </div>
+</div>
+  <h2 class="more-profile-title">For More Profile</h2>
+
+  <!-- Slider Section -->
+<div class="slider-container">
+  <button class="arrow left" onclick="moveSlide(-1)">&#10094;</button>
+  <div class="profiles" id="slider">
+
+    <div class="profile-card"
+      data-name="Zayn Kalyan"
+      data-title="CEO & Director Infinity Stone Ventures"
+      data-desc="Zayn Kalyan leads Infinity Stone Ventures focusing on critical minerals and the global energy transition."
+      data-img="./image/Company Logo/Aurion.png"
+      data-link="zayn-kalyan.html">
+      <img src="./image/Company Logo/Aurion.png" alt="">
+      <h4>Zayn Kalyan</h4>
+      <small>CEO & Director Infinity Stone Ventures</small>
+      <a href="#" class="profile-btn">Profile</a>
+    </div>
+
+    <div class="profile-card"
+      data-name="Brian Miller"
+      data-title="CEO & President Astra Exploration"
+      data-desc="Brian Miller is leading Astra Exploration with a focus on gold and copper discoveries in South America."
+      data-img="./image/Company Logo/ASTRA.png"
+      data-link="brian-miller.html">
+      <img src="./image/Company Logo/ASTRA.png" alt="">
+      <h4>Brian Miller</h4>
+      <small>CEO & President Astra Exploration</small>
+      <a href="#" class="profile-btn">Profile</a>
+    </div>
+
+    <div class="profile-card"
+      data-name="Mati Talikka"
+      data-title="CEO of Sunstone Metals"
+      data-desc="Mati Talikka drives Sunstone Metals’ exploration projects with expertise in precious metals."
+      data-img="./image/Company Logo/Loyalist icon.png"
+      data-link="mati-talikka.html">
+      <img src="./image/Company Logo/Loyalist icon.png" alt="">
+      <h4>Mati Talikka</h4>
+      <small>CEO of Sunstone Metals</small>
+      <a href="#" class="profile-btn">Profile</a>
+    </div>
+
+    <div class="profile-card"
+      data-name="Paul Cowley"
+      data-title="CEO of First Vanadium Corp."
+      data-desc="Paul Cowley is expanding First Vanadium Corp. with a strategic focus on vanadium exploration."
+      data-img="./image/logo recreation-01.png"
+      data-link="paul-cowley.html">
+      <img src="./image/logo recreation-01.png" alt="">
+      <h4>Paul Cowley</h4>
+      <small>CEO of First Vanadium Corp.</small>
+      <a href="#" class="profile-btn">Profile</a>
+    </div>
+
+    <div class="profile-card"
+      data-name="Michel Amar"
+      data-title="CEO of AmmPower Corp."
+      data-desc="Michel Amar heads AmmPower Corp., advancing green energy solutions with ammonia-based technologies."
+      data-img="./image/Company Logo/arizona .png"
+      data-link="michel-amar.html">
+      <img src="./image/Company Logo/arizona .png" alt="">
+      <h4>Michel Amar</h4>
+      <small>CEO of AmmPower Corp.</small>
+      <a href="#" class="profile-btn">Profile</a>
+    </div>
+
+    <div class="profile-card"
+      data-name="Mike Stark"
+      data-title="CEO & President Arizona Gold"
+      data-desc="Mike Stark leads Arizona Gold with a vision to expand and develop gold resources."
+      data-img="./image/Company Logo/Guanajuato.png"
+      data-link="mike-stark.html">
+      <img src="./image/Company Logo/Guanajuato.png" alt="">
+      <h4>Mike Stark</h4>
+      <small>CEO & President Arizona Gold</small>
+      <a href="#" class="profile-btn">Profile</a>
+    </div>
+
+  </div>
+  <button class="arrow right" onclick="moveSlide(1)">&#10095;</button>
+</div>
+</div>
+
     </div>
 </div>
  <!-- Footer Section -->
@@ -1233,5 +1135,82 @@ Silver Inc.</div>
       
     });
   </script>
+   <script>
+  let currentIndex = 0;
+  let autoSlideInterval;
+
+  function moveSlide(direction) {
+    const slider = document.getElementById("slider");
+    const cards = document.querySelectorAll(".profile-card");
+    const containerWidth = document.querySelector(".slider-container").offsetWidth;
+
+    if (cards.length === 0) return;
+
+    const cardStyle = getComputedStyle(cards[0]);
+    const cardMargin = parseInt(cardStyle.marginLeft) + parseInt(cardStyle.marginRight);
+    const cardWidth = cards[0].offsetWidth + cardMargin;
+
+    let visibleCards = Math.floor(containerWidth / cardWidth);
+    if (visibleCards < 1) visibleCards = 1;
+
+    const totalCards = cards.length;
+
+    currentIndex += direction;
+
+    // Infinite loop logic
+    if (currentIndex < 0) {
+      currentIndex = totalCards - visibleCards;
+    }
+    if (currentIndex > totalCards - visibleCards) {
+      currentIndex = 0;
+    }
+
+    const offset = currentIndex * cardWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  // Auto slide function
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      moveSlide(1); // Slide forward automatically
+    }, 3000); 
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+
+  window.onload = function () {
+    startAutoSlide();
+  };
+
+  
+  window.addEventListener("resize", () => {
+    moveSlide(0);
+  });
+
+
+  const sliderContainer = document.querySelector(".slider-container");
+  sliderContainer.addEventListener("mouseenter", stopAutoSlide);
+  sliderContainer.addEventListener("mouseleave", startAutoSlide);
+  document.addEventListener("DOMContentLoaded", function () {
+    const mainImg = document.getElementById("mainProfileImg");
+    const mainName = document.getElementById("mainProfileName");
+    const mainTitle = document.getElementById("mainProfileTitle");
+    const mainDesc = document.getElementById("mainProfileDesc");
+    const mainBtn = document.getElementById("mainProfileBtn");
+
+    document.querySelectorAll(".profile-card").forEach(card => {
+      card.addEventListener("click", () => {
+        mainImg.src = card.dataset.img;
+        mainName.textContent = card.dataset.name;
+        mainTitle.textContent = card.dataset.title;
+        mainDesc.textContent = card.dataset.desc;
+        mainBtn.href = card.dataset.link;
+      });
+    });
+  });
+</script>
 </body>
 </html>

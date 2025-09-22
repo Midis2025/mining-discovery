@@ -37,32 +37,13 @@
 
      <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
-       <!-- <a href="./newss.html">News Section</a>  -->
-         <div class="dropdown">
-    <a href="./newss.html" class="dropbtn">News Section</a>
-       <div class="menu-panel">
-      <a href="#" class="menu-item">Latest News</a>
-      <a href="#" class="menu-item">Evening Chatter</a>
-      <a href="#" class="menu-item">Gold News</a>
-      <a href="#" class="menu-item">Announcement</a>
-      <a href="#" class="menu-item">Silver News</a>
-      <a href="#" class="menu-item">Popular This Week</a>
-      <a href="#" class="menu-item">Copper News</a>
-      <a href="#" class="menu-item">Projects</a>
-      <a href="#" class="menu-item">Precious Metals</a>
-      <a href="#" class="menu-item">Research Reports</a>
-      <a href="#" class="menu-item">Corporate News</a>
-      <a href="#" class="menu-item">Sponsored Post</a>
-      <a href="#" class="menu-item">World News</a>
-      <a href="#" class="menu-item">What’s On</a>
-      <a href="#" class="menu-item">Leadership Thoughts</a>
-    </div>
- 
-  </div>
+       <a href="./newss.html">News Section</a> 
+       
         <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
+      
       </div> 
 
       <div class="header-buttons" id="headerButtons">
@@ -85,14 +66,80 @@
         </div>
       </div>
 
+<!-- Header Search + Hamburger -->
+<div class="search-box-wrapper">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder=" " />
+    <div class="animated-text-container">
+      <span id="animatedText">Search gold prices</span>
+    </div>
+    <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+  </div>
 
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder=" " />
-        <div class="animated-text-container">
-          <span id="animatedText">Search gold prices</span>
-        </div>
-        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
-      </div>
+  <!-- Hamburger icon -->
+  <button class="hamburger2" onclick="toggleMenu2()">
+    <i class="fas fa-bars"></i>
+  </button>
+</div>
+
+<!-- Dropdown menu (hidden by default) -->
+<div id="hamburgerMenu" class="hamburger-menu">
+  <div class="menu-tabs">
+    <p class="tab active" data-target="news">NEWS SECTION</p>
+    <p class="tab" data-target="services">SERVICES</p>
+    <p class="tab" data-target="magazine">MAGAZINE</p>
+    <p class="tab" data-target="others">OTHERS</p>
+  </div>
+
+  <!-- NEWS -->
+  <div class="menu-content active" id="news">
+    <p>Latest News</p>
+    <p>Precious Metals</p>
+    <p>Evening Chatter</p>
+    <p>Research Reports</p>
+      <p>Gold News</p>
+    <p>Corporate News</p>
+    <p>Announcement</p>
+    <p>Sponsored Post</p>
+      <p>Silver News</p>
+    <p>World News</p>
+    <p>Popular This Week</p>
+    <p>What’s On</p>
+    <p>Copper News</p>
+    <p>Leadership Thoughts</p>
+    <p>Projects</p>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="menu-content" id="services">
+    <p>Investor Campaign</p>
+    <p>News Syndication</p>
+    <p>Digital Branding</p>
+    <p>Press Office</p>
+    <p>Youtube</p>
+    <p>Conference Media Coverage</p>
+    <p>Newsletter & Email Blast</p>
+  </div>
+
+  <!-- MAGAZINE -->
+  <div class="menu-content" id="magazine">
+    <p>CEO Profile</p>
+    <p>Newsletter</p>
+    <p>Company Profile</p>
+    <p>Digital Edition</p>
+  </div>
+
+  <!-- OTHERS -->
+  <div class="menu-content" id="others">
+    <p>Copper News</p>
+    <p>Leadership Thoughts</p>
+    <p>Projects</p>
+  </div>
+</div>
+
+
+
+        
     </div>
   </header>
 
@@ -292,35 +339,29 @@
             <h2 class="left-heading">Latest Multimedia</h2>
 
             <div class="left-box">
+             <div class="video-card">
+  <div class="video-info">
+    <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
+      <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+    <p>Saudi Arabia Project Insights</p>
+  </div>
+</div>
               <div class="video-card">
-                <div class="video-info">
-                  <!-- Thumbnail preview -->
-                  <div class="video-thumbnail" onclick="loadIframe(this)">
-                    <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/maxresdefault.jpg" alt="Video Thumbnail">
-                    <div class="play-button">▶</div>
-                  </div>
+  <div class="video-info">
+    <!-- Thumbnail preview -->
+    <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
+      <img src="./image/fourcard.avif" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
 
-                  <!-- Video title and description -->
-                  <h4>Resource Talks visits Arras Minerals in Kazakhstan</h4>
-
-                </div>
-              </div>
-              <div class="video-card">
-                <div class="video-info">
-                  <!-- Thumbnail preview -->
-                  <div class="video-thumbnail" onclick="loadIframe2(this)">
-                    <img src="./image/fourcard.avif" alt="Video Thumbnail">
-                    <div class="play-button">▶</div>
-                  </div>
-
-                  <!-- Video title and description -->
-                  <h4>Power Metals - Project Update Saudi Arabia Project Insights</h4>
-
-                </div>
-              
-                
-              </div>
-               <a href="./cooper.html">
+    <!-- Video title and description -->
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
+  </div>
+</div>
+               <a href="">
               <div class="more-btn">More →</div>
             </a>
             </div>
@@ -338,7 +379,7 @@
 
 
 
-            <a href="./cooper.html">
+            <a href="">
               <div class="more-btn">More →</div>
             </a>
           </div>
@@ -402,7 +443,7 @@
               <div class="author">By: Michael Clark</div>
             </div>
 
-            <a href="./corporate.html">
+            <a href="">
               <div class="more-btn">More →</div>
             </a>
 
@@ -455,7 +496,7 @@
 <div class="video-card">
   <div class="video-info">
     <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="dQw4w9WgXcQ" onclick="loadIframe(this)">
+    <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
       <img src="./image/fourcard.avif" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
@@ -494,7 +535,7 @@
 <div class="video-card">
   <div class="video-info">
     <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="dQw4w9WgXcQ" onclick="loadIframe(this)">
+    <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
       <img src="./image/fourcard.avif" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
@@ -740,6 +781,25 @@
 
 
 <script>
+  function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+const tabs = document.querySelectorAll(".hamburger-menu .tab");
+const contents = document.querySelectorAll(".hamburger-menu .menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    // Remove active class from all
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+
+    // Add active to clicked tab & related content
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
+  });
+});
+
   // Show popup only once per session (using sessionStorage)
   window.onload = function () {
     if (!sessionStorage.getItem("subscribedPopupShown")) {

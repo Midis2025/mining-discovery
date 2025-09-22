@@ -261,7 +261,8 @@ async function loadTopMagazines() {
 document.addEventListener("DOMContentLoaded", loadTopMagazines);
 // video slider
 function loadIframe(el) {
-  const videoId = el.getAttribute("data-video"); // unique ID per card
+  const videoId = el.getAttribute("data-video"); // YouTube video ID
+  const thumbnail = el.querySelector("img").src; // preserve thumbnail
   const card = el.closest(".video-card");
 
   const iframeWrapper = document.createElement("div");
@@ -274,7 +275,7 @@ function loadIframe(el) {
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen>
     </iframe>
-    <button class="close-btn" onclick="closeIframe(this, '${videoId}', '${el.querySelector("img").src}')">×</button>
+    <button class="close-btn" onclick="closeIframe(this, '${videoId}', '${thumbnail}')">×</button>
   `;
 
   el.replaceWith(iframeWrapper);
@@ -293,4 +294,5 @@ function closeIframe(btn, videoId, thumbnail) {
 
   wrapper.remove();
 }
+
 

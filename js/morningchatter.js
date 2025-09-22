@@ -189,7 +189,7 @@ function cardHTML(item) {
       <div class="text-content">
         <h3 class="card-clickable">${title}${pdfIndicator}</h3>
         <hr class="custom-line">
-        <p class="card-clickable">${desc} <span><a href="javascript:void(0)" class="read-more-inline card-clickable">read more.....</a></span></p>
+        <p class="card-clickable">${desc} <span><a href="javascript:void(0)" class="read-more-inline card-clickable">.....</a></span></p>
         <span>${date}</span>
         <p>${author}</p>
       </div>
