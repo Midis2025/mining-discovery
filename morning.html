@@ -183,7 +183,7 @@
     .scrolling-track {
       display: flex;
       width: max-content;
- animation: scroll-loop 30s linear infinite;
+ animation: scroll-loop 50s linear infinite;
       padding-top: 3px;
       gap: 24px;
     }
@@ -325,49 +325,59 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
+  .hamburger {
+    display: block;
+  }
 
-      .nav-links,
-      .header-buttons,
-      .search-bar-container {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 10px;
-      }
+  /* Search-bar always visible */
+  .search-bar-container {
+    display: flex !important; /* hamesha visible rahe */
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .social-icons{
+    display: none;
+  }
+  
 
-      .nav-links a {
-        padding: 8px 0;
-      }
+  /* Nav links & buttons toggle only */
+  .nav-links,
+  .header-buttons {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  /* On hamburger click, show nav-links + header-buttons + search + social-icons */
+   .mobile-active .nav-links,
+  .mobile-active .header-buttons,
+  .mobile-active .search-bar-container,
+  .mobile-active .social-icons {
+    display: flex;
+    gap: 10px;
+  }
 
-      .mobile-active .nav-links,
-      .mobile-active .header-buttons,
-      .mobile-active .search-bar-container {
-        display: flex;
-        gap: 20px;
-      }
 
-      .search-box {
-        width: 100%;
-        margin-top: 10px;
-      }
+  .nav-links a {
+    padding: 8px 0;
+  }
 
-      .search-box input {
-        width: 100%;
-      }
+  .search-box {
+    width: 100%;
+    margin-top: 0;
+  }
 
-      .social-icon {
-        margin-bottom: -20px;
-      }
+  .search-box {
+   display: none;
+  }
 
-      .search-bar-bg {
-        width: 100%;
-      }
-    }
-
+  .search-bar-bg {
+    width: 100%;
+  }
+}
     /* main-header */
     /* === Header / Dropdown Toggle === */
     .topbar {
@@ -1062,9 +1072,9 @@
 
       <div class="search-box">
         <input type="text" id="searchInput" placeholder=" " />
-        <div class="animated-text-container">
+        <!-- <div class="animated-text-container">
           <span id="animatedText">Search gold prices</span>
-        </div>
+        </div> -->
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
     </div>

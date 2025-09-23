@@ -70,9 +70,9 @@
 <div class="search-box-wrapper">
   <div class="search-box">
     <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
+    <!-- <div class="animated-text-container">
       <span id="animatedText">Search gold prices</span>
-    </div>
+    </div> -->
     <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
   </div>
 
@@ -84,58 +84,58 @@
 
 <!-- Dropdown menu (hidden by default) -->
 <div id="hamburgerMenu" class="hamburger-menu">
-  <div class="menu-tabs">
-    <p class="tab active" data-target="news">NEWS SECTION</p>
-    <p class="tab" data-target="services">SERVICES</p>
-    <p class="tab" data-target="magazine">MAGAZINE</p>
-    <p class="tab" data-target="others">OTHERS</p>
-  </div>
+  <div class="menu-row">
 
-  <!-- NEWS -->
-  <div class="menu-content active" id="news">
-    <p>Latest News</p>
-    <p>Precious Metals</p>
-    <p>Evening Chatter</p>
-    <p>Research Reports</p>
-      <p>Gold News</p>
-    <p>Corporate News</p>
-    <p>Announcement</p>
-    <p>Sponsored Post</p>
-      <p>Silver News</p>
-    <p>World News</p>
-    <p>Popular This Week</p>
-    <p>What’s On</p>
-    <p>Copper News</p>
-    <p>Leadership Thoughts</p>
-    <p>Projects</p>
-  </div>
+    <!-- Tabs left -->
+    <div class="menu-tabs">
+      <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+      <p class="tab-btn" data-target="about">SERVICE</p>
+      <p class="tab-btn" data-target="magazine">MAGAZINE</p>
 
-  <!-- SERVICES -->
-  <div class="menu-content" id="services">
-    <p>Investor Campaign</p>
-    <p>News Syndication</p>
-    <p>Digital Branding</p>
-    <p>Press Office</p>
-    <p>Youtube</p>
-    <p>Conference Media Coverage</p>
-    <p>Newsletter & Email Blast</p>
-  </div>
+      
+    </div>
 
-  <!-- MAGAZINE -->
-  <div class="menu-content" id="magazine">
-    <p>CEO Profile</p>
-    <p>Newsletter</p>
-    <p>Company Profile</p>
-    <p>Digital Edition</p>
-  </div>
+    <!-- Content right -->
+    <div class="menu-content active" id="news">
+      <p><a href="#">Latest News</a></p>
+      <p><a href="#">Precious Metals</a></p>
+      <p><a href="#">Evening Chatter</a></p>
+      <p><a href="#">Research Reports</a></p>
+         <p><a href="#">Gold News</a></p>
+      <p><a href="#">Corporate News</a></p>
+      <p><a href="#">Announcement</a></p>
+      <p><a href="#">Sponsored Post</a></p>
+         <p><a href="#">Silver News</a></p>
+      <p><a href="#">World News</a></p>
+      <p><a href="#">Popular This Week</a></p>
+      <p><a href="#">What’s On</a></p>
+      <p><a href="#">Copper News</a></p>
+      <p><a href="#">Leadership Thoughts</a></p>
+      <p><a href="#">Projects</a></p>
+    </div>
+      <div class="menu-content" id="about">
+      <p><a href="./service.html">Investor Campaign</a></p>
+      <p><a href="./newsynd.html">News Syndication</a></p>
+      <p><a href="./branding.html">Digital Branding</a></p>
+        <p><a href="./pressoffice.html">Press Office</a></p>
+      <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Youtube</a></p>
+      <p><a href="./confrence.html">Conference Media Coverage</a></p>
+         <p><a href="./letter.html">Newsletter & Email Blast</a></p>
+     
+    </div>
 
-  <!-- OTHERS -->
-  <div class="menu-content" id="others">
-    <p>Copper News</p>
-    <p>Leadership Thoughts</p>
-    <p>Projects</p>
+    <div class="menu-content" id="magazine">
+      <p><a href="./ceo.html">CEO Profile</a></p>
+      <p><a href="./weekly.html">Newsletter</a></p>
+      <p><a href="./company-profile.html">Company Profile</a></p>
+       <p><a href="./Digitaledition.html">Digital Edition</a></p>
+    </div>
+
+  
+
   </div>
 </div>
+
 
 
 
@@ -220,46 +220,9 @@
             <!-- Banner image will be injected here -->
           </div>
 
-          <h2>Most Read</h2>
+        <h2>Most Read</h2>
           <div class="cards">
-            <div class="card">
-
-              <div class="head-sec">
-                <p>Arizona Gold & Silver Drilling</p>
-              </div>
-              <p class="center">Arizona Gold & Silver Drilling
-                Continues to Intersect Thick
-                Intervals of 1 Gram Per Tonne Gold
-                Mineralization in Core Drilling on
-                Philadelphia Project, Arizona</p>
-              <small>30th April 2025<br />By: Mining Discovery</small>
-            </div>
-            <div class="card">
-              <div class="head-sec">
-                <p>Power Metallic 2025
-                </p>
-              </div>
-              <p class="center">Power Metallic Provides an Update on Summer 2025 Exploration Programs at Nisk Project
-              </p>
-              <small>30th April 2025<br />By: Mining Discovery</small>
-            </div>
-            <div class="card">
-              <div class="head-sec">
-                <p>Power Metallic Expands</p>
-              </div>
-              <p class="center">Power Metallic Expands the Lion Zone - Exceptionally High Copper & Gold Grade Kicks on
-                Deep Eastern Margin of Zone</p>
-              <small>30th April 2025<br />By: Mining Discovery</small>
-            </div>
-            <div class="card">
-              <div class="head-sec">
-                <p>Phenom Increases Private Placement</p>
-              </div>
-              <p class="center">Phenom Increases Private
-                Placement Financing Up To
-                $1,850,000</p>
-              <small>30th April 2025<br />By: Mining Discovery</small>
-            </div>
+             <div class="card"></div>
           </div>
 
           <!-- Popular This Week Section -->
@@ -785,27 +748,31 @@
   const menu = document.getElementById("hamburgerMenu");
   menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
-const tabs = document.querySelectorAll(".hamburger-menu .tab");
-const contents = document.querySelectorAll(".hamburger-menu .menu-content");
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
 
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    // Remove active class from all
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
 
-    // Add active to clicked tab & related content
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.target).classList.add("active");
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
   });
-});
+
 
   // Show popup only once per session (using sessionStorage)
   window.onload = function () {
     if (!sessionStorage.getItem("subscribedPopupShown")) {
+      // Yahi turant flag set karo (wait ke baad nahi)
+      sessionStorage.setItem("subscribedPopupShown", "true");
+
       setTimeout(() => {
         document.getElementById("popup2").style.display = "flex";
-        sessionStorage.setItem("subscribedPopupShown", "true");
       }, 7000); // 7 sec delay
     } else {
       document.getElementById("popup2").style.display = "none";
@@ -817,18 +784,21 @@ tabs.forEach(tab => {
   }
 
   function subscribe() {
-    const email = document.getElementById('email').value;
-    if (email.trim() === "") {
+    const email = document.getElementById('email').value.trim();
+    if (email === "") {
       alert("⚠️ Please enter your email.");
     } else {
       alert("✅ Thank you for subscribing, " + email + "!");
       closePopup();
     }
   }
+
+
 </script>
 
   <script src="./script.js"></script>
   <script src="./js/latestNews.js"></script>
+  <script src="./js/news.js"></script>
   <script src="./js/popularNews.js"></script>
   <script src="./js/copperNews.js"></script>
   <script src="./js/preciousMetal.js"></script>

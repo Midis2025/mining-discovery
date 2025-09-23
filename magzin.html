@@ -186,7 +186,7 @@
     .scrolling-track {
       display: flex;
       width: max-content;
- animation: scroll-loop 30s linear infinite;
+ animation: scroll-loop 50s linear infinite;
       padding-top: 3px;
       gap: 24px;
     }
@@ -220,13 +220,13 @@
 
    .search-box {
       position: relative;
-      width: 174px;
-      margin-right: 16px;
+      width: 140px;
+    
       
     }
 
     .search-box input {
-      width: 100%;
+      width: 90%;
       height: 25px;
       padding: 5px 15px;
       padding-right: 35px;
@@ -238,7 +238,7 @@
 
     .search-icon {
       position: absolute;
-      right: 10px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
@@ -247,6 +247,91 @@
       font-size: 16px;
       cursor: pointer;
     }
+    .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* search aur hamburger ke beech gap */
+}
+
+.search-box {
+  flex: 1; /* search box full width le le, hamburger ke sath */
+}
+
+.hamburger2 {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: block; /* laptop/mobile dono pe visible */
+  padding-right:20px ;
+    color: #b8860b; /* golden color */
+}
+.hamburger-menu {
+  display: none;
+  position: absolute;
+  top: 190px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 30px 50px;
+  z-index: 999;
+}
+
+/* Tabs */
+/* Tabs + content wrapper ek row me */
+.hamburger-menu .menu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Tabs left me column wise */
+.hamburger-menu .menu-tabs {
+  display: flex;
+  flex-direction: column; /* tabs ek ke niche ek */
+  min-width: 200px; /* thoda fix width rakho */
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+/* Tab items */
+.hamburger-menu .menu-tabs p {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hamburger-menu .menu-tabs p.active {
+  color: #b8860b;
+}
+
+/* Content right side me */
+.hamburger-menu .menu-content {
+  flex: 1;
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 40px;
+}
+
+.hamburger-menu .menu-content.active {
+  display: grid;
+}
+.menu-content a{
+  text-decoration: none;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .hamburger2 {
+    display: none; /* phone screen pe hide ho jayega */
+  }
+}
+
+
+
 
     /* Animated text */
     .animated-text-container {
@@ -1153,14 +1238,75 @@
         </div>
       </div>
 
+<div class="search-box-wrapper">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder=" " />
+    <!-- <div class="animated-text-container">
+      <span id="animatedText">Search gold prices</span>
+    </div> -->
+    <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+  </div>
 
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder=" " />
-        <div class="animated-text-container">
-          <span id="animatedText">Search gold prices</span>
-        </div>
-        <button class="search-icon"><i class="fas fa-search"></i></button>
-      </div>
+  <!-- Hamburger icon -->
+  <button class="hamburger2" onclick="toggleMenu2()">
+    <i class="fas fa-bars"></i>
+  </button>
+</div>
+
+<!-- Dropdown menu (hidden by default) -->
+<div id="hamburgerMenu" class="hamburger-menu">
+  <div class="menu-row">
+
+    <!-- Tabs left -->
+    <div class="menu-tabs">
+      <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+      <p class="tab-btn" data-target="about">SERVICE</p>
+      <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+
+      
+    </div>
+
+    <!-- Content right -->
+    <div class="menu-content active" id="news">
+      <p><a href="#">Latest News</a></p>
+      <p><a href="#">Precious Metals</a></p>
+      <p><a href="#">Evening Chatter</a></p>
+      <p><a href="#">Research Reports</a></p>
+         <p><a href="#">Gold News</a></p>
+      <p><a href="#">Corporate News</a></p>
+      <p><a href="#">Announcement</a></p>
+      <p><a href="#">Sponsored Post</a></p>
+         <p><a href="#">Silver News</a></p>
+      <p><a href="#">World News</a></p>
+      <p><a href="#">Popular This Week</a></p>
+      <p><a href="#">What’s On</a></p>
+      <p><a href="#">Copper News</a></p>
+      <p><a href="#">Leadership Thoughts</a></p>
+      <p><a href="#">Projects</a></p>
+    </div>
+      <div class="menu-content" id="about">
+      <p><a href="./service.html">Investor Campaign</a></p>
+      <p><a href="./newsynd.html">News Syndication</a></p>
+      <p><a href="./branding.html">Digital Branding</a></p>
+        <p><a href="./pressoffice.html">Press Office</a></p>
+      <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Youtube</a></p>
+      <p><a href="./confrence.html">Conference Media Coverage</a></p>
+         <p><a href="./letter.html">Newsletter & Email Blast</a></p>
+     
+    </div>
+
+    <div class="menu-content" id="magazine">
+      <p><a href="./ceo.html">CEO Profile</a></p>
+      <p><a href="./weekly.html">Newsletter</a></p>
+      <p><a href="./company-profile.html">Company Profile</a></p>
+       <p><a href="./Digitaledition.html">Digital Edition</a></p>
+    </div>
+
+  
+
+  </div>
+</div>
+     
     </div>
   </header>
 
@@ -1176,7 +1322,7 @@
 
   <!-- Dropdown Links -->
   <div class="dropdown-links" id="dropdownMenu3">
-    <a href="./magzin.html">Magzine</a>
+    <a href="./magzin.html">Magazine</a>
     <a href="./ceo.html">CEO Profile</a>
     <a href="./weekly.html">Weekly Newsletter</a>
     <a href="./company-profile.html">Company Profile</a>
@@ -1308,7 +1454,34 @@
     </div>
   </div>
   <script src="./script.js"></script>
-  <script>  // Sab thumbnails ko select karo
+  <script> 
+  
+   function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
+  });
+  
+  
+  
+  
+  
+  
+  // Sab thumbnails ko select karo
     const thumbs = document.querySelectorAll('.thumb');
     const mainMagazine = document.getElementById('mainMagazine');
 

@@ -183,7 +183,7 @@
     .scrolling-track {
       display: flex;
       width: max-content;
-     animation: scroll-loop 30s linear infinite;
+     animation: scroll-loop 50s linear infinite;
       padding-top: 3px;
       gap: 24px;
     }
@@ -635,7 +635,7 @@
       width: 200px;
       height: 200px;
       border-radius: 10px;
-      object-fit: cover;
+      object-fit:fill;
     }
 
     .text-content {
@@ -1352,9 +1352,9 @@
 
       <div class="search-box">
         <input type="text" id="searchInput" placeholder=" " />
-        <div class="animated-text-container">
+        <!-- <div class="animated-text-container">
           <span id="animatedText">Search gold prices</span>
-        </div>
+        </div> -->
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
     </div>

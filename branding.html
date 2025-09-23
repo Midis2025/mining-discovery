@@ -110,7 +110,7 @@ body {
 .scrolling-track {
   display: flex;
   width: max-content;
- animation: scroll-loop 30s linear infinite;
+ animation: scroll-loop 50s linear infinite;
       padding-top: 3px;
 }
 
@@ -883,11 +883,18 @@ padding-top: 5px;
   font-size: 18px;
   display: flex;
   flex-direction: column;
+  align-items: center; /* ✅ horizontally center everything */
 }
 
 .midis-logo {
   font-size: 28px;
   margin-top: 10px;
+}
+
+.midis-box img {
+  width: 120px;
+  height: 80px;
+  display: block;
 }
 
 .midis-logo .orange {
@@ -1197,9 +1204,9 @@ padding-top: 5px;
 
      <div class="search-box">
     <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
+    <!-- <div class="animated-text-container">
       <span id="animatedText">Search gold prices</span>
-    </div>
+    </div> -->
     <button class="search-icon"><i class="fas fa-search"></i></button>
   </div>
     </div>

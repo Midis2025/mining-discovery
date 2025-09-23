@@ -84,15 +84,7 @@ function truncateWords(str, maxWords = 15) {
   return words.slice(0, maxWords).join(" ");
 }
 
-function buildNewsCard({
-  title,
-  author,
-  publish_on,
-  short_description,
-  imageUrl,
-  docId,
-  pdfUrl,
-}) {
+function buildNewsCard({ title, author, publish_on, short_description, imageUrl, docId, pdfUrl }) {
   const safeTitle = escapeHTML(title || "Untitled");
   const safeAuthor = escapeHTML(author || "");
   const safeDate = fmtDate(publish_on);
@@ -100,9 +92,7 @@ function buildNewsCard({
   const imgSrc = imageUrl || "./image/pexels-castorlystock-5139206 1.png";
   const safeDocId = escapeHTML(docId || "");
   const safePdfUrl = pdfUrl ? escapeHTML(pdfUrl) : null;
-  const dataAttrs = `data-doc-id="${safeDocId}" ${
-    safePdfUrl ? `data-pdf-url="${safePdfUrl}"` : ""
-  }`;
+  const dataAttrs = `data-doc-id="${safeDocId}" ${safePdfUrl ? `data-pdf-url="${safePdfUrl}"` : ""}`;
 
   return `
     <div class="news-card clickable-card" ${dataAttrs} style="cursor: pointer;">
@@ -118,21 +108,13 @@ function buildNewsCard({
   `;
 }
 
-function buildNextNewsCard({
-  title,
-  short_description,
-  imageUrl,
-  docId,
-  pdfUrl,
-}) {
+function buildNextNewsCard({ title, short_description, imageUrl, docId, pdfUrl }) {
   const safeTitle = escapeHTML(title || "Untitled");
   const safeDesc = escapeHTML(truncateWords(short_description || ""));
   const imgSrc = imageUrl || "./image/pexels-castorlystock-5139206 1.png";
   const safeDocId = escapeHTML(docId || "");
   const safePdfUrl = pdfUrl ? escapeHTML(pdfUrl) : null;
-  const dataAttrs = `data-doc-id="${safeDocId}" ${
-    safePdfUrl ? `data-pdf-url="${safePdfUrl}"` : ""
-  }`;
+  const dataAttrs = `data-doc-id="${safeDocId}" ${safePdfUrl ? `data-pdf-url="${safePdfUrl}"` : ""}`;
 
   return `
     <div class="gold-card clickable-card" ${dataAttrs} style="cursor: pointer;">
@@ -158,16 +140,8 @@ function extractSectionsFromResponse(apiJson, targetSlug) {
 
   const sections = toArray(rawSections).map((sec) => {
     const s = sec?.attributes ?? sec ?? {};
-    const imageUrl =
-      sec?.image?.data?.attributes?.url ||
-      s?.image?.data?.attributes?.url ||
-      s?.image?.url ||
-      null;
-    const pdfUrl =
-      sec?.pdf?.data?.attributes?.url ||
-      s?.pdf?.data?.attributes?.url ||
-      s?.pdf?.url ||
-      null;
+    const imageUrl = sec?.image?.data?.attributes?.url || s?.image?.data?.attributes?.url || s?.image?.url || null;
+    const pdfUrl = sec?.pdf?.data?.attributes?.url || s?.pdf?.data?.attributes?.url || s?.pdf?.url || null;
 
     return {
       title: s.title,
@@ -180,11 +154,7 @@ function extractSectionsFromResponse(apiJson, targetSlug) {
     };
   });
 
-  return sections.sort((a, b) => {
-    const da = new Date(a.publish_on || 0).getTime();
-    const db = new Date(b.publish_on || 0).getTime();
-    return db - da;
-  });
+  return sections.sort((a, b) => new Date(b.publish_on || 0).getTime() - new Date(a.publish_on || 0).getTime());
 }
 
 function renderNewsSections(sections, append = false) {
@@ -202,6 +172,46 @@ function renderNewsSections(sections, append = false) {
     container.innerHTML = html;
   }
   attachCardClickHandlers(container);
+}
+
+// ✅ Most Read: first news from first 4 categories
+async function fetchAndRenderMostRead() {
+  const container = document.querySelector(".cards");
+  if (!container) return;
+  const mostReadItems = [];
+
+  const first4Categories = allCategories.slice(0, 4);
+  for (const cat of first4Categories) {
+    const src = cat?.attributes ?? cat ?? {};
+    const slug = src.slug ?? (src.category ? safeSlugify(src.category) : null);
+    if (!slug) continue;
+
+    try {
+      const res = await fetch(buildCategoryEndpoint(slug, 1));
+      if (!res.ok) continue;
+      const data = await res.json();
+      const sections = extractSectionsFromResponse(data, slug);
+      if (sections.length > 0) mostReadItems.push(sections[0]);
+    } catch (err) {
+      console.error("Error fetching most read news for", slug, err);
+    }
+  }
+
+  if (mostReadItems.length) {
+    const html = mostReadItems
+      .map(
+        (item) => `
+        <div class="card clickable-card" data-doc-id="${item.docId}" data-pdf-url="${item.pdfUrl || ''}">
+          <div class="head-sec"><p>${escapeHTML(item.title)}</p></div>
+          <p class="center">${escapeHTML(item.short_description || '')}</p>
+          <small>${fmtDate(item.publish_on)}<br/>By: ${escapeHTML(item.author || "Mining Discovery")}</small>
+        </div>
+      `
+      )
+      .join("");
+    container.innerHTML = html;
+    attachCardClickHandlers(container);
+  }
 }
 
 function renderNextCategoryPreview(sections) {
@@ -239,10 +249,7 @@ function getNextCategoryInfo(currentSlug) {
     const slug = src.slug ?? (src.category ? safeSlugify(src.category) : null);
     return slug === currentSlug;
   });
-  const nextIndex =
-    currentIndex === -1 || currentIndex === allCategories.length - 1
-      ? 0
-      : currentIndex + 1;
+  const nextIndex = currentIndex === -1 || currentIndex === allCategories.length - 1 ? 0 : currentIndex + 1;
   const nextCategory = allCategories[nextIndex];
   const src = nextCategory?.attributes ?? nextCategory ?? {};
   return {
@@ -253,11 +260,9 @@ function getNextCategoryInfo(currentSlug) {
 
 function updateNextCategoryDisplay() {
   const nextCategoryEl = document.getElementById("nextCategoryTitle");
-  if (nextCategoryEl) {
-    const nextCategoryInfo = getNextCategoryInfo(currentCategorySlug);
-    nextCategoryEl.textContent =
-      nextCategoryInfo?.name || "No Next Category";
-  }
+  if (!nextCategoryEl) return;
+  const nextCategoryInfo = getNextCategoryInfo(currentCategorySlug);
+  nextCategoryEl.textContent = nextCategoryInfo?.name || "No Next Category";
 }
 
 async function fetchAndRenderCategory(slug, page = 1, append = false) {
@@ -274,23 +279,24 @@ async function fetchAndRenderCategory(slug, page = 1, append = false) {
     const sections = extractSectionsFromResponse(data, currentCategorySlug);
     renderNewsSections(sections, append);
 
+    if (!append) await fetchAndRenderMostRead();
+
     const categories = toArray(data?.data || []);
     const currentCategory = categories.find((cat) => {
       const src = cat?.attributes ?? cat ?? {};
-      const slug =
-        src.slug ?? (src.category ? safeSlugify(src.category) : null);
+      const slug = src.slug ?? (src.category ? safeSlugify(src.category) : null);
       return slug === currentCategorySlug;
     });
-    const categoryName =
-      currentCategory?.attributes?.title ||
-      currentCategory?.attributes?.name ||
-      currentCategory?.attributes?.category ||
-      currentCategorySlug.replace(/-/g, " ").replace(/\b\w/g, (c) =>
-        c.toUpperCase()
-      );
 
     const headingEl = document.getElementById("categoryTitle");
-    if (headingEl) headingEl.textContent = categoryName;
+    if (headingEl) {
+      const categoryName =
+        currentCategory?.attributes?.title ??
+        currentCategory?.attributes?.name ??
+        currentCategory?.attributes?.category ??
+        currentCategorySlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+      headingEl.textContent = categoryName;
+    }
 
     updateNextCategoryDisplay();
 
@@ -299,18 +305,14 @@ async function fetchAndRenderCategory(slug, page = 1, append = false) {
       const nextEndpoint = buildCategoryEndpoint(nextCategoryInfo.slug, 1);
       const res2 = await fetch(nextEndpoint);
       const nextData = await res2.json();
-      const nextSections = extractSectionsFromResponse(
-        nextData,
-        nextCategoryInfo.slug
-      );
+      const nextSections = extractSectionsFromResponse(nextData, nextCategoryInfo.slug);
       renderNextCategoryPreview(nextSections);
     }
 
     const showMoreBtn = document.querySelector(".btn-more");
     if (showMoreBtn) {
       const shownCount = currentPage * pageSize;
-      showMoreBtn.style.display =
-        shownCount >= totalItems ? "none" : "block";
+      showMoreBtn.style.display = shownCount >= totalItems ? "none" : "block";
     }
   } catch (err) {
     console.error("Error fetching news for", slug, err);
@@ -319,11 +321,12 @@ async function fetchAndRenderCategory(slug, page = 1, append = false) {
 
 function generateDropdownMenu(categories) {
   const dropdownMenu = document.getElementById("dropdownMenu");
+  if (!dropdownMenu) return;
+
   dropdownMenu.innerHTML = "";
   categories.forEach((item) => {
     const src = item?.attributes ?? item ?? {};
-    const title =
-      src.title ?? src.category ?? src.name ?? `Category ${item?.id ?? ""}`;
+    const title = src.title ?? src.category ?? src.name ?? `Category ${item?.id ?? ""}`;
     const slug = src.slug ?? (src.category ? safeSlugify(src.category) : null);
     if (!title) return;
     const a = document.createElement("a");
@@ -332,6 +335,7 @@ function generateDropdownMenu(categories) {
     a.dataset.slug = slug || "";
     dropdownMenu.appendChild(a);
   });
+
   dropdownMenu.addEventListener("click", async (e) => {
     const link = e.target.closest("a");
     if (!link) return;
@@ -350,12 +354,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   allCategories = await newsCategory();
   generateDropdownMenu(allCategories);
+
+  await fetchAndRenderMostRead(); // ✅ Most Read section first
   await fetchAndRenderCategory("latest-news", 1);
 
   const showMoreBtn = document.querySelector(".btn-more");
-  if (showMoreBtn) {
-    showMoreBtn.addEventListener("click", handleShowMoreClick);
-  }
+  if (showMoreBtn) showMoreBtn.addEventListener("click", handleShowMoreClick);
 
   if (dropdownToggle && dropdownMenu) {
     dropdownToggle.addEventListener("click", (e) => {
@@ -370,8 +374,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.addEventListener("click", (e) => {
     if (dropdownMenu && dropdownToggle) {
-      const inside =
-        dropdownMenu.contains(e.target) || dropdownToggle.contains(e.target);
+      const inside = dropdownMenu.contains(e.target) || dropdownToggle.contains(e.target);
       if (!inside) {
         dropdownMenu.classList.remove("show");
         dropdownToggle.setAttribute("aria-expanded", "false");

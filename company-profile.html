@@ -7,16 +7,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-    body {
-       font-family: 'Pontano Sans', sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #fff;
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .main-header {
+
+    body {
+      font-family: 'Pontano Sans', sans-serif;
+    
+    }
+    
+  .main-header {
      
       background-color: #fff;
-      padding: 12px;
+      padding: 19px;
       border-bottom: 1px solid #ddd;
     }
 
@@ -41,6 +46,7 @@
       height: 70px;
       
     }
+   
 
     .nav-links {
       display: flex;
@@ -53,7 +59,7 @@
 
       text-decoration: none;
       color: #000;
-      
+   
       transition: color 0.3s;
     }
 
@@ -80,11 +86,11 @@
     }
 
     .login-btn {
-      background-color: #8d6d2a;
+      background-color:#AE8A4C;
     }
 
     .subscribe-btn {
-     background-color: #8d6d2a;
+     background-color: #AE8A4C;
     }
 
    
@@ -99,7 +105,7 @@
 }
 
 .search-bar-bg {
-  background-color: #2e2e2e;
+  background-color: #292929;
   height: 24px;
   border-radius: 20px;
   
@@ -111,10 +117,9 @@
 .scrolling-track {
   display: flex;
   width: max-content;
- animation: scroll-loop 30s linear infinite;
+  animation: scroll-loop 50s linear infinite;
       padding-top: 3px;
       gap: 24px;
-      margin-top: -10px;
 }
 
 .scrolling-content {
@@ -144,14 +149,14 @@
 
 .search-box {
       position: relative;
-      width: 174px;
-      margin-right: 16px;
+      width: 140px;
+    
       
     }
 
     .search-box input {
-      width: 70%;
-      height: 15px;
+      width: 90%;
+      height: 25px;
       padding: 5px 15px;
       padding-right: 35px;
       border: 1px solid #ccc;
@@ -162,7 +167,7 @@
 
     .search-icon {
       position: absolute;
-      right: 10px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
@@ -171,19 +176,107 @@
       font-size: 16px;
       cursor: pointer;
     }
+    .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* search aur hamburger ke beech gap */
+}
+
+.search-box {
+  flex: 1; /* search box full width le le, hamburger ke sath */
+}
+
+.hamburger2 {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: block; /* laptop/mobile dono pe visible */
+  padding-right:20px ;
+    color: #b8860b; /* golden color */
+}
+.hamburger-menu {
+  display: none;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 30px 50px;
+  z-index: 999;
+}
+
+/* Tabs */
+/* Tabs + content wrapper ek row me */
+.hamburger-menu .menu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Tabs left me column wise */
+.hamburger-menu .menu-tabs {
+  display: flex;
+  flex-direction: column; /* tabs ek ke niche ek */
+  min-width: 200px; /* thoda fix width rakho */
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+/* Tab items */
+.hamburger-menu .menu-tabs p {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hamburger-menu .menu-tabs p.active {
+  color: #b8860b;
+}
+
+/* Content right side me */
+.hamburger-menu .menu-content {
+  flex: 1;
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 40px;
+}
+
+.hamburger-menu .menu-content.active {
+  display: grid;
+}
+.menu-content a{
+  text-decoration: none;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .hamburger2 {
+    display: none; /* phone screen pe hide ho jayega */
+  }
+}
+
+
+
+
+
 
     /* Animated text */
     .animated-text-container {
-      position: absolute;
-      left: 15px;
-      top: 30%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: #999;
-      font-size: 14px;
-      overflow: hidden;
-      height: 18px;
-    }
+       position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 12px;
+    overflow: hidden;
+    height: 20px;
+}
+    
 
     .animated-text-container span {
       display: block;
@@ -248,49 +341,60 @@
       color: #8d6d2a;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
+  .hamburger {
+    display: block;
+  }
 
-      .nav-links,
-      .header-buttons,
-      .search-bar-container {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 10px;
-      }
+  /* Search-bar always visible */
+  .search-bar-container {
+    display: flex !important; /* hamesha visible rahe */
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .social-icons{
+    display: none;
+  }
+  
 
-      .nav-links a {
-        padding: 8px 0;
-      }
+  /* Nav links & buttons toggle only */
+  .nav-links,
+  .header-buttons {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  /* On hamburger click, show nav-links + header-buttons + search + social-icons */
+   .mobile-active .nav-links,
+  .mobile-active .header-buttons,
+  .mobile-active .search-bar-container,
+  .mobile-active .social-icons {
+    display: flex;
+    gap: 10px;
+  }
 
-      .mobile-active .nav-links,
-      .mobile-active .header-buttons,
-      .mobile-active .search-bar-container {
-        display: flex;
-        gap: 20px;
-      }
 
-      .search-box {
-        width: 100%;
-        margin-top: 10px;
-      }
+  .nav-links a {
+    padding: 8px 0;
+  }
 
-      .search-box input {
-        width: 100%;
-      }
+  .search-box {
+    width: 100%;
+    margin-top: 0;
+  }
 
-      .social-icon {
-        margin-bottom: -20px;
-      }
-      .search-bar-bg {
-        width: 100%;
-      }
-    }
+  .search-box {
+   display: none;
+  }
+
+  .search-bar-bg {
+    width: 100%;
+  }
+}
 /* main-header */
 /* === Header / Dropdown Toggle === */
 .topbar {
@@ -640,81 +744,81 @@ h2 {
   
 
 
-.footer-container {
-      background-image: url(./image/footer-bg\ 1.png);
-      background-size: cover;
-      background-position: center;
-      padding: 60px 100px 30px;
-      color: #fff;
-      position: relative;
-     
-    }
+  .footer-container {
+  background-image: url(./image/footer-bg\ 1.png);
+  background-size: cover;
+  background-position: center;
+  padding: 60px 100px 30px;
+  color: #fff;
+  position: relative;
+ 
+}
+.social-iconss{
+  padding-bottom: 10px;
+      display: flex
+;
+    gap: 15px;
+}
 
-    .social-iconss {
-      padding-bottom: 10px;
-      display: flex;
-      gap: 15px;
-    }
+.divider {
+  width: 1px;
+  background: #444;
+  height: 60%;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+}
 
-    .divider {
-      width: 1px;
-      background: #444;
-      height: 60%;
-      position: absolute;
-      left: 50%;
-      top: 10%;
-    }
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+ padding-top  :30px ;
+  margin: auto;
+  gap: 30px;
+}
 
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      /* max-width: 1300px; */
-      margin: auto;
-      gap: 30px;
-    }
+.footer-left {
+  flex: 1;
+  min-width: 280px;
+  padding-right: 40px;
+}
 
-    .footer-left {
-      flex: 1;
-      min-width: 280px;
-      padding-right: 40px;
-    }
+.social-iconss img {
+  height: 24px;
+}
 
-    .social-iconss img {
-      height: 24px;
-    }
+.footer-left p {
+  font-size: 20px;
+  
+  
 
-    .footer-left p {
-      font-size: 20px;
+  max-width: 580px;
+  color: #ddd;
+}
 
+.footer-left .socials {
+  margin-top: 20px;
+}
 
+.footer-left .socials i {
+  margin-right: 15px;
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
 
-      max-width: 580px;
-      color: #ddd;
-    }
+.footer-left .socials i:hover {
+  color: orange;
+}
 
-    .footer-left .socials {
-      margin-top: 20px;
-    }
+.footer-center {
+  min-width: 220px;
+  padding-left: 20px;
+}
 
-    .footer-left .socials i {
-      margin-right: 15px;
-      font-size: 20px;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .footer-left .socials i:hover {
-      color:#ae8a4c;
-    }
-
-    .footer-center {
-      min-width: 220px;
-      padding-left: 20px;
-    }
-
-   .footer-center ul {
+.footer-center ul {
   list-style: none;
   padding: 0;
 }
@@ -731,136 +835,207 @@ h2 {
 }
 
 .footer-center li:first-child a {
- 
+
+
   font-size: 16px;
 }
 
 .footer-center a:hover {
   color: #AE8A4C;
 }
-    .footer-right {
-      flex: 1;
-      min-width: 280px;
-      padding-left: 20px;
+
+
+.footer-right {
+  flex: 1;
+  min-width: 280px;
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-right img {
+  height: 60px;
+  width: 100px;
+  object-fit: contain;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.footer-right img:hover {
+  transform: scale(1.05);
+}
+
+.search-boxs {
+  position: relative;
+  width: 180px;
+ 
+}
+
+.search-boxs input {
+  width: 100%;
+  height: 25px;
+  padding: 5px 15px;
+  padding-right: 35px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* -------- RESPONSIVE -------- */
+
+@media (max-width: 1024px) {
+  .footer-container {
+    padding: 50px 30px 25px;
+  }
+  .footer-content {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+ 
+  .footer-container {
+    padding: 40px 20px 20px;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    padding: 0;
+    min-width: 100%;
+  }
+
+  .footer-right {
+    justify-content: flex-start;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .footer-left p {
+    max-width: 100%;
+  }
+
+  .search-boxs {
+    width: 50%;
+  }
+ 
+}
+
+@media (max-width: 480px) {
+  .footer-left img,
+  .footer-right img {
+    height: 26px;
+    width: 29px;
+  }
+
+  .footer-left p {
+    font-size: 14px;
+  }
+
+  .footer-center li,
+  .footer-left .socials i {
+    font-size: 14px;
+  }
+
+  .footer-center li:first-child {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    margin-top: 30px;
+  }
+}
+
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      
+      padding: 10px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 960px;
+      max-height: 95vh;
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+      justify-content: center;
       align-items: center;
     }
 
-    .footer-right img {
-      height: 60px;
-      width: 100px;
-      object-fit: contain;
-      padding: 10px;
-      background: #fff;
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .fp-iframe {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid lightgray;
       border-radius: 10px;
-      transition: transform 0.3s;
     }
 
-    .footer-right img:hover {
-      transform: scale(1.05);
-    }
-
-    .search-boxs {
-      position: relative;
-      width: 180px;
-
-    }
-
-    .search-boxs input {
-      width: 70%;
-      height: 10px;
-      padding: 5px 15px;
-      padding-right: 35px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      outline: none;
-    }
-
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 13px;
-      color: #aaa;
-    }
-
-    /* -------- RESPONSIVE -------- */
-
-    @media (max-width: 1024px) {
-      .footer-container {
-        padding: 50px 30px 25px;
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        max-width: 400px;
+        padding: 10px;
       }
 
-      .footer-content {
-        gap: 25px;
+      .fp-iframe {
+        height: 65vh;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        top: 5px;
+        right: 10px;
       }
     }
 
-    @media (max-width: 768px) {
-
-      .footer-container {
-        padding: 40px 20px 20px;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 40px;
-      }
-
-      .footer-left,
-      .footer-center,
-      .footer-right {
-        padding: 0;
-        min-width: 100%;
-      }
-
-      .footer-right {
-        justify-content: flex-start;
-      }
-
-      .divider {
-        display: none;
-      }
-
-      .footer-left p {
-        max-width: 100%;
-      }
-
-      .search-boxs {
-        width: 50%;
-      }
-
-    }
-
-    @media (max-width: 480px) {
-
-      .footer-left img,
-      .footer-right img {
-        height: 26px;
-        width: 29px;
-      }
-
-      .footer-left p {
-        font-size: 14px;
-      }
-
-      .footer-center li,
-      .footer-left .socials i {
-        font-size: 14px;
-      }
-
-      .footer-center li:first-child {
-        font-size: 15px;
-      }
-
-      .footer-bottom {
-        font-size: 12px;
-        margin-top: 30px;
+    @media screen and (max-width: 480px) {
+      .fp-iframe {
+        height: 55vh;
       }
     }
+
+    
 
 </style>
 </head>
@@ -904,13 +1079,75 @@ h2 {
       </div>
 
 
-     <div class="search-box">
+     
+<div class="search-box-wrapper">
+  <div class="search-box">
     <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
+    <!-- <div class="animated-text-container">
       <span id="animatedText">Search gold prices</span>
-    </div>
-    <button class="search-icon"><i class="fas fa-search"></i></button>
+    </div> -->
+    <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
   </div>
+
+  <!-- Hamburger icon -->
+  <button class="hamburger2" onclick="toggleMenu2()">
+    <i class="fas fa-bars"></i>
+  </button>
+</div>
+
+<!-- Dropdown menu (hidden by default) -->
+<div id="hamburgerMenu" class="hamburger-menu">
+  <div class="menu-row">
+
+    <!-- Tabs left -->
+    <div class="menu-tabs">
+      <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+      <p class="tab-btn" data-target="about">SERVICE</p>
+      <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+
+      
+    </div>
+
+    <!-- Content right -->
+    <div class="menu-content active" id="news">
+      <p><a href="#">Latest News</a></p>
+      <p><a href="#">Precious Metals</a></p>
+      <p><a href="#">Evening Chatter</a></p>
+      <p><a href="#">Research Reports</a></p>
+         <p><a href="#">Gold News</a></p>
+      <p><a href="#">Corporate News</a></p>
+      <p><a href="#">Announcement</a></p>
+      <p><a href="#">Sponsored Post</a></p>
+         <p><a href="#">Silver News</a></p>
+      <p><a href="#">World News</a></p>
+      <p><a href="#">Popular This Week</a></p>
+      <p><a href="#">What’s On</a></p>
+      <p><a href="#">Copper News</a></p>
+      <p><a href="#">Leadership Thoughts</a></p>
+      <p><a href="#">Projects</a></p>
+    </div>
+      <div class="menu-content" id="about">
+      <p><a href="./service.html">Investor Campaign</a></p>
+      <p><a href="./newsynd.html">News Syndication</a></p>
+      <p><a href="./branding.html">Digital Branding</a></p>
+        <p><a href="./pressoffice.html">Press Office</a></p>
+      <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Youtube</a></p>
+      <p><a href="./confrence.html">Conference Media Coverage</a></p>
+         <p><a href="./letter.html">Newsletter & Email Blast</a></p>
+     
+    </div>
+
+    <div class="menu-content" id="magazine">
+      <p><a href="./ceo.html">CEO Profile</a></p>
+      <p><a href="./weekly.html">Newsletter</a></p>
+      <p><a href="./company-profile.html">Company Profile</a></p>
+       <p><a href="./Digitaledition.html">Digital Edition</a></p>
+    </div>
+
+  
+
+  </div>
+</div>
     </div>
   </header>
    <div class="topbar">
@@ -922,7 +1159,7 @@ h2 {
 
   <!-- Dropdown Links -->
   <div class="dropdown-links" id="dropdownMenu3">
-    <a href="./magzin.html">Magzine</a>
+   <a href="./magzin.html">Magazine</a>
     <a href="./ceo.html">CEO Profile</a>
     <a href="./weekly.html">Weekly Newsletter</a>
     <a href="./company-profile.html">Company Profile</a>
@@ -938,14 +1175,14 @@ h2 {
     <!-- Main Content -->
     <div class="main">
           <div class="ceo-container">
- <h2>Company Profile</h2>
+ <h2>Company Profiles</h2>
 
   <!-- Big Profile Card -->
 <div class="ceo-profile" id="mainProfile">
   <img src="./image/Company Logo/ASTRA.png" alt="CEO" id="mainProfileImg">
   <div class="ceo-info">
-    <h3 id="mainProfileName">Phenom Resource</h3>
-    <small id="mainProfileTitle">Mining & Exploration Company</small>
+    <h3 id="mainProfileName">Astra Exploration Inc.</h3>
+    <!-- <small id="mainProfileTitle">Mining & Exploration Company</small> -->
     <p id="mainProfileDesc">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -961,74 +1198,76 @@ h2 {
   <div class="profiles" id="slider">
 
     <div class="profile-card"
-      data-name="Zayn Kalyan"
+      data-name="Aurion Resources"
       data-title="CEO & Director Infinity Stone Ventures"
       data-desc="Zayn Kalyan leads Infinity Stone Ventures focusing on critical minerals and the global energy transition."
       data-img="./image/Company Logo/Aurion.png"
       data-link="zayn-kalyan.html">
       <img src="./image/Company Logo/Aurion.png" alt="">
-      <h4>Zayn Kalyan</h4>
-      <small>CEO & Director Infinity Stone Ventures</small>
+      <h4>Aurion Resources</h4>
+      <!-- <small>CEO & Director Infinity Stone Ventures</small> -->
       <a href="#" class="profile-btn">Profile</a>
     </div>
 
     <div class="profile-card"
-      data-name="Brian Miller"
+      data-name="Astra Exploration Inc."
       data-title="CEO & President Astra Exploration"
       data-desc="Brian Miller is leading Astra Exploration with a focus on gold and copper discoveries in South America."
       data-img="./image/Company Logo/ASTRA.png"
       data-link="brian-miller.html">
       <img src="./image/Company Logo/ASTRA.png" alt="">
-      <h4>Brian Miller</h4>
-      <small>CEO & President Astra Exploration</small>
+      <h4>Astra Exploration Inc.</h4>
+      <!-- <small>CEO & President Astra Exploration</small> -->
       <a href="#" class="profile-btn">Profile</a>
     </div>
 
     <div class="profile-card"
-      data-name="Mati Talikka"
+      data-name="Loyalist Exploration Ltd."
       data-title="CEO of Sunstone Metals"
       data-desc="Mati Talikka drives Sunstone Metals’ exploration projects with expertise in precious metals."
       data-img="./image/Company Logo/Loyalist icon.png"
       data-link="mati-talikka.html">
       <img src="./image/Company Logo/Loyalist icon.png" alt="">
-      <h4>Mati Talikka</h4>
-      <small>CEO of Sunstone Metals</small>
+      <h4>Loyalist Exploration Ltd.</h4>
+      <!-- <small>CEO of Sunstone Metals</small> -->
       <a href="#" class="profile-btn">Profile</a>
     </div>
 
     <div class="profile-card"
-      data-name="Paul Cowley"
+      data-name="Power Metallic"
       data-title="CEO of First Vanadium Corp."
       data-desc="Paul Cowley is expanding First Vanadium Corp. with a strategic focus on vanadium exploration."
       data-img="./image/logo recreation-01.png"
       data-link="paul-cowley.html">
       <img src="./image/logo recreation-01.png" alt="">
-      <h4>Paul Cowley</h4>
-      <small>CEO of First Vanadium Corp.</small>
+      <h4>Power Metallic</h4>
+      <!-- <small>CEO of First Vanadium Corp.</small> -->
       <a href="#" class="profile-btn">Profile</a>
     </div>
 
     <div class="profile-card"
-      data-name="Michel Amar"
+      data-name="Arizona Gold & 
+Silver Inc."
       data-title="CEO of AmmPower Corp."
       data-desc="Michel Amar heads AmmPower Corp., advancing green energy solutions with ammonia-based technologies."
       data-img="./image/Company Logo/arizona .png"
       data-link="michel-amar.html">
       <img src="./image/Company Logo/arizona .png" alt="">
-      <h4>Michel Amar</h4>
-      <small>CEO of AmmPower Corp.</small>
+      <h4>Arizona Gold & 
+Silver Inc.</h4>
+      <!-- <small>CEO of AmmPower Corp.</small> -->
       <a href="#" class="profile-btn">Profile</a>
     </div>
 
     <div class="profile-card"
-      data-name="Mike Stark"
+      data-name="Guanajuato Silver Company Ltd."
       data-title="CEO & President Arizona Gold"
       data-desc="Mike Stark leads Arizona Gold with a vision to expand and develop gold resources."
       data-img="./image/Company Logo/Guanajuato.png"
       data-link="mike-stark.html">
       <img src="./image/Company Logo/Guanajuato.png" alt="">
-      <h4>Mike Stark</h4>
-      <small>CEO & President Arizona Gold</small>
+      <h4>Guanajuato Silver Company Ltd.</h4>
+      <!-- <small>CEO & President Arizona Gold</small> -->
       <a href="#" class="profile-btn">Profile</a>
     </div>
 
@@ -1130,12 +1369,35 @@ h2 {
   </script>
      <script src="./js/latestNews.js"></script>
   <script>
+
+
     document.addEventListener("DOMContentLoaded", function () {
       loadLatestNews();
       
     });
   </script>
    <script>
+
+     
+   function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
+  });
   let currentIndex = 0;
   let autoSlideInterval;
 

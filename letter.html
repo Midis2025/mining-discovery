@@ -68,7 +68,7 @@
 
       text-decoration: none;
       color: #000;
-     
+      
       transition: color 0.3s;
     }
 
@@ -110,7 +110,7 @@
   padding-top: 5px;
 }
 .search-bar-container-lasts{
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .search-bar-bg {
@@ -126,7 +126,7 @@
 .scrolling-track {
   display: flex;
   width: max-content;
- animation: scroll-loop 30s linear infinite;
+ animation: scroll-loop 50s linear infinite;
       padding-top: 3px;
       gap: 24px;
 }
@@ -188,22 +188,22 @@
 
     /* Animated text */
     .animated-text-container {
-      position: absolute;
-      left: 15px;
-      top: 30%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: #999;
-      font-size: 14px;
-      overflow: hidden;
-      height: 18px;
+       position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 14px;
+    overflow: hidden;
+    height: 20px;
+}
+    #animatedText{
+       color: #999;
     }
-
-    .animated-text-container span {
-      display: block;
-      animation: slideText 3s ease-in-out infinite;
+    #searchInput{
+      background-color: white;
     }
-
     @keyframes slideText {
       0% {
         transform: translateY(100%);
@@ -373,8 +373,8 @@
 
 .dropdown-links a:hover,
 .dropdown-links a.active {
-  color:  #8d6d2a;
-  border-bottom: 2px solid  #8d6d2a;
+  color:#ae8a4c;
+  border-bottom: 2px solid #ae8a4c;
   padding-bottom: 3px;
 }
 
@@ -442,9 +442,9 @@
     /* === Main Layout === */
     /* Base Styles - Desktop (default) */
 .container {
-  display: flex;
+  /* display: flex; */
   padding: 30px;
-  gap: 20px;
+  /* gap: 20px; */
 }
 
 
@@ -456,7 +456,7 @@
   top: 100px;
   overflow-y: auto;
   background: #fff;
- 
+
   border-radius: 6px;
   padding: 10px;
 
@@ -469,9 +469,6 @@
 .right-sidebar::-webkit-scrollbar {
   display: none;  /* Chrome, Safari */
 }
-.fa-solid{
-  padding-left: 10px;
-}
 .left-sidebar .box {
   background: white;
   padding: 12px;
@@ -482,24 +479,6 @@
   width: 100%;
   height: auto;
 }
- .heading {
-  padding-bottom:10px ;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding-left: 10px;
-    }
-     button {
-
-
-       border: 1px solid #AC8A4A;
-      padding: 5px;
-      border-radius: 20px;
-      background-color: white;
-      color: #AC8A4A;
-    }
-    
-
 .section-box {
   border: 1px solid #ddd;
   background: #fff;
@@ -537,29 +516,13 @@
 .section-box  a:hover {
   color:#AE8A4C;            /* brown on hover */
 }
-
-
 .main-content {
-  width: 70%;
-    height: calc(100vh - 120px);
-  position: sticky;
-  top: 100px;
-  overflow-y: auto;
-  background: #fff;
-
-  border-radius: 6px;
-  padding: 10px;
-
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
+  width: 60%;
 }
 
-h2 {
+/* h2 {
   border-bottom: 2px solid #333;
-}
-
-
+} */
 
 .main-content h2 {
   margin-bottom: 15px;
@@ -571,10 +534,28 @@ h2 {
   align-items: center;
   background-color: white;
 }
-/* span{
+span{
  color: white;
-} */
-
+}
+.heading{
+  padding: 20px;
+margin: 0 18%;
+  display: flex;
+  flex-direction: column;
+}
+ .heading h1{
+ font-size:28px;
+  border-bottom: 2px solid #ae8a4c;
+  display: inline-block;
+}
+h3{
+    padding-top: 20px;
+    padding-bottom: 5px;
+  font-size: 20px;
+}
+.heading p{
+  color: #AC8A4A;
+}
 .btn-more,
 .gold-btn {
   border: 1px solid #AC8A4A;
@@ -594,6 +575,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
 }
 
 .news-card {
@@ -620,37 +602,65 @@ h2 {
   padding: 20px;
  
   border-radius: 12px;
-  font-family: 'Segoe UI', sans-serif;
+
 }
 
-.section-box {
-  border: 1px solid #ddd;
-  background: #fff;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.card-container{
+
+  display:flex;
+  flex-direction: column;
+  gap: 15px;
+
 }
 
-.section-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
+       .card-border {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+   
+     
+    }
 
-.section-box img {
-  width: 100%;
-  height: 130px;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
-}
-.section-box p {
-  margin: 10px;
-  font-size: 15px;
-  color: #333;
-  font-weight: 500;
-  line-height: 1.4;
-}
+    .card-border img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    /* Tablet (600px – 899px) → 2 cards per row */
+    @media (min-width: 600px) {
+      .card-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .card-text {
+        font-size: 15px;
+      }
+     
+    }
+
+    /* Desktop (900px and above) → 3 cards per row */
+    @media (min-width: 900px) {
+      .card-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .card-text {
+        font-size: 16px;
+      }
+      
+    }
+
 .custom-line{
   width: 540px;
    border: 1px solid #333;
@@ -667,6 +677,9 @@ h2 {
 @media (max-width: 480px) {
   .custom-line {
     width: 100%;
+  }
+  .left-sidebar{
+    display: none;
   }
 }
 
@@ -701,125 +714,85 @@ h2 {
 
 
 
-    .main-content {
-      max-width: 700px;
+    .container2 {
+      max-width: 800px;
       margin: 0 auto;
       padding: 30px;
       border-radius: 15px;
-     
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ccc;
       height: fit-content;
     }
 
-   .ad-text {
-  font-size: 14px;
-  margin-top: 5px;
-}
+    h2 {
+      text-align: center;
+      color: #AE8A4C;
+      font-weight: 500;
+      padding-bottom: 10px;
+    }
 
-.page-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-.thank-you {
-  background: #fff;
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-}
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-top:10px;
+    }
 
-.thank-you h3 {
-  margin-bottom: 5px;
-}
+    input, select {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background: #e6e6e6;
+      font-size: 1rem;
+    }
 
-.form-container {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-}
+    label {
+      font-size: 0.9rem;
+      color: #222;
+    }
 
-.form-container h3 {
-  text-align: center;
-  color: #8d6d2a;
-  margin-bottom: 15px;
-  font-size: 18px;
-}
+    .checkbox {
+      /* display: flex; */
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
+    .checkbox small {
+      color: red;
+      display: block;
+    }
 
+    button {
+      background-color: #AE8A4C;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-form input,
-form select {
-  padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-       background: linear-gradient(to right,#8d6d2a 5%, white 5%);
-       padding-left: 44px;
-      
-}
-
-form input::placeholder,
-form textarea::placeholder {
-    color: black;
-}
-
-.checkbox {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
-}
-
-
-.checkbox label {
-  font-size: 13px;
-  margin-left: 5px;
-}
-
-.note {
-  font-size: 12px;
-  color: #555;
-}
-
-.note span {
-  color: red;
-}
-
-.btn {
-  padding: 10px;
-  background: #b58900;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: #8b6800;
-}
-
-.privacy {
-  font-size: 12px;
-  color: #777;
-  margin-top: 15px;
-}
-
+   
 
     .disclaimer {
       font-size: 0.8rem;
       color: #333;
       margin-top: 20px;
+      padding-bottom: 50px;
     }
 
     .disclaimer a {
-      color: #a65b00;
+      color: #AE8A4C;
       text-decoration: none;
     }
+    .popup-active .checkbox small {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+}
 
 
 /* === Responsive: Tablet === */
@@ -858,9 +831,6 @@ form textarea::placeholder {
     padding: 15px;
     gap: 15px;
   }
-  .left-sidebar{
-    display: none;
-  }
 
   .news-card {
     gap: 10px;
@@ -884,172 +854,21 @@ form textarea::placeholder {
     gap: 15px;
   }
 }
-/* === Default (Laptop / Small Desktop) === */
-.container {
-  display: flex;
-  padding: 30px;
-  gap: 20px;
-}
 
-/* === Tablet (768px – 992px) === */
-@media (max-width: 992px) {
-  .container {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .left-sidebar,
-  .right-sidebar,
-  .main-content {
-    width: 100%;
-  }
-
-  .news-card {
-    flex-direction: column;
-  }
-
-  .news-card img {
-    width: 100%;
-    height: auto;
-  }
-
-  .gold-news {
-    flex-direction: column;
-  }
-
-  .gold-card {
-    width: 100%;
-  }
-
-  .custom-line {
-    width: 80%;
-  }
-}
-
-/* === Kindle / Small Tablets (600px – 768px) === */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
-  }
-
-  .main-content {
-    padding: 15px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  .section-box img {
-    height: 100px;
-  }
-
-  .gold-card img {
-    height: 150px;
-  }
-
-  .custom-line {
-    width: 90%;
-  }
-}
-
-/* === Mobile (up to 480px) === */
-@media (max-width: 480px) {
-  .container {
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .main-content {
-    padding: 10px;
-  }
-
-  .news-card {
-    gap: 10px;
-  }
-
-  .gold-card img {
-    height: 120px;
-  }
-
-  .custom-line {
-    width: 100%;
-  }
-}
-
-/* === Large Desktop (1920px+) === */
-@media (min-width: 1920px) {
-  .container {
-    max-width: 2000px;
-    margin: auto;
-    gap: 40px;
-  }
-  .page-title{
-    font-size: 32px;
-    padding-bottom: 20px;
-  }
-  .form h3{
-    font-size: 24px;
-     padding-bottom: 20px;
-  }
-
-  .left-sidebar {
-    width: 320px;
-  }
-
-  .right-sidebar {
-    width: 340px;
-  }
-
-  .main-content {
-    max-width: 1000px;
-    padding: 40px;
-  }
-
-  .news-card img {
-    width: 260px;
-    height: 180px;
-  }
-
-  .section-box img {
-    height: 180px;
-  }
-
-  .gold-card img {
-    height: 250px;
-  }
-
-  .section-box p,
-  .gold-card p {
-    font-size: 18px;
-  }
-
-  h2 {
-    font-size: 28px;
-  }
-
-  .custom-line {
-    width: 700px;
-  }
-}
  
-     .footer-container {
+      .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
   padding: 60px 100px 30px;
   color: #fff;
   position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ 
 }
 .social-iconss{
   padding-bottom: 10px;
-      display: flex
-;
-    gap: 15px;
+  display: flex;
+gap: 15px;
 }
 
 .divider {
@@ -1065,8 +884,9 @@ form textarea::placeholder {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
- padding-top: 30px;
+  /* max-width: 1300px; */
   margin: auto;
+  padding-top:20px;
   gap: 30px;
 }
 
@@ -1102,14 +922,13 @@ form textarea::placeholder {
 }
 
 .footer-left .socials i:hover {
-  color: orange;
+  color: #ae8a4c;
 }
 
 .footer-center {
   min-width: 220px;
   padding-left: 20px;
 }
-
 .footer-center ul {
   list-style: none;
   padding: 0;
@@ -1127,7 +946,7 @@ form textarea::placeholder {
 }
 
 .footer-center li:first-child a {
- 
+  
   font-size: 16px;
 }
 
@@ -1182,6 +1001,10 @@ form textarea::placeholder {
   font-size: 13px;
   color: #aaa;
 }
+.search-bar-container-lasts{
+  padding-top: 50px;
+}
+
 
 /* -------- RESPONSIVE -------- */
 
@@ -1254,113 +1077,6 @@ form textarea::placeholder {
   }
 }
 
-    
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .modal-content {
-      position: relative;
-      
-      padding: 10px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 960px;
-      max-height: 95vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 28px;
-      color: #fff;
-      cursor: pointer;
-      z-index: 100;
-    }
-
-    .fp-iframe {
-      width: 100%;
-      height: 80vh;
-      border: 1px solid lightgray;
-      border-radius: 10px;
-    }
-
-    /* Mobile Styles */
-    @media screen and (max-width: 768px) {
-      .modal-content {
-        width: 95%;
-        max-width: 400px;
-        padding: 10px;
-      }
-
-      .fp-iframe {
-        height: 65vh;
-      }
-
-      .modal-close {
-        font-size: 24px;
-        top: 5px;
-        right: 10px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .fp-iframe {
-        height: 55vh;
-      }
-    }
-
-    
-
-
-
-
-
-
-
-
-
-
-
-                         
- /* footer */
- 
- 
-                      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
  
     
   </style>
@@ -1378,7 +1094,7 @@ form textarea::placeholder {
       <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
         <a href="./newss.html">News Section</a>
- <a href="./morning.html">Evening Chatter</a>
+      <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
@@ -1391,17 +1107,14 @@ form textarea::placeholder {
     </div>
 
     <div class="search-bar-container" id="searchContainer">
-      <div class="social-icons">
-        <img src="./image/Group.png">
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-         
-        
-        
-      </div>
-<div class="search-bar-bg">
+  <div class="social-icons">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
+ <div class="search-bar-bg">
         <div class="scrolling-track" id="newsTicker">
           <!-- News titles will be inserted here -->
         </div>
@@ -1410,17 +1123,15 @@ form textarea::placeholder {
 
      <div class="search-box">
     <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
+    <!-- <div class="animated-text-container">
       <span id="animatedText">Search gold prices</span>
-    </div>
+    </div> -->
     <button class="search-icon"><i class="fas fa-search"></i></button>
   </div>
     </div>
   </header>
   
   <!-- Header + Dropdown -->
-    <!-- Header + Dropdown -->
-   
   <div class="topbar">
     <h1 onclick="serviceDropdown()" id="serviceToggle">
       Services
@@ -1443,15 +1154,13 @@ form textarea::placeholder {
     <a href="./pressoffice.html">Press Office</a>
 
 </div>
+
   <!-- Dropdown Links -->
  
- 
-
   <!-- Content Section -->
   <div class="container">
     <!-- Left -->
-      <!-- Left Panel -->
-  <!-- <div class="left-sidebar">
+     <!-- <div class="left-sidebar">
       <div class="box">
 
         <div id="advertisements"></div>
@@ -1459,80 +1168,54 @@ form textarea::placeholder {
 
     </div> -->
 
-
     <!-- Main -->
- 
-     <!-- Center Content -->
-    <main class="main-content">
-      <h2 class="page-title">Newsletter & Email Blast</h2>
+    <div class="news">
+      <div class="heading">
+        <h1> Newsletter & Email Blast</h1>
+          <h3>Subscribe to Mining Discovery</h3>
+          <p>Get the latest mining news, market updates, and exclusive insights straight to your inbox every week.</p>
+      </div>
+ <div class="container2">
+   
+    <h2>Sign Up for the Mining Discovery Insights Newsletter</h2>
+    <form>
+      <input type="text" id="firstname" placeholder="First Name"  required>
+      <input type="text" id="lastname" placeholder="Last Name" required>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="text" id="jobTitle" placeholder="Job Title">
+      <input type="text" id="companyName" placeholder="Company Name">
+      <select id="country" required>
+        <option value="">Country</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+        <!-- Add more countries if needed -->
+      </select>
 
-      <div class="form">
-        <h3>Sign Up for the Mining Discovery Insights Newsletter</h3>
-        <form>
-          <input type="text" id="firstname" placeholder="First Name" required>
-          <input type="text" id="lastname" placeholder="Last Name" required>
-          <input type="email" id="email" placeholder="Email Address" required>
-          <input type="text" id="jobTitle" placeholder="Job Title">
-          <input type="text" id="companyName" placeholder="Company Name">
-          <select id="country" required>
-            <option value="">Country</option>
-            <option value="USA">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="India">India</option>
-          </select>
-
-          <div class="checkbox">
-            <input type="checkbox" id="agreeToNewsletter">
-            <label for="agreeToNewsletter">
-              I would like to receive the Mining Discovery Review Newsletter & carefully selected 3rd party emails.
-            </label>
-          </div>
-
-          <p class="note"><span>*</span> Required content</p>
-          <button type="submit" class="btn">Join For Free</button>
-        </form>
-        <p class="privacy">
-          You can unsubscribe from our email at any time by clicking the link at the footer of our emails.
-          For more information about our privacy practices, please visit our website.
-        </p>
+      <div class="checkbox">
+        <input type="checkbox" id="agreeToNewsletter" required>
+        <label for="agreeToNewsletter">
+          I would like to receive the Mining Discovery Review Newsletter & carefully selected 3rd party emails
+          <small>Please confirm you would like to receive the Mining Discovery Review newsletter & carefully selected 3rd party emails</small>
+        </label>
       </div>
 
-      <!-- Thank you section -->
-      <!-- <div class="thank-you">
-        <h3>Thank you</h3>
-        <p>Thank you for signing up to the Mining Discovery Review newsletter. Keep an eye on your inbox for the next newsletter.</p>
-      </div> -->
-    </main>
+      <button type="submit">Join For Free</button>
+
+      <p class="disclaimer">
+        * Required content<br><br>
+        You can unsubscribe from our emails at any time by clicking the link in the footer of any email you receive from us. We will treat your information with respect. For more information about our privacy policy please <a href="#">click here</a>. By clicking above, you agree that we may process your information in accordance with these terms.<br><br>
+        We use MailChimp as our marketing automation platform. By clicking above to submit this form, you acknowledge that the information you provide will be transferred to MailChimp for processing in accordance with their <a href="#">Privacy Policy</a> and <a href="#">Terms</a>.
+      </p>
+    </form>
+  </div>
+    </div>
+  
 
 
     <!-- Right -->
-   <!-- <div class="right-sidebar">
-      <div class="heading">
-        <h3>Projects</h3>
-        <a href="./project.html"><button type="button" class="gold-btn">show more<i
-              class="fa-solid fa-arrow-right"></i></button>
-        </a>
-      </div>
-      <div class="card-container">
-        <div class="card-border">
-          <div id="projects"></div>
-        </div>
+   
 
-
-
-
-        <div class="heading">
-          <h3>Reports</h3>
-          <a href="./project.html"><button type="button" class="gold-btn">show more<i
-                class="fa-solid fa-arrow-right"></i></button>
-          </a>
-        </div>
-      </div>
-      <div class="card-border">
-        <div id="reports"></div>
-      </div>
-
-    </div> -->
   </div>
 <!-- Footer Section -->
 <!-- Footer Section -->
@@ -1545,7 +1228,6 @@ form textarea::placeholder {
      
    
       <!-- Left -->
-       
         
       <div class="footer-left">
        
@@ -1553,26 +1235,27 @@ form textarea::placeholder {
           Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
         </p>
          <div class="search-bar-container-lasts" id="searchContainer">
-      <div class="social-iconss">
-        <img src="./image/Group.png" >
-        <img src="./image/Group (4).png">
-       <img src="./image/Group (1).png">
-         <img src="./image/Group (2).png">
-           <img src="./image/Group (3).png">
-      </div>
+        <div class="social-iconss">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
 
       <div class="search-boxs">
         <input type="text" id="searchInput" placeholder="Search..." />
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
-      
+     
     </div>
       </div>
 
       <!-- Center -->
-      <div class="footer-center">
-  <ul>
-    <li><a href="index.html">HOME</a></li>
+      
+<div class="footer-center">
+ <ul>
+      <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT US</a></li>
     <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
     <li><a href="sub.html">SUBSCRIPTION</a></li>
@@ -1595,14 +1278,11 @@ form textarea::placeholder {
 
   </footer>
   </div>
-  
-
-
   <script>
 
 const form = document.querySelector('form');
 const submitBtn = document.querySelector('button[type="submit"]');
-
+const container = document.querySelector('.container2');
 // Create response div if it doesn't exist
 let responseDiv = document.getElementById('response');
 if (!responseDiv) {
@@ -1614,6 +1294,9 @@ if (!responseDiv) {
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
+     
+      // Add popup-active class to hide small description
+      container.classList.add('popup-active');
     
     // Show loading state
     submitBtn.disabled = true;
@@ -1691,12 +1374,8 @@ function clearForm() {
 }
 
   </script>
-
-
-
-
 <script src="./script.js"></script>
-<script>// show  extra news
+  <script>// show  extra news
     document.getElementById("showMoreBtn").addEventListener("click", function () {
       const extraNews = document.querySelectorAll(".extra-news");
 
@@ -1738,3 +1417,4 @@ function clearForm() {
 
 </body>
 </html>
+// weekly
