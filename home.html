@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mining Discovery</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./demo.css" />
+<style>
+    /* Overlay Menu (mobile) */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      transition: left 0.3s ease;
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .menu-overlay.open {
+      left: 0;
+    }
+
+    .menu-overlay .close-btn {
+      text-align: right;
+      padding: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+.menu-overlay .submenu {
+  display: none;
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+.menu-overlay .submenu li {
+  margin-bottom: 5px;
+}
+
+.menu-overlay {
+  overflow-y: auto; /* page scroll enable */
+}
+    .menu-overlay ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-overlay ul li a,
+    .menu-overlay ul li button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      text-decoration: none;
+      color: #333;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul li button .fa-chevron-down {
+      float: right;
+    }
+
+    .submenu {
+      display: none;
+      background: #f9f9f9;
+    }
+
+    .submenu li a {
+      padding-left: 32px;
+      font-size: 14px;
+    }
+
+    /* Desktop Tabs Menu */
+    .desktop-tabs {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .desktop-tabs .tab-content {
+      display: none;
+      padding: 16px;
+    }
+
+    .desktop-tabs .tab-content.active {
+      display: block;
+    }
+
+    .desktop-tabs .tab-btns {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid #eee;
+      padding: 0 16px;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn {
+      cursor: pointer;
+      padding: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn.active {
+      border-bottom: 2px solid #d32f2f;
+      color: #d32f2f;
+    }
+    /* Dropdown rotation */
+#newsToggle i {
+  transition: transform 0.3s ease;
+}
+
+#newsToggle.rotate i {
+  transform: rotate(180deg);
+}
+
+/* Dropdown items */
+.dropdown-links {
+  display: none;
+  flex-direction: column;
+  padding-left: 20px;
+  gap: 10px;
+}
+
+.dropdown-links.show {
+  display: flex;
+}
+
+    
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .nav-links,
+      .header-buttons {
+        display: none;
+      }
+    }
+    /* Hide News Section dropdown on desktop */
+/* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
+@media (min-width: 900px) {
+  #newsToggle {
+    cursor: default;        /* not pointer */
+    pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
+  }
+
+  /* ensure dropdown panel is not shown on desktop even if .show gets added */
+  .dropdown-links {
+    display: none !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+  <div class="first-header">
+    <div class="news-slider">
+      <p>THE MINING INVESTMENT EVENT</p>
+
+      <p>THE MINING INVESTMENT EVENT</p>
+      <p>SAVE THE DATE -JUNE 2-4 2026</p>
+      <p>Some important highlighted news 4</p>
+    </div>
+  </div>
+
+
+
+
+  <header class="main-header">
+  <div class="header-top">
+    <div class="logo-social">
+      <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navMenu">
+      <a href="./about.html">About Us</a>
+     <a href="#" id="newsToggle" onclick="toggleDropdown(event)">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+      <div class="dropdown-links" id="dropdownMenu">
+        <a href="#">Latest News</a>
+        <a href="#">Precious Metals</a>
+        <a href="#">Evening Chatter</a>
+        <a href="#">Research Reports</a>
+        <a href="#">Gold News</a>
+        <a href="#">Corporate News</a>
+        <a href="#">Announcement</a>
+        <a href="#">Sponsored Post</a>
+        <a href="#">Silver News</a>
+        <a href="#">World News</a>
+        <a href="#">Popular This Week</a>
+        <a href="#">What’s On</a>
+        <a href="#">Copper News</a>
+        <a href="#">Leadership Thoughts</a>
+        <a href="#">Projects</a>
+      </div>
+
+      <a href="./morning.html">Evening Chatter</a>
+      <a href="./magzin.html">Magazine</a>
+      <a href="./service.html">Services</a>
+      <a href="./contant.html">Contact Us</a>
+    </div>
+
+    <div class="header-buttons" id="headerButtons">
+      <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
+      <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
+    </div>
+  </div>
+
+  <div class="search-bar-container" id="searchContainer">
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/"><img src="./image/Group.png"></a>
+      <a href="https://www.instagram.com/miningdiscovery"><img src="./image/Group (4).png"></a>
+      <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+      <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+      <a href="https://www.facebook.com/"><img src="./image/Group (3).png"></a>
+    </div>
+
+    <div class="search-bar-bg">
+      <div class="scrolling-track" id="newsTicker"></div>
+    </div>
+
+    <div class="search-box-wrapper">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div>
+
+      <button class="hamburger2" onclick="toggleMenu2()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="hamburgerMenu" class="hamburger-menu">
+      <div class="menu-row">
+        <div class="menu-tabs">
+          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+        </div>
+        <div class="menu-content active" id="news">
+          <p><a href="#">Latest News</a></p>
+          <p><a href="#">Precious Metals</a></p>
+          <p><a href="#">Evening Chatter</a></p>
+          <p><a href="#">Research Reports</a></p>
+          <p><a href="#">Gold News</a></p>
+          <p><a href="#">Corporate News</a></p>
+          <p><a href="#">Announcement</a></p>
+          <p><a href="#">Sponsored Post</a></p>
+          <p><a href="#">Silver News</a></p>
+          <p><a href="#">World News</a></p>
+          <p><a href="#">Popular This Week</a></p>
+          <p><a href="#">What’s On</a></p>
+          <p><a href="#">Copper News</a></p>
+          <p><a href="#">Leadership Thoughts</a></p>
+          <p><a href="#">Projects</a></p>
+        </div>
+        <div class="menu-content" id="about">
+          <p><a href="./service.html">Investor Campaign</a></p>
+          <p><a href="./newsynd.html">News Syndication</a></p>
+          <p><a href="./branding.html">Digital Branding</a></p>
+          <p><a href="./pressoffice.html">Press Office</a></p>
+          <p><a href="https://youtube.com/">Youtube</a></p>
+          <p><a href="./confrence.html">Conference Media Coverage</a></p>
+          <p><a href="./letter.html">Newsletter & Email Blast</a></p>
+        </div>
+        <div class="menu-content" id="magazine">
+          <p><a href="./ceo.html">CEO Profile</a></p>
+          <p><a href="./weekly.html">Newsletter</a></p>
+          <p><a href="./company-profile.html">Company Profile</a></p>
+          <p><a href="./Digitaledition.html">Digital Edition</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+  <!-- Desktop Tabs -->
+  <div class="desktop-tabs" id="desktopTabs">
+    <div class="tab-btns">
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News Section</div>
+      <!-- <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
+      <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div> -->
+    </div>
+  <!-- Collapsible News Section below header -->
+<div id="newsSectionPage" class="collapsible-section">
+  <div class="news-section-content">
+    <a href="#">Latest News</a><br>
+    <a href="#">Precious Metals</a><br>
+    <a href="#">Evening Chatter</a><br>
+    <a href="#">Research Reports</a><br>
+    <a href="#">Gold News</a><br>
+    <a href="#">Corporate News</a><br>
+    <a href="#">Announcement</a><br>
+    <a href="#">Sponsored Post</a><br>
+  </div>
+</div>
+
+    <div class="tab-content" id="servicesTab">
+      <a href="./service.html">Investor Campaign</a><br>
+      <a href="./newsynd.html">News Syndication</a><br>
+      <a href="./branding.html">Digital Branding</a><br>
+    </div>
+    <div class="tab-content" id="magazineTab">
+      <a href="./ceo.html">CEO Profile</a><br>
+      <a href="./weekly.html">Newsletter</a><br>
+      <a href="./company-profile.html">Company Profile</a><br>
+    </div>
+  </div>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="close-btn" onclick="closeMenu()">
+      <i class="fas fa-times"></i>
+    </div>
+    <ul>
+      <li>
+        <button onclick="toggleSubmenu('newsSub')">
+          NEWS SECTION <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="submenu" id="newsSub">
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Precious Metals</a></li>
+          <li><a href="#">Evening Chatter</a></li>
+          <li><a href="#">Research Reports</a></li>
+          <li><a href="#">Gold News</a></li>
+          <li><a href="#">Corporate News</a></li>
+          <li><a href="#">Announcement</a></li>
+          <li><a href="#">Sponsored Post</a></li>
+        </ul>
+      </li>
+      <li><a href="./service.html">Services</a></li>
+      <li><a href="./magzin.html">Magazine</a></li>
+      <li><a href="./contant.html">Contact Us</a></li>
+      <li><a href="./about.html">About Us</a></li>
+    </ul>
+  </div>
+
+
+
+  <!-- YouTube Corner Popup -->
+ <div class="corner-popup" id="popup" style="display:none;">
+  <div class="popup-content">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <iframe id="youtube-video" width="300" height="170" src="" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen></iframe>
+  </div>
+</div>
+  <!-- Popup Overlay -->
+  <div class="popup-overlay" id="popup2">
+    <div class="subscribe-box">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo2" />
+      <h2>Subscribe now for latest mining updates</h2>
+      <p>Magazine , Newsletters </p>
+
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Enter Your Email">
+        <button onclick="subscribe()">Subscribe</button>
+      </div>
+      <!-- <small style="color:#aaa;">We respect your privacy. No spam </small> -->
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="fullweb">
+    <div class="leftslidebar">
+      <!-- Left Info Card -->
+      <!-- <div class="left-card">
+      <img src="./image/image (2).png" alt="Company Logo" />
+    </div> -->
+
+      <div id="advertisements">
+        <img src="./image/banners.webp" alt="US Gold Logo" class="logo-img" />
+
+
+      </div>
+
+
+
+
+    </div>
+    <div class="main-container">
+
+      <div class="container2">
+
+
+        <!-- Main News Card -->
+        <div class="main-card" id="mainCard">
+          <div class="main-card-content">
+          </div>
+        </div>
+
+        <!-- Latest Sidebar -->
+        <div class="latest-section">
+          <h3>Latest News</h3>
+          <div id="latestNews">
+          </div>
+        </div>
+      </div>
+      <div class="container3">
+
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <div class="banner" id="bannerContainer">
+            <!-- Banner image will be injected here -->
+          </div>
+
+        <h2>Most Read</h2>
+          <div class="cards">
+             <div class="card"></div>
+          </div>
+
+          <!-- Popular This Week Section -->
+          <section class="popular">
+            <h2 class="black">Popular this week</h2>
+            <div class="carousel-wrapper">
+              <button class="nav" id="prev">&#8249;</button>
+              <div class="carousel" id="carousel">
+             
+
+                <div class="team-card">
+                  <img src="./image/slider2.png" alt="card" />
+                  <p>Power Metallic Wins Exploration Rights</p>
+                  <div class="meta">
+                    <small>30th April 2025</small>
+                    <small>By: Gold Hunter Resources</small>
+                  </div>
+                </div>
+                <div class="team-card">
+                  <img src="./image/slider3.png" alt="card" />
+                  <p>Power Metallic Wins Exploration Rights</p>
+                  <div class="meta">
+                    <small>30th April 2025</small>
+                    <small>By: Gold Hunter Resources</small>
+                  </div>
+                </div>
+                 <div class="team-card">
+                  <img src="./image/slider2.png" alt="card" />
+                  <p>Power Metallic Wins Exploration Rights</p>
+                  <div class="meta">
+                    <small>30th April 2025</small>
+                    <small>By: Gold Hunter Resources</small>
+                  </div>
+                </div>
+                 <div class="team-card">
+                  <img src="./image/slider3.png" alt="card" />
+                  <p>Power Metallic Wins Exploration Rights</p>
+                  <div class="meta">
+                    <small>30th April 2025</small>
+                    <small>By: Gold Hunter Resources</small>
+                  </div>
+                </div>
+              </div>
+              <button class="nav" id="next">&#8250;</button>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="container4">
+        <section class="sponsored-section">
+
+
+         <div class="content-area">
+            <h2>Sponsored Post</h2>
+
+            <!-- Top Post dynamically injected -->
+            <div class="top-post" id="sponsoredTop"></div>
+
+            <!-- Grid dynamically injected -->
+            <div class="card-grid" id="sponsoredGrid"></div>
+          </div>
+
+
+        </section>
+      </div>
+
+
+      <div class="container6">
+
+
+
+        <!-- Content Container -->
+        <div class="container5">
+
+          <!-- Left Section -->
+          <div class="left-section">
+            <h2 class="left-heading">Latest Multimedia</h2>
+
+            <div class="left-box">
+             <div class="video-card">
+  <div class="video-info">
+    <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
+      <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+    <p>Saudi Arabia Project Insights</p>
+  </div>
+</div>
+              <div class="video-card">
+  <div class="video-info">
+    <!-- Thumbnail preview -->
+    <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
+      <img src="./image/fourcard.avif" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+
+    <!-- Video title and description -->
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
+  </div>
+</div>
+               <a href="">
+              <div class="more-btn">More →</div>
+            </a>
+            </div>
+
+
+          </div>
+
+          <!-- Right Section -->
+          <div class="right-section">
+            <h2 class="right-heading">Copper News</h2>
+
+            <div id="copperNews">
+
+            </div>
+
+
+
+            <a href="">
+              <div class="more-btn">More →</div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      <div class="container8">
+        <!-- Banner -->
+        <div class="banner" id="bannerContainer">
+          <!-- Banner image will be injected here -->
+        </div>
+
+
+        <div class="task">
+          <h2>Precious Metals</h2>
+          <div class="precious-metals" id="preciousMetalNews">
+            <img src="./image/slidr1.png">
+            <div class="world-news">
+              <p>ARRAS MINERALS TO MOBILIZE SECOND DRILL RIG TO ELEMES PROJECT, PROVIDES EXPLORATION UPDATE, AND
+                ANNOUNCES TERMINATION OF BESKAUGA OPTION AGREEMENT</p>
+              <small>30th April 2025</small>
+              <div class="author">By: Mining Discovery</div>
+
+            </div>
+
+          </div>
+
+
+          <!-- World News -->
+
+
+
+        </div>
+       <div class="task">
+  <h2>World News</h2>
+  <div class="precious-metals" id="worldNews">
+    <img src="./image/slidr1.png">
+    <div class="world-news">
+      <p>
+        ARRAS MINERALS TO MOBILIZE SECOND DRILL RIG TO ELEMES PROJECT, PROVIDES
+        EXPLORATION UPDATE, AND ANNOUNCES TERMINATION OF BESKAUGA OPTION AGREEMENT
+      </p>
+      <small>30th April 2025</small>
+      <div class="author">By: Mining Discovery</div>
+      <button class="more-btn">More &gt;</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+        <!-- Corporate + Magazine -->
+        <div class="split-section">
+          <div class="corporate-news">
+            <h2>Corporate News</h2>
+            <div id="corporateNews">
+              <p>Phenom Announces up to $1,350,000 Private Placement Financing</p>
+              <small>30th April 2025</small><br>
+              <div class="author">By: Michael Clark</div>
+            </div>
+
+            <a href="">
+              <div class="more-btn">More →</div>
+            </a>
+
+          </div>
+
+          <div class="magazine">
+            <!-- <h2 >Magazine</h2> -->
+              <h2>Magazine</h2>
+            <div id="magazines-home" class="magazines-wrapper">
+              <!-- Placeholder boxes (script will replace with real magazines) -->
+              <div class="box1 magazine-box">
+                <img src="./image/slider2.png" alt="Magazine 1">
+                <div class="content">
+                  <h4>Loading Magazine...</h4>
+                  <button disabled>Loading...</button>
+                </div>
+              </div>
+
+              <div class="box2 magazine-box">
+                <img src="./image/slider2.png" alt="Magazine 2">
+                <div class="content">
+                  <h4>Loading Magazine...</h4>
+                  <button disabled>Loading...</button>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Video Section -->
+        <section class="video-section">
+          <h2 class="section-title">Videos</h2>
+          <div class="slider-container">
+            <button class="arrow left"><i class="fas fa-chevron-left"></i></button>
+
+            <div class="video-slider" id="videoSlider">
+              <!-- Repeat video cards -->
+ <div class="video-card">
+  <div class="video-info">
+    <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
+      <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+    <p>Saudi Arabia Project Insights</p>
+  </div>
+</div>
+
+<div class="video-card">
+  <div class="video-info">
+    <!-- Thumbnail preview -->
+    <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
+      <img src="./image/fourcard.avif" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+
+    <!-- Video title and description -->
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
+  </div>
+</div>
+
+<div class="video-card">
+  <div class="video-info">
+    <div class="video-thumbnail" data-video="pzxdSK6t2Eo" onclick="loadIframe(this)">
+      <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/mqdefault.jpg" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+    <p>Project Update</p>
+  </div>
+</div>
+
+
+            <div class="video-card">
+  <div class="video-info">
+    <!-- Thumbnail preview -->
+    <div class="video-thumbnail" data-video="pzxdSK6t2Eo" onclick="loadIframe(this)">
+      <img src="./image/thirdcard.avif" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+
+    <!-- Video title and description -->
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
+  </div>
+</div>
+
+<div class="video-card">
+  <div class="video-info">
+    <!-- Thumbnail preview -->
+    <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
+      <img src="./image/fourcard.avif" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+
+    <!-- Video title and description -->
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
+  </div>
+</div>
+
+              <!-- Add more cards here -->
+            </div>
+
+            <button class="arrow right"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </section>
+        <!-- game -->
+
+        <div class="section">
+          <div class="section-title">
+            <H2>🎮 Brainstorming Area</H2>
+          </div>
+          <div class="card-grid">
+            <div class="media-card">
+              <a href="./game/index.html"> <img src="./image/pac.PNG" alt="Dice Game"></a>
+              <div class="card-content">
+                <div class="card-title">Pacman</div>
+                <div class="card-subtitle">Try your luck!</div>
+              </div>
+            </div>
+            <div class="media-card">
+              <a href="./game.html"> <img src="./image/gameimage.PNG" alt="Dice Game"></a>
+              <div class="card-content">
+                <div class="card-title"> Sudoku Game</div>
+                <div class="card-subtitle">Classic Fun</div>
+              </div>
+            </div>
+
+            <!-- You can copy and paste this card block to add more -->
+            <div class="media-card">
+              <a href="./game2/index.html"> <img src="./image/bird.PNG" alt="Dice Game"></a>
+              <div class="card-content">
+                <div class="card-title">Flappy bird</div>
+                <div class="card-subtitle">Sharpen your mind!</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="section-wrapper">
+          <!-- Column 1 -->
+          <div class="column">
+            <h3>Press Office</h3>
+            <ul>
+             <li><a href="https://www.phenomresources.com/news/">Phenom Resources</a></li>
+             <li><a href="https://nobleplains.com/news-releases">Noble Plains Uranium Corp.</a></li>
+            <li><a href="https://astra-exploration.com/news/">Astra Exploration Inc.</a></li>
+            <li><a href="https://loyalistexploration.com/news">Loyalist Exploration</a>
+              </li>
+              <li>Mining Discovery</li>
+              
+              <li><a href="https://www.powermetallic.com/">Power Metallic</a>
+              </li>
+              <li><a href="https://www.powermetallic.com/news/">U.S. Gold</a></li>
+              <li><a href="https://aurionresources.com/news/2025/">Aurion</a></li>
+              <li><a href="https://arizonagoldsilver.com/news-releases-2/">Arizona</a></li>
+              <li><a href="https://www.gsilver.com/news/new-2025">Guanajuato Silver Company Ltd.</a></li>
+              <li><a href="https://www.digipowerx.com/press-releases">Digipower X</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="column">
+            <h3>Announcements</h3>
+            <div id="announcements"></div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="column">
+            <h3>What's On</h3>
+            <div id="whatsOn"></div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+  </div>
+  <footer>
+    <div class="heads">
+      <h1>Brands we are working with</h1>
+    </div>
+    <!-- Top Logo Slider -->
+
+    <div class="logo-slider">
+
+      <div class="slider-track" id="sliderTrack">
+        <!-- Loop starts -->
+        <div class="slide">
+          <img src="./image/ASTRA.png" alt="Astra" width="130" height="100" />
+
+        </div>
+        <div class="slide">
+          <img src="./image/ARRAS 1.png" alt="Astra" width="130" height="100" />
+        </div>
+
+        <div class="slide">
+          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+        </div>
+        <!-- Repeat again for smooth loop -->
+        <div class="slide">
+          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/image (5).png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
+        </div>
+
+        <div class="slide">
+           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+        </div>
+
+        <div class="slide">
+          <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <!-- Repeat again for smooth loop -->
+        <div class="slide">
+          <img src="./image/ASTRA (1) 1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
+        </div>
+<div class="slide">
+          <img src="./image/ASTRA.png" alt="Astra" width="130" height="100" />
+
+        </div>
+        <div class="slide">
+          <img src="./image/ARRAS 1.png" alt="Astra" width="130" height="100" />
+        </div>
+
+        <div class="slide">
+          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+        </div>
+      </div>
+
+    </div>
+    <!-- Footer Section -->
+    <div class="footer-container">
+      <div class="footers">
+        <img src="./discoverylogo.jpg" alt="Mining Discovery Logo" height="70px" />
+      </div>
+      <div class="footer-content">
+
+
+
+        <!-- Left -->
+
+        <div class="footer-left">
+
+          <p>
+            Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an
+            interactive mining website for mining companies, mining associations and mining executives globally.
+          </p>
+          <div class="search-bar-container-lasts" id="searchContainer">
+            <div class="social-iconss">
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
+             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+            </div>
+
+            <div class="search-boxs">
+              <input type="text" id="searchInput" placeholder="" />
+                <div class="animated-text-container">
+          <span id="animatedText">Search gold prices</span>
+        </div>
+              <button class="search-icon"  onclick="searchNews()"><i class="fas fa-search"></i></button>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="footer-center">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="sub.html">SUBSCRIPTION</a></li>
+    <li><a href="./magzin.html">MAGAZINES</a></li>
+    <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+  </ul>
+</div>
+      
+
+
+
+
+
+      </div>
+
+      <div class="footer-bottom">
+        © 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
+      </div>
+    </div>
+
+
+  </footer>
+
+
+<script>
+
+function toggleMenu() {
+  const header = document.querySelector(".main-header");
+  if (header) header.classList.toggle("mobile-active");
+}
+
+function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+function toggleDropdown(e) {
+    // breakpoint: treat <=899px as mobile/tablet; >=900px as desktop
+    const isMobile = window.matchMedia('(max-width: 899px)').matches;
+
+    // If desktop, do nothing (prevent navigation) — keep text visible but non-opening.
+    if (!isMobile) {
+      if (e) e.preventDefault();
+      return;
+    }
+
+    // Mobile: toggle dropdown visibility as before
+    const dropdown = document.getElementById("dropdownMenu");
+    const header = document.getElementById("newsToggle");
+    if (dropdown) dropdown.classList.toggle("show");
+    if (header) header.classList.toggle("rotate");
+  }
+
+
+// Tabs logic
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
+  });
+});
+
+// Show popup only once in lifetime (until localStorage is cleared)
+  window.onload = function () {
+    if (!localStorage.getItem("subscribedPopupShown")) {
+      setTimeout(() => {
+        document.getElementById("popup2").style.display = "flex";
+        localStorage.setItem("subscribedPopupShown", "true"); // save in localStorage
+      }, 3000); // 3 sec delay (change as per need)
+    } else {
+      document.getElementById("popup2").style.display = "none";
+    }
+  }
+
+  function closePopup() {
+    document.getElementById("popup2").style.display = "none";
+  }
+
+  function subscribe() {
+    let email = document.getElementById("email").value;
+    if (email.trim() !== "") {
+      alert("Thanks for subscribing: " + email);
+      closePopup();
+    } else {
+      alert("Please enter a valid email.");
+    }
+  }
+
+
+</script>
+
+  <script src="./script.js"></script>
+  <script src="./js/latestNews.js"></script>
+  <script src="./js/news.js"></script>
+  <script src="./js/popularNews.js"></script>
+  <script src="./js/copperNews.js"></script>
+  <script src="./js/preciousMetal.js"></script>
+  <script src="./js/worldNews.js"></script>
+  <script src="./js/coporateNews.js"></script>
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/annoucements.js"></script>
+  <script src="./js/whatsOn.js"></script>
+  <script src="./js/Home-Advertisments.js"></script>
+  <script src="./js/sponsoredPost.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadLatestNews();
+      loadPopularNews();
+      loadCopperNews();
+      loadPreciousMetalNews();
+      loadWorldNews();
+      loadCorporateNews();
+      loadAdvertisements();
+      loadAnnouncements();
+      loadWhatsOn();
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>

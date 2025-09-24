@@ -712,7 +712,7 @@
 .leftslidebar
  {
   width: 120%;
-  height: calc(800vh - 120px);
+  height: calc(900vh - 120px);
   position: sticky;
   top: 10px;
   overflow-y: auto;
@@ -1150,7 +1150,7 @@
     }
 
     .team-card img {
-      width: 90%;
+      width: 100%;
   height: 160px;
   object-fit: cover;
   border-radius: 10px;
@@ -2004,9 +2004,7 @@ border-radius: 10px;
   border-radius: 8px;
   transition: background 0.3s ease;
 }
-  .world-news {
-  position: relative;
-}
+
 
 .world-news .more-btn {
   position: absolute;

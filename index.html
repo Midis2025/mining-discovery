@@ -29,8 +29,8 @@
   <header class="main-header">
     <div class="header-top">
       <div class="logo-social">
-        <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
-      </div>
+       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
+     </a> </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
       </button>
@@ -148,13 +148,14 @@
 
 
   <!-- YouTube Corner Popup -->
-  <div class="corner-popup" id="popup">
-    <div class="popup-content">
-      <span class="close-btn" id="closeBtn">&times;</span>
-      <iframe id="youtube-video" width="300" height="170" src="" frameborder="0" allow="autoplay; encrypted-media"
-        allowfullscreen></iframe>
-    </div>
+ <div class="corner-popup" id="popup" style="display:none;">
+  <div class="popup-content">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <iframe id="youtube-video" width="300" height="170" src="" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen></iframe>
   </div>
+</div>
   <!-- Popup Overlay -->
   <div class="popup-overlay" id="popup2">
     <div class="subscribe-box">
@@ -308,7 +309,8 @@
       <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <p>Saudi Arabia Project Insights</p>
+    <p>
+U.S Gold Corp Fully Permitted Copper Project in Wyoming</p>
   </div>
 </div>
               <div class="video-card">
@@ -376,23 +378,22 @@
 
 
         </div>
-        <div class="task">
-          <h2>World News</h2>
-          <div class="precious-metals" id="worldNews">
-            <img src="./image/slidr1.png">
-            <div class="world-news">
-              <p>ARRAS MINERALS TO MOBILIZE SECOND DRILL RIG TO ELEMES PROJECT, PROVIDES EXPLORATION UPDATE, AND
-                ANNOUNCES TERMINATION OF BESKAUGA OPTION AGREEMENT</p>
-              <small>30th April 2025</small>
-              <div class="author">By: Mining Discovery</div>
+       <div class="task">
+  <h2>World News</h2>
+  <div class="precious-metals" id="worldNews">
+    <img src="./image/slidr1.png">
+    <div class="world-news">
+      <p>
+        ARRAS MINERALS TO MOBILIZE SECOND DRILL RIG TO ELEMES PROJECT, PROVIDES
+        EXPLORATION UPDATE, AND ANNOUNCES TERMINATION OF BESKAUGA OPTION AGREEMENT
+      </p>
+      <small>30th April 2025</small>
+      <div class="author">By: Mining Discovery</div>
+      <button class="more-btn">More &gt;</button>
+    </div>
+  </div>
+</div>
 
-            </div>
-
-          </div>
-
-
-          <!-- World News -->
-        </div>
 
 
 
@@ -452,7 +453,8 @@
       <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <p>Saudi Arabia Project Insights</p>
+    <h4>
+U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
   </div>
 </div>
 
@@ -465,8 +467,9 @@
     </div>
 
     <!-- Video title and description -->
-    <h4>Power Metals - Project Update</h4>
-    <p>Saudi Arabia Project Insights</p>
+    <h4>
+Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
+  
   </div>
 </div>
 
@@ -476,7 +479,8 @@
       <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <p>Project Update</p>
+    <h4>
+NANO Nuclear & Digihost Partner <br>to Support Zero Emission Energy Goals</h4>
   </div>
 </div>
 
@@ -490,8 +494,9 @@
     </div>
 
     <!-- Video title and description -->
-    <h4>Power Metals - Project Update</h4>
-    <p>Saudi Arabia Project Insights</p>
+      <h4>
+U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
+  
   </div>
 </div>
 
@@ -504,8 +509,9 @@
     </div>
 
     <!-- Video title and description -->
-    <h4>Power Metals - Project Update</h4>
-    <p>Saudi Arabia Project Insights</p>
+    <h4>
+Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
+   
   </div>
 </div>
 
@@ -765,31 +771,29 @@
   });
 
 
-  // Show popup only once per session (using sessionStorage)
+// Show popup only once in lifetime (until localStorage is cleared)
   window.onload = function () {
-    if (!sessionStorage.getItem("subscribedPopupShown")) {
-      // Yahi turant flag set karo (wait ke baad nahi)
-      sessionStorage.setItem("subscribedPopupShown", "true");
-
+    if (!localStorage.getItem("subscribedPopupShown")) {
       setTimeout(() => {
         document.getElementById("popup2").style.display = "flex";
-      }, 7000); // 7 sec delay
+        localStorage.setItem("subscribedPopupShown", "true"); // save in localStorage
+      }, 3000); // 3 sec delay (change as per need)
     } else {
       document.getElementById("popup2").style.display = "none";
     }
-  };
+  }
 
   function closePopup() {
     document.getElementById("popup2").style.display = "none";
   }
 
   function subscribe() {
-    const email = document.getElementById('email').value.trim();
-    if (email === "") {
-      alert("⚠️ Please enter your email.");
-    } else {
-      alert("✅ Thank you for subscribing, " + email + "!");
+    let email = document.getElementById("email").value;
+    if (email.trim() !== "") {
+      alert("Thanks for subscribing: " + email);
       closePopup();
+    } else {
+      alert("Please enter a valid email.");
     }
   }
 

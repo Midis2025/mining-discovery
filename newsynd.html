@@ -30,7 +30,9 @@
       text-decoration: underline;
     }
 
-    .main-header {
+
+.main-header {
+      margin-bottom: 10px;
       background-color: #fff;
       padding: 12px;
       border-bottom: 1px solid #ddd;
@@ -57,6 +59,7 @@
       height: 70px;
       
     }
+   
 
     .nav-links {
       display: flex;
@@ -69,12 +72,12 @@
 
       text-decoration: none;
       color: #000;
-    
+   
       transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      color: #ae8a4c;
+      color: #8d6d2a;
     }
 
     .header-buttons {
@@ -96,11 +99,11 @@
     }
 
     .login-btn {
-      background-color: #ae8a4c;
+      background-color:#AE8A4C;
     }
 
     .subscribe-btn {
-     background-color: #ae8a4c;
+     background-color: #AE8A4C;
     }
 
    
@@ -115,7 +118,7 @@
 }
 
 .search-bar-bg {
-  background-color: #2e2e2e;
+  background-color: #292929;
   height: 24px;
   border-radius: 20px;
   
@@ -127,7 +130,7 @@
 .scrolling-track {
   display: flex;
   width: max-content;
- animation: scroll-loop 50s linear infinite;
+  animation: scroll-loop 50s linear infinite;
       padding-top: 3px;
       gap: 24px;
 }
@@ -140,8 +143,12 @@
   font-size: 12px;
 }
 
-
-
+.up {
+  color: #22ed00;
+}
+.down {
+  color: #ff0000;
+}
 
 @keyframes scroll-loop {
   0% {
@@ -155,13 +162,13 @@
 
 .search-box {
       position: relative;
-      width: 174px;
-      margin-right: 16px;
+      width: 140px;
+    
       
     }
 
     .search-box input {
-      width: 100%;
+      width: 90%;
       height: 25px;
       padding: 5px 15px;
       padding-right: 35px;
@@ -173,7 +180,7 @@
 
     .search-icon {
       position: absolute;
-      right: 10px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
@@ -182,19 +189,107 @@
       font-size: 16px;
       cursor: pointer;
     }
+    .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* search aur hamburger ke beech gap */
+}
+
+.search-box {
+  flex: 1; /* search box full width le le, hamburger ke sath */
+}
+
+.hamburger2 {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: block; /* laptop/mobile dono pe visible */
+  padding-right:20px ;
+    color: #b8860b; /* golden color */
+}
+.hamburger-menu {
+  display: none;
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 30px 50px;
+  z-index: 999;
+}
+
+/* Tabs */
+/* Tabs + content wrapper ek row me */
+.hamburger-menu .menu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Tabs left me column wise */
+.hamburger-menu .menu-tabs {
+  display: flex;
+  flex-direction: column; /* tabs ek ke niche ek */
+  min-width: 200px; /* thoda fix width rakho */
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+/* Tab items */
+.hamburger-menu .menu-tabs p {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hamburger-menu .menu-tabs p.active {
+  color: #b8860b;
+}
+
+/* Content right side me */
+.hamburger-menu .menu-content {
+  flex: 1;
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 40px;
+}
+
+.hamburger-menu .menu-content.active {
+  display: grid;
+}
+.menu-content a{
+  text-decoration: none;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .hamburger2 {
+    display: none; /* phone screen pe hide ho jayega */
+  }
+}
+
+
+
+
+
 
     /* Animated text */
     .animated-text-container {
-      position: absolute;
-      left: 15px;
-      top: 30%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: #999;
-      font-size: 14px;
-      overflow: hidden;
-      height: 18px;
-    }
+       position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 12px;
+    overflow: hidden;
+    height: 20px;
+}
+    
 
     .animated-text-container span {
       display: block;
@@ -256,123 +351,63 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #ae8a4c;
+      color: #8d6d2a;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
+  .hamburger {
+    display: block;
+  }
 
-      .nav-links,
-      .header-buttons,
-      .search-bar-container {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 10px;
-      }
+  /* Search-bar always visible */
+  .search-bar-container {
+    display: flex !important; /* hamesha visible rahe */
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .social-icons{
+    display: none;
+  }
+  
 
-      .nav-links a {
-        padding: 8px 0;
-      }
-
-      .mobile-active .nav-links,
-      .mobile-active .header-buttons,
-      .mobile-active .search-bar-container {
-        display: flex;
-        gap: 20px;
-      }
-
-      .search-box {
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      .search-box input {
-        width: 100%;
-      }
-
-      .social-icon {
-        margin-bottom: -20px;
-      }
-      .search-bar-bg {
-        width: 100%;
-      }
-    }
-/* main-header */
-/* === Header / Dropdown Toggle === */
-    .topbar {
-      background: #1f1f1f;
-      color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-
-    .topbar h1 {
-      font-size: 20px;
-      font-weight: normal;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .topbar h1 i {
-      font-size: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .topbar h1.rotate i {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-links {
-      display: none;
-      background: #1f1f1f;
-      padding: 10px 30px;
-      flex-wrap: wrap;
-      gap: 15px;
-      font-size: 14px;
-      border-top: 1px solid #333;
-    }
-
-    .dropdown-links a {
-      color: #ccc;
-      text-decoration: none;
-      margin-right: 15px;
-      transition: 0.3s;
-    }
-
-    .dropdown-links a:hover,
-    .dropdown-links a.active {
-      color:  #ae8a4c;
-      border-bottom: 2px solid  #ae8a4c;
-      padding-bottom: 3px;
-    }
-
-    .dropdown-links.show {
-      display: flex;
-    }
-
-   
+  /* Nav links & buttons toggle only */
+  .nav-links,
+  .header-buttons {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  /* On hamburger click, show nav-links + header-buttons + search + social-icons */
+   .mobile-active .nav-links,
+  .mobile-active .header-buttons,
+  .mobile-active .search-bar-container,
+  .mobile-active .social-icons {
+    display: flex;
+    gap: 10px;
+  }
 
 
+  .nav-links a {
+    padding: 8px 0;
+  }
 
+  .search-box {
+    width: 100%;
+    margin-top: 0;
+  }
 
+  .search-box {
+   display: none;
+  }
 
-
-
-    
-
-
-
-
+  .search-bar-bg {
+    width: 100%;
+  }
+}
 
 
 
@@ -1357,28 +1392,29 @@ border-bottom: 2px solid  #ae8a4c ;
   </style>
 </head>
 <body>
-   
-  <header class="main-header">
+   <header class="main-header">
     <div class="header-top">
-     <div class="logo-social">
-        <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
-      </div>
+      <div class="logo-social">
+       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
+     </a> </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
       </button>
 
-      <div class="nav-links" id="navMenu">
+     <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
-        <a href="./newss.html">News Section</a>
-      <a href="./morning.html">Evening Chatter</a>
+       <a href="./newss.html">News Section</a> 
+       
+        <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
-      </div>
+      
+      </div> 
 
       <div class="header-buttons" id="headerButtons">
-    <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
-       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a> 
+        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
+        <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
       </div>
     </div>
 
@@ -1390,49 +1426,115 @@ border-bottom: 2px solid  #ae8a4c ;
               <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
               <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
             </div>
-<div class="search-bar-bg">
+    <div class="search-bar-bg">
         <div class="scrolling-track" id="newsTicker">
           <!-- News titles will be inserted here -->
         </div>
       </div>
 
-
-
-     <div class="search-box">
+<!-- Header Search + Hamburger -->
+<div class="search-box-wrapper">
+  <div class="search-box">
     <input type="text" id="searchInput" placeholder=" " />
     <!-- <div class="animated-text-container">
       <span id="animatedText">Search gold prices</span>
     </div> -->
-    <button class="search-icon"><i class="fas fa-search"></i></button>
+    <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
   </div>
+
+  <!-- Hamburger icon -->
+  <button class="hamburger2" onclick="toggleMenu2()">
+    <i class="fas fa-bars"></i>
+  </button>
+</div>
+
+<!-- Dropdown menu (hidden by default) -->
+<div id="hamburgerMenu" class="hamburger-menu">
+  <div class="menu-row">
+
+    <!-- Tabs left -->
+    <div class="menu-tabs">
+      <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+      <p class="tab-btn" data-target="about">SERVICE</p>
+      <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+
+      
+    </div>
+
+    <!-- Content right -->
+    <div class="menu-content active" id="news">
+      <p><a href="#">Latest News</a></p>
+      <p><a href="#">Precious Metals</a></p>
+      <p><a href="#">Evening Chatter</a></p>
+      <p><a href="#">Research Reports</a></p>
+         <p><a href="#">Gold News</a></p>
+      <p><a href="#">Corporate News</a></p>
+      <p><a href="#">Announcement</a></p>
+      <p><a href="#">Sponsored Post</a></p>
+         <p><a href="#">Silver News</a></p>
+      <p><a href="#">World News</a></p>
+      <p><a href="#">Popular This Week</a></p>
+      <p><a href="#">What’s On</a></p>
+      <p><a href="#">Copper News</a></p>
+      <p><a href="#">Leadership Thoughts</a></p>
+      <p><a href="#">Projects</a></p>
+    </div>
+      <div class="menu-content" id="about">
+      <p><a href="./service.html">Investor Campaign</a></p>
+      <p><a href="./newsynd.html">News Syndication</a></p>
+      <p><a href="./branding.html">Digital Branding</a></p>
+        <p><a href="./pressoffice.html">Press Office</a></p>
+      <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Youtube</a></p>
+      <p><a href="./confrence.html">Conference Media Coverage</a></p>
+         <p><a href="./letter.html">Newsletter & Email Blast</a></p>
+     
+    </div>
+
+    <div class="menu-content" id="magazine">
+      <p><a href="./ceo.html">CEO Profile</a></p>
+      <p><a href="./weekly.html">Newsletter</a></p>
+      <p><a href="./company-profile.html">Company Profile</a></p>
+       <p><a href="./Digitaledition.html">Digital Edition</a></p>
+    </div>
+
+  
+
+  </div>
+</div>
+
+
+
+
+        
     </div>
   </header>
+ 
    
   
   <!-- Header + Dropdown -->
    <!-- Header + Dropdown -->
-  <div class="topbar">
+  <!-- <div class="topbar">
     <h1 onclick="serviceDropdown()" id="serviceToggle">
       Services
       <i class="fas fa-chevron-down"></i>
     </h1>
-  </div>
+  </div> -->
 <!-- Dropdown Links -->
-  <div class="dropdown-links" id="dropdownMenu2">
+  <!-- <div class="dropdown-links" id="dropdownMenu2">
     <a href="./service.html">Investor Campaigns</a>
     <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Multimedia & you tube</a>
     <a href="./newsynd.html">News Syndication</a>
     <a href="./confrence.html">Conference Media Coverage</a>
     <a href="./branding.html">Digital Branding</a>
-    <!-- <a href="./Global.html">Global Outreach</a> -->
-    <!-- <a href="./media.html">Social Media Growth
-</a> -->
-    <!-- <a href="./podcast.html">Podcast & Interview Features</a> -->
+    <a href="./Global.html">Global Outreach</a> 
+     <a href="./media.html">Social Media Growth
+</a>
+     <a href="./podcast.html">Podcast & Interview Features</a> 
     <a href="./letter.html">Newsletter & Email Blasts</a>
-    <!-- <a href="./paid.html">Paid Ad Campaigns</a> -->
+   <a href="./paid.html">Paid Ad Campaigns</a> 
     <a href="./pressoffice.html">Press Office</a>
 
-</div>
+</div> -->
 
   <!-- Content Section -->
   <div class="container">
@@ -1624,6 +1726,27 @@ border-bottom: 2px solid  #ae8a4c ;
   </footer>
   </div>
   <script src="script.js"></script>
+    <script>
+        function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
+  });
+    </script>
   <script>
     function toggleDropdown() {
       const dropdown = document.getElementById("dropdownMenu");

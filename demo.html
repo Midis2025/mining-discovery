@@ -1,57 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mining Discovery</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    /* Overlay Menu (mobile) */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      transition: left 0.3s ease;
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .menu-overlay.open {
+      left: 0;
+    }
+
+    .menu-overlay .close-btn {
+      text-align: right;
+      padding: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-overlay ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-overlay ul li a,
+    .menu-overlay ul li button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      text-decoration: none;
+      color: #333;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .menu-overlay button .fa-chevron-down {
+      float: right;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-overlay button.active .fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    /* Accordion submenu */
+    .menu-overlay .submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      list-style: none;
+      padding-left: 15px;
+      margin-top: 5px;
+      background: #f9f9f9;
+    }
+
+    .menu-overlay .submenu.open {
+      max-height: 1000px;
+    }
+
+    .menu-overlay .submenu li {
+      margin-bottom: 5px;
+    }
+
+    .menu-overlay .submenu li a {
+      padding-left: 10px;
+      font-size: 14px;
+    }
+
+    /* Desktop Tabs Menu */
+    .desktop-tabs {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    .desktop-tabs .tab-content {
+      display: none;
+      padding: 16px;
+    }
+
+    .desktop-tabs .tab-content.active {
+      display: block;
+    }
+
+    .desktop-tabs .tab-btns {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid #eee;
+      padding: 0 16px;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn {
+      cursor: pointer;
+      padding: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn.active {
+      border-bottom: 2px solid #d32f2f;
+      color: #d32f2f;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links,
+      .header-buttons {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <div id="hamburgerMenu" class="hamburger-menu">
-  <!-- News Section -->
-  <div class="menu-group">
-    <p class="menu-title" onclick="toggleSubmenu('newsSubmenu')">NEWS SECTION</p>
-    <div id="newsSubmenu" class="submenu">
-      <p>Latest News</p>
-      <p>Precious Metals</p>
-      <p>Evening Chatter</p>
-      <p>Gold News</p>
-      <p>Corporate News</p>
-      <p>Announcement</p>
-      <p>Silver News</p>
-      <p>World News</p>
-      <p>Popular This Week</p>
-      <p>Copper News</p>
-      <p>Leadership Thoughts</p>
-      <p>Projects</p>
+
+  <div class="first-header">
+    <div class="news-slider">
+      <p>THE MINING INVESTMENT EVENT</p>
+      <p>THE MINING INVESTMENT EVENT</p>
+      <p>SAVE THE DATE -JUNE 2-4 2026</p>
+      <p>Some important highlighted news 4</p>
     </div>
   </div>
 
-  <div class="divider"></div>
+  <header class="main-header">
+    <div class="header-top">
+      <div class="logo-social">
+        <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
+        </a>
+      </div>
+      <button class="hamburger" onclick="openMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
 
-  <!-- Services -->
-  <div class="menu-group">
-    <p class="menu-title" onclick="toggleSubmenu('servicesSubmenu')">SERVICES</p>
-    <div id="servicesSubmenu" class="submenu">
-      <p>Digital Branding</p>
-      <p>Press Office</p>
-      <p>Conference Media Coverage</p>
-      <p>Newsletter & Email Blast</p>
+      <div class="nav-links" id="navMenu">
+        <a href="./about.html">About Us</a>
+        <a href="#" onclick="openDesktopTab('newsTab')">News Section<i class="fas fa-chevron-down"></i></a>
+        <a href="./morning.html">Evening Chatter</a>
+        <a href="./magzin.html">Magazine</a>
+        <a href="./service.html">Services</a>
+        <a href="./contant.html">Contact Us</a>
+      </div>
+
+      <div class="header-buttons" id="headerButtons">
+        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
+        <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
+      </div>
     </div>
-  </div>
 
-  <div class="divider"></div>
+    <div class="search-bar-container" id="searchContainer">
+      <div class="search-bar-bg">
+        <div class="scrolling-track" id="newsTicker"></div>
+      </div>
 
-  <!-- Magazine -->
-  <div class="menu-group">
-    <p class="menu-title" onclick="toggleSubmenu('magazineSubmenu')">MAGAZINE</p>
-    <div id="magazineSubmenu" class="submenu">
-      <p>CEO Profile</p>
-      <p>Newsletter</p>
-      <p>Company Profile</p>
-      <p>Digital Edition</p>
+      <!-- Header Search + Hamburger -->
+      <div class="search-box-wrapper">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder=" " />
+          <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+        </div>
+
+        <!-- Hamburger icon -->
+        <button class="hamburger2" onclick="toggleMenu2()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Overlay Menu -->
+      <div class="menu-overlay" id="menuOverlay">
+        <div class="close-btn" onclick="closeMenu()">
+          <i class="fas fa-times"></i>
+        </div>
+        <ul>
+          <li>
+            <button onclick="toggleSubmenu('newsSub', this)">
+              NEWS SECTION <i class="fas fa-chevron-down"></i>
+            </button>
+            <ul class="submenu" id="newsSub">
+              <li><a href="#">Latest News</a></li>
+              <li><a href="#">Precious Metals</a></li>
+              <li><a href="#">Evening Chatter</a></li>
+              <li><a href="#">Research Reports</a></li>
+              <li><a href="#">Gold News</a></li>
+              <li><a href="#">Corporate News</a></li>
+              <li><a href="#">Announcement</a></li>
+              <li><a href="#">Sponsored Post</a></li>
+            </ul>
+          </li>
+          <li><a href="./service.html">Services</a></li>
+          <li><a href="./magzin.html">Magazine</a></li>
+          <li><a href="./contant.html">Contact Us</a></li>
+          <li><a href="./about.html">About Us</a></li>
+        </ul>
+      </div>
+
     </div>
-  </div>
-</div>
+  </header>
+
+  <!-- JS -->
+  <script>
+    // Mobile overlay menu
+    function openMenu() {
+      document.getElementById("menuOverlay").classList.add("open");
+    }
+
+    function closeMenu() {
+      document.getElementById("menuOverlay").classList.remove("open");
+    }
+
+    // Accordion submenu
+    function toggleSubmenu(id, btn) {
+      const submenu = document.getElementById(id);
+      const isOpen = submenu.classList.contains("open");
+
+      // Close all other submenus
+      document.querySelectorAll(".menu-overlay .submenu").forEach(s => s.classList.remove("open"));
+      document.querySelectorAll(".menu-overlay button").forEach(b => b.classList.remove("active"));
+
+      if (!isOpen) {
+        submenu.classList.add("open");
+        btn.classList.add("active");
+      }
+    }
+
+    // Desktop tabs
+    function switchTab(tabId) {
+      const contents = document.querySelectorAll(".desktop-tabs .tab-content");
+      const buttons = document.querySelectorAll(".desktop-tabs .tab-btn");
+      contents.forEach(c => c.classList.remove("active"));
+      buttons.forEach(b => b.classList.remove("active"));
+
+      document.getElementById(tabId).classList.add("active");
+      const btn = Array.from(buttons).find(b => b.textContent.replace(/\s/g, '') === tabId.replace('Tab', ''));
+      if (btn) btn.classList.add("active");
+    }
+
+    function openDesktopTab(tabId) {
+      document.getElementById("desktopTabs").style.display = "block";
+      switchTab(tabId);
+    }
+  </script>
 
 </body>
+
 </html>

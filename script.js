@@ -114,6 +114,7 @@ function loadIframe2(el) {
 /* -------------------------
    YOUTUBE POPUP
 ------------------------- */
+
 window.addEventListener("load", () => {
   const popup = document.getElementById("popup");
   const closeBtn = document.getElementById("closeBtn");
@@ -121,7 +122,8 @@ window.addEventListener("load", () => {
 
   if (!popup || !closeBtn || !youtubeIframe) return;
 
-  const youtubeLink = "https://www.youtube.com/embed/pzxdSK6t2Eo?autoplay=1";
+  // ✅ New YouTube video link
+  const youtubeLink = "https://www.youtube.com/embed/fEkZCZDaJ9M?autoplay=1";
 
   // Check if popup already shown in this session
   if (!sessionStorage.getItem("youtubePopupShown")) {
@@ -138,7 +140,6 @@ window.addEventListener("load", () => {
     youtubeIframe.src = ""; // Stop video
   });
 });
-
 /* -------------------------
    EXTRA NEWS (STATIC DEMO)
 ------------------------- */
