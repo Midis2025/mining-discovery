@@ -1,6 +1,15 @@
 async function loadLatestNews() {
-  const url =
-    "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=latest-news&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][fields][3]=short_description&populate[news_sections][populate][image]=true";
+const url =
+  "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories" +
+  "?filters[slug][$eq]=latest-news" +
+  "&populate[news_sections][fields][0]=title" +
+  "&populate[news_sections][fields][1]=author" +
+  "&populate[news_sections][fields][2]=publish_on" +
+  "&populate[news_sections][fields][3]=short_description" +
+  "&populate[news_sections][populate][image]=true" +
+  "&pagination[page]=1" +          // 👈 first page
+  "&pagination[pageSize]=5";       // 👈 5 items per page
+
 
   const latestNewsContainer = document.getElementById("latestNews");
   const mainCardContainer = document.getElementById("mainCard");

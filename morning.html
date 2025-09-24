@@ -1594,15 +1594,18 @@
    <script src="./js/reports.js"></script>
 
 
-     <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    loadAdvertisements();
+    loadProjects();
+    loadReports();
+    newsCategory();
 
-      loadAdvertisements();
-      loadProjects();
-      loadReports();
-      newsCategory();
-    });
-  </script>
+    // call the chatter widget here
+    loadMorningChatter();
+  });
+</script>
+
    <script src="./js/latestNews.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1637,6 +1640,7 @@
       }
     }
 
+    
   </script>
 
 </body>
