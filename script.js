@@ -14,20 +14,72 @@ function toggleDropdown() {
 }
 
 function serviceDropdown() {
-      const dropdown = document.getElementById("dropdownMenu2");
-      const header = document.getElementById("serviceToggle");
-      dropdown.classList.toggle("show");
-      header.classList.toggle("rotate");
+  const dropdown = document.getElementById("dropdownMenu2");
+  const header = document.getElementById("serviceToggle");
+  dropdown.classList.toggle("show");
+  header.classList.toggle("rotate");
+}
+
+function magazineDropdown() {
+  const dropdown = document.getElementById("dropdownMenu3");
+  const header = document.getElementById("magazineToggle");
+  dropdown.classList.toggle("show");
+  header.classList.toggle("rotate");
+}
+
+// login functionality
+ // Root URL of your deployed site (must match Vercel root)
+  const HOME_URL = "https://staging.miningdiscovery.com/index.html";
+
+  window.addEventListener("load", async () => {
+    await Clerk.load();
+
+    const loginBtn = document.getElementById("loginBtn");
+    const userProfile = document.getElementById("userProfile");
+
+    // Show the logged-in user profile
+    function showUserProfile() {
+      loginBtn.style.display = "none";
+      userProfile.style.display = "inline-block";
+
+      // Mount Clerk user button with logout redirect
+      Clerk.mountUserButton(userProfile, {
+        afterSignOut: () => {
+          window.location.href = HOME_URL; // Clean redirect after logout
+        }
+      });
     }
 
-    function magazineDropdown() {
-      const dropdown = document.getElementById("dropdownMenu3");
-      const header = document.getElementById("magazineToggle");
-      dropdown.classList.toggle("show");
-      header.classList.toggle("rotate");
+    // Show login button
+    function showLoginButton() {
+      loginBtn.style.display = "inline-block";
+      userProfile.style.display = "none";
     }
-    // subscribe popup
-    
+
+    if (Clerk.user) {
+      // Already logged in
+      showUserProfile();
+
+      // Clean Clerk OAuth query strings if present
+      const url = new URL(window.location.href);
+      if (url.searchParams.has("__clerk_handshake") || url.searchParams.has("__clerk_db_jwt")) {
+        window.location.replace(HOME_URL);
+      }
+    } else {
+      // Not logged in
+      showLoginButton();
+
+      loginBtn.addEventListener("click", () => {
+        Clerk.openSignIn({
+          afterSignInUrl: HOME_URL,
+          afterSignUpUrl: HOME_URL
+        });
+      });
+    }
+  });
+
+
+
 /* -------------------------
    CAROUSELS
 ------------------------- */
@@ -67,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Search gold prices",
     "Search silver value",
     "Search copper rates",
-   
+
     "Search latest news",
   ];
 

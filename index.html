@@ -4,8 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mining Discovery</title>
 
+  <title>Mining Discovery</title>
+ <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_YW11c2luZy1rYXR5ZGlkLTQ0LmNsZXJrLmFjY291bnRzLmRldiQ"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
+</script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="./style.css" />
 
@@ -29,117 +33,125 @@
   <header class="main-header">
     <div class="header-top">
       <div class="logo-social">
-       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
-     </a> </div>
+        <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
+        </a>
+      </div>
       <button class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
       </button>
 
-     <div class="nav-links" id="navMenu">
+      <div class="nav-links" id="navMenu">
         <a href="./about.html">About Us</a>
-       <a href="./newss.html">News Section</a> 
-       
+        <a href="./newss.html">News Section</a>
+
         <a href="./morning.html">Evening Chatter</a>
         <a href="./magzin.html">Magazine</a>
         <a href="./service.html">Services</a>
         <a href="./contant.html">Contact Us</a>
-      
-      </div> 
+
+      </div>
 
       <div class="header-buttons" id="headerButtons">
-        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
         <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
+        <button class="login-btn" id="loginBtn" style="display:none;">Login</button>
+
+        <!-- User Profile -->
+        <div id="userProfile" style="display:none;"></div>
+
       </div>
     </div>
 
     <div class="search-bar-container" id="searchContainer">
       <div class="social-icons">
-              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
-             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
-              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
-              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
-              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
-            </div>
-    <div class="search-bar-bg">
+        <a
+          href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img
+            src="./image/Group.png"></a>
+        <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+        <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+        <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+        <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img
+            src="./image/Group (3).png"></a>
+      </div>
+      <div class="search-bar-bg">
         <div class="scrolling-track" id="newsTicker">
           <!-- News titles will be inserted here -->
         </div>
       </div>
 
-<!-- Header Search + Hamburger -->
-<div class="search-box-wrapper">
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder=" " />
-    <!-- <div class="animated-text-container">
+      <!-- Header Search + Hamburger -->
+      <div class="search-box-wrapper">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder=" " />
+          <!-- <div class="animated-text-container">
       <span id="animatedText">Search gold prices</span>
     </div> -->
-    <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
-  </div>
+          <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+        </div>
 
-  <!-- Hamburger icon -->
-  <button class="hamburger2" onclick="toggleMenu2()">
-    <i class="fas fa-bars"></i>
-  </button>
-</div>
+        <!-- Hamburger icon -->
+        <button class="hamburger2" onclick="toggleMenu2()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
 
-<!-- Dropdown menu (hidden by default) -->
-<div id="hamburgerMenu" class="hamburger-menu">
-  <div class="menu-row">
+      <!-- Dropdown menu (hidden by default) -->
+      <div id="hamburgerMenu" class="hamburger-menu">
+        <div class="menu-row">
 
-    <!-- Tabs left -->
-    <div class="menu-tabs">
-      <p class="tab-btn active" data-target="news">NEWS SECTION</p>
-      <p class="tab-btn" data-target="about">SERVICE</p>
-      <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+          <!-- Tabs left -->
+          <div class="menu-tabs">
+            <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+            <p class="tab-btn" data-target="about">SERVICE</p>
+            <p class="tab-btn" data-target="magazine">MAGAZINE</p>
 
-      
-    </div>
 
-    <!-- Content right -->
-    <div class="menu-content active" id="news">
-      <p><a href="#">Latest News</a></p>
-      <p><a href="#">Precious Metals</a></p>
-      <p><a href="#">Evening Chatter</a></p>
-      <p><a href="#">Research Reports</a></p>
-         <p><a href="#">Gold News</a></p>
-      <p><a href="#">Corporate News</a></p>
-      <p><a href="#">Announcement</a></p>
-      <p><a href="#">Sponsored Post</a></p>
-         <p><a href="#">Silver News</a></p>
-      <p><a href="#">World News</a></p>
-      <p><a href="#">Popular This Week</a></p>
-      <p><a href="#">What’s On</a></p>
-      <p><a href="#">Copper News</a></p>
-      <p><a href="#">Leadership Thoughts</a></p>
-      <p><a href="#">Projects</a></p>
-    </div>
-      <div class="menu-content" id="about">
-      <p><a href="./service.html">Investor Campaign</a></p>
-      <p><a href="./newsynd.html">News Syndication</a></p>
-      <p><a href="./branding.html">Digital Branding</a></p>
-        <p><a href="./pressoffice.html">Press Office</a></p>
-      <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Youtube</a></p>
-      <p><a href="./confrence.html">Conference Media Coverage</a></p>
-         <p><a href="./letter.html">Newsletter & Email Blast</a></p>
-     
-    </div>
+          </div>
 
-    <div class="menu-content" id="magazine">
-      <p><a href="./ceo.html">CEO Profile</a></p>
-      <p><a href="./weekly.html">Newsletter</a></p>
-      <p><a href="./company-profile.html">Company Profile</a></p>
-       <p><a href="./Digitaledition.html">Digital Edition</a></p>
-    </div>
+          <!-- Content right -->
+          <div class="menu-content active" id="news">
+            <p><a href="#">Latest News</a></p>
+            <p><a href="#">Precious Metals</a></p>
+            <p><a href="#">Evening Chatter</a></p>
+            <p><a href="#">Research Reports</a></p>
+            <p><a href="#">Gold News</a></p>
+            <p><a href="#">Corporate News</a></p>
+            <p><a href="#">Announcement</a></p>
+            <p><a href="#">Sponsored Post</a></p>
+            <p><a href="#">Silver News</a></p>
+            <p><a href="#">World News</a></p>
+            <p><a href="#">Popular This Week</a></p>
+            <p><a href="#">What’s On</a></p>
+            <p><a href="#">Copper News</a></p>
+            <p><a href="#">Leadership Thoughts</a></p>
+            <p><a href="#">Projects</a></p>
+          </div>
+          <div class="menu-content" id="about">
+            <p><a href="./service.html">Investor Campaign</a></p>
+            <p><a href="./newsynd.html">News Syndication</a></p>
+            <p><a href="./branding.html">Digital Branding</a></p>
+            <p><a href="./pressoffice.html">Press Office</a></p>
+            <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Youtube</a></p>
+            <p><a href="./confrence.html">Conference Media Coverage</a></p>
+            <p><a href="./letter.html">Newsletter & Email Blast</a></p>
 
-  
+          </div>
 
-  </div>
-</div>
+          <div class="menu-content" id="magazine">
+            <p><a href="./ceo.html">CEO Profile</a></p>
+            <p><a href="./weekly.html">Newsletter</a></p>
+            <p><a href="./company-profile.html">Company Profile</a></p>
+            <p><a href="./Digitaledition.html">Digital Edition</a></p>
+          </div>
 
 
 
+        </div>
+      </div>
 
-        
+
+
+
+
     </div>
   </header>
 
@@ -148,14 +160,14 @@
 
 
   <!-- YouTube Corner Popup -->
- <div class="corner-popup" id="popup" style="display:none;">
-  <div class="popup-content">
-    <span class="close-btn" id="closeBtn">&times;</span>
-    <iframe id="youtube-video" width="300" height="170" src="" frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      allowfullscreen></iframe>
+  <div class="corner-popup" id="popup" style="display:none;">
+    <div class="popup-content">
+      <span class="close-btn" id="closeBtn">&times;</span>
+      <iframe id="youtube-video" width="300" height="170" src="" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
   </div>
-</div>
   <!-- Popup Overlay -->
   <div class="popup-overlay" id="popup2">
     <div class="subscribe-box">
@@ -221,9 +233,9 @@
             <!-- Banner image will be injected here -->
           </div>
 
-        <h2>Most Read</h2>
+          <h2>Most Read</h2>
           <div class="cards">
-             <div class="card"></div>
+            <div class="card"></div>
           </div>
 
           <!-- Popular This Week Section -->
@@ -232,7 +244,7 @@
             <div class="carousel-wrapper">
               <button class="nav" id="prev">&#8249;</button>
               <div class="carousel" id="carousel">
-             
+
 
                 <div class="team-card">
                   <img src="./image/slider2.png" alt="card" />
@@ -250,7 +262,7 @@
                     <small>By: Gold Hunter Resources</small>
                   </div>
                 </div>
-                 <div class="team-card">
+                <div class="team-card">
                   <img src="./image/slider2.png" alt="card" />
                   <p>Power Metallic Wins Exploration Rights</p>
                   <div class="meta">
@@ -258,7 +270,7 @@
                     <small>By: Gold Hunter Resources</small>
                   </div>
                 </div>
-                 <div class="team-card">
+                <div class="team-card">
                   <img src="./image/slider3.png" alt="card" />
                   <p>Power Metallic Wins Exploration Rights</p>
                   <div class="meta">
@@ -276,7 +288,7 @@
         <section class="sponsored-section">
 
 
-         <div class="content-area">
+          <div class="content-area">
             <h2>Sponsored Post</h2>
 
             <!-- Top Post dynamically injected -->
@@ -303,32 +315,32 @@
             <h2 class="left-heading">Latest Multimedia</h2>
 
             <div class="left-box">
-             <div class="video-card">
-  <div class="video-info">
-    <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
-      <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
-    <p>
-U.S Gold Corp Fully Permitted Copper Project in Wyoming</p>
-  </div>
-</div>
               <div class="video-card">
-  <div class="video-info">
-    <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
-      <img src="./image/fourcard.avif" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
+                <div class="video-info">
+                  <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
+                    <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
+                    <div class="play-button">▶</div>
+                  </div>
+                  <p>
+                    U.S Gold Corp Fully Permitted Copper Project in Wyoming</p>
+                </div>
+              </div>
+              <div class="video-card">
+                <div class="video-info">
+                  <!-- Thumbnail preview -->
+                  <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
+                    <img src="./image/fourcard.avif" alt="Video Thumbnail">
+                    <div class="play-button">▶</div>
+                  </div>
 
-    <!-- Video title and description -->
-    <h4>Power Metals - Project Update</h4>
-    <p>Saudi Arabia Project Insights</p>
-  </div>
-</div>
-               <a href="">
-              <div class="more-btn">More →</div>
-            </a>
+                  <!-- Video title and description -->
+                  <h4>Power Metals - Project Update</h4>
+                  <p>Saudi Arabia Project Insights</p>
+                </div>
+              </div>
+              <a href="">
+                <div class="more-btn">More →</div>
+              </a>
             </div>
 
 
@@ -378,21 +390,21 @@ U.S Gold Corp Fully Permitted Copper Project in Wyoming</p>
 
 
         </div>
-       <div class="task">
-  <h2>World News</h2>
-  <div class="precious-metals" id="worldNews">
-    <img src="./image/slidr1.png">
-    <div class="world-news">
-      <p>
-        ARRAS MINERALS TO MOBILIZE SECOND DRILL RIG TO ELEMES PROJECT, PROVIDES
-        EXPLORATION UPDATE, AND ANNOUNCES TERMINATION OF BESKAUGA OPTION AGREEMENT
-      </p>
-      <small>30th April 2025</small>
-      <div class="author">By: Mining Discovery</div>
-      <button class="more-btn">More &gt;</button>
-    </div>
-  </div>
-</div>
+        <div class="task">
+          <h2>World News</h2>
+          <div class="precious-metals" id="worldNews">
+            <img src="./image/slidr1.png">
+            <div class="world-news">
+              <p>
+                ARRAS MINERALS TO MOBILIZE SECOND DRILL RIG TO ELEMES PROJECT, PROVIDES
+                EXPLORATION UPDATE, AND ANNOUNCES TERMINATION OF BESKAUGA OPTION AGREEMENT
+              </p>
+              <small>30th April 2025</small>
+              <div class="author">By: Mining Discovery</div>
+              <button class="more-btn">More &gt;</button>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -415,7 +427,7 @@ U.S Gold Corp Fully Permitted Copper Project in Wyoming</p>
 
           <div class="magazine">
             <!-- <h2 >Magazine</h2> -->
-              <h2>Magazine</h2>
+            <h2>Magazine</h2>
             <div id="magazines-home" class="magazines-wrapper">
               <!-- Placeholder boxes (script will replace with real magazines) -->
               <div class="box1 magazine-box">
@@ -447,73 +459,73 @@ U.S Gold Corp Fully Permitted Copper Project in Wyoming</p>
 
             <div class="video-slider" id="videoSlider">
               <!-- Repeat video cards -->
- <div class="video-card">
-  <div class="video-info">
-    <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
-      <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
-    <h4>
-U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
-  </div>
-</div>
+              <div class="video-card">
+                <div class="video-info">
+                  <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
+                    <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
+                    <div class="play-button">▶</div>
+                  </div>
+                  <h4>
+                    U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
+                </div>
+              </div>
 
-<div class="video-card">
-  <div class="video-info">
-    <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
-      <img src="./image/fourcard.avif" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
+              <div class="video-card">
+                <div class="video-info">
+                  <!-- Thumbnail preview -->
+                  <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
+                    <img src="./image/fourcard.avif" alt="Video Thumbnail">
+                    <div class="play-button">▶</div>
+                  </div>
 
-    <!-- Video title and description -->
-    <h4>
-Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
-  
-  </div>
-</div>
+                  <!-- Video title and description -->
+                  <h4>
+                    Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
 
-<div class="video-card">
-  <div class="video-info">
-    <div class="video-thumbnail" data-video="pzxdSK6t2Eo" onclick="loadIframe(this)">
-      <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/mqdefault.jpg" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
-    <h4>
-NANO Nuclear & Digihost Partner <br>to Support Zero Emission Energy Goals</h4>
-  </div>
-</div>
+                </div>
+              </div>
+
+              <div class="video-card">
+                <div class="video-info">
+                  <div class="video-thumbnail" data-video="pzxdSK6t2Eo" onclick="loadIframe(this)">
+                    <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/mqdefault.jpg" alt="Video Thumbnail">
+                    <div class="play-button">▶</div>
+                  </div>
+                  <h4>
+                    NANO Nuclear & Digihost Partner <br>to Support Zero Emission Energy Goals</h4>
+                </div>
+              </div>
 
 
-            <div class="video-card">
-  <div class="video-info">
-    <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="pzxdSK6t2Eo" onclick="loadIframe(this)">
-      <img src="./image/thirdcard.avif" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
+              <div class="video-card">
+                <div class="video-info">
+                  <!-- Thumbnail preview -->
+                  <div class="video-thumbnail" data-video="pzxdSK6t2Eo" onclick="loadIframe(this)">
+                    <img src="./image/thirdcard.avif" alt="Video Thumbnail">
+                    <div class="play-button">▶</div>
+                  </div>
 
-    <!-- Video title and description -->
-      <h4>
-U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
-  
-  </div>
-</div>
+                  <!-- Video title and description -->
+                  <h4>
+                    U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
 
-<div class="video-card">
-  <div class="video-info">
-    <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
-      <img src="./image/fourcard.avif" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
+                </div>
+              </div>
 
-    <!-- Video title and description -->
-    <h4>
-Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
-   
-  </div>
-</div>
+              <div class="video-card">
+                <div class="video-info">
+                  <!-- Thumbnail preview -->
+                  <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
+                    <img src="./image/fourcard.avif" alt="Video Thumbnail">
+                    <div class="play-button">▶</div>
+                  </div>
+
+                  <!-- Video title and description -->
+                  <h4>
+                    Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
+
+                </div>
+              </div>
 
               <!-- Add more cards here -->
             </div>
@@ -559,13 +571,13 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
           <div class="column">
             <h3>Press Office</h3>
             <ul>
-             <li><a href="https://www.phenomresources.com/news/">Phenom Resources</a></li>
-             <li><a href="https://nobleplains.com/news-releases">Noble Plains Uranium Corp.</a></li>
-            <li><a href="https://astra-exploration.com/news/">Astra Exploration Inc.</a></li>
-            <li><a href="https://loyalistexploration.com/news">Loyalist Exploration</a>
+              <li><a href="https://www.phenomresources.com/news/">Phenom Resources</a></li>
+              <li><a href="https://nobleplains.com/news-releases">Noble Plains Uranium Corp.</a></li>
+              <li><a href="https://astra-exploration.com/news/">Astra Exploration Inc.</a></li>
+              <li><a href="https://loyalistexploration.com/news">Loyalist Exploration</a>
               </li>
               <li>Mining Discovery</li>
-              
+
               <li><a href="https://www.powermetallic.com/">Power Metallic</a>
               </li>
               <li><a href="https://www.powermetallic.com/news/">U.S. Gold</a></li>
@@ -627,7 +639,7 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
           <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
         </div>
         <div class="slide">
-           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+          <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
         </div>
         <!-- Repeat again for smooth loop -->
         <div class="slide">
@@ -647,7 +659,7 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
         </div>
 
         <div class="slide">
-           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+          <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
         </div>
 
         <div class="slide">
@@ -660,7 +672,7 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
         <div class="slide">
           <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
         </div>
-<div class="slide">
+        <div class="slide">
           <img src="./image/ASTRA.png" alt="Astra" width="130" height="100" />
 
         </div>
@@ -678,7 +690,7 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
           <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
         </div>
         <div class="slide">
-           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+          <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
         </div>
       </div>
 
@@ -702,37 +714,40 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
           </p>
           <div class="search-bar-container-lasts" id="searchContainer">
             <div class="social-iconss">
-              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
-             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+              <a
+                href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img
+                  src="./image/Group.png"></a>
+              <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
               <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
               <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
-              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
+              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img
+                  src="./image/Group (3).png"></a>
             </div>
 
             <div class="search-boxs">
               <input type="text" id="searchInput" placeholder="" />
-                <div class="animated-text-container">
-          <span id="animatedText">Search gold prices</span>
-        </div>
-              <button class="search-icon"  onclick="searchNews()"><i class="fas fa-search"></i></button>
+              <div class="animated-text-container">
+                <span id="animatedText">Search gold prices</span>
+              </div>
+              <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
             </div>
-            
+
           </div>
         </div>
 
         <!-- Center -->
         <div class="footer-center">
-  <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
-    <li><a href="sub.html">SUBSCRIPTION</a></li>
-    <li><a href="./magzin.html">MAGAZINES</a></li>
-    <li><a href="">COMMENT GUIDELINE</a></li>
-    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
-  </ul>
-</div>
-      
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <li><a href="./magzin.html">MAGAZINES</a></li>
+            <li><a href="">COMMENT GUIDELINE</a></li>
+            <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+          </ul>
+        </div>
+
 
 
 
@@ -749,56 +764,56 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
   </footer>
 
 
-<script>
-  function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
- // Select tabs and contents
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".menu-content");
+  <script>
+    function toggleMenu2() {
+      const menu = document.getElementById("hamburgerMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    // Select tabs and contents
+    const tabs = document.querySelectorAll(".tab-btn");
+    const contents = document.querySelectorAll(".menu-content");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        // Remove active from all
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
 
-      // Add active to clicked
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
+        // Add active to clicked
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.target).classList.add("active");
+      });
     });
-  });
 
 
-// Show popup only once in lifetime (until localStorage is cleared)
-  window.onload = function () {
-    if (!localStorage.getItem("subscribedPopupShown")) {
-      setTimeout(() => {
-        document.getElementById("popup2").style.display = "flex";
-        localStorage.setItem("subscribedPopupShown", "true"); // save in localStorage
-      }, 3000); // 3 sec delay (change as per need)
-    } else {
+    // Show popup only once in lifetime (until localStorage is cleared)
+    window.onload = function () {
+      if (!localStorage.getItem("subscribedPopupShown")) {
+        setTimeout(() => {
+          document.getElementById("popup2").style.display = "flex";
+          localStorage.setItem("subscribedPopupShown", "true"); // save in localStorage
+        }, 3000); // 3 sec delay (change as per need)
+      } else {
+        document.getElementById("popup2").style.display = "none";
+      }
+    }
+
+    function closePopup() {
       document.getElementById("popup2").style.display = "none";
     }
-  }
 
-  function closePopup() {
-    document.getElementById("popup2").style.display = "none";
-  }
-
-  function subscribe() {
-    let email = document.getElementById("email").value;
-    if (email.trim() !== "") {
-      alert("Thanks for subscribing: " + email);
-      closePopup();
-    } else {
-      alert("Please enter a valid email.");
+    function subscribe() {
+      let email = document.getElementById("email").value;
+      if (email.trim() !== "") {
+        alert("Thanks for subscribing: " + email);
+        closePopup();
+      } else {
+        alert("Please enter a valid email.");
+      }
     }
-  }
 
 
-</script>
+  </script>
 
   <script src="./script.js"></script>
   <script src="./js/latestNews.js"></script>
