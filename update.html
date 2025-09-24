@@ -59,8 +59,27 @@
       </div>
 
       <a href="./morning.html">Evening Chatter</a>
-      <a href="./magzin.html">Magazine</a>
-      <a href="./service.html">Services</a>
+      <!-- Magazine Section -->
+        <a href="#" onclick="toggleDropdownMobile('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-links" id="magazineDropdown">
+          <a href="./ceo.html">CEO Profile</a>
+          <a href="./company-profile.html">Company Profile</a>
+          <a href="./Digitaledition.html">Digital Edition</a>
+          <a href="./weekly.html">Newsletter</a>
+        </div>
+       <!-- Service Section -->
+        <a href="#" onclick="toggleDropdownMobile('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-links" id="serviceDropdown">
+          <a href="./service.html">Investor Campaign</a>
+          <a href="./newsynd.html">News Syndication</a>
+          <a href="./branding.html">Digital Branding</a>
+          <a href="./pressoffice.html">Press Office</a>
+                <a href="./confrence.html">Conference</a>
+        </div>
       <a href="./contant.html">Contact Us</a>
     </div>
 
@@ -841,6 +860,12 @@ tabs.forEach(tab => {
     document.getElementById(tab.dataset.target).classList.add("active");
   });
 });
+  function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
 
 // Show popup only once in lifetime (until localStorage is cleared)
   window.onload = function () {

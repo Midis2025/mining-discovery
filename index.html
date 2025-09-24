@@ -5,6 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mining Discovery</title>
+  
+<script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_YW11c2luZy1rYXR5ZGlkLTQ0LmNsZXJrLmFjY291bnRzLmRldiQ"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
+</script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="./style.css" />
@@ -27,123 +32,213 @@
 
 
   <header class="main-header">
-    <div class="header-top">
-      <div class="logo-social">
-       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
-     </a> </div>
-      <button class="hamburger" onclick="toggleMenu()">
+  <div class="header-top">
+    <div class="logo-social">
+      <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navMenu">
+      <a href="./about.html">About Us</a>
+     <!-- News Section -->
+       <!-- News Section -->
+<a href="./newss.html" class="desktop-link">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="newsDropdown">
+          <a href="#">Latest News</a>
+          <a href="#">Precious Metals</a>
+          <a href="#">Evening Chatter</a>
+          <a href="#">Research Reports</a>
+          <a href="#">Gold News</a>
+          <a href="#">Corporate News</a>
+          <a href="#">Announcement</a>
+          <a href="#">Sponsored Post</a>
+        </div>
+
+      <a href="./morning.html">Evening Chatter</a>
+      <!-- Magazine Section -->
+      
+<a href="./magzin.html" class="desktop-link">
+  Magazine <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+  Magazine <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="magazineDropdown">
+          <a href="./ceo.html">CEO Profile</a>
+          <a href="./company-profile.html">Company Profile</a>
+          <a href="./Digitaledition.html">Digital Edition</a>
+          <a href="./weekly.html">Newsletter</a>
+        </div>
+    
+      <!-- Service Section -->
+<a href="./service.html" class="desktop-link">
+  Service <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+  Service <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="serviceDropdown">
+          <a href="./service.html">Investor Campaign</a>
+          <a href="./newsynd.html">News Syndication</a>
+          <a href="./branding.html">Digital Branding</a>
+          <a href="./pressoffice.html">Press Office</a>
+                <a href="./confrence.html">Conference</a>
+        </div>
+      <a href="./contant.html">Contact Us</a>
+    </div>
+
+    <div class="header-buttons" id="headerButtons">
+   
+      <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
+    <!-- call all pages -->
+        <button class="login-btn" id="loginBtn" style="display:none;">Login</button>
+
+        <!-- User Profile -->
+        <div id="userProfile" style="display:none;"></div>
+        <!-- call all pages -->
+    </div>
+  </div>
+
+  <div class="search-bar-container" id="searchContainer">
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/"><img src="./image/Group.png"></a>
+      <a href="https://www.instagram.com/miningdiscovery"><img src="./image/Group (4).png"></a>
+      <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+      <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+      <a href="https://www.facebook.com/"><img src="./image/Group (3).png"></a>
+    </div>
+
+    <div class="search-bar-bg">
+      <div class="scrolling-track" id="newsTicker"></div>
+    </div>
+
+    <div class="search-box-wrapper">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div>
+
+      <button class="hamburger2" onclick="toggleMenu2()">
         <i class="fas fa-bars"></i>
       </button>
-
-     <div class="nav-links" id="navMenu">
-        <a href="./about.html">About Us</a>
-       <a href="./newss.html">News Section</a> 
-       
-        <a href="./morning.html">Evening Chatter</a>
-        <a href="./magzin.html">Magazine</a>
-        <a href="./service.html">Services</a>
-        <a href="./contant.html">Contact Us</a>
-      
-      </div> 
-
-      <div class="header-buttons" id="headerButtons">
-        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
-        <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
-      </div>
     </div>
 
-    <div class="search-bar-container" id="searchContainer">
-      <div class="social-icons">
-              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
-             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
-              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
-              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
-              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
-            </div>
-    <div class="search-bar-bg">
-        <div class="scrolling-track" id="newsTicker">
-          <!-- News titles will be inserted here -->
+    <div id="hamburgerMenu" class="hamburger-menu">
+      <div class="menu-row">
+        <div class="menu-tabs">
+          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+        </div>
+        <div class="menu-content active" id="news">
+          <p><a href="#">Latest News</a></p>
+          <p><a href="#">Precious Metals</a></p>
+          <p><a href="#">Evening Chatter</a></p>
+          <p><a href="#">Research Reports</a></p>
+          <p><a href="#">Gold News</a></p>
+          <p><a href="#">Corporate News</a></p>
+          <p><a href="#">Announcement</a></p>
+          <p><a href="#">Sponsored Post</a></p>
+          <p><a href="#">Silver News</a></p>
+          <p><a href="#">World News</a></p>
+          <p><a href="#">Popular This Week</a></p>
+          <p><a href="#">What’s On</a></p>
+          <p><a href="#">Copper News</a></p>
+          <p><a href="#">Leadership Thoughts</a></p>
+          <p><a href="#">Projects</a></p>
+        </div>
+        <div class="menu-content" id="about">
+          <p><a href="./service.html">Investor Campaign</a></p>
+          <p><a href="./newsynd.html">News Syndication</a></p>
+          <p><a href="./branding.html">Digital Branding</a></p>
+          <p><a href="./pressoffice.html">Press Office</a></p>
+          <p><a href="https://youtube.com/">Youtube</a></p>
+          <p><a href="./confrence.html">Conference Media Coverage</a></p>
+          <p><a href="./letter.html">Newsletter & Email Blast</a></p>
+        </div>
+        <div class="menu-content" id="magazine">
+          <p><a href="./ceo.html">CEO Profile</a></p>
+          <p><a href="./weekly.html">Newsletter</a></p>
+          <p><a href="./company-profile.html">Company Profile</a></p>
+          <p><a href="./Digitaledition.html">Digital Edition</a></p>
         </div>
       </div>
-
-<!-- Header Search + Hamburger -->
-<div class="search-box-wrapper">
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder=" " />
-    <!-- <div class="animated-text-container">
-      <span id="animatedText">Search gold prices</span>
-    </div> -->
-    <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+    </div>
   </div>
+</header>
 
-  <!-- Hamburger icon -->
-  <button class="hamburger2" onclick="toggleMenu2()">
-    <i class="fas fa-bars"></i>
-  </button>
-</div>
 
-<!-- Dropdown menu (hidden by default) -->
-<div id="hamburgerMenu" class="hamburger-menu">
-  <div class="menu-row">
 
-    <!-- Tabs left -->
-    <div class="menu-tabs">
-      <p class="tab-btn active" data-target="news">NEWS SECTION</p>
-      <p class="tab-btn" data-target="about">SERVICE</p>
-      <p class="tab-btn" data-target="magazine">MAGAZINE</p>
-
-      
+  <!-- Desktop Tabs -->
+  <div class="desktop-tabs" id="desktopTabs">
+    <div class="tab-btns">
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News Section</div>
+      <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
+      <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
     </div>
-
-    <!-- Content right -->
-    <div class="menu-content active" id="news">
-      <p><a href="#">Latest News</a></p>
-      <p><a href="#">Precious Metals</a></p>
-      <p><a href="#">Evening Chatter</a></p>
-      <p><a href="#">Research Reports</a></p>
-         <p><a href="#">Gold News</a></p>
-      <p><a href="#">Corporate News</a></p>
-      <p><a href="#">Announcement</a></p>
-      <p><a href="#">Sponsored Post</a></p>
-         <p><a href="#">Silver News</a></p>
-      <p><a href="#">World News</a></p>
-      <p><a href="#">Popular This Week</a></p>
-      <p><a href="#">What’s On</a></p>
-      <p><a href="#">Copper News</a></p>
-      <p><a href="#">Leadership Thoughts</a></p>
-      <p><a href="#">Projects</a></p>
-    </div>
-      <div class="menu-content" id="about">
-      <p><a href="./service.html">Investor Campaign</a></p>
-      <p><a href="./newsynd.html">News Syndication</a></p>
-      <p><a href="./branding.html">Digital Branding</a></p>
-        <p><a href="./pressoffice.html">Press Office</a></p>
-      <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Youtube</a></p>
-      <p><a href="./confrence.html">Conference Media Coverage</a></p>
-         <p><a href="./letter.html">Newsletter & Email Blast</a></p>
-     
-    </div>
-
-    <div class="menu-content" id="magazine">
-      <p><a href="./ceo.html">CEO Profile</a></p>
-      <p><a href="./weekly.html">Newsletter</a></p>
-      <p><a href="./company-profile.html">Company Profile</a></p>
-       <p><a href="./Digitaledition.html">Digital Edition</a></p>
-    </div>
-
-  
-
+  <!-- Collapsible News Section below header -->
+<div id="newsSectionPage" class="collapsible-section">
+  <div class="news-section-content">
+    <a href="#">Latest News</a><br>
+    <a href="#">Precious Metals</a><br>
+    <a href="#">Evening Chatter</a><br>
+    <a href="#">Research Reports</a><br>
+    <a href="#">Gold News</a><br>
+    <a href="#">Corporate News</a><br>
+    <a href="#">Announcement</a><br>
+    <a href="#">Sponsored Post</a><br>
   </div>
 </div>
 
-
-
-
-        
+    <div class="tab-content" id="servicesTab">
+      <a href="./service.html">Investor Campaign</a><br>
+      <a href="./newsynd.html">News Syndication</a><br>
+      <a href="./branding.html">Digital Branding</a><br>
     </div>
-  </header>
+    <div class="tab-content" id="magazineTab">
+      <a href="./ceo.html">CEO Profile</a><br>
+      <a href="./weekly.html">Newsletter</a><br>
+      <a href="./company-profile.html">Company Profile</a><br>
+    </div>
+  </div>
 
-
+  <!-- Mobile Overlay Menu -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="close-btn" onclick="closeMenu()">
+      <i class="fas fa-times"></i>
+    </div>
+    <ul>
+      <li>
+        <button onclick="toggleSubmenu('newsSub')">
+          NEWS SECTION <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="submenu" id="newsSub">
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Precious Metals</a></li>
+          <li><a href="#">Evening Chatter</a></li>
+          <li><a href="#">Research Reports</a></li>
+          <li><a href="#">Gold News</a></li>
+          <li><a href="#">Corporate News</a></li>
+          <li><a href="#">Announcement</a></li>
+          <li><a href="#">Sponsored Post</a></li>
+        </ul>
+      </li>
+      <li><a href="./service.html">Services</a></li>
+      <li><a href="./magzin.html">Magazine</a></li>
+      <li><a href="./contant.html">Contact Us</a></li>
+      <li><a href="./about.html">About Us</a></li>
+    </ul>
+  </div>
 
 
 
@@ -309,8 +404,7 @@
       <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <p>
-U.S Gold Corp Fully Permitted Copper Project in Wyoming</p>
+    <p>Saudi Arabia Project Insights</p>
   </div>
 </div>
               <div class="video-card">
@@ -453,8 +547,7 @@ U.S Gold Corp Fully Permitted Copper Project in Wyoming</p>
       <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <h4>
-U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
+    <p>Saudi Arabia Project Insights</p>
   </div>
 </div>
 
@@ -467,9 +560,8 @@ U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
     </div>
 
     <!-- Video title and description -->
-    <h4>
-Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
-  
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
   </div>
 </div>
 
@@ -479,8 +571,7 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
       <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <h4>
-NANO Nuclear & Digihost Partner <br>to Support Zero Emission Energy Goals</h4>
+    <p>Project Update</p>
   </div>
 </div>
 
@@ -494,9 +585,8 @@ NANO Nuclear & Digihost Partner <br>to Support Zero Emission Energy Goals</h4>
     </div>
 
     <!-- Video title and description -->
-      <h4>
-U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
-  
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
   </div>
 </div>
 
@@ -509,9 +599,8 @@ U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
     </div>
 
     <!-- Video title and description -->
-    <h4>
-Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
-   
+    <h4>Power Metals - Project Update</h4>
+    <p>Saudi Arabia Project Insights</p>
   </div>
 </div>
 
@@ -750,26 +839,53 @@ Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h
 
 
 <script>
-  function toggleMenu2() {
+
+function toggleMenu() {
+  const header = document.querySelector(".main-header");
+  if (header) header.classList.toggle("mobile-active");
+}
+
+function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
   menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
- // Select tabs and contents
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".menu-content");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
+function toggleDropdown(e) {
+    // breakpoint: treat <=899px as mobile/tablet; >=900px as desktop
+    const isMobile = window.matchMedia('(max-width: 899px)').matches;
 
-      // Add active to clicked
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
-    });
+    // If desktop, do nothing (prevent navigation) — keep text visible but non-opening.
+    if (!isMobile) {
+      if (e) e.preventDefault();
+      return;
+    }
+
+    // Mobile: toggle dropdown visibility as before
+    const dropdown = document.getElementById("dropdownMenu");
+    const header = document.getElementById("newsToggle");
+    if (dropdown) dropdown.classList.toggle("show");
+    if (header) header.classList.toggle("rotate");
+  }
+
+
+// Tabs logic
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
   });
-
+});
+  function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
 
 // Show popup only once in lifetime (until localStorage is cleared)
   window.onload = function () {
