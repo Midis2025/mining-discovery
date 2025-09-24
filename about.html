@@ -653,6 +653,8 @@
   .nav-links a i.fas.fa-chevron-down {
     display: none;
   }
+    .desktop-link { display: inline-block; }
+  .mobile-toggle { display: none; }
 
 
   /* ensure dropdown panel is not shown on desktop even if .show gets added */
@@ -661,12 +663,14 @@
   }
 }
 
+/* Mobile: hide main link, show mobile toggle */
+@media (max-width: 991px) {
+  .desktop-link { display: none; }
+  .mobile-toggle { display: block; }
+}
+
+
    
-
-/* drop-down */
-
-
-
    
     .black{
         /* text-align: center; */
@@ -1081,7 +1085,7 @@
     <p>Some important highlighted news 4</p>
   </div>
 </div>
-<header class="main-header">
+ <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1093,9 +1097,14 @@
     <div class="nav-links" id="navMenu">
       <a href="./about.html">About Us</a>
      <!-- News Section -->
-        <a href="#" onclick="toggleDropdownMobile('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
-        </a>
+       <!-- News Section -->
+<a href="./newss.html" class="desktop-link">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+
         <div class="dropdown-links" id="newsDropdown">
           <a href="#">Latest News</a>
           <a href="#">Precious Metals</a>
@@ -1109,19 +1118,29 @@
 
       <a href="./morning.html">Evening Chatter</a>
       <!-- Magazine Section -->
-        <a href="#" onclick="toggleDropdownMobile('magazineDropdown')">
-          Magazine <i class="fas fa-chevron-down"></i>
-        </a>
+      
+<a href="./magzin.html" class="desktop-link">
+  Magazine <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+  Magazine <i class="fas fa-chevron-down"></i>
+</a>
+
         <div class="dropdown-links" id="magazineDropdown">
           <a href="./ceo.html">CEO Profile</a>
           <a href="./company-profile.html">Company Profile</a>
           <a href="./Digitaledition.html">Digital Edition</a>
           <a href="./weekly.html">Newsletter</a>
         </div>
-       <!-- Service Section -->
-        <a href="#" onclick="toggleDropdownMobile('serviceDropdown')">
-          Service <i class="fas fa-chevron-down"></i>
-        </a>
+    
+      <!-- Service Section -->
+<a href="./service.html" class="desktop-link">
+  Service <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+  Service <i class="fas fa-chevron-down"></i>
+</a>
+
         <div class="dropdown-links" id="serviceDropdown">
           <a href="./service.html">Investor Campaign</a>
           <a href="./newsynd.html">News Syndication</a>
@@ -1133,8 +1152,14 @@
     </div>
 
     <div class="header-buttons" id="headerButtons">
-      <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
+   
       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
+    <!-- call all pages -->
+        <button class="login-btn" id="loginBtn" style="display:none;">Login</button>
+
+        <!-- User Profile -->
+        <div id="userProfile" style="display:none;"></div>
+        <!-- call all pages -->
     </div>
   </div>
 
