@@ -1,11 +1,16 @@
 async function loadSponsoredPosts() {
   try {
     const url =
-      "https://admins.miningdiscovery.com/api/news-categories?filters[slug][$eq]=sponsored-post&populate[news_sections][populate]=*";
+      "https://admins.miningdiscovery.com/api/news-categories" +
+      "?filters[slug][$eq]=sponsored-post&populate[news_sections][populate]=*";
+
     const res = await fetch(url);
     const data = await res.json();
 
-    const posts = data?.data?.[0]?.news_sections || [];
+    // Get posts and sort them by publish_on date (latest first)
+    const posts = (data?.data?.[0]?.news_sections || []).sort(
+      (a, b) => new Date(b.publish_on) - new Date(a.publish_on)
+    );
 
     const topPostContainer = document.getElementById("sponsoredTop");
     const gridContainer = document.getElementById("sponsoredGrid");
@@ -16,7 +21,7 @@ async function loadSponsoredPosts() {
       return;
     }
 
-    // 🟢 Top Post - Made fully clickable
+    // 🟢 Top Post - fully clickable
     const top = posts[0];
     topPostContainer.innerHTML = `
       <div class="sec1 clickable-post" data-url="./news-details.html?id=${top.id}&category=sponsored-post" style="cursor: pointer;">
@@ -31,7 +36,7 @@ async function loadSponsoredPosts() {
       </div>
     `;
 
-    // 🟢 Grid Cards - Made fully clickable
+    // 🟢 Grid Cards - next 5 posts
     gridContainer.innerHTML = posts
       .slice(1, 6)
       .map(
@@ -48,14 +53,17 @@ async function loadSponsoredPosts() {
       )
       .join("");
 
-    // Add click event listeners to all clickable posts
+    // 🟢 Add click event listeners to all clickable posts
     document.querySelectorAll('.clickable-post').forEach(element => {
       element.addEventListener('click', function(e) {
-        // Prevent navigation if clicking on the button or link directly
-        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
+        if (
+          e.target.tagName === 'BUTTON' ||
+          e.target.tagName === 'A' ||
+          e.target.closest('button') ||
+          e.target.closest('a')
+        ) {
           return;
         }
-        
         const url = this.getAttribute('data-url');
         if (url) {
           window.location.href = url;

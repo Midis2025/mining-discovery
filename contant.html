@@ -60,7 +60,7 @@
     color: white;
     }
         .main-header {
-      margin-bottom: 10px;
+      /* margin-bottom: 10px; */
       background-color: #fff;
       padding: 12px;
       border-bottom: 1px solid #ddd;
@@ -224,7 +224,7 @@
 }
 
 .search-box {
-  flex: 1; /* search box full width le le, hamburger ke sath */
+  flex: 1; 
 }
 
 .hamburger2 {
@@ -239,7 +239,7 @@
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 180px;
+  top: 188px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -468,7 +468,7 @@
 
     .dropdown-links {
       display: none;
-      background: #1f1f1f;
+      /* background: #1f1f1f; */
       padding: 10px 30px;
       flex-wrap: wrap;
       gap: 15px;
@@ -477,7 +477,7 @@
     }
 
     .dropdown-links a {
-      color: #ccc;
+      color:black;
       text-decoration: none;
       margin-right: 15px;
       transition: 0.3s;
@@ -493,10 +493,185 @@
     .dropdown-links.show {
       display: flex;
     }
+/* Overlay Menu (mobile) */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      transition: left 0.3s ease;
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .menu-overlay.open {
+      left: 0;
+    }
+
+    .menu-overlay .close-btn {
+      text-align: right;
+      padding: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+.menu-overlay .submenu {
+  display: none;
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+.menu-overlay .submenu li {
+  margin-bottom: 5px;
+}
+
+.menu-overlay {
+  overflow-y: auto; /* page scroll enable */
+}
+    .menu-overlay ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-overlay ul li a,
+    .menu-overlay ul li button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      text-decoration: none;
+      color: #333;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul li button .fa-chevron-down {
+      float: right;
+    }
+
+    .submenu {
+      display: none;
+      background: #f9f9f9;
+    }
+
+    .submenu li a {
+      padding-left: 32px;
+      font-size: 14px;
+    }
+
+    /* Desktop Tabs Menu */
+    .desktop-tabs {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .desktop-tabs .tab-content {
+      display: none;
+      padding: 16px;
+    }
+
+    .desktop-tabs .tab-content.active {
+      display: block;
+    }
+
+    .desktop-tabs .tab-btns {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid #eee;
+      padding: 0 16px;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn {
+      cursor: pointer;
+      padding: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn.active {
+      border-bottom: 2px solid #d32f2f;
+      color: #d32f2f;
+    }
+    /* Dropdown rotation */
+#newsToggle i {
+  transition: transform 0.3s ease;
+}
+
+#newsToggle.rotate i {
+  transform: rotate(180deg);
+}
+
+/* Dropdown items */
+.dropdown-links {
+  display: none;
+  flex-direction: column;
+  padding-left: 20px;
+  gap: 10px;
+}
+
+.dropdown-links.show {
+  display: flex;
+}
+
+    
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .nav-links,
+      .header-buttons {
+        display: none;
+      }
+    }
+       /* Hide News Section dropdown on desktop */
+/* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
+@media (min-width: 900px) {
+  #newsToggle {
+    cursor: default;        /* not pointer */
+    pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
+  }
+  #newsToggle i {
+  transition: transform 0.3s ease;
+  display: none;
+}
+  .nav-links a i.fas.fa-chevron-down {
+    display: none;
+  }
+    .desktop-link { display: inline-block; }
+  .mobile-toggle { display: none; }
+
+
+  /* ensure dropdown panel is not shown on desktop even if .show gets added */
+  .dropdown-links {
+    display: none !important;
+  }
+}
+
+/* Mobile: hide main link, show mobile toggle */
+@media (max-width: 991px) {
+  .desktop-link { display: none; }
+  .mobile-toggle { display: block; }
+}
 
 
    .contact{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     text-align: center;
     background-color: black;
     color: white;
@@ -943,125 +1118,214 @@
   </div>
 </div>
   
+      <header class="main-header">
+  <div class="header-top">
+    <div class="logo-social">
+      <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
 
-  <header class="main-header">
-    <div class="header-top">
-      <div class="logo-social">
-       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" />
-     </a> </div>
-      <button class="hamburger" onclick="toggleMenu()">
+    <div class="nav-links" id="navMenu">
+      <a href="./about.html">About Us</a>
+     <!-- News Section -->
+       <!-- News Section -->
+<a href="./newss.html" class="desktop-link">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="newsDropdown">
+          <a href="#">Latest News</a>
+          <a href="#">Precious Metals</a>
+          <a href="#">Evening Chatter</a>
+          <a href="#">Research Reports</a>
+          <a href="#">Gold News</a>
+          <a href="#">Corporate News</a>
+          <a href="#">Announcement</a>
+          <a href="#">Sponsored Post</a>
+        </div>
+
+      <a href="./morning.html">Evening Chatter</a>
+      <!-- Magazine Section -->
+      
+<a href="./magzin.html" class="desktop-link">
+  Magazine <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+  Magazine <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="magazineDropdown">
+          <a href="./ceo.html">CEO Profile</a>
+          <a href="./company-profile.html">Company Profile</a>
+          <a href="./Digitaledition.html">Digital Edition</a>
+          <a href="./weekly.html">Newsletter</a>
+        </div>
+    
+      <!-- Service Section -->
+<a href="./service.html" class="desktop-link">
+  Service <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+  Service <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="serviceDropdown">
+          <a href="./service.html">Investor Campaign</a>
+          <a href="./newsynd.html">News Syndication</a>
+          <a href="./branding.html">Digital Branding</a>
+          <a href="./pressoffice.html">Press Office</a>
+                <a href="./confrence.html">Conference</a>
+        </div>
+      <a href="./contant.html">Contact Us</a>
+    </div>
+
+    <div class="header-buttons" id="headerButtons">
+   
+      <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
+    <!-- call all pages -->
+        <button class="login-btn" >Login</button>
+
+        <!-- User Profile -->
+        <div id="userProfile" style="display:none;"></div>
+        <!-- call all pages -->
+    </div>
+  </div>
+
+  <div class="search-bar-container" id="searchContainer">
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/"><img src="./image/Group.png"></a>
+      <a href="https://www.instagram.com/miningdiscovery"><img src="./image/Group (4).png"></a>
+      <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+      <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+      <a href="https://www.facebook.com/"><img src="./image/Group (3).png"></a>
+    </div>
+
+    <div class="search-bar-bg">
+      <div class="scrolling-track" id="newsTicker"></div>
+    </div>
+
+    <div class="search-box-wrapper">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div>
+
+      <button class="hamburger2" onclick="toggleMenu2()">
         <i class="fas fa-bars"></i>
       </button>
-
-     <div class="nav-links" id="navMenu">
-        <a href="./about.html">About Us</a>
-       <a href="./newss.html">News Section</a> 
-       
-        <a href="./morning.html">Evening Chatter</a>
-        <a href="./magzin.html">Magazine</a>
-        <a href="./service.html">Services</a>
-        <a href="./contant.html">Contact Us</a>
-      
-      </div> 
-
-      <div class="header-buttons" id="headerButtons">
-        <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
-        <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
-      </div>
     </div>
 
-    <div class="search-bar-container" id="searchContainer">
-      <div class="social-icons">
-              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
-             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
-              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
-              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
-              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
-            </div>
-    <div class="search-bar-bg">
-        <div class="scrolling-track" id="newsTicker">
-          <!-- News titles will be inserted here -->
+    <div id="hamburgerMenu" class="hamburger-menu">
+      <div class="menu-row">
+        <div class="menu-tabs">
+          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+        </div>
+        <div class="menu-content active" id="news">
+          <p><a href="#">Latest News</a></p>
+          <p><a href="#">Precious Metals</a></p>
+          <p><a href="#">Evening Chatter</a></p>
+          <p><a href="#">Research Reports</a></p>
+          <p><a href="#">Gold News</a></p>
+          <p><a href="#">Corporate News</a></p>
+          <p><a href="#">Announcement</a></p>
+          <p><a href="#">Sponsored Post</a></p>
+          <p><a href="#">Silver News</a></p>
+          <p><a href="#">World News</a></p>
+          <p><a href="#">Popular This Week</a></p>
+          <p><a href="#">What’s On</a></p>
+          <p><a href="#">Copper News</a></p>
+          <p><a href="#">Leadership Thoughts</a></p>
+          <p><a href="#">Projects</a></p>
+        </div>
+        <div class="menu-content" id="about">
+          <p><a href="./service.html">Investor Campaign</a></p>
+          <p><a href="./newsynd.html">News Syndication</a></p>
+          <p><a href="./branding.html">Digital Branding</a></p>
+          <p><a href="./pressoffice.html">Press Office</a></p>
+          <p><a href="https://youtube.com/">Youtube</a></p>
+          <p><a href="./confrence.html">Conference Media Coverage</a></p>
+          <p><a href="./letter.html">Newsletter & Email Blast</a></p>
+        </div>
+        <div class="menu-content" id="magazine">
+          <p><a href="./ceo.html">CEO Profile</a></p>
+          <p><a href="./weekly.html">Newsletter</a></p>
+          <p><a href="./company-profile.html">Company Profile</a></p>
+          <p><a href="./Digitaledition.html">Digital Edition</a></p>
         </div>
       </div>
-
-<!-- Header Search + Hamburger -->
-<div class="search-box-wrapper">
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder=" " />
-    <!-- <div class="animated-text-container">
-      <span id="animatedText">Search gold prices</span>
-    </div> -->
-    <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+    </div>
   </div>
+</header>
 
-  <!-- Hamburger icon -->
-  <button class="hamburger2" onclick="toggleMenu2()">
-    <i class="fas fa-bars"></i>
-  </button>
-</div>
 
-<!-- Dropdown menu (hidden by default) -->
-<div id="hamburgerMenu" class="hamburger-menu">
-  <div class="menu-row">
 
-    <!-- Tabs left -->
-    <div class="menu-tabs">
-      <p class="tab-btn active" data-target="news">NEWS SECTION</p>
-      <p class="tab-btn" data-target="about">SERVICE</p>
-      <p class="tab-btn" data-target="magazine">MAGAZINE</p>
-
-      
+  <!-- Desktop Tabs -->
+  <div class="desktop-tabs" id="desktopTabs">
+    <div class="tab-btns">
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News Section</div>
+      <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
+      <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
     </div>
-
-    <!-- Content right -->
-    <div class="menu-content active" id="news">
-      <p><a href="#">Latest News</a></p>
-      <p><a href="#">Precious Metals</a></p>
-      <p><a href="#">Evening Chatter</a></p>
-      <p><a href="#">Research Reports</a></p>
-         <p><a href="#">Gold News</a></p>
-      <p><a href="#">Corporate News</a></p>
-      <p><a href="#">Announcement</a></p>
-      <p><a href="#">Sponsored Post</a></p>
-         <p><a href="#">Silver News</a></p>
-      <p><a href="#">World News</a></p>
-      <p><a href="#">Popular This Week</a></p>
-      <p><a href="#">What’s On</a></p>
-      <p><a href="#">Copper News</a></p>
-      <p><a href="#">Leadership Thoughts</a></p>
-      <p><a href="#">Projects</a></p>
-    </div>
-      <div class="menu-content" id="about">
-      <p><a href="./service.html">Investor Campaign</a></p>
-      <p><a href="./newsynd.html">News Syndication</a></p>
-      <p><a href="./branding.html">Digital Branding</a></p>
-        <p><a href="./pressoffice.html">Press Office</a></p>
-      <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Youtube</a></p>
-      <p><a href="./confrence.html">Conference Media Coverage</a></p>
-         <p><a href="./letter.html">Newsletter & Email Blast</a></p>
-     
-    </div>
-
-    <div class="menu-content" id="magazine">
-      <p><a href="./ceo.html">CEO Profile</a></p>
-      <p><a href="./weekly.html">Newsletter</a></p>
-      <p><a href="./company-profile.html">Company Profile</a></p>
-       <p><a href="./Digitaledition.html">Digital Edition</a></p>
-    </div>
-
-  
-
+  <!-- Collapsible News Section below header -->
+<div id="newsSectionPage" class="collapsible-section">
+  <div class="news-section-content">
+    <a href="#">Latest News</a><br>
+    <a href="#">Precious Metals</a><br>
+    <a href="#">Evening Chatter</a><br>
+    <a href="#">Research Reports</a><br>
+    <a href="#">Gold News</a><br>
+    <a href="#">Corporate News</a><br>
+    <a href="#">Announcement</a><br>
+    <a href="#">Sponsored Post</a><br>
   </div>
 </div>
 
-
-
-
-        
+    <div class="tab-content" id="servicesTab">
+      <a href="./service.html">Investor Campaign</a><br>
+      <a href="./newsynd.html">News Syndication</a><br>
+      <a href="./branding.html">Digital Branding</a><br>
     </div>
-  </header>
+    <div class="tab-content" id="magazineTab">
+      <a href="./ceo.html">CEO Profile</a><br>
+      <a href="./weekly.html">Newsletter</a><br>
+      <a href="./company-profile.html">Company Profile</a><br>
+    </div>
+  </div>
 
-
+  <!-- Mobile Overlay Menu -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="close-btn" onclick="closeMenu()">
+      <i class="fas fa-times"></i>
+    </div>
+    <ul>
+      <li>
+        <button onclick="toggleSubmenu('newsSub')">
+          NEWS SECTION <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="submenu" id="newsSub">
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Precious Metals</a></li>
+          <li><a href="#">Evening Chatter</a></li>
+          <li><a href="#">Research Reports</a></li>
+          <li><a href="#">Gold News</a></li>
+          <li><a href="#">Corporate News</a></li>
+          <li><a href="#">Announcement</a></li>
+          <li><a href="#">Sponsored Post</a></li>
+        </ul>
+      </li>
+      <li><a href="./service.html">Services</a></li>
+      <li><a href="./magzin.html">Magazine</a></li>
+      <li><a href="./contant.html">Contact Us</a></li>
+      <li><a href="./about.html">About Us</a></li>
+    </ul>
+  </div>
 
 
 
@@ -1272,8 +1536,15 @@
       tab.classList.add("active");
       document.getElementById(tab.dataset.target).classList.add("active");
     });
-  });
 
+  });
+ function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+  
 </script>
 </body>
 </html>

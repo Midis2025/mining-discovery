@@ -14,20 +14,21 @@ function toggleDropdown() {
 }
 
 function serviceDropdown() {
-  const dropdown = document.getElementById("dropdownMenu2");
-  const header = document.getElementById("serviceToggle");
-  dropdown.classList.toggle("show");
-  header.classList.toggle("rotate");
-}
+      const dropdown = document.getElementById("dropdownMenu2");
+      const header = document.getElementById("serviceToggle");
+      dropdown.classList.toggle("show");
+      header.classList.toggle("rotate");
+    }
 
-function magazineDropdown() {
-  const dropdown = document.getElementById("dropdownMenu3");
-  const header = document.getElementById("magazineToggle");
-  dropdown.classList.toggle("show");
-  header.classList.toggle("rotate");
-}
+    function magazineDropdown() {
+      const dropdown = document.getElementById("dropdownMenu3");
+      const header = document.getElementById("magazineToggle");
+      dropdown.classList.toggle("show");
+      header.classList.toggle("rotate");
+    }
 
-// login functionality
+    
+    // login functionality
  // Root URL of your deployed site (must match Vercel root)
   const HOME_URL = "https://staging.miningdiscovery.com/index.html";
 
@@ -62,7 +63,7 @@ function magazineDropdown() {
 
       // Clean Clerk OAuth query strings if present
       const url = new URL(window.location.href);
-      if (url.searchParams.has("__clerk_handshake") || url.searchParams.has("__clerk_db_jwt")) {
+      if (url.searchParams.has("_clerk_handshake") || url.searchParams.has("_clerk_db_jwt")) {
         window.location.replace(HOME_URL);
       }
     } else {
@@ -78,8 +79,7 @@ function magazineDropdown() {
     }
   });
 
-
-
+  
 /* -------------------------
    CAROUSELS
 ------------------------- */
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Search gold prices",
     "Search silver value",
     "Search copper rates",
-
+   
     "Search latest news",
   ];
 
@@ -183,7 +183,7 @@ window.addEventListener("load", () => {
       youtubeIframe.src = youtubeLink;
       popup.style.display = "block";
       sessionStorage.setItem("youtubePopupShown", "true"); // mark as shown
-    }, 4000);
+    }, 15000);
   }
 
   // Close popup

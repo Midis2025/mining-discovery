@@ -1553,6 +1553,22 @@
       loadReports();
       newsCategory();
 
+      NewsWidget.init({
+      pageSize: 5,
+      categorySlug: "latest-news",
+      useCache: true,      
+      selectors: {
+        containerId: "newsContainer",
+        nextNewsId: "nextNewsContainer",
+        mostReadSelector: ".cards",
+        categoryTitleId: "categoryTitle",
+        nextCategoryTitleId: "nextCategoryTitle",
+        showMoreSelector: ".btn-more",
+        dropdownToggleId: "dropdownToggle",
+        dropdownMenuId: "dropdownMenu"
+      }
+    });
+
     });
   </script>
    <script src="./js/latestNews.js"></script>
