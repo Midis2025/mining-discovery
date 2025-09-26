@@ -375,7 +375,11 @@
     gap: 10px;
   }
 
-
+  .mobile-active .search-bar-bg,
+.mobile-active .scrolling-track,
+.mobile-active .social-icons {
+  display: none !important;
+}
   .nav-links a {
     padding: 8px 0;
   }
@@ -675,7 +679,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-    height: calc(200vh - 120px);
+ 
  
 }
 
@@ -756,13 +760,39 @@
 }
 
 .view-more {
-  background: #000;
-  color: #fff;
-  padding: 4px 14px;
-  border: none;
-  border-radius: 20px;
+align-self: flex-end;
+
+ 
+  font-weight: 700;
+  padding: 8px 18px;
   font-size: 13px;
+  background-color: #fff;
+ 
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
   cursor: pointer;
+
+
+
+
+ 
+       border: 1px solid #ae8a4c;
+     color: #ae8a4c;
+      padding: 6px 12px;
+    
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 13px;
+
+
+
+
+
+  
+
 }
 .view-more a{
   color:#8d6d2a ;
@@ -1476,11 +1506,11 @@
   }
   
   .section-header h2 {
-    font-size: 16px;
+    font-size: 20px;
   }
   
   .view-more {
-    font-size: 10px;
+    font-size: 13px;
     padding: 2px 8px;
   }
   
@@ -2159,45 +2189,46 @@
         <button class="view-more">View More</button>
       </div>
       <div class="card-container">
-         <div class="video-card">
-    <div class="video-info">
-  <!-- Thumbnail preview -->
-  <div class="video-thumbnail" onclick="loadIframe(this)">
-    <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/maxresdefault.jpg" alt="Video Thumbnail">
-    <div class="play-button">▶</div>
+                 <div class="video-card">
+  <div class="video-info">
+    <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
+      <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+  <h4>U.S Gold Corp Fully Permitted Copper Project in Wyoming</h4>
   </div>
-
-  <!-- Video title and description -->
-  <h4>Resource Talks visits Arras Minerals in Kazakhstan</h4>
- 
 </div>
-        </div>
-        <div class="video-card">
-          <div class="video-info">
-  <!-- Thumbnail preview -->
-  <div class="video-thumbnail" onclick="loadIframe2(this)">
-    <img src="./image/fourcard.avif" alt="Video Thumbnail">
-    <div class="play-button">▶</div>
-  </div>
 
-  <!-- Video title and description -->
-  <h4>Power Metals - Project Update Saudi Arabia Project Insights</h4>
+           <div class="video-card">
+  <div class="video-info">
+    <!-- Thumbnail preview -->
+    <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
+      <img src="./image/vector/mqdefault_6s (1).webp" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+
+    <!-- Video title and description -->
+    <h4>
+
+U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
   
-</div>
-        </div>
-          <div class="video-card">
-    <div class="video-info">
-  <!-- Thumbnail preview -->
-  <div class="video-thumbnail" onclick="loadIframe(this)">
-    <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/maxresdefault.jpg" alt="Video Thumbnail">
-    <div class="play-button">▶</div>
   </div>
-
-  <!-- Video title and description -->
-  <h4>Resource Talks visits Arras Minerals in Kazakhstan</h4>
- 
 </div>
-        </div>
+          <div class="video-card">
+  <div class="video-info">
+    <!-- Thumbnail preview -->
+    <div class="video-thumbnail" data-video="HNW6ENtSNgs" onclick="loadIframe(this)">
+      <img src="./image/vector/mqdefault_6s.webp" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+
+    <!-- Video title and description -->
+    <h4>
+‘We have a very good chance of making a new <br>tier one discovery’ Arras Minerals’ Darren Klinck</h4>
+  
+  </div>
+</div>
+
       </div>
     </section>
 
@@ -2242,7 +2273,7 @@
      <ul>
       <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+ <li><a href="https://www.youtube.com/@miningdiscovery/videos">MULTIMEDIA VIDEOS</a></li>
     <li><a href="sub.html">SUBSCRIPTION</a></li>
     <li><a href="./magzin.html">MAGAZINES</a></li>
     <li><a href="">COMMENT GUIDELINE</a></li>
@@ -2313,10 +2344,6 @@
     });
     // show extra news</script>
 
-  <script src="./js/advertisment.js"></script>
-  <script src="./js/projects.js"></script>
-  <script src="./js/reports.js"></script>
-  <script src="./js/news.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {

@@ -404,20 +404,22 @@
       <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <p>Saudi Arabia Project Insights</p>
+  <h4>U.S Gold Corp Fully Permitted Copper Project in Wyoming</h4>
   </div>
 </div>
               <div class="video-card">
   <div class="video-info">
     <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="EcMJbAntZso" onclick="loadIframe(this)">
-      <img src="./image/fourcard.avif" alt="Video Thumbnail">
+    <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
+      <img src="./image/vector/mqdefault_6s (1).webp" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
 
     <!-- Video title and description -->
-    <h4>Power Metals - Project Update</h4>
-    <p>Saudi Arabia Project Insights</p>
+    <h4>
+
+U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
+  
   </div>
 </div>
                <a href="">
@@ -547,7 +549,7 @@
       <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <p>Saudi Arabia Project Insights</p>
+ <h4>U.S Gold Corp Fully Permitted<br> Copper Project in Wyoming</h4>
   </div>
 </div>
 
@@ -560,8 +562,8 @@
     </div>
 
     <!-- Video title and description -->
-    <h4>Power Metals - Project Update</h4>
-    <p>Saudi Arabia Project Insights</p>
+    <h4>Paul Cowley CEO of Phenom Resources,<br> with Shark Tank’s Kevin Harrington</h4>
+
   </div>
 </div>
 
@@ -571,7 +573,8 @@
       <img src="https://img.youtube.com/vi/pzxdSK6t2Eo/mqdefault.jpg" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
-    <p>Project Update</p>
+    <h4>
+NANO Nuclear & Digihost Partner to Support<br> Zero Emission Energy Goals</h4>
   </div>
 </div>
 
@@ -579,28 +582,30 @@
             <div class="video-card">
   <div class="video-info">
     <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="pzxdSK6t2Eo" onclick="loadIframe(this)">
-      <img src="./image/thirdcard.avif" alt="Video Thumbnail">
+    <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
+      <img src="./image/vector/mqdefault_6s (1).webp" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
 
     <!-- Video title and description -->
-    <h4>Power Metals - Project Update</h4>
-    <p>Saudi Arabia Project Insights</p>
+    <h4>
+U.S. Gold Corp. Sustainable Mining <br>in America’s Heartland</h4>
+
   </div>
 </div>
 
 <div class="video-card">
   <div class="video-info">
     <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
-      <img src="./image/fourcard.avif" alt="Video Thumbnail">
+    <div class="video-thumbnail" data-video="HNW6ENtSNgs" onclick="loadIframe(this)">
+      <img src="./image/vector/mqdefault_6s.webp" alt="Video Thumbnail">
       <div class="play-button">▶</div>
     </div>
 
     <!-- Video title and description -->
-    <h4>Power Metals - Project Update</h4>
-    <p>Saudi Arabia Project Insights</p>
+    <h4>
+‘We have a very good chance of making a new <br>tier one discovery’ Arras Minerals’ Darren Klinck</h4>
+  
   </div>
 </div>
 
@@ -814,7 +819,7 @@
   <ul>
     <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+    <li><a href="https://www.youtube.com/@miningdiscovery/videos">MULTIMEDIA VIDEOS</a></li>
     <li><a href="sub.html">SUBSCRIPTION</a></li>
     <li><a href="./magzin.html">MAGAZINES</a></li>
     <li><a href="">COMMENT GUIDELINE</a></li>
@@ -891,15 +896,16 @@ tabs.forEach(tab => {
 document.addEventListener("DOMContentLoaded", function () {
   const popup = document.getElementById("popup2");
 
-  if (!popup) return; // agar popup element missing hai
+  if (!popup) return;
 
+  // Sirf tab dikhana jab user ne pehli baar site open ki hai
   if (!localStorage.getItem("subscribedPopupShown")) {
     setTimeout(() => {
-      popup.style.display = "flex";
-      localStorage.setItem("subscribedPopupShown", "true"); // ek hi baar save hoga
-    }, 3000); // 3 sec delay
+      popup.style.display = "flex"; // show popup
+      localStorage.setItem("subscribedPopupShown", "true"); // flag save
+    }, 3000); // delay (3 sec)
   } else {
-    popup.style.display = "none";
+    popup.style.display = "none"; // dusri baar kabhi show na ho
   }
 });
 
@@ -917,7 +923,6 @@ function subscribe() {
     alert("Please enter a valid email.");
   }
 }
-
 
 </script>
 

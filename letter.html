@@ -29,8 +29,8 @@
     .first-header:hover{
       text-decoration: underline;
     }
-    .main-header {
-      /* margin-bottom: 10px; */
+ .main-header {
+      margin-bottom: 10px;
       background-color: #fff;
       padding: 12px;
       border-bottom: 1px solid #ddd;
@@ -75,7 +75,7 @@
     }
 
     .nav-links a:hover {
-      color: #8d6d2a;
+      color: #ae8a4c;
     }
 
     .header-buttons {
@@ -97,11 +97,11 @@
     }
 
     .login-btn {
-      background-color:#AE8A4C;
+      background-color:#ae8a4c;
     }
 
     .subscribe-btn {
-     background-color: #AE8A4C;
+     background-color: #ae8a4c;
     }
 
    
@@ -119,7 +119,7 @@
   background-color: #292929;
   height: 24px;
   border-radius: 20px;
-  
+  margin-top:11px;
   width: 70%;
   overflow: hidden;
   position: relative;
@@ -171,6 +171,7 @@
       padding: 5px 15px;
       padding-right: 35px;
       border: 1px solid #ccc;
+      background-color: white;
       border-radius: 20px;
       outline: none;
       font-size: 14px;
@@ -194,7 +195,7 @@
 }
 
 .search-box {
-  flex: 1; 
+  flex: 1; /* search box full width le le, hamburger ke sath */
 }
 
 .hamburger2 {
@@ -204,12 +205,12 @@
   border: none;
   display: block; /* laptop/mobile dono pe visible */
   padding-right:20px ;
-    color: #b8860b; /* golden color */
+    color: #ae8a4c; /* golden color */
 }
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 188px;
+  top: 160px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -245,7 +246,7 @@
 }
 
 .hamburger-menu .menu-tabs p.active {
-  color: #b8860b;
+  color: #ae8a4c;
 }
 
 /* Content right side me */
@@ -338,7 +339,7 @@
      background-color: black;
       
      
-      color: #8d6d2a;
+      color: #ae8a4c;
       font-size: 18px;
       cursor: pointer;
     }
@@ -349,7 +350,7 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #8d6d2a;
+      color: #ae8a4c;
     }
 
     @media (max-width: 768px) {
@@ -388,7 +389,11 @@
     gap: 10px;
   }
 
-
+  .mobile-active .search-bar-bg,
+.mobile-active .scrolling-track,
+.mobile-active .social-icons {
+  display: none !important;
+}
   .nav-links a {
     padding: 8px 0;
   }
@@ -455,8 +460,8 @@
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
+      color: #ae8a4c;
+      border-bottom: 2px solid #ae8a4c;
       padding-bottom: 3px;
     }
 
@@ -573,8 +578,8 @@
     }
 
     .desktop-tabs .tab-btns .tab-btn.active {
-      border-bottom: 2px solid #d32f2f;
-      color: #d32f2f;
+      border-bottom: 2px solid #ae8a4c;
+      color: #ae8a4c;
     }
     /* Dropdown rotation */
 #newsToggle i {
@@ -638,6 +643,8 @@
   .desktop-link { display: none; }
   .mobile-toggle { display: block; }
 }
+
+
     /* === Main Layout === */
     /* Base Styles - Desktop (default) */
 .container {
@@ -1282,7 +1289,10 @@ gap: 15px;
 </head>
 <body>
    
-     <header class="main-header">
+  
+
+
+  <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1324,6 +1334,7 @@ gap: 15px;
 </a>
 
         <div class="dropdown-links" id="magazineDropdown">
+           <a href="./magzin.html">Magazine</a>
           <a href="./ceo.html">CEO Profile</a>
           <a href="./company-profile.html">Company Profile</a>
           <a href="./Digitaledition.html">Digital Edition</a>
@@ -1354,9 +1365,6 @@ gap: 15px;
     <!-- call all pages -->
         <button class="login-btn" >Login</button>
 
-        <!-- User Profile -->
-        <div id="userProfile" style="display:none;"></div>
-        <!-- call all pages -->
     </div>
   </div>
 
@@ -1418,6 +1426,7 @@ gap: 15px;
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
         <div class="menu-content" id="magazine">
+           <a href="./magzin.html">Magazine</a>
           <p><a href="./ceo.html">CEO Profile</a></p>
           <p><a href="./weekly.html">Newsletter</a></p>
           <p><a href="./company-profile.html">Company Profile</a></p>
@@ -1617,7 +1626,7 @@ gap: 15px;
  <ul>
       <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
+ <li><a href="https://www.youtube.com/@miningdiscovery/videos">MULTIMEDIA VIDEOS</a></li>
     <li><a href="sub.html">SUBSCRIPTION</a></li>
     <li><a href="./magzin.html">MAGAZINES</a></li>
     <li><a href=".html">COMMENT GUIDELINE</a></li>
@@ -1750,7 +1759,69 @@ function clearForm() {
 
       this.style.display = "none"; // Hide button after showing
     });
+    
     // show extra news</script>
+      <script> 
+  
+   function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
+  });
+  
+  function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+  
+  
+  
+  
+  
+  // Sab thumbnails ko select karo
+    const thumbs = document.querySelectorAll('.thumb');
+    const mainMagazine = document.getElementById('mainMagazine');
+
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        // Badi magazine ka src update karo
+        mainMagazine.src = thumb.src;
+      });
+    });
+    const toggleBtn = document.querySelector(".toggle-btn");
+    const featuresList = document.querySelector(".features-list");
+    let expanded = false;
+
+    toggleBtn.addEventListener("click", () => {
+      expanded = !expanded;
+
+      if (expanded) {
+        featuresList.querySelectorAll("li").forEach(li => li.style.display = "list-item");
+        toggleBtn.textContent = "View less ▲";
+      } else {
+        featuresList.querySelectorAll("li").forEach((li, index) => {
+          li.style.display = index < 2 ? "list-item" : "none";
+        });
+        toggleBtn.textContent = "View more ▼";
+      }
+    });
+  </script>
 
   <script src="./js/advertisment.js"></script>
   <script src="./js/projects.js"></script>
