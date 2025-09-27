@@ -859,11 +859,13 @@
 /* fullweb */
 
  
-  .fullweb {
+ .fullweb {
   display: flex;
   flex-direction: column;
   padding: 10px;
-    overflow: hidden;
+  margin: 0 auto;       /* center align container */
+  max-width: 100%;      /* responsive width */
+  box-sizing: border-box; /* include padding in width */
 }
 
 .container2 {
@@ -895,11 +897,18 @@
   padding-top: 10px;
   
 } */
+.sidebar-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* to keep sticky top */
+  width: 100%;
+}
 
 .leftslidebar
  {
-  width: 120%;
-  height: calc(900vh - 120px);
+ width: 100%;
+  max-width: 300px;          
+  height: calc(800vh - 120px);
   position: sticky;
   top: 10px;
   overflow-y: auto;
@@ -911,6 +920,9 @@
   /* Hide scrollbar */
   scrollbar-width: none;   /* Firefox */
   -ms-overflow-style: none; /* IE & Edge */
+  overflow: auto;
+  border-top: 1px solid transparent;
+
 }
 
 .left-sidebar::-webkit-scrollbar,
@@ -929,6 +941,7 @@
       height: auto;
     }
     
+  
 /* Main card styling */
 .main-card {
   flex: 2;
