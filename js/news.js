@@ -1,29 +1,21 @@
+/********************************************************************
+ * Config & Globals
+ ********************************************************************/
 const API_ROOT = "https://acceptable-desire-0cca5bb827.strapiapp.com";
 
-// Global variables
 let allCategories = [];
 let currentCategorySlug = "latest-news";
 let currentPage = 1;
 const pageSize = 5;
 let totalItems = 0;
 
+/********************************************************************
+ * Utilities
+ ********************************************************************/
 function toArray(x) {
   if (!x) return [];
   if (Array.isArray(x)) return x;
   return [x];
-}
-
-async function newsCategory() {
-  try {
-    const res = await fetch(`${API_ROOT}/api/news-categories`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = await res.json();
-    const payload = json?.data ?? json;
-    return toArray(payload);
-  } catch (error) {
-    console.error("Error fetching news categories:", error);
-    return [];
-  }
 }
 
 function safeSlugify(text) {
@@ -32,23 +24,6 @@ function safeSlugify(text) {
     .trim()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)+/g, "");
-}
-
-function buildCategoryEndpoint(slug, page = 1) {
-  const finalSlug = slug || "latest-news";
-  const encSlug = encodeURIComponent(finalSlug);
-
-  return (
-    API_ROOT +
-    `/api/news-categories?filters[slug][$eq]=${encSlug}` +
-    `&populate[news_sections][fields][0]=title` +
-    `&populate[news_sections][fields][1]=author` +
-    `&populate[news_sections][fields][2]=publish_on` +
-    `&populate[news_sections][fields][3]=short_description` +
-    `&populate[news_sections][populate][image]=true` +
-    `&populate[news_sections][populate][pdf]=true` +
-    `&pagination[pageSize]=${pageSize}&pagination[page]=${page}`
-  );
 }
 
 function absUrl(url) {
@@ -84,6 +59,58 @@ function truncateWords(str, maxWords = 15) {
   return words.slice(0, maxWords).join(" ");
 }
 
+function getSlugFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("category");
+  return (slug && slug.trim()) ? decodeURIComponent(slug.trim()) : "latest-news";
+}
+
+function setActiveMenuItem(slug) {
+  const dropdownMenu = document.getElementById("dropdownMenu");
+  if (!dropdownMenu) return;
+  // Optional: style the active item
+  dropdownMenu.querySelectorAll("a[data-slug]").forEach(a => {
+    if (a.dataset.slug === slug) a.classList.add("active");
+    else a.classList.remove("active");
+  });
+}
+
+/********************************************************************
+ * API Builders
+ ********************************************************************/
+async function newsCategory() {
+  try {
+    const res = await fetch(`${API_ROOT}/api/news-categories`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    const payload = json?.data ?? json;
+    return toArray(payload);
+  } catch (error) {
+    console.error("Error fetching news categories:", error);
+    return [];
+  }
+}
+
+function buildCategoryEndpoint(slug, page = 1) {
+  const finalSlug = slug || "latest-news";
+  const encSlug = encodeURIComponent(finalSlug);
+
+  return (
+    API_ROOT +
+    `/api/news-categories?filters[slug][$eq]=${encSlug}` +
+    `&populate[news_sections][fields][0]=title` +
+    `&populate[news_sections][fields][1]=author` +
+    `&populate[news_sections][fields][2]=publish_on` +
+    `&populate[news_sections][fields][3]=short_description` +
+    `&populate[news_sections][populate][image]=true` +
+    `&populate[news_sections][populate][pdf]=true` +
+    `&pagination[pageSize]=${pageSize}&pagination[page]=${page}`
+  );
+}
+
+/********************************************************************
+ * Renderers
+ ********************************************************************/
 function buildNewsCard({ title, author, publish_on, short_description, imageUrl, docId, pdfUrl }) {
   const safeTitle = escapeHTML(title || "Untitled");
   const safeAuthor = escapeHTML(author || "");
@@ -125,6 +152,34 @@ function buildNextNewsCard({ title, short_description, imageUrl, docId, pdfUrl }
   `;
 }
 
+function renderNewsSections(sections, append = false) {
+  const container = document.getElementById("newsContainer");
+  if (!container) return;
+  if (!sections.length && !append) {
+    container.innerHTML = `<p>No news available for this category.</p>`;
+    return;
+  }
+
+  const html = sections.map(buildNewsCard).join("");
+  if (append) {
+    container.insertAdjacentHTML("beforeend", html);
+  } else {
+    container.innerHTML = html;
+  }
+  attachCardClickHandlers(container);
+}
+
+function renderNextCategoryPreview(sections) {
+  const nextNewsContainer = document.getElementById("nextNewsContainer");
+  if (!nextNewsContainer || !sections.length) return;
+  const nextNewsCard = sections.slice(0, 3).map(buildNextNewsCard).join("");
+  nextNewsContainer.innerHTML = nextNewsCard;
+  attachCardClickHandlers(nextNewsContainer);
+}
+
+/********************************************************************
+ * Parsing & Extraction
+ ********************************************************************/
 function extractSectionsFromResponse(apiJson, targetSlug) {
   const categories = toArray(apiJson?.data || []);
   const targetCategory = categories.find((cat) => {
@@ -154,27 +209,37 @@ function extractSectionsFromResponse(apiJson, targetSlug) {
     };
   });
 
-  return sections.sort((a, b) => new Date(b.publish_on || 0).getTime() - new Date(a.publish_on || 0).getTime());
+  return sections.sort(
+    (a, b) => new Date(b.publish_on || 0).getTime() - new Date(a.publish_on || 0).getTime()
+  );
 }
 
-function renderNewsSections(sections, append = false) {
-  const container = document.getElementById("newsContainer");
+/********************************************************************
+ * Interaction: Cards
+ ********************************************************************/
+function attachCardClickHandlers(container) {
   if (!container) return;
-  if (!sections.length && !append) {
-    container.innerHTML = `<p>No news available for this category.</p>`;
-    return;
-  }
-
-  const html = sections.map(buildNewsCard).join("");
-  if (append) {
-    container.insertAdjacentHTML("beforeend", html);
-  } else {
-    container.innerHTML = html;
-  }
-  attachCardClickHandlers(container);
+  const clickableCards = container.querySelectorAll(".clickable-card");
+  clickableCards.forEach((card) => {
+    card.addEventListener("click", handleCardClick);
+  });
 }
 
-// ✅ Most Read: first news from first 4 categories
+function handleCardClick(event) {
+  const card = event.currentTarget;
+  const pdfUrl = card.getAttribute("data-pdf-url");
+  const docId = card.getAttribute("data-doc-id");
+
+  if (pdfUrl && pdfUrl !== "null" && pdfUrl !== "") {
+    window.open(pdfUrl, "_blank");
+  } else if (docId && docId !== "null" && docId !== "") {
+    window.location.href = `news-details.html?id=${docId}`;
+  }
+}
+
+/********************************************************************
+ * “Most Read” & “Next Category”
+ ********************************************************************/
 async function fetchAndRenderMostRead() {
   const container = document.querySelector(".cards");
   if (!container) return;
@@ -214,34 +279,6 @@ async function fetchAndRenderMostRead() {
   }
 }
 
-function renderNextCategoryPreview(sections) {
-  const nextNewsContainer = document.getElementById("nextNewsContainer");
-  if (!nextNewsContainer || !sections.length) return;
-  const nextNewsCard = sections.slice(0, 3).map(buildNextNewsCard).join("");
-  nextNewsContainer.innerHTML = nextNewsCard;
-  attachCardClickHandlers(nextNewsContainer);
-}
-
-function attachCardClickHandlers(container) {
-  if (!container) return;
-  const clickableCards = container.querySelectorAll(".clickable-card");
-  clickableCards.forEach((card) => {
-    card.addEventListener("click", handleCardClick);
-  });
-}
-
-function handleCardClick(event) {
-  const card = event.currentTarget;
-  const pdfUrl = card.getAttribute("data-pdf-url");
-  const docId = card.getAttribute("data-doc-id");
-
-  if (pdfUrl && pdfUrl !== "null" && pdfUrl !== "") {
-    window.open(pdfUrl, "_blank");
-  } else if (docId && docId !== "null" && docId !== "") {
-    window.location.href = `news-details.html?id=${docId}`;
-  }
-}
-
 function getNextCategoryInfo(currentSlug) {
   if (!allCategories.length) return null;
   const currentIndex = allCategories.findIndex((cat) => {
@@ -265,6 +302,9 @@ function updateNextCategoryDisplay() {
   nextCategoryEl.textContent = nextCategoryInfo?.name || "No Next Category";
 }
 
+/********************************************************************
+ * Category Fetch + Page Wiring
+ ********************************************************************/
 async function fetchAndRenderCategory(slug, page = 1, append = false) {
   const endpoint = buildCategoryEndpoint(slug, page);
   currentCategorySlug = slug || "latest-news";
@@ -314,78 +354,126 @@ async function fetchAndRenderCategory(slug, page = 1, append = false) {
       const shownCount = currentPage * pageSize;
       showMoreBtn.style.display = shownCount >= totalItems ? "none" : "block";
     }
+
+    setActiveMenuItem(currentCategorySlug);
   } catch (err) {
     console.error("Error fetching news for", slug, err);
   }
 }
 
+/********************************************************************
+ * Dropdown Menu (Navigation)
+ ********************************************************************/
 function generateDropdownMenu(categories) {
   const dropdownMenu = document.getElementById("dropdownMenu");
   if (!dropdownMenu) return;
 
-  dropdownMenu.innerHTML = "";
+  // If your HTML has <a id="dropdownMenu"> (a single link), replace it with a container:
+  // <nav id="dropdownMenu"></nav>
+  // Or ensure it's a container element that can hold multiple <a> tags.
+  if (dropdownMenu.tagName.toLowerCase() === "a") {
+    // Convert single <a> to a container on the fly
+    const nav = document.createElement("nav");
+    nav.id = dropdownMenu.id;
+    dropdownMenu.replaceWith(nav);
+  }
+
+  const menu = document.getElementById("dropdownMenu");
+  menu.innerHTML = "";
+
   categories.forEach((item) => {
     const src = item?.attributes ?? item ?? {};
     const title = src.title ?? src.category ?? src.name ?? `Category ${item?.id ?? ""}`;
     const slug = src.slug ?? (src.category ? safeSlugify(src.category) : null);
-    if (!title) return;
+    if (!title || !slug) return;
+
     const a = document.createElement("a");
     a.textContent = title;
-    a.href = "javascript:void(0)";
-    a.dataset.slug = slug || "";
-    dropdownMenu.appendChild(a);
+    a.href = `newss.html?category=${encodeURIComponent(slug)}`; // real link (works on refresh/new tab)
+    a.dataset.slug = slug;                                     // used for SPA navigation
+    a.className = "dropdown-item";
+    menu.appendChild(a);
   });
 
-  dropdownMenu.addEventListener("click", async (e) => {
-    const link = e.target.closest("a");
+  // SPA-style click (prevent full reload when staying on same page)
+  menu.addEventListener("click", async (e) => {
+    const link = e.target.closest("a[data-slug]");
     if (!link) return;
+
+    // If link points to the same page (e.g., you're already on newss.html),
+    // we prefer SPA behavior; prevent default and pushState.
+    const url = new URL(link.href, window.location.href);
+    const samePage = url.pathname === window.location.pathname;
+
     const slug = link.dataset.slug || "latest-news";
-    await fetchAndRenderCategory(slug, 1, false);
+
+    if (samePage) {
+      e.preventDefault();
+      window.history.pushState({ slug }, "", `?category=${encodeURIComponent(slug)}`);
+      await fetchAndRenderCategory(slug, 1, false);
+    }
   });
 }
 
+/********************************************************************
+ * Show More
+ ********************************************************************/
 function handleShowMoreClick() {
   fetchAndRenderCategory(currentCategorySlug, currentPage + 1, true);
 }
 
+/********************************************************************
+ * Boot
+ ********************************************************************/
 document.addEventListener("DOMContentLoaded", async () => {
-  const dropdownToggle = document.getElementById("dropdownToggle");
-  const dropdownMenu = document.getElementById("dropdownMenu");
+  try {
+    allCategories = await newsCategory();
+    generateDropdownMenu(allCategories);
 
-  allCategories = await newsCategory();
-  generateDropdownMenu(allCategories);
+    const initialSlug = getSlugFromURL();
 
-  await fetchAndRenderMostRead(); // ✅ Most Read section first
-  await fetchAndRenderCategory("latest-news", 1);
+    await fetchAndRenderMostRead();
+    await fetchAndRenderCategory(initialSlug, 1);
 
-  const showMoreBtn = document.querySelector(".btn-more");
-  if (showMoreBtn) showMoreBtn.addEventListener("click", handleShowMoreClick);
+    // Show more
+    const showMoreBtn = document.querySelector(".btn-more");
+    if (showMoreBtn) showMoreBtn.addEventListener("click", handleShowMoreClick);
 
-  if (dropdownToggle && dropdownMenu) {
-    dropdownToggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      dropdownMenu.classList.toggle("show");
-      dropdownToggle.setAttribute(
-        "aria-expanded",
-        dropdownMenu.classList.contains("show") ? "true" : "false"
-      );
+    // Dropdown open/close (if you have toggle)
+    const dropdownToggle = document.getElementById("dropdownToggle");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    if (dropdownToggle && dropdownMenu) {
+      dropdownToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("show");
+        dropdownToggle.setAttribute(
+          "aria-expanded",
+          dropdownMenu.classList.contains("show") ? "true" : "false"
+        );
+      });
+
+      document.addEventListener("click", (e) => {
+        const inside = dropdownMenu.contains(e.target) || dropdownToggle.contains(e.target);
+        if (!inside) {
+          dropdownMenu.classList.remove("show");
+          dropdownToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          dropdownMenu.classList.remove("show");
+          dropdownToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    // Back/Forward support
+    window.addEventListener("popstate", (event) => {
+      const slug = event.state?.slug || getSlugFromURL();
+      fetchAndRenderCategory(slug, 1, false);
     });
+  } catch (err) {
+    console.error("Init error:", err);
   }
-
-  document.addEventListener("click", (e) => {
-    if (dropdownMenu && dropdownToggle) {
-      const inside = dropdownMenu.contains(e.target) || dropdownToggle.contains(e.target);
-      if (!inside) {
-        dropdownMenu.classList.remove("show");
-        dropdownToggle.setAttribute("aria-expanded", "false");
-      }
-    }
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && dropdownMenu && dropdownToggle) {
-      dropdownMenu.classList.remove("show");
-      dropdownToggle.setAttribute("aria-expanded", "false");
-    }
-  });
 });
