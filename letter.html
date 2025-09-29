@@ -1298,7 +1298,7 @@ gap: 15px;
    
   
 
- <header class="main-header">
+<header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1319,7 +1319,14 @@ gap: 15px;
 </a>
 
         <div class="dropdown-links" id="newsDropdown">
-        <p><a href="./newss.html" id="dropdownMenu"></a></p>
+          <a href="#">Latest News</a>
+          <a href="#">Precious Metals</a>
+          <a href="#">Evening Chatter</a>
+          <a href="#">Research Reports</a>
+          <a href="#">Gold News</a>
+          <a href="#">Corporate News</a>
+          <a href="#">Announcement</a>
+          <a href="#">Sponsored Post</a>
         </div>
 
       <a href="./morning.html">Evening Chatter</a>
@@ -1397,12 +1404,12 @@ gap: 15px;
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p> -->
           <p class="tab-btn" data-target="about">SERVICE</p>
-          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+          <!-- <p class="tab-btn" data-target="magazine">MAGAZINE</p> -->
         </div>
         <div class="menu-content active" id="news">
-          <p><a href="./newss.html" id="dropdownMenu"></a></p>
+          <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
         </div>
         <div class="menu-content" id="about">
           <p><a href="./service.html">Investor Campaign</a></p>
@@ -1750,12 +1757,12 @@ function clearForm() {
     
     // show extra news</script>
       <script> 
-  
    function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
- // Select tabs and contents
+    const menu = document.getElementById("hamburgerMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  // Select tabs and contents
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".menu-content");
 
@@ -1768,6 +1775,28 @@ function clearForm() {
       // Add active to clicked
       tab.classList.add("active");
       document.getElementById(tab.dataset.target).classList.add("active");
+    });
+  });
+
+  // --------- FORCE ONLY SERVICES ---------
+  document.addEventListener("DOMContentLoaded", function () {
+    // Hide all tabs except services
+    tabs.forEach(tab => {
+      if (tab.dataset.target !== "about") {   // "about" = Services ka content id
+        tab.style.display = "none";
+      } else {
+        tab.classList.add("active");
+      }
+    });
+
+    // Hide all contents except services
+    contents.forEach(content => {
+      if (content.id !== "about") {
+        content.style.display = "none";
+      } else {
+        content.classList.add("active");
+        content.style.display = "grid";
+      }
     });
   });
   

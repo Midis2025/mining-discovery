@@ -1336,12 +1336,12 @@
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p> -->
           <p class="tab-btn" data-target="about">SERVICE</p>
-          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+          <!-- <p class="tab-btn" data-target="magazine">MAGAZINE</p> -->
         </div>
         <div class="menu-content active" id="news">
-          <p><a href="./newss.html" id="dropdownMenu"></a></p>
+          <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
         </div>
         <div class="menu-content" id="about">
           <p><a href="./service.html">Investor Campaign</a></p>
@@ -1646,17 +1646,12 @@
     </div>
   <script src="./script.js"></script>
   <script>
-        function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
-function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
- // Select tabs and contents
+      function toggleMenu2() {
+    const menu = document.getElementById("hamburgerMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  // Select tabs and contents
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".menu-content");
 
@@ -1671,6 +1666,35 @@ function toggleDropdownMobile(id) {
       document.getElementById(tab.dataset.target).classList.add("active");
     });
   });
+
+  // --------- FORCE ONLY SERVICES ---------
+  document.addEventListener("DOMContentLoaded", function () {
+    // Hide all tabs except services
+    tabs.forEach(tab => {
+      if (tab.dataset.target !== "about") {   // "about" = Services ka content id
+        tab.style.display = "none";
+      } else {
+        tab.classList.add("active");
+      }
+    });
+
+    // Hide all contents except services
+    contents.forEach(content => {
+      if (content.id !== "about") {
+        content.style.display = "none";
+      } else {
+        content.classList.add("active");
+        content.style.display = "grid";
+      }
+    });
+  });
+function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+
     </script>
     <script>// show  extra news
     document.getElementById("showMoreBtn").addEventListener("click", function () {

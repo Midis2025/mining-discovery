@@ -929,7 +929,7 @@
 /* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
 @media (min-width: 900px) {
   #newsToggle {
-    cursor: default;        /* not pointer */
+    cursor: pointer;        /* not pointer */
     pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
   }
   #newsToggle i {
@@ -944,9 +944,7 @@
 
 
   /* ensure dropdown panel is not shown on desktop even if .show gets added */
-  .dropdown-links {
-    display: none !important;
-  }
+
 }
 
 /* Mobile: hide main link, show mobile toggle */
