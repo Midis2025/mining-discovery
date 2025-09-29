@@ -95,14 +95,20 @@ function updateTopbarTitle(title) {
   document.title = title ? `${title} - Mining Discovery` : "News - Mining Discovery";
 }
 
-// ✅ Load comments from localStorage
+// ✅ Load comments from memory (not localStorage)
 function loadComments(newsId) {
-  const savedComments = localStorage.getItem(`comments_${newsId}`);
-  return savedComments ? JSON.parse(savedComments) : [];
+  if (!window.commentsStore) {
+    window.commentsStore = {};
+  }
+  return window.commentsStore[`comments_${newsId}`] || [];
 }
 
-// ✅ Save comment to localStorage
+// ✅ Save comment to memory
 function saveComment(newsId, commentData) {
+  if (!window.commentsStore) {
+    window.commentsStore = {};
+  }
+  
   const comments = loadComments(newsId);
   const newComment = {
     id: Date.now(),
@@ -112,8 +118,8 @@ function saveComment(newsId, commentData) {
     createdAt: new Date().toISOString()
   };
   
-  comments.unshift(newComment); // Add to beginning
-  localStorage.setItem(`comments_${newsId}`, JSON.stringify(comments));
+  comments.unshift(newComment);
+  window.commentsStore[`comments_${newsId}`] = comments;
   return newComment;
 }
 
@@ -163,7 +169,7 @@ function renderComment(comment) {
   
   return `
     <div class="comment">
-      <div style="display: flex; justify-content: space-between;">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
         <span class="username">${comment.name || 'Anonymous'}</span>
         <span class="date">${date} at ${time}</span>
       </div>
@@ -174,7 +180,7 @@ function renderComment(comment) {
 
 // Global variables for comment management
 let allComments = [];
-let visibleComments = 3; // Show only top 3 comments initially
+let visibleComments = 3;
 
 // ✅ Load and display comments
 function displayComments(newsId) {
@@ -183,16 +189,9 @@ function displayComments(newsId) {
   
   try {
     allComments = loadComments(newsId);
-    
-    // Update count
     commentCount.textContent = allComments.length;
-    
-    // Display comments
     renderComments();
-    
-    // Handle save info checkbox
     handleSaveInfo();
-    
   } catch (error) {
     console.error('Error loading comments:', error);
     commentList.innerHTML = '<div class="error-message">Error loading comments.</div>';
@@ -212,10 +211,8 @@ function renderComments(showAll = false) {
   }
   
   const commentsToShow = showAll ? allComments : allComments.slice(0, visibleComments);
-  
   commentList.innerHTML = commentsToShow.map(renderComment).join('');
   
-  // Show/Hide "Show More" button
   if (allComments.length > visibleComments && !showAll) {
     showMoreBtn.style.display = 'block';
   } else {
@@ -223,36 +220,36 @@ function renderComments(showAll = false) {
   }
 }
 
-// ✅ Show all comments function (called from button)
+// ✅ Show all comments function
 function showAllComments() {
   renderComments(true);
   document.getElementById('show-more').style.display = 'none';
 }
 
-// ✅ Handle save info checkbox
+// ✅ Handle save info checkbox (using in-memory storage)
 function handleSaveInfo() {
   const saveInfoCheckbox = document.getElementById('save-info');
   const nameInput = document.getElementById('commentName');
   const emailInput = document.getElementById('commentEmail');
   
-  // Load saved info
-  const savedName = localStorage.getItem('commentName');
-  const savedEmail = localStorage.getItem('commentEmail');
+  if (!window.savedUserInfo) {
+    window.savedUserInfo = { name: '', email: '' };
+  }
   
-  if (savedName && savedEmail) {
-    nameInput.value = savedName;
-    emailInput.value = savedEmail;
+  if (window.savedUserInfo.name && window.savedUserInfo.email) {
+    nameInput.value = window.savedUserInfo.name;
+    emailInput.value = window.savedUserInfo.email;
     saveInfoCheckbox.checked = true;
   }
   
-  // Save info when checkbox changes
   saveInfoCheckbox.addEventListener('change', function() {
     if (this.checked) {
-      localStorage.setItem('commentName', nameInput.value);
-      localStorage.setItem('commentEmail', emailInput.value);
+      window.savedUserInfo = {
+        name: nameInput.value,
+        email: emailInput.value
+      };
     } else {
-      localStorage.removeItem('commentName');
-      localStorage.removeItem('commentEmail');
+      window.savedUserInfo = { name: '', email: '' };
     }
   });
 }
@@ -267,7 +264,6 @@ function handleCommentSubmission(newsId) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Show loading state
     submitBtn.disabled = true;
     btnText.style.display = 'none';
     btnLoading.style.display = 'inline';
@@ -279,52 +275,38 @@ function handleCommentSubmission(newsId) {
       comment: formData.get('comment').trim()
     };
     
-    // Simulate a short delay for better UX
     setTimeout(() => {
       try {
         const newComment = saveComment(newsId, commentData);
-        
-        // Add the new comment to the beginning of allComments array
         allComments.unshift(newComment);
-        
-        // Update comment count
         document.getElementById('comment-count').textContent = allComments.length;
-        
-        // Re-render comments
         renderComments();
-        
-        // Reset form
         form.reset();
         
-        // Handle save info
         const saveInfoCheckbox = document.getElementById('save-info');
         if (saveInfoCheckbox.checked) {
-          localStorage.setItem('commentName', commentData.name);
-          localStorage.setItem('commentEmail', commentData.email);
+          window.savedUserInfo = {
+            name: commentData.name,
+            email: commentData.email
+          };
         }
         
-        // Restore saved info if checkbox was checked
         handleSaveInfo();
-        
-        // Show success message
         showMessage('Comment posted successfully!', 'success');
-        
       } catch (error) {
         console.error('Error posting comment:', error);
         showMessage('Error posting comment. Please try again.', 'error');
       } finally {
-        // Reset button state
         submitBtn.disabled = false;
         btnText.style.display = 'inline';
         btnLoading.style.display = 'none';
       }
-    }, 500); // Small delay for better UX
+    }, 500);
   });
 }
 
 // ✅ Show success/error messages
 function showMessage(message, type) {
-  // Remove existing messages
   const existingMessage = document.querySelector('.message-popup');
   if (existingMessage) {
     existingMessage.remove();
@@ -333,13 +315,127 @@ function showMessage(message, type) {
   const messageDiv = document.createElement('div');
   messageDiv.className = `message-popup ${type}`;
   messageDiv.textContent = message;
-  
   document.body.appendChild(messageDiv);
   
-  // Remove after 3 seconds
   setTimeout(() => {
     messageDiv.remove();
   }, 3000);
+}
+
+// ✅ Back to Top functionality
+function initBackToTop() {
+  const backToTopBtn = document.getElementById('backToTop');
+  
+  if (!backToTopBtn) {
+    console.error('Back to top button not found');
+    return;
+  }
+  
+  console.log('Back to top button initialized');
+  
+  // Show/hide button based on scroll position
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  
+  // Scroll to top on click
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// ✅ Fetch all news sections for navigation
+async function fetchAllNewsSections(category) {
+  try {
+    let allSections = [];
+    
+    if (category === 'sponsored-post') {
+      const res = await fetch(`${API_ROOT}/api/news-categories?filters[slug][$eq]=sponsored-post&populate[news_sections][populate]=*`);
+      if (!res.ok) return [];
+      const data = await res.json();
+      allSections = data?.data?.[0]?.news_sections || [];
+    } else {
+      const res = await fetch(`${API_ROOT}/api/news?populate=news_sections.image`);
+      if (!res.ok) return [];
+      const data = await res.json();
+      
+      // Flatten all news sections from all news items
+      data.data.forEach(newsItem => {
+        if (newsItem.news_sections) {
+          allSections = allSections.concat(newsItem.news_sections);
+        }
+      });
+    }
+    
+    return allSections;
+  } catch (error) {
+    console.error('Error fetching news sections:', error);
+    return [];
+  }
+}
+
+// ✅ Initialize navigation buttons
+async function initNavigation(currentId, category) {
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  
+  if (!prevBtn || !nextBtn) {
+    console.error('Navigation buttons not found in DOM');
+    return;
+  }
+  
+  console.log('Navigation buttons found, initializing...');
+  
+  // Hide buttons initially
+  prevBtn.classList.add('hidden');
+  nextBtn.classList.add('hidden');
+  
+  const allSections = await fetchAllNewsSections(category);
+  
+  console.log('Fetched sections:', allSections.length);
+  
+  if (allSections.length === 0) {
+    console.log('No sections found');
+    return;
+  }
+  
+  const currentIndex = allSections.findIndex(section => section.id.toString() === currentId.toString());
+  
+  console.log('Current index:', currentIndex, 'of', allSections.length);
+  
+  if (currentIndex === -1) {
+    console.log('Current article not found in sections');
+    return;
+  }
+  
+  // Handle Previous Button
+  if (currentIndex > 0) {
+    prevBtn.classList.remove('hidden');
+    console.log('Previous button shown');
+    prevBtn.onclick = () => {
+      const prevSection = allSections[currentIndex - 1];
+      const categoryParam = category ? `&category=${category}` : '';
+      window.location.href = `?id=${prevSection.id}${categoryParam}`;
+    };
+  }
+  
+  // Handle Next Button
+  if (currentIndex < allSections.length - 1) {
+    nextBtn.classList.remove('hidden');
+    console.log('Next button shown');
+    nextBtn.onclick = () => {
+      const nextSection = allSections[currentIndex + 1];
+      const categoryParam = category ? `&category=${category}` : '';
+      window.location.href = `?id=${nextSection.id}${categoryParam}`;
+    };
+  }
 }
 
 async function loadNewsDetails() {
@@ -354,47 +450,30 @@ async function loadNewsDetails() {
   try {
     let newsSection = null;
 
-    // If it's a sponsored post, fetch from sponsored posts API
     if (category === 'sponsored-post') {
       const res = await fetch(`${API_ROOT}/api/news-categories?filters[slug][$eq]=sponsored-post&populate[news_sections][populate]=*`);
-      
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      
       const data = await res.json();
       const posts = data?.data?.[0]?.news_sections || [];
       newsSection = posts.find(post => post.id.toString() === id);
-      
-      if (!newsSection) {
-        throw new Error('Sponsored post not found');
-      }
+      if (!newsSection) throw new Error('Sponsored post not found');
     } else {
-      // Try direct news section fetch for other categories
       let res = await fetch(`${API_ROOT}/api/news-sections/${id}?populate=image`);
-      
       if (!res.ok) {
-        // Fallback to news endpoint
         res = await fetch(`${API_ROOT}/api/news?populate=news_sections.image`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        
         const newsData = await res.json();
         const newsItem = newsData.data[0]; 
         newsSection = newsItem.news_sections.find(section => section.id == id);
-        
-        if (!newsSection) {
-          throw new Error('News section not found');
-        }
+        if (!newsSection) throw new Error('News section not found');
       } else {
         const data = await res.json();
         newsSection = data.data;
       }
     }
 
-    console.log('News section data:', newsSection);
-
-    // ✅ Update topbar title with actual news title
     updateTopbarTitle(newsSection.title);
 
-    // Format publish date
     const publishDate = newsSection.publish_on ? 
       new Date(newsSection.publish_on).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -402,26 +481,20 @@ async function loadNewsDetails() {
         day: 'numeric'
       }) : '';
 
-    // ✅ Get best image URL
     const imageUrl = getImageUrl(newsSection.image);
 
-    // ✅ Parse description - handle both JSON and plain text
     let descriptionHTML = "";
     if (newsSection.description) {
       try {
-        // Try to parse as JSON first (rich text)
         const parsed = JSON.parse(newsSection.description);
         descriptionHTML = renderRichText(parsed);
       } catch (e) {
-        // If JSON parse fails, treat as plain text
         descriptionHTML = formatPlainDescription(newsSection.description);
       }
     }
 
-    // Determine category display name
     const categoryDisplay = category ? category.toUpperCase().replace('-', ' ') : 'NEWS';
 
-    // Render HTML with comments section
     document.getElementById("newsDetails").innerHTML = `
       <div class="news-detail">
         <div class="news-header">
@@ -443,7 +516,7 @@ async function loadNewsDetails() {
         <div class="news-body">
           ${newsSection.short_description ? `
             <div class="short-description">
-              <p><strong>${newsSection.short_description}</strong></p>
+              <p>${newsSection.short_description}</p>
             </div>
           ` : ''}
 
@@ -455,22 +528,49 @@ async function loadNewsDetails() {
         </div>
       </div>
       
+      <!-- Navigation Buttons -->
+      <div class="nav-buttons">
+        <button id="prevBtn" class="nav-btn prev-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+          <span>Previous</span>
+        </button>
+        <button id="nextBtn" class="nav-btn next-btn">
+          <span>Next</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+      
       ${renderCommentsSection(id)}
       
+      <!-- Back to Top Button -->
+      <button id="backToTop" class="back-to-top" title="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+      </button>
+      
       <style>
-        /* Import Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Pontano+Sans:wght@300;400;600;700&display=swap');
+        
+        * {
+          box-sizing: border-box;
+        }
         
         body {
           font-family: 'Pontano Sans', sans-serif;
+          margin: 0;
+          padding: 0;
         }
       
-      <style>
         .news-detail {
           max-width: 800px;
           margin: 0 auto;
           padding: 20px;
-          font-family: Arial, sans-serif;
+          font-family: 'Pontano Sans', sans-serif;
         }
         
         .news-header {
@@ -489,16 +589,18 @@ async function loadNewsDetails() {
         }
         
         .news-detail h1 {
-          font-size: 2.5em;
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
           font-weight: bold;
           color: #333;
           line-height: 1.2;
           margin-bottom: 15px;
+          word-wrap: break-word;
         }
         
         .news-meta {
           display: flex;
-          gap: 20px;
+          flex-wrap: wrap;
+          gap: 15px;
           color: #666;
           font-size: 14px;
           margin-bottom: 20px;
@@ -511,7 +613,7 @@ async function loadNewsDetails() {
         
         .news-image img {
           width: 100%;
-          max-width: 600px;
+          max-width: 100%;
           height: auto;
           border-radius: 8px;
           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -527,13 +629,15 @@ async function loadNewsDetails() {
         }
         
         .short-description p {
-          font-size: 1.1em;
-          color: #555;
+          font-size: clamp(1rem, 2vw, 1.1rem);
+          color: #333;
+          font-weight: 700;
+          line-height: 1.6;
         }
         
         .full-description p {
           margin-bottom: 15px;
-          font-size: 16px;
+          font-size: clamp(0.95rem, 1.5vw, 1rem);
           text-align: justify;
         }
         
@@ -546,6 +650,7 @@ async function loadNewsDetails() {
           margin-top: 25px;
           margin-bottom: 15px;
           color: #333;
+          word-wrap: break-word;
         }
         
         .full-description ul,
@@ -558,12 +663,12 @@ async function loadNewsDetails() {
           margin-bottom: 5px;
         }
         
-        /* Comments Section Styles */
+        /* Comments Section */
         .comment-box {
           background: #fff;
           border-radius: 8px;
           padding: 20px;
-          max-width: 700px;
+          max-width: 100%;
           margin: 50px auto 0;
           box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
         }
@@ -575,10 +680,11 @@ async function loadNewsDetails() {
           display: inline-block;
           padding-bottom: 5px;
           font-family: 'Pontano Sans', sans-serif;
+          font-size: clamp(1rem, 2vw, 1.2rem);
         }
 
-        .comment-box p {
-          font-size: 14px;
+        .comment-box > p {
+          font-size: clamp(0.8rem, 1.5vw, 0.875rem);
           margin-bottom: 15px;
           color: #666;
         }
@@ -588,18 +694,19 @@ async function loadNewsDetails() {
         }
 
         .input-row {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           gap: 15px;
           margin-bottom: 15px;
         }
 
         .input-row input {
-          flex: 1;
+          width: 100%;
           padding: 10px;
           border: 1px solid #c7a979;
           border-radius: 20px;
           outline: none;
-          font-size: 14px;
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
           font-family: 'Pontano Sans', sans-serif;
         }
 
@@ -613,11 +720,10 @@ async function loadNewsDetails() {
           padding: 10px;
           border: 1px solid #c7a979;
           border-radius: 8px;
-          resize: none;
-          font-size: 14px;
+          resize: vertical;
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
           margin-bottom: 10px;
           font-family: 'Pontano Sans', sans-serif;
-          box-sizing: border-box;
           outline: none;
         }
 
@@ -629,12 +735,12 @@ async function loadNewsDetails() {
           background: #3a2b12;
           color: #fff;
           border: none;
-          padding: 6px 20px;
+          padding: 8px 24px;
           border-radius: 12px;
           cursor: pointer;
           float: right;
           font-family: 'Pontano Sans', sans-serif;
-          font-size: 14px;
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
           transition: background-color 0.3s;
         }
 
@@ -649,20 +755,26 @@ async function loadNewsDetails() {
 
         .checkbox {
           margin: 20px 0;
-          font-size: 14px;
+          font-size: clamp(0.8rem, 1.5vw, 0.875rem);
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 8px;
         }
 
         .checkbox input[type="checkbox"] {
           margin: 0;
+          margin-top: 3px;
+          flex-shrink: 0;
+        }
+
+        .checkbox label {
+          line-height: 1.4;
         }
 
         .comment-header {
           display: flex;
           justify-content: space-between;
-          font-size: 13px;
+          font-size: clamp(0.8rem, 1.5vw, 0.9rem);
           margin-bottom: 15px;
           color: #333;
           font-weight: 600;
@@ -672,7 +784,7 @@ async function loadNewsDetails() {
           border: 1px solid #e0d1b3;
           border-radius: 10px;
           padding: 15px;
-          font-size: 14px;
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
           line-height: 1.5;
           margin-bottom: 10px;
           background: #fefefe;
@@ -681,30 +793,33 @@ async function loadNewsDetails() {
         .username {
           font-weight: bold;
           color: #333;
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
         }
 
         .date {
-          font-size: 12px;
+          font-size: clamp(0.75rem, 1.2vw, 0.85rem);
           color: gray;
         }
 
         .comment p {
           margin: 8px 0 0 0;
           color: #555;
+          word-wrap: break-word;
         }
 
         #show-more {
           display: none;
+          width: 100%;
+          max-width: 200px;
           margin: 10px auto;
           background: #9a6b2f;
           color: #fff;
           border: none;
-          padding: 8px 20px;
+          padding: 10px 20px;
           border-radius: 12px;
           cursor: pointer;
-          text-align: center;
           font-family: 'Pontano Sans', sans-serif;
-          font-size: 14px;
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
           transition: background-color 0.3s;
         }
 
@@ -719,6 +834,7 @@ async function loadNewsDetails() {
           padding: 30px 20px;
           color: #666;
           font-style: italic;
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
         }
 
         .error-message {
@@ -729,12 +845,17 @@ async function loadNewsDetails() {
           position: fixed;
           top: 20px;
           right: 20px;
+          left: 20px;
+          max-width: 400px;
+          margin: 0 auto;
           padding: 15px 20px;
           border-radius: 4px;
           color: white;
           font-weight: 600;
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
           z-index: 1000;
           animation: slideIn 0.3s ease;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .message-popup.success {
@@ -747,53 +868,235 @@ async function loadNewsDetails() {
         
         @keyframes slideIn {
           from {
-            transform: translateX(100%);
+            transform: translateY(-100%);
             opacity: 0;
           }
           to {
-            transform: translateX(0);
+            transform: translateY(0);
             opacity: 1;
           }
         }
         
-        /* Responsive design */
+        /* Back to Top Button */
+        .back-to-top {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          width: 50px;
+          height: 50px;
+          background: #9a6b2f;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(20px);
+          transition: all 0.3s ease;
+          z-index: 999;
+        }
+        
+        .back-to-top.show {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+          background: #7a5525;
+          transform: translateY(-3px);
+          box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .back-to-top:active {
+          transform: translateY(-1px);
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+          display: flex;
+          justify-content: space-between;
+          gap: 15px;
+          max-width: 800px;
+          margin: 40px auto 20px;
+          padding: 0 20px;
+        }
+        
+        .nav-btn {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 24px;
+          background: #3a2b12;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-family: 'Pontano Sans', sans-serif;
+          font-size: clamp(0.9rem, 1.5vw, 1rem);
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .nav-btn.hidden {
+          display: none;
+        }
+        
+        .nav-btn:hover {
+          background: #2d1f0a;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:active {
+          transform: translateY(0);
+        }
+        
+        .nav-btn svg {
+          flex-shrink: 0;
+        }
+        
+        .prev-btn {
+          margin-right: auto;
+        }
+        
+        .next-btn {
+          margin-left: auto;
+        }
+        
+        /* Tablet Responsive */
         @media (max-width: 768px) {
           .news-detail,
-          .comments-section {
+          .comment-box {
             padding: 15px;
           }
           
           .news-detail h1 {
-            font-size: 2em;
+            margin-bottom: 12px;
           }
           
           .news-meta {
-            flex-direction: column;
             gap: 10px;
           }
           
-          .form-row {
+          .input-row {
             grid-template-columns: 1fr;
+            gap: 12px;
           }
           
-          .comments-header {
-            flex-direction: column;
+          .post-btn {
+            float: none;
+            width: 100%;
+            margin-top: 10px;
+          }
+          
+          .full-description p {
+            text-align: left;
+          }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+          .news-detail,
+          .comment-box {
+            padding: 12px;
+          }
+          
+          .category-tag {
+            font-size: 11px;
+            padding: 4px 10px;
+          }
+          
+          .news-header {
+            margin-bottom: 20px;
+          }
+          
+          .news-image {
+            margin-bottom: 20px;
+          }
+          
+          .short-description {
+            margin-bottom: 20px;
+          }
+          
+          .comment-box {
+            margin-top: 30px;
+          }
+          
+          #commentText {
+            min-height: 80px;
+          }
+          
+          .checkbox {
             align-items: flex-start;
-            gap: 10px;
           }
           
           .message-popup {
-            left: 20px;
-            right: 20px;
             top: 10px;
+            left: 10px;
+            right: 10px;
+          }
+          
+          .back-to-top {
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+          }
+          
+          .nav-buttons {
+            padding: 0 12px;
+            gap: 10px;
+          }
+          
+          .nav-btn {
+            padding: 10px 16px;
+            font-size: 0.85rem;
+          }
+          
+          .nav-btn span {
+            display: none;
+          }
+          
+          .nav-btn svg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+        
+        /* Very small screens */
+        @media (max-width: 360px) {
+          .news-detail,
+          .comment-box {
+            padding: 10px;
+          }
+          
+          .input-row input,
+          #commentText {
+            font-size: 14px;
           }
         }
       </style>
     `;
     
-    // Initialize comments functionality
-    await displayComments(id);
-    handleCommentSubmission(id);
+    // Wait for DOM to be ready
+    setTimeout(async () => {
+      await displayComments(id);
+      handleCommentSubmission(id);
+      
+      // Initialize Back to Top button
+      initBackToTop();
+      
+      // Initialize Navigation buttons
+      await initNavigation(id, category);
+      
+      console.log('Navigation initialized');
+    }, 100);
     
   } catch (err) {
     console.error('Error loading news details:', err);

@@ -242,7 +242,7 @@
     .main-header {
       margin-bottom: 10px;
       background-color: #fff;
-      padding: 12px;
+      padding: 5px;
       border-bottom: 1px solid #ddd;
     }
 
@@ -255,7 +255,7 @@
 
     .logo-social {
       
-      padding-top: 5px;
+  
       display: flex;
       justify-content: center;
       align-items: center;
@@ -264,7 +264,9 @@
     }
 
     .logo {
-      height: 70px;
+      height: 100px;
+ 
+  
       
     }
    
@@ -313,6 +315,9 @@
     .subscribe-btn {
      background-color: #ae8a4c;
     }
+    .new{
+      display: flex;
+    }
 
    
  .search-bar-container {
@@ -330,7 +335,7 @@
   height: 24px;
   border-radius: 20px;
   
-  width: 70%;
+  width: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -419,7 +424,7 @@
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 180px;
+  top: 160px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -427,6 +432,13 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 30px 50px;
   z-index: 999;
+}
+#dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
 }
 
 /* Tabs */
@@ -478,6 +490,7 @@
   .hamburger2 {
     display: none; /* phone screen pe hide ho jayega */
   }
+ 
 }
 
 
@@ -598,6 +611,11 @@
     gap: 10px;
   }
 
+  .mobile-active .search-bar-bg,
+.mobile-active .scrolling-track,
+.mobile-active .social-icons {
+  display: none !important;
+}
 
   .nav-links a {
     padding: 8px 0;
@@ -818,7 +836,95 @@
       .header-buttons {
         display: none;
       }
+      #dropdownMenu {
+ display: flex;
+ flex-direction: column;
+
+ 
     }
+     .header-top {
+    display: flex;
+    justify-content: space-between; /* logo left, hamburger right */
+    align-items: center;
+    width: 100%;
+    gap: 27%;
+  }
+
+  .logo {
+    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #ae8a4c;
+  }
+
+  /* nav links column में */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background: #fff;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    color: #000;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+
+  .mobile-active .nav-links {
+    display: flex;
+  }
+
+ 
+  .header-buttons {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .mobile-active .header-buttons {
+    display: flex;
+  }
+
+  /* Search aur ticker remove in mobile */
+  .search-bar-container {
+    display: none !important;
+  }
+
+  /* dropdown links accordion style */
+  .dropdown-links {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  .dropdown-links.show {
+    display: flex;
+  }
+
+  .dropdown-links a {
+    padding: 8px 0;
+    border: none;
+    font-size: 14px;
+  }
+  }
     /* Hide News Section dropdown on desktop */
 /* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
 @media (min-width: 900px) {

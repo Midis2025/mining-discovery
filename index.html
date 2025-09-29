@@ -52,14 +52,7 @@
 </a>
 
         <div class="dropdown-links" id="newsDropdown">
-          <a href="#">Latest News</a>
-          <a href="#">Precious Metals</a>
-          <a href="#">Evening Chatter</a>
-          <a href="#">Research Reports</a>
-          <a href="#">Gold News</a>
-          <a href="#">Corporate News</a>
-          <a href="#">Announcement</a>
-          <a href="#">Sponsored Post</a>
+       <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
         </div>
 
       <a href="./morning.html">Evening Chatter</a>
@@ -97,33 +90,45 @@
         </div>
       <a href="./contant.html">Contact Us</a>
     </div>
-
+<div class="new">
     <div class="header-buttons" id="headerButtons">
    
       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
     <!-- call all pages -->
-        <button class="login-btn" id="loginBtn" style="display:none;">Login</button>
+        <button class="login-btn" id="loginBtn" >Login</button>
 
         <!-- User Profile -->
         <div id="userProfile" style="display:none;"></div>
         <!-- call all pages -->
     </div>
+       <div class="search-box-wrapper">
+      <!-- <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div> -->
+
+      <button class="hamburger2" onclick="toggleMenu2()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
   </div>
+</div>
+  
 
   <div class="search-bar-container" id="searchContainer">
-    <div class="social-icons">
+    <!-- <div class="social-icons">
       <a href="https://www.linkedin.com/"><img src="./image/Group.png"></a>
       <a href="https://www.instagram.com/miningdiscovery"><img src="./image/Group (4).png"></a>
       <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
       <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
       <a href="https://www.facebook.com/"><img src="./image/Group (3).png"></a>
-    </div>
+    </div> -->
 
     <div class="search-bar-bg">
       <div class="scrolling-track" id="newsTicker"></div>
     </div>
 
-    <div class="search-box-wrapper">
+    <!-- <div class="search-box-wrapper">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder=" " />
         <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
@@ -132,7 +137,7 @@
       <button class="hamburger2" onclick="toggleMenu2()">
         <i class="fas fa-bars"></i>
       </button>
-    </div>
+    </div> -->
 
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
@@ -242,19 +247,20 @@
 </div>
   <!-- Popup Overlay -->
   <div class="popup-overlay" id="popup2">
-    <div class="subscribe-box">
-      <span class="close-btn" onclick="closePopup()">&times;</span>
-      <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo2" />
-      <h2>Subscribe now for latest mining updates</h2>
-      <p>Magazine , Newsletters </p>
+  <div class="subscribe-box">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo2" />
+    <h2>Subscribe now for latest mining updates</h2>
+    <p>Magazine , Newsletters </p>
 
-      <div class="form-group">
-        <input type="email" id="email" placeholder="Enter Your Email">
-        <button onclick="subscribe()">Subscribe</button>
-      </div>
-      <!-- <small style="color:#aaa;">We respect your privacy. No spam </small> -->
+    <div class="form-group">
+      <input type="email" id="email" placeholder="Enter Your Email">
+      <button onclick="subscribe()">Subscribe</button>
     </div>
+    <!-- <small style="color:#aaa;">We respect your privacy. No spam </small> -->
   </div>
+</div>
+
 
 
 
@@ -916,6 +922,7 @@ function subscribe() {
 </script>
 
   <script src="./script.js"></script>
+  <script src="./js/subscriber.js"> </script>
   <script src="./js/latestNews.js"></script>
   <script src="./js/news.js"></script>
   <script src="./js/popularNews.js"></script>

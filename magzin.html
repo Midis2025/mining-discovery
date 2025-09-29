@@ -264,6 +264,13 @@
   padding-right:20px ;
     color: #ae8a4c; /* golden color */
 }
+#dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
+}
 .hamburger-menu {
   display: none;
   position: absolute;
@@ -296,6 +303,7 @@
 
 /* Tab items */
 .hamburger-menu .menu-tabs p {
+  color: #ae8a4c;
   margin: 8px 0;
   font-weight: bold;
   font-size: 15px;
@@ -308,11 +316,13 @@
 
 /* Content right side me */
 .hamburger-menu .menu-content {
+
   flex: 1;
   display: none;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px 40px;
 }
+
 
 .hamburger-menu .menu-content.active {
   display: grid;
@@ -327,7 +337,6 @@
     display: none; /* phone screen pe hide ho jayega */
   }
 }
-
 
 
 
@@ -413,6 +422,7 @@
     @media (max-width: 768px) {
   .hamburger {
     display: block;
+  
   }
 
   /* Search-bar always visible */
@@ -670,6 +680,12 @@
       .header-buttons {
         display: none;
       }
+       #dropdownMenu {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
     }
        /* Hide News Section dropdown on desktop */
 /* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
@@ -1036,7 +1052,7 @@
       }
 
       .magazine-grid {
-        flex-direction: column;
+        flex-direction: colum;
         gap: 20px;
       }
 
@@ -1303,8 +1319,7 @@
       <p>Some important highlighted news 4</p>
     </div>
   </div>
- 
-  <header class="main-header">
+ <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1325,14 +1340,7 @@
 </a>
 
         <div class="dropdown-links" id="newsDropdown">
-          <a href="#">Latest News</a>
-          <a href="#">Precious Metals</a>
-          <a href="#">Evening Chatter</a>
-          <a href="#">Research Reports</a>
-          <a href="#">Gold News</a>
-          <a href="#">Corporate News</a>
-          <a href="#">Announcement</a>
-          <a href="#">Sponsored Post</a>
+    <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
         </div>
 
       <a href="./morning.html">Evening Chatter</a>
@@ -1375,8 +1383,11 @@
    
       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
     <!-- call all pages -->
-        <button class="login-btn" >Login</button>
+        <button class="login-btn" id="loginBtn" >Login</button>
 
+        <!-- User Profile -->
+        <div id="userProfile" style="display:none;"></div>
+        <!-- call all pages -->
     </div>
   </div>
 
@@ -1407,26 +1418,13 @@
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
-          <p class="tab-btn" data-target="about">SERVICE</p>
-          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+            <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+          <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <p class="tab-btn" data-target="about">SERVICE</p> -->
+        
         </div>
         <div class="menu-content active" id="news">
-          <p><a href="#">Latest News</a></p>
-          <p><a href="#">Precious Metals</a></p>
-          <p><a href="#">Evening Chatter</a></p>
-          <p><a href="#">Research Reports</a></p>
-          <p><a href="#">Gold News</a></p>
-          <p><a href="#">Corporate News</a></p>
-          <p><a href="#">Announcement</a></p>
-          <p><a href="#">Sponsored Post</a></p>
-          <p><a href="#">Silver News</a></p>
-          <p><a href="#">World News</a></p>
-          <p><a href="#">Popular This Week</a></p>
-          <p><a href="#">What’s On</a></p>
-          <p><a href="#">Copper News</a></p>
-          <p><a href="#">Leadership Thoughts</a></p>
-          <p><a href="#">Projects</a></p>
+          <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
         </div>
         <div class="menu-content" id="about">
           <p><a href="./service.html">Investor Campaign</a></p>
@@ -1448,6 +1446,7 @@
     </div>
   </div>
 </header>
+
 
 
 
@@ -1658,11 +1657,13 @@
   <script src="./script.js"></script>
   <script> 
   
-   function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
- // Select tabs and contents
+
+  function toggleMenu2() {
+    const menu = document.getElementById("hamburgerMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  // Select tabs and contents
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".menu-content");
 
@@ -1677,6 +1678,45 @@
       document.getElementById(tab.dataset.target).classList.add("active");
     });
   });
+
+  // --------- PAGE CHECK FOR MAGAZINE ---------
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop();
+
+    const magazinePages = [
+      "magzin.html",
+      "ceo.html",
+      "weekly.html",
+      "company-profile.html",
+      "Digitaledition.html"
+    ];
+
+    if (magazinePages.includes(currentPage)) {
+      // Mobile menu: 
+      document.querySelectorAll(".menu-content").forEach(el => {
+        el.style.display = "none";
+      });
+      const magSection = document.getElementById("magazine");
+      if (magSection) magSection.style.display = "flex";
+
+      // Desktop tabs: 
+      document.querySelectorAll(".tab-content").forEach(el => {
+        el.style.display = "none";
+      });
+      const magTab = document.getElementById("magazineTab");
+      if (magTab) magTab.style.display = "block";
+
+      // active magazine tab
+      document.querySelectorAll(".tab-btn").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(el => {
+        if (el.textContent.trim() === "Magazine") {
+          el.classList.add("active");
+        }
+      });
+    }
+  });
+
+
   
   function toggleDropdownMobile(id) {
       const dropdown = document.getElementById(id);
@@ -1695,7 +1735,7 @@
 
     thumbs.forEach(thumb => {
       thumb.addEventListener('click', () => {
-        // Badi magazine ka src update karo
+     
         mainMagazine.src = thumb.src;
       });
     });

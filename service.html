@@ -484,6 +484,14 @@
       margin-right: 15px;
       transition: 0.3s;
     }
+    #dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
+}
+
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
@@ -1575,8 +1583,7 @@ text-align: justify;
 </div>
 
 
-
-     <header class="main-header">
+  <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1618,6 +1625,7 @@ text-align: justify;
 </a>
 
         <div class="dropdown-links" id="magazineDropdown">
+           <a href="./magzin.html">Magazine</a>
           <a href="./ceo.html">CEO Profile</a>
           <a href="./company-profile.html">Company Profile</a>
           <a href="./Digitaledition.html">Digital Edition</a>
@@ -1646,7 +1654,7 @@ text-align: justify;
    
       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
     <!-- call all pages -->
-        <button class="login-btn" >Login</button>
+        <button class="login-btn" id="loginBtn" >Login</button>
 
         <!-- User Profile -->
         <div id="userProfile" style="display:none;"></div>
@@ -1681,26 +1689,12 @@ text-align: justify;
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p> -->
           <p class="tab-btn" data-target="about">SERVICE</p>
-          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+          <!-- <p class="tab-btn" data-target="magazine">MAGAZINE</p> -->
         </div>
         <div class="menu-content active" id="news">
-          <p><a href="#">Latest News</a></p>
-          <p><a href="#">Precious Metals</a></p>
-          <p><a href="#">Evening Chatter</a></p>
-          <p><a href="#">Research Reports</a></p>
-          <p><a href="#">Gold News</a></p>
-          <p><a href="#">Corporate News</a></p>
-          <p><a href="#">Announcement</a></p>
-          <p><a href="#">Sponsored Post</a></p>
-          <p><a href="#">Silver News</a></p>
-          <p><a href="#">World News</a></p>
-          <p><a href="#">Popular This Week</a></p>
-          <p><a href="#">What’s On</a></p>
-          <p><a href="#">Copper News</a></p>
-          <p><a href="#">Leadership Thoughts</a></p>
-          <p><a href="#">Projects</a></p>
+          <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
         </div>
         <div class="menu-content" id="about">
           <p><a href="./service.html">Investor Campaign</a></p>
@@ -1712,6 +1706,7 @@ text-align: justify;
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
         <div class="menu-content" id="magazine">
+           <a href="./magzin.html">Magazine</a>
           <p><a href="./ceo.html">CEO Profile</a></p>
           <p><a href="./weekly.html">Newsletter</a></p>
           <p><a href="./company-profile.html">Company Profile</a></p>
@@ -1721,6 +1716,7 @@ text-align: justify;
     </div>
   </div>
 </header>
+
 
 
 
@@ -2088,12 +2084,15 @@ text-align: justify;
       </div>
     </div>
   <script src="./script.js"></script>
+  <script src="./js/news.js"></script>
     <script>
-        function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
- // Select tabs and contents
+
+  function toggleMenu2() {
+    const menu = document.getElementById("hamburgerMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  // Select tabs and contents
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".menu-content");
 
@@ -2108,6 +2107,30 @@ text-align: justify;
       document.getElementById(tab.dataset.target).classList.add("active");
     });
   });
+
+  // --------- FORCE ONLY SERVICES ---------
+  document.addEventListener("DOMContentLoaded", function () {
+    // Hide all tabs except services
+    tabs.forEach(tab => {
+      if (tab.dataset.target !== "about") {   // "about" = Services ka content id
+        tab.style.display = "none";
+      } else {
+        tab.classList.add("active");
+      }
+    });
+
+    // Hide all contents except services
+    contents.forEach(content => {
+      if (content.id !== "about") {
+        content.style.display = "none";
+      } else {
+        content.classList.add("active");
+        content.style.display = "grid";
+      }
+    });
+  });
+
+
    function toggleDropdownMobile(id) {
       const dropdown = document.getElementById(id);
       if (dropdown) {

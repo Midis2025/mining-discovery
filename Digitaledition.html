@@ -193,6 +193,13 @@
   padding-right:20px ;
     color: #b8860b; /* golden color */
 }
+#dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
+}
 .hamburger-menu {
   display: none;
   position: absolute;
@@ -599,6 +606,12 @@
       .header-buttons {
         display: none;
       }
+       #dropdownMenu {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
     }
        /* Hide News Section dropdown on desktop */
 /* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
@@ -1889,14 +1902,7 @@ align-self: flex-end;
 </a>
 
         <div class="dropdown-links" id="newsDropdown">
-          <a href="#">Latest News</a>
-          <a href="#">Precious Metals</a>
-          <a href="#">Evening Chatter</a>
-          <a href="#">Research Reports</a>
-          <a href="#">Gold News</a>
-          <a href="#">Corporate News</a>
-          <a href="#">Announcement</a>
-          <a href="#">Sponsored Post</a>
+          <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
         </div>
 
       <a href="./morning.html">Evening Chatter</a>
@@ -1939,7 +1945,7 @@ align-self: flex-end;
    
       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
     <!-- call all pages -->
-        <button class="login-btn" >Login</button>
+        <button class="login-btn" id="loginBtn" >Login</button>
 
         <!-- User Profile -->
         <div id="userProfile" style="display:none;"></div>
@@ -1979,21 +1985,7 @@ align-self: flex-end;
           <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
-          <p><a href="#">Latest News</a></p>
-          <p><a href="#">Precious Metals</a></p>
-          <p><a href="#">Evening Chatter</a></p>
-          <p><a href="#">Research Reports</a></p>
-          <p><a href="#">Gold News</a></p>
-          <p><a href="#">Corporate News</a></p>
-          <p><a href="#">Announcement</a></p>
-          <p><a href="#">Sponsored Post</a></p>
-          <p><a href="#">Silver News</a></p>
-          <p><a href="#">World News</a></p>
-          <p><a href="#">Popular This Week</a></p>
-          <p><a href="#">What’s On</a></p>
-          <p><a href="#">Copper News</a></p>
-          <p><a href="#">Leadership Thoughts</a></p>
-          <p><a href="#">Projects</a></p>
+          <p><a href="./newss.html" id="dropdownMenu"></a></p>
         </div>
         <div class="menu-content" id="about">
           <p><a href="./service.html">Investor Campaign</a></p>
@@ -2015,6 +2007,7 @@ align-self: flex-end;
     </div>
   </div>
 </header>
+
 
 
 
@@ -2292,6 +2285,7 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
     </div>
   </div>
   <script src="./script.js"></script>
+  <script src="./js/news.js"></script>
   <script>
    
    function toggleMenu2() {

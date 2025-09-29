@@ -529,6 +529,13 @@
       padding-left: 32px;
       font-size: 14px;
     }
+    #dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
+}
 
     /* Desktop Tabs Menu */
     .desktop-tabs {
@@ -1223,8 +1230,7 @@
   </style>
 </head>
 <body>
- 
-     <header class="main-header">
+<header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1266,6 +1272,7 @@
 </a>
 
         <div class="dropdown-links" id="magazineDropdown">
+           <a href="./magzin.html">Magazine</a>
           <a href="./ceo.html">CEO Profile</a>
           <a href="./company-profile.html">Company Profile</a>
           <a href="./Digitaledition.html">Digital Edition</a>
@@ -1294,7 +1301,7 @@
    
       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
     <!-- call all pages -->
-        <button class="login-btn" >Login</button>
+        <button class="login-btn" id="loginBtn" >Login</button>
 
         <!-- User Profile -->
         <div id="userProfile" style="display:none;"></div>
@@ -1334,21 +1341,7 @@
           <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
-          <p><a href="#">Latest News</a></p>
-          <p><a href="#">Precious Metals</a></p>
-          <p><a href="#">Evening Chatter</a></p>
-          <p><a href="#">Research Reports</a></p>
-          <p><a href="#">Gold News</a></p>
-          <p><a href="#">Corporate News</a></p>
-          <p><a href="#">Announcement</a></p>
-          <p><a href="#">Sponsored Post</a></p>
-          <p><a href="#">Silver News</a></p>
-          <p><a href="#">World News</a></p>
-          <p><a href="#">Popular This Week</a></p>
-          <p><a href="#">What’s On</a></p>
-          <p><a href="#">Copper News</a></p>
-          <p><a href="#">Leadership Thoughts</a></p>
-          <p><a href="#">Projects</a></p>
+          <p><a href="./newss.html" id="dropdownMenu"></a></p>
         </div>
         <div class="menu-content" id="about">
           <p><a href="./service.html">Investor Campaign</a></p>
@@ -1360,6 +1353,7 @@
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
         <div class="menu-content" id="magazine">
+           <a href="./magzin.html">Magazine</a>
           <p><a href="./ceo.html">CEO Profile</a></p>
           <p><a href="./weekly.html">Newsletter</a></p>
           <p><a href="./company-profile.html">Company Profile</a></p>

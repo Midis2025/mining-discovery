@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * {
+   * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    .main-header {
-      
+
+    body {
+      font-family: 'Pontano Sans', sans-serif;
+    
+    }
+     .main-header {
+      margin-bottom: 10px;
       background-color: #fff;
       padding: 12px;
       border-bottom: 1px solid #ddd;
@@ -40,6 +45,7 @@
       height: 70px;
       
     }
+   
 
     .nav-links {
       display: flex;
@@ -52,7 +58,7 @@
 
       text-decoration: none;
       color: #000;
- 
+   
       transition: color 0.3s;
     }
 
@@ -77,16 +83,22 @@
       cursor: pointer;
       color: black;
     }
-
-    .login-btn {
-      background-color: #8d6d2a;
+     .subscribe-btn1 {
+      padding: 5px 15px;
+      border: none;
+      border-radius: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      color: black;
+         background-color: #ae8a4c;
     }
 
-    .subscribes-btn {
-     background-color: #8d6d2a;
-     border: none;
-     padding: 5px;
-     border-radius: 20px;
+    .login-btn {
+      background-color:#ae8a4c;
+    }
+
+    .subscribe-btn {
+     background-color: #ae8a4c;
     }
 
    
@@ -97,11 +109,11 @@
   padding-top: 5px;
 }
 .search-bar-container-lasts{
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .search-bar-bg {
-  background-color: #2e2e2e;
+  background-color: #292929;
   height: 24px;
   border-radius: 20px;
   
@@ -113,7 +125,7 @@
 .scrolling-track {
   display: flex;
   width: max-content;
-  animation: scroll-loop 20s linear infinite;
+  animation: scroll-loop 50s linear infinite;
       padding-top: 3px;
       gap: 24px;
 }
@@ -145,13 +157,13 @@
 
 .search-box {
       position: relative;
-      width: 174px;
-      margin-right: 16px;
+      width: 140px;
+    
       
     }
 
     .search-box input {
-      width: 100%;
+      width: 90%;
       height: 25px;
       padding: 5px 15px;
       padding-right: 35px;
@@ -163,7 +175,7 @@
 
     .search-icon {
       position: absolute;
-      right: 10px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
@@ -172,19 +184,114 @@
       font-size: 16px;
       cursor: pointer;
     }
+    .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* search aur hamburger ke beech gap */
+}
+
+.search-box {
+  flex: 1; /* search box full width le le, hamburger ke sath */
+}
+
+.hamburger2 {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: block; /* laptop/mobile dono pe visible */
+  padding-right:20px ;
+    color: #ae8a4c; /* golden color */
+}
+.hamburger-menu {
+  display: none;
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 30px 50px;
+  z-index: 999;
+}
+#dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
+}
+
+/* Tabs */
+/* Tabs + content wrapper ek row me */
+.hamburger-menu .menu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Tabs left me column wise */
+.hamburger-menu .menu-tabs {
+  display: flex;
+  flex-direction: column; /* tabs ek ke niche ek */
+  min-width: 200px; /* thoda fix width rakho */
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+/* Tab items */
+.hamburger-menu .menu-tabs p {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hamburger-menu .menu-tabs p.active {
+  color: #ae8a4c;
+}
+
+/* Content right side me */
+.hamburger-menu .menu-content {
+  flex: 1;
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 40px;
+}
+
+.hamburger-menu .menu-content.active {
+  display: grid;
+}
+.menu-content a{
+  text-decoration: none;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .hamburger2 {
+    display: none; /* phone screen pe hide ho jayega */
+  }
+}
+
+
+
+
+
 
     /* Animated text */
     .animated-text-container {
-      position: absolute;
-      left: 15px;
-      top: 30%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: #999;
-      font-size: 14px;
-      overflow: hidden;
-      height: 16px;
-    }
+       position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 12px;
+    overflow: hidden;
+    height: 20px;
+}
+    
 
     .animated-text-container span {
       display: block;
@@ -235,7 +342,7 @@
      background-color: black;
       
      
-      color: #8d6d2a;
+      color: #ae8a4c;
       font-size: 18px;
       cursor: pointer;
     }
@@ -246,613 +353,634 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #8d6d2a;
+      color: #ae8a4c;
     }
+
+    @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  /* Search-bar always visible */
+  .search-bar-container {
+    display: flex !important; /* hamesha visible rahe */
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .social-icons{
+    display: none;
+  }
+  
+
+  /* Nav links & buttons toggle only */
+  .nav-links,
+  .header-buttons {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  /* On hamburger click, show nav-links + header-buttons + search + social-icons */
+   .mobile-active .nav-links,
+  .mobile-active .header-buttons,
+  .mobile-active .search-bar-container,
+  .mobile-active .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .mobile-active .search-bar-bg,
+.mobile-active .scrolling-track,
+.mobile-active .social-icons {
+  display: none !important;
+}
+
+  .nav-links a {
+    padding: 8px 0;
+  }
+
+  .search-box {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .search-box {
+   display: none;
+  }
+
+  .search-bar-bg {
+    width: 100%;
+  }
+}
+/* main-header */
+/* === Header / Dropdown Toggle === */
+    .topbar {
+      background: #1f1f1f;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .topbar h1 {
+      font-size: 20px;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .topbar h1 i {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .topbar h1.rotate i {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-links {
+      display: none;
+      /* background: #1f1f1f; */
+      padding: 10px 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 14px;
+      border-top: 1px solid #333;
+    }
+
+    .dropdown-links a {
+      color:black;
+      text-decoration: none;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
+
+    .dropdown-links a:hover,
+    .dropdown-links a.active {
+      color:#ae8a4c;
+      border-bottom: 2px solid #ae8a4c;
+      padding-bottom: 3px;
+    }
+
+    .dropdown-links.show {
+      display: flex;
+    }
+/* Overlay Menu (mobile) */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      transition: left 0.3s ease;
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .menu-overlay.open {
+      left: 0;
+    }
+
+    .menu-overlay .close-btn {
+      text-align: right;
+      padding: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+.menu-overlay .submenu {
+  display: none;
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+.menu-overlay .submenu li {
+  margin-bottom: 5px;
+}
+
+.menu-overlay {
+  overflow-y: auto; /* page scroll enable */
+}
+    .menu-overlay ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-overlay ul li a,
+    .menu-overlay ul li button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      text-decoration: none;
+      color: #333;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul li button .fa-chevron-down {
+      float: right;
+    }
+
+    .submenu {
+      display: none;
+      background: #f9f9f9;
+    }
+
+    .submenu li a {
+      padding-left: 32px;
+      font-size: 14px;
+    }
+
+    /* Desktop Tabs Menu */
+    .desktop-tabs {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .desktop-tabs .tab-content {
+      display: none;
+      padding: 16px;
+    }
+
+    .desktop-tabs .tab-content.active {
+      display: block;
+    }
+
+    .desktop-tabs .tab-btns {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid #eee;
+      padding: 0 16px;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn {
+      cursor: pointer;
+      padding: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn.active {
+      border-bottom: 2px solid #ae8a4c;
+      color: #ae8a4c;
+    }
+    /* Dropdown rotation */
+#newsToggle i {
+  transition: transform 0.3s ease;
+}
+
+#newsToggle.rotate i {
+  transform: rotate(180deg);
+}
+
+/* Dropdown items */
+.dropdown-links {
+  display: none;
+  flex-direction: column;
+  padding-left: 20px;
+  gap: 10px;
+}
+
+.dropdown-links.show {
+  display: flex;
+}
+
+    
 
     /* Responsive */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
       }
-
       .nav-links,
-      .header-buttons,
-      .search-bar-container {
+      .header-buttons {
         display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 10px;
       }
+      #dropdownMenu {
+ display: flex;
+ flex-direction: column;
 
-      .nav-links a {
-        padding: 8px 0;
-      }
-
-      .mobile-active .nav-links,
-      .mobile-active .header-buttons,
-      .mobile-active .search-bar-container {
-        display: flex;
-        gap: 20px;
-      }
-
-      .search-box {
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      .search-box input {
-        width: 100%;
-      }
-
-      .social-icon {
-        margin-bottom: -20px;
-      }
-      .search-bar-bg {
-        width: 100%;
-      }
-    }
-/* main-header */
-/* === Header / Dropdown Toggle === */
-   
-   
-
-
-
-
-
-
-
-    
-
-/* main-header */
-/* === Header / Dropdown Toggle === */
-    .topbar {
-      background: #1f1f1f;
-      color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-
-    .topbar h1 {
-      font-size: 20px;
-      font-weight: normal;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .topbar h1 i {
-      font-size: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .topbar h1.rotate i {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-links {
-      display: none;
-      background: #1f1f1f;
-      padding: 10px 30px;
-      flex-wrap: wrap;
-      gap: 15px;
-      font-size: 14px;
-      border-top: 1px solid #333;
-    }
-
-    .dropdown-links a {
-      color: #ccc;
-      text-decoration: none;
-      margin-right: 15px;
-      transition: 0.3s;
-    }
-
-    .dropdown-links a:hover,
-    .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
-      padding-bottom: 3px;
-    }
-
-    .dropdown-links.show {
-      display: flex;
-    }
-
-   
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-/* === Header / Dropdown Toggle === */
-    .topbar {
-      background: #1f1f1f;
-      color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-
-    .topbar h1 {
-      font-size: 20px;
-      font-weight: normal;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .topbar h1 i {
-      font-size: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .topbar h1.rotate i {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-links {
-      display: none;
-      background: #1f1f1f;
-      padding: 10px 30px;
-      flex-wrap: wrap;
-      gap: 15px;
-      font-size: 14px;
-      border-top: 1px solid #333;
-    }
-
-    .dropdown-links a {
-      color: #ccc;
-      text-decoration: none;
-      margin-right: 15px;
-      transition: 0.3s;
-    }
-
-    .dropdown-links a:hover,
-    .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
-      padding-bottom: 3px;
-    }
-
-    .dropdown-links.show {
-      display: flex;
-    }
-
-   
-
-
-
-
-
-
-
-    
-
-
-
-
-    /* === Header / Dropdown Toggle === */
-.topbar {
-  background:black;
-  color: #fff;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  flex-wrap: wrap;
-}
-
-.topbar h1 {
-  font-size: 20px;
-  font-weight: normal;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.topbar h1 i {
-  font-size: 12px;
-  transition: transform 0.3s ease;
-}
-
-.topbar h1.rotate i {
-  transform: rotate(180deg);
-}
-
-.dropdown-links {
-  display: none;
-  background: #1f1f1f;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 14px;
-  border-top: 1px solid #333;
-}
-
-.dropdown-links a {
-  color: #ccc;
-  text-decoration: none;
-  margin-right: 15px;
-  transition: 0.3s;
-}
-
-.dropdown-links a:hover,
-.dropdown-links a.active {
-  color: gold;
-  border-bottom: 2px solid gold;
-  padding-bottom: 3px;
-}
-
-.dropdown-links.show {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* === Media Queries === */
-
-/* Small phones */
-@media (max-width: 480px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 15px;
-  }
-
-  .topbar h1 {
-    font-size: 18px;
-    gap: 6px;
-  }
-
-  .dropdown-links {
-    flex-direction: column;
-    padding: 10px 15px;
-    gap: 8px;
-    font-size: 13px;
-  }
-
-  .dropdown-links a {
-    margin: 5px 0;
-  }
-}
-
-/* Tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-  }
-
-  .dropdown-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px 20px;
-  }
-}
-
-/* Desktops (already optimized, but just in case) */
-@media (min-width: 769px) {
-  .topbar {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .dropdown-links {
-    flex-direction: row;
-    gap: 15px;
-  }
-}
-/* Navbar */
-.navbar {
-  background-color: #111;
-  padding: 12px 20px;
-}
-
-.nav-links {
-  list-style: none;
  
-  justify-content: center;
-  gap: 25px;
+    }
+  }
+    /* Hide News Section dropdown on desktop */
+/* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
+@media (min-width: 900px) {
+  #newsToggle {
+    cursor: default;        /* not pointer */
+    pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
+  }
+  #newsToggle i {
+  transition: transform 0.3s ease;
+  display: none;
+}
+  .nav-links a i.fas.fa-chevron-down {
+    display: none;
+  }
+    .desktop-link { display: inline-block; }
+  .mobile-toggle { display: none; }
+
+
+  /* ensure dropdown panel is not shown on desktop even if .show gets added */
+  .dropdown-links {
+    display: none !important;
+  }
 }
 
-.nav-links li a {
-  color: #fff;
-  font-size: 14px;
-  text-decoration: none;
+/* Mobile: hide main link, show mobile toggle */
+@media (max-width: 991px) {
+  .desktop-link { display: none; }
+  .mobile-toggle { display: block; }
 }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff;
-      color: #111;
+
+
+   
+
+  .container1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+    .subscription-section {
+      padding: 80px 20px;
     }
 
-    .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 100vh;
-      padding: 50px;
-        background: linear-gradient(to left,#8d6d2a 50%, white 50%);
-
-    }
-    
-
-    .left {
-      width: 35%;
-      padding-right: 40px;
-    }
-
-    .left img.logo {
-      width: 150px;
-      margin-bottom: 30px;
-    }
-
-    .left h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+    .subscription-section h4 {
+      font-size: 22px;
       font-weight: 500;
+      margin-bottom: 15px;
+      text-decoration: underline;
     }
 
-    .left h1 span {
-      color: #b8860b;
-      font-weight: 600;
+    .subscription-section h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 10px 0;
+      line-height: 1.3;
     }
 
-    .plan {
-      margin-bottom: 25px;
-      font-size: 15px;
-      line-height: 1.6;
+    .subscription-section h1 span {
+      color: #b68a40; /* Gold color */
+      border-bottom: 2px solid #b68a40;
     }
 
-    .plan::before {
-      content: "✔";
-      color: #b8860b;
-      margin-right: 8px;
-    }
-
-    .subscribe-btn {
-      background-color: #111;
-      color: #fff;
-      border: none;
-      padding: 12px 25px;
+    .subscription-section p {
+      max-width: 650px;
+      margin: 20px auto;
       font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
+      color: #333;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #b68a40;
+      padding: 12px 35px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #333;
+    }
+    .plans-section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .plans-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .plan-card {
+      
+      border: 1px solid #c8b37d;
+      border-radius: 10px;
+      padding: 25px 20px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .plan-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #b68a40;
+    }
+
+    .plan-card h3 span {
+      display: block;
+      font-size: 18px;
+      color: white;
+      margin-top: 5px;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
       margin: 15px 0;
     }
 
-    .cancel {
-      font-size: 13px;
-      color: #777;
-      margin-bottom: 15px;
+    .plan-card ul li {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #333;
+      position: relative;
+      padding-left: 18px;
     }
 
-    .payment-buttons button {
-      margin: 5px 10px 5px 0;
-      padding: 10px 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      cursor: pointer;
-      background-color: #fff;
-    }
-
-    .payment-buttons button:hover {
-      background-color: #f9f9f9;
-    }
-
-    .right {
-      width: 45%;
-      display: flex;
-      justify-content: center;
-    }
-
-    /* .phone-frame {
-      border: 2px solid #000;
-      border-radius: 30px;
-      width: 260px;
-      height: 520px;
-      background-color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    } */
-
-    .phone-frame img {
-  
-      border-radius: 30px;
-      width: 275px;
-      height: 465px;
-      background-color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-
-  
-  
-    .text{
-        text-align: center;
-        padding: 50px;
-    }
-    
-    .top-info {
-      text-align: center;
-      font-size: 13px;
-      color: #444;
-      padding: 20px 15px;
-      line-height: 1.5;
-      max-width: 900px;
-      margin: auto;
-    }
-    .divider {
-      width: 80%;
-      height: 1px;
-      background-color: #999;
-      margin: 20px auto;
-    }
-
-    .headline {
-      text-align: center;
-      font-size: 20px;
-      font-weight: 600;
-      margin: 25px 0;
-    }
-    
-     .container2 {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 100vh;
-      padding: 50px;
-        background: linear-gradient(to right,#8d6d2a 50%, white 50%);
-
+    .plan-card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #000;
     }
    
-      .sections {
+
+    .plan-card button {
+      background: #1a1a1a;
+      color: #b68a40;
+      border: none;
+      padding: 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .plan-card button:hover {
+      background: #333;
+    }
+
+    /* Advanced Plan (highlighted dark background) */
+    .plan-card.advanced {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .plan-card.advanced h3 {
+      color: #fff;
+    }
+
+    .plan-card.advanced button {
+      background: #b68a40;
+      color: #000;
+    }
+
+    .plan-card.advanced button:hover {
+      background: #d4af37;
+    }
+  
+      .access-section {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 40px 5%;
-      gap: 40px;
-      
+      justify-content: center;
+      gap: 60px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
     }
 
-.right-sec {
-      flex: 1;
-      min-width: 300px;
+    /* Left side phone image */
+    .phone-mockup img {
+      max-width: 280px;
+      height: auto;
+      display: block;
     }
 
-    .right-sec h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      font-weight: 500;
+    /* Right side content */
+    .access-content {
+      max-width: 420px;
     }
 
-    .right-sec h2 span {
-      color: #b8860b;
+    .access-content h2 {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .access-content h2 span {
+      color: #b68a40;
+      border-bottom: 2px solid #b68a40;
+    }
+
+    .access-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .access-content ul li {
+      font-size: 16px;
+      margin: 14px 0;
+      border-bottom: 1px solid #000;
+      width: fit-content;
+      padding-bottom: 3px;
+    }
+
+    .access-content ul li:last-child {
+      border-bottom: 1px solid #000;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .access-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .phone-mockup img {
+        max-width: 220px;
+      }
+
+      .access-content ul li {
+        margin: 12px auto;
+      }
+    }
+   .table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+   }
+    .comparison {
+      width: 100%;
+      max-width: 900px;
+      border-collapse: collapse;
+      text-align: center;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .comparison th {
+      background: #b18445;
+      color: #fff;
+      padding: 15px;
       font-weight: bold;
     }
 
-    .features {
-      list-style: none;
-      line-height: 2;
-      font-size: 16px;
-      color: #222;
+    .comparison td {
+      border: 1px solid #ddd;
+      padding: 15px;
+      color: #333;
     }
 
-    .features li::before {
-      content: "•";
-      color: #b8860b;
-      font-size: 22px;
+    .comparison tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    .comparison .check {
+      color: #b18445;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .highlight {
+      background: #222;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .highlight td, 
+    .highlight th {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .header-bar {
+      text-align: center;
+      background: #222;
+      color: #fff;
+      padding: 10px 30px;
+      border-radius: 20px;
+      margin-bottom: 25px;
       display: inline-block;
-      width: 1em;
-      margin-left: -1em;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
-    
-/* 📱 Mobile Styles */
-@media (max-width: 768px) {
-  .container, .container2 {
-    flex-direction: column;
-    padding: 20px;
-    background: #8d6d2a; /* full gold background on phone */
-  }
+    .comparison td small {
+      font-size: 12px;
+      color: #666;
+    }
+    .container5{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .subscribe-section {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+    }
 
-  /* Text side ka background white ho jaye */
-  .left, .right-sec {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 10px 0;
-    width: 100%;
-  }
+    .subscribe-section h2 {
+      color: #b18445; /* gold/brown heading */
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
 
-  /* Phone image wala section center me golden hi rahe */
-  .right {
-    background: transparent;
-    padding: 20px 0;
-    width: 100%;
-    text-align: center;
-  }
+    .subscribe-section p {
+      color: #333;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
 
-  .left img.logo {
-    width: 120px;
-    margin-bottom: 20px;
-  }
+    .subscribe-btn {
+      display: inline-block;
+      background: #222;
+      color: #b18445;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 12px 40px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
-  .phone-frame img {
-    width: 220px;
-    height: auto;
-  }
+    .subscribe-btn:hover {
+      background: #b18445;
+      color: #fff;
+    }
 
-  .right-sec h2 {
-    font-size: 20px;
-  }
-
-  .features {
-    font-size: 14px;
-  }
-}
-
-/* 📱 Small Phones */
-@media (max-width: 480px) {
-  .subscribe-btn {
-    width: 100%;
-  }
-
-  .payment-buttons button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .left h1 {
-    font-size: 22px;
-  }
-
-  .headline {
-    font-size: 20px;
-  }
-}
-
-/* 💻 Tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .container, .container2 {
-    flex-direction: row;
-    padding: 30px;
-  }
-
-  .left, .right {
-    width: 50%;
-    padding: 15px;
-  }
-
-  .phone-frame img {
-    width: 250px;
-    height: auto;
-  }
-}
+   
  .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
@@ -1144,154 +1272,384 @@
  </style>
 </head>
 <body>
-      <header class="main-header">
-    <div class="header-top">
-     <div class="logo-social">
-        <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+    
+  <header class="main-header">
+  <div class="header-top">
+    <div class="logo-social">
+      <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navMenu">
+      <a href="./about.html">About Us</a>
+     <!-- News Section -->
+       <!-- News Section -->
+<a href="./newss.html" class="desktop-link">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+  News Section <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="newsDropdown">
+       <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
+        </div>
+
+      <a href="./morning.html">Evening Chatter</a>
+      <!-- Magazine Section -->
+      
+<a href="./magzin.html" class="desktop-link">
+  Magazine <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+  Magazine <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="magazineDropdown">
+           <a href="./magzin.html">Magazine</a>
+          <a href="./ceo.html">CEO Profile</a>
+          <a href="./company-profile.html">Company Profile</a>
+          <a href="./Digitaledition.html">Digital Edition</a>
+          <a href="./weekly.html">Newsletter</a>
+        </div>
+    
+      <!-- Service Section -->
+<a href="./service.html" class="desktop-link">
+  Service <i class="fas fa-chevron-down"></i>
+</a>
+<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+  Service <i class="fas fa-chevron-down"></i>
+</a>
+
+        <div class="dropdown-links" id="serviceDropdown">
+          <a href="./service.html">Investor Campaign</a>
+          <a href="./newsynd.html">News Syndication</a>
+          <a href="./branding.html">Digital Branding</a>
+          <a href="./pressoffice.html">Press Office</a>
+                <a href="./confrence.html">Conference</a>
+        </div>
+      <a href="./contant.html">Contact Us</a>
+    </div>
+
+    <div class="header-buttons" id="headerButtons">
+   
+      <a href="./sub.html"><button class="subscribe-btn1">Subscribe</button></a>
+    <!-- call all pages -->
+        <button class="login-btn" id="loginBtn" >Login</button>
+
+        <!-- User Profile -->
+        <div id="userProfile" style="display:none;"></div>
+        <!-- call all pages -->
+    </div>
+  </div>
+
+  <div class="search-bar-container" id="searchContainer">
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/"><img src="./image/Group.png"></a>
+      <a href="https://www.instagram.com/miningdiscovery"><img src="./image/Group (4).png"></a>
+      <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+      <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+      <a href="https://www.facebook.com/"><img src="./image/Group (3).png"></a>
+    </div>
+
+    <div class="search-bar-bg">
+      <div class="scrolling-track" id="newsTicker"></div>
+    </div>
+
+    <div class="search-box-wrapper">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
       </div>
-      <button class="hamburger" onclick="toggleMenu()">
+
+      <button class="hamburger2" onclick="toggleMenu2()">
         <i class="fas fa-bars"></i>
       </button>
+    </div>
 
-      <div class="nav-links" id="navMenu">
-        <a href="./about.html">About Us</a>
-        <a href="./newss.html">News Section</a>
-        <a href="./morning.html">Morning Chatter</a>
-        <a href="./magzin.html">Magazine</a>
-        <a href="./service.html">Services</a>
-        <a href="./contant.html">Contact Us</a>
+    <div id="hamburgerMenu" class="hamburger-menu">
+      <div class="menu-row">
+        <div class="menu-tabs">
+          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+        </div>
+        <div class="menu-content active" id="news">
+          <p><a href="./newss.html" id="dropdownMenu"></a></p>
+        </div>
+        <div class="menu-content" id="about">
+          <p><a href="./service.html">Investor Campaign</a></p>
+          <p><a href="./newsynd.html">News Syndication</a></p>
+          <p><a href="./branding.html">Digital Branding</a></p>
+          <p><a href="./pressoffice.html">Press Office</a></p>
+          <p><a href="https://youtube.com/">Youtube</a></p>
+          <p><a href="./confrence.html">Conference Media Coverage</a></p>
+          <p><a href="./letter.html">Newsletter & Email Blast</a></p>
+        </div>
+        <div class="menu-content" id="magazine">
+           <a href="./magzin.html">Magazine</a>
+          <p><a href="./ceo.html">CEO Profile</a></p>
+          <p><a href="./weekly.html">Newsletter</a></p>
+          <p><a href="./company-profile.html">Company Profile</a></p>
+          <p><a href="./Digitaledition.html">Digital Edition</a></p>
+        </div>
       </div>
+    </div>
+  </div>
+</header>
 
-      <div class="header-buttons" id="headerButtons">
-    <a href="./sub-btn.html"><button class="login-btn">Login</button></a>
-       <a href="./sub.html"><button class="subscribes-btn">Subscribe</button></a> 
-      </div>
-    </div>
 
-    <div class="search-bar-container" id="searchContainer">
-      <div class="social-icons">
-              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
-             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
-              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
-              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
-              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
-            </div>
-<div class="search-bar-bg">
-  <div class="scrolling-track">
-    <div class="scrolling-content">
-      <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025
-            </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada,
-              June 3-5, 2025
-            </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada,
-              June 3-5, 2025
-            </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada,
-              June 3-5, 2025
-            </span>
+
+  <!-- Desktop Tabs -->
+  <div class="desktop-tabs" id="desktopTabs">
+    <div class="tab-btns">
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News Section</div>
+      <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
+      <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
     </div>
-    <!-- Duplicate content for seamless loop -->
-    <div class="scrolling-content">
-   <span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada, June 3-5,
-              2025
-            </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada,
-              June 3-5, 2025
-            </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada,
-              June 3-5, 2025
-            </span><span>U.S. Gold Corp Announces Participation in THE Mining Investment Event, Quebec City, Canada,
-              June 3-5, 2025
-            </span>
-    </div>
+  <!-- Collapsible News Section below header -->
+<div id="newsSectionPage" class="collapsible-section">
+  <div class="news-section-content">
+    <a href="#">Latest News</a><br>
+    <a href="#">Precious Metals</a><br>
+    <a href="#">Evening Chatter</a><br>
+    <a href="#">Research Reports</a><br>
+    <a href="#">Gold News</a><br>
+    <a href="#">Corporate News</a><br>
+    <a href="#">Announcement</a><br>
+    <a href="#">Sponsored Post</a><br>
   </div>
 </div>
 
-
-     <div class="search-box">
-    <input type="text" id="searchInput" placeholder=" " />
-    <div class="animated-text-container">
-      <span id="animatedText">Search gold prices</span>
+    <div class="tab-content" id="servicesTab">
+      <a href="./service.html">Investor Campaign</a><br>
+      <a href="./newsynd.html">News Syndication</a><br>
+      <a href="./branding.html">Digital Branding</a><br>
     </div>
-    <button class="search-icon"><i class="fas fa-search"></i></button>
+    <div class="tab-content" id="magazineTab">
+       <a href="./magzin.html">Magazine</a>
+      <a href="./ceo.html">CEO Profile</a><br>
+      <a href="./weekly.html">Newsletter</a><br>
+      <a href="./company-profile.html">Company Profile</a><br>
+    </div>
   </div>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="close-btn" onclick="closeMenu()">
+      <i class="fas fa-times"></i>
     </div>
-  </header>
-  
+    <ul>
+      <li>
+        <button onclick="toggleSubmenu('newsSub')">
+          NEWS SECTION <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="submenu" id="newsSub">
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Precious Metals</a></li>
+          <li><a href="#">Evening Chatter</a></li>
+          <li><a href="#">Research Reports</a></li>
+          <li><a href="#">Gold News</a></li>
+          <li><a href="#">Corporate News</a></li>
+          <li><a href="#">Announcement</a></li>
+          <li><a href="#">Sponsored Post</a></li>
+        </ul>
+      </li>
+      <li><a href="./service.html">Services</a></li>
+      <li><a href="./magzin.html">Magazine</a></li>
+      <li><a href="./contant.html">Contact Us</a></li>
+      <li><a href="./about.html">About Us</a></li>
+    </ul>
+  </div>
+
   <!-- Header + Dropdown -->
- 
-  <div class="container">
-    <!-- Left Content -->
-    <div class="left">
-      <img src="./image/LOGO FOR Print.png" alt="Mining Discovery" class="logo">
 
-      <h1>Discover all that’s new.<br>With <span>Mining Discovery</span>...</h1>
-
-      <div class="plan">49$/month for your first month for new members<br>
-        Billed at 49$ every four weeks for your first year.
-      </div>
-      <div class="plan">29$/month for your first 6 months for new members<br>
-        Billed at 49$ every four weeks for your first year.
-      </div>
-      <div class="plan">19.99$/month for your first 6 months for new members<br>
-        Billed at 49$ every four weeks for your first year.
-      </div>
-
-      <button class="subscribe-btn">Subscribe</button>
-      <div class="cancel">Cancel or pause anytime.</div>
-
-      <div class="payment-buttons">
-        <button> Pay</button>
-        <button>G Pay</button>
-        <button style="background-color: #0070ba; color: white;">PayPal</button>
-      </div>
-    </div>
-
-    <!-- Right Phone Mockup -->
-    <div class="right">
-      <div class="phone-frame">
-        <img src="./image/Iphone 2 (1).png" alt="Phone Logo">
-      </div>
-    </div>
-  </div>
-    <div class="top-info">
-    <div class="headline">All Access includes news, Magazine, Newsletter, Media, Games etc.</div>
+   <div class="container">
+    <div class="container1">
+ <section class="subscription-section">
+    <h4>Explore Our Subscription Plans</h4>
+    <h1>
+      Discover all that’s new. With <br>
+      <span>Mining Discovery...</span>
+    </h1>
     <p>
-      Subscribe to Mining Discovery and unlock full access across all tiers — including global mining news updates, exclusive media content like interviews and virtual tours, a premium digital magazine featuring exploration insights and expert articles, and our insider newsletter packed with curated trends and discovery alerts. Plans start at just $19.99/month for access for newsletter, magazine, news, games, full media library etc. Stay ahead in the mining world with trusted content, updated weekly, and cancel anytime.
+      Choose the plan that fits you best. From casual readers to professionals, 
+      our subscriptions give you trusted mining news, analysis, and magazine access.
     </p>
-  </div>
-
-  <!-- Divider -->
-
-
-  <!-- Bold Line -->
-  <div class="headline">
-    Subscribers enjoy more with New York Times All Access.
-  </div>
- <div class="container2">
-   <!-- Right Phone Mockup -->
-    <div class="right">
-      <div class="phone-frame">
-        <img src="./image/Iphone 2 (1).png" alt="Phone Logo">
-      </div>
+    <a href="#" class="btn">VIEW PLAN</a>
+  </section>
     </div>
-    <!-- Left Content -->
-    <div class="left">
-<div class="right-sec">
-      <h2>Access from <span>Mining Discovery</span>...</h2>
-      <ul class="features">
+     
+  <div class="container2">
+     <section class="plans-section">
+    <div class="plans-container">
+      
+      <!-- Basic Plan -->
+      <div class="plan-card">
+        <h3>Basic Plan <span>$0</span></h3>
+        <ul>
+          <li>Unlimited access to daily news articles (free-to-read section)</li>
+          <li>First 4 issues of our magazine (digital)</li>
+          <li>Weekly curated newsletters</li>
+        </ul>
+        <button>Start Free</button>
+      </div>
+
+      <!-- Essential Plan -->
+      <div class="plan-card">
+        <h3>Essential Plan <span>$49 / month</span></h3>
+        <ul>
+          <li>Unlimited access to all magazine issues</li>
+          <li>Unlimited weekly newsletters and special briefings</li>
+          <li>Full article search & archives</li>
+          <li>Cancel anytime (monthly subscription model)</li>
+        </ul>
+        <button>Subscribe for 49$</button>
+      </div>
+
+      <!-- Advanced Plan (highlighted) -->
+      <div class="plan-card advanced">
+        <h3>Advanced Plan <span>$149 / 4 months</span></h3>
+        <ul>
+          <li>Exclusive access to CEO profiles (insights into leadership)</li>
+          <li>Exclusive access to company profiles (sector deep dives)</li>
+          <li>Access to premium “insight” reports or dossier downloads</li>
+          <li>4-month bundled subscription (cost advantage vs monthly)</li>
+        </ul>
+        <button>Subscribe for 149$</button>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="plan-card">
+        <h3>Premium Plan <span>$299 / year</span></h3>
+        <ul>
+          <li>Full 12-month uninterrupted access</li>
+          <li>Best value per month among all plans</li>
+          <li>Priority support & bonus perks (e.g. early access to new features)</li>
+        </ul>
+        <button>Subscribe for 299$</button>
+      </div>
+
+    </div>
+  </section>
+  </div>
+  <div class="container3">
+    
+  <section class="access-section">
+    <!-- Left: Phone -->
+    <div class="phone-mockup">
+      <!-- Replace this with your actual PNG phone screenshot -->
+      <img src="./image/Iphone 2 (1).png" alt="Mining Discovery Mobile">
+    </div>
+
+    <!-- Right: Text -->
+    <div class="access-content">
+      <h2>
+        Access from <span>Mining Discovery...</span>
+      </h2>
+      <ul>
         <li>Magazines Flip Book Access</li>
-        <li>Latest Newsletters Update from email</li>
-        <li>Ceo Profile</li>
+        <li>Latest Newletters Update from email</li>
+        <li>CEO Profiles</li>
+        <li>Company Profiles</li>
         <li>Fun Area Access</li>
         <li>Digital Book</li>
-        <li>Webinar Alerts Notification</li>
-        <li>Podcasts</li>
       </ul>
     </div>
+  </section>
 
-    </div>
-
-   
   </div>
-   
+  <div class="table">
+ <div class="container4">
+        <div class="header-bar">PLAN COMPARISON</div>
+    <table class="comparison">
+      <tr>
+        <th>Features</th>
+        <th>Free</th>
+        <th>Starter</th>
+        <th class="highlight">Advanced</th>
+        <th>Premium</th>
+      </tr>
+      <tr>
+        <td>Daily News Articles</td>
+        <td class="check">✔</td>
+        <td class="check">✔</td>
+        <td class="check highlight">✔</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Full Magazine Access</td>
+        <td>First 4 only</td>
+        <td class="check">✔</td>
+        <td class="check highlight">✔</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Weekly Newsletters & special briefings</td>
+        <td class="check">✔</td>
+        <td class="check">✔</td>
+        <td class="check highlight">✔</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Search & Archive access</td>
+        <td>Limited / basic</td>
+        <td class="check">✔</td>
+        <td class="check highlight">✔</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>CEO Profiles</td>
+        <td>—</td>
+        <td>—</td>
+        <td class="check highlight">✔</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Company Profiles</td>
+        <td>—</td>
+        <td>—</td>
+        <td class="check highlight">✔</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Premium Reports</td>
+        <td>—</td>
+        <td>—</td>
+        <td class="check highlight">✔</td>
+        <td class="check">✔</td>
+      </tr>
+      <tr>
+        <td>Subscription Term</td>
+        <td>—</td>
+        <td>Month-to-month</td>
+        <td class="highlight">4 months bundle</td>
+        <td>12 months bundle</td>
+      </tr>
+      <tr>
+        <td>Best suited for</td>
+        <td>New users</td>
+        <td>Frequent readers</td>
+        <td class="highlight">Analysts & teams</td>
+        <td>Long-term power users</td>
+      </tr>
+    </table>
+  </div>
+
+  </div>
+  <div class="container5">
+      <div class="subscribe-section">
+    <h2>Never Miss an Update in Mining</h2>
+    <p>
+      Stay informed with news, insights, and magazines that move the industry forward. <br>
+      Select your plan today and secure your place at the forefront of mining knowledge.
+    </p>
+    <a href="#" class="subscribe-btn">Subscribe Now</a>
+  </div>
+  </div>
+   </div>
 
   <!-- Footer Section -->
   <div class="footer-container">
@@ -1357,7 +1715,34 @@
 
 
 
+  <script src="./script.js"></script>
+  <script src="./js/latestNews.js"></script>
+  <script src="./js/news.js"></script>
+  <script src="./js/popularNews.js"></script>
+  <script src="./js/copperNews.js"></script>
+  <script src="./js/preciousMetal.js"></script>
+  <script src="./js/worldNews.js"></script>
+  <script src="./js/coporateNews.js"></script>
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/annoucements.js"></script>
+  <script src="./js/whatsOn.js"></script>
+  <script src="./js/Home-Advertisments.js"></script>
+  <script src="./js/sponsoredPost.js"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadLatestNews();
+      loadPopularNews();
+      loadCopperNews();
+      loadPreciousMetalNews();
+      loadWorldNews();
+      loadCorporateNews();
+      loadAdvertisements();
+      loadAnnouncements();
+      loadWhatsOn();
+    });
+  </script>
 
 </body>
+
 </html>
