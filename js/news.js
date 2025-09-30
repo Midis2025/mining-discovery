@@ -366,53 +366,81 @@ async function fetchAndRenderCategory(slug, page = 1, append = false) {
  ********************************************************************/
 function generateDropdownMenu(categories) {
   const dropdownMenu = document.getElementById("dropdownMenu");
-  if (!dropdownMenu) return;
+  const dropdownMenu1 = document.getElementById("dropdownMenu1");
 
-  // If your HTML has <a id="dropdownMenu"> (a single link), replace it with a container:
-  // <nav id="dropdownMenu"></nav>
-  // Or ensure it's a container element that can hold multiple <a> tags.
-  if (dropdownMenu.tagName.toLowerCase() === "a") {
-    // Convert single <a> to a container on the fly
-    const nav = document.createElement("nav");
-    nav.id = dropdownMenu.id;
-    dropdownMenu.replaceWith(nav);
-  }
-
-  const menu = document.getElementById("dropdownMenu");
-  menu.innerHTML = "";
-
-  categories.forEach((item) => {
+  // Generate menu items for both dropdowns
+  const menuItems = categories.map((item) => {
     const src = item?.attributes ?? item ?? {};
     const title = src.title ?? src.category ?? src.name ?? `Category ${item?.id ?? ""}`;
     const slug = src.slug ?? (src.category ? safeSlugify(src.category) : null);
-    if (!title || !slug) return;
+    if (!title || !slug) return null;
 
-    const a = document.createElement("a");
-    a.textContent = title;
-    a.href = `newss.html?category=${encodeURIComponent(slug)}`; // real link (works on refresh/new tab)
-    a.dataset.slug = slug;                                     // used for SPA navigation
-    a.className = "dropdown-item";
-    menu.appendChild(a);
-  });
+    return {
+      title,
+      slug,
+      href: `newss.html?category=${encodeURIComponent(slug)}`
+    };
+  }).filter(Boolean);
 
-  // SPA-style click (prevent full reload when staying on same page)
-  menu.addEventListener("click", async (e) => {
-    const link = e.target.closest("a[data-slug]");
-    if (!link) return;
-
-    // If link points to the same page (e.g., you're already on newss.html),
-    // we prefer SPA behavior; prevent default and pushState.
-    const url = new URL(link.href, window.location.href);
-    const samePage = url.pathname === window.location.pathname;
-
-    const slug = link.dataset.slug || "latest-news";
-
-    if (samePage) {
-      e.preventDefault();
-      window.history.pushState({ slug }, "", `?category=${encodeURIComponent(slug)}`);
-      await fetchAndRenderCategory(slug, 1, false);
+  // Populate main dropdown (if exists)
+  if (dropdownMenu) {
+    // Convert single <a> to a container if needed
+    if (dropdownMenu.tagName.toLowerCase() === "a") {
+      const nav = document.createElement("nav");
+      nav.id = dropdownMenu.id;
+      dropdownMenu.replaceWith(nav);
     }
-  });
+
+    const menu = document.getElementById("dropdownMenu");
+    menu.innerHTML = "";
+
+    menuItems.forEach((item) => {
+      const a = document.createElement("a");
+      a.textContent = item.title;
+      a.href = item.href;
+      a.dataset.slug = item.slug;
+      a.className = "dropdown-item";
+      menu.appendChild(a);
+    });
+
+    // Add click handler for SPA navigation
+    menu.addEventListener("click", handleMenuClick);
+  }
+
+  // Populate news section dropdown (for header)
+  if (dropdownMenu1) {
+    dropdownMenu1.innerHTML = "";
+
+    menuItems.forEach((item) => {
+      const a = document.createElement("a");
+      a.textContent = item.title;
+      a.href = item.href;
+      a.dataset.slug = item.slug;
+      a.className = "dropdown-item";
+      dropdownMenu1.appendChild(a);
+    });
+
+    // Add click handler for SPA navigation
+    dropdownMenu1.addEventListener("click", handleMenuClick);
+  }
+}
+
+function handleMenuClick(e) {
+  const link = e.target.closest("a[data-slug]");
+  if (!link) return;
+
+  // If link points to the same page (e.g., you're already on newss.html),
+  // we prefer SPA behavior; prevent default and pushState.
+  const url = new URL(link.href, window.location.href);
+  const samePage = url.pathname === window.location.pathname;
+
+  const slug = link.dataset.slug || "latest-news";
+
+  if (samePage) {
+    e.preventDefault();
+    window.history.pushState({ slug }, "", `?category=${encodeURIComponent(slug)}`);
+    fetchAndRenderCategory(slug, 1, false);
+  }
 }
 
 /********************************************************************
@@ -428,6 +456,7 @@ function handleShowMoreClick() {
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     allCategories = await newsCategory();
+    console.log("Categories loaded:", allCategories.length);
     generateDropdownMenu(allCategories);
 
     const initialSlug = getSlugFromURL();

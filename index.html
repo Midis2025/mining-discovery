@@ -42,52 +42,56 @@
 
     <div class="nav-links" id="navMenu">
       <a href="./about.html">About Us</a>
-     <!-- News Section -->
-       <!-- News Section -->
-<a href="./newss.html" class="desktop-link">
-  News Section <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-  News Section <i class="fas fa-chevron-down"></i>
-</a>
+      <!-- News Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          News Section <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+          News Section <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="newsDropdown">
-       <p><a href="./newss.html" id="dropdownMenu1"></a></p>
+        <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          <div id="dropdownMenu1" class="dropdown-menu-container"></div>
         </div>
+      </div>
 
       <a href="./morning.html">Evening Chatter</a>
       <!-- Magazine Section -->
-      
-<a href="./magzin.html" class="desktop-link">
-  Magazine <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
-  Magazine <i class="fas fa-chevron-down"></i>
-</a>
+      <div class="nav-item-with-dropdown">
+        <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="magazineDropdown">
+        <div class="dropdown-links" id="magazineDropdown" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
            <a href="./magzin.html">Magazine</a>
           <a href="./ceo.html">CEO Profile</a>
           <a href="./company-profile.html">Company Profile</a>
           <a href="./Digitaledition.html">Digital Edition</a>
           <a href="./weekly.html">Newsletter</a>
         </div>
+      </div>
     
       <!-- Service Section -->
-<a href="./service.html" class="desktop-link">
-  Service <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
-  Service <i class="fas fa-chevron-down"></i>
-</a>
+      <div class="nav-item-with-dropdown">
+        <a href="./service.html" class="desktop-link" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="serviceDropdown">
+        <div class="dropdown-links" id="serviceDropdown" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
           <a href="./service.html">Investor Campaign</a>
           <a href="./newsynd.html">News Syndication</a>
           <a href="./branding.html">Digital Branding</a>
           <a href="./pressoffice.html">Press Office</a>
-                <a href="./confrence.html">Conference</a>
+          <a href="./confrence.html">Conference</a>
         </div>
+      </div>
       <a href="./contant.html">Contact Us</a>
     </div>
 <div class="new">
@@ -880,12 +884,33 @@ tabs.forEach(tab => {
     document.getElementById(tab.dataset.target).classList.add("active");
   });
 });
-  function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
+
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
+
+function showDesktopDropdown(id) {
+  // Only show on desktop
+  if (window.innerWidth >= 900) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      dropdown.classList.add("show");
     }
+  }
+}
+
+function hideDesktopDropdown(id) {
+  // Only hide on desktop
+  if (window.innerWidth >= 900) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      dropdown.classList.remove("show");
+    }
+  }
+}
 
 // Show popup only once in lifetime (until localStorage is cleared)
 document.addEventListener("DOMContentLoaded", function () {
