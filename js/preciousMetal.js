@@ -36,10 +36,7 @@ async function loadPreciousMetalNews() {
           <div class="author">By: ${escapeHtml(author)}</div>
           ${
             docId
-              ? `<a href="news-details.html?id=${docId}"><button class="more-btn">
-                  More
-                  <svg viewBox="0 0 24 24"><path d="M10 6l6 6-6 6"/></svg>
-                </button></a>`
+              ? `<a href="news-details.html?id=${docId}"></a>`
               : ""
           }
         </div>

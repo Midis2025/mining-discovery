@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // --- Configuration ---
@@ -151,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isCacheValid()) {
       console.log('Checking cached data for fallback');
       
-      // Check projects cache
       if (projectsCache && Array.isArray(projectsCache)) {
         const item = projectsCache.find(p => p.id == contentId || p.id === parseInt(contentId));
         if (item) {
@@ -160,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
       
-      // Check reports cache
       if (reportsCache && Array.isArray(reportsCache)) {
         const item = reportsCache.find(p => p.id == contentId || p.id === parseInt(contentId));
         if (item) {
@@ -191,7 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
           continue;
         }
 
-        // Update appropriate cache
         if (endpoint.name === 'projects') {
           projectsCache = items;
         } else if (endpoint.name === 'reports') {
@@ -201,7 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cacheTimestamp = Date.now();
         console.log(`Data cached successfully from ${endpoint.name}`);
 
-        // Try both string and number comparison
         const item = items.find(p => {
           console.log(`Comparing: ${p.id} (${typeof p.id}) with ${contentId} (${typeof contentId})`);
           return p.id == contentId || p.id === parseInt(contentId);
@@ -240,8 +237,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderNewsArticle(result, container) {
     const { item, source } = result;
     
-    // Handle different data structures from projects vs reports
     const title = item.project_title || item.title || 'Untitled';
+    const contentType = source === 'projects' || source === 'projects-cache' ? 'Project' : 'Report';
+    
+    // ✅ Update topbar h1 text only
+    const topbar = document.getElementById("topbar");
+    if (topbar) {
+      let h1 = topbar.querySelector("h1");
+      if (!h1) {
+        h1 = document.createElement("h1");
+        topbar.appendChild(h1);
+      }
+      h1.textContent = `${contentType}: ${title}`;
+    }
+
     const description = item.longDescription || item.shortDescription || 'No description available.';
     const author = item.author || 'Mining Discovery';
     const createdAt = item.createdAt || '';
@@ -251,85 +260,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const formattedUpdatedDate = (updatedAt && updatedAt !== createdAt) ? formatDate(updatedAt) : '';
     const processedDescription = processDescription(description);
 
-    // Add source indicator for debugging/transparency (only show in non-production)
     const sourceIndicator = source && !source.includes('cache') ? `
       <span style="background: #e8f5e8; color: #2e7d32; padding: 2px 6px; border-radius: 3px; font-size: 12px;">
         Source: ${source}
       </span>
     ` : '';
 
-    // Use requestAnimationFrame for smooth rendering
     requestAnimationFrame(() => {
       container.innerHTML = `
-        <article style="
-          max-width: 900px; 
-          margin: 0 auto; 
-          padding: 20px; 
-          font-family: system-ui, -apple-system, sans-serif;
-        ">
-          <header style="
-            border-bottom: 3px solid #d4af37; 
-            padding-bottom: 20px; 
-            margin-bottom: 30px;
-          ">
-            <h1 style="
-              color: #2c3e50; 
-              margin: 0 0 15px 0; 
-              line-height: 1.3; 
-              font-size: 2.2em; 
-              font-weight: 600;
-            ">
+        <article style="max-width: 900px; margin: 0 auto; padding: 20px; font-family: system-ui, -apple-system, sans-serif;">
+          <header style="border-bottom: 3px solid #d4af37; padding-bottom: 20px; margin-bottom: 30px;">
+            <h1 style="color: #2c3e50; margin: 0 0 15px 0; line-height: 1.3; font-size: 2.2em; font-weight: 600;">
               ${title}
             </h1>
-            <div style="
-              color: #7f8c8d; 
-              font-size: 14px; 
-              display: flex; 
-              flex-wrap: wrap; 
-              gap: 15px;
-              align-items: center;
-            ">
+            <div style="color: #7f8c8d; font-size: 14px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
               ${sourceIndicator}
-              ${author ? `
-                <span style="background: #ecf0f1; padding: 4px 8px; border-radius: 4px;">
-                  <strong>Author:</strong> ${author}
-                </span>
-              ` : ''}
-              ${formattedCreatedDate ? `
-                <span style="background: #ecf0f1; padding: 4px 8px; border-radius: 4px;">
-                  <strong>Published:</strong> ${formattedCreatedDate}
-                </span>
-              ` : ''}
-              ${formattedUpdatedDate ? `
-                <span style="background: #ecf0f1; padding: 4px 8px; border-radius: 4px;">
-                  <strong>Updated:</strong> ${formattedUpdatedDate}
-                </span>
-              ` : ''}
+              ${author ? `<span style="background: #ecf0f1; padding: 4px 8px; border-radius: 4px;"><strong>Author:</strong> ${author}</span>` : ''}
+              ${formattedCreatedDate ? `<span style="background: #ecf0f1; padding: 4px 8px; border-radius: 4px;"><strong>Published:</strong> ${formattedCreatedDate}</span>` : ''}
+              ${formattedUpdatedDate ? `<span style="background: #ecf0f1; padding: 4px 8px; border-radius: 4px;"><strong>Updated:</strong> ${formattedUpdatedDate}</span>` : ''}
             </div>
           </header>
-          <div class="content" style="
-            line-height: 1.8; 
-            color: #34495e; 
-            font-size: 16px;
-          ">
+          <div class="content" style="line-height: 1.8; color: #34495e; font-size: 16px;">
             ${processedDescription}
           </div>
-          <footer style="
-            margin-top: 50px; 
-            padding-top: 25px; 
-            border-top: 2px solid #ecf0f1; 
-            text-align: center;
-          ">
-            <a href="/" style="
-              color: #3498db; 
-              text-decoration: none; 
-              font-weight: 500; 
-              padding: 10px 20px; 
-              border: 2px solid #3498db; 
-              border-radius: 5px; 
-              transition: all 0.3s ease; 
-              display: inline-block;
-            " onmouseover="this.style.background='#3498db'; this.style.color='white';" 
+          <footer style="margin-top: 50px; padding-top: 25px; border-top: 2px solid #ecf0f1; text-align: center;">
+            <a href="/" style="color: #3498db; text-decoration: none; font-weight: 500; padding: 10px 20px; border: 2px solid #3498db; border-radius: 5px; transition: all 0.3s ease; display: inline-block;"
+               onmouseover="this.style.background='#3498db'; this.style.color='white';" 
                onmouseout="this.style.background='transparent'; this.style.color='#3498db';">
               ← Back to Home
             </a>
@@ -342,14 +298,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Load News Details Dynamically ---
   async function loadNewsDetails() {
     const container = document.getElementById("newsDetails");
-    
-    if (!container) {
-      console.warn("newsDetails container not found");
-      return;
-    }
+    if (!container) return;
 
     const params = new URLSearchParams(window.location.search);
-    // Support multiple parameter names for flexibility
     const contentId = params.get("id") || params.get("reportId") || params.get("projectId");
 
     if (!contentId) {
@@ -357,9 +308,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    console.log(`Loading content with ID: ${contentId}`);
-
-    // Show loading spinner
     showSpinner(container, "Loading article...");
 
     try {
@@ -367,52 +315,26 @@ document.addEventListener("DOMContentLoaded", () => {
       renderNewsArticle(result, container);
     } catch (error) {
       console.error("Error loading content:", error);
-      
-      let errorMessage = "Failed to load the content article.";
+
+      let errorMessage = error.message.includes("not found") ? "The requested content could not be found." : "Failed to load the content article.";
       let debugInfo = "";
-      
-      if (error.message.includes("not found")) {
-        errorMessage = "The requested content could not be found.";
-        
-        // Try to show available IDs from cache or recent fetch
+
+      if (projectsCache || reportsCache) {
         const availableIds = [];
-        if (projectsCache && Array.isArray(projectsCache)) {
-          availableIds.push(...projectsCache.slice(0, 5).map(p => `${p.id} (projects)`));
-        }
-        if (reportsCache && Array.isArray(reportsCache)) {
-          availableIds.push(...reportsCache.slice(0, 5).map(p => `${p.id} (reports)`));
-        }
-        
-        if (availableIds.length > 0) {
-          debugInfo = `<p style="font-size: 12px; color: #666; margin-top: 10px;">Available IDs: ${availableIds.join(', ')}</p>`;
-        }
-      } else if (error.message.includes("HTTP")) {
-        errorMessage = "Server error occurred while fetching the content.";
+        if (projectsCache) availableIds.push(...projectsCache.slice(0, 5).map(p => `${p.id} (projects)`));
+        if (reportsCache) availableIds.push(...reportsCache.slice(0, 5).map(p => `${p.id} (reports)`));
+        if (availableIds.length) debugInfo = `<p style="font-size: 12px; color: #666; margin-top: 10px;">Available IDs: ${availableIds.join(', ')}</p>`;
       }
 
       container.innerHTML = `
-        <div style="
-          color: #b00; 
-          padding: 20px; 
-          border: 1px solid #ddd; 
-          border-radius: 5px; 
-          background: #fafafa;
-        ">
+        <div style="color: #b00; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa;">
           <h3 style="margin-top: 0;">Error Loading Content</h3>
           <p>${errorMessage}</p>
           <p style="font-size: 14px; color: #666;"><strong>Content ID:</strong> ${contentId}</p>
           ${debugInfo}
           <p style="font-size: 12px; color: #666;">Error details: ${error.message}</p>
           <div style="margin-top: 15px;">
-            <button onclick="location.reload()" style="
-              background: #3498db; 
-              color: white; 
-              border: none; 
-              padding: 8px 16px; 
-              border-radius: 4px; 
-              cursor: pointer; 
-              margin-right: 10px;
-            ">Retry</button>
+            <button onclick="location.reload()" style="background: #3498db; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 10px;">Retry</button>
             <a href="/" style="color: #0066cc; text-decoration: none;">← Back to home</a>
           </div>
         </div>
@@ -427,10 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modules.forEach(fnName => {
       try {
         if (typeof window[fnName] === "function") {
-          console.log(`Initializing ${fnName}...`);
           window[fnName]();
-        } else {
-          console.warn(`Function ${fnName} not found or not a function`);
         }
       } catch (error) {
         console.error(`Error initializing ${fnName}:`, error);
@@ -464,10 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Global error handling ---
   function setupGlobalErrorHandling() {
-    window.addEventListener('error', (event) => {
-      console.error('Global error:', event.error);
-    });
-    
+    window.addEventListener('error', (event) => console.error('Global error:', event.error));
     window.addEventListener('unhandledrejection', (event) => {
       console.error('Unhandled promise rejection:', event.reason);
       event.preventDefault();
@@ -476,31 +392,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Main initialization ---
   function initialize() {
-    try {
-      // Setup error handling first
-      setupGlobalErrorHandling();
-      
-      // Initialize DNS prefetch
-      initializeDNSPrefetch();
-      
-      // Initialize show more functionality
-      initializeShowMore();
-      
-      // Load news details if on news page
-      loadNewsDetails();
-      
-      // Load external scripts
-      loadExternalScripts();
-      
-      // Initialize other modules when browser is idle
-      if (typeof requestIdleCallback !== 'undefined') {
-        requestIdleCallback(initializeModules, { timeout: 2000 });
-      } else {
-        setTimeout(initializeModules, 100);
-      }
-      
-    } catch (error) {
-      console.error("Error during initialization:", error);
+    setupGlobalErrorHandling();
+    initializeDNSPrefetch();
+    initializeShowMore();
+    loadNewsDetails();
+    loadExternalScripts();
+
+    if (typeof requestIdleCallback !== 'undefined') {
+      requestIdleCallback(initializeModules, { timeout: 2000 });
+    } else {
+      setTimeout(initializeModules, 100);
     }
   }
 

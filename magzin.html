@@ -15,7 +15,7 @@
     }
 
     body {
-       font-family: 'Pontano Sans', sans-serif;
+      font-family: 'Pontano Sans', sans-serif;
       background-color: #fff;
       color: #222;
     }
@@ -90,7 +90,7 @@
     .main-header {
       margin-bottom: 10px;
       background-color: #fff;
-      padding: 12px;
+      padding: 5px;
       border-bottom: 1px solid #ddd;
     }
 
@@ -103,7 +103,7 @@
 
     .logo-social {
       
-      padding-top: 5px;
+  
       display: flex;
       justify-content: center;
       align-items: center;
@@ -112,7 +112,9 @@
     }
 
     .logo {
-      height: 70px;
+      height: 100px;
+ 
+  
       
     }
    
@@ -133,7 +135,7 @@
     }
 
     .nav-links a:hover {
-      color: #ae8a4c;
+      color: #8d6d2a;
     }
 
     .header-buttons {
@@ -161,6 +163,9 @@
     .subscribe-btn {
      background-color: #ae8a4c;
     }
+    .new{
+      display: flex;
+    }
 
    
  .search-bar-container {
@@ -178,7 +183,7 @@
   height: 24px;
   border-radius: 20px;
   
-  width: 70%;
+  width: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -264,17 +269,10 @@
   padding-right:20px ;
     color: #ae8a4c; /* golden color */
 }
-#dropdownMenu {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
-  gap: 20px;
-  padding: 15px;
-  min-width: 600px;  /* keeps dropdown wide and aligned */
-}
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 197px;
+  top: 160px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -282,6 +280,13 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 30px 50px;
   z-index: 999;
+}
+#dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
 }
 
 /* Tabs */
@@ -303,7 +308,6 @@
 
 /* Tab items */
 .hamburger-menu .menu-tabs p {
-  color: #ae8a4c;
   margin: 8px 0;
   font-weight: bold;
   font-size: 15px;
@@ -316,13 +320,11 @@
 
 /* Content right side me */
 .hamburger-menu .menu-content {
-
   flex: 1;
   display: none;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px 40px;
 }
-
 
 .hamburger-menu .menu-content.active {
   display: grid;
@@ -336,7 +338,9 @@
   .hamburger2 {
     display: none; /* phone screen pe hide ho jayega */
   }
+ 
 }
+
 
 
 
@@ -422,7 +426,6 @@
     @media (max-width: 768px) {
   .hamburger {
     display: block;
-  
   }
 
   /* Search-bar always visible */
@@ -461,6 +464,7 @@
 .mobile-active .social-icons {
   display: none !important;
 }
+
   .nav-links a {
     padding: 8px 0;
   }
@@ -527,7 +531,7 @@
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
-      color: #ae8a4c;
+      color:#ae8a4c;
       border-bottom: 2px solid #ae8a4c;
       padding-bottom: 3px;
     }
@@ -669,6 +673,47 @@
   display: flex;
 }
 
+/* Navigation item with dropdown wrapper */
+.nav-item-with-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Desktop dropdown positioning */
+@media (min-width: 900px) {
+  .nav-item-with-dropdown .dropdown-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 1000;
+    padding: 15px;
+  }
+
+  .nav-item-with-dropdown .dropdown-links.show {
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a {
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a:hover {
+    background-color: #f5f5f5;
+    color: #ae8a4c;
+  }
+}
+
     
 
     /* Responsive */
@@ -680,18 +725,105 @@
       .header-buttons {
         display: none;
       }
-       #dropdownMenu {
+      #dropdownMenu {
  display: flex;
  flex-direction: column;
 
  
     }
-    }
-       /* Hide News Section dropdown on desktop */
+    #dropdownMenu1{
+  display: flex;
+  flex-direction: column;
+}
+   
+     .header-top {
+    display: flex;
+    justify-content: space-between; /* logo left, hamburger right */
+    align-items: center;
+    width: 100%;
+    gap: 27%;
+  }
+
+  .logo {
+    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #ae8a4c;
+  }
+
+  /* nav links column में */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background: #fff;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    color: #000;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+
+  .mobile-active .nav-links {
+    display: flex;
+  }
+
+ 
+  .header-buttons {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .mobile-active .header-buttons {
+    display: flex;
+  }
+
+  /* Search aur ticker remove in mobile */
+  .search-bar-container {
+    display: none !important;
+  }
+
+  /* dropdown links accordion style */
+  .dropdown-links {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  .dropdown-links.show {
+    display: flex;
+  }
+
+  .dropdown-links a {
+    padding: 8px 0;
+    border: none;
+    font-size: 14px;
+  }
+  }
+    /* Hide News Section dropdown on desktop */
 /* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
 @media (min-width: 900px) {
   #newsToggle {
-    cursor: default;        /* not pointer */
+    cursor: pointer;        /* not pointer */
     pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
   }
   #newsToggle i {
@@ -706,9 +838,7 @@
 
 
   /* ensure dropdown panel is not shown on desktop even if .show gets added */
-  .dropdown-links {
-    display: none !important;
-  }
+
 }
 
 /* Mobile: hide main link, show mobile toggle */
@@ -720,7 +850,9 @@
 
    
 
-/* drop-down */
+   
+
+    /* drop-down */
 
 
     /* Layout */
@@ -732,64 +864,68 @@
 
     /* Sidebar */
 
-.left-sidebar
- {
-  width: 280px;
-  height: calc(100vh - 120px);
-  position: sticky;
-  top: 100px;
-  overflow-y: auto;
-  background: #fff;
- 
-  border-radius: 6px;
-  padding: 10px;
+    .left-sidebar {
+      width: 280px;
+      height: calc(100vh - 120px);
+      position: sticky;
+      top: 100px;
+      overflow-y: auto;
+      background: #fff;
 
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
-}
+      border-radius: 6px;
+      padding: 10px;
 
-.left-sidebar::-webkit-scrollbar,
-.right-sidebar::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari */
-}
+      /* Hide scrollbar */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE & Edge */
+    }
+
+    .left-sidebar::-webkit-scrollbar,
+    .right-sidebar::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari */
+    }
 
 
-  
-.left-sidebar .box {
-  background: white;
-  padding: 12px;
-  margin-bottom: 15px;
-}
 
-.left-sidebar .box img {
-  width: 100%;
-  height: auto;
-}
- .heading {
-  padding-bottom:10px ;
+    .left-sidebar .box {
+      background: white;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+
+    .left-sidebar .box img {
+      width: 100%;
+      height: auto;
+    }
+
+    .heading {
+      padding-bottom: 10px;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       padding-left: 10px;
     }
-     button {
+
+    /* button {
 
 
-       border: 1px solid #AC8A4A;
+      border: 1px solid #AC8A4A;
       padding: 5px;
       border-radius: 20px;
       background-color: white;
       color: #ae8a4c;
-    }
-    
+    } */
+
 
 
 
     /* Main Content */
     .magazine-section {
       flex: 1;
-    
+
     }
 
     .dropdown-heading {
@@ -799,7 +935,7 @@
       display: inline-block;
       /* content jitna hi lega */
       border-bottom: 2px solid #ae8a4c;
-   
+
       /* thoda gap niche */
 
 
@@ -874,7 +1010,7 @@
       border-radius: 20px;
       cursor: pointer;
       background-color: #ae8a4c;
-          color: white;
+      color: white;
     }
 
     .btn.dark {
@@ -901,7 +1037,7 @@
       gap: 10px;
       flex-wrap: wrap;
       justify-content: center;
-     
+
 
     }
 
@@ -925,18 +1061,18 @@
 
     }
 
-  .editions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-  gap: 130px;
-  padding: 10px;
-  justify-content: center; 
-  align-items: center;
-}
+    .editions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 100px;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+    }
 
 
     .edition-card {
-      width: 300px;
+      width: 245px;
       background: #fff;
       border-radius: 12px;
       overflow: hidden;
@@ -959,7 +1095,7 @@
 
     .edition-card img.thumb {
       width: 100%;
-     height: fit-content;
+      height: fit-content;
       object-fit: cover;
       border-bottom: 1px solid #ddd;
     }
@@ -1061,7 +1197,7 @@
       }
 
       .btn {
-       
+
         text-align: center;
 
       }
@@ -1088,7 +1224,7 @@
       padding: 60px 100px 30px;
       color: #fff;
       position: relative;
-     
+
     }
 
     .social-iconss {
@@ -1157,29 +1293,29 @@
     }
 
     .footer-center ul {
-  list-style: none;
-  padding: 0;
-}
+      list-style: none;
+      padding: 0;
+    }
 
-.footer-center li {
-  margin-bottom: 12px;
-}
+    .footer-center li {
+      margin-bottom: 12px;
+    }
 
-.footer-center a {
-  font-size: 15px;
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s;
-}
+    .footer-center a {
+      font-size: 15px;
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-.footer-center li:first-child a {
+    .footer-center li:first-child a {
 
-  font-size: 16px;
-}
+      font-size: 16px;
+    }
 
-.footer-center a:hover {
-  color: #ae8a4c;
-}
+    .footer-center a:hover {
+      color: #ae8a4c;
+    }
 
     .footer-right {
       flex: 1;
@@ -1319,7 +1455,8 @@
       <p>Some important highlighted news 4</p>
     </div>
   </div>
- <header class="main-header">
+
+    <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1330,55 +1467,59 @@
 
     <div class="nav-links" id="navMenu">
       <a href="./about.html">About Us</a>
-     <!-- News Section -->
-       <!-- News Section -->
-<a href="./newss.html" class="desktop-link">
-  News Section <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-  News Section <i class="fas fa-chevron-down"></i>
-</a>
+      <!-- News Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          News Section <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+          News Section <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="newsDropdown">
-    <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
+        <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          <div id="dropdownMenu1" class="dropdown-menu-container"></div>
         </div>
+      </div>
 
       <a href="./morning.html">Evening Chatter</a>
       <!-- Magazine Section -->
-      
-<a href="./magzin.html" class="desktop-link">
-  Magazine <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
-  Magazine <i class="fas fa-chevron-down"></i>
-</a>
+      <div class="nav-item-with-dropdown">
+        <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="magazineDropdown">
+        <div class="dropdown-links" id="magazineDropdown" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
            <a href="./magzin.html">Magazine</a>
           <a href="./ceo.html">CEO Profile</a>
           <a href="./company-profile.html">Company Profile</a>
           <a href="./Digitaledition.html">Digital Edition</a>
           <a href="./weekly.html">Newsletter</a>
         </div>
+      </div>
     
       <!-- Service Section -->
-<a href="./service.html" class="desktop-link">
-  Service <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
-  Service <i class="fas fa-chevron-down"></i>
-</a>
+      <div class="nav-item-with-dropdown">
+        <a href="./service.html" class="desktop-link" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="serviceDropdown">
+        <div class="dropdown-links" id="serviceDropdown" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
           <a href="./service.html">Investor Campaign</a>
           <a href="./newsynd.html">News Syndication</a>
           <a href="./branding.html">Digital Branding</a>
           <a href="./pressoffice.html">Press Office</a>
-                <a href="./confrence.html">Conference</a>
+          <a href="./confrence.html">Conference</a>
         </div>
+      </div>
       <a href="./contant.html">Contact Us</a>
     </div>
-
+<div class="new">
     <div class="header-buttons" id="headerButtons">
    
       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
@@ -1389,22 +1530,34 @@
         <div id="userProfile" style="display:none;"></div>
         <!-- call all pages -->
     </div>
+       <div class="search-box-wrapper">
+      <!-- <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div> -->
+
+      <button class="hamburger2" onclick="toggleMenu2()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
   </div>
+</div>
+  
 
   <div class="search-bar-container" id="searchContainer">
-    <div class="social-icons">
+    <!-- <div class="social-icons">
       <a href="https://www.linkedin.com/"><img src="./image/Group.png"></a>
       <a href="https://www.instagram.com/miningdiscovery"><img src="./image/Group (4).png"></a>
       <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
       <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
       <a href="https://www.facebook.com/"><img src="./image/Group (3).png"></a>
-    </div>
+    </div> -->
 
     <div class="search-bar-bg">
       <div class="scrolling-track" id="newsTicker"></div>
     </div>
 
-    <div class="search-box-wrapper">
+    <!-- <div class="search-box-wrapper">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder=" " />
         <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
@@ -1413,18 +1566,17 @@
       <button class="hamburger2" onclick="toggleMenu2()">
         <i class="fas fa-bars"></i>
       </button>
-    </div>
+    </div> -->
 
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-            <p class="tab-btn" data-target="magazine">MAGAZINE</p>
           <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p>
           <p class="tab-btn" data-target="about">SERVICE</p> -->
-        
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
-          <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
+          <p><a href="./newss.html" id="dropdownMenu"></a></p>
         </div>
         <div class="menu-content" id="about">
           <p><a href="./service.html">Investor Campaign</a></p>
@@ -1457,19 +1609,19 @@
       <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
       <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
     </div>
-  <!-- Collapsible News Section below header -->
-<div id="newsSectionPage" class="collapsible-section">
-  <div class="news-section-content">
-    <a href="#">Latest News</a><br>
-    <a href="#">Precious Metals</a><br>
-    <a href="#">Evening Chatter</a><br>
-    <a href="#">Research Reports</a><br>
-    <a href="#">Gold News</a><br>
-    <a href="#">Corporate News</a><br>
-    <a href="#">Announcement</a><br>
-    <a href="#">Sponsored Post</a><br>
-  </div>
-</div>
+    <!-- Collapsible News Section below header -->
+    <div id="newsSectionPage" class="collapsible-section">
+      <div class="news-section-content">
+        <a href="#">Latest News</a><br>
+        <a href="#">Precious Metals</a><br>
+        <a href="#">Evening Chatter</a><br>
+        <a href="#">Research Reports</a><br>
+        <a href="#">Gold News</a><br>
+        <a href="#">Corporate News</a><br>
+        <a href="#">Announcement</a><br>
+        <a href="#">Sponsored Post</a><br>
+      </div>
+    </div>
 
     <div class="tab-content" id="servicesTab">
       <a href="./service.html">Investor Campaign</a><br>
@@ -1513,7 +1665,7 @@
 
 
 
-<!-- 
+  <!-- 
   <div class="topbar">
     <h1 onclick="magazineDropdown()" id="magazineToggle">
       Magazine
@@ -1536,7 +1688,7 @@
   <!-- Main Content -->
   <div class="main-container">
     <!-- Left Sidebar Ads -->
- <!-- <div class="left-sidebar">
+    <!-- <div class="left-sidebar">
       <div class="box">
 
         <div id="advertisements"></div>
@@ -1548,40 +1700,8 @@
     <main class="magazine-section">
       <h2 class="dropdown-heading">Magazine 2025 </h2>
 
-      <div class="magazine-grid">
-        <div class="magazine-info">
-          <h3>Monthly Magazine July Edition 2025</h3>
-          <p class="produced-by">Produced by Mining Discovery</p>
-          <p class="desc">
-         August 2025 Mining Discovery Magazine offers in-depth coverage of global mining trends, market shifts, and industry innovations. From rare earth strategies and gold market dynamics to geopolitical influences and sustainable mining breakthroughs, this issue delivers insights shaping the future of the mining sector.
-          <p class="toggle-btn">View more ▼</p>
-          <ul class="features-list">
-            <li>Global Mining Trends & Insights...</li>
-            <li>Rare Earths and Critical Minerals Outlook...</li>
-            <li>Gold, Lithium & Copper Market Shifts..</li>
-            <li>Geopolitics and Commodity Price Impacts...</li>
-            <li>Sustainability and Green Mining Innovations...</li>
-            <li>Key Corporate Moves and Industry Highlights...</li>
-          </ul>
+     <div class="magazine-grid" id="magazine-detail"></div>
 
-          <!-- Black subscribe button stays below the magazine grid -->
-
-          <div class="button">
-            <button class="btn subscribe">Subscribe to Get the Access</button>
-          </div>
-        </div>
-
-        <div class="magazine-cover">
-          <img src="./image/WhatsApp Image 2025-08-04 at 17.09.17_43cfa992.png" alt="Magazine Cover"
-            id="mainMagazine" />
-          <!-- Yellow buttons placed directly under the image -->
-          <div class="btns">
-
-            <button class="btn">Download PDF</button>
-            <button class="btn">Subscribe to Get the Access</button>
-          </div>
-
-        </div>
 
 
       </div>
@@ -1611,31 +1731,34 @@
           interactive mining website for mining companies, mining associations and mining executives globally.
         </p>
         <div class="search-bar-container-lasts" id="searchContainer">
-         <div class="social-iconss">
-              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img src="./image/Group.png"></a>
-             <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
-              <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
-              <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
-              <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img src="./image/Group (3).png"></a>
-            </div>
+          <div class="social-iconss">
+            <a
+              href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><img
+                src="./image/Group.png"></a>
+            <a href="https://www.instagram.com/miningdiscovery"> <img src="./image/Group (4).png"></a>
+            <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
+            <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
+            <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><img
+                src="./image/Group (3).png"></a>
+          </div>
           <div class="search-boxs">
             <input type="text" id="searchInput" placeholder="Search..." />
             <button class="search-icon"><i class="fas fa-search"></i></button>
           </div>
-          
+
         </div>
       </div>
 
       <!-- Center -->
-     <div class="footer-center">
+          <div class="footer-center">
   <ul>
-   <li><a href="index.html">HOME</a></li>
+    <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT US</a></li>
     <li><a href="https://www.youtube.com/@miningdiscovery/videos">MULTIMEDIA VIDEOS</a></li>
     <li><a href="sub.html">SUBSCRIPTION</a></li>
     <li><a href="./magzin.html">MAGAZINES</a></li>
-   <li><a href="">COMMENT GUIDELINE</a></li>
-    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+    <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="">LEGAL NOTICE</a></li>
   </ul>
 </div>
 
@@ -1650,87 +1773,87 @@
     </div>
   </div>
   <script src="./script.js"></script>
-  <script> 
-  
+  <script>
 
-  function toggleMenu2() {
-    const menu = document.getElementById("hamburgerMenu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
 
-  // Select tabs and contents
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".menu-content");
-
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
-
-      // Add active to clicked
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
-    });
-  });
-
-  // --------- PAGE CHECK FOR MAGAZINE ---------
-  document.addEventListener("DOMContentLoaded", function () {
-    const currentPage = window.location.pathname.split("/").pop();
-
-    const magazinePages = [
-      "magzin.html",
-      "ceo.html",
-      "weekly.html",
-      "company-profile.html",
-      "Digitaledition.html"
-    ];
-
-    if (magazinePages.includes(currentPage)) {
-      // Mobile menu: 
-      document.querySelectorAll(".menu-content").forEach(el => {
-        el.style.display = "none";
-      });
-      const magSection = document.getElementById("magazine");
-      if (magSection) magSection.style.display = "flex";
-
-      // Desktop tabs: 
-      document.querySelectorAll(".tab-content").forEach(el => {
-        el.style.display = "none";
-      });
-      const magTab = document.getElementById("magazineTab");
-      if (magTab) magTab.style.display = "block";
-
-      // active magazine tab
-      document.querySelectorAll(".tab-btn").forEach(el => el.classList.remove("active"));
-      document.querySelectorAll(".tab-btn").forEach(el => {
-        if (el.textContent.trim() === "Magazine") {
-          el.classList.add("active");
-        }
-      });
+    function toggleMenu2() {
+      const menu = document.getElementById("hamburgerMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
-  });
+
+    // Select tabs and contents
+    const tabs = document.querySelectorAll(".tab-btn");
+    const contents = document.querySelectorAll(".menu-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        // Remove active from all
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+
+        // Add active to clicked
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.target).classList.add("active");
+      });
+    });
+
+    // --------- PAGE CHECK FOR MAGAZINE ---------
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentPage = window.location.pathname.split("/").pop();
+
+      const magazinePages = [
+        "magzin.html",
+        "ceo.html",
+        "weekly.html",
+        "company-profile.html",
+        "Digitaledition.html"
+      ];
+
+      if (magazinePages.includes(currentPage)) {
+        // Mobile menu: 
+        document.querySelectorAll(".menu-content").forEach(el => {
+          el.style.display = "none";
+        });
+        const magSection = document.getElementById("magazine");
+        if (magSection) magSection.style.display = "flex";
+
+        // Desktop tabs: 
+        document.querySelectorAll(".tab-content").forEach(el => {
+          el.style.display = "none";
+        });
+        const magTab = document.getElementById("magazineTab");
+        if (magTab) magTab.style.display = "block";
+
+        // active magazine tab
+        document.querySelectorAll(".tab-btn").forEach(el => el.classList.remove("active"));
+        document.querySelectorAll(".tab-btn").forEach(el => {
+          if (el.textContent.trim() === "Magazine") {
+            el.classList.add("active");
+          }
+        });
+      }
+    });
 
 
-  
-  function toggleDropdownMobile(id) {
+
+    function toggleDropdownMobile(id) {
       const dropdown = document.getElementById(id);
       if (dropdown) {
         dropdown.classList.toggle("show");
       }
     }
-  
-  
-  
-  
-  
-  // Sab thumbnails ko select karo
+
+
+
+
+
+    // Sab thumbnails ko select karo
     const thumbs = document.querySelectorAll('.thumb');
     const mainMagazine = document.getElementById('mainMagazine');
 
     thumbs.forEach(thumb => {
       thumb.addEventListener('click', () => {
-     
+
         mainMagazine.src = thumb.src;
       });
     });
@@ -1786,11 +1909,11 @@
 
     });
   </script>
-   <script src="./js/latestNews.js"></script>
+  <script src="./js/latestNews.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       loadLatestNews();
-      
+
     });
   </script>
 </body>

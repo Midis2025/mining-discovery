@@ -18,10 +18,10 @@
     
     }
     
-  .main-header {
+    .main-header {
       margin-bottom: 10px;
       background-color: #fff;
-      padding: 12px;
+      padding: 5px;
       border-bottom: 1px solid #ddd;
     }
 
@@ -34,7 +34,7 @@
 
     .logo-social {
       
-      padding-top: 5px;
+  
       display: flex;
       justify-content: center;
       align-items: center;
@@ -43,7 +43,9 @@
     }
 
     .logo {
-      height: 70px;
+      height: 100px;
+ 
+  
       
     }
    
@@ -86,11 +88,14 @@
     }
 
     .login-btn {
-      background-color:#AE8A4C;
+      background-color:#ae8a4c;
     }
 
     .subscribe-btn {
-     background-color: #AE8A4C;
+     background-color: #ae8a4c;
+    }
+    .new{
+      display: flex;
     }
 
    
@@ -109,7 +114,7 @@
   height: 24px;
   border-radius: 20px;
   
-  width: 70%;
+  width: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -193,12 +198,12 @@
   border: none;
   display: block; /* laptop/mobile dono pe visible */
   padding-right:20px ;
-    color: #b8860b; /* golden color */
+    color: #ae8a4c; /* golden color */
 }
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 130px;
+  top: 143px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -206,6 +211,13 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 30px 50px;
   z-index: 999;
+}
+#dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
 }
 
 /* Tabs */
@@ -234,7 +246,7 @@
 }
 
 .hamburger-menu .menu-tabs p.active {
-  color: #b8860b;
+  color: #ae8a4c;
 }
 
 /* Content right side me */
@@ -257,6 +269,7 @@
   .hamburger2 {
     display: none; /* phone screen pe hide ho jayega */
   }
+ 
 }
 
 
@@ -327,7 +340,7 @@
      background-color: black;
       
      
-      color: #8d6d2a;
+      color: #ae8a4c;
       font-size: 18px;
       cursor: pointer;
     }
@@ -338,7 +351,7 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #8d6d2a;
+      color: #ae8a4c;
     }
 
     @media (max-width: 768px) {
@@ -376,6 +389,7 @@
     display: flex;
     gap: 10px;
   }
+
   .mobile-active .search-bar-bg,
 .mobile-active .scrolling-track,
 .mobile-active .social-icons {
@@ -448,8 +462,8 @@
 
     .dropdown-links a:hover,
     .dropdown-links a.active {
-      color: gold;
-      border-bottom: 2px solid gold;
+      color:#ae8a4c;
+      border-bottom: 2px solid #ae8a4c;
       padding-bottom: 3px;
     }
 
@@ -529,13 +543,6 @@
       padding-left: 32px;
       font-size: 14px;
     }
-    #dropdownMenu {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
-  gap: 20px;
-  padding: 15px;
-  min-width: 600px;  /* keeps dropdown wide and aligned */
-}
 
     /* Desktop Tabs Menu */
     .desktop-tabs {
@@ -573,8 +580,8 @@
     }
 
     .desktop-tabs .tab-btns .tab-btn.active {
-      border-bottom: 2px solid #d32f2f;
-      color: #d32f2f;
+      border-bottom: 2px solid #ae8a4c;
+      color: #ae8a4c;
     }
     /* Dropdown rotation */
 #newsToggle i {
@@ -597,6 +604,47 @@
   display: flex;
 }
 
+/* Navigation item with dropdown wrapper */
+.nav-item-with-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Desktop dropdown positioning */
+@media (min-width: 900px) {
+  .nav-item-with-dropdown .dropdown-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 1000;
+    padding: 15px;
+  }
+
+  .nav-item-with-dropdown .dropdown-links.show {
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a {
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a:hover {
+    background-color: #f5f5f5;
+    color: #ae8a4c;
+  }
+}
+
     
 
     /* Responsive */
@@ -608,18 +656,106 @@
       .header-buttons {
         display: none;
       }
-       #dropdownMenu {
+      #dropdownMenu {
  display: flex;
  flex-direction: column;
 
  
     }
+    #dropdownMenu1 {
+ display: flex;
+ flex-direction: column;
+
+ 
     }
-       /* Hide News Section dropdown on desktop */
+     .header-top {
+    display: flex;
+    justify-content: space-between; /* logo left, hamburger right */
+    align-items: center;
+    width: 100%;
+    gap: 27%;
+  }
+
+  .logo {
+    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #ae8a4c;
+  }
+
+  /* nav links column में */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background: #fff;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    color: #000;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+
+  .mobile-active .nav-links {
+    display: flex;
+  }
+
+ 
+  .header-buttons {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .mobile-active .header-buttons {
+    display: flex;
+  }
+
+  /* Search aur ticker remove in mobile */
+  .search-bar-container {
+    display: none !important;
+  }
+
+  /* dropdown links accordion style */
+  .dropdown-links {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  .dropdown-links.show {
+    display: flex;
+  }
+
+  .dropdown-links a {
+    padding: 8px 0;
+    border: none;
+    font-size: 14px;
+  }
+  }
+    /* Hide News Section dropdown on desktop */
 /* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
 @media (min-width: 900px) {
   #newsToggle {
-    cursor: default;        /* not pointer */
+    cursor: pointer;        /* not pointer */
     pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
   }
   #newsToggle i {
@@ -634,9 +770,7 @@
 
 
   /* ensure dropdown panel is not shown on desktop even if .show gets added */
-  .dropdown-links {
-    display: none !important;
-  }
+
 }
 
 /* Mobile: hide main link, show mobile toggle */
@@ -646,6 +780,7 @@
 }
 
 
+   
 
 
 h2 {
@@ -1172,55 +1307,59 @@ h2 {
 
     <div class="nav-links" id="navMenu">
       <a href="./about.html">About Us</a>
-     <!-- News Section -->
-       <!-- News Section -->
-<a href="./newss.html" class="desktop-link">
-  News Section <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-  News Section <i class="fas fa-chevron-down"></i>
-</a>
+      <!-- News Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          News Section <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+          News Section <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="newsDropdown">
-    <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
+        <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          <div id="dropdownMenu1" class="dropdown-menu-container"></div>
         </div>
+      </div>
 
       <a href="./morning.html">Evening Chatter</a>
       <!-- Magazine Section -->
-      
-<a href="./magzin.html" class="desktop-link">
-  Magazine <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
-  Magazine <i class="fas fa-chevron-down"></i>
-</a>
+      <div class="nav-item-with-dropdown">
+        <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="magazineDropdown">
+        <div class="dropdown-links" id="magazineDropdown" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
            <a href="./magzin.html">Magazine</a>
           <a href="./ceo.html">CEO Profile</a>
           <a href="./company-profile.html">Company Profile</a>
           <a href="./Digitaledition.html">Digital Edition</a>
           <a href="./weekly.html">Newsletter</a>
         </div>
+      </div>
     
       <!-- Service Section -->
-<a href="./service.html" class="desktop-link">
-  Service <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
-  Service <i class="fas fa-chevron-down"></i>
-</a>
+      <div class="nav-item-with-dropdown">
+        <a href="./service.html" class="desktop-link" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="serviceDropdown">
+        <div class="dropdown-links" id="serviceDropdown" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
           <a href="./service.html">Investor Campaign</a>
           <a href="./newsynd.html">News Syndication</a>
           <a href="./branding.html">Digital Branding</a>
           <a href="./pressoffice.html">Press Office</a>
-                <a href="./confrence.html">Conference</a>
+          <a href="./confrence.html">Conference</a>
         </div>
+      </div>
       <a href="./contant.html">Contact Us</a>
     </div>
-
+<div class="new">
     <div class="header-buttons" id="headerButtons">
    
       <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
@@ -1231,22 +1370,34 @@ h2 {
         <div id="userProfile" style="display:none;"></div>
         <!-- call all pages -->
     </div>
+       <div class="search-box-wrapper">
+      <!-- <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div> -->
+
+      <button class="hamburger2" onclick="toggleMenu2()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
   </div>
+</div>
+  
 
   <div class="search-bar-container" id="searchContainer">
-    <div class="social-icons">
+    <!-- <div class="social-icons">
       <a href="https://www.linkedin.com/"><img src="./image/Group.png"></a>
       <a href="https://www.instagram.com/miningdiscovery"><img src="./image/Group (4).png"></a>
       <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
       <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
       <a href="https://www.facebook.com/"><img src="./image/Group (3).png"></a>
-    </div>
+    </div> -->
 
     <div class="search-bar-bg">
       <div class="scrolling-track" id="newsTicker"></div>
     </div>
 
-    <div class="search-box-wrapper">
+    <!-- <div class="search-box-wrapper">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder=" " />
         <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
@@ -1255,18 +1406,17 @@ h2 {
       <button class="hamburger2" onclick="toggleMenu2()">
         <i class="fas fa-bars"></i>
       </button>
-    </div>
+    </div> -->
 
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-            <p class="tab-btn" data-target="magazine">MAGAZINE</p>
           <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p>
           <p class="tab-btn" data-target="about">SERVICE</p> -->
-        
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
-          <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
+          <p><a href="./newss.html" id="dropdownMenu"></a></p>
         </div>
         <div class="menu-content" id="about">
           <p><a href="./service.html">Investor Campaign</a></p>
@@ -1515,15 +1665,15 @@ Silver Inc.</h4>
       </div>
 
       <!-- Center -->
-      <div class="footer-center">
- <ul>
-      <li><a href="index.html">HOME</a></li>
+         <div class="footer-center">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT US</a></li>
     <li><a href="https://www.youtube.com/@miningdiscovery/videos">MULTIMEDIA VIDEOS</a></li>
     <li><a href="sub.html">SUBSCRIPTION</a></li>
     <li><a href="./magzin.html">MAGAZINES</a></li>
-  <li><a href="">COMMENT GUIDELINE</a></li>
-    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
+    <li><a href="">COMMENT GUIDELINE</a></li>
+    <li><a href="">LEGAL NOTICE</a></li>
   </ul>
 </div>
 

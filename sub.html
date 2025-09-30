@@ -17,10 +17,10 @@
       font-family: 'Pontano Sans', sans-serif;
     
     }
-     .main-header {
+    .main-header {
       margin-bottom: 10px;
       background-color: #fff;
-      padding: 12px;
+      padding: 5px;
       border-bottom: 1px solid #ddd;
     }
 
@@ -33,7 +33,7 @@
 
     .logo-social {
       
-      padding-top: 5px;
+  
       display: flex;
       justify-content: center;
       align-items: center;
@@ -42,7 +42,9 @@
     }
 
     .logo {
-      height: 70px;
+      height: 100px;
+ 
+  
       
     }
    
@@ -83,15 +85,6 @@
       cursor: pointer;
       color: black;
     }
-     .subscribe-btn1 {
-      padding: 5px 15px;
-      border: none;
-      border-radius: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      color: black;
-         background-color: #ae8a4c;
-    }
 
     .login-btn {
       background-color:#ae8a4c;
@@ -99,6 +92,9 @@
 
     .subscribe-btn {
      background-color: #ae8a4c;
+    }
+    .new{
+      display: flex;
     }
 
    
@@ -117,7 +113,7 @@
   height: 24px;
   border-radius: 20px;
   
-  width: 70%;
+  width: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -206,7 +202,7 @@
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 180px;
+  top: 143px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -272,6 +268,7 @@
   .hamburger2 {
     display: none; /* phone screen pe hide ho jayega */
   }
+ 
 }
 
 
@@ -606,6 +603,47 @@
   display: flex;
 }
 
+/* Navigation item with dropdown wrapper */
+.nav-item-with-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Desktop dropdown positioning */
+@media (min-width: 900px) {
+  .nav-item-with-dropdown .dropdown-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 1000;
+    padding: 15px;
+  }
+
+  .nav-item-with-dropdown .dropdown-links.show {
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a {
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a:hover {
+    background-color: #f5f5f5;
+    color: #ae8a4c;
+  }
+}
+
     
 
     /* Responsive */
@@ -623,12 +661,94 @@
 
  
     }
+     .header-top {
+    display: flex;
+    justify-content: space-between; /* logo left, hamburger right */
+    align-items: center;
+    width: 100%;
+    gap: 27%;
+  }
+
+  .logo {
+    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #ae8a4c;
+  }
+
+  /* nav links column में */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background: #fff;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    color: #000;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+
+  .mobile-active .nav-links {
+    display: flex;
+  }
+
+ 
+  .header-buttons {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .mobile-active .header-buttons {
+    display: flex;
+  }
+
+  /* Search aur ticker remove in mobile */
+  .search-bar-container {
+    display: none !important;
+  }
+
+  /* dropdown links accordion style */
+  .dropdown-links {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  .dropdown-links.show {
+    display: flex;
+  }
+
+  .dropdown-links a {
+    padding: 8px 0;
+    border: none;
+    font-size: 14px;
+  }
   }
     /* Hide News Section dropdown on desktop */
 /* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
 @media (min-width: 900px) {
   #newsToggle {
-    cursor: default;        /* not pointer */
+    cursor: pointer;        /* not pointer */
     pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
   }
   #newsToggle i {
@@ -643,9 +763,7 @@
 
 
   /* ensure dropdown panel is not shown on desktop even if .show gets added */
-  .dropdown-links {
-    display: none !important;
-  }
+
 }
 
 /* Mobile: hide main link, show mobile toggle */
@@ -655,6 +773,9 @@
 }
 
 
+   
+
+   
    
 
   .container1{
@@ -754,7 +875,7 @@
     .plan-card ul li {
       margin-bottom: 10px;
       font-size: 15px;
-      color: #333;
+      /* color: #333; */
       position: relative;
       padding-left: 18px;
     }
@@ -849,6 +970,13 @@
       width: fit-content;
       padding-bottom: 3px;
     }
+     .access-content ul li a{
+      text-decoration: none;
+      color: #000;
+     }
+      .access-content ul li a:hover{
+        color: #ae8a4c;
+      }
 
     .access-content ul li:last-child {
       border-bottom: 1px solid #000;
@@ -962,7 +1090,7 @@
       margin-bottom: 25px;
     }
 
-    .subscribe-btn {
+    /* .subscribe-btn {
       display: inline-block;
       background: #222;
       color: #b18445;
@@ -973,7 +1101,7 @@
       border-radius: 25px;
       text-decoration: none;
       transition: all 0.3s ease;
-    }
+    } */
 
     .subscribe-btn:hover {
       background: #b18445;
@@ -1273,7 +1401,7 @@
 </head>
 <body>
     
-  <header class="main-header">
+    <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1284,58 +1412,62 @@
 
     <div class="nav-links" id="navMenu">
       <a href="./about.html">About Us</a>
-     <!-- News Section -->
-       <!-- News Section -->
-<a href="./newss.html" class="desktop-link">
-  News Section <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-  News Section <i class="fas fa-chevron-down"></i>
-</a>
+      <!-- News Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          News Section <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+          News Section <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="newsDropdown">
-       <!-- <p><a href="./newss.html" id="dropdownMenu"></a></p> -->
+        <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          <div id="dropdownMenu1" class="dropdown-menu-container"></div>
         </div>
+      </div>
 
       <a href="./morning.html">Evening Chatter</a>
       <!-- Magazine Section -->
-      
-<a href="./magzin.html" class="desktop-link">
-  Magazine <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
-  Magazine <i class="fas fa-chevron-down"></i>
-</a>
+      <div class="nav-item-with-dropdown">
+        <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="magazineDropdown">
+        <div class="dropdown-links" id="magazineDropdown" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
            <a href="./magzin.html">Magazine</a>
           <a href="./ceo.html">CEO Profile</a>
           <a href="./company-profile.html">Company Profile</a>
           <a href="./Digitaledition.html">Digital Edition</a>
           <a href="./weekly.html">Newsletter</a>
         </div>
+      </div>
     
       <!-- Service Section -->
-<a href="./service.html" class="desktop-link">
-  Service <i class="fas fa-chevron-down"></i>
-</a>
-<a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
-  Service <i class="fas fa-chevron-down"></i>
-</a>
+      <div class="nav-item-with-dropdown">
+        <a href="./service.html" class="desktop-link" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
 
-        <div class="dropdown-links" id="serviceDropdown">
+        <div class="dropdown-links" id="serviceDropdown" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
           <a href="./service.html">Investor Campaign</a>
           <a href="./newsynd.html">News Syndication</a>
           <a href="./branding.html">Digital Branding</a>
           <a href="./pressoffice.html">Press Office</a>
-                <a href="./confrence.html">Conference</a>
+          <a href="./confrence.html">Conference</a>
         </div>
+      </div>
       <a href="./contant.html">Contact Us</a>
     </div>
-
+<div class="new">
     <div class="header-buttons" id="headerButtons">
    
-      <a href="./sub.html"><button class="subscribe-btn1">Subscribe</button></a>
+      <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
     <!-- call all pages -->
         <button class="login-btn" id="loginBtn" >Login</button>
 
@@ -1343,22 +1475,34 @@
         <div id="userProfile" style="display:none;"></div>
         <!-- call all pages -->
     </div>
+       <div class="search-box-wrapper">
+      <!-- <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div> -->
+
+      <button class="hamburger2" onclick="toggleMenu2()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
   </div>
+</div>
+  
 
   <div class="search-bar-container" id="searchContainer">
-    <div class="social-icons">
+    <!-- <div class="social-icons">
       <a href="https://www.linkedin.com/"><img src="./image/Group.png"></a>
       <a href="https://www.instagram.com/miningdiscovery"><img src="./image/Group (4).png"></a>
       <a href="https://x.com/MiningDiscovery"><img src="./image/Group (1).png"></a>
       <a href="https://www.youtube.com/@miningdiscovery"><img src="./image/Group (2).png"></a>
       <a href="https://www.facebook.com/"><img src="./image/Group (3).png"></a>
-    </div>
+    </div> -->
 
     <div class="search-bar-bg">
       <div class="scrolling-track" id="newsTicker"></div>
     </div>
 
-    <div class="search-box-wrapper">
+    <!-- <div class="search-box-wrapper">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder=" " />
         <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
@@ -1367,7 +1511,7 @@
       <button class="hamburger2" onclick="toggleMenu2()">
         <i class="fas fa-bars"></i>
       </button>
-    </div>
+    </div> -->
 
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
@@ -1402,6 +1546,7 @@
 
 
 
+
   <!-- Desktop Tabs -->
   <div class="desktop-tabs" id="desktopTabs">
     <div class="tab-btns">
@@ -1429,7 +1574,6 @@
       <a href="./branding.html">Digital Branding</a><br>
     </div>
     <div class="tab-content" id="magazineTab">
-       <a href="./magzin.html">Magazine</a>
       <a href="./ceo.html">CEO Profile</a><br>
       <a href="./weekly.html">Newsletter</a><br>
       <a href="./company-profile.html">Company Profile</a><br>
@@ -1463,6 +1607,7 @@
       <li><a href="./about.html">About Us</a></li>
     </ul>
   </div>
+   
 
   <!-- Header + Dropdown -->
 
@@ -1478,11 +1623,11 @@
       Choose the plan that fits you best. From casual readers to professionals, 
       our subscriptions give you trusted mining news, analysis, and magazine access.
     </p>
-    <a href="#" class="btn">VIEW PLAN</a>
+    <a href="#plan" class="btn">VIEW PLAN</a>
   </section>
     </div>
      
-  <div class="container2">
+  <div class="container2"  id="plan">
      <section class="plans-section">
     <div class="plans-container">
       
@@ -1551,9 +1696,9 @@
       </h2>
       <ul>
         <li>Magazines Flip Book Access</li>
-        <li>Latest Newletters Update from email</li>
-        <li>CEO Profiles</li>
-        <li>Company Profiles</li>
+        <li><a href="./letter.html">Latest Newletters Update from email</a></li>
+        <li><a href="./ceo.html">CEO Profiles</a></li>
+        <li><a href="./company-profile.html">Company Profiles</a></li>
         <li>Fun Area Access</li>
         <li>Digital Book</li>
       </ul>
@@ -1741,6 +1886,34 @@
       loadAnnouncements();
       loadWhatsOn();
     });
+  </script>
+   <script>
+      function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
+  });
+  function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+
   </script>
 
 </body>

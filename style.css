@@ -441,6 +441,7 @@
   min-width: 600px;  /* keeps dropdown wide and aligned */
 }
 
+
 /* Tabs */
 /* Tabs + content wrapper ek row me */
 .hamburger-menu .menu-row {
@@ -509,6 +510,10 @@
     font-size: 12px;
     overflow: hidden;
     height: 20px;
+}
+#dropdownMenu1{
+  display: flex;
+  flex-direction: column;
 }
     
 
@@ -847,8 +852,9 @@
   }
 
   .nav-item-with-dropdown .dropdown-links.show {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
   }
 
   .nav-item-with-dropdown .dropdown-links a {
@@ -1045,16 +1051,15 @@
   display: flex;
   justify-content: center;
   align-items: flex-start; /* to keep sticky top */
-  width: 100%;
+  width: 70%;
 }
 
 .leftslidebar
  {
- width: 100%;
-  max-width: 300px;          
-  height: calc(800vh - 120px);
+  width: 120px;
+  height: calc(100vh - 120px);
   position: sticky;
-  top: 10px;
+  top: 100px;
   overflow-y: auto;
   background: #fff;
  
@@ -1064,8 +1069,6 @@
   /* Hide scrollbar */
   scrollbar-width: none;   /* Firefox */
   -ms-overflow-style: none; /* IE & Edge */
-  overflow: auto;
-  border-top: 1px solid transparent;
 
 }
 
@@ -1270,6 +1273,13 @@
 }
 /* 💻 Large desktop / 2K+ resolution (2560px and above) */
 @media (min-width: 1920px) {
+  .sidebar-container {
+    display: flex
+;
+    justify-content: center;
+    align-items: flex-start;
+    width: 10%;
+  }
   .container2 {
     max-width: 1600px;   /* prevent content from stretching too much */
     gap: 30px;           /* add more spacing between sections */
@@ -2491,7 +2501,7 @@ border-radius: 10px;
   text-align: center;
 }
 
-.content button {
+/* .content button {
   color: #ae8a4c;
   padding: 10px 20px;
   margin: 10px auto;
@@ -2499,7 +2509,7 @@ border-radius: 10px;
   border-radius: 20px;
   background-color: #000;
   border: 1px solid black;
-}
+} */
 
 .card-news a {
   color: #000000;
@@ -2798,6 +2808,10 @@ border-radius: 10px;
   .column li {
     font-size: 13px;
     text-align: center;
+  }
+   .column li::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 /* Laptop screens (1024px - 1440px) */
