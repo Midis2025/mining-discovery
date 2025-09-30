@@ -803,10 +803,25 @@
       padding: 30px;
       gap: 20px;
     }
-
-    .left-sidebar,
-.right-sidebar {
+  .left-sidebar
+{
   width: 170px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  overflow-y: auto;
+  background: #fff;
+ 
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+ 
+.right-sidebar {
+  width: 250px;
   height: calc(100vh - 120px);
   position: sticky;
   top: 100px;
@@ -837,7 +852,8 @@
       height: auto;
     }
 
-    .main-content {
+
+  .main-content {
    
       max-width: 1200px;
       margin: 10px;
@@ -846,6 +862,41 @@
       background: #fff;
 
     }
+     .section-box {
+      border: 1px solid #ddd;
+      background: #fff;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-box img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .section-box p {
+      margin: 10px;
+      font-size: 15px;
+      color: #333;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+     .section-box a{
+      color: #ae8a4c;
+      text-decoration: none;
+     }
+
+
 /* 🔹 Responsive images / tables / iframes */
 .main-content img,
 .main-content iframe {

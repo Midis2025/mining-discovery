@@ -3,515 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subscription Plans</title>
+  <title>Our Advisors</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
       background: #fff;
       color: #000;
+      margin: 40px;
     }
 
-    .subscription-section {
-      padding: 80px 20px;
-    }
-
-    .subscription-section h4 {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 15px;
-      text-decoration: underline;
-    }
-
-    .subscription-section h1 {
-      font-size: 36px;
-      font-weight: bold;
-      margin: 10px 0;
-      line-height: 1.3;
-    }
-
-    .subscription-section h1 span {
-      color: #b68a40; /* Gold color */
-      border-bottom: 2px solid #b68a40;
-    }
-
-    .subscription-section p {
-      max-width: 650px;
-      margin: 20px auto;
-      font-size: 16px;
-      color: #333;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #1a1a1a;
-      color: #b68a40;
-      padding: 12px 35px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #333;
-    }
-    .plans-section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .plans-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .plan-card {
-      border: 1px solid #c8b37d;
-      border-radius: 10px;
-      padding: 25px 20px;
-      background: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .plan-card h3 {
+    /* Section Heading */
+    h2 {
       font-size: 20px;
-      margin-bottom: 10px;
-      color: #b68a40;
-    }
-
-    .plan-card h3 span {
-      display: block;
-      font-size: 18px;
-      color: #000;
-      margin-top: 5px;
-    }
-
-    .plan-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 15px 0;
-    }
-
-    .plan-card ul li {
-      margin-bottom: 10px;
-      font-size: 15px;
-      color: #333;
-      position: relative;
-      padding-left: 18px;
-    }
-
-    .plan-card ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #000;
-    }
-
-    .plan-card button {
-      background: #1a1a1a;
-      color: #b68a40;
-      border: none;
-      padding: 12px;
-      border-radius: 20px;
-      cursor: pointer;
       font-weight: 600;
-      width: 100%;
-      transition: 0.3s;
+      margin-bottom: 30px;
     }
 
-    .plan-card button:hover {
-      background: #333;
-    }
-
-    /* Advanced Plan (highlighted dark background) */
-    .plan-card.advanced {
-      background: #1a1a1a;
-      color: #fff;
-    }
-
-    .plan-card.advanced h3 {
-      color: #fff;
-    }
-
-    .plan-card.advanced button {
-      background: #b68a40;
-      color: #000;
-    }
-
-    .plan-card.advanced button:hover {
-      background: #d4af37;
-    }
-
-      .access-section {
+    /* Container for advisor cards */
+    .advisor-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      max-width: 1100px;
-      margin: auto;
-      padding: 60px 20px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    /* Left side phone image */
-    .phone-mockup img {
-      max-width: 280px;
-      height: auto;
-      display: block;
+    /* Advisor Card */
+    .advisor-card {
+      background: #eaeaea;
+      border-radius: 8px;
+      padding: 20px;
+      flex: 1 1 calc(50% - 20px);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
     }
 
-    /* Right side content */
-    .access-content {
-      max-width: 420px;
+    /* Image placeholder */
+    .advisor-card .image {
+      width: 100px;
+      height: 100px;
+      background: #333;
+      border-radius: 6px;
+      flex-shrink: 0;
     }
 
-    .access-content h2 {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 25px;
-      line-height: 1.5;
-    }
-
-    .access-content h2 span {
-      color: #b68a40;
-      border-bottom: 2px solid #b68a40;
-    }
-
-    .access-content ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .access-content ul li {
+    /* Content area */
+    .advisor-card .content h3 {
       font-size: 16px;
-      margin: 14px 0;
-      border-bottom: 1px solid #000;
-      width: fit-content;
-      padding-bottom: 3px;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
-    .access-content ul li:last-child {
-      border-bottom: 1px solid #000;
+    .advisor-card .content p {
+      font-size: 13px;
+      color: #333;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .advisor-card .content strong {
+      font-weight: 600;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .access-section {
+      .advisor-container {
         flex-direction: column;
-        text-align: center;
       }
-
-      .phone-mockup img {
-        max-width: 220px;
-      }
-
-      .access-content ul li {
-        margin: 12px auto;
-      }
-    }
-   .table{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-   }
-    .comparison {
-      width: 100%;
-      max-width: 900px;
-      border-collapse: collapse;
-      text-align: center;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-
-    .comparison th {
-      background: #b18445;
-      color: #fff;
-      padding: 15px;
-      font-weight: bold;
-    }
-
-    .comparison td {
-      border: 1px solid #ddd;
-      padding: 15px;
-      color: #333;
-    }
-
-    .comparison tr:nth-child(even) {
-      background: #fafafa;
-    }
-
-    .comparison .check {
-      color: #b18445;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .highlight {
-      background: #222;
-      color: #fff;
-      position: relative;
-      z-index: 2;
-    }
-
-    .highlight td, 
-    .highlight th {
-      color: #fff;
-      font-weight: bold;
-    }
-
-    .header-bar {
-      text-align: center;
-      background: #222;
-      color: #fff;
-      padding: 10px 30px;
-      border-radius: 20px;
-      margin-bottom: 25px;
-      display: inline-block;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .comparison td small {
-      font-size: 12px;
-      color: #666;
-    }
-    .container5{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .subscribe-section {
-      text-align: center;
-      max-width: 600px;
-      padding: 20px;
-    }
-
-    .subscribe-section h2 {
-      color: #b18445; /* gold/brown heading */
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .subscribe-section p {
-      color: #333;
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
-
-    .subscribe-btn {
-      display: inline-block;
-      background: #222;
-      color: #b18445;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      padding: 12px 40px;
-      border-radius: 25px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .subscribe-btn:hover {
-      background: #b18445;
-      color: #fff;
     }
   </style>
 </head>
 <body>
-  <section class="subscription-section">
-    <h4>Explore Our Subscription Plans</h4>
-    <h1>
-      Discover all that’s new. With <br>
-      <span>Mining Discovery...</span>
-    </h1>
-    <p>
-      Choose the plan that fits you best. From casual readers to professionals, 
-      our subscriptions give you trusted mining news, analysis, and magazine access.
-    </p>
-    <a href="#" class="btn">VIEW PLAN</a>
-  </section>
-  <div class="container2">
-     <section class="plans-section">
-    <div class="plans-container">
-      
-      <!-- Basic Plan -->
-      <div class="plan-card">
-        <h3>Basic Plan <span>$0</span></h3>
-        <ul>
-          <li>Unlimited access to daily news articles (free-to-read section)</li>
-          <li>First 4 issues of our magazine (digital)</li>
-          <li>Weekly curated newsletters</li>
-        </ul>
-        <button>Start Free</button>
+
+  <section>
+    <h2>Our Advisors</h2>
+    <div class="advisor-container">
+
+      <!-- Advisor 1 -->
+      <div class="advisor-card">
+        <div class="image"></div>
+        <div class="content">
+          <h3>Laura Stein</h3>
+          <p>
+            <strong>Mining Discovery Advisor, Laura Stein</strong> is one of the predecessors with
+            50-plus years of exceptional global mining industry experience. There exists a lighter shade
+            in her operational experience and knowledge matrix across mineral and market boundaries in
+            exploration, project development, and strategic advisory operations. Laura has been reputed
+            for the singular ability to guide projects through discovery and development while staying
+            true to her principles out of respect for the challenge put in front of her. Designing a full
+            range of support and services, she enables Mining Discovery in the identification,
+            evaluation, and advancement of promising mineral opportunities with confidence and transparency.
+          </p>
+        </div>
       </div>
 
-      <!-- Essential Plan -->
-      <div class="plan-card">
-        <h3>Essential Plan <span>$49 / month</span></h3>
-        <ul>
-          <li>Unlimited access to all magazine issues</li>
-          <li>Unlimited weekly newsletters and special briefings</li>
-          <li>Full article search & archives</li>
-          <li>Cancel anytime (monthly subscription model)</li>
-        </ul>
-        <button>Subscribe for 49$</button>
-      </div>
-
-      <!-- Advanced Plan (highlighted) -->
-      <div class="plan-card advanced">
-        <h3>Advanced Plan <span>$149 / 4 months</span></h3>
-        <ul>
-          <li>Exclusive access to CEO profiles (insights into leadership)</li>
-          <li>Exclusive access to company profiles (sector deep dives)</li>
-          <li>Access to premium “insight” reports or dossier downloads</li>
-          <li>4-month bundled subscription (cost advantage vs monthly)</li>
-        </ul>
-        <button>Subscribe for 149$</button>
-      </div>
-
-      <!-- Premium Plan -->
-      <div class="plan-card">
-        <h3>Premium Plan <span>$299 / year</span></h3>
-        <ul>
-          <li>Full 12-month uninterrupted access</li>
-          <li>Best value per month among all plans</li>
-          <li>Priority support & bonus perks (e.g. early access to new features)</li>
-        </ul>
-        <button>Subscribe for 299$</button>
+      <!-- Advisor 2 -->
+      <div class="advisor-card">
+        <div class="image"></div>
+        <div class="content">
+          <h3>Chris Powell</h3>
+          <p>
+            <strong>A Mining Discovery Advisor, Chris Powell</strong> has decades of experience in journalism
+            and in the precious metals markets. He is Connecticut-based and his background includes 56 years
+            at the Journal Inquirer, 44 of them as managing editor, while still writing influential political
+            columns. Chris is also a founding member of the Gold Anti-Trust Action Committee (GATA), and its
+            secretary/treasurer, an organization formed for the purpose of exposing and combating gold market
+            manipulations by the central banks. Through his writings for the GATA Dispatch as well as his
+            international advocacy, Chris has been an active voice against uncertainty and for fair dealing
+            in the gold and mineral markets. With his profound expertise and commitment, he takes a great
+            interest in Mining Discovery’s mandate in the early-stage mineral exploration and discovery.
+          </p>
+        </div>
       </div>
 
     </div>
   </section>
-  </div>
-  <div class="container3">
-    
-  <section class="access-section">
-    <!-- Left: Phone -->
-    <div class="phone-mockup">
-      <!-- Replace this with your actual PNG phone screenshot -->
-      <img src="./image/sub3.PNG" alt="Mining Discovery Mobile">
-    </div>
 
-    <!-- Right: Text -->
-    <div class="access-content">
-      <h2>
-        Access from <span>Mining Discovery...</span>
-      </h2>
-      <ul>
-        <li>Magazines Flip Book Access</li>
-        <li>Latest Newletters Update from email</li>
-        <li>CEO Profiles</li>
-        <li>Company Profiles</li>
-        <li>Fun Area Access</li>
-        <li>Digital Book</li>
-      </ul>
-    </div>
-  </section>
-
-  </div>
-  <div class="table">
- <div class="container4">
-        <div class="header-bar">PLAN COMPARISON</div>
-    <table class="comparison">
-      <tr>
-        <th>Features</th>
-        <th>Free</th>
-        <th>Starter</th>
-        <th class="highlight">Advanced</th>
-        <th>Premium</th>
-      </tr>
-      <tr>
-        <td>Daily News Articles</td>
-        <td class="check">✔</td>
-        <td class="check">✔</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Full Magazine Access</td>
-        <td>First 4 only</td>
-        <td class="check">✔</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Weekly Newsletters & special briefings</td>
-        <td class="check">✔</td>
-        <td class="check">✔</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Search & Archive access</td>
-        <td>Limited / basic</td>
-        <td class="check">✔</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>CEO Profiles</td>
-        <td>—</td>
-        <td>—</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Company Profiles</td>
-        <td>—</td>
-        <td>—</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Premium Reports</td>
-        <td>—</td>
-        <td>—</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Subscription Term</td>
-        <td>—</td>
-        <td>Month-to-month</td>
-        <td class="highlight">4 months bundle</td>
-        <td>12 months bundle</td>
-      </tr>
-      <tr>
-        <td>Best suited for</td>
-        <td>New users</td>
-        <td>Frequent readers</td>
-        <td class="highlight">Analysts & teams</td>
-        <td>Long-term power users</td>
-      </tr>
-    </table>
-  </div>
-
-  </div>
-  <div class="container5">
-      <div class="subscribe-section">
-    <h2>Never Miss an Update in Mining</h2>
-    <p>
-      Stay informed with news, insights, and magazines that move the industry forward. <br>
-      Select your plan today and secure your place at the forefront of mining knowledge.
-    </p>
-    <a href="#" class="subscribe-btn">Subscribe Now</a>
-  </div>
-  </div>
- 
-
-  </div>
 </body>
 </html>

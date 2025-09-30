@@ -2522,10 +2522,12 @@ document.getElementById("investorForm").addEventListener("submit", async functio
   };
 
   try {
-    const res = await fetch("/api/investors", {
+    const res = await fetch("https://admins.miningdiscovery.com/api/investors", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({
+        data: formData   // ✅ wrap inside "data"
+      })
     });
 
     if (res.ok) {
@@ -2533,6 +2535,8 @@ document.getElementById("investorForm").addEventListener("submit", async functio
       modal.style.display = "none";
       this.reset();
     } else {
+      const errorText = await res.text();
+      console.error("API Error:", errorText);
       alert("Something went wrong. Please try again.");
     }
   } catch (err) {
@@ -2541,6 +2545,8 @@ document.getElementById("investorForm").addEventListener("submit", async functio
   }
 });
 </script>
+
+
   <script src="./js/latestNews.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
