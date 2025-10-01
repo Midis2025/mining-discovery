@@ -1004,18 +1004,79 @@
         margin-top: 8px;
       }
 
-      .btns {
-        margin-top: 15px;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+      /* Buttons Container */
+.btns {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* General Button Style */
+.btn {
+  padding: 12px 28px;       /* Increased size */
+  font-size: 16px;          /* Bigger text */
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;      /* Rounded pill shape */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+/* Dark Button */
+.btn.dark {
+  background: #111;
+  color: #fff;
+}
+
+/* Gold Button */
+.btn.gold {
+  background: #ae8a4c;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(174, 138, 76, 0.4);
+}
+
+/* Subscribe Button */
+.btn.subscribe {
+background-color: #ae8a4c;
+  color: #fff;
+  width: 60%;       /* Slightly bigger width */
+  max-width: 300px; /* Limit width on larger screens */
+  margin-top: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .btn.subscribe {
+    width: 80%;
+  }
+}
+
 
       /* Magazine Cover */
       .magazine-cover img {
         width: 300px;
         border-radius: 4px;
+        margin-left: 70px;
       }
 
       /* Editions */
@@ -1145,6 +1206,7 @@
         .magazine-cover img {
           width: 100%;
           max-width: 100%;
+          margin-left: 0;
         }
 
         .magazine-grid {

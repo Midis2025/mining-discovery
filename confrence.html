@@ -701,6 +701,12 @@
           display: flex;
           flex-direction: column;
         }
+         #dropdownMenu1 {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
         .header-top {
           display: flex;
           justify-content: space-between; /* logo left, hamburger right */
@@ -2270,7 +2276,15 @@ ease;
         Discovery.
       </div>
     </div>
+    <script src="./js/news.js"></script>
     <script src="./script.js"></script>
+         <script src="./js/latestNews.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadLatestNews();
+      
+    });
+  </script>
     <script>
       function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
@@ -2361,7 +2375,7 @@ function toggleDropdownMobile(id) {
         newsCategory();
       });
     </script>
-    <script src="./js/latestNews.js"></script>
+   
    <script>
 const popup = document.getElementById("popupForm");
 const btn = document.getElementById("getStartedBtn");
