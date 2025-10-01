@@ -24,7 +24,8 @@
 
       <p>THE MINING INVESTMENT EVENT</p>
       <p>SAVE THE DATE -JUNE 2-4 2026</p>
-      <p>Some important highlighted news 4</p>
+      
+      <p>Centre des congrès de Québec | June 2-4, 2026</p>
     </div>
   </div>
 
@@ -814,17 +815,19 @@ U.S. Gold Corp. Sustainable Mining <br>in America’s Heartland</h4>
         </div>
 
         <!-- Center -->
-        <div class="footer-center">
-  <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="https://www.youtube.com/@miningdiscovery/videos">MULTIMEDIA VIDEOS</a></li>
-    <li><a href="sub.html">SUBSCRIPTION</a></li>
-    <li><a href="./magzin.html">MAGAZINES</a></li>
-    <li><a href="">COMMENT GUIDELINE</a></li>
-    <li><a href="">LEGAL NOTICE</a></li>
-  </ul>
-</div>
+      <div class="footer-center">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+           <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+  MULTIMEDIA VIDEOS
+</a></li>
+            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <li><a href="./magzin.html">MAGAZINES</a></li>
+            <li><a href="">COMMENT GUIDELINE</a></li>
+            <li><a href="">LEGAL NOTICE</a></li>
+          </ul>
+        </div>
       
 
 
@@ -851,26 +854,47 @@ function toggleMenu() {
 
 function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
 
-function toggleDropdown(e) {
-    // breakpoint: treat <=899px as mobile/tablet; >=900px as desktop
-    const isMobile = window.matchMedia('(max-width: 899px)').matches;
-
-    // If desktop, do nothing (prevent navigation) — keep text visible but non-opening.
-    if (!isMobile) {
-      if (e) e.preventDefault();
-      return;
-    }
-
-    // Mobile: toggle dropdown visibility as before
-    const dropdown = document.getElementById("dropdownMenu");
-    const header = document.getElementById("newsToggle");
-    if (dropdown) dropdown.classList.toggle("show");
-    if (header) header.classList.toggle("rotate");
+  // Agar menu already open hai, click pe close karo
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    return;
   }
 
+  // Menu open karo
+  menu.style.display = "block";
+
+  // 2 second baad menu automatically close ho jaye
+  setTimeout(() => {
+    menu.style.display = "none";
+  }, 2000); // 2000 ms = 2 seconds
+}
+
+// Page ke kisi bhi jagah pe click ho, menu close ho jaye
+document.addEventListener("click", function(event) {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
+
+  // Agar click hamburger ya menu ke andar nahi hai to close karo
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.display = "none";
+  }
+});
+
+// Dropdown toggle for mobile
+function toggleDropdown(e) {
+  const isMobile = window.matchMedia('(max-width: 899px)').matches;
+
+  if (!isMobile) {
+    if (e) e.preventDefault();
+    return;
+  }
+
+  const dropdown = document.getElementById("dropdownMenu");
+  const header = document.getElementById("newsToggle");
+  if (dropdown) dropdown.classList.toggle("show");
+  if (header) header.classList.toggle("rotate");
+}
 
 // Tabs logic
 const tabs = document.querySelectorAll(".tab-btn");
@@ -885,6 +909,7 @@ tabs.forEach(tab => {
   });
 });
 
+// Mobile dropdown toggle
 function toggleDropdownMobile(id) {
   const dropdown = document.getElementById(id);
   if (dropdown) {
@@ -892,8 +917,8 @@ function toggleDropdownMobile(id) {
   }
 }
 
+// Desktop dropdown hover
 function showDesktopDropdown(id) {
-  // Only show on desktop
   if (window.innerWidth >= 900) {
     const dropdown = document.getElementById(id);
     if (dropdown) {
@@ -903,7 +928,6 @@ function showDesktopDropdown(id) {
 }
 
 function hideDesktopDropdown(id) {
-  // Only hide on desktop
   if (window.innerWidth >= 900) {
     const dropdown = document.getElementById(id);
     if (dropdown) {
@@ -911,6 +935,7 @@ function hideDesktopDropdown(id) {
     }
   }
 }
+
 
 // Show popup only once in lifetime (until localStorage is cleared)
 document.addEventListener("DOMContentLoaded", function () {

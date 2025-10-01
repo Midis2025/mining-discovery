@@ -45,7 +45,7 @@
 
     .logo-social {
       
-  
+    padding-top: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -690,10 +690,11 @@
   }
 
   .logo {
-    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+    height: 70px; 
   }
 
   .hamburger {
+     padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
@@ -715,7 +716,7 @@
   .nav-links a {
     padding: 12px 0;
     width: 100%;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     color: #000;
   }
 
@@ -742,9 +743,9 @@
   }
 
   /* Search aur ticker remove in mobile */
-  .search-bar-container {
+  /* .search-bar-container {
     display: none !important;
-  }
+  } */
 
   /* dropdown links accordion style */
   .dropdown-links {
@@ -811,8 +812,8 @@
       font-weight: 500;
       margin-bottom: 10px;
       color: #111;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+   border-bottom: 2px solid #ae8a4c;
+    display: inline-block;
     }
 
     .news-section h1 {
@@ -1688,7 +1689,10 @@ ease;
           <p><a href="./newsynd.html">News Syndication</a></p>
           <p><a href="./branding.html">Digital Branding</a></p>
           <p><a href="./pressoffice.html">Press Office</a></p>
-          <p><a href="https://youtube.com/">Youtube</a></p>
+             <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+  YouTube
+</a>
+
           <p><a href="./confrence.html">Conference Media Coverage</a></p>
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
@@ -2058,17 +2062,19 @@ Announcements</h3>
       </div>
 
       <!-- Center -->
-         <div class="footer-center">
-  <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="https://www.youtube.com/@miningdiscovery/videos">MULTIMEDIA VIDEOS</a></li>
-    <li><a href="sub.html">SUBSCRIPTION</a></li>
-    <li><a href="./magzin.html">MAGAZINES</a></li>
-    <li><a href="">COMMENT GUIDELINE</a></li>
-    <li><a href="">LEGAL NOTICE</a></li>
-  </ul>
-</div>
+    <div class="footer-center">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+           <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+  MULTIMEDIA VIDEOS
+</a></li>
+            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <li><a href="./magzin.html">MAGAZINES</a></li>
+            <li><a href="">COMMENT GUIDELINE</a></li>
+            <li><a href="">LEGAL NOTICE</a></li>
+          </ul>
+        </div>
 
     
       
@@ -2086,62 +2092,78 @@ Announcements</h3>
   </div>
   <script src="script.js"></script>
     <script>
-     function toggleMenu2() {
-    const menu = document.getElementById("hamburgerMenu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2"); // aapke hamburger icon class
+
+  // Agar already open hai, close karo aur return
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    return;
   }
 
-  // Select tabs and contents
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".menu-content");
+  // Menu open karo
+  menu.style.display = "block";
 
+  // 2 second ke baad automatically close
+  setTimeout(() => {
+    menu.style.display = "none";
+  }, 2000);
+}
+
+// Click anywhere on page to close menu
+document.addEventListener("click", function (event) {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
+
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.display = "none";
+  }
+});
+
+// Select tabs and contents
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
+  });
+});
+
+// --------- FORCE ONLY SERVICES ---------
+document.addEventListener("DOMContentLoaded", function () {
+  // Hide all tabs except services
   tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
-
-      // Add active to clicked
+    if (tab.dataset.target !== "about") {   // "about" = Services ka content id
+      tab.style.display = "none";
+    } else {
       tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
-    });
+    }
   });
 
-  // --------- FORCE ONLY SERVICES ---------
-  document.addEventListener("DOMContentLoaded", function () {
-    // Hide all tabs except services
-    tabs.forEach(tab => {
-      if (tab.dataset.target !== "about") {   // "about" = Services ka content id
-        tab.style.display = "none";
-      } else {
-        tab.classList.add("active");
-      }
-    });
-
-    // Hide all contents except services
-    contents.forEach(content => {
-      if (content.id !== "about") {
-        content.style.display = "none";
-      } else {
-        content.classList.add("active");
-        content.style.display = "grid";
-      }
-    });
+  // Hide all contents except services
+  contents.forEach(content => {
+    if (content.id !== "about") {
+      content.style.display = "none";
+    } else {
+      content.classList.add("active");
+      content.style.display = "grid";
+    }
   });
-    </script>
-  <script>
-    function toggleDropdown() {
-      const dropdown = document.getElementById("dropdownMenu");
-      const header = document.getElementById("newsToggle");
-      dropdown.classList.toggle("show");
-      header.classList.toggle("rotate");
-    }
-    function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
+});
+
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
+
   </script>
   <script>// show  extra news
     document.getElementById("showMoreBtn").addEventListener("click", function () {

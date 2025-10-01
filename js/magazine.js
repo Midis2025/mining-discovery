@@ -5,6 +5,7 @@ async function loadMagazines() {
     const magazines = json.data;
 
     const container = document.getElementById("magazines-container");
+    if (!container) return console.warn("magazines-container not found in DOM");
     container.innerHTML = "";
 
     magazines.forEach((mag, index) => {
@@ -13,11 +14,10 @@ async function loadMagazines() {
         ? new Date(mag.publishDate).toLocaleDateString("en-US", { month: "long", year: "numeric" })
         : "Unknown Date";
 
-      // ✅ PDF & Cover
       const pdfUrl = mag.pdf?.url || "#";
       const imgUrl = mag.coverImage?.formats?.medium?.url || mag.coverImage?.url || "./fallback.jpg";
 
-      // ✅ Card (clickable)
+      // Create magazine card
       const card = document.createElement("div");
       card.classList.add("edition-card");
       card.innerHTML = `
@@ -26,15 +26,12 @@ async function loadMagazines() {
         <button>View More</button>
       `;
 
-      // 👉 When clicked → show magazine details
+      // Click → show magazine details
       card.addEventListener("click", () => showMagazineDetail(mag));
-
       container.appendChild(card);
 
-      // Show the first magazine by default
-      if (index === 0) {
-        showMagazineDetail(mag);
-      }
+      // Show first magazine by default
+      if (index === 0) showMagazineDetail(mag);
     });
   } catch (err) {
     console.error("Error loading magazines:", err);
@@ -43,6 +40,7 @@ async function loadMagazines() {
 
 function showMagazineDetail(mag) {
   const detailContainer = document.getElementById("magazine-detail");
+  if (!detailContainer) return console.warn("magazine-detail container not found in DOM");
 
   const title = mag.Title || "Untitled Magazine";
   const publishDate = mag.publishDate
@@ -51,21 +49,26 @@ function showMagazineDetail(mag) {
 
   const pdfUrl = mag.pdf?.url || "#";
   const imgUrl = mag.coverImage?.formats?.medium?.url || mag.coverImage?.url || "./fallback.jpg";
-  const description = mag.description || "No description available.";
+  
+  // Correct field name to match backend
+  const description = mag.Description || "No description available.";
+
+  // Parse features if available
+  const featuresArray = mag.features
+    ? mag.features.split('\n').map(f => f.trim()).filter(f => f.length > 0)
+    : [];
+
+  const featuresHtml = featuresArray.length
+    ? featuresArray.map(f => `<li>${f}</li>`).join('')
+    : '<li>No features available.</li>';
 
   detailContainer.innerHTML = `
     <div class="magazine-info">
       <h3>${title} (${publishDate})</h3>
       <p class="produced-by">Produced by Mining Discovery</p>
       <p class="desc">${description}</p>
-      <p class="toggle-btn">View more ▼</p>
       <ul class="features-list">
-        <li>Global Mining Trends & Insights...</li>
-        <li>Rare Earths and Critical Minerals Outlook...</li>
-        <li>Gold, Lithium & Copper Market Shifts..</li>
-        <li>Geopolitics and Commodity Price Impacts...</li>
-        <li>Sustainability and Green Mining Innovations...</li>
-        <li>Key Corporate Moves and Industry Highlights...</li>
+        ${featuresHtml}
       </ul>
       <div class="button">
         <button class="btn subscribe">Subscribe to Get the Access</button>
@@ -82,4 +85,5 @@ function showMagazineDetail(mag) {
   `;
 }
 
-loadMagazines();
+// Load magazines after DOM is ready
+document.addEventListener("DOMContentLoaded", loadMagazines);

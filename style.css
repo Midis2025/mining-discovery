@@ -239,7 +239,7 @@
     }
     /* main-header */
 
-    .main-header {
+   .main-header {
       margin-bottom: 10px;
       background-color: #fff;
       padding: 5px;
@@ -255,7 +255,7 @@
 
     .logo-social {
       
-  
+    padding-top: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -290,7 +290,7 @@
       color: #8d6d2a;
     }
 
-  .header-buttons {
+    .header-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -314,6 +314,7 @@
   text-align: center;
   box-sizing: border-box;
 }
+
 
     .login-btn {
       background-color:#ae8a4c;
@@ -448,7 +449,6 @@
   min-width: 600px;  /* keeps dropdown wide and aligned */
 }
 
-
 /* Tabs */
 /* Tabs + content wrapper ek row me */
 .hamburger-menu .menu-row {
@@ -517,10 +517,6 @@
     font-size: 12px;
     overflow: hidden;
     height: 20px;
-}
-#dropdownMenu1{
-  display: flex;
-  flex-direction: column;
 }
     
 
@@ -902,9 +898,14 @@
     width: 100%;
     gap: 27%;
   }
+  #dropdownMenu1{
+  display: flex;
+  flex-direction: column;
+}
+   
 
   .logo {
-    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+    height: 70px; 
   }
 
   .hamburger {
@@ -913,6 +914,7 @@
     background: none;
     border: none;
     color: #ae8a4c;
+    padding-right: 11px;
   }
 
   /* nav links column में */
@@ -929,7 +931,7 @@
   .nav-links a {
     padding: 12px 0;
     width: 100%;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     color: #000;
   }
 
@@ -956,9 +958,9 @@
   }
 
   /* Search aur ticker remove in mobile */
-  .search-bar-container {
+  /* .search-bar-container {
     display: none !important;
-  }
+  } */
 
   /* dropdown links accordion style */
   .dropdown-links {
@@ -1008,7 +1010,6 @@
 
 
    
-
 /* drop-down */
 
 
@@ -1120,11 +1121,17 @@
   font-size: 20px;
   margin-bottom: 10px;
 }
+.main-card h2:hover {
+ color: #ae8a4c;
+}
 
 .main-card p {
   font-size: 15px;
   line-height: 1.6;
   color: #333;
+}
+.main-card p:hover {
+ color: #ae8a4c;
 }
 
 .date {
@@ -1736,6 +1743,9 @@ height: auto;
       margin-bottom: 10px;
       color: white;
     }
+    .post-text:hover{
+      color: #ae8a4c;
+    }
 
     .btn-more {
      
@@ -1779,6 +1789,9 @@ height: auto;
       margin-bottom: 10px;
       color: white;
       flex-grow: 1;
+    }
+    .card1 h4:hover{
+      color: #ae8a4c;
     }
 
     .container6 {
@@ -2041,7 +2054,7 @@ height: auto;
 }
 
 .more-btn {
-  display: inline-block;
+  /* display: inline-block;
   padding: 10px 16px;
   background-color: #ae8a4c;
   color: white;
@@ -2049,7 +2062,7 @@ height: auto;
   border-radius: 25px;
   text-decoration: none;
   text-align: center;
-  transition: background 0.3s;
+  transition: background 0.3s; */
   float: right;
 }
 
@@ -2129,7 +2142,7 @@ height: auto;
       }
 
       .more-btn {
-    width: 30%;
+    width: 25%;
     margin: 0 auto;   /* center align */
     display: block;   /* ensure it's centered */
     text-align: center;
@@ -2289,32 +2302,16 @@ height: auto;
 
     
 .more-btn {
-  align-self: flex-end;
-
- 
-  font-weight: 700;
-  padding: 8px 18px;
-  font-size: 13px;
-  background-color: #fff;
- 
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+   
+    border: 1px solid #ae8a4c;
+    color: #AE8A4C;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
 
 
-
-
- 
-       border: 1px solid #ae8a4c;
-     color: #ae8a4c;
-      padding: 6px 12px;
-    
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 13px;
 
 
 
@@ -2738,12 +2735,13 @@ border-radius: 10px;
    color: #000;
   
 }
-
-
-
-.column li:last-child {
- 
+.column a:hover{
+  color: #ae8a4c;
 }
+
+
+
+
 
 .highlight-box {
   padding: 5px;
@@ -2965,6 +2963,9 @@ border-radius: 10px;
   color: #555;
   font-size: 13px;
   margin-bottom: 6px;
+}
+.video-info h4:hover{
+  color: #ae8a4c;
 }
 
 .arrow {

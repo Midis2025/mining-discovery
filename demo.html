@@ -1,147 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team Cards Animation</title>
-  <style>
-    /* Team container */
-    .team-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      gap: 30px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparison Table</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f4f4;
+    margin: 0;
+  }
 
-    .team-container h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
+  .comparison {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  }
 
-    /* Team card */
-    .team-card {
-      display: flex;
-      align-items: flex-start;
-      background: #eaeaea; /* light grey */
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 40px;
-      width: 600px;
-      max-width: 90%;
+  .comparison th {
+    background: #b18445;
+    color: #fff;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
 
-      /* Initial hidden state */
-      opacity: 0;
-      transition: all 0.8s ease;
-    }
+  .comparison td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
 
-    /* Default card animation: from right */
-    .team-card {
-      transform: translateX(100px);
-    }
+  .comparison tr:nth-child(even) {
+    background: #fafafa;
+  }
 
-    /* Reverse card animation: from left */
-    .team-card.reverse {
-      flex-direction: row-reverse;
-      transform: translateX(-100px);
-    }
+  .check {
+    color: #b18445;
+    font-size: 18px;
+    font-weight: bold;
+  }
 
-    /* Visible state */
-    .team-card.show {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* Image placeholder */
-    .team-card .image {
-      width: 120px;
-      height: 120px;
-      background: #333;
-      border-radius: 4px;
-      flex-shrink: 0;
-    }
-
-    /* Text area */
-    .team-card .content {
-      margin-left: 20px;
-      margin-right: 20px;
-    }
-
-    .team-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .team-card p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #333;
-      text-align: justify;
-    }
-
-    .team-card p strong {
-      font-weight: 600;
-    }
-  </style>
+  .highlight-col {
+    background: #222 !important;
+    color: #fff !important;
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
 
-  <div class="container2">
-    <div class="team-container">
-      <h2>Management Team</h2>
+<table class="comparison" id="comparisonTable">
+  <tr>
+    <th>Features</th>
+    <th data-col="1">Free</th>
+    <th data-col="2">Starter</th>
+    <th data-col="3">Advanced</th>
+    <th data-col="4">Premium</th>
+  </tr>
+  <tr>
+    <td>Daily News Articles</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Full Magazine Access</td>
+    <td>First 4 only</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Weekly Newsletters</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Search & Archive</td>
+    <td>Limited</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>CEO Profiles</td>
+    <td>—</td>
+    <td>—</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Company Profiles</td>
+    <td>—</td>
+    <td>—</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Premium Reports</td>
+    <td>—</td>
+    <td>—</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Subscription Term</td>
+    <td>—</td>
+    <td>Month-to-month</td>
+    <td>4 months bundle</td>
+    <td>12 months bundle</td>
+  </tr>
+  <tr>
+    <td>Best suited for</td>
+    <td>New users</td>
+    <td>Frequent readers</td>
+    <td>Analysts & teams</td>
+    <td>Long-term users</td>
+  </tr>
+</table>
 
-      <!-- Card 1 -->
-      <div class="team-card">
-        <div class="image"></div>
-        <div class="content">
-          <h3>Gaurav Sharma</h3>
-          <p>
-            <strong>Gaurav Sharma is a Founder of Mining Discovery</strong>, bringing a word to the know-how
-            in media technology, communication, and mining networks to innovate on exploration. With a unique
-            technical insight and connectivity with the industry, he has developed platforms that serve as a bridge
-            from discovery to opportunity.
-          </p>
-        </div>
-      </div>
+<script>
+const table = document.getElementById("comparisonTable");
+const headers = table.querySelectorAll("th[data-col]");
 
-      <!-- Card 2 -->
-      <div class="team-card reverse">
-        <div class="image"></div>
-        <div class="content">
-          <h3>Sagar Bakshi</h3>
-          <p>
-            <strong>Sagar Bakshi is a Co-founder of Mining Discovery</strong>, brings with him a strong foothold
-            in resource journalism, editorial direction, and market strategy. As someone who has analyzed global
-            mining developments for years, he brings a sharp lens toward industry trends and opportunities.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+function highlightColumn(colIndex) {
+  // Remove previous highlights from all cells
+  table.querySelectorAll("td, th").forEach(cell => cell.classList.remove("highlight-col"));
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const cards = document.querySelectorAll(".team-card");
+  // Highlight only the clicked column (including check cells)
+  table.querySelectorAll("tr").forEach(row => {
+    const cells = row.querySelectorAll("th, td");
+    if(cells[colIndex]) cells[colIndex].classList.add("highlight-col");
+  });
+}
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-              observer.unobserve(entry.target); // run only once
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
+// Add click event to each header
+headers.forEach(header => {
+  header.addEventListener("click", () => {
+    const colIndex = parseInt(header.getAttribute("data-col"));
+    highlightColumn(colIndex);
+  });
+});
 
-      cards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.3}s`; // stagger effect
-        observer.observe(card);
-      });
-    });
-  </script>
+// Default highlight on page load (Advanced column, data-col=3)
+highlightColumn(3);
+</script>
+
 </body>
 </html>

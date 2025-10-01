@@ -34,7 +34,7 @@
 
     .logo-social {
       
-  
+    padding-top: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -683,6 +683,7 @@
   }
 
   .hamburger {
+    padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
@@ -704,7 +705,7 @@
   .nav-links a {
     padding: 12px 0;
     width: 100%;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     color: #000;
   }
 
@@ -731,9 +732,9 @@
   }
 
   /* Search aur ticker remove in mobile */
-  .search-bar-container {
+  /* .search-bar-container {
     display: none !important;
-  }
+  } */
 
   /* dropdown links accordion style */
   .dropdown-links {
@@ -798,10 +799,11 @@
     }
 
     .subscription-section h4 {
-      font-size: 22px;
+      font-size: 25px;
       font-weight: 500;
       margin-bottom: 15px;
-      text-decoration: underline;
+  border-bottom: 2px solid #ae8a4c;
+    display: inline-block;
     }
 
     .subscription-section h1 {
@@ -862,16 +864,28 @@
       justify-content: space-between;
     }
 
+/* Active card background */
+.plan-card.active {
+  background: #b68a40;  /* Choose any color you want */
+  color: #fff;           /* Change text color for contrast */
+}
+
+.plan-card.active button {
+  background: #fff;      /* Optional: change button color when active */
+  color: #b68a40;
+}
+
     .plan-card h3 {
       font-size: 20px;
       margin-bottom: 10px;
-      color: #b68a40;
+      /* color: #b68a40; */
+      color: black;
     }
 
     .plan-card h3 span {
       display: block;
       font-size: 18px;
-      color: white;
+      color:black;
       margin-top: 5px;
     }
 
@@ -884,7 +898,7 @@
     .plan-card ul li {
       margin-bottom: 10px;
       font-size: 15px;
-      /* color: #333; */
+      color: #333;
       position: relative;
       padding-left: 18px;
     }
@@ -915,18 +929,22 @@
 
     /* Advanced Plan (highlighted dark background) */
     .plan-card.advanced {
-      background: #1a1a1a;
+      /* background: #1a1a1a; */
       color: #fff;
     }
 
     .plan-card.advanced h3 {
-      color: #fff;
+      /* color: #fff; */
     }
 
     .plan-card.advanced button {
-      background: #b68a40;
-      color: #000;
+      background:black;
+      color:#ae8a4c;
     }
+    .plan-card.advanced.active button {
+  background: #fff;      
+  color: #b68a40;
+}
 
     .plan-card.advanced button:hover {
       background: #d4af37;
@@ -1006,74 +1024,132 @@
         margin: 12px auto;
       }
     }
-   .table{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-   }
-    .comparison {
-      width: 100%;
-      max-width: 900px;
-      border-collapse: collapse;
-      text-align: center;
-      overflow: hidden;
-      border-radius: 8px;
-    }
 
-    .comparison th {
-      background: #b18445;
-      color: #fff;
-      padding: 15px;
-      font-weight: bold;
-    }
+  .table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  overflow-x: auto; /* allow horizontal scroll if table is wider */
+}
 
-    .comparison td {
-      border: 1px solid #ddd;
-      padding: 15px;
-      color: #333;
-    }
+.header-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  flex-wrap: wrap; /* stack buttons if needed */
+}
 
-    .comparison tr:nth-child(even) {
-      background: #fafafa;
-    }
+.header-bar {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #b68a40;
+  padding: 12px 35px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  margin: 5px;
+}
 
-    .comparison .check {
-      color: #b18445;
-      font-size: 18px;
-      font-weight: bold;
-    }
+.comparison {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); /* 3D effect */
+  transform: perspective(1200px) rotateX(2deg);
+  transition: transform 0.4s ease;
+}
 
-    .highlight {
-      background: #222;
-      color: #fff;
-      position: relative;
-      z-index: 2;
-    }
+.comparison:hover {
+  transform: perspective(1200px) rotateX(0deg); /* smooth hover */
+}
 
-    .highlight td, 
-    .highlight th {
-      color: #fff;
-      font-weight: bold;
-    }
+.comparison th {
+  background: #b18445;
+  color: #fff;
+  padding: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 16px;
+}
 
-    .header-bar {
-      text-align: center;
-      background: #222;
-      color: #fff;
-      padding: 10px 30px;
-      border-radius: 20px;
-      margin-bottom: 25px;
-      display: inline-block;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+.comparison td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  color: #333;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-size: 14px;
+}
 
-    .comparison td small {
-      font-size: 12px;
-      color: #666;
-    }
+.comparison tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.comparison .check {
+  color: #b18445;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.highlight-col {
+  background: #222 !important;
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.comparison td small {
+  font-size: 12px;
+  color: #666;
+}
+
+/* 🔹 Responsive Styles */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .comparison {
+    max-width: 100%;
+    font-size: 14px;
+  }
+  .comparison th, .comparison td {
+    padding: 12px;
+    font-size: 13px;
+  }
+  .header-bar {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .table {
+    padding: 10px;
+    overflow-x: auto; /* enable horizontal scroll */
+  }
+
+  .comparison {
+    font-size: 13px;
+    transform: none; /* remove 3D tilt for better readability */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .comparison th, .comparison td {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .header-bar {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+}
+
     .container5{
       display: flex;
       justify-content: center;
@@ -1717,79 +1793,82 @@
   </div>
   <div class="table">
  <div class="container4">
-        <div class="header-bar">PLAN COMPARISON</div>
-    <table class="comparison">
-      <tr>
-        <th>Features</th>
-        <th>Free</th>
-        <th>Starter</th>
-        <th class="highlight">Advanced</th>
-        <th>Premium</th>
-      </tr>
-      <tr>
-        <td>Daily News Articles</td>
-        <td class="check">✔</td>
-        <td class="check">✔</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Full Magazine Access</td>
-        <td>First 4 only</td>
-        <td class="check">✔</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Weekly Newsletters & special briefings</td>
-        <td class="check">✔</td>
-        <td class="check">✔</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Search & Archive access</td>
-        <td>Limited / basic</td>
-        <td class="check">✔</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>CEO Profiles</td>
-        <td>—</td>
-        <td>—</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Company Profiles</td>
-        <td>—</td>
-        <td>—</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Premium Reports</td>
-        <td>—</td>
-        <td>—</td>
-        <td class="check highlight">✔</td>
-        <td class="check">✔</td>
-      </tr>
-      <tr>
-        <td>Subscription Term</td>
-        <td>—</td>
-        <td>Month-to-month</td>
-        <td class="highlight">4 months bundle</td>
-        <td>12 months bundle</td>
-      </tr>
-      <tr>
-        <td>Best suited for</td>
-        <td>New users</td>
-        <td>Frequent readers</td>
-        <td class="highlight">Analysts & teams</td>
-        <td>Long-term power users</td>
-      </tr>
-    </table>
+  <div class="header-btn">
+    <div class="header-bar">PLAN COMPARISON</div>
+  </div>
+    
+ <table class="comparison" id="comparisonTable">
+  <tr>
+    <th>Features</th>
+    <th data-col="1">Free</th>
+    <th data-col="2">Starter</th>
+    <th data-col="3">Advanced</th>
+    <th data-col="4">Premium</th>
+  </tr>
+  <tr>
+    <td>Daily News Articles</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Full Magazine Access</td>
+    <td>First 4 only</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Weekly Newsletters</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Search & Archive</td>
+    <td>Limited</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>CEO Profiles</td>
+    <td>—</td>
+    <td>—</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Company Profiles</td>
+    <td>—</td>
+    <td>—</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Premium Reports</td>
+    <td>—</td>
+    <td>—</td>
+    <td class="check">✔</td>
+    <td class="check">✔</td>
+  </tr>
+  <tr>
+    <td>Subscription Term</td>
+    <td>—</td>
+    <td>Month-to-month</td>
+    <td>4 months bundle</td>
+    <td>12 months bundle</td>
+  </tr>
+  <tr>
+    <td>Best suited for</td>
+    <td>New users</td>
+    <td>Frequent readers</td>
+    <td>Analysts & teams</td>
+    <td>Long-term users</td>
+  </tr>
+</table>
   </div>
 
   </div>
@@ -1839,17 +1918,19 @@
       </div>
 
       <!-- Center -->
-     <div class="footer-center">
-  <ul>
-      <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
-    <li><a href="sub.html">SUBSCRIPTION</a></li>
-    <li><a href="./magzin.html">MAGAZINES</a></li>
-    <li><a href="">COMMENT GUIDELINE</a></li>
-    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
-  </ul>
-</div>
+    <div class="footer-center">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+           <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+  MULTIMEDIA VIDEOS
+</a></li>
+            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <li><a href="./magzin.html">MAGAZINES</a></li>
+            <li><a href="">COMMENT GUIDELINE</a></li>
+            <li><a href="">LEGAL NOTICE</a></li>
+          </ul>
+        </div>
 
     
       
@@ -1922,6 +2003,43 @@
         dropdown.classList.toggle("show");
       }
     }
+
+// table
+const table = document.getElementById("comparisonTable");
+const headers = table.querySelectorAll("th[data-col]");
+
+headers.forEach(header => {
+  header.addEventListener("click", () => {
+    const colIndex = header.getAttribute("data-col");
+
+    // Remove highlight from all cells
+    table.querySelectorAll("td, th").forEach(cell => {
+      cell.classList.remove("highlight-col");
+    });
+
+    // Highlight only clicked column
+    table.querySelectorAll("tr").forEach(row => {
+      const cells = row.querySelectorAll("th, td");
+      if(cells[colIndex]) {
+        cells[colIndex].classList.add("highlight-col");
+      }
+    });
+  });
+});
+
+// plan-card
+const cards = document.querySelectorAll('.plan-card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    // Remove 'active' class from all cards
+    cards.forEach(c => c.classList.remove('active'));
+    
+    // Add 'active' class to clicked card
+    card.classList.add('active');
+  });
+});
+
 
   </script>
 

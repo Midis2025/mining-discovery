@@ -46,7 +46,7 @@
 
     .logo-social {
       
-  
+    padding-top: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -696,10 +696,11 @@
   }
 
   .logo {
-    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+    height: 70px; 
   }
 
   .hamburger {
+     padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
@@ -721,7 +722,7 @@
   .nav-links a {
     padding: 12px 0;
     width: 100%;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     color: #000;
   }
 
@@ -748,9 +749,9 @@
   }
 
   /* Search aur ticker remove in mobile */
-  .search-bar-container {
+  /* .search-bar-container {
     display: none !important;
-  }
+  } */
 
   /* dropdown links accordion style */
   .dropdown-links {
@@ -1777,16 +1778,18 @@ gap: 15px;
       <!-- Center -->
       
      <div class="footer-center">
-  <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="https://www.youtube.com/@miningdiscovery/videos">MULTIMEDIA VIDEOS</a></li>
-    <li><a href="sub.html">SUBSCRIPTION</a></li>
-    <li><a href="./magzin.html">MAGAZINES</a></li>
-    <li><a href="">COMMENT GUIDELINE</a></li>
-    <li><a href="">LEGAL NOTICE</a></li>
-  </ul>
-</div>
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+           <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+  MULTIMEDIA VIDEOS
+</a></li>
+            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <li><a href="./magzin.html">MAGAZINES</a></li>
+            <li><a href="">COMMENT GUIDELINE</a></li>
+            <li><a href="">LEGAL NOTICE</a></li>
+          </ul>
+        </div>
     
       
      
@@ -1918,74 +1921,85 @@ function clearForm() {
       <script> 
   
    function toggleMenu2() {
-    const menu = document.getElementById("hamburgerMenu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
+
+  // Agar already open hai, close karo aur return
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    return;
   }
 
-  // Select tabs and contents
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".menu-content");
+  // Menu open karo
+  menu.style.display = "block";
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
+  // 2 second ke baad automatically close
+  setTimeout(() => {
+    menu.style.display = "none";
+  }, 2000);
+}
 
-      // Add active to clicked
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
+// Click anywhere on page to close menu
+document.addEventListener("click", function (event) {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
+
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.display = "none";
+  }
+});
+
+// Tabs logic
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tabs.forEach((t) => t.classList.remove("active"));
+    contents.forEach((c) => c.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
+  });
+});
+
+// PAGE CHECK FOR MAGAZINE
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPage = window.location.pathname.split("/").pop();
+  const magazinePages = [
+    "magzin.html",
+    "ceo.html",
+    "weekly.html",
+    "company-profile.html",
+    "Digitaledition.html",
+  ];
+
+  if (magazinePages.includes(currentPage)) {
+    // Mobile menu
+    document.querySelectorAll(".menu-content").forEach((el) => (el.style.display = "none"));
+    const magSection = document.getElementById("magazine");
+    if (magSection) magSection.style.display = "flex";
+
+    // Desktop tabs
+    document.querySelectorAll(".tab-content").forEach((el) => (el.style.display = "none"));
+    const magTab = document.getElementById("magazineTab");
+    if (magTab) magTab.style.display = "block";
+
+    // active magazine tab
+    document.querySelectorAll(".tab-btn").forEach((el) => el.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach((el) => {
+      if (el.textContent.trim() === "Magazine") el.classList.add("active");
     });
-  });
+  }
+});
 
-  // --------- PAGE CHECK FOR MAGAZINE ---------
-  document.addEventListener("DOMContentLoaded", function () {
-    const currentPage = window.location.pathname.split("/").pop();
-
-    const magazinePages = [
-      "magzin.html",
-      "ceo.html",
-      "weekly.html",
-      "company-profile.html",
-      "Digitaledition.html"
-    ];
-
-    if (magazinePages.includes(currentPage)) {
-      // Mobile menu: 
-      document.querySelectorAll(".menu-content").forEach(el => {
-        el.style.display = "none";
-      });
-      const magSection = document.getElementById("magazine");
-      if (magSection) magSection.style.display = "flex";
-
-      // Desktop tabs: 
-      document.querySelectorAll(".tab-content").forEach(el => {
-        el.style.display = "none";
-      });
-      const magTab = document.getElementById("magazineTab");
-      if (magTab) magTab.style.display = "block";
-
-      // active magazine tab
-      document.querySelectorAll(".tab-btn").forEach(el => el.classList.remove("active"));
-      document.querySelectorAll(".tab-btn").forEach(el => {
-        if (el.textContent.trim() === "Magazine") {
-          el.classList.add("active");
-        }
-      });
-    }
-  });
-
-  
-  function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
-  
-  
-  
-  
+// Mobile dropdown toggle
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
   
   // Sab thumbnails ko select karo
     const thumbs = document.querySelectorAll('.thumb');

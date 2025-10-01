@@ -76,7 +76,7 @@
 
     .logo-social {
       
-  
+    padding-top: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -746,7 +746,7 @@
   .nav-links a {
     padding: 12px 0;
     width: 100%;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     color: #000;
   }
 
@@ -773,9 +773,9 @@
   }
 
   /* Search aur ticker remove in mobile */
-  .search-bar-container {
+  /* .search-bar-container {
     display: none !important;
-  }
+  } */
 
   /* dropdown links accordion style */
   .dropdown-links {
@@ -1513,7 +1513,7 @@
     <p><strong>Phone:</strong> +1 862 295 0117</p>
     <p><strong>Office Address:</strong> Address: 180 Layfatte Street, Passaic, New Jersey 07055, USA</p>
 
-    <div class="map">
+    <div class="map" id="map">
       <iframe src="https://www.google.com/maps/embed?..." allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
@@ -1551,17 +1551,19 @@
       </div>
 
       <!-- Center -->
-      <div class="footer-center">
- <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="./media.html">MULTIMEDIA VIDEOS</a></li>
-    <li><a href="sub.html">SUBSCRIPTION</a></li>
-    <li><a href="./magzin.html">MAGAZINES</a></li>
-    <li><a href=".html">COMMENT GUIDELINE</a></li>
-    <li><a href="multimedia.html">LEGAL NOTICE</a></li>
-  </ul>
-</div>
+   <div class="footer-center">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+           <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+  MULTIMEDIA VIDEOS
+</a></li>
+            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <li><a href="./magzin.html">MAGAZINES</a></li>
+            <li><a href="">COMMENT GUIDELINE</a></li>
+            <li><a href="">LEGAL NOTICE</a></li>
+          </ul>
+        </div>
 
     
       
@@ -1574,6 +1576,10 @@
     </div>
   </div>
   <script src="./js/news.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly&solution_channel=GMP_CCS_simpleclickevents_v2"
+      defer
+    ></script>
  <script>
     const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector(".nav-links");
