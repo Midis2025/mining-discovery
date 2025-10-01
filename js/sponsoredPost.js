@@ -31,7 +31,7 @@ async function loadSponsoredPosts() {
         <span class="tag">SPONSORED POST</span>
         <p class="post-text">${top.short_description || ''}</p>
         <a href="./news-details.html?id=${top.id}&category=sponsored-post">
-          <button class="btn-more">More </button>
+          <button class="btn-more">More → </button>
         </a>
       </div>
     `;

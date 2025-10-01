@@ -3,159 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comparison Table</title>
+<title>YouTube Corner Popup</title>
 <style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f4f4f4;
-    margin: 0;
-  }
-
-  .comparison {
-    width: 100%;
-    max-width: 900px;
-    border-collapse: collapse;
-    text-align: center;
+  .corner-popup {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: #000;
+    padding: 5px;
     border-radius: 8px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s ease;
   }
 
-  .comparison th {
-    background: #b18445;
+  .corner-popup.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .popup-content {
+    position: relative;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 2px;
+    right: 5px;
     color: #fff;
-    padding: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  .comparison td {
-    border: 1px solid #ddd;
-    padding: 15px;
-    color: #333;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  .comparison tr:nth-child(even) {
-    background: #fafafa;
-  }
-
-  .check {
-    color: #b18445;
     font-size: 18px;
-    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
   }
 
-  .highlight-col {
-    background: #222 !important;
-    color: #fff !important;
-    font-weight: bold;
+  .corner-popup iframe {
+    border-radius: 4px;
+    display: block;
+  }
+
+  @media(max-width: 500px){
+    .corner-popup iframe {
+      width: 250px;
+      height: 140px;
+    }
   }
 </style>
 </head>
 <body>
 
-<table class="comparison" id="comparisonTable">
-  <tr>
-    <th>Features</th>
-    <th data-col="1">Free</th>
-    <th data-col="2">Starter</th>
-    <th data-col="3">Advanced</th>
-    <th data-col="4">Premium</th>
-  </tr>
-  <tr>
-    <td>Daily News Articles</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-  </tr>
-  <tr>
-    <td>Full Magazine Access</td>
-    <td>First 4 only</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-  </tr>
-  <tr>
-    <td>Weekly Newsletters</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-  </tr>
-  <tr>
-    <td>Search & Archive</td>
-    <td>Limited</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-  </tr>
-  <tr>
-    <td>CEO Profiles</td>
-    <td>—</td>
-    <td>—</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-  </tr>
-  <tr>
-    <td>Company Profiles</td>
-    <td>—</td>
-    <td>—</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-  </tr>
-  <tr>
-    <td>Premium Reports</td>
-    <td>—</td>
-    <td>—</td>
-    <td class="check">✔</td>
-    <td class="check">✔</td>
-  </tr>
-  <tr>
-    <td>Subscription Term</td>
-    <td>—</td>
-    <td>Month-to-month</td>
-    <td>4 months bundle</td>
-    <td>12 months bundle</td>
-  </tr>
-  <tr>
-    <td>Best suited for</td>
-    <td>New users</td>
-    <td>Frequent readers</td>
-    <td>Analysts & teams</td>
-    <td>Long-term users</td>
-  </tr>
-</table>
+<div class="corner-popup" id="popup">
+  <div class="popup-content">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <iframe id="youtube-video" width="300" height="170"
+      src="" 
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
 
 <script>
-const table = document.getElementById("comparisonTable");
-const headers = table.querySelectorAll("th[data-col]");
+window.addEventListener("load", () => {
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("closeBtn");
+  const youtubeIframe = document.getElementById("youtube-video");
 
-function highlightColumn(colIndex) {
-  // Remove previous highlights from all cells
-  table.querySelectorAll("td, th").forEach(cell => cell.classList.remove("highlight-col"));
+  if (!popup || !closeBtn || !youtubeIframe) return;
 
-  // Highlight only the clicked column (including check cells)
-  table.querySelectorAll("tr").forEach(row => {
-    const cells = row.querySelectorAll("th, td");
-    if(cells[colIndex]) cells[colIndex].classList.add("highlight-col");
-  });
-}
+  // ✅ Your YouTube embed link
+  const youtubeLink = "https://www.youtube.com/embed/pzxdSK6t2Eo?autoplay=1";
 
-// Add click event to each header
-headers.forEach(header => {
-  header.addEventListener("click", () => {
-    const colIndex = parseInt(header.getAttribute("data-col"));
-    highlightColumn(colIndex);
+  // Show popup after 15 seconds if not already shown
+  if (!sessionStorage.getItem("youtubePopupShown")) {
+    setTimeout(() => {
+      youtubeIframe.src = youtubeLink;      
+      popup.style.display = "block";        
+      setTimeout(() => popup.classList.add("show"), 10);
+      sessionStorage.setItem("youtubePopupShown", "true");
+    }, 2000);
+  }
+
+  // Close popup
+  closeBtn.addEventListener("click", () => {
+    popup.classList.remove("show");        
+    setTimeout(() => {
+      popup.style.display = "none";        
+      youtubeIframe.src = "";               
+    }, 500); 
   });
 });
-
-// Default highlight on page load (Advanced column, data-col=3)
-highlightColumn(3);
 </script>
 
 </body>

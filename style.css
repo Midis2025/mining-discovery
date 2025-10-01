@@ -2142,7 +2142,7 @@ height: auto;
       }
 
       .more-btn {
-    width: 25%;
+    width: 20%;
     margin: 0 auto;   /* center align */
     display: block;   /* ensure it's centered */
     text-align: center;

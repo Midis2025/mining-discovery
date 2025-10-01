@@ -174,16 +174,16 @@ window.addEventListener("load", () => {
 
   if (!popup || !closeBtn || !youtubeIframe) return;
 
-  // ✅ New YouTube video link
-   const youtubeLink = "https://www.youtube.com/embed/Oa0ZHfcalCM?autoplay=1";
+  // ✅ YouTube embed link
+  const youtubeLink = "https://www.youtube.com/embed/sxSiWgn8YPI?autoplay=1";
 
-  // Check if popup already shown in this session
+  // Show popup after 15 seconds if not already shown in this session
   if (!sessionStorage.getItem("youtubePopupShown")) {
     setTimeout(() => {
       youtubeIframe.src = youtubeLink;
       popup.style.display = "block";
-      sessionStorage.setItem("youtubePopupShown", "true"); // mark as shown
-    }, 15000);
+      sessionStorage.setItem("youtubePopupShown", "true");
+    }, 2000);
   }
 
   // Close popup
@@ -192,6 +192,7 @@ window.addEventListener("load", () => {
     youtubeIframe.src = ""; // Stop video
   });
 });
+
 /* -------------------------
    EXTRA NEWS (STATIC DEMO)
 ------------------------- */
