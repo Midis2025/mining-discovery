@@ -175,7 +175,7 @@ window.addEventListener("load", () => {
   if (!popup || !closeBtn || !youtubeIframe) return;
 
   // ✅ YouTube embed link
-  const youtubeLink = "https://www.youtube.com/embed/sxSiWgn8YPI?autoplay=1";
+   const youtubeLink = "https://www.youtube.com/embed/qcAo4saz2UU?autoplay=1";
 
   // Show popup after 15 seconds if not already shown in this session
   if (!sessionStorage.getItem("youtubePopupShown")) {
@@ -183,7 +183,7 @@ window.addEventListener("load", () => {
       youtubeIframe.src = youtubeLink;
       popup.style.display = "block";
       sessionStorage.setItem("youtubePopupShown", "true");
-    }, 2000);
+    }, 15000);
   }
 
   // Close popup
