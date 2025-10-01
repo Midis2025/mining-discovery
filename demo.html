@@ -3,97 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Origin of Mining Discovery</title>
+  <title>Team Cards Animation</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* Team container */
+    .team-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      gap: 30px;
     }
 
-    body {
-      font-family: 'Pontano Sans', sans-serif;
-      background: #fff;
-      color: #000;
-      line-height: 1.6;
-    }
-
-    /* Thin golden line at top */
-    .top-line {
-      width: 100%;
-      height: 4px;
-      background: #cfa34d; /* golden color */
-    }
-
-    /* Section Styling */
-    .about-section {
-      text-align: center;
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    /* Title */
-    .about-section h2 {
-      font-size: 26px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    /* Underline below heading */
-    .about-section h2::after {
-      content: "";
-      display: block;
-      width: 120px;
-      height: 2px;
-      background: #000;
-      margin: 10px auto 25px auto;
-    }
-
-    /* Paragraphs */
-    .about-section p {
-      font-size: 15px;
-      color: #333;
+    .team-container h2 {
+      font-size: 24px;
       margin-bottom: 20px;
     }
 
-    /* Bold names */
-    .about-section strong {
-      font-weight: 700;
-    }
-
-    /* Highlighted keywords */
-    .about-section .highlight {
-      font-weight: 600;
-    
-    }
-    /* container2 */
-     /* Heading */
- 
-.team-container{
-      display: flex
-;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
     /* Team card */
     .team-card {
       display: flex;
       align-items: flex-start;
-      background: #eaeaea; /* light grey like screenshot */
+      background: #eaeaea; /* light grey */
       border-radius: 8px;
       padding: 20px;
       margin-bottom: 40px;
       width: 600px;
+      max-width: 90%;
+
+      /* Initial hidden state */
+      opacity: 0;
+      transition: all 0.8s ease;
     }
 
-    /* For second card (image right side) */
+    /* Default card animation: from right */
+    .team-card {
+      transform: translateX(100px);
+    }
+
+    /* Reverse card animation: from left */
     .team-card.reverse {
       flex-direction: row-reverse;
+      transform: translateX(-100px);
+    }
+
+    /* Visible state */
+    .team-card.show {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     /* Image placeholder */
@@ -127,584 +84,64 @@
     .team-card p strong {
       font-weight: 600;
     }
-
-    .team-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  gap: 30px;
-}
-
-/* Team card */
-.team-card {
-  display: flex;
-  align-items: flex-start;
-  background: #eaeaea; /* light grey */
-  border-radius: 8px;
-  padding: 20px;
-  gap: 20px;
-  width: 100%;
-  max-width: 900px; /* keeps it centered and not too wide */
-  box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover effect for desktop */
-.team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
-
-/* Reverse card */
-.team-card.reverse {
-  flex-direction: row-reverse;
-}
-
-/* Image */
-.team-card .image {
-  width: 140px;
-  height: 140px;
-  background: #333;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-/* Text */
-.team-card .content {
-  flex: 1;
-}
-
-.team-card h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.team-card p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #333;
-  text-align: justify;
-}
-
-.team-card p strong {
-  font-weight: 600;
-}
-
-/* Tablet view */
-@media (max-width: 1024px) {
-  .team-card {
-    max-width: 95%;
-  }
-
-  .team-card .image {
-    width: 120px;
-    height: 120px;
-  }
-
-  .team-card h3 {
-    font-size: 16px;
-  }
-
-  .team-card p {
-    font-size: 14px;
-  }
-}
-
-/* Mobile view */
-@media (max-width: 768px) {
-  .team-card,
-  .team-card.reverse {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-
-  .team-card .image {
-    margin-bottom: 15px;
-    width: 100px;
-    height: 100px;
-  }
-
-  .team-card .content {
-    margin: 0;
-  }
-
-  .team-card h3 {
-    font-size: 15px;
-  }
-
-  .team-card p {
-    font-size: 13px;
-    text-align: center; /* center text on smaller devices */
-  }
-}
-
-/* Very small screens */
-@media (max-width: 480px) {
-  .team-card {
-    padding: 15px;
-    gap: 15px;
-  }
-
-  .team-card .image {
-    width: 80px;
-    height: 80px;
-  }
-
-  .team-card h3 {
-    font-size: 14px;
-  }
-
-  .team-card p {
-    font-size: 12px;
-  }
-}
-    /* container3 */
-     /* Container for advisor cards */
-    .advisor-container {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    /* Advisor Card */
-  .advisor-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center; /* center align */
-}
-
-.advisor-card {
-  background: #eaeaea;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 500px;   /* width controlled */
-
-  gap: 20px;
-  align-items: flex-start;
-  flex-direction: row-reverse; /* 👈 image right side */
-}
-
-    /* Image placeholder */
-  .advisor-card .image {
-  width: 100px;
-  height: 100px;
-  background: #333;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-    /* Content area */
-    .advisor-card .content h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .advisor-card .content p {
-      font-size: 13px;
-      color: #333;
-      line-height: 1.6;
-      text-align: justify;
-    }
-
-    .advisor-card .content strong {
-      font-weight: 600;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .advisor-container {
-        flex-direction: column;
-      }
-    }
-      .section {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      flex: 1 1 calc(25% - 20px);
-      min-width: 230px;
-      max-width: 260px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
-    .card h3 {
-      font-size: 16px;
-      margin-bottom: 10px;
-      color: #222;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.5;
-    }
-
-    /* Hover Effect */
-    .card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    }
-
-    /* Animation */
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .card {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-    }
-    .containers {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h2 {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    /* Table Styling */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 40px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    thead {
-      background: #e5e5e5;
-    }
-
-    thead th {
-      text-align: left;
-      padding: 14px 20px;
-      font-weight: bold;
-      font-size: 15px;
-      color: #333;
-    }
-
-    tbody td {
-      padding: 14px 20px;
-      border-bottom: 1px solid #dcdcdc;
-      font-size: 14px;
-      color: #444;
-    }
-
-    tbody tr:last-child td {
-      border-bottom: 3px solid #c99a2e; /* Gold accent */
-    }
-
-    /* Looking Ahead */
-    .looking-ahead {
-      text-align: center;
-      padding: 30px 15px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.6s ease;
-    }
-
-    .looking-ahead.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .looking-ahead h3 {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .looking-ahead p {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.6;
-      max-width: 750px;
-      margin: auto;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-
-      thead {
-        display: none;
-      }
-
-      tbody tr {
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        overflow: hidden;
-        background: #fff;
-      }
-
-      tbody td {
-        border: none;
-        padding: 12px 15px;
-        position: relative;
-      }
-
-      tbody td:before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-        color: #333;
-      }
-    }
   </style>
 </head>
 <body>
 
-
-
-  <section class="about-section">
-    <h2>ORIGIN OF MINING DISCOVERY</h2>
-    <p>
-      Mining Discovery began in 2022, founded by <strong>Michael Clark</strong> and <strong>Sagar Bakshi</strong> 
-      with a shared vision: to bring clarity and depth to a field often clouded by noise and half-truths. 
-      Both coming from different backgrounds, mining markets, and strategic communication, 
-      they realised the mining sector lacked a strong, trustworthy voice dedicated to the stories that matter: 
-      <span class="highlight">corporate actions, sustainability, exploration, regulation, investor relations, and innovation.</span>
-    </p>
-    <p>
-      They believed that mining isn’t just about rocks and machines; it’s about people, communities, economies, 
-      and the future of our planet. And they set out to build a platform that honors all of that.
-    </p>
-  </section>
   <div class="container2">
-  <div class="team-container">
-  <h2>Management Team</h2>
+    <div class="team-container">
+      <h2>Management Team</h2>
 
-  <!-- Card 1 -->
-  <div class="team-card">
-    <div class="image"></div>
-    <div class="content">
-      <h3>Gaurav Sharma</h3>
-      <p>
-        <strong>Gaurav Sharma is a Founder of Mining Discovery</strong>, bringing a word to the know-how
-        in media technology, communication, and mining networks to innovate on exploration. With a unique
-        technical insight and connectivity with the industry, he has developed platforms that serve as a bridge
-        from discovery to opportunity. Gaurav envisions ensuring Mining Discovery will still be at the forefront
-        of early-stage exploration, acting with the highest integrity in communication and collaboration, while
-        ramping up efforts toward the long-term goal of discovering mineral potential worldwide.
-      </p>
-    </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="team-card reverse">
-    <div class="image"></div>
-    <div class="content">
-      <h3>Sagar Bakshi</h3>
-      <p>
-        <strong>Sagar Bakshi is a Co-founder of Mining Discovery</strong>, brings with him a strong foothold
-        in resource journalism, editorial direction, and market strategy. As someone who has analyzed global
-        mining developments for years, he brings a sharp lens toward industry trends and opportunities.
-        With his skill set of combining storytelling and strategy, he ensures Mining Discovery communicates
-        clear insights and informed exploration decisions. His commitment to accuracy, transparency, and
-        forward-looking vision also helps in forming the company’s stance as a respected publication in
-        mineral discovery and market intelligence.
-      </p>
-    </div>
-  </div>
-  </div>
-    
-
-  </div>
-  <div class="container3">
-     <section>
-    <h2>Our Advisors</h2>
-    <div class="advisor-container">
-
-      <!-- Advisor 1 -->
-      <div class="advisor-card">
+      <!-- Card 1 -->
+      <div class="team-card">
         <div class="image"></div>
         <div class="content">
-          <h3>Laura Stein</h3>
+          <h3>Gaurav Sharma</h3>
           <p>
-            <strong>Mining Discovery Advisor, Laura Stein</strong> is one of the predecessors with
-            50-plus years of exceptional global mining industry experience. There exists a lighter shade
-            in her operational experience and knowledge matrix across mineral and market boundaries in
-            exploration, project development, and strategic advisory operations. Laura has been reputed
-            for the singular ability to guide projects through discovery and development while staying
-            true to her principles out of respect for the challenge put in front of her. Designing a full
-            range of support and services, she enables Mining Discovery in the identification,
-            evaluation, and advancement of promising mineral opportunities with confidence and transparency.
+            <strong>Gaurav Sharma is a Founder of Mining Discovery</strong>, bringing a word to the know-how
+            in media technology, communication, and mining networks to innovate on exploration. With a unique
+            technical insight and connectivity with the industry, he has developed platforms that serve as a bridge
+            from discovery to opportunity.
           </p>
         </div>
       </div>
 
-      <!-- Advisor 2 -->
-      <div class="advisor-card">
+      <!-- Card 2 -->
+      <div class="team-card reverse">
         <div class="image"></div>
         <div class="content">
-          <h3>Chris Powell</h3>
+          <h3>Sagar Bakshi</h3>
           <p>
-            <strong>A Mining Discovery Advisor, Chris Powell</strong> has decades of experience in journalism
-            and in the precious metals markets. He is Connecticut-based and his background includes 56 years
-            at the Journal Inquirer, 44 of them as managing editor, while still writing influential political
-            columns. Chris is also a founding member of the Gold Anti-Trust Action Committee (GATA), and its
-            secretary/treasurer, an organization formed for the purpose of exposing and combating gold market
-            manipulations by the central banks. Through his writings for the GATA Dispatch as well as his
-            international advocacy, Chris has been an active voice against uncertainty and for fair dealing
-            in the gold and mineral markets. With his profound expertise and commitment, he takes a great
-            interest in Mining Discovery’s mandate in the early-stage mineral exploration and discovery.
+            <strong>Sagar Bakshi is a Co-founder of Mining Discovery</strong>, brings with him a strong foothold
+            in resource journalism, editorial direction, and market strategy. As someone who has analyzed global
+            mining developments for years, he brings a sharp lens toward industry trends and opportunities.
           </p>
         </div>
       </div>
-
-    </div>
-  </section>
-  </div>
-  <div class="container4">
-    
-  <h2>Our Purpose</h2>
-  <div class="section">
-    <div class="card">
-      <h3>Illuminate the Industry</h3>
-      <p>Report clearly on exploration, production, regulation, investment, and ESG.</p>
-    </div>
-    <div class="card">
-      <h3>Insight into Action</h3>
-      <p>Interpret the news so that leaders and investors can make informed decisions.</p>
-    </div>
-    <div class="card">
-      <h3>Foster Transparency</h3>
-      <p>Provide a clear view of company operations, risks, and community impact.</p>
-    </div>
-    <div class="card">
-      <h3>Build Bridges</h3>
-      <p>Connecting firms, investors, regulators, and communities through stories and data.</p>
     </div>
   </div>
 
-  <h2>Our Principles</h2>
-  <div class="section">
-    <div class="card">
-      <h3>Integrity</h3>
-      <p>Truthful, verified reporting above all else.</p>
-    </div>
-    <div class="card">
-      <h3>Clarity</h3>
-      <p>Explain complex issues in plain, impactful language.</p>
-    </div>
-    <div class="card">
-      <h3>Innovation</h3>
-      <p>Adopting new tools and formats to keep coverage relevant.</p>
-    </div>
-    <div class="card">
-      <h3>Respect</h3>
-      <p>Consideration for communities, environment, investors, and workers.</p>
-    </div>
-    <div class="card">
-      <h3>Partnership</h3>
-      <p>Collaborating with companies, experts, and institutions as allies.</p>
-    </div>
-  </div>
-  </div>
-  <div class="container5">
-     <div class="containers">
-    <h2>What Makes Us Unique</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Why It Matters</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Feature">Industry-Focused Journalism</td>
-          <td data-label="Why It Matters">We specialize in mining for depth, context, and consistency.</td>
-        </tr>
-        <tr>
-          <td data-label="Feature">Integrated Approach</td>
-          <td data-label="Why It Matters">We connect reporting, data, and branding — treating them as a single story.</td>
-        </tr>
-        <tr>
-          <td data-label="Feature">Dual Perspective</td>
-          <td data-label="Why It Matters">We address both industry professionals and community stakeholders.</td>
-        </tr>
-        <tr>
-          <td data-label="Feature">Media & Digital Strength</td>
-          <td data-label="Why It Matters">Editorial excellence meets SEO, visual storytelling, and syndication.</td>
-        </tr>
-        <tr>
-          <td data-label="Feature">Founder-Driven Vision</td>
-          <td data-label="Why It Matters">Guided by the personal commitment of our founders for purpose-driven growth.</td>
-        </tr>
-      </tbody>
-    </table>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cards = document.querySelectorAll(".team-card");
 
-    <div class="looking-ahead" id="lookingAhead">
-      <h3>Looking Ahead</h3>
-      <p>
-        Mining Discovery aims to be the trusted global voice in mining — expanding coverage in Africa, Latin America, and Asia, 
-        developing advanced data tools, enriching video storytelling, and nurturing an engaged community that values truth over noise.
-      </p>
-    </div>
-  </div>
-  </div>
-<script>
-    // Animate cards on scroll
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target); // run only once
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      cards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.3}s`; // stagger effect
+        observer.observe(card);
       });
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => {
-      observer.observe(card);
     });
-     // Fade-in animation for "Looking Ahead"
-    const lookingAhead = document.getElementById('lookingAhead');
-    const observers = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          lookingAhead.classList.add('show');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    observers.observe(lookingAhead);
   </script>
 </body>
 </html>

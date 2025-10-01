@@ -15,6 +15,7 @@
     }
 
     body {
+      cursor: pointer;
       font-family: 'Pontano Sans', sans-serif;
 
     }
@@ -137,23 +138,31 @@
       color: #8d6d2a;
     }
 
-    .header-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-right: 16px;
+  .header-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-right: 16px;
+}
 
-    }
+  
+.login-btn,
+.subscribe-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;      /* same width */
+  padding: 8px 16px;     /* same padding */
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
 
-    .login-btn,
-    .subscribe-btn {
-      padding: 5px 15px;
-      border: none;
-      border-radius: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      color: black;
-    }
 
     .login-btn {
       background-color: #ae8a4c;
@@ -953,32 +962,44 @@
       background: #111;
     }
 
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+  font-family: Arial, sans-serif;
+}
 
-    .stat-box {
-      background: #f1f1f1;
-      padding: 20px;
-      flex: 1;
-      min-width: 200px;
-      border-radius: 8px;
-      font-size: 40px;
-      font-weight: bold;
-      height: 160px;
-    }
+.stat-box {
+  text-align: center;
+  background: linear-gradient(135deg, #ae8a4c, #c9a85e); /* golden gradient */
+  color: #fff;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 220px;
+}
+.number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #111;
+  display: inline-flex;
+  align-items: baseline; 
+  gap: 2px;
+}
 
-    .stat-box span {
-      display: block;
-      font-size: 14px;
-      font-weight: normal;
-      margin-top: 5px;
-      color: #555;
-    }
+.number span {
+  line-height: 1;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+  color: #555;
+  margin-top: 5px;
+}
 
     .features {
       display: flex;
@@ -1084,10 +1105,13 @@
 
     .opportunities p {
       margin-bottom: 40px;
-      color: #777;
+      color:#ae8a4c
+      ;
+      font-size: 18px;
+
     }
 
-    .cards {
+    .cardss {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
@@ -1243,7 +1267,7 @@
     p.sub-text {
       color: #ae8a4c;
       margin-bottom: 30px;
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .faq-grid {
@@ -2167,11 +2191,20 @@
       <button class="btn btn-dark"><a href="./image/vector/Company Profile  MD.pdf">Download Our Deck</a></button>
     </div>
 
-    <div class="stats">
-      <div class="stat-box">200+ <span>Companies News</span></div>
-      <div class="stat-box">12k+ <span>Newsletter Subscribers</span></div>
-      <div class="stat-box">44k+ <span>Social Followers</span></div>
-    </div>
+<div class="stats">
+  <div class="stat-box">
+    <div class="number"><span class="counter" data-target="200">0</span><span>+</span></div>
+    <span class="label">Companies News</span>
+  </div>
+  <div class="stat-box">
+    <div class="number"><span class="counter" data-target="12000">0</span><span>+</span></div>
+    <span class="label">Newsletter Subscribers</span>
+  </div>
+  <div class="stat-box">
+    <div class="number"><span class="counter" data-target="44000">0</span><span>+</span></div>
+    <span class="label">Social Followers</span>
+  </div>
+</div>
 
     <div class="features">
       <div class="feature">
@@ -2231,7 +2264,7 @@
       <h2>Investment Opportunities</h2>
       <p>Flexible tiers designed for early believers to strategic partners.</p>
 
-      <div class="cards">
+      <div class="cardss">
         <div class="card">
           <h3>Seed Investors</h3>
           <h4>$50k - $100k</h4>
@@ -2240,7 +2273,6 @@
             <li>Unique privileges</li>
             <li>Branding exposure</li>
           </ul>
-          <button class="btn">Become an Investor</button>
         </div>
 
         <div class="card">
@@ -2251,7 +2283,6 @@
             <li>Long term stakes</li>
             <li>Advisory opportunities</li>
           </ul>
-          <button class="btn">Become an Investor</button>
         </div>
 
         <div class="card highlight">
@@ -2262,7 +2293,6 @@
             <li>Advisory board inclusion</li>
             <li>Exclusive industry access</li>
           </ul>
-          <button class="btn">Become an Investor</button>
         </div>
       </div>
     </div>
@@ -2491,6 +2521,32 @@
         dropdown.classList.toggle("show");
       }
     }
+//  counter
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter => {
+  counter.innerText = "0";
+
+  const updateCounter = () => {
+    const target = +counter.getAttribute("data-target");
+    const current = +counter.innerText.replace(/[^0-9]/g, "");
+
+    const increment = target / 200; // speed control
+
+    if (current < target) {
+      counter.innerText = `${Math.ceil(current + increment)}`;
+      setTimeout(updateCounter, 20);
+    } else {
+      counter.innerText = target.toLocaleString(); // formatted
+    }
+  };
+
+  updateCounter();
+});
+
+
+
+
   </script>
 
 
@@ -2531,7 +2587,7 @@ document.getElementById("investorForm").addEventListener("submit", async functio
     });
 
     if (res.ok) {
-      alert("Thank you! Your request has been submitted.");
+      alert("Thank you! We Will Contact You Soon !!");
       modal.style.display = "none";
       this.reset();
     } else {

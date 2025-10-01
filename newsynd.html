@@ -80,23 +80,31 @@
       color: #8d6d2a;
     }
 
-    .header-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-right: 16px;
-      
-    }
+    
+   .header-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-right: 16px;
+}
 
-    .login-btn,
-    .subscribe-btn {
-      padding: 5px 15px;
-      border: none;
-      border-radius: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      color: black;
-    }
+  
+.login-btn,
+.subscribe-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;      /* same width */
+  padding: 8px 16px;     /* same padding */
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
 
     .login-btn {
       background-color:#ae8a4c;
@@ -1797,7 +1805,7 @@ ease;
       forecasts, we get your story seen and measured.
     </p>
     <div class="button-group">
-      <button>Submit Your Story</button>
+<button onclick="location.href='#cta-section'">Submit Your Story</button>
       <button>See Syndication Options</button>
     </div>
   </section>
@@ -2002,17 +2010,20 @@ Announcements</h3>
     </div>
   </div>
   <!-- Call to Action Section -->
-  <div class="cta">
-    <h3>Have a mining story to tell?</h3>
-    <p>Submit your content or request a quote - choose paid boosts or a full package combining syndication, email,<br>
-    Substack and social distribution.</p>
+<div class="cta" id="cta-section">
+  <h3>Have a mining story to tell?</h3>
+  <p>
+    Submit your content or request a quote - choose paid boosts or a full package combining syndication, email,<br>
+    Substack and social distribution.
+  </p>
 
-    <div class="cta-form">
-      <input type="text" placeholder="Company or project name">
-      <input type="email" placeholder="Email address">
-      <button>Get Started</button>
-    </div>
+  <div class="cta-form">
+    <input type="text" id="cta-company" placeholder="Company or project name" required>
+    <input type="email" id="cta-email" placeholder="Email address" required>
+    <button type="button" onclick="submitCTA()">Get Started</button>
   </div>
+</div>
+
 
 <!-- Footer Section -->
  <div class="footer-container">
@@ -2187,6 +2198,55 @@ Announcements</h3>
       observer.observe(card);
     });
   </script>
+<button onclick="scrollToCTA()">Submit Your Story</button>
+
+<script>
+function scrollToCTA() {
+  document.getElementById("cta-section").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+</script>
+
+  <script>
+async function submitCTA() {
+  const company = document.getElementById("cta-company").value.trim();
+  const email = document.getElementById("cta-email").value.trim();
+
+  if (!company || !email) {
+    alert("⚠️ Please fill in both fields.");
+    return;
+  }
+
+  try {
+    const res = await fetch("https://admins.miningdiscovery.com/api/cta-submissions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        data: {
+          company_name: company, // 👈 match Strapi field
+          email: email
+        }
+      })
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      console.error("Error:", error);
+      throw new Error("Failed to submit form");
+    }
+
+    alert("✅ Thanks! We received your request. We will contact you soon.");
+    document.getElementById("cta-company").value = "";
+    document.getElementById("cta-email").value = "";
+  } catch (err) {
+    console.error(err);
+    alert("❌ Something went wrong. Please try again later.");
+  }
+}
+</script>
 
 </body>
 </html>

@@ -14,6 +14,7 @@
      
     }
    body {
+    cursor: pointer;
            font-family: 'Pontano Sans', sans-serif;
       background: white;
     }
@@ -69,23 +70,31 @@
       color: #8d6d2a;
     }
 
-    .header-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-right: 16px;
-      
-    }
+   .header-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-right: 16px;
+}
 
-    .login-btn,
-    .subscribe-btn {
-      padding: 5px 15px;
-      border: none;
-      border-radius: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      color: black;
-    }
+  
+.login-btn,
+.subscribe-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;      /* same width */
+  padding: 8px 16px;     /* same padding */
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 
     .login-btn {
       background-color:#ae8a4c;
@@ -894,31 +903,56 @@
   -ms-overflow-style: none;  */
     }
 
-    .main h2 {
-      margin-bottom: 15px;
-    }
+   .main h2 {
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block; /* taaki border width text ke size ke equal ho */
+}
 
-    .card {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+.main h2::after {
+  content: "";
+  display: block;
+  width: 50%;           /* border ki width, aap change kar sakte ho */
+  height: 3px;           /* border thickness */
+  background-color: #ae8a4c; /* golden color */
+  margin-top: 5px;       /* heading se gap */
+  border-radius: 2px;    /* thoda smooth edges */
+}
 
-    .card img {
-      width: 150px;
-      height: auto;
-    }
+ .card {
+  background: linear-gradient(145deg, #ffffff, #f9f9f9); /* soft gradient */
+  border: 1px solid #ddd;
+  border-radius: 16px; /* smooth corners */
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.02); /* lift effect */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18); /* stronger shadow on hover */
+}
+
+
+  .card img {
+  width: 150px;          /* sab images ka fixed width */
+  height: 150px;         /* fixed height */
+  object-fit: contain;    /* image crop nahi hogi */
+  border-radius: 12px;    /* optional rounded corners */
+  background-color: #f0f0f0; /* optional placeholder bg for empty spaces */
+  padding: 5px;           /* optional padding */
+}
 
     .card-content {
       flex: 1;
     }
     button a{
       text-decoration: none;
-  color: black;
+  color:#AE8A4C;
         }
 
     .card-content h4 {
@@ -931,10 +965,15 @@
     }
 
     .card button {
-      background-color: #eee;
-      border: none;
-      padding: 6px 12px;
-      cursor: pointer;
+      
+    border: 1px solid #ae8a4c;
+    color: #AE8A4C;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    background-color: white;
     }
 
  
@@ -1001,15 +1040,32 @@
     height: auto; /* image ko adjust karne ke liye */
   }
 
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+.card {
+    flex-direction: column; /* stack image and content */
+    align-items: center;
+    text-align: center;
+    padding: 15px;
   }
 
   .card img {
-    width: 80px;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
   }
+
+  .card-content h4 {
+    font-size: 16px;
+  }
+
+  .card-content p {
+    font-size: 13px;
+  }
+
+  .card button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
 }
 
 /* ✅ Small Mobiles (≤480px) */
@@ -1024,7 +1080,21 @@
   }
 
   .card img {
-    width: 60px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .card-content h4 {
+    font-size: 15px;
+  }
+
+  .card-content p {
+    font-size: 12px;
+  }
+
+  .card button {
+    font-size: 11px;
+    padding: 4px 8px;
   }
 }
 /* =========================

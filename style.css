@@ -290,23 +290,30 @@
       color: #8d6d2a;
     }
 
-    .header-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-right: 16px;
-      
-    }
+  .header-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-right: 16px;
+}
 
-    .login-btn,
-    .subscribe-btn {
-      padding: 5px 15px;
-      border: none;
-      border-radius: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      color: black;
-    }
+  
+.login-btn,
+.subscribe-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;      /* same width */
+  padding: 8px 16px;     /* same padding */
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
 
     .login-btn {
       background-color:#ae8a4c;
@@ -1156,6 +1163,9 @@
   border-radius: 10px;
   margin-bottom: 15px;
   transition: all 0.3s ease;
+}
+.latest-title:hover{
+ color: #AE8A4C;
 }
 
 .latest-item:hover {
@@ -2196,7 +2206,8 @@ height: auto;
 
    
     .container8 {
-      max-width: 1100px;
+      /* max-width: 1100px; */
+      max-width: 1200px;
     
       background-color: #fff;
       padding: 30px 25px 60px;
@@ -2906,8 +2917,9 @@ border-radius: 10px;
 .video-thumbnail img {
   width: 100%;
   height: 190px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 12px 12px 0 0;
+  background: #000; /* ya white, gap fill ke liye */
 }
 
 .play-button {

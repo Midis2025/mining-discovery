@@ -14,6 +14,7 @@
     }
 
     body {
+      cursor: pointer;
        font-family: 'Pontano Sans', sans-serif;
     
     }
@@ -111,22 +112,30 @@
     }
 
     .header-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-right: 16px;
-      
-    }
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-right: 16px;
+}
 
-    .login-btn,
-    .subscribe-btn {
-      padding: 5px 15px;
-      border: none;
-      border-radius: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      color: black;
-    }
+  
+.login-btn,
+.subscribe-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;      /* same width */
+  padding: 8px 16px;     /* same padding */
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 
     .login-btn {
       background-color:#ae8a4c;
@@ -870,28 +879,48 @@
     /* container2 */
      /* Heading */
  
-.team-container{
-      display: flex
-;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Team card */
+    .team-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      gap: 30px;
+    }
 
-}
+    .team-container h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
     /* Team card */
     .team-card {
       display: flex;
       align-items: flex-start;
-      background: #eaeaea; /* light grey like screenshot */
+      background: #eaeaea; /* light grey */
       border-radius: 8px;
       padding: 20px;
       margin-bottom: 40px;
       width: 600px;
+      max-width: 90%;
+
+      /* initial hidden state */
+      opacity: 0;
+      transform: translateX(100px);
+      transition: all 0.8s ease;
     }
 
     /* For second card (image right side) */
     .team-card.reverse {
       flex-direction: row-reverse;
+      transform: translateX(-100px); /* opposite direction */
+    }
+
+    /* When card becomes visible */
+    .team-card.show {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     /* Image placeholder */
@@ -926,15 +955,16 @@
       font-weight: 600;
     }
 
-    .team-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  gap: 30px;
+/* Team card */
+
+
+/* Hover effect for desktop */
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
+/* Reverse card */
 /* Team card */
 .team-card {
   display: flex;
@@ -944,21 +974,41 @@
   padding: 20px;
   gap: 20px;
   width: 100%;
-  max-width: 900px; /* keeps it centered and not too wide */
+  max-width: 900px; /* keeps it centered */
   box-sizing: border-box;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateX(100px); /* start from right */
+  animation: slideInRight 0.8s ease forwards;
 }
 
-/* Hover effect for desktop */
-.team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
-
-/* Reverse card */
 .team-card.reverse {
   flex-direction: row-reverse;
+
+  /* Animation for reverse card */
+  opacity: 0;
+  transform: translateX(-100px); /* start from left */
+  animation: slideInLeft 0.8s ease forwards;
+  animation-delay: 0.3s; /* small delay for staggered effect */
 }
+
+/* Keyframes */
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 
 /* Image */
 .team-card .image {
@@ -1131,16 +1181,14 @@
     }
 
     .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      flex: 1 1 calc(25% - 20px);
-      min-width: 230px;
-      max-width: 260px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0;
-      transform: translateY(50px);
+          box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 8px, rgba(0, 0, 0, 0.1) 0px 10px 20px, rgba(0, 0, 0, 0.05) 0px 15px 40px;
+    border-left: 3px solid #ae8a4c;
+    padding: 15px 18px;
+    margin-bottom: 15px;
+    background-color: #f8f4ec;
+    border-radius: 8px;
+    transition: background 0.3s 
+ease;
     }
 
     .card h3 {
@@ -1799,10 +1847,7 @@
    
   
 <div class="container">
-    <div class="black">
-  <h2>About Us</h2>
-  
-    </div>
+   
    
   <section class="about-section">
     <h2>ORIGIN OF MINING DISCOVERY</h2>
@@ -1819,44 +1864,36 @@
     </p>
   </section>
   <div class="container2">
-  <div class="team-container">
-  <h2>Management Team</h2>
+    <div class="team-container">
+      <h2>Management Team</h2>
 
-  <!-- Card 1 -->
-  <div class="team-card">
-    <div class="image"></div>
-    <div class="content">
-      <h3>Gaurav Sharma</h3>
-      <p>
-        <strong>Gaurav Sharma is a Founder of Mining Discovery</strong>, bringing a word to the know-how
-        in media technology, communication, and mining networks to innovate on exploration. With a unique
-        technical insight and connectivity with the industry, he has developed platforms that serve as a bridge
-        from discovery to opportunity. Gaurav envisions ensuring Mining Discovery will still be at the forefront
-        of early-stage exploration, acting with the highest integrity in communication and collaboration, while
-        ramping up efforts toward the long-term goal of discovering mineral potential worldwide.
-      </p>
+      <!-- Card 1 -->
+      <div class="team-card">
+        <div class="image"></div>
+        <div class="content">
+          <h3>Gaurav Sharma</h3>
+          <p>
+            <strong>Gaurav Sharma is a Founder of Mining Discovery</strong>, bringing a word to the know-how
+            in media technology, communication, and mining networks to innovate on exploration. With a unique
+            technical insight and connectivity with the industry, he has developed platforms that serve as a bridge
+            from discovery to opportunity.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="team-card reverse">
+        <div class="image"></div>
+        <div class="content">
+          <h3>Sagar Bakshi</h3>
+          <p>
+            <strong>Sagar Bakshi is a Co-founder of Mining Discovery</strong>, brings with him a strong foothold
+            in resource journalism, editorial direction, and market strategy. As someone who has analyzed global
+            mining developments for years, he brings a sharp lens toward industry trends and opportunities.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="team-card reverse">
-    <div class="image"></div>
-    <div class="content">
-      <h3>Sagar Bakshi</h3>
-      <p>
-        <strong>Sagar Bakshi is a Co-founder of Mining Discovery</strong>, brings with him a strong foothold
-        in resource journalism, editorial direction, and market strategy. As someone who has analyzed global
-        mining developments for years, he brings a sharp lens toward industry trends and opportunities.
-        With his skill set of combining storytelling and strategy, he ensures Mining Discovery communicates
-        clear insights and informed exploration decisions. His commitment to accuracy, transparency, and
-        forward-looking vision also helps in forming the company’s stance as a respected publication in
-        mineral discovery and market intelligence.
-      </p>
-    </div>
-  </div>
-  </div>
-    
-
   </div>
   <div class="container3">
      <section>
@@ -2118,6 +2155,10 @@
     }, { threshold: 0.2 });
 
     observers.observe(lookingAhead);
+    // team-cards
+   // team-cards
+
+
   </script>
 </body>
 </html>
