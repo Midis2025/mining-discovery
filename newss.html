@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News Section</title>
+  <title>News-Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
@@ -732,6 +732,12 @@
         display: none;
       }
       #dropdownMenu {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
+       #dropdownMenu1 {
  display: flex;
  flex-direction: column;
 
@@ -1684,7 +1690,7 @@
         </div>
       </div>
 
-      <a href="./morning.html">Evening Chatter</a>
+     <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
       <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
@@ -2011,53 +2017,40 @@
   </footer>
   </div>
   <script src="./script.js"></script>
-  <script>
-      function toggleMenu2() {
+   <script>
+        function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
-
-  // Agar menu already open hai, click pe close karo
-  if (menu.style.display === "block") {
-    menu.style.display = "none";
-    return;
-  }
-
-  // Menu open karo
-  menu.style.display = "block";
-
-  // 2 second baad menu automatically close ho jaye
-  setTimeout(() => {
-    menu.style.display = "none";
-  }, 2000); // 2000 ms = 2 seconds
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
+ function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+     function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+  
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
 
-// Page ke kisi bhi jagah pe click ho, menu close ho jaye
-document.addEventListener("click", function(event) {
-  const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
 
-  // Agar click hamburger ya menu ke andar nahi hai to close karo
-  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-    menu.style.display = "none";
-  }
-});
-
-// Tabs logic (aapka original)
-const tabs = document.querySelectorAll(".tab-btn");
-const contents = document.querySelectorAll(".menu-content");
-
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    // Remove active from all
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
-
-    // Add active to clicked
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.target).classList.add("active");
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
   });
-});
-
-  </script>
+    </script>
   <script>// show  extra news
     document.getElementById("showMoreBtn").addEventListener("click", function () {
       const extraNews = document.querySelectorAll(".extra-news");

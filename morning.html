@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News Section</title>
+  <title>Evening Chatter</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
@@ -103,7 +103,7 @@
 
     .logo-social {
       
-    padding-top: 6px;
+  padding-top: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -138,7 +138,7 @@
       color: #8d6d2a;
     }
 
-    .header-buttons {
+   .header-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -162,7 +162,6 @@
   text-align: center;
   box-sizing: border-box;
 }
-
 
     .login-btn {
       background-color:#ae8a4c;
@@ -748,7 +747,7 @@
   }
 
   .logo {
-    height: 70px; 
+    height: 70px;
   }
 
   .hamburger {
@@ -800,7 +799,7 @@
     display: flex;
   }
 
-
+  /* Search aur ticker remove in mobile */
   /* .search-bar-container {
     display: none !important;
   } */
@@ -852,6 +851,9 @@
 }
 
 
+   
+
+   
    
 
 
@@ -1413,7 +1415,7 @@
         </div>
       </div>
 
-      <a href="./morning.html">Evening Chatter</a>
+     <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
       <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
@@ -1504,8 +1506,8 @@
       <div class="menu-row">
         <div class="menu-tabs">
           <p class="tab-btn active" data-target="news">NEWS SECTION</p>
-          <p class="tab-btn" data-target="about">SERVICE</p>
-          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+          <!-- <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p> -->
         </div>
         <div class="menu-content active" id="news">
           <p><a href="./newss.html" id="dropdownMenu"></a></p>
@@ -1742,7 +1744,7 @@
 
   <!-- <script src="./script.js"></script> -->
   <script src="./script.js"></script>
-  <!-- <script src="./js/news.js"></script> -->
+  <script src="./js/news.js"></script>
   <script src="./js/advertisment.js"></script>
   <script src="./js/morningchatter.js"></script>
   <script src="./js/projects.js"></script>
@@ -1781,11 +1783,7 @@
   // Menu open karo
   menu.style.display = "block";
 
-  // 2 second baad menu automatically close ho jaye
-  setTimeout(() => {
-    menu.style.display = "none";
-  }, 2000); // 2000 ms = 2 seconds
-}
+    }
 
 // Page ke kisi bhi jagah pe click ho, menu close ho jaye
 document.addEventListener("click", function(event) {

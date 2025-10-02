@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News Section</title>
+  <title>News-Details</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
@@ -1730,7 +1730,6 @@
 
 
 
-  <!-- Desktop Tabs -->
   <div class="desktop-tabs" id="desktopTabs">
     <div class="tab-btns">
       <div class="tab-btn active" onclick="switchTab('newsTab')">News Section</div>
@@ -1757,7 +1756,6 @@
       <a href="./branding.html">Digital Branding</a><br>
     </div>
     <div class="tab-content" id="magazineTab">
-       <a href="./magzin.html">Magazine</a>
       <a href="./ceo.html">CEO Profile</a><br>
       <a href="./weekly.html">Newsletter</a><br>
       <a href="./company-profile.html">Company Profile</a><br>
@@ -1791,7 +1789,6 @@
       <li><a href="./about.html">About Us</a></li>
     </ul>
   </div>
-
 
 
   <!-- Header + Dropdown -->
@@ -1908,46 +1905,38 @@
     </div>
   </div>
   </div>
+  
   <script src="./script.js"></script>
-
-  <script>// show  extra news
-    document.getElementById("showMoreBtn").addEventListener("click", function () {
-      const extraNews = document.querySelectorAll(".extra-news");
-
-      extraNews.forEach(section => {
-        section.style.display = "block"; // Keep natural block layout
-        section.style.opacity = "0"; // Start invisible
-        section.style.transition = "opacity 0.4s ease"; // Smooth fade
-        requestAnimationFrame(() => {
-          section.style.opacity = "1"; // Fade in
-        });
-      });
-
-      this.style.display = "none"; // Hide button after showing
-    });
-    // show extra news</script>
-
   <script src="./js/news-details.js"></script>
+
+
+
+
   <script src="./js/advertisment.js"></script>
   <script src="./js/projects.js"></script>
   <script src="./js/reports.js"></script>
-  <script src="./js/news.js"></script>
+    <script src="./js/news.js"></script>
+
+
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-      loadAdvertisements();
-      loadProjects();
-      loadReports();
-      loadNewsDetails();
-
-    });
-  </script>
-  <script>
-       function toggleMenu2() {
+        function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
   menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
+ function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+     function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+  
  // Select tabs and contents
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".menu-content");
@@ -1974,10 +1963,8 @@
 
     });
   </script>
-   <script src="./js/advertisment.js"></script>
-  <script src="./js/projects.js"></script>
-  <script src="./js/reports.js"></script>
   
+
      <script src="./js/latestNews.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
