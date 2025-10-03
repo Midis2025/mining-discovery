@@ -3,67 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Popup</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
+  <title>Our Purpose & Principles</title>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+   font-family: 'Pontano Sans', sans-serif;
+}
 
-    .container {
-      text-align: center;
-      background: #fff;
-      padding: 40px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
+body {
+  background: #fafafa;
+  color: #111;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
 
-    h1 {
-      margin-bottom: 30px;
-      color: #333;
-    }
+.section {
+  text-align: center;
+  margin-bottom: 60px;
+  width: 100%;
+  max-width: 1100px;
+}
 
-    .video-button {
-      display: inline-block;
-      padding: 12px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-      background-color: #ff0000;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
+.section h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #111;
+}
 
-    .video-button:hover {
-      background-color: #cc0000;
-    }
-  </style>
+.card-container {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 13.5px;
+color: #8d6d2a;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
+
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Watch Our Video</h1>
-    <button class="video-button" id="openVideo">Open Video</button>
-    <p>The video will open in a new popup window because embedding is restricted.</p>
-  </div>
+  <section class="section">
+    <h2>Our Purpose</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Illuminate the Industry</h3>
+        <p>Report clearly on exploration, production, regulation, investment, and ESG.</p>
+      </div>
+      <div class="card">
+        <h3>Insight into Action</h3>
+        <p>Interpret the news so that leaders and investors can make informed decisions.</p>
+      </div>
+      <div class="card">
+        <h3>Foster Transparency</h3>
+        <p>Provide a clear view of company operations, risks, and community impact.</p>
+      </div>
+      <div class="card">
+        <h3>Build Bridges</h3>
+        <p>Connecting firms, investors, regulators, and communities through journalism and data.</p>
+      </div>
+    </div>
+  </section>
 
-  <script>
-    const button = document.getElementById("openVideo");
-
-    button.addEventListener("click", function() {
-      window.open(
-        "https://www.youtube.com/watch?v=sxSiWgn8YPI",
-        "VideoPopup",
-        "width=800,height=500,top=100,left=100,resizable=yes,scrollbars=yes"
-      );
-    });
-  </script>
+  <section class="section">
+    <h2>Our Principles</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Integrity</h3>
+        <p>Truthful, verified reporting above all else.</p>
+      </div>
+      <div class="card">
+        <h3>Clarity</h3>
+        <p>Explain complex issues in plain, impactful language.</p>
+      </div>
+      <div class="card">
+        <h3>Innovation</h3>
+        <p>Adopting new tools and formats to keep coverage relevant.</p>
+      </div>
+      <div class="card">
+        <h3>Respect</h3>
+        <p>Consideration for communities, environment, investors, and workers.</p>
+      </div>
+      <div class="card">
+        <h3>Partnership</h3>
+        <p>Collaborating with companies, experts, and institutions as allies.</p>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

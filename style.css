@@ -198,7 +198,7 @@
       }
     }
 .first-header {
-  height: 50px; /* ek line ke height ke barabar */
+  height: 50px; /* show only one line at a time */
   overflow: hidden;
   position: relative;
   background: black;
@@ -210,12 +210,12 @@
 .news-slider {
   display: flex;
   flex-direction: column;
-  animation: slideNews 8s infinite;
+  animation: slideNews 9s infinite;
 }
 
 .news-slider p {
   height: 50px;
-  line-height: 50px;
+  line-height: 50px;  /* center text vertically */
   margin: 0;
   font-size: 18px;
   font-weight: bold;
@@ -224,20 +224,20 @@
   width: 100%;
 }
 
-/* Animation - each step stops text at center */
+/* Animation: show one line at a time */
 @keyframes slideNews {
-  0%, 20%   { transform: translateY(30px); }        /* 1st text */
-  25%, 45%  { transform: translateY(-30px); }    /* 2nd text */
-  50%, 70%  { transform: translateY(-30px); }   /* 3rd text */
-  75%, 95%  { transform: translateY(-30px); }   /* 4th text */
-  100%      { transform: translateY(0); }        /* loop back */
+  0%, 20%   { transform: translateY(0); }       /* 1st line */
+  25%, 45%  { transform: translateY(-50px); }   /* 2nd line */
+  50%, 70%  { transform: translateY(-100px); }  /* 3rd line */
+  75%, 95%  { transform: translateY(-50px); }   /* back to 2nd line */
+  100%      { transform: translateY(0); }       /* loop to 1st line */
 }
 
-    .first-header:hover{
-      text-decoration: underline;
-    color: white;
-    }
-    /* main-header */
+.first-header:hover p {
+  text-decoration: underline;
+  color: white;
+}
+
 
    .main-header {
       margin-bottom: 10px;
@@ -1550,14 +1550,7 @@
 }
 
 .nav {
-  color: black;
-  
-  border: none;
-  padding: 10px 14px;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background 0.3s;
+ display: none;
 }
 
 .nav:hover {
@@ -1578,11 +1571,11 @@
   .carousel {
     gap: 20px;           /* more spacing between cards */
     padding-bottom: 20px;
-    max-width: 1450px;
+ 
   }
 
   .team-card {
-    min-width: 700px;    /* wider cards */
+    min-width: 400px;    /* wider cards */
     border-radius: 14px;
   }
 
@@ -1601,8 +1594,7 @@
   }
 
   .nav {
-    font-size: 28px;     /* bigger arrows */
-    padding: 14px 18px;
+   display: none;
   }
 }
 
@@ -2265,7 +2257,7 @@ height: auto;
 
     .precious-metals img {
       width: 145px;
-      height: 145px;
+      height: 165px;
       object-fit: cover;
     }
 
@@ -2354,6 +2346,13 @@ height: auto;
       display: block;
       margin-top: 20px;
     }
+    .description{
+padding-top: 10px;
+padding-bottom: 10px;
+      font-size: 14px;
+      
+      color: #666;
+    }
 
     .world-news .author {
       font-size: 12px;
@@ -2390,9 +2389,11 @@ border-radius: 10px;
 
     
 .world-news a {
-  color: #000000;          /* black by default */
-  text-decoration: none;   /* optional: remove underline */
-  transition: color 0.3s ease;
+color: #000000;
+    text-decoration: none;
+    transition: color 0.3s 
+ease;
+    font-size: 18px;
 }
 
 .world-news a:hover {
@@ -2611,7 +2612,7 @@ border-radius: 10px;
 
   .precious-metals img {
     width: 320px; /* bigger image for large screen */
-    height: 200px;
+    height: 232px;
   }
 
   .precious-content {

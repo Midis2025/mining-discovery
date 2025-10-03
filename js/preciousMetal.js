@@ -1,6 +1,6 @@
 async function loadPreciousMetalNews() {
   const url =
-    "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=precious-metals&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][populate][image]=true";
+    "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=precious-metals&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][fields][3]=short_description&populate[news_sections][populate][image]=true";
 
   const preciousMetalNewsContainer = document.getElementById("preciousMetalNews");
 
@@ -23,6 +23,7 @@ async function loadPreciousMetalNews() {
       const date = formatDate(item.publish_on);
       const docId = item.documentId || "";
       const imageUrl = item.image?.url || "./image/slider2.png";
+      const description = item.short_description || "";
 
       return `
         <img src="${imageUrl}" alt="card" />
@@ -32,6 +33,7 @@ async function loadPreciousMetalNews() {
               ? `<a href="news-details.html?id=${docId}" class="precious-link">${title}</a>` 
               : title}
           </p>
+          ${description ? `<p class="description">${escapeHtml(description)}</p>` : ""}
           <small>${date}</small>
           <div class="author">By: ${escapeHtml(author)}</div>
           ${

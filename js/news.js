@@ -391,47 +391,76 @@ function handleCardClick(event) {
 }
 
 /********************************************************************
- * "Most Read" & "Next Category"
+ * "Gold News" - Fetch top 4 gold news
  ********************************************************************/
-async function fetchAndRenderMostRead() {
+async function fetchAndRenderGoldNews() {
   const container = document.querySelector(".cards");
   if (!container) return;
-  const mostReadItems = [];
 
-  const first4Categories = allCategories.slice(0, 4);
-  for (const cat of first4Categories) {
+  // Find the "gold" category - try common variations
+  const goldCategory = allCategories.find((cat) => {
     const src = cat?.attributes ?? cat ?? {};
     const slug = src.slug ?? (src.category ? safeSlugify(src.category) : null);
-    if (!slug) continue;
+    const title = (src.title ?? src.category ?? src.name ?? "").toLowerCase();
+    
+    // Match "gold", "gold-news", etc.
+    return slug === "gold" || slug === "gold-news" || title.includes("gold");
+  });
 
-    try {
-      const res = await fetch(buildCategoryEndpoint(slug, 1));
-      if (!res.ok) continue;
-      const data = await res.json();
-      const sections = extractSectionsFromResponse(data, slug);
-      if (sections.length > 0) mostReadItems.push(sections[0]);
-    } catch (err) {
-      console.error("Error fetching most read news for", slug, err);
-    }
+  if (!goldCategory) {
+    console.warn("Gold category not found");
+    container.innerHTML = '<p>Gold news category not available.</p>';
+    return;
   }
 
-  if (mostReadItems.length) {
-    const html = mostReadItems
-      .map(
-        (item) => `
-        <div class="card clickable-card" 
-             data-doc-id="${item.docId}" 
-             data-pdf-url="${item.pdfUrl || ''}"
-             data-click-attached="false">
-          <div class="head-sec"><p>${escapeHTML(item.title)}</p></div>
-          <p class="center">${escapeHTML(item.short_description || '')}</p>
-          <small>${fmtDate(item.publish_on)}<br/>By: ${escapeHTML(item.author || "Mining Discovery")}</small>
-        </div>
-      `
-      )
-      .join("");
-    container.innerHTML = html;
-    attachCardClickHandlers(container);
+  const src = goldCategory?.attributes ?? goldCategory ?? {};
+  const goldSlug = src.slug ?? (src.category ? safeSlugify(src.category) : null);
+
+  try {
+    // Fetch top 4 gold news items
+    const endpoint = API_ROOT +
+      `/api/news-categories?filters[slug][$eq]=${encodeURIComponent(goldSlug)}` +
+      `&populate[news_sections][fields][0]=title` +
+      `&populate[news_sections][fields][1]=author` +
+      `&populate[news_sections][fields][2]=publish_on` +
+      `&populate[news_sections][fields][3]=short_description` +
+      `&populate[news_sections][populate][image]=true` +
+      `&populate[news_sections][populate][pdf]=true` +
+      `&pagination[pageSize]=4&pagination[page]=1`;
+
+    const res = await fetch(endpoint);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    
+    const data = await res.json();
+    const goldNewsItems = extractSectionsFromResponse(data, goldSlug);
+
+    if (goldNewsItems.length > 0) {
+      const html = goldNewsItems
+        .slice(0, 4) // Ensure we only take top 4
+        .map(
+          (item) => `
+          <div class="card clickable-card" 
+               data-doc-id="${escapeHTML(item.docId || '')}" 
+               data-pdf-url="${escapeHTML(item.pdfUrl || '')}"
+               style="cursor: pointer;">
+            <div class="head-sec"><p>${escapeHTML(item.title)}</p></div>
+            <p class="center">${escapeHTML(truncateWords(item.short_description || '', 20))}</p>
+            <small>${fmtDate(item.publish_on)}<br/>By: ${escapeHTML(item.author || "ARRAS MINERALS")}</small>
+          </div>
+        `
+        )
+        .join("");
+      container.innerHTML = html;
+      
+      // Attach click handlers to make cards clickable
+      attachCardClickHandlers(container);
+      console.log('Gold news cards rendered and click handlers attached');
+    } else {
+      container.innerHTML = '<p>No gold news available at the moment.</p>';
+    }
+  } catch (err) {
+    console.error("Error fetching gold news:", err);
+    container.innerHTML = '<p>Unable to load gold news.</p>';
   }
 }
 
@@ -477,7 +506,8 @@ async function fetchAndRenderCategory(slug, page = 1, append = false) {
     
     renderNewsSections(sections, append);
 
-    if (!append) await fetchAndRenderMostRead();
+    // Render Gold News instead of Most Read
+    if (!append) await fetchAndRenderGoldNews();
 
     const categories = toArray(data?.data || []);
     const currentCategory = categories.find((cat) => {
@@ -611,7 +641,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const initialSlug = getSlugFromURL();
 
-    await fetchAndRenderMostRead();
+    await fetchAndRenderGoldNews(); // Fetch Gold News instead of Most Read
     await fetchAndRenderCategory(initialSlug, 1);
 
     const showMoreBtn = document.querySelector(".btn-more");

@@ -1135,10 +1135,16 @@
 }
     /* container3 */
      /* Container for advisor cards */
+    .container3 h2{
+      text-align: center;
+    }
     .advisor-container {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
+    }
+    .content h3{
+      padding: 10px;
     }
 
     /* Advisor Card */
@@ -1169,7 +1175,12 @@
   align-items: flex-start;
   flex-direction: row-reverse; /* 👈 image right side */
 }
-
+.advisor-card2 p{
+      font-size: 13px;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+}
     /* Image placeholder */
   .advisor-card .image {
     background-image: url("./image/Company Logo/cris.jpg");
@@ -1182,7 +1193,7 @@
   background-repeat: no-repeat;
 }
   .advisor-card2 .image {
-    background-image: url("./image/Company Logo/cris.jpg");
+    background-image: url("./image/Company Logo/l.PNG");
  width: 130px;
   height: 180px;
   border-radius: 6px;
@@ -1219,72 +1230,67 @@
       }
     }
       .section {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
+  text-align: center;
+  margin-bottom: 60px;
+  width: 100%;
+  max-width: 1100px;
+}
 
-    .card {
-          box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 8px, rgba(0, 0, 0, 0.1) 0px 10px 20px, rgba(0, 0, 0, 0.05) 0px 15px 40px;
-    border-left: 3px solid #ae8a4c;
-    padding: 15px 18px;
-    margin-bottom: 15px;
-    background-color: #f8f4ec;
-    border-radius: 8px;
-    transition: background 0.3s 
-ease;
-    }
 
-    .card h3 {
-      font-size: 16px;
-      margin-bottom: 10px;
-      color: #222;
-    }
+.section h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #111;
+}
 
-    .card p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.5;
-    }
+.card-container {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  gap: 20px;
+}
 
-    /* Hover Effect */
-    .card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    }
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    /* Animation */
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .card {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-    }
-    .containers {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
 
-    h2 {
-      margin-top: 10px;
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+.card p {
+  font-size: 13.5px;
+color: #8d6d2a;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
 
     /* Table Styling */
+    .container5{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -2013,49 +2019,55 @@ mineral exploration and discovery.
       <!-- Advisor 2 -->
      
   <div class="container4">
-    
-  <h2>Our Purpose</h2>
-  <div class="section">
-    <div class="card">
-      <h3>Illuminate the Industry</h3>
-      <p>Report clearly on exploration, production, regulation, investment, and ESG.</p>
+      <section class="section">
+    <h2>Our Purpose</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Illuminate the Industry</h3>
+        <p>Report clearly on exploration, production, regulation, investment, and ESG.</p>
+      </div>
+      <div class="card">
+        <h3>Insight into Action</h3>
+        <p>Interpret the news so that leaders and investors can make informed decisions.</p>
+      </div>
+      <div class="card">
+        <h3>Foster Transparency</h3>
+        <p>Provide a clear view of company operations, risks, and community impact.</p>
+      </div>
+      <div class="card">
+        <h3>Build Bridges</h3>
+        <p>Connecting firms, investors, regulators, and communities through journalism and data.</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Insight into Action</h3>
-      <p>Interpret the news so that leaders and investors can make informed decisions.</p>
-    </div>
-    <div class="card">
-      <h3>Foster Transparency</h3>
-      <p>Provide a clear view of company operations, risks, and community impact.</p>
-    </div>
-    <div class="card">
-      <h3>Build Bridges</h3>
-      <p>Connecting firms, investors, regulators, and communities through stories and data.</p>
-    </div>
-  </div>
+  </section>
 
-  <h2>Our Principles</h2>
-  <div class="section">
-    <div class="card">
-      <h3>Integrity</h3>
-      <p>Truthful, verified reporting above all else.</p>
+  <section class="section">
+    <h2>Our Principles</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Integrity</h3>
+        <p>Truthful, verified reporting above all else.</p>
+      </div>
+      <div class="card">
+        <h3>Clarity</h3>
+        <p>Explain complex issues in plain, impactful language.</p>
+      </div>
+      <div class="card">
+        <h3>Innovation</h3>
+        <p>Adopting new tools and formats to keep coverage relevant.</p>
+      </div>
+      <div class="card">
+        <h3>Respect</h3>
+        <p>Consideration for communities, environment, investors, and workers.</p>
+      </div>
+      <div class="card">
+        <h3>Partnership</h3>
+        <p>Collaborating with companies, experts, and institutions as allies.</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Clarity</h3>
-      <p>Explain complex issues in plain, impactful language.</p>
-    </div>
-    <div class="card">
-      <h3>Innovation</h3>
-      <p>Adopting new tools and formats to keep coverage relevant.</p>
-    </div>
-    <div class="card">
-      <h3>Respect</h3>
-      <p>Consideration for communities, environment, investors, and workers.</p>
-    </div>
-    <div class="card">
-      <h3>Partnership</h3>
-      <p>Collaborating with companies, experts, and institutions as allies.</p>
-    </div>
+  </section>
+
+
   </div>
   </div>
   <div class="container5">
