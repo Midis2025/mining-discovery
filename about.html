@@ -1131,8 +1131,8 @@
   }
 
   .team-card .image {
-    width: 80px;
-    height: 80px;
+   width: 102px;
+        height: 166px;
   }
 
   .team-card h3 {
@@ -1159,43 +1159,69 @@
     }
 
     /* Advisor Card */
-  .advisor-container {
+.advisor-container {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 20px;
   justify-content: center; /* center align */
-}
-
-.advisor-card {
-  background: #eaeaea;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 500px;   /* width controlled */
-
-  gap: 20px;
   align-items: flex-start;
-  flex-direction: row-reverse; /* 👈 image right side */
 }
+
+/* ✅ Common Card Styles */
+.advisor-card,
 .advisor-card2 {
+  display: flex;
   background: #eaeaea;
   border-radius: 8px;
   padding: 20px;
-  max-width: 500px;   /* width controlled */
-
+  max-width: 500px;
   gap: 20px;
   align-items: flex-start;
-  flex-direction: row-reverse; /* 👈 image right side */
+  flex-direction: row-reverse; /* 👈 image on right side */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.advisor-card2 p{
-      font-size: 13px;
-    color: #333;
-    line-height: 1.6;
-    text-align: justify;
+
+.advisor-card:hover,
+.advisor-card2:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-    /* Image placeholder */
-  .advisor-card .image {
-    background-image: url("./image/Company Logo/cris.jpg");
- width: 130px;
+
+/* ✅ Text styling */
+.advisor-card .content h3,
+.advisor-card2 .content h3 {
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.advisor-card .content p,
+.advisor-card2 .content p {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.advisor-card .content strong,
+.advisor-card2 .content strong {
+  font-weight: 600;
+}
+
+/* ✅ Images */
+.advisor-card .image {
+  background-image: url("./image/Company Logo/cris.jpg");
+}
+
+.advisor-card2 .image {
+  background-image: url("./image/Company Logo/l.PNG");
+}
+
+.advisor-card .image,
+.advisor-card2 .image {
+  width: 130px;
   height: 180px;
   border-radius: 6px;
   flex-shrink: 0;
@@ -1203,50 +1229,77 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* ✅ Responsive breakpoints */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .advisor-card,
+  .advisor-card2 {
+    max-width: 90%;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .advisor-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .advisor-card,
+  .advisor-card2 {
+    flex-direction: column; /* Image on top */
+    align-items: center;
+    text-align: center;
+  }
+
+  .advisor-card .image,
   .advisor-card2 .image {
-    background-image: url("./image/Company Logo/l.PNG");
- width: 130px;
-  height: 180px;
-  border-radius: 6px;
-  flex-shrink: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    width: 120px;
+    height: 160px;
+    margin-bottom: 15px;
+  }
+
+  .advisor-card .content p,
+  .advisor-card2 .content p {
+    text-align: justify;
+    font-size: 13px;
+  }
 }
 
+/* Small Phones */
+@media (max-width: 480px) {
+  .advisor-card,
+  .advisor-card2 {
+    padding: 15px;
+  }
 
-    /* Content area */
-    .advisor-card .content h3 {
-         padding-top: 10px;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    }
+  .advisor-card .image,
+  .advisor-card2 .image {
+    width: 100px;
+    height: 140px;
+  }
 
-    .advisor-card .content p {
-      font-size: 13px;
-      color: #333;
-      line-height: 1.6;
-      text-align: justify;
-    }
+  .advisor-card .content h3,
+  .advisor-card2 .content h3 {
+    font-size: 15px;
+  }
 
-    .advisor-card .content strong {
-      font-weight: 600;
-    }
+  .advisor-card .content p,
+  .advisor-card2 .content p {
+    font-size: 12.5px;
+  }
+}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .advisor-container {
-        flex-direction: column;
-      }
-    }
-      .section {
+    .section {
   text-align: center;
   margin-bottom: 60px;
   width: 100%;
   max-width: 1100px;
+  margin-inline: auto;
+  padding: 0 15px;
 }
-
 
 .section h2 {
   font-size: 22px;
@@ -1255,19 +1308,25 @@
   color: #111;
 }
 
+/* ======= GRID LAYOUT ======= */
 .card-container {
-  display: flex;
-  /* flex-wrap: wrap; */
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* ✅ 5 cards per row on large screens */
   gap: 20px;
+  justify-content: center;
 }
-
+.card-containers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* ✅ 5 cards per row on large screens */
+  gap: 20px;
+  justify-content: center;
+}
+/* ======= CARD STYLES ======= */
 .card {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   padding: 20px;
-  width: 220px;
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -1285,15 +1344,59 @@
 
 .card p {
   font-size: 13.5px;
-color: #8d6d2a;
+  color: #8d6d2a;
   line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-  .card {
-    width: 100%;
+/* ======= RESPONSIVE BREAKPOINTS ======= */
+
+/* 🖥️ Large tablets / small laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* 📱 Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .section h2 {
+    font-size: 20px;
+  }
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+      .card-containers {
+        grid-template-columns: 1fr;
+    }
+  .card {
+    padding: 18px;
+  }
+}
+
+/* 📱 Small phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .section h2 {
+    font-size: 18px;
+  }
+  .card-container {
+    grid-template-columns: 1fr; /* 1 card per row */
+  }
+      .card-containers {
+        grid-template-columns: 1fr;
+    }
+  .card {
+    padding: 15px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 13px;
+  }
+}
+
+/* ✅ Responsive Breakpoints */
+
 
     /* Table Styling */
     .container5{
@@ -1368,6 +1471,9 @@ color: #8d6d2a;
 
     /* Responsive */
     @media (max-width: 768px) {
+      .containers{
+        margin: 20px;
+      }
       table, thead, tbody, th, td, tr {
         display: block;
       }
@@ -2030,7 +2136,7 @@ mineral exploration and discovery.
   <div class="container4">
       <section class="section">
     <h2>Our Purpose</h2>
-    <div class="card-container">
+    <div class="card-containers">
       <div class="card">
         <h3>Illuminate the Industry</h3>
         <p>Report clearly on exploration, production, regulation, investment, and ESG.</p>

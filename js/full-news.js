@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
           width: 40px; 
           height: 40px; 
           border: 4px solid #f3f3f3; 
-          border-top: 4px solid #3498db; 
+          border-top: 4px solid ##a37b3c; 
           border-radius: 50%; 
           animation: spin 1s linear infinite;
         "></div>
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showError(container, title, message, showRetry = true, contentId = null) {
     const retryButton = showRetry ? `
       <button onclick="location.reload()" style="
-        background: #3498db; 
+        background: #a37b3c; 
         color: white; 
         border: none; 
         padding: 8px 16px; 
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(() => {
       container.innerHTML = `
-        <article style="max-width: 900px; margin: 0 auto; padding: 20px; font-family: system-ui, -apple-system, sans-serif;">
+        <article style="max-width: 900px; margin: 0 auto; padding: 20px;">
           <header style="border-bottom: 3px solid #d4af37; padding-bottom: 20px; margin-bottom: 30px;">
             <h1 style="color: #2c3e50; margin: 0 0 15px 0; line-height: 1.3; font-size: 2.2em; font-weight: 600;">
               ${title}
@@ -284,9 +284,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ${processedDescription}
           </div>
           <footer style="margin-top: 50px; padding-top: 25px; border-top: 2px solid #ecf0f1; text-align: center;">
-            <a href="/" style="color: #3498db; text-decoration: none; font-weight: 500; padding: 10px 20px; border: 2px solid #3498db; border-radius: 5px; transition: all 0.3s ease; display: inline-block;"
-               onmouseover="this.style.background='#3498db'; this.style.color='white';" 
-               onmouseout="this.style.background='transparent'; this.style.color='#3498db';">
+            <a href="/" style="color: #a37b3c; text-decoration: none; font-weight: 500; padding: 10px 20px; border: 2px solid #a37b3c; border-radius: 5px; transition: all 0.3s ease; display: inline-block;"
+               onmouseover="this.style.background='#a37b3c'; this.style.color='white';" 
+               onmouseout="this.style.background='transparent'; this.style.color='#a37b3c';">
               ← Back to Home
             </a>
           </footer>
@@ -334,8 +334,8 @@ document.addEventListener("DOMContentLoaded", () => {
           ${debugInfo}
           <p style="font-size: 12px; color: #666;">Error details: ${error.message}</p>
           <div style="margin-top: 15px;">
-            <button onclick="location.reload()" style="background: #3498db; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 10px;">Retry</button>
-            <a href="/" style="color: #0066cc; text-decoration: none;">← Back to home</a>
+            <button onclick="location.reload()" style="background: #a37b3c; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 10px;">Retry</button>
+            <a href="/" style="color: #a37b3c; text-decoration: none;">← Back to home</a>
           </div>
         </div>
       `;
