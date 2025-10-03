@@ -68,11 +68,117 @@ function getSlugFromURL() {
 function setActiveMenuItem(slug) {
   const dropdownMenu = document.getElementById("dropdownMenu");
   if (!dropdownMenu) return;
-  // Optional: style the active item
   dropdownMenu.querySelectorAll("a[data-slug]").forEach(a => {
     if (a.dataset.slug === slug) a.classList.add("active");
     else a.classList.remove("active");
   });
+}
+
+/********************************************************************
+ * PDF Utilities
+ ********************************************************************/
+function resolvePdfUrl(raw) {
+  console.log('PDF raw data:', raw);
+  
+  if (!raw) {
+    return null;
+  }
+  
+  let url = null;
+  
+  // Handle array structure
+  if (Array.isArray(raw) && raw.length > 0) {
+    const firstItem = raw[0];
+    if (firstItem?.attributes?.url) {
+      url = firstItem.attributes.url;
+    } else if (firstItem?.url) {
+      url = firstItem.url;
+    } else if (firstItem?.data?.attributes?.url) {
+      url = firstItem.data.attributes.url;
+    }
+  }
+  // Handle object structure
+  else if (typeof raw === 'object') {
+    if (raw?.data?.attributes?.url) {
+      url = raw.data.attributes.url;
+    } else if (raw?.attributes?.url) {
+      url = raw.attributes.url;
+    } else if (raw?.url) {
+      url = raw.url;
+    } else if (raw?.data?.[0]?.attributes?.url) {
+      url = raw.data[0].attributes.url;
+    } else if (Array.isArray(raw?.data) && raw.data.length > 0) {
+      const firstItem = raw.data[0];
+      if (firstItem?.attributes?.url) {
+        url = firstItem.attributes.url;
+      } else if (firstItem?.url) {
+        url = firstItem.url;
+      }
+    }
+  }
+  
+  if (!url) {
+    return null;
+  }
+  
+  return absUrl(url);
+}
+
+function isValidPdfUrl(url) {
+  if (!url || typeof url !== 'string') return false;
+  const trimmed = url.trim();
+  return trimmed !== '' && 
+         trimmed !== 'null' && 
+         trimmed !== 'undefined' &&
+         (trimmed.startsWith('http://') || trimmed.startsWith('https://'));
+}
+
+function showMessage(message, type = 'info') {
+  const existingMsg = document.querySelector('.pdf-toast-message');
+  if (existingMsg) existingMsg.remove();
+  
+  const toast = document.createElement('div');
+  toast.className = `pdf-toast-message ${type}`;
+  toast.textContent = message;
+  toast.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#2196f3'};
+    color: white;
+    border-radius: 4px;
+    z-index: 10000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: slideInRight 0.3s ease;
+  `;
+  
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.3s';
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+// Add animation styles
+if (!document.getElementById('pdf-toast-styles')) {
+  const style = document.createElement('style');
+  style.id = 'pdf-toast-styles';
+  style.textContent = `
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 }
 
 /********************************************************************
@@ -118,14 +224,18 @@ function buildNewsCard({ title, author, publish_on, short_description, imageUrl,
   const safeDesc = escapeHTML(truncateWords(short_description || ""));
   const imgSrc = imageUrl || "./image/pexels-castorlystock-5139206 1.png";
   const safeDocId = escapeHTML(docId || "");
-  const safePdfUrl = pdfUrl ? escapeHTML(pdfUrl) : null;
-  const dataAttrs = `data-doc-id="${safeDocId}" ${safePdfUrl ? `data-pdf-url="${safePdfUrl}"` : ""}`;
+  const safePdfUrl = pdfUrl ? escapeHTML(pdfUrl) : "";
+  
+  const dataAttrs = `data-doc-id="${safeDocId}"${safePdfUrl ? ` data-pdf-url="${safePdfUrl}"` : ''}`;
+  
+  // Add PDF indicator if PDF is available
+  const pdfIndicator = safePdfUrl ? '<span class="pdf-badge" title="PDF available"></span>' : '';
 
   return `
     <div class="news-card clickable-card" ${dataAttrs} style="cursor: pointer;">
       <img src="${imgSrc}" alt="">
       <div class="text-content">
-        <h3>${safeTitle}</h3>
+        <h3>${safeTitle} ${pdfIndicator}</h3>
         <hr class="custom-line">
         <p>${safeDesc} <span><a href="javascript:void(0)" class="read-more-inline"></a></span></p>
         <span>${safeDate}</span>
@@ -140,13 +250,17 @@ function buildNextNewsCard({ title, short_description, imageUrl, docId, pdfUrl }
   const safeDesc = escapeHTML(truncateWords(short_description || ""));
   const imgSrc = imageUrl || "./image/pexels-castorlystock-5139206 1.png";
   const safeDocId = escapeHTML(docId || "");
-  const safePdfUrl = pdfUrl ? escapeHTML(pdfUrl) : null;
-  const dataAttrs = `data-doc-id="${safeDocId}" ${safePdfUrl ? `data-pdf-url="${safePdfUrl}"` : ""}`;
+  const safePdfUrl = pdfUrl ? escapeHTML(pdfUrl) : "";
+  
+  const dataAttrs = `data-doc-id="${safeDocId}"${safePdfUrl ? ` data-pdf-url="${safePdfUrl}"` : ''}`;
+  
+  // Add PDF indicator
+  const pdfIndicator = safePdfUrl ? '<span class="pdf-badge" title="PDF available">📄</span>' : '';
 
   return `
     <div class="gold-card clickable-card" ${dataAttrs} style="cursor: pointer;">
       <img src="${imgSrc}" alt="">
-      <h3>${safeTitle}</h3>
+      <h3>${safeTitle} ${pdfIndicator}</h3>
       <p>${safeDesc}</p>
     </div>
   `;
@@ -195,8 +309,15 @@ function extractSectionsFromResponse(apiJson, targetSlug) {
 
   const sections = toArray(rawSections).map((sec) => {
     const s = sec?.attributes ?? sec ?? {};
-    const imageUrl = sec?.image?.data?.attributes?.url || s?.image?.data?.attributes?.url || s?.image?.url || null;
-    const pdfUrl = sec?.pdf?.data?.attributes?.url || s?.pdf?.data?.attributes?.url || s?.pdf?.url || null;
+    
+    // Extract image URL
+    const imageUrl = sec?.image?.data?.attributes?.url || 
+                     s?.image?.data?.attributes?.url || 
+                     s?.image?.url || null;
+    
+    // Extract PDF URL using the resolver
+    const pdfRaw = sec?.pdf || s?.pdf;
+    const pdfUrl = resolvePdfUrl(pdfRaw);
 
     return {
       title: s.title,
@@ -204,7 +325,7 @@ function extractSectionsFromResponse(apiJson, targetSlug) {
       publish_on: s.publish_on,
       short_description: s.short_description,
       imageUrl: absUrl(imageUrl),
-      pdfUrl: absUrl(pdfUrl),
+      pdfUrl: pdfUrl,
       docId: sec?.documentId || s?.documentId || null,
     };
   });
@@ -219,10 +340,14 @@ function extractSectionsFromResponse(apiJson, targetSlug) {
  ********************************************************************/
 function attachCardClickHandlers(container) {
   if (!container) return;
-  const clickableCards = container.querySelectorAll(".clickable-card");
+  const clickableCards = container.querySelectorAll(".clickable-card:not([data-click-attached])");
+  
   clickableCards.forEach((card) => {
     card.addEventListener("click", handleCardClick);
+    card.setAttribute('data-click-attached', 'true');
   });
+  
+  console.log(`Attached click handlers to ${clickableCards.length} cards`);
 }
 
 function handleCardClick(event) {
@@ -230,15 +355,43 @@ function handleCardClick(event) {
   const pdfUrl = card.getAttribute("data-pdf-url");
   const docId = card.getAttribute("data-doc-id");
 
-  if (pdfUrl && pdfUrl !== "null" && pdfUrl !== "") {
-    window.open(pdfUrl, "_blank");
+  console.log('Card clicked - PDF URL:', pdfUrl, 'Doc ID:', docId);
+
+  // Priority: PDF first, then news details
+  if (isValidPdfUrl(pdfUrl)) {
+    console.log('Opening PDF:', pdfUrl);
+    
+    try {
+      const newWindow = window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+      
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        console.log('Popup blocked, showing confirmation');
+        
+        const shouldNavigate = confirm(
+          'Popup blocked. Click OK to open the PDF in the current tab, or Cancel to stay on this page.'
+        );
+        
+        if (shouldNavigate) {
+          window.location.href = pdfUrl;
+        }
+      } else {
+        console.log('PDF opened successfully');
+        showMessage('PDF opened in new tab', 'success');
+      }
+    } catch (error) {
+      console.error('Error opening PDF:', error);
+      showMessage('Unable to open PDF', 'error');
+    }
   } else if (docId && docId !== "null" && docId !== "") {
+    console.log('Opening news details for:', docId);
     window.location.href = `news-details.html?id=${docId}`;
+  } else {
+    console.warn('No PDF or document ID available');
   }
 }
 
 /********************************************************************
- * “Most Read” & “Next Category”
+ * "Most Read" & "Next Category"
  ********************************************************************/
 async function fetchAndRenderMostRead() {
   const container = document.querySelector(".cards");
@@ -266,7 +419,10 @@ async function fetchAndRenderMostRead() {
     const html = mostReadItems
       .map(
         (item) => `
-        <div class="card clickable-card" data-doc-id="${item.docId}" data-pdf-url="${item.pdfUrl || ''}">
+        <div class="card clickable-card" 
+             data-doc-id="${item.docId}" 
+             data-pdf-url="${item.pdfUrl || ''}"
+             data-click-attached="false">
           <div class="head-sec"><p>${escapeHTML(item.title)}</p></div>
           <p class="center">${escapeHTML(item.short_description || '')}</p>
           <small>${fmtDate(item.publish_on)}<br/>By: ${escapeHTML(item.author || "Mining Discovery")}</small>
@@ -317,6 +473,8 @@ async function fetchAndRenderCategory(slug, page = 1, append = false) {
     totalItems = data?.meta?.pagination?.total || 0;
 
     const sections = extractSectionsFromResponse(data, currentCategorySlug);
+    console.log('Sections with PDF data:', sections.filter(s => s.pdfUrl).length);
+    
     renderNewsSections(sections, append);
 
     if (!append) await fetchAndRenderMostRead();
@@ -368,7 +526,6 @@ function generateDropdownMenu(categories) {
   const dropdownMenu = document.getElementById("dropdownMenu");
   const dropdownMenu1 = document.getElementById("dropdownMenu1");
 
-  // Generate menu items for both dropdowns
   const menuItems = categories.map((item) => {
     const src = item?.attributes ?? item ?? {};
     const title = src.title ?? src.category ?? src.name ?? `Category ${item?.id ?? ""}`;
@@ -382,9 +539,7 @@ function generateDropdownMenu(categories) {
     };
   }).filter(Boolean);
 
-  // Populate main dropdown (if exists)
   if (dropdownMenu) {
-    // Convert single <a> to a container if needed
     if (dropdownMenu.tagName.toLowerCase() === "a") {
       const nav = document.createElement("nav");
       nav.id = dropdownMenu.id;
@@ -403,11 +558,9 @@ function generateDropdownMenu(categories) {
       menu.appendChild(a);
     });
 
-    // Add click handler for SPA navigation
     menu.addEventListener("click", handleMenuClick);
   }
 
-  // Populate news section dropdown (for header)
   if (dropdownMenu1) {
     dropdownMenu1.innerHTML = "";
 
@@ -420,7 +573,6 @@ function generateDropdownMenu(categories) {
       dropdownMenu1.appendChild(a);
     });
 
-    // Add click handler for SPA navigation
     dropdownMenu1.addEventListener("click", handleMenuClick);
   }
 }
@@ -429,8 +581,6 @@ function handleMenuClick(e) {
   const link = e.target.closest("a[data-slug]");
   if (!link) return;
 
-  // If link points to the same page (e.g., you're already on newss.html),
-  // we prefer SPA behavior; prevent default and pushState.
   const url = new URL(link.href, window.location.href);
   const samePage = url.pathname === window.location.pathname;
 
@@ -464,11 +614,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     await fetchAndRenderMostRead();
     await fetchAndRenderCategory(initialSlug, 1);
 
-    // Show more
     const showMoreBtn = document.querySelector(".btn-more");
     if (showMoreBtn) showMoreBtn.addEventListener("click", handleShowMoreClick);
 
-    // Dropdown open/close (if you have toggle)
     const dropdownToggle = document.getElementById("dropdownToggle");
     const dropdownMenu = document.getElementById("dropdownMenu");
     if (dropdownToggle && dropdownMenu) {
@@ -497,7 +645,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     }
 
-    // Back/Forward support
     window.addEventListener("popstate", (event) => {
       const slug = event.state?.slug || getSlugFromURL();
       fetchAndRenderCategory(slug, 1, false);
@@ -506,3 +653,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Init error:", err);
   }
 });
+
+// Add CSS for PDF badge
+const pdfBadgeStyle = document.createElement('style');
+pdfBadgeStyle.textContent = `
+  .pdf-badge {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 14px;
+    opacity: 0.8;
+    vertical-align: middle;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  
+  .clickable-card:hover .pdf-badge {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+`;
+document.head.appendChild(pdfBadgeStyle);

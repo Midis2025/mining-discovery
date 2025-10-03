@@ -127,7 +127,7 @@ function saveComment(newsId, commentData) {
 function renderCommentsSection(newsId) {
   return `
     <div class="comment-box">
-      <h3>COMMENT (<span id="comment-count">0</span>)</h3>
+       <h3>COMMENT <span id="comment-count"></h3>
       <p>Your email address will not be published. Required fields are marked *</p>
 
       <form id="commentForm" class="comment-form">

@@ -911,6 +911,16 @@
       transform: translateX(100px);
       transition: all 0.8s ease;
     }
+    .team-card .image {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
 
     /* For second card (image right side) */
     .team-card.reverse {
@@ -925,13 +935,13 @@
     }
 
     /* Image placeholder */
-    .team-card .image {
+    /* .team-card .image {
       width: 120px;
       height: 120px;
       background: #333;
       border-radius: 4px;
       flex-shrink: 0;
-    }
+    } */
 
     /* Text area */
     .team-card .content {
@@ -1012,12 +1022,24 @@
 
 
 /* Image */
-.team-card .image {
-  width: 140px;
-  height: 140px;
-  background: #333;
+.team-card .image,
+.team-card.reverse .image {
+  width: 130px;
+  height: 180px;
   border-radius: 6px;
   flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Individual images */
+.team-card .image {
+  background-image: url("https://www.midis.in/image/Untitled%20design%20(3).png");
+}
+
+.team-card.reverse .image {
+  background-image: url("https://www.midis.in/image/e3fbadcb-f3f0-489d-baa7-16f46eee0757.jpg");
 }
 
 /* Text */
@@ -1140,6 +1162,7 @@
 
     /* Image placeholder */
   .advisor-card .image {
+    background-image: url("./image/Company Logo/Lectura de un clásico atemporal.png");
   width: 100px;
   height: 100px;
   background: #333;
@@ -1884,38 +1907,43 @@ ease;
       and the future of our planet. And they set out to build a platform that honors all of that.
     </p>
   </section>
-  <div class="container2">
-    <div class="team-container">
-      <h2>Management Team</h2>
+<div class="container2">
+  <div class="team-container">
+    <h2>Management Team</h2>
 
-      <!-- Card 1 -->
-      <div class="team-card">
-        <div class="image"></div>
-        <div class="content">
-          <h3>Gaurav Sharma</h3>
-          <p>
-            <strong>Gaurav Sharma is a Founder of Mining Discovery</strong>, bringing a word to the know-how
-            in media technology, communication, and mining networks to innovate on exploration. With a unique
-            technical insight and connectivity with the industry, he has developed platforms that serve as a bridge
-            from discovery to opportunity.
-          </p>
-        </div>
+    <!-- Card 1 -->
+    <div class="team-card">
+ <div class="image">
+
+ </div>
+      <div class="content">
+        <h3>Gaurav Sharma</h3>
+        <p>
+          <strong>Gaurav Sharma is a Founder of Mining Discovery</strong>, bringing a word to the know-how
+          in media technology, communication, and mining networks to innovate on exploration. With a unique
+          technical insight and connectivity with the industry, he has developed platforms that serve as a bridge
+          from discovery to opportunity.
+        </p>
       </div>
+    </div>
 
-      <!-- Card 2 -->
-      <div class="team-card reverse">
-        <div class="image"></div>
-        <div class="content">
-          <h3>Sagar Bakshi</h3>
-          <p>
-            <strong>Sagar Bakshi is a Co-founder of Mining Discovery</strong>, brings with him a strong foothold
-            in resource journalism, editorial direction, and market strategy. As someone who has analyzed global
-            mining developments for years, he brings a sharp lens toward industry trends and opportunities.
-          </p>
-        </div>
+    <!-- Card 2 -->
+    <div class="team-card reverse">
+     <div class="image">
+
+     </div>
+      <div class="content">
+        <h3>Sagar Bakshi</h3>
+        <p>
+          <strong>Sagar Bakshi is a Co-founder of Mining Discovery</strong>, brings with him a strong foothold
+          in resource journalism, editorial direction, and market strategy. As someone who has analyzed global
+          mining developments for years, he brings a sharp lens toward industry trends and opportunities.
+        </p>
       </div>
     </div>
   </div>
+</div>
+
   <div class="container3">
      <section>
     <h2>Our Advisors</h2>
