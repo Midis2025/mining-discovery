@@ -1159,16 +1159,39 @@
   align-items: flex-start;
   flex-direction: row-reverse; /* 👈 image right side */
 }
+.advisor-card2 {
+  background: #eaeaea;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;   /* width controlled */
+
+  gap: 20px;
+  align-items: flex-start;
+  flex-direction: row-reverse; /* 👈 image right side */
+}
 
     /* Image placeholder */
   .advisor-card .image {
-    background-image: url("./image/Company Logo/Lectura de un clásico atemporal.png");
-  width: 100px;
-  height: 100px;
-  background: #333;
+    background-image: url("./image/Company Logo/cris.jpg");
+ width: 130px;
+  height: 180px;
   border-radius: 6px;
   flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+  .advisor-card2 .image {
+    background-image: url("./image/Company Logo/cris.jpg");
+ width: 130px;
+  height: 180px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 
     /* Content area */
     .advisor-card .content h3 {
@@ -1966,7 +1989,7 @@ ease;
           </p>
         </div>
       </div>
-       <div class="advisor-card">
+       <div class="advisor-card2">
         <div class="image"></div>
         <div class="content">
           <h3>Chris Powell</h3>
