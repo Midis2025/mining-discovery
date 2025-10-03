@@ -21,59 +21,57 @@
         font-family: "Pontano Sans", sans-serif;
       }
       .first-header {
-        height: 50px; /* ek line ke height ke barabar */
-        overflow: hidden;
-        position: relative;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+  height: 50px;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
-      .news-slider {
-        display: flex;
-        flex-direction: column;
-        animation: slideNews 8s infinite;
-      }
+/* Wrapper for sliding lines */
+.news-slider {
+  position: relative;
+  width: 100%;
+  height: 50px;
+}
 
-      .news-slider p {
-        height: 50px;
-        line-height: 50px;
-        margin: 0;
-        font-size: 18px;
-        font-weight: bold;
-        color: white;
-        text-align: center;
-        width: 100%;
-      }
+/* Each line setup */
+.news-slider p {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  left: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideUp 12s ease-in-out infinite;
+}
 
-      /* Animation - each step stops text at center */
-      @keyframes slideNews {
-        0%,
-        20% {
-          transform: translateY(30px);
-        } /* 1st text */
-        25%,
-        45% {
-          transform: translateY(-30px);
-        } /* 2nd text */
-        50%,
-        70% {
-          transform: translateY(-30px);
-        } /* 3rd text */
-        75%,
-        95% {
-          transform: translateY(-30px);
-        } /* 4th text */
-        100% {
-          transform: translateY(0);
-        } /* loop back */
-      }
+/* Each line delay for sequence */
+.news-slider p:nth-child(1) { animation-delay: 0s; }
+.news-slider p:nth-child(2) { animation-delay: 4s; }
+.news-slider p:nth-child(3) { animation-delay: 8s; }
 
-      .first-header:hover {
-        text-decoration: underline;
-        color: white;
-      }
+/* Animation: bottom → center → top */
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateY(100%); }   /* below */
+  10%  { opacity: 1; transform: translateY(0); }      /* center */
+  25%  { opacity: 1; transform: translateY(0); }      /* stay center */
+  35%  { opacity: 0; transform: translateY(-100%); }  /* slide up */
+  100% { opacity: 0; transform: translateY(100%); }   /* reset below */
+}
+
+.first-header:hover p {
+  text-decoration: underline;
+}
+
+
       .main-header {
         margin-bottom: 10px;
         background-color: #fff;
@@ -2105,8 +2103,8 @@ ease;
             href="https://www.linkedin.com/company/78297700/admin/page-posts/published"
             >LinkedIn</a
           >
-          <a href="https://www.instagram.com/miningdiscovery/?hl=en"
-            >Instragram</a
+          <a href="https://x.com/MiningDiscovery"
+            >X(Twitter)</a
           >
           <a href="https://www.youtube.com/@miningdiscovery">YouTube</a>
         </div>
