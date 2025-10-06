@@ -84,30 +84,56 @@ function serviceDropdown() {
    CAROUSELS
 ------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
-  const carousel = document.getElementById("carousel");
+  // Load content
+  loadPopularNews().catch(console.error);
+
+  // Arrow buttons scroll the track
+  const track = document.getElementById("carousel");
   const prev = document.getElementById("prev");
   const next = document.getElementById("next");
 
-  if (carousel && prev && next) {
-    prev.addEventListener("click", () => {
-      carousel.scrollBy({ left: -260, behavior: "smooth" });
-    });
-    next.addEventListener("click", () => {
-      carousel.scrollBy({ left: 260, behavior: "smooth" });
-    });
+  const STEP = 280; // ~ card width + gap
+
+  function updateArrows() {
+    if (!track) return;
+    const max = track.scrollWidth - track.clientWidth - 1;
+    prev.disabled = track.scrollLeft <= 0;
+    next.disabled = track.scrollLeft >= max;
   }
 
-  const slider = document.getElementById("videoSlider");
-  const leftBtn = document.querySelector(".arrow.left");
-  const rightBtn = document.querySelector(".arrow.right");
+  if (track && prev && next) {
+    prev.addEventListener("click", () => {
+      track.scrollBy({ left: -STEP, behavior: "smooth" });
+      setTimeout(updateArrows, 250);
+    });
+    next.addEventListener("click", () => {
+      track.scrollBy({ left: STEP, behavior: "smooth" });
+      setTimeout(updateArrows, 250);
+    });
 
-  if (slider && leftBtn && rightBtn) {
-    leftBtn.addEventListener("click", () => {
-      slider.scrollBy({ left: -300, behavior: "smooth" });
+    // Keyboard support when track is focused
+    track.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") prev.click();
+      if (e.key === "ArrowRight") next.click();
     });
-    rightBtn.addEventListener("click", () => {
-      slider.scrollBy({ left: 300, behavior: "smooth" });
-    });
+
+    // Drag / swipe support (desktop + touch)
+    let isDown = false, startX = 0, startScroll = 0;
+    const start = (clientX) => { isDown = true; startX = clientX; startScroll = track.scrollLeft; };
+    const move = (clientX) => { if (isDown) track.scrollLeft = startScroll - (clientX - startX); };
+    const end  = () => { isDown = false; updateArrows(); };
+
+    track.addEventListener("mousedown", e => { start(e.clientX); });
+    window.addEventListener("mousemove", e => { if (isDown) { move(e.clientX); e.preventDefault(); }});
+    window.addEventListener("mouseup", end);
+
+    track.addEventListener("touchstart", e => { start(e.touches[0].clientX); }, { passive: true });
+    track.addEventListener("touchmove",  e => { move(e.touches[0].clientX); }, { passive: true });
+    track.addEventListener("touchend", end);
+
+    // Keep arrows in sync on manual scroll
+    track.addEventListener("scroll", () => requestAnimationFrame(updateArrows));
+    updateArrows();
   }
 });
 

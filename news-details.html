@@ -1988,38 +1988,124 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 
 
   <script>
-        function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+       function toggleMenu() {
+  const header = document.querySelector(".main-header");
+  if (header) header.classList.toggle("mobile-active");
 }
- function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
-     function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
-  
- // Select tabs and contents
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".menu-content");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
+function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
 
-      // Add active to clicked
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
-    });
+  // Agar menu already open hai, click pe close karo
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    return;
+  }
+
+  // Menu open karo
+  menu.style.display = "block";
+
+
+}
+
+// Page ke kisi bhi jagah pe click ho, menu close ho jaye
+document.addEventListener("click", function(event) {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
+
+  // Agar click hamburger ya menu ke andar nahi hai to close karo
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.display = "none";
+  }
+});
+
+// Dropdown toggle for mobile
+function toggleDropdown(e) {
+  const isMobile = window.matchMedia('(max-width: 899px)').matches;
+
+  if (!isMobile) {
+    if (e) e.preventDefault();
+    return;
+  }
+
+  const dropdown = document.getElementById("dropdownMenu");
+  const header = document.getElementById("newsToggle");
+  if (dropdown) dropdown.classList.toggle("show");
+  if (header) header.classList.toggle("rotate");
+}
+
+// Tabs logic
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
   });
+});
+
+// Mobile dropdown toggle
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
+
+// Desktop dropdown hover
+function showDesktopDropdown(id) {
+  if (window.innerWidth >= 900) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      dropdown.classList.add("show");
+    }
+  }
+}
+
+function hideDesktopDropdown(id) {
+  if (window.innerWidth >= 900) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      dropdown.classList.remove("show");
+    }
+  }
+}
+
+
+// Show popup only once in lifetime (until localStorage is cleared)
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById("popup2");
+
+  if (!popup) return;
+
+  // Sirf tab dikhana jab user ne pehli baar site open ki hai
+  if (!localStorage.getItem("subscribedPopupShown")) {
+    setTimeout(() => {
+      popup.style.display = "flex"; // show popup
+      localStorage.setItem("subscribedPopupShown", "true"); // flag save
+    }, 3000); // delay (3 sec)
+  } else {
+    popup.style.display = "none"; // dusri baar kabhi show na ho
+  }
+});
+
+function closePopup() {
+  const popup = document.getElementById("popup2");
+  if (popup) popup.style.display = "none";
+}
+
+function subscribe() {
+  const email = document.getElementById("email").value;
+  if (email.trim() !== "") {
+    alert("Thanks for subscribing: " + email);
+    closePopup();
+  } else {
+    alert("Please enter a valid email.");
+  }
+}
     </script>
      <script>
     document.addEventListener("DOMContentLoaded", function () {
