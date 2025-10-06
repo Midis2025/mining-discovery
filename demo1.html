@@ -82,52 +82,53 @@
   </style>
 </head>
 <body>
-  <div class="container1">
-    <div class="section-container">
-      <h2 class="section-title">CEO’s Profiles</h2>
-      <div class="underline"></div>
+<div class="container1">
+  <div class="section-container">
+    <h2 class="section-title">Companies Profiles</h2>
+    <div class="underline"></div>
 
-      <div class="carousel-wrapper" id="carouselWrapper">
-        <div class="carousel-track" id="carouselTrack">
-          <!-- CEO Cards -->
-          <div class="profile-cards" data-name="Brian Miller" data-title="CEO of Astra Exploration" data-desc="Brian Miller brings years of geological and exploration experience to Astra Exploration, guiding the company’s projects with innovation and focus.">
-            <img src="./image/Ceos cover/Ceos cover/Brian Miller Astra Exploration.png" alt="Brian Miller">
-          </div>
-          <div class="profile-cards" data-name="Zayn Kalyan" data-title="CEO of Scorpio Gold Corp" data-desc="Zayn Kalyan leads Scorpio Gold Corp with a vision to expand the company’s resource potential through innovative mining strategies and responsible practices.">
-            <img src="./image/Ceos cover/Ceos cover/Copy of Zayn Kalyan Scorpio Gold Corp.png" alt="Zayn Kalyan">
-          </div>
-          <div class="profile-cards" data-name="George Bee" data-title="President and CEO of U.S. Gold Corp." data-desc="U.S. Gold Corp. underwent a major shift under George Bee’s leadership, moving from exploration to disciplined development, advancing the Copper King project.">
-            <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="George Bee">
-          </div>
-          <div class="profile-cards" data-name="Guanjuato Gold" data-title="CEO of Guanjuato Gold" data-desc="Focused on sustainable gold mining, Guanjuato Gold’s CEO has implemented strong environmental policies and advanced extraction techniques.">
-            <img src="./image/Ceos cover/Ceos cover/Guanjuato Gold Ceo Profile.png" alt="Guanjuato Gold">
-          </div>
-          <div class="profile-cards" data-name="Mati Talika" data-title="CEO of Aurion Resources" data-desc="Mati Talika drives Aurion Resources toward discovery excellence through innovation and integrity in mineral exploration.">
-            <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="Mati Talika">
-          </div>
-          <div class="profile-cards" data-name="Michel Amar" data-title="CEO of DigipowerX" data-desc="Michel Amar has transformed DigipowerX into a technology-driven company with cutting-edge solutions in the mining tech industry.">
-            <img src="./image/Ceos cover/Ceos cover/Michel Amar Digipower X.png" alt="Michel Amar">
-          </div>
-          <div class="profile-cards" data-name="Mike Stark" data-title="CEO of Arizona Mining" data-desc="Mike Stark oversees Arizona Mining's operations and ensures sustainable resource management.">
-            <img src="./image/Ceos cover/Ceos cover/Mike Stark Arizona.png" alt="Mike Stark">
-          </div>
-          <div class="profile-cards" data-name="Paul Cowley" data-title="CEO of Phenom Resources" data-desc="Paul Cowley leads Phenom Resources in innovative exploration and responsible mining practices.">
-            <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="Paul Cowley">
-          </div>
+    <div class="carousel-wrapper" id="carouselWrapper">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- Company Cards -->
+        <div class="profile-cards"
+          data-name="Astra Exploration"
+          data-title="(TSX.V: ASTR)"
+          data-desc="Astra Exploration focuses on advancing high-potential gold and silver projects with modern, responsible exploration practices.">
+          <img src="./image/Ceos cover/Ceos cover/US Gold Company Profile.pdf.png" alt="Astra Exploration">
         </div>
-      </div>
 
-      <div class="pagination">
-        <button id="prev"><i class="fa fa-angle-double-left"></i></button>
-        <button id="next"><i class="fa fa-angle-double-right"></i></button>
+        <div class="profile-cards"
+          data-name="Scorpio Gold Corp."
+          data-title="(TSX.V: SGN)"
+          data-desc="Scorpio Gold Corp. is committed to unlocking the full potential of its Nevada-based assets through strategic exploration and disciplined operations.">
+          <img src="./image/Ceos cover/Ceos cover/Scorpio Gold Corp. Company Profile.pdf.png" alt="Scorpio Gold Corp.">
+        </div>
+
+        <div class="profile-cards"
+          data-name="Phenom Resources Ltd."
+          data-title="(TSX.V: PHNM | US OTCQX®: PHNMF | Frankfurt: 1PY)"
+          data-desc="Phenom Resources Ltd. is a growth-oriented exploration and development company advancing high-value mining projects in North America with innovation and responsible practices.">
+          <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="Phenom Resources">
+        </div>
+
       </div>
     </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button id="prev"><i class="fa fa-angle-double-left"></i></button>
+      <div id="pageNumbers"></div>
+      <button id="next"><i class="fa fa-angle-double-right"></i></button>
+    </div>
   </div>
+</div>
+
 
   <div class="container2">
     <div class="profile-section">
       <div class="profile-card" id="mainProfile">
-        <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="George Bee">
+        <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="George Bee">
       </div>
       <div class="action-buttons">
         <p>About</p>
@@ -136,112 +137,144 @@
       </div>
       <div class="info-box" id="infoBox">
         <div class="divider"></div>
-        <h3>George Bee</h3>
-        <h4>President and CEO of U.S. Gold Corp.</h4>
-        <p>U.S. Gold Corp. (NASDAQ: USAU) underwent a major shift with the appointment of
-        George Bee as President and CEO in August 2020. Bringing over four decades of
-        mine-building expertise, Bee redirected the company’s focus from speculative
-        exploration to disciplined development, particularly advancing the Copper King
-        project.</p>
+          <h3>Phenom Resources Ltd.</h3>
+        <h4>(TSX.V: PHNM | US OTCQX®: PHNMF | Frankfurt: 1PY)
+.</h4>
+        <p>Phenom Resources Ltd. (TSX.V: PHNM | US OTCQX®: PHNMF | 
+Frankfurt: 1PY) is a growth oriented exploration and development 
+company working towards advancing high value mining projects in North 
+America. With innovation and responsible practices at its core, Phenom 
+Resources is well placed to unlock opportunities in precious and specialty 
+metals. Our Team boasts incredible industry experience, marrying 
+technical know how with a vision for the sustained creation of value. 
+Creating growth opportunities commercially for our shareholders through 
+partnerships, time tested exploration approaches, and being result
+oriented simultaneously benefits the mining industry. Exploration, project 
+advancement, or continual communication with the investment 
+community-Phenom Resources continually pursues opportunities to 
+expand its portfolio and market presence. With integrity and forward
+thinking strategy, we aspire toward a resilient, competitive global resource 
+future.</p>
         <div class="divider"></div>
       </div>
     </div>
   </div>
 
-  <script>
-    const track = document.getElementById('carouselTrack');
-    const ceoCards = Array.from(document.querySelectorAll('.carousel-track .profile-cards'));
-    const mainProfile = document.getElementById('mainProfile').querySelector('img');
-    const infoBox = document.getElementById('infoBox');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const wrapper = document.getElementById('carouselWrapper');
+ <script>
+const track = document.getElementById('carouselTrack');
+const ceoCards = Array.from(document.querySelectorAll('.carousel-track .profile-cards'));
+const mainProfile = document.getElementById('mainProfile').querySelector('img');
+const infoBox = document.getElementById('infoBox');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const wrapper = document.getElementById('carouselWrapper');
+const pageNumbersContainer = document.getElementById('pageNumbers');
 
-    // Detect cards per page
-    function getCardsPerPage() {
-      if (window.innerWidth <= 480) return 1;
-      if (window.innerWidth <= 768) return 2;
-      if (window.innerWidth <= 1024) return 3;
-      return 6;
-    }
+// 🔹 Cards per page based on screen width
+function getCardsPerPage() {
+  if (window.innerWidth <= 480) return 1;
+  if (window.innerWidth <= 768) return 2;
+  if (window.innerWidth <= 1024) return 3;
+  return 6;
+}
 
-    let cardsPerPage = getCardsPerPage();
-    let currentPage = 0;
-    let totalPages = Math.ceil(ceoCards.length / cardsPerPage);
+let cardsPerPage = getCardsPerPage();
+let currentPage = 0;
+let totalPages = Math.ceil(ceoCards.length / cardsPerPage);
 
-    function updateCarousel() {
-      const cardWidth = ceoCards[0].offsetWidth + 20;
-      track.style.transform = `translateX(-${cardWidth * cardsPerPage * currentPage}px)`;
-    }
+// 🔹 Update carousel position
+function updateCarousel() {
+  const cardWidth = ceoCards[0].offsetWidth + 20;
+  const moveX = cardWidth * cardsPerPage * currentPage;
+  track.style.transform = `translateX(-${moveX}px)`;
 
-    // Buttons
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 0) currentPage--;
+  document.querySelectorAll('.page-btn').forEach((btn, idx) => {
+    btn.classList.toggle('active', idx === currentPage);
+  });
+}
+
+// 🔹 Pagination buttons
+function renderPagination() {
+  pageNumbersContainer.innerHTML = '';
+  for (let i = 0; i < totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i + 1;
+    btn.classList.add('page-btn');
+    if (i === currentPage) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      currentPage = i;
       updateCarousel();
     });
+    pageNumbersContainer.appendChild(btn);
+  }
+}
 
-    nextBtn.addEventListener('click', () => {
-      if (currentPage < totalPages - 1) currentPage++;
-      updateCarousel();
-    });
+// 🔹 Prev / Next
+prevBtn.addEventListener('click', () => {
+  if (currentPage > 0) currentPage--;
+  updateCarousel();
+});
+nextBtn.addEventListener('click', () => {
+  if (currentPage < totalPages - 1) currentPage++;
+  updateCarousel();
+});
 
-    // Card click → show profile info
-    ceoCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const imgSrc = card.querySelector('img').src;
-        const name = card.dataset.name;
-        const title = card.dataset.title;
-        const desc = card.dataset.desc;
+// 🔹 Click card → update company profile
+ceoCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const imgSrc = card.querySelector('img').src;
+    const name = card.dataset.name;
+    const title = card.dataset.title;
+    const desc = card.dataset.desc;
 
-        mainProfile.src = imgSrc;
-        infoBox.innerHTML = `
-          <div class="divider"></div>
-          <h3>${name}</h3>
-          <h4>${title}</h4>
-          <p>${desc}</p>
-          <div class="divider"></div>
-        `;
-      });
-    });
+    mainProfile.src = imgSrc;
+    infoBox.innerHTML = `
+      <h3>${name}</h3>
+      <h4>${title}</h4>
+      <p>${desc}</p>
+      <div class="divider"></div>
+    `;
+  });
+});
 
-    // Swipe support (for mobile)
-    let startX = 0;
-    let isDragging = false;
+// 🔹 Swipe for mobile
+let startX = 0;
+let isDragging = false;
 
-    wrapper.addEventListener('touchstart', e => {
-      startX = e.touches[0].clientX;
-      isDragging = true;
-    });
+wrapper.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+});
 
-    wrapper.addEventListener('touchmove', e => {
-      if (!isDragging) return;
-      const currentX = e.touches[0].clientX;
-      const diff = startX - currentX;
+wrapper.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  const currentX = e.touches[0].clientX;
+  const diff = startX - currentX;
 
-      if (Math.abs(diff) > 50) { // Swipe threshold
-        if (diff > 0 && currentPage < totalPages - 1) {
-          currentPage++;
-        } else if (diff < 0 && currentPage > 0) {
-          currentPage--;
-        }
-        updateCarousel();
-        isDragging = false;
-      }
-    });
-
-    wrapper.addEventListener('touchend', () => {
-      isDragging = false;
-    });
-
-    // Resize responsiveness
-    window.addEventListener('resize', () => {
-      cardsPerPage = getCardsPerPage();
-      totalPages = Math.ceil(ceoCards.length / cardsPerPage);
-      currentPage = 0;
-      updateCarousel();
-    });
-
+  if (Math.abs(diff) > 50) {
+    if (diff > 0 && currentPage < totalPages - 1) currentPage++;
+    else if (diff < 0 && currentPage > 0) currentPage--;
     updateCarousel();
-  </script>
+    isDragging = false;
+  }
+});
+
+wrapper.addEventListener('touchend', () => {
+  isDragging = false;
+});
+
+// 🔹 Resize handling
+window.addEventListener('resize', () => {
+  cardsPerPage = getCardsPerPage();
+  totalPages = Math.ceil(ceoCards.length / cardsPerPage);
+  currentPage = 0;
+  renderPagination();
+  updateCarousel();
+});
+
+// 🔹 Initialize
+renderPagination();
+updateCarousel();
+</script>
 </body>
 </html>
