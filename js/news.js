@@ -1,7 +1,7 @@
 /********************************************************************
  * Config & Globals
  ********************************************************************/
-const API_ROOT = "https://acceptable-desire-0cca5bb827.strapiapp.com";
+const API_ROOT = "https://admins.miningdiscovery.com";
 
 let allCategories = [];
 let currentCategorySlug = "latest-news";

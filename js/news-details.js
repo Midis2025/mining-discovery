@@ -1,4 +1,4 @@
-const API_ROOT = "https://acceptable-desire-0cca5bb827.strapiapp.com";
+const API_ROOT = "https://admins.miningdiscovery.com";
 
 // ✅ Convert Strapi Rich Text (JSON) to HTML
 function renderRichText(node) {

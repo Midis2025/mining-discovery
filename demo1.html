@@ -1,238 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CEO’s Profiles</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Pontano Sans',sans-serif;}
+    body{background:#fff;padding:40px 0;}
+    .section-container{width:90%;max-width:1300px;margin:auto;}
+    .section-title{font-size:26px;font-weight:600;color:#111;}
+    .underline{width:80px;height:3px;background:#c1973d;margin-top:8px;margin-bottom:35px;}
+
+    /* ===== Carousel ===== */
+    .carousel-wrapper{position:relative;overflow:hidden;}
+    .carousel-track{display:flex;transition:transform 0.5s ease-in-out;touch-action:pan-y;}
+    .profile-cards{
+      background:#000;flex:0 0 15.8%;
+      margin-right:20px;border-radius:8px;color:#fff;
+      text-align:center;border:1px solid #333;
+      overflow:hidden;height:267px;cursor:pointer;
+      transition:transform 0.3s ease;
+    }
+    .profile-cards:hover{transform:scale(1.05);}
+    .profile-cards img{width:100%;height:270px;object-fit:cover;border-bottom:1px solid #333;}
+
+    /* ===== Pagination ===== */
+    .pagination{margin-top:25px;display:flex;justify-content:center;align-items:center;gap:10px;}
+    .pagination button{
+      border:1px solid #ccc;background:none;color:#333;
+      padding:6px 11px;border-radius:50%;cursor:pointer;
+      transition:all 0.3s ease;
+    }
+    .pagination button.active,.pagination button:hover{
+      background:#c1973d;color:#fff;border-color:#c1973d;
+    }
+    .pagination i{font-size:12px;}
+
+    /* ===== Profile Section ===== */
+    .profile-section{
+      display:flex;align-items:center;justify-content:center;
+      gap:50px;width:90%;max-width:1200px;margin:60px auto 0;
+    }
+    .profile-section .profile-card img{
+      border:1px solid black;border-radius:12px;
+      width:350px;height:450px;object-fit:cover;
+    }
+    .action-buttons{display:flex;flex-direction:column;align-items:center;gap:15px;}
+    .action-buttons p{font-weight:600;color:#000;margin-bottom:10px;}
+    .btn{
+      background-color:#c0973d;color:#fff;border:none;
+      padding:8px 20px;font-size:14px;border-radius:25px;
+      cursor:pointer;transition:all 0.3s ease;width:130px;text-align:center;
+    }
+    .btn:hover{background-color:#b28428;}
+    .info-box{
+      background:#1b1b1b;color:#fff;border-radius:10px;padding:25px 30px;
+      width:55%;min-height:320px;box-shadow:0 4px 10px rgba(0,0,0,0.3);
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .info-box h3{color:#c1973d;font-size:20px;margin-bottom:5px;}
+    .info-box h4{font-weight:500;font-size:14px;margin-bottom:15px;color:#d3d3d3;}
+    .info-box p{font-size:14px;line-height:1.6;color:#e5e5e5;text-align:justify;}
+    .divider{height:1px;background-color:#c1973d;width:100%;margin:10px 0 20px;}
+
+    /* ===== Responsive ===== */
+    @media (max-width:992px){
+      .profile-section{flex-direction:column;gap:30px;}
+      .info-box{width:90%;}
     }
 
-    body {
-      background-color: #fff;
-      padding: 40px 0;
-    }
-
-    .section-container {
-      width: 90%;
-      max-width: 1300px;
-      margin: auto;
-    }
-
-    .section-title {
-      font-size: 26px;
-      font-weight: 600;
-      color: #111;
-    }
-
-    .underline {
-      width: 80px;
-      height: 3px;
-      background: #c1973d;
-      margin-top: 8px;
-      margin-bottom: 35px;
-    }
-
-    /* Carousel layout */
-    .carousel-wrapper {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .profile-card {
-      background: #000;
-      flex: 0 0 15.8%;
-      margin-right: 20px;
-      border-radius: 8px;
-      color: #fff;
-      text-align: center;
-      border: 1px solid #333;
-      overflow: hidden;
-      height: 267px;
-    }
-
-    .profile-card img {
-      width: 100%;
-      height: 270px;
-      object-fit: cover;
-      border-bottom: 1px solid #333;
-    }
-
-    .profile-card h3 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-top: 10px;
-      color: #f7c552;
-      text-transform: uppercase;
-    }
-
-    .profile-card p {
-      font-size: 13px;
-      color: #ddd;
-    }
-
-    /* Pagination */
-    .pagination {
-      margin-top: 25px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .pagination button {
-      border: 1px solid #ccc;
-      background: none;
-      color: #333;
-      padding: 6px 11px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .pagination button.active,
-    .pagination button:hover {
-      background: #c1973d;
-      color: #fff;
-      border-color: #c1973d;
-    }
-
-    .pagination i {
-      font-size: 12px;
-    }
-
-    @media (max-width: 1024px) {
-      .profile-card {
-        flex: 0 0 31%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .profile-card {
-        flex: 0 0 48%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .profile-card {
-        flex: 0 0 100%;
-      }
+    /* 📱 Mobile optimization */
+    @media (max-width:768px){
+      .profile-cards{flex:0 0 80%;max-width:80%;height:auto;}
+      .profile-cards img{height:auto;}
+      .profile-section{flex-direction:column;margin-top:40px;}
+      .profile-section .profile-card img{width:100%;max-width:360px;height:auto;}
+      .info-box{width:95%;padding:20px;min-height:auto;}
+      .btn{width:150px;}
     }
   </style>
 </head>
 <body>
-  <div class="section-container">
-    <h2 class="section-title">CEO’s Profiles</h2>
-    <div class="underline"></div>
+  <div class="container1">
+    <div class="section-container">
+      <h2 class="section-title">CEO’s Profiles</h2>
+      <div class="underline"></div>
 
-    <div class="carousel-wrapper">
-      <div class="carousel-track" id="carouselTrack">
-        <!-- 6 visible cards -->
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/Brian Miller Astra Exploration.png" alt="">
-         
-        </div>
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/Copy of Zayn Kalyan Scorpio Gold Corp.png" alt="">
-        
-        </div>
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="">
-       
-        </div>
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/Guanjuato Gold Ceo Profile.png" alt="">
-
-        </div>
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="">
-       
-        </div>
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/Michel Amar Digipower X.png" alt="">
-    
-        </div>
-
-        <!-- Extra hidden slides for pagination demo -->
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/Mike Stark Arizona.png" alt="">
-        
-        </div>
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="">
-    
-        </div>
-        <div class="profile-card">
-          <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="">
-         
-        </div>
-        <div class="profile-card">
-          <img src="https://via.placeholder.com/250x300?text=Emma+Stone" alt="">
-         
-        </div>
-        <div class="profile-card">
-          <img src="https://via.placeholder.com/250x300?text=Chris+Brown" alt="">
-         
-        </div>
-        <div class="profile-card">
-          <img src="https://via.placeholder.com/250x300?text=Sarah+Lee" alt="">
-      
+      <div class="carousel-wrapper" id="carouselWrapper">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- CEO Cards -->
+          <div class="profile-cards" data-name="Brian Miller" data-title="CEO of Astra Exploration" data-desc="Brian Miller brings years of geological and exploration experience to Astra Exploration, guiding the company’s projects with innovation and focus.">
+            <img src="./image/Ceos cover/Ceos cover/Brian Miller Astra Exploration.png" alt="Brian Miller">
+          </div>
+          <div class="profile-cards" data-name="Zayn Kalyan" data-title="CEO of Scorpio Gold Corp" data-desc="Zayn Kalyan leads Scorpio Gold Corp with a vision to expand the company’s resource potential through innovative mining strategies and responsible practices.">
+            <img src="./image/Ceos cover/Ceos cover/Copy of Zayn Kalyan Scorpio Gold Corp.png" alt="Zayn Kalyan">
+          </div>
+          <div class="profile-cards" data-name="George Bee" data-title="President and CEO of U.S. Gold Corp." data-desc="U.S. Gold Corp. underwent a major shift under George Bee’s leadership, moving from exploration to disciplined development, advancing the Copper King project.">
+            <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="George Bee">
+          </div>
+          <div class="profile-cards" data-name="Guanjuato Gold" data-title="CEO of Guanjuato Gold" data-desc="Focused on sustainable gold mining, Guanjuato Gold’s CEO has implemented strong environmental policies and advanced extraction techniques.">
+            <img src="./image/Ceos cover/Ceos cover/Guanjuato Gold Ceo Profile.png" alt="Guanjuato Gold">
+          </div>
+          <div class="profile-cards" data-name="Mati Talika" data-title="CEO of Aurion Resources" data-desc="Mati Talika drives Aurion Resources toward discovery excellence through innovation and integrity in mineral exploration.">
+            <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="Mati Talika">
+          </div>
+          <div class="profile-cards" data-name="Michel Amar" data-title="CEO of DigipowerX" data-desc="Michel Amar has transformed DigipowerX into a technology-driven company with cutting-edge solutions in the mining tech industry.">
+            <img src="./image/Ceos cover/Ceos cover/Michel Amar Digipower X.png" alt="Michel Amar">
+          </div>
+          <div class="profile-cards" data-name="Mike Stark" data-title="CEO of Arizona Mining" data-desc="Mike Stark oversees Arizona Mining's operations and ensures sustainable resource management.">
+            <img src="./image/Ceos cover/Ceos cover/Mike Stark Arizona.png" alt="Mike Stark">
+          </div>
+          <div class="profile-cards" data-name="Paul Cowley" data-title="CEO of Phenom Resources" data-desc="Paul Cowley leads Phenom Resources in innovative exploration and responsible mining practices.">
+            <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="Paul Cowley">
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="pagination">
-      <button id="prev"><i class="fa fa-angle-double-left"></i></button>
-      <button class="page-btn active" data-index="0">1</button>
-      <button class="page-btn" data-index="1">2</button>
-      <!-- <button class="page-btn" data-index="2">3</button> -->
-      <button id="next"><i class="fa fa-angle-double-right"></i></button>
+      <div class="pagination">
+        <button id="prev"><i class="fa fa-angle-double-left"></i></button>
+        <button id="next"><i class="fa fa-angle-double-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container2">
+    <div class="profile-section">
+      <div class="profile-card" id="mainProfile">
+        <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="George Bee">
+      </div>
+      <div class="action-buttons">
+        <p>About</p>
+        <button class="btn">View PDF</button>
+        <button class="btn">Download PDF</button>
+      </div>
+      <div class="info-box" id="infoBox">
+        <div class="divider"></div>
+        <h3>George Bee</h3>
+        <h4>President and CEO of U.S. Gold Corp.</h4>
+        <p>U.S. Gold Corp. (NASDAQ: USAU) underwent a major shift with the appointment of
+        George Bee as President and CEO in August 2020. Bringing over four decades of
+        mine-building expertise, Bee redirected the company’s focus from speculative
+        exploration to disciplined development, particularly advancing the Copper King
+        project.</p>
+        <div class="divider"></div>
+      </div>
     </div>
   </div>
 
   <script>
     const track = document.getElementById('carouselTrack');
-    const pageButtons = document.querySelectorAll('.page-btn');
-    let currentIndex = 0;
+    const ceoCards = Array.from(document.querySelectorAll('.carousel-track .profile-cards'));
+    const mainProfile = document.getElementById('mainProfile').querySelector('img');
+    const infoBox = document.getElementById('infoBox');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const wrapper = document.getElementById('carouselWrapper');
 
-    function updateCarousel(index) {
-      const cardWidth = document.querySelector('.profile-card').offsetWidth + 20;
-      const moveX = cardWidth * 6 * index;
-      track.style.transform = `translateX(-${moveX}px)`;
-      pageButtons.forEach(btn => btn.classList.remove('active'));
-      pageButtons[index].classList.add('active');
+    // Detect cards per page
+    function getCardsPerPage() {
+      if (window.innerWidth <= 480) return 1;
+      if (window.innerWidth <= 768) return 2;
+      if (window.innerWidth <= 1024) return 3;
+      return 6;
     }
 
-    document.getElementById('prev').addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel(currentIndex);
-      }
+    let cardsPerPage = getCardsPerPage();
+    let currentPage = 0;
+    let totalPages = Math.ceil(ceoCards.length / cardsPerPage);
+
+    function updateCarousel() {
+      const cardWidth = ceoCards[0].offsetWidth + 20;
+      track.style.transform = `translateX(-${cardWidth * cardsPerPage * currentPage}px)`;
+    }
+
+    // Buttons
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) currentPage--;
+      updateCarousel();
     });
 
-    document.getElementById('next').addEventListener('click', () => {
-      if (currentIndex < pageButtons.length - 1) {
-        currentIndex++;
-        updateCarousel(currentIndex);
-      }
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) currentPage++;
+      updateCarousel();
     });
 
-    pageButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentIndex = parseInt(btn.dataset.index);
-        updateCarousel(currentIndex);
+    // Card click → show profile info
+    ceoCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const imgSrc = card.querySelector('img').src;
+        const name = card.dataset.name;
+        const title = card.dataset.title;
+        const desc = card.dataset.desc;
+
+        mainProfile.src = imgSrc;
+        infoBox.innerHTML = `
+          <div class="divider"></div>
+          <h3>${name}</h3>
+          <h4>${title}</h4>
+          <p>${desc}</p>
+          <div class="divider"></div>
+        `;
       });
     });
+
+    // Swipe support (for mobile)
+    let startX = 0;
+    let isDragging = false;
+
+    wrapper.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    });
+
+    wrapper.addEventListener('touchmove', e => {
+      if (!isDragging) return;
+      const currentX = e.touches[0].clientX;
+      const diff = startX - currentX;
+
+      if (Math.abs(diff) > 50) { // Swipe threshold
+        if (diff > 0 && currentPage < totalPages - 1) {
+          currentPage++;
+        } else if (diff < 0 && currentPage > 0) {
+          currentPage--;
+        }
+        updateCarousel();
+        isDragging = false;
+      }
+    });
+
+    wrapper.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    // Resize responsiveness
+    window.addEventListener('resize', () => {
+      cardsPerPage = getCardsPerPage();
+      totalPages = Math.ceil(ceoCards.length / cardsPerPage);
+      currentPage = 0;
+      updateCarousel();
+    });
+
+    updateCarousel();
   </script>
 </body>
 </html>

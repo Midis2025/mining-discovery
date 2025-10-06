@@ -1,130 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Purpose & Principles</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CEO Profiles</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
 <style>
-  * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-   font-family: 'Pontano Sans', sans-serif;
 }
 
 body {
-  background: #fafafa;
-  color: #111;
-  line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+  background: #f9f9f9;
 }
 
-.section {
-  text-align: center;
-  margin-bottom: 60px;
+.container1 {
   width: 100%;
-  max-width: 1100px;
+  padding: 20px;
+  text-align: center;
 }
 
-.section h2 {
+.section-title {
   font-size: 22px;
   font-weight: 600;
-  margin-bottom: 25px;
-  color: #111;
+  color: #222;
 }
 
-.card-container {
-  display: flex;
-  /* flex-wrap: wrap; */
-  justify-content: center;
-  gap: 20px;
+.underline {
+  width: 80px;
+  height: 3px;
+  background: #e60000;
+  margin: 10px auto 30px;
+  border-radius: 2px;
 }
 
-.card {
+/* --- Large Top Card --- */
+.featured-card {
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  padding: 20px;
-  width: 220px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
+  border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-bottom: 25px;
 }
 
-.card h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 10px;
+.featured-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 3px solid #e60000;
 }
 
-.card p {
-  font-size: 13.5px;
-color: #8d6d2a;
+.featured-info {
+  padding: 15px;
+}
+
+.featured-info h3 {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.featured-info p {
+  font-size: 14px;
+  color: #555;
   line-height: 1.4;
+  margin-bottom: 15px;
 }
 
-@media (max-width: 768px) {
-  .card {
-    width: 100%;
+.btn-group {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0 15px;
+  background: #fff;
+}
+
+.btn-group button {
+  flex: 1;
+  border: none;
+  background: #e60000;
+  color: #fff;
+  padding: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn-group button:hover {
+  background: #b00000;
+}
+
+/* --- Carousel Section --- */
+.carousel-wrapper {
+  overflow-x: auto;
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.profile-cards {
+  flex: 0 0 75%;
+  max-width: 75%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  scroll-snap-align: center;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.profile-cards img {
+  width: 100%;
+  border-bottom: 2px solid #e60000;
+  border-radius: 12px 12px 0 0;
+}
+
+.profile-cards:hover {
+  transform: scale(1.03);
+}
+
+.profile-cards h4 {
+  margin: 10px 0 5px;
+  font-size: 16px;
+  color: #222;
+}
+
+.profile-cards p {
+  font-size: 13px;
+  color: #555;
+  padding: 0 10px 15px;
+}
+
+/* Pagination buttons */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.pagination button {
+  background: #e60000;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pagination button:hover {
+  background: #b00000;
+}
+
+/* --- Responsive --- */
+@media (min-width: 769px) {
+  .profile-cards {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+  .carousel-wrapper {
+    justify-content: center;
   }
 }
-
 </style>
 </head>
 <body>
-  <section class="section">
-    <h2>Our Purpose</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>Illuminate the Industry</h3>
-        <p>Report clearly on exploration, production, regulation, investment, and ESG.</p>
-      </div>
-      <div class="card">
-        <h3>Insight into Action</h3>
-        <p>Interpret the news so that leaders and investors can make informed decisions.</p>
-      </div>
-      <div class="card">
-        <h3>Foster Transparency</h3>
-        <p>Provide a clear view of company operations, risks, and community impact.</p>
-      </div>
-      <div class="card">
-        <h3>Build Bridges</h3>
-        <p>Connecting firms, investors, regulators, and communities through journalism and data.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <h2>Our Principles</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>Integrity</h3>
-        <p>Truthful, verified reporting above all else.</p>
-      </div>
-      <div class="card">
-        <h3>Clarity</h3>
-        <p>Explain complex issues in plain, impactful language.</p>
-      </div>
-      <div class="card">
-        <h3>Innovation</h3>
-        <p>Adopting new tools and formats to keep coverage relevant.</p>
-      </div>
-      <div class="card">
-        <h3>Respect</h3>
-        <p>Consideration for communities, environment, investors, and workers.</p>
-      </div>
-      <div class="card">
-        <h3>Partnership</h3>
-        <p>Collaborating with companies, experts, and institutions as allies.</p>
-      </div>
+<div class="container1">
+  <h2 class="section-title">CEO’s Profiles</h2>
+  <div class="underline"></div>
+
+  <!-- FEATURED LARGE CARD -->
+  <div class="featured-card">
+    <img src="./image/Ceos cover/Ceos cover/Brian Miller Astra Exploration.png" alt="Brian Miller">
+    <div class="featured-info">
+      <h3>Brian Miller</h3>
+      <p>CEO of Astra Exploration — guiding projects with innovation and focus in geological exploration.</p>
     </div>
-  </section>
+    <div class="btn-group">
+      <button>READ NOW</button>
+      <button>VIEW PROFILE</button>
+    </div>
+  </div>
+
+  <!-- SMALL CARDS CAROUSEL -->
+  <div class="carousel-wrapper">
+    <div class="profile-cards">
+      <img src="./image/Ceos cover/Ceos cover/Zayn Kalyan Scorpio Gold Corp.png" alt="Zayn Kalyan">
+      <h4>Zayn Kalyan</h4>
+      <p>CEO of Scorpio Gold Corp, leading with sustainable mining strategies.</p>
+    </div>
+    <div class="profile-cards">
+      <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="George Bee">
+      <h4>George Bee</h4>
+      <p>President and CEO of U.S. Gold Corp — driving development and exploration excellence.</p>
+    </div>
+    <div class="profile-cards">
+      <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="Mati Talika">
+      <h4>Mati Talika</h4>
+      <p>CEO of Aurion Resources — focused on innovation and integrity in exploration.</p>
+    </div>
+    <div class="profile-cards">
+      <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="Paul Cowley">
+      <h4>Paul Cowley</h4>
+      <p>CEO of Phenom Resources, pioneering responsible exploration initiatives.</p>
+    </div>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination">
+    <button id="prev"><i class="fa fa-angle-double-left"></i></button>
+    <button id="next"><i class="fa fa-angle-double-right"></i></button>
+  </div>
+</div>
+
+<script>
+const track = document.querySelector('.carousel-wrapper');
+document.getElementById('next').onclick = () => track.scrollBy({left: 300, behavior: 'smooth'});
+document.getElementById('prev').onclick = () => track.scrollBy({left: -300, behavior: 'smooth'});
+</script>
+
 </body>
 </html>
