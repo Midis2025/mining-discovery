@@ -1,4 +1,4 @@
-const API_ROOT = "https://admins.miningdiscovery.com";
+const API_ROOT = "https://acceptable-desire-0cca5bb827.strapiapp.com";
 
 // ✅ Convert Strapi Rich Text (JSON) to HTML
 function renderRichText(node) {
@@ -58,12 +58,39 @@ function getQueryParams() {
 // ✅ Pick the best available image format
 function getImageUrl(image) {
   if (!image) return "";
-  if (image.formats?.large?.url) return image.formats.large.url;
-  if (image.formats?.medium?.url) return image.formats.medium.url;
-  if (image.formats?.small?.url) return image.formats.small.url;
-  if (image.formats?.thumbnail?.url) return image.formats.thumbnail.url;
-  if (image.url) return image.url;
-  return "";
+  
+  // Handle array of images
+  if (Array.isArray(image)) {
+    image = image[0];
+  }
+  
+  // Handle nested data structure
+  if (image.data) {
+    image = image.data;
+    if (Array.isArray(image)) {
+      image = image[0];
+    }
+  }
+  
+  // Handle attributes wrapper
+  if (image.attributes) {
+    image = image.attributes;
+  }
+  
+  // Try to get URL from various formats
+  let url = null;
+  if (image.formats?.large?.url) url = image.formats.large.url;
+  else if (image.formats?.medium?.url) url = image.formats.medium.url;
+  else if (image.formats?.small?.url) url = image.formats.small.url;
+  else if (image.formats?.thumbnail?.url) url = image.formats.thumbnail.url;
+  else if (image.url) url = image.url;
+  
+  // Prepend API root if URL is relative
+  if (url && url.startsWith("/")) {
+    url = API_ROOT + url;
+  }
+  
+  return url || "";
 }
 
 // ✅ Format plain text description to HTML
@@ -351,25 +378,38 @@ function initBackToTop() {
   });
 }
 
-// ✅ Fetch all news sections for navigation
+// ✅ Fetch all news sections from all categories for navigation
 async function fetchAllNewsSections(category) {
   try {
+    // Fetch all news categories with their sections
+    const url = `${API_ROOT}/api/news-categories?populate[news_sections][fields][0]=id&populate[news_sections][fields][1]=documentId&populate[news_sections][fields][2]=title&populate[news_sections][fields][3]=publish_on&populate[news_sections][fields][4]=slug`;
+    
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error('Failed to fetch sections:', res.status);
+      return [];
+    }
+    
+    const data = await res.json();
     let allSections = [];
     
-    if (category === 'sponsored-post') {
-      const res = await fetch(`${API_ROOT}/api/news-categories?filters[slug][$eq]=sponsored-post&populate[news_sections][populate]=*`);
-      if (!res.ok) return [];
-      const data = await res.json();
-      allSections = data?.data?.[0]?.news_sections || [];
-    } else {
-      const res = await fetch(`${API_ROOT}/api/news?populate=news_sections.image`);
-      if (!res.ok) return [];
-      const data = await res.json();
-      
-      // Flatten all news sections from all news items
-      data.data.forEach(newsItem => {
-        if (newsItem.news_sections) {
-          allSections = allSections.concat(newsItem.news_sections);
+    // Loop through all categories and collect their news sections
+    if (data?.data && Array.isArray(data.data)) {
+      data.data.forEach(categoryItem => {
+        let sections = categoryItem?.news_sections;
+        
+        // Handle Strapi v4 structure
+        if (!Array.isArray(sections) && categoryItem?.attributes?.news_sections) {
+          const v4Data = categoryItem.attributes.news_sections.data || [];
+          sections = v4Data.map((x) => ({
+            id: x.id,
+            documentId: x.documentId,
+            ...x.attributes
+          }));
+        }
+        
+        if (Array.isArray(sections)) {
+          allSections = allSections.concat(sections);
         }
       });
     }
@@ -406,7 +446,13 @@ async function initNavigation(currentId, category) {
     return;
   }
   
-  const currentIndex = allSections.findIndex(section => section.id.toString() === currentId.toString());
+  // Sort by publish date (newest first) to match the carousel order
+  allSections.sort((a, b) => new Date(b.publish_on || 0) - new Date(a.publish_on || 0));
+  
+  const currentIndex = allSections.findIndex(section => 
+    section.id?.toString() === currentId.toString() || 
+    section.documentId?.toString() === currentId.toString()
+  );
   
   console.log('Current index:', currentIndex, 'of', allSections.length);
   
@@ -421,8 +467,9 @@ async function initNavigation(currentId, category) {
     console.log('Previous button shown');
     prevBtn.onclick = () => {
       const prevSection = allSections[currentIndex - 1];
+      const articleId = prevSection.id || prevSection.documentId;
       const categoryParam = category ? `&category=${category}` : '';
-      window.location.href = `?id=${prevSection.id}${categoryParam}`;
+      window.location.href = `news-details.html?id=${articleId}${categoryParam}`;
     };
   }
   
@@ -432,8 +479,9 @@ async function initNavigation(currentId, category) {
     console.log('Next button shown');
     nextBtn.onclick = () => {
       const nextSection = allSections[currentIndex + 1];
+      const articleId = nextSection.id || nextSection.documentId;
       const categoryParam = category ? `&category=${category}` : '';
-      window.location.href = `?id=${nextSection.id}${categoryParam}`;
+      window.location.href = `news-details.html?id=${articleId}${categoryParam}`;
     };
   }
 }
@@ -449,27 +497,49 @@ async function loadNewsDetails() {
 
   try {
     let newsSection = null;
+    let categorySlug = null;
 
-    if (category === 'sponsored-post') {
-      const res = await fetch(`${API_ROOT}/api/news-categories?filters[slug][$eq]=sponsored-post&populate[news_sections][populate]=*`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      const posts = data?.data?.[0]?.news_sections || [];
-      newsSection = posts.find(post => post.id.toString() === id);
-      if (!newsSection) throw new Error('Sponsored post not found');
-    } else {
-      let res = await fetch(`${API_ROOT}/api/news-sections/${id}?populate=image`);
-      if (!res.ok) {
-        res = await fetch(`${API_ROOT}/api/news?populate=news_sections.image`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const newsData = await res.json();
-        const newsItem = newsData.data[0]; 
-        newsSection = newsItem.news_sections.find(section => section.id == id);
-        if (!newsSection) throw new Error('News section not found');
-      } else {
-        const data = await res.json();
-        newsSection = data.data;
+    // Fetch all news categories with their sections
+    const url = `${API_ROOT}/api/news-categories?populate[news_sections][populate]=*`;
+    const res = await fetch(url);
+    
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    
+    const data = await res.json();
+    
+    // Search through all categories to find the article
+    if (data?.data && Array.isArray(data.data)) {
+      for (const categoryItem of data.data) {
+        let sections = categoryItem?.news_sections;
+        
+        // Handle Strapi v4 structure
+        if (!Array.isArray(sections) && categoryItem?.attributes?.news_sections) {
+          const v4Data = categoryItem.attributes.news_sections.data || [];
+          sections = v4Data.map((x) => ({
+            id: x.id,
+            documentId: x.documentId,
+            ...x.attributes
+          }));
+        }
+        
+        // Search for the article in this category's sections
+        if (Array.isArray(sections)) {
+          const found = sections.find(section => 
+            section.id?.toString() === id || 
+            section.documentId?.toString() === id
+          );
+          
+          if (found) {
+            newsSection = found;
+            categorySlug = categoryItem.slug || categoryItem?.attributes?.slug;
+            break;
+          }
+        }
       }
+    }
+    
+    if (!newsSection) {
+      throw new Error('News article not found');
     }
 
     updateTopbarTitle(newsSection.title);
@@ -493,7 +563,9 @@ async function loadNewsDetails() {
       }
     }
 
-    const categoryDisplay = category ? category.toUpperCase().replace('-', ' ') : 'NEWS';
+    // Use the category from URL or the found category slug
+    const displayCategory = category || categorySlug || 'NEWS';
+    const categoryDisplay = displayCategory.toUpperCase().replace(/-/g, ' ');
 
     document.getElementById("newsDetails").innerHTML = `
       <div class="news-detail">

@@ -3,120 +3,236 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Advisors</title>
+  <title>CEO’s Profiles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #000;
-      margin: 40px;
+      background-color: #fff;
+      padding: 40px 0;
     }
 
-    /* Section Heading */
-    h2 {
-      font-size: 20px;
+    .section-container {
+      width: 90%;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 26px;
       font-weight: 600;
-      margin-bottom: 30px;
+      color: #111;
     }
 
-    /* Container for advisor cards */
-    .advisor-container {
+    .underline {
+      width: 80px;
+      height: 3px;
+      background: #c1973d;
+      margin-top: 8px;
+      margin-bottom: 35px;
+    }
+
+    /* Carousel layout */
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-track {
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      transition: transform 0.5s ease-in-out;
     }
 
-    /* Advisor Card */
-    .advisor-card {
-      background: #eaeaea;
+    .profile-card {
+      background: #000;
+      flex: 0 0 15.8%;
+      margin-right: 20px;
       border-radius: 8px;
-      padding: 20px;
-      flex: 1 1 calc(50% - 20px);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+      color: #fff;
+      text-align: center;
+      border: 1px solid #333;
+      overflow: hidden;
+      height: 267px;
     }
 
-    /* Image placeholder */
-    .advisor-card .image {
-      width: 100px;
-      height: 100px;
-      background: #333;
-      border-radius: 6px;
-      flex-shrink: 0;
+    .profile-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      border-bottom: 1px solid #333;
     }
 
-    /* Content area */
-    .advisor-card .content h3 {
+    .profile-card h3 {
       font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .advisor-card .content p {
-      font-size: 13px;
-      color: #333;
-      line-height: 1.6;
-      text-align: justify;
-    }
-
-    .advisor-card .content strong {
       font-weight: 600;
+      margin-top: 10px;
+      color: #f7c552;
+      text-transform: uppercase;
     }
 
-    /* Responsive */
+    .profile-card p {
+      font-size: 13px;
+      color: #ddd;
+    }
+
+    /* Pagination */
+    .pagination {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pagination button {
+      border: 1px solid #ccc;
+      background: none;
+      color: #333;
+      padding: 6px 11px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pagination button.active,
+    .pagination button:hover {
+      background: #c1973d;
+      color: #fff;
+      border-color: #c1973d;
+    }
+
+    .pagination i {
+      font-size: 12px;
+    }
+
+    @media (max-width: 1024px) {
+      .profile-card {
+        flex: 0 0 31%;
+      }
+    }
+
     @media (max-width: 768px) {
-      .advisor-container {
-        flex-direction: column;
+      .profile-card {
+        flex: 0 0 48%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-card {
+        flex: 0 0 100%;
       }
     }
   </style>
 </head>
 <body>
+  <div class="section-container">
+    <h2 class="section-title">CEO’s Profiles</h2>
+    <div class="underline"></div>
 
-  <section>
-    <h2>Our Advisors</h2>
-    <div class="advisor-container">
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- 6 visible cards -->
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/Brian Miller Astra Exploration.png" alt="">
+         
+        </div>
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/Copy of Zayn Kalyan Scorpio Gold Corp.png" alt="">
+        
+        </div>
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="">
+       
+        </div>
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/Guanjuato Gold Ceo Profile.png" alt="">
 
-      <!-- Advisor 1 -->
-      <div class="advisor-card">
-        <div class="image"></div>
-        <div class="content">
-          <h3>Laura Stein</h3>
-          <p>
-            <strong>Mining Discovery Advisor, Laura Stein</strong> is one of the predecessors with
-            50-plus years of exceptional global mining industry experience. There exists a lighter shade
-            in her operational experience and knowledge matrix across mineral and market boundaries in
-            exploration, project development, and strategic advisory operations. Laura has been reputed
-            for the singular ability to guide projects through discovery and development while staying
-            true to her principles out of respect for the challenge put in front of her. Designing a full
-            range of support and services, she enables Mining Discovery in the identification,
-            evaluation, and advancement of promising mineral opportunities with confidence and transparency.
-          </p>
+        </div>
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="">
+       
+        </div>
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/Michel Amar Digipower X.png" alt="">
+    
+        </div>
+
+        <!-- Extra hidden slides for pagination demo -->
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/Mike Stark Arizona.png" alt="">
+        
+        </div>
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="">
+    
+        </div>
+        <div class="profile-card">
+          <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="">
+         
+        </div>
+        <div class="profile-card">
+          <img src="https://via.placeholder.com/250x300?text=Emma+Stone" alt="">
+         
+        </div>
+        <div class="profile-card">
+          <img src="https://via.placeholder.com/250x300?text=Chris+Brown" alt="">
+         
+        </div>
+        <div class="profile-card">
+          <img src="https://via.placeholder.com/250x300?text=Sarah+Lee" alt="">
+      
         </div>
       </div>
-
-      <!-- Advisor 2 -->
-      <div class="advisor-card">
-        <div class="image"></div>
-        <div class="content">
-          <h3>Chris Powell</h3>
-          <p>
-            <strong>A Mining Discovery Advisor, Chris Powell</strong> has decades of experience in journalism
-            and in the precious metals markets. He is Connecticut-based and his background includes 56 years
-            at the Journal Inquirer, 44 of them as managing editor, while still writing influential political
-            columns. Chris is also a founding member of the Gold Anti-Trust Action Committee (GATA), and its
-            secretary/treasurer, an organization formed for the purpose of exposing and combating gold market
-            manipulations by the central banks. Through his writings for the GATA Dispatch as well as his
-            international advocacy, Chris has been an active voice against uncertainty and for fair dealing
-            in the gold and mineral markets. With his profound expertise and commitment, he takes a great
-            interest in Mining Discovery’s mandate in the early-stage mineral exploration and discovery.
-          </p>
-        </div>
-      </div>
-
     </div>
-  </section>
 
+    <div class="pagination">
+      <button id="prev"><i class="fa fa-angle-double-left"></i></button>
+      <button class="page-btn active" data-index="0">1</button>
+      <button class="page-btn" data-index="1">2</button>
+      <!-- <button class="page-btn" data-index="2">3</button> -->
+      <button id="next"><i class="fa fa-angle-double-right"></i></button>
+    </div>
+  </div>
+
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const pageButtons = document.querySelectorAll('.page-btn');
+    let currentIndex = 0;
+
+    function updateCarousel(index) {
+      const cardWidth = document.querySelector('.profile-card').offsetWidth + 20;
+      const moveX = cardWidth * 6 * index;
+      track.style.transform = `translateX(-${moveX}px)`;
+      pageButtons.forEach(btn => btn.classList.remove('active'));
+      pageButtons[index].classList.add('active');
+    }
+
+    document.getElementById('prev').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel(currentIndex);
+      }
+    });
+
+    document.getElementById('next').addEventListener('click', () => {
+      if (currentIndex < pageButtons.length - 1) {
+        currentIndex++;
+        updateCarousel(currentIndex);
+      }
+    });
+
+    pageButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentIndex = parseInt(btn.dataset.index);
+        updateCarousel(currentIndex);
+      });
+    });
+  </script>
 </body>
 </html>

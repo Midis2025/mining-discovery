@@ -31,16 +31,22 @@ async function loadPopularNews() {
       const author = (item.author || "").trim().replace(/^by:\s*/i, "");
       const date   = formatDate(item.publish_on);
       const imgUrl = getImageUrl(item) || "./image/slider2.png";
+      
+      // Get the article ID (try both v4 and v5 Strapi formats)
+      const articleId = item.id || item.documentId;
+      const detailUrl = `news-details.html?id=${articleId}`;
 
       return `
-        <div class="team-card">
-          <img src="${imgUrl}" alt="card" loading="lazy" />
-          <p>${escapeHtml(title)}</p>
-          <div class="meta">
-            <small>${date}</small>
-            <small>${author ? `By: ${escapeHtml(author)}` : ""}</small>
+        <a href="${detailUrl}" class="team-card-link" style="text-decoration: none; color: inherit; display: block;">
+          <div class="team-card">
+            <img src="${imgUrl}" alt="card" loading="lazy" />
+            <p>${escapeHtml(title)}</p>
+            <div class="meta">
+              <small>${date}</small>
+              <small>${author ? `By: ${escapeHtml(author)}` : ""}</small>
+            </div>
           </div>
-        </div>
+        </a>
       `;
     }).join("");
 
