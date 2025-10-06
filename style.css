@@ -1536,7 +1536,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 225px;
+  width: 286px;
 }
 
     .team-card img {
@@ -1633,21 +1633,99 @@
     }
 
     /* Mobile View */
-    @media (max-width: 600px) {
-      .carousel-wrapper {
-       
-      }
+  
 
-      .nav {
-      display: none;
-        
-      }
+/* ===============================
+   📱 RESPONSIVE DESIGN
+================================ */
 
-      .card {
-        height: auto;
-        padding: 10px;
-      }
-    }
+/* For Tablets (768px and below) */
+@media (max-width: 768px) {
+  .carousel {
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .team-card {
+    width: 240px;
+  }
+
+  .team-card img {
+    height: 200px;
+  }
+
+  .team-card p {
+    font-size: 14px;
+  }
+
+  .team-card small {
+    font-size: 12px;
+  }
+}
+
+/* For Large Phones (600px and below) */
+@media (max-width: 600px) {
+  .team-card {
+    width: 200px;
+  }
+
+  .team-card img {
+    height: 180px;
+  }
+
+  .team-card p {
+    font-size: 13px;
+  }
+
+  .team-card small {
+    font-size: 12px;
+  }
+}
+
+/* For Small Phones (480px and below) */
+@media (max-width: 480px) {
+  .carousel {
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .team-card {
+    width: 170px;
+  }
+
+  .team-card img {
+    height: 150px;
+  }
+
+  .team-card p {
+    font-size: 12.5px;
+  }
+
+  .team-card small {
+    font-size: 11px;
+  }
+}
+
+/* For Extra Small Devices (360px and below) */
+@media (max-width: 360px) {
+  .team-card {
+    width: 150px;
+  }
+
+  .team-card img {
+    height: 130px;
+  }
+
+  .team-card p {
+    font-size: 12px;
+  }
+
+  .team-card small {
+    font-size: 10px;
+  }
+}
+
+
     .container4 {
       background-color: black;
     }

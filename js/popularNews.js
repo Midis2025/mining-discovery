@@ -25,8 +25,8 @@ async function loadPopularNews() {
     // newest first
     sections.sort((a, b) => new Date(b.publish_on || 0) - new Date(a.publish_on || 0));
 
-    // Build top 5
-    const cardsHtml = sections.slice(0, 5).map((item) => {
+    // Build top 4
+    const cardsHtml = sections.slice(0, 4).map((item) => {
       const title  = item.title || "Untitled";
       const author = (item.author || "").trim().replace(/^by:\s*/i, "");
       const date   = formatDate(item.publish_on);
