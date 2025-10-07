@@ -310,7 +310,9 @@
   flex-wrap: wrap;
   padding-right: 16px;
 }
-
+.fa-solid {
+    font-weight: 900;
+    color: #ae8a4c}
   
 .login-btn,
 .subscribe-btn {
