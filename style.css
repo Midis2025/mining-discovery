@@ -6,6 +6,7 @@
 
     body {
       font-family: 'Pontano Sans', sans-serif;
+   
     
     }
     small{
@@ -202,6 +203,11 @@
       }
     }
 .first-header {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* topbar always above */
   height: 50px;
   overflow: hidden;
   background: black;
@@ -254,9 +260,14 @@
 
 
    .main-header {
+      position: fixed;
+
+  left: 0;
+  width: 100%;
+  z-index: 999; /* slightly below first-header */
       margin-bottom: 10px;
       background-color: #fff;
-      padding: 5px;
+      /* padding: 5px; */
       border-bottom: 1px solid #ddd;
     }
 
@@ -1076,8 +1087,11 @@
   justify-content: center;
   align-items: flex-start; /* to keep sticky top */
   width: 70%;
+  padding-top: 200px;
 }
-
+.main-container{
+   padding-top: 200px;
+}
 .leftslidebar
  {
   width: 120px;
@@ -1231,6 +1245,9 @@
 
 /* Mobile screens (less than 768px) */
 @media (max-width: 767px) {
+   .main-container{
+  padding-top: 0;
+ }
   .leftslidebar{
     display: none;
   }
@@ -1252,7 +1269,7 @@
 }
 /* Tablets (768px and above) */
 @media (min-width: 768px) {
- 
+
   .fullweb {
     flex-direction: row;
   }
@@ -1283,6 +1300,7 @@
 }
 /* 📲 Tablets (iPad Portrait & Landscape) 768px - 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
+  
   .fullweb {
     flex-direction: column;
     align-items: center;
@@ -3639,4 +3657,3 @@ ease;
 
 
 
- 
