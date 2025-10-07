@@ -2121,7 +2121,7 @@
         </div>
 
         <!-- Service Section -->
-        <div class="nav-item-with-dropdown">
+    <div class="nav-item-with-dropdown service-hover">
           <a href="./service.html" class="desktop-link" onmouseenter="showDesktopDropdown('serviceDropdown')"
             onmouseleave="hideDesktopDropdown('serviceDropdown')">
             Service <i class="fas fa-chevron-down"></i>
@@ -2139,7 +2139,7 @@
             <a href="./confrence.html">Conference</a>
           </div>
         </div>
-        <a href="./contant.html">Contact Us</a>
+         <a href="./contact.html">Contact Us</a>
       </div>
       <div class="new">
         <div class="header-buttons" id="headerButtons">
@@ -2783,6 +2783,28 @@ document.getElementById("investorForm").addEventListener("submit", async functio
 
     });
   </script>
+<script>
+if (window.innerWidth >= 900) {
+  const serviceItem = document.querySelector(".nav-item-with-dropdown.service-hover");
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+
+  serviceItem.addEventListener("mouseenter", () => {
+    hamburgerMenu.style.display = "block";
+  });
+
+  serviceItem.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+      if (!hamburgerMenu.matches(":hover")) {
+        hamburgerMenu.style.display = "none";
+      }
+    }, 200);
+  });
+
+  hamburgerMenu.addEventListener("mouseleave", () => {
+    hamburgerMenu.style.display = "none";
+  });
+}
+</script>
 
 </body>
 

@@ -255,7 +255,7 @@
       .hamburger-menu {
         display: none;
         position: absolute;
-        top: 160px;
+        top: 200px;
         left: 0;
         width: 100%;
         background: #fff;
@@ -319,6 +319,9 @@
       .menu-content a {
         text-decoration: none;
         color: #000;
+      }
+      .menu-content{
+        margin-top: 8px;
       }
 
       @media (max-width: 768px) {
@@ -1527,7 +1530,7 @@ background-color: #ae8a4c;
 
        <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
           <!-- Magazine Section -->
-          <div class="nav-item-with-dropdown">
+    <div class="nav-item-with-dropdown magazine-hover">
             <a
               href="./magzin.html"
               class="desktop-link"
@@ -1589,7 +1592,7 @@ background-color: #ae8a4c;
               <a href="./confrence.html">Conference</a>
             </div>
           </div>
-          <a href="./contant.html">Contact Us</a>
+        <a href="./contact.html">Contact Us</a>
         </div>
         <div class="new">
           <div class="header-buttons" id="headerButtons">
@@ -1948,5 +1951,28 @@ function toggleDropdownMobile(id) {
         loadLatestNews();
       });
     </script>
+    <script>
+if (window.innerWidth >= 900) {
+  const magazineItem = document.querySelector(".nav-item-with-dropdown.magazine-hover");
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+
+  magazineItem.addEventListener("mouseenter", () => {
+    hamburgerMenu.style.display = "block";
+  });
+
+  magazineItem.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+      if (!hamburgerMenu.matches(":hover")) {
+        hamburgerMenu.style.display = "none";
+      }
+    }, 200);
+  });
+
+  hamburgerMenu.addEventListener("mouseleave", () => {
+    hamburgerMenu.style.display = "none";
+  });
+}
+</script>
+
   </body>
 </html>

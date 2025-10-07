@@ -858,7 +858,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   .left-sidebar
 {
   width: 170px;
-  height: calc(100vh - 120px);
+  /* height: calc(100vh - 120px);
   position: sticky;
   top: 100px;
   overflow-y: auto;
@@ -867,14 +867,14 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   border-radius: 6px;
   padding: 10px;
 
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
+
+  scrollbar-width: none;   
+  -ms-overflow-style: none; */
 }
  
 .right-sidebar {
   width: 250px;
-  height: calc(100vh - 120px);
+  /* height: calc(100vh - 120px);
   position: sticky;
   top: 100px;
   overflow-y: auto;
@@ -883,14 +883,14 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   border-radius: 6px;
   padding: 10px;
 
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
+ 
+  scrollbar-width: none;   
+  -ms-overflow-style: none; 
 }
 
 .left-sidebar::-webkit-scrollbar,
 .right-sidebar::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari */
+  display: none;   */
 }
 
     .left-sidebar .box {
@@ -1061,7 +1061,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 @media (min-width: 993px) {
   .main-content {
     width: 60%;
-        height: calc(100vh - 120px);
+        /* height: calc(100vh - 120px);
   position: sticky;
   top: 100px;
   overflow-y: auto;
@@ -1070,9 +1070,9 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   border-radius: 6px;
  
 
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
+
+  scrollbar-width: none;  
+  -ms-overflow-style: none;  */
 
 
   }
@@ -1556,93 +1556,133 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 }
 
     
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
+    /* Popup Overlay */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .subscribe-box {
+    position: relative;
+    background: rgba(30, 30, 30, 0.7);
+    border: 1px solid rgba(167, 124, 44, 0.4);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 30px 25px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 0 25px rgba(167, 124, 44, 0.5);
+  }
+
+  .subscribe-box img {
+    width: 200px;
+    margin-bottom: 15px;
+  }
+
+  .subscribe-box h2 {
+    font-size: 22px;
+    margin: 5px 0 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ffda8b, #ae8a4c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subscribe-box p {
+    font-size: 14px;
+    color: #ddd;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .subscribe-box input[type="email"] {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #ae8a4c;
+    background: rgba(42, 42, 42, 0.8);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+  }
+
+  .subscribe-box input::placeholder {
+    color: #bbb;
+  }
+
+  .subscribe-box button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ffd27d, #ae8a4c);
+    color: #111;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+
+  .subscribe-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(193, 151, 76, 0.5);
+  }
+
+  .subscribe-box button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+  }
+
+  .close-btn:hover {
+    transform: rotate(90deg);
+    color: #ffd27d;
+  }
+
+  @media (max-width: 768px) {
+    .subscribe-box {
+      max-width: 95%;
+      padding: 22px 18px;
+    }
+    .form-group {
+      flex-direction: column;
+    }
+    .subscribe-box button {
       width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
     }
-
-    .modal-content {
-      position: relative;
-      
-      padding: 10px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 960px;
-      max-height: 95vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 28px;
-      color: #fff;
-      cursor: pointer;
-      z-index: 100;
-    }
-
-    .fp-iframe {
-      width: 100%;
-      height: 80vh;
-      border: 1px solid lightgray;
-      border-radius: 10px;
-    }
-
-    /* Mobile Styles */
-    @media screen and (max-width: 768px) {
-      .modal-content {
-        width: 95%;
-        max-width: 400px;
-        padding: 10px;
-      }
-
-      .fp-iframe {
-        height: 65vh;
-      }
-
-      .modal-close {
-        font-size: 24px;
-        top: 5px;
-        right: 10px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .fp-iframe {
-        height: 55vh;
-      }
-    }
-
-    
-
-
- /* footer */
- 
- 
+  }
 
 
 
-
-    /* footer */
-
-
-
-
-
-    /* footer */
   </style>
 </head>
 
@@ -1879,17 +1919,32 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       </div>
     </div>
 
-    <!-- Main -->
+   
     <div class="main-content" id="newsDetails">
-        <!-- News content will be loaded here by the existing script -->
+        </div>
+
+
+    <div class="popup-overlay" id="popup2" style="display: none;">
+        <div class="subscribe-box">
+            <span class="close-btn" onclick="closePopup()">&times;</span> 
+            <img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo2" />
+            <h2>Subscribe now for latest mining updates</h2>
+            <p>Magazine, Newsletters</p>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Enter Your Email">
+                <button onclick="subscribe()">Subscribe</button> 
+            </div>
+        </div>
     </div>
+
 
     <!-- Right -->
     <!-- Right -->
     <div class="right-sidebar">
       <div class="heading">
         <h3>Projects</h3>
-        <a href=""><button type="button" class="gold-btn">show more</button>
+        <a href="./newss.html?category=projects"><button type="button" class="gold-btn">show more</button>
+          
         </a>
       </div>
       <div class="card-container">
@@ -1902,7 +1957,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 
         <div class="heading">
           <h3>Reports</h3>
-          <a href=""><button type="button" class="gold-btn">show more</button>
+          <a href="./newss.html?category=reports"><button type="button" class="gold-btn">show more</button>
           </a>
         </div>
       </div>
@@ -2075,37 +2130,7 @@ function hideDesktopDropdown(id) {
 }
 
 
-// Show popup only once in lifetime (until localStorage is cleared)
-document.addEventListener("DOMContentLoaded", function () {
-  const popup = document.getElementById("popup2");
 
-  if (!popup) return;
-
-  // Sirf tab dikhana jab user ne pehli baar site open ki hai
-  if (!localStorage.getItem("subscribedPopupShown")) {
-    setTimeout(() => {
-      popup.style.display = "flex"; // show popup
-      localStorage.setItem("subscribedPopupShown", "true"); // flag save
-    }, 3000); // delay (3 sec)
-  } else {
-    popup.style.display = "none"; // dusri baar kabhi show na ho
-  }
-});
-
-function closePopup() {
-  const popup = document.getElementById("popup2");
-  if (popup) popup.style.display = "none";
-}
-
-function subscribe() {
-  const email = document.getElementById("email").value;
-  if (email.trim() !== "") {
-    alert("Thanks for subscribing: " + email);
-    closePopup();
-  } else {
-    alert("Please enter a valid email.");
-  }
-}
     </script>
      <script>
     document.addEventListener("DOMContentLoaded", function () {

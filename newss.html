@@ -858,7 +858,7 @@
 .left-sidebar,
 .right-sidebar {
   width: 150px;
-  height: calc(100vh - 120px);
+  height: calc(300vh - 120px);
   position: sticky;
   top: 100px;
   overflow-y: auto;
@@ -889,7 +889,7 @@
     }
 
     .main-content {
-       height: calc(100vh - 120px);
+       height: calc(300vh - 120px);
   position: sticky;
   top: 100px;
   overflow-y: auto;
@@ -1679,7 +1679,7 @@
     <div class="nav-links" id="navMenu">
       <a href="./about.html">About Us</a>
       <!-- News Section -->
-      <div class="nav-item-with-dropdown">
+    <div class="nav-item-with-dropdown news-hover">
         <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
           News Section <i class="fas fa-chevron-down"></i>
         </a>
@@ -1728,7 +1728,7 @@
           <a href="./confrence.html">Conference</a>
         </div>
       </div>
-      <a href="./contant.html">Contact Us</a>
+     <a href="./contact.html">Contact Us</a>
     </div>
 <div class="new">
     <div class="header-buttons" id="headerButtons">
@@ -1918,9 +1918,9 @@
       <div class="gold-news">
         <div class="cate">
           <h2 id="nextCategoryTitle"></h2>
-          <div class="btn">
+          <!-- <div class="btn">
             <button type="button" class="btn-more">show more <i class="fa-solid fa-arrow-right"></i></button>
-          </div>
+          </div> -->
         </div>
 
         <div id="nextNewsContainer"></div>
@@ -1931,8 +1931,8 @@
     <div class="right-sidebar">
       <div class="heading">
         <h3>Projects</h3>
-        <a href=""><button type="button" class="gold-btn">show more<i
-              class="fa-solid fa-arrow-right"></i></button>
+          <a href="./newss.html?category=projects"><button type="button" class="gold-btn">more <i class="fa-solid fa-arrow-right"></i></button>
+              </i></button>
         </a>
       </div>
       <div class="card-container">
@@ -1945,8 +1945,8 @@
 
         <div class="heading">
           <h3>Reports</h3>
-          <a href=""><button type="button" class="gold-btn">show more<i
-                class="fa-solid fa-arrow-right"></i></button>
+          <a href="./newss.html?category=reports"><button type="button" class="gold-btn">more <i class="fa-solid fa-arrow-right"></i></button>
+               </i></button>
           </a>
         </div>
       </div>
@@ -2135,6 +2135,28 @@ document.addEventListener("click", function(event) {
       
     });
   </script>
+<script>
+if (window.innerWidth >= 900) {
+  const newsItem = document.querySelector(".nav-item-with-dropdown.news-hover");
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+
+  newsItem.addEventListener("mouseenter", () => {
+    hamburgerMenu.style.display = "block";
+  });
+
+  newsItem.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+      if (!hamburgerMenu.matches(":hover")) {
+        hamburgerMenu.style.display = "none";
+      }
+    }, 200);
+  });
+
+  hamburgerMenu.addEventListener("mouseleave", () => {
+    hamburgerMenu.style.display = "none";
+  });
+}
+</script>
 
 </body>
 

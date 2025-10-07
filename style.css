@@ -1558,7 +1558,8 @@
 }
 
 .team-card small {
-  padding: 5px;
+padding-left: 5px;
+    padding-bottom: 5px;
   font-size: 13px;
   color: #ae8a4c;
   /* font-style: italic; */

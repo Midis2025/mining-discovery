@@ -1,430 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Monthly Magazines | Mining Discovery</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Account Popup Clone</title>
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 40px;
-      background-color: #fff;
-      color: #1b1b1b;
-    }
-
-    h2, h3 {
-      margin: 0;
-      font-weight: 600;
-      color: #1b1b1b;
-       text-decoration: underline;
-       padding-bottom: 30px;
-    }
-
-    .section-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .digital-edition {
-      font-size: 24px;
-      text-decoration: underline;
-      margin-bottom: 10px;
-    }
-
-    .monthly-magazines {
-      font-size: 28px;
-      text-decoration: underline;
-      margin-bottom: 40px;
-    }
-
-    .magazine-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-
-    .magazine-card {
-      border: 1px solid #dcdcdc;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #fff;
-      transition: transform 0.3s ease;
-    }
-
-    .magazine-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .magazine-card img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .edition-label {
-      text-align: center;
-      font-size: 16px;
-      font-weight: 500;
-      padding: 12px 0;
-      color: #1b1b1b;
-    }
-
-    .view-more {
+      background: rgba(0,0,0,0.3);
       display: flex;
       justify-content: center;
-    }
-
-    .view-more button {
-      background: #1b1b1b;
-      color: #fff;
-      padding: 10px 28px;
-      border: none;
-      border-radius: 25px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .view-more button:hover {
-      background: #3a3a3a;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 20px;
-      }
-      .monthly-magazines {
-        font-size: 24px;
-      }
-      .magazine-card img {
-        height: 250px;
-      }
-    }
-    
-    .section-container {
-      max-width: 1250px;
-      margin: 0 auto;
-    }
-
-    .ceo-profile-list {
-     display: grid
-;
-    grid-template-columns: repeat(auto-fit, minmax(117px, 1fr));
-    gap: 25px;
-    margin-bottom: 40px;
-    height: 200px;
-    }
-
-    .ceo-card {
-    
-      border-radius: 6px;
-      overflow: hidden;
-   
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-
-    .ceo-card:hover {
-      transform: translateY(-5px);
-    }
-
-   .ceo-card img {
-  width: 100%;
-  height: 200px; /* fixed height */
-  object-fit: contain; /* ensures image is fully visible without cutting */
-  background: #f9f9f9; /* adds a light background behind transparent areas */
-}
-
-
-    .ceo-name {
-      font-size: 18px;
-      font-weight: 600;
-      color: #1b1b1b;
-      text-align: center;
-      padding: 10px 0 4px;
-    }
-
-    .ceo-title {
-      font-size: 14px;
-      text-align: center;
-      color: #6b6b6b;
-      padding-bottom: 10px;
-     
-    }
-
-    .view-more {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .view-more button {
-      background: #1b1b1b;
-      color: #fff;
-      padding: 10px 28px;
-      border: none;
-      border-radius: 25px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .view-more button:hover {
-      background: #3a3a3a;
-    }
-
-
-    @media (max-width: 768px) {
-      body {
-        padding: 20px;
-      }
-      .ceo-card img {
-        height: 240px;
-      }
-      .ceo-name {
-        font-size: 16px;
-      }
-    }
-    .section-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
+      height: 100vh;
+      font-family: "Google Sans", Arial, sans-serif;
     }
-
-    .section-header h2 {
-      font-size: 26px;
-      font-weight: 600;
-      text-decoration: underline;
-      margin: 0;
-      color: #1b1b1b;
+    .popup {
+      background: #fff;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      overflow: hidden;
+      animation: fadeIn 0.3s ease;
     }
-
-    .view-more button {
-      background: #1b1b1b;
-      color: #fff;
-      padding: 10px 28px;
-      border: none;
-      border-radius: 25px;
-      font-size: 15px;
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    .header img {
+      width: 25px;
+      margin-right: 10px;
+    }
+    .header span {
+      font-size: 16px;
+      color: #333;
+    }
+    .account {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
-
-    .view-more button:hover {
-      background: #3a3a3a;
+    .account:hover {
+      background: #f7f7f7;
     }
-
-   .container3 {
-  width: 100%;
-  display: flex;
-  justify-content: center;
- 
-}
-
-.section-container {
-  max-width: 1200px;
-  width: 100%;
-  padding: 40px 20px;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-}
-
-.section-header h2 {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-/* .view-more button {
-  background-color: #f57c00;
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: all 0.3s ease;
-}
-
-.view-more button:hover {
-  background-color: #d96b00;
-} */
-
-.profile-list {
-  display: flex;
-  flex-wrap: wrap;
-  /* justify-content: center; */
-  gap: 25px;
-}
-
-.profile-card {
-
-  border-radius: 12px;
-  width: 300px;
-  height: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-
-  transition: all 0.3s ease;
-}
-
-.profile-card:hover {
-  transform: translateY(-5px);
-}
-
-.profile-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* ensures the full image is visible */
-
-  padding: 5px; /* adds breathing space */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .profile-card {
-    width: 90%;
-    height: auto;
-  }
-
-  .profile-card img {
-    height: auto;
-  }
-
-  .section-header {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
-
+    .account img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    .account-info h4 {
+      margin: 0;
+      font-weight: 500;
+      color: #202124;
+    }
+    .account-info p {
+      margin: 0;
+      color: #5f6368;
+      font-size: 14px;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
   </style>
 </head>
 <body>
-  <div class="section-container">
-    <h2 class="digital-edition">Digital Edition</h2>
-    <h3 class="monthly-magazines">Monthly Magazines</h3>
+  <div class="popup">
+    <div class="header">
+      <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png">
+      <span>Sign in to indiatimes.com with google.com</span>
+    </div>
 
-    <div class="magazine-list">
-      <div class="magazine-card">
-        <img src="./image/Ceos cover/Ceos cover/1 (2).jpg" alt="June Edition">
-        <div class="edition-label">June Edition</div>
-      </div>
-
-      <div class="magazine-card">
-        <img src="./image/Ceos cover/Ceos cover/2 (1).jpg" alt="July Edition">
-        <div class="edition-label">July Edition</div>
-      </div>
-
-      <div class="magazine-card">
-        <img src="./image/Ceos cover/Ceos cover/3 (1).jpg" alt="August Edition">
-        <div class="edition-label">August Edition</div>
-      </div>
-
-      <div class="magazine-card">
-          <img src="./image/Ceos cover/Ceos cover/3 (1).jpg" alt="August Edition">
-        <div class="edition-label">September Edition</div>
+    <div class="account" onclick="alert('Login with dixitshivi130@gmail.com')">
+      <img src="https://lh3.googleusercontent.com/a/default-user">
+      <div class="account-info">
+        <h4>Shivani Dixit</h4>
+        <p>dixitshivi130@gmail.com</p>
       </div>
     </div>
 
-    <div class="view-more">
-      <button id="viewMoreBtn">View More</button>
+    <div class="account" onclick="alert('Login with shivanidixit133@gmail.com')">
+      <img src="https://lh3.googleusercontent.com/a/default-user">
+      <div class="account-info">
+        <h4>Shivani Dixit</h4>
+        <p>shivanidixit133@gmail.com</p>
+      </div>
     </div>
   </div>
-  <div class="container2">
-     <div class="section-container">
-    <h2>CEO Profile</h2>
-
-    <div class="ceo-profile-list">
-      <div class="ceo-card">
-        <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="Mati Talika">
-        <div class="ceo-name">MATI TALIKA</div>
-        <div class="ceo-title">CEO & DIRECTOR</div>
-      </div>
-
-      <div class="ceo-card">
-        <img src="./image/Ceos cover/Ceos cover/Copy of Zayn Kalyan Scorpio Gold Corp.png" alt="Zayn Kalyan">
-        <div class="ceo-name">ZAYN KALYAN</div>
-        <div class="ceo-title">CEO & DIRECTOR</div>
-      </div>
-
-      <div class="ceo-card">
-        <img src="./image/Ceos cover/Ceos cover/Guanjuato Gold Ceo Profile.png" alt="James Anderson">
-        <div class="ceo-name">JAMES ANDERSON</div>
-        <div class="ceo-title">CHAIRMAN & CEO</div>
-      </div>
-
-      <div class="ceo-card">
-        <img src="./image/Ceos cover/Ceos cover/Michel Amar Digipower X.png" alt="Michel Amar">
-        <div class="ceo-name">MICHEL AMAR</div>
-        <div class="ceo-title">CEO & DIRECTOR</div>
-      </div>
-
-      <div class="ceo-card">
-        <img src="./image/Ceos cover/Ceos cover/Mike Stark Arizona.png" alt="Mike Stark">
-        <div class="ceo-name">MIKE STARK</div>
-        <div class="ceo-title">CEO & DIRECTOR</div>
-      </div>
-
-      <div class="ceo-card">
-        <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="Paul Cowley">
-        <div class="ceo-name">PAUL COWLEY</div>
-        <div class="ceo-title">CEO & DIRECTOR</div>
-      </div>
-    </div>
-
-    <div class="view-more">
-      <button id="viewMoreBtn">View More</button>
-    </div>
-
-  
-  </div>
-  </div>
-<div class="container3">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>Company Profile</h2>
-      <div class="view-more">
-        <button id="viewMoreBtn">View More</button>
-      </div>
-    </div>
-
-    <div class="profile-list">
-      <div class="profile-card">
-        <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="PHENOM RESOURCES">
-      </div>
-
-      <div class="profile-card">
-        <img src="./image/Ceos cover/Ceos cover/US Gold Company Profile.pdf.png" alt="U.S. GOLD CORP.">
-      </div>
-
-      <div class="profile-card">
-        <img src="./image/Ceos cover/Ceos cover/Scorpio Gold Corp. Company Profile.pdf.png" alt="SCORPIO GOLD CORP.">
-      </div>
-    </div>
-
-
-  </div>
-</div>
-  <script>
-    document.getElementById('viewMoreBtn').addEventListener('click', () => {
-      alert('Redirecting to all editions...');
-      // You can replace the alert with:
-      // window.location.href = '/all-editions.html';
-    });
-  </script>
 </body>
 </html>

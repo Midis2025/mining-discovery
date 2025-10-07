@@ -20,7 +20,8 @@
         cursor: pointer;
         font-family: "Pontano Sans", sans-serif;
       }
-      .first-header {
+       
+.first-headers {
   height: 50px;
   overflow: hidden;
   background: black;
@@ -30,46 +31,56 @@
   position: relative;
 }
 
-/* Wrapper for sliding lines */
-.news-slider {
+/* Wrapper */
+.news-sliders {
   position: relative;
   width: 100%;
   height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-/* Each line setup */
-.news-slider p {
+/* Lines */
+.news-sliders p {
   position: absolute;
   width: 100%;
-  top: 30%;
-  left: 0;
   margin: 0;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   color: white;
-  text-align: center;
   opacity: 0;
   transform: translateY(100%);
   animation: slideUp 12s ease-in-out infinite;
 }
 
-/* Each line delay for sequence */
-.news-slider p:nth-child(1) { animation-delay: 0s; }
-.news-slider p:nth-child(2) { animation-delay: 4s; }
-.news-slider p:nth-child(3) { animation-delay: 8s; }
+/* Sequence timing */
+.news-sliders p:nth-child(1) { animation-delay: 0s; }
+.news-sliders p:nth-child(2) { animation-delay: 4s; }
+.news-sliders p:nth-child(3) { animation-delay: 8s; }
 
-/* Animation: bottom → center → top */
+/* Smooth vertical animation */
 @keyframes slideUp {
-  0%   { opacity: 0; transform: translateY(100%); }   /* below */
-  10%  { opacity: 1; transform: translateY(0); }      /* center */
-  25%  { opacity: 1; transform: translateY(0); }      /* stay center */
-  35%  { opacity: 0; transform: translateY(-100%); }  /* slide up */
-  100% { opacity: 0; transform: translateY(100%); }   /* reset below */
+  0%   { opacity: 0; transform: translateY(100%); }
+  10%  { opacity: 1; transform: translateY(0); }
+  30%  { opacity: 1; transform: translateY(0); }
+  40%  { opacity: 0; transform: translateY(-100%); }
+  100% { opacity: 0; transform: translateY(-100%); }
 }
 
-.first-header:hover p {
+/* Optional hover style */
+.first-headers:hover p {
   text-decoration: underline;
+  cursor: pointer;
 }
+
+
+
+
+
+
+
 
 
       .main-header {
@@ -1728,15 +1739,14 @@ ease;
     </style>
   </head>
   <body>
-    <div class="first-header">
-      <div class="news-slider">
-        <p>THE MINING INVESTMENT EVENT</p>
+  <div class="first-headers">
+  <div class="news-sliders">
+    <p>THE MINING INVESTMENT EVENT</p>
+    <p>SAVE THE DATE - JUNE 2–4, 2026</p>
+    <p>Centre des congrès de Québec | June 2–4, 2026</p>
+  </div>
+</div>
 
-        <p>THE MINING INVESTMENT EVENT</p>
-        <p>SAVE THE DATE -JUNE 2-4 2026</p>
-        <p>Some important highlighted news 4</p>
-      </div>
-    </div>
 
     <header class="main-header">
       <div class="header-top">
@@ -1846,7 +1856,7 @@ ease;
               <a href="./confrence.html">Conference</a>
             </div>
           </div>
-          <a href="./contant.html">Contact Us</a>
+       <a href="./contact.html">Contact Us</a>
         </div>
         <div class="new">
           <div class="header-buttons" id="headerButtons">

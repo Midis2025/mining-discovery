@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
   // --- Configuration ---
@@ -6,13 +5,257 @@ document.addEventListener("DOMContentLoaded", () => {
     API_BASE_URL: 'https://admins.miningdiscovery.com/api',
     CACHE_DURATION: 5 * 60 * 1000, // 5 minutes
     REQUEST_TIMEOUT: 8000, // 8 seconds
-    EXTERNAL_SCRIPTS: ['./js/advertisment.js', './js/projects.js', './js/reports.js']
+    EXTERNAL_SCRIPTS: ['./js/advertisment.js', './js/projects.js', './js/reports.js'],
+    SCROLL_THRESHOLD: 40, // Show popup at 40% scroll
+    SUBSCRIPTION_KEY: 'mining_discovery_subscribed' // Key for checking subscription status
   };
 
   // --- Cache for storing fetched data ---
   let projectsCache = null;
   let reportsCache = null;
   let cacheTimestamp = null;
+  let popupShown = false;
+
+  // --- Subscription Popup Functions ---
+  function isUserSubscribed() {
+    // Check if user has already subscribed in this session
+    return sessionStorage.getItem(CONFIG.SUBSCRIPTION_KEY) === 'true';
+  }
+
+  function markUserSubscribed() {
+    sessionStorage.setItem(CONFIG.SUBSCRIPTION_KEY, 'true');
+  }
+
+  function showSubscriptionPopup() {
+    const popup = document.getElementById('popup2');
+    console.log('Attempting to show popup. Element found:', !!popup);
+    console.log('Already shown:', popupShown);
+    console.log('User subscribed:', isUserSubscribed());
+    
+    if (popup && !popupShown && !isUserSubscribed()) {
+      popup.style.display = 'flex';
+      popupShown = true;
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      console.log('Popup displayed successfully');
+    } else {
+      console.log('Popup not shown. Reasons:', {
+        popupExists: !!popup,
+        alreadyShown: popupShown,
+        userSubscribed: isUserSubscribed()
+      });
+    }
+  }
+
+  function hideSubscriptionPopup() {
+    const popup = document.getElementById('popup2');
+    if (popup) {
+      popup.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+  }
+
+  // Make closePopup function global
+  window.closePopup = function() {
+    // Only allow closing if user is subscribed
+    if (isUserSubscribed()) {
+      hideSubscriptionPopup();
+    } else {
+      // Show a message that they need to subscribe first
+      const subscribeBox = document.querySelector('.subscribe-box');
+      if (subscribeBox) {
+        const existingWarning = subscribeBox.querySelector('.subscribe-warning');
+        if (!existingWarning) {
+          const warning = document.createElement('p');
+          warning.className = 'subscribe-warning';
+          warning.style.cssText = 'color: #ffd27d; font-size: 13px; margin: 10px 0 0; animation: shake 0.5s;';
+          warning.textContent = 'Please subscribe to continue reading';
+          subscribeBox.appendChild(warning);
+          
+          // Add shake animation
+          const style = document.createElement('style');
+          style.textContent = `
+            @keyframes shake {
+              0%, 100% { transform: translateX(0); }
+              25% { transform: translateX(-5px); }
+              75% { transform: translateX(5px); }
+            }
+          `;
+          document.head.appendChild(style);
+          
+          setTimeout(() => warning.remove(), 3000);
+        }
+      }
+    }
+  };
+
+  // Make subscribe function global
+  window.subscribe = async function() {
+    const emailInput = document.getElementById('email');
+    const email = emailInput ? emailInput.value.trim() : '';
+    const subscribeButton = document.querySelector('.subscribe-box button');
+    
+    if (!email) {
+      showSubscriptionError('Please enter your email address');
+      return;
+    }
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showSubscriptionError('Please enter a valid email address');
+      return;
+    }
+    
+    // Disable button and show loading state
+    if (subscribeButton) {
+      subscribeButton.disabled = true;
+      subscribeButton.textContent = 'Subscribing...';
+      subscribeButton.style.opacity = '0.7';
+      subscribeButton.style.cursor = 'not-allowed';
+    }
+    
+    try {
+      // Send email to API
+      console.log('Sending subscription request for:', email);
+      
+      const response = await fetch('https://admins.miningdiscovery.com/api/subscribers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: {
+            email: email
+          }
+        })
+      });
+      
+      console.log('API Response status:', response.status);
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('API Error:', errorData);
+        throw new Error(errorData.error?.message || `Server returned ${response.status}`);
+      }
+      
+      const result = await response.json();
+      console.log('Subscription successful:', result);
+      
+      // Mark user as subscribed
+      markUserSubscribed();
+      
+      // Show success message
+      showSubscriptionSuccess();
+      
+    } catch (error) {
+      console.error('Subscription error:', error);
+      
+      // Re-enable button
+      if (subscribeButton) {
+        subscribeButton.disabled = false;
+        subscribeButton.textContent = 'Subscribe';
+        subscribeButton.style.opacity = '1';
+        subscribeButton.style.cursor = 'pointer';
+      }
+      
+      // Show error message to user
+      showSubscriptionError(
+        error.message.includes('Failed to fetch') 
+          ? 'Network error. Please check your connection and try again.' 
+          : `Subscription failed: ${error.message}`
+      );
+    }
+  };
+
+  function showSubscriptionSuccess() {
+    const subscribeBox = document.querySelector('.subscribe-box');
+    if (subscribeBox) {
+      subscribeBox.innerHTML = `
+        <div style="padding: 20px;">
+          <div style="font-size: 48px; color: #4CAF50; margin-bottom: 15px;">✓</div>
+          <h2 style="background: linear-gradient(90deg, #ffda8b, #ae8a4c); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Thank You for Subscribing!
+          </h2>
+          <p style="color: #ddd; margin: 15px 0;">You'll receive the latest mining updates in your inbox.</p>
+          <button onclick="closePopup()" style="
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ffd27d, #ae8a4c);
+            color: #111;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+          ">Continue Reading</button>
+        </div>
+      `;
+    }
+    
+    // Auto-close after 2.5 seconds
+    setTimeout(() => {
+      hideSubscriptionPopup();
+    }, 2500);
+  }
+
+  function showSubscriptionError(message) {
+    const subscribeBox = document.querySelector('.subscribe-box');
+    if (subscribeBox) {
+      const existingError = subscribeBox.querySelector('.subscription-error');
+      if (!existingError) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'subscription-error';
+        errorDiv.style.cssText = 'color: #ff6b6b; background: rgba(255, 107, 107, 0.1); padding: 10px; border-radius: 8px; font-size: 13px; margin-top: 10px; border: 1px solid rgba(255, 107, 107, 0.3);';
+        errorDiv.textContent = message;
+        subscribeBox.appendChild(errorDiv);
+        
+        setTimeout(() => errorDiv.remove(), 5000);
+      }
+    }
+  }
+
+  // --- Scroll Detection ---
+  function initializeScrollPopup() {
+    // Only initialize if we're on the news details page
+    const newsDetails = document.getElementById('newsDetails');
+    if (!newsDetails) {
+      console.log('News details container not found');
+      return;
+    }
+
+    console.log('Scroll popup initialized');
+    let scrollCheckEnabled = true;
+
+    function handleScroll() {
+      if (!scrollCheckEnabled || isUserSubscribed() || popupShown) {
+        return;
+      }
+
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollableHeight = documentHeight - windowHeight;
+      const scrollPercentage = scrollableHeight > 0 ? (scrollTop / scrollableHeight) * 100 : 0;
+
+      console.log(`Scroll: ${scrollPercentage.toFixed(2)}% (${scrollTop}px / ${scrollableHeight}px)`);
+
+      if (scrollPercentage >= CONFIG.SCROLL_THRESHOLD) {
+        console.log('Showing popup at', scrollPercentage.toFixed(2), '%');
+        showSubscriptionPopup();
+        scrollCheckEnabled = false; // Only show once per session
+      }
+    }
+
+    // Use throttling to improve performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(handleScroll, 100);
+    }, { passive: true });
+
+    // Also check on load in case user refreshes mid-page
+    setTimeout(handleScroll, 1000);
+  }
 
   // --- Utility Functions ---
   function showSpinner(container, message = "Loading...") {
@@ -23,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
           width: 40px; 
           height: 40px; 
           border: 4px solid #f3f3f3; 
-          border-top: 4px solid ##a37b3c; 
+          border-top: 4px solid #a37b3c; 
           border-radius: 50%; 
           animation: spin 1s linear infinite;
         "></div>
@@ -240,7 +483,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const title = item.project_title || item.title || 'Untitled';
     const contentType = source === 'projects' || source === 'projects-cache' ? 'Project' : 'Report';
     
-    // ✅ Update topbar h1 text only
+    // Update topbar h1 text only
     const topbar = document.getElementById("topbar");
     if (topbar) {
       let h1 = topbar.querySelector("h1");
@@ -313,6 +556,12 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const result = await fetchFromMultipleEndpoints(contentId);
       renderNewsArticle(result, container);
+      // Initialize scroll popup after content is loaded and rendered
+      console.log('Article loaded, initializing scroll popup...');
+      setTimeout(() => {
+        initializeScrollPopup();
+        console.log('Scroll popup initialization complete');
+      }, 1000);
     } catch (error) {
       console.error("Error loading content:", error);
 
