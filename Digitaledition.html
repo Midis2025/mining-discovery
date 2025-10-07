@@ -844,948 +844,311 @@
    
 
  /* === Base Styles (Desktop Default) === */
-.page-container {
+ .underline {
+    width: 80px;
+    height: 3px;
+    background: #c1973d;
+    margin-top: 8px;
+    margin-bottom: 35px;
+}
+ h2, h3 {
+      margin: 0;
+      font-weight: 600;
+      color: #1b1b1b;
+    
+      
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .digital-edition {
+    font-size: 26px;
+    font-weight: 600;
+    color: #111;
+    }
+
+    .monthly-magazines {
+      font-size: 28px;
+      text-decoration: underline;
+      margin-bottom: 40px;
+    }
+
+    .magazine-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .magazine-card {
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .magazine-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .magazine-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .edition-label {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 0;
+      color: #1b1b1b;
+    }
+
+    .view-more {
+      display: flex;
+      justify-content: center;
+    }
+
+    .view-more button {
+      background: #1b1b1b;
+      color: #fff;
+      padding: 10px 28px;
+      border: none;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .view-more button:hover {
+      background: #3a3a3a;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .monthly-magazines {
+        font-size: 24px;
+      }
+      .magazine-card img {
+        height: 250px;
+      }
+    }
+    
+    .section-container {
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    .ceo-profile-list {
+     display: grid
+;
+    grid-template-columns: repeat(auto-fit, minmax(117px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+    height: 200px;
+    }
+
+    .ceo-card {
+    
+      border-radius: 6px;
+      overflow: hidden;
+   
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .ceo-card:hover {
+      transform: translateY(-5px);
+    }
+
+   .ceo-card img {
+  width: 100%;
+  height: 200px; /* fixed height */
+  object-fit: contain; /* ensures image is fully visible without cutting */
+  background: #f9f9f9; /* adds a light background behind transparent areas */
+}
+
+
+    .ceo-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1b1b1b;
+      text-align: center;
+      padding: 10px 0 4px;
+    }
+
+    .ceo-title {
+      font-size: 14px;
+      text-align: center;
+      color: #6b6b6b;
+      padding-bottom: 10px;
+     
+    }
+
+    .view-more {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .view-more button {
+      background: #1b1b1b;
+      color: #fff;
+      padding: 10px 28px;
+      border: none;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .view-more button:hover {
+      background: #3a3a3a;
+    }
+
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .ceo-card img {
+        height: 240px;
+      }
+      .ceo-name {
+        font-size: 16px;
+      }
+    }
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .section-header h2 {
+      font-size: 26px;
+      font-weight: 600;
+      text-decoration: underline;
+      margin: 0;
+      color: #1b1b1b;
+    }
+
+    .view-more button {
+      background: #1b1b1b;
+      color: #fff;
+      padding: 10px 28px;
+      border: none;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .view-more button:hover {
+      background: #3a3a3a;
+    }
+
+   .container3 {
+  width: 100%;
   display: flex;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 20px;
-  gap: 20px;
-}
-
-/* Sidebar */
-.left-sidebar,
-.right-sidebar {
-  width: 280px;
-  height: calc(100vh - 120px);
-  position: sticky;
-  top: 100px;
-  overflow-y: auto;
-  background: #fff;
- 
-  border-radius: 6px;
-  padding: 10px;
-
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
-}
-
-.left-sidebar::-webkit-scrollbar,
-.right-sidebar::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari */
-}
-.left-sidebar .box {
-  background: white;
-  padding: 12px;
-  margin-bottom: 15px;
-}
-
-.left-sidebar .box img {
-  width: 100%;
-  height: auto;
-}
-
-/* Main Content */
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
- 
+  justify-content: center;
  
 }
 
-.video-card {
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
-
-.video-thumbnail {
-  position: relative;
+.section-container {
+  max-width: 1200px;
   width: 100%;
-  height: 180px;
-  cursor: pointer;
-  overflow: hidden;
+  padding: 40px 20px;
 }
 
-.video-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 0;
-  transition: transform 0.3s ease;
-}
-
-.video-thumbnail:hover img {
-  transform: scale(1.03);
-}
-
-.video-info {
-  padding: 10px;
-}
-
-.video-info h4 {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 0;
-  margin-top: 8px;
-  color: white;
-  line-height: 1.4;
-}
-
-.play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 30px;
-  color: white;
-  background-color: rgba(0,0,0,0.6);
-  padding: 10px 15px;
-  border-radius: 50%;
-}
-
-.video-title {
-  font-size: 15px;
-  margin-top: 10px;
-  font-weight: 600;
-  color: #222;
-}
-
-/* Section Header */
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 25px;
 }
 
 .section-header h2 {
   font-size: 28px;
   font-weight: bold;
-  border-bottom: 2px solid #8d6d2a;
-  margin: 0;
 }
 
-.view-more {
-align-self: flex-end;
-
- 
-  font-weight: 700;
-  padding: 8px 18px;
-  font-size: 13px;
-  background-color: #fff;
- 
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.3s ease;
+/* .view-more button {
+  background-color: #f57c00;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
   cursor: pointer;
-
-
-
-
- 
-       border: 1px solid #ae8a4c;
-     color: #ae8a4c;
-      padding: 6px 12px;
-    
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 13px;
-
-
-
-
-
-  
-
-}
-.view-more a{
-  color:#8d6d2a ;
-  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
 }
 
-.view-more:hover {
-  background: #333;
-}
+.view-more button:hover {
+  background-color: #d96b00;
+} */
 
-/* Card Container */
-.card-container {
+.profile-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  /* justify-content: center; */
+  gap: 25px;
 }
 
-/* Cards */
-.card {
+.profile-card {
 
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-
-display: flex;
-
-}
-.card img{
-  height: 250px;
-}
-.profile-card{
-  height: 300px;
-}
-
-.cards {
-
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-  flex: 1 1 calc(33.33% - 20px);
-  max-width: calc(33.33% - 20px);
-
-  height: 300px;
-}
-
-.cards img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: contain;
-  background-color: white;
-  border: 3px solid #8d6d2a;
-  padding: 5px;
-  margin-top: 10px;
-}
-
-.card-content {
-  padding: 12px;
-}
-
-.card-content h3 {
-  font-size: 24px;
-  margin: 0 0 5px;
-  color: #fff;
-}
-
-.card-content p {
-  font-size: 13px;
-  color: #ccc;
-  margin: 0;
-}
-
-.card img {
-  padding-top: 15px;
-}
-
-/* CEO Profile Images Circular */
-.profile-card img {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  margin: 15px auto 10px;
-  display: block;
-  object-fit: cover;
-}
-
-/* Video Cards */
-.video-card {
-  background: #000;
+  border-radius: 12px;
+  width: 300px;
+  height: 350px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 283px;
-  border-radius: 10px;
-  flex: 1 1 calc(33.33% - 20px);
-  max-width: calc(33.33% - 20px);
-  cursor: pointer;
+  align-items: center;
+  overflow: hidden;
+
+  transition: all 0.3s ease;
 }
 
-.video-card i {
-  color: #AE8A4C;
-  font-size: 40px;
+.profile-card:hover {
+  transform: translateY(-5px);
 }
-/* 📱 Small phones (≤375px) */
-/* ================= Responsive Styles ================= */
 
-/* Phones (up to 480px) */
-@media (max-width: 480px) {
-  .page-container {
-    flex-direction: column;
-    padding: 10px;
-    gap: 12px;
+.profile-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ensures the full image is visible */
+
+  padding: 5px; /* adds breathing space */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-card {
+    width: 90%;
+    height: auto;
   }
 
-  /* Hide sidebars */
-  .left-sidebar
-   {
-    display: none;
-  }
-
-  /* Main content full width */
-  .main-content {
-    width: 100%;
-    gap: 20px;
-  }
-
-  /* Cards full width */
-  .card,
-  .cards,
-  .video-card {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-
-  /* Smaller profile images */
-  .cards img,
   .profile-card img {
-    width: 80px;
-    height: 80px;
+    height: auto;
   }
 
-  .card-content h3 {
-    font-size: 18px;
-  }
-
-  .card-content p {
-    font-size: 12px;
-  }
-
-  .section-header h2 {
-    font-size: 16px;
-  }
-
-  .view-more {
-    font-size: 11px;
-    padding: 4px 10px;
-  }
-}
-
-/* Larger Phones & Small Tablets (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .page-container {
-    flex-direction: column;
-    padding: 15px;
-    gap: 15px;
-  }
-
-  /* Hide sidebars */
-  .left-sidebar
-   {
-    display: none;
-  }
-
-  /* Main content full width */
-  .main-content {
-    width: 100%;
-    gap: 25px;
-  }
-
-  /* Two cards per row */
-  .card,
-  .cards,
-  .video-card {
-    flex: 1 1 calc(50% - 15px);
-    max-width: calc(50% - 15px);
-  }
-
-  /* Profile images */
-  .cards img,
-  .profile-card img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .card-content h3 {
-    font-size: 20px;
-  }
-
-  .card-content p {
-    font-size: 13px;
-  }
-
-  .section-header h2 {
-    font-size: 18px;
-  }
-}
-
-/* === Large Desktop (1921px and above) === */
-@media (min-width: 1921px) {
-  .page-container {
-    max-width: 2200px;
-    padding: 50px;
-    gap: 30px;
-  }
-  
-  .sidebar {
-    flex: 0 0 280px;
-    gap: 20px;
-  }
-  
-  .main-content {
-    gap: 50px;
-  }
-  
-  .section-header h2 {
-    font-size: 28px;
-  }
-  
-  .view-more {
-    font-size: 16px;
-    padding: 8px 20px;
-  }
-  
-  .video-thumbnail {
-    height: 240px;
-  }
-  
-  .play-button {
-    font-size: 40px;
-    padding: 15px 20px;
-  }
-  
-  .video-title {
-    font-size: 18px;
-  }
-  
-  .cards img {
-    width: 150px;
-    height: 150px;
-    border: 4px solid #8d6d2a;
-    padding: 8px;
-  }
-  
-  .card-content h3 {
-    font-size: 28px;
-  }
-  
-  .card-content p {
-    font-size: 16px;
-  }
-  
-  .video-card {
-    height: 350px;
-  }
-  
-  .video-card i {
-    font-size: 50px;
-  }
-  
-  .card-container {
-    gap: 30px;
-  }
-}
-
-/* === Desktop (1441px to 1920px) === */
-@media (min-width: 1441px) and (max-width: 1920px) {
-  .page-container {
-    max-width: 1600px;
-    padding: 40px;
-    gap: 25px;
-  }
-  
-  .sidebar {
-    flex: 0 0 250px;
-    gap: 18px;
-  }
-  
-  .main-content {
-    gap: 45px;
-  }
-  
-  .section-header h2 {
-    font-size: 24px;
-  }
-  
-  .view-more {
-    font-size: 15px;
-    padding: 6px 18px;
-  }
-  
-  .video-thumbnail {
-    height: 200px;
-  }
-  
-  .play-button {
-    font-size: 35px;
-    padding: 12px 18px;
-  }
-  
-  .video-title {
-    font-size: 17px;
-  }
-  
-  .cards img {
-    width: 135px;
-    height: 135px;
-    border: 3px solid #8d6d2a;
-    padding: 6px;
-  }
-  
-  .card-content h3 {
-    font-size: 26px;
-  }
-  
-  .card-content p {
-    font-size: 15px;
-  }
-  
-  .video-card {
-    height: 320px;
-  }
-  
-  .video-card i {
-    font-size: 45px;
-  }
-  
-  .card-container {
-    gap: 25px;
-  }
-}
-
-/* === Standard Desktop (1200px to 1440px) === */
-@media (min-width: 1200px) and (max-width: 1440px) {
-  .page-container {
-    padding: 35px;
-    gap: 22px;
-  }
-  
-  .sidebar {
-    flex: 0 0 230px;
-    gap: 16px;
-  }
-  
-  .main-content {
-    gap: 42px;
-  }
-  
-  .section-header h2 {
-    font-size: 28px;
-  }
-  
-  .view-more {
-    font-size: 14px;
-    padding: 5px 16px;
-  }
-  
-  .video-thumbnail {
-    height: 190px;
-  }
-  
-  .play-button {
-    font-size: 32px;
-    padding: 11px 16px;
-  }
-  
-  .video-title {
-    font-size: 16px;
-  }
-  
-  .cards img {
-    width: 125px;
-    height: 125px;
-  }
-  
-  .card-content h3 {
-    font-size: 25px;
-  }
-  
-  .card-content p {
-    font-size: 14px;
-  }
-  
-  .video-card {
-    height: 300px;
-  }
-  
-  .video-card i {
-    font-size: 42px;
-  }
-}
-
-/* === Large Tablet Landscape (1025px to 1199px) === */
-@media (min-width: 1025px) and (max-width: 1199px) {
-  .page-container {
-    padding: 30px;
-    gap: 20px;
-  }
-  
-  .sidebar {
-    flex: 0 0 200px;
-    gap: 15px;
-  }
-  
-  .section-header h2 {
-    font-size: 21px;
-  }
-  
-  .view-more {
-    font-size: 13px;
-    padding: 4px 15px;
-  }
-  
-  .video-thumbnail {
-    height: 170px;
-  }
-  
-  .play-button {
-    font-size: 30px;
-  }
-  
-  .video-title {
-    font-size: 15px;
-  }
-  
-  .cards img {
-    width: 115px;
-    height: 115px;
-  }
-  
-  .card-content h3 {
-    font-size: 23px;
-  }
-  
-  .card-content p {
-    font-size: 13px;
-  }
-  
-  .video-card {
-    height: 270px;
-  }
-  
-  .video-card i {
-    font-size: 38px;
-  }
-  
-  .card,
-  .cards {
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
-  }
-  
-  .video-card {
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
-  }
-}
-
-/* === Tablet Portrait and Kindle (769px to 1024px) === */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .page-container {
-    flex-direction: column;
-    padding: 25px;
-    gap: 18px;
-  }
-  
-  .sidebar {
-    flex-direction: row;
-    flex: none;
-    gap: 15px;
-    justify-content: center;
-  }
-  
-  .sidebar img {
-    width: 400px;
-    flex-shrink: 0;
-  }
-  
-  .section-header h2 {
-    font-size: 20px;
-  }
-  
-  .view-more {
-    font-size: 13px;
-    padding: 4px 14px;
-  }
-  
-  .video-thumbnail {
-    height: 160px;
-  }
-  
-  .play-button {
-    font-size: 28px;
-  }
-  
-  .video-title {
-    font-size: 14px;
-  }
-  
-  .cards img,
-  .card img {
-    width: 110px;
-    height: 110px;
-  }
-  
-  .card-content h3 {
-    font-size: 22px;
-  }
-  
-  .card-content p {
-    font-size: 12px;
-  }
-  
-  .video-card {
-    height: 250px;
-  }
-  
-  .video-card i {
-    font-size: 36px;
-  }
-  
-  .card,
-  .cards {
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
-  }
-  
-  .video-card {
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
-  }
-}
-
-/* === Small Tablet and Large Phone (577px to 768px) === */
-@media (min-width: 577px) and (max-width: 768px) {
-  .page-container {
-    flex-direction: column;
-    padding: 20px;
-    gap: 15px;
-  }
-  
-  .sidebar {
-    flex-direction: row;
-    gap: 12px;
-    justify-content: center;
-  }
-  
-  .sidebar img {
-    width: 300px;
-    flex-shrink: 0;
-  }
-  
-  .section-header h2 {
-    font-size: 19px;
-  }
-  
-  .view-more {
-    font-size: 12px;
-    padding: 3px 12px;
-  }
-  
-  .video-thumbnail {
-    height: 150px;
-  }
-  
-  .play-button {
-    font-size: 26px;
-  }
-  
-  .video-title {
-    font-size: 13px;
-  }
-  
-  .cards img,
-  .card img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .card-content h3 {
-    font-size: 20px;
-  }
-  
-  .card-content p {
-    font-size: 11px;
-  }
-  
-  .video-card {
-    height: 220px;
-  }
-  
-  .video-card i {
-    font-size: 34px;
-  }
-  
-  /* Two per row on small tablets */
-  .card,
-  .cards {
-    flex: 1 1 calc(50% - 15px);
-    max-width: calc(50% - 15px);
-  }
-  
-  .video-card {
-    flex: 1 1 calc(50% - 15px);
-    max-width: calc(50% - 15px);
-  }
-  
-  .card-container {
-    gap: 15px;
-  }
-}
-
-/* === Mobile Phones (up to 576px) === */
-@media (max-width: 576px) {
-  .page-container {
-    flex-direction: column;
-    padding: 15px;
-    gap: 12px;
-  }
-  
-  .sidebar {
-    display: none;
-  }
-  
   .section-header {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  
-  .section-header h2 {
-    font-size: 18px;
-  }
-  
-  .view-more {
-    font-size: 11px;
-    padding: 3px 10px;
-    align-self: flex-end;
-  }
-  
-  .video-thumbnail {
-    height: 140px;
-  }
-  
-  .play-button {
-    font-size: 24px;
-    padding: 8px 12px;
-  }
-  
-  .video-title {
-    font-size: 12px;
-  }
-  
-  .cards img,
-  .card img {
-   width: 253px;
-        height: 260px;
-  }
-  
-  .card-content {
-    padding: 10px;
-  }
-  
-  .card-content h3 {
-    font-size: 18px;
-  }
-  
-  .card-content p {
-    font-size: 10px;
-  }
-  
-  .video-card {
-    height: 200px;
-  }
-  
-  .video-card i {
-    font-size: 30px;
-  }
-  
-  /* ONE PER ROW ON MOBILE */
-  .card,
-  .cards {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
-    margin-bottom: 15px;
-  }
-  
-  .video-card {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
-    margin-bottom: 15px;
-  }
-  
-  .card-container {
-    gap: 12px;
-    flex-direction: column;
+    gap: 15px;
   }
 }
 
-/* === Very Small Mobile (320px to 399px) === */
-@media (max-width: 399px) {
-  .page-container {
-    padding: 12px;
-    gap: 10px;
-  }
-  
-  .section-header h2 {
-    font-size: 20px;
-  }
-  
-  .view-more {
-    font-size: 13px;
-    padding: 2px 8px;
-  }
-  
-  .video-thumbnail {
-    height: 120px;
-  }
-  
-  .play-button {
-    font-size: 20px;
-    padding: 6px 10px;
-  }
-  
-  .video-title {
-    font-size: 11px;
-  }
-  
-  .cards img,
-  .card img {
-            width: 253px;
-        height: 260px;
-  }
-  
-  .card-content {
-    padding: 8px;
-  }
-  
-  .card-content h3 {
-    font-size: 16px;
-  }
-  
-  .card-content p {
-    font-size: 9px;
-  }
-  
-  .video-card {
-    height: 180px;
-  }
-  
-  .video-card i {
-    font-size: 26px;
-  }
-  
-  .card-container {
-    gap: 10px;
-  }
-}
-
-/* Force single column on all mobile devices */
-@media (max-width: 720px) {
-  .card,
-  .cards,
-  .video-card {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
-  }
-  
-  .card-container {
-    flex-direction: column !important;
-  }
-}
    
   .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
@@ -2348,129 +1711,123 @@ display: flex;
 
   <!-- Main Content -->
   <div class="main-content">
-
-    <!-- Magazine -->
-    <section>
-      <div class="section-header">
-        <h2>Magazines</h2>
-        <button class="view-more"><a href="./magzin.html">View More</a></button>
-      </div>
-      <div class="card-container">
-         
-        <div class="card">
-          <img src="./image/Ceos cover/Ceos cover/1 (2).jpg" alt="June Edition" >
-          <div class="card-content"><h3>June Edition</h3></div>
-        </div>
-        <div class="card">
-          <img src="./image/Ceos cover/Ceos cover/2 (1).jpg" alt="July Edition" >
-          <div class="card-content"><h3>July Edition</h3></div>
-        </div>
-        <div class="card">
-          <img src="./image/Ceos cover/Ceos cover/3 (1).jpg" alt="August Edition" >
-          <div class="card-content"><h3>August Edition</h3></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CEO Profile -->
-    <section>
-      <div class="section-header">
-        <h2>CEO Profiles</h2>
-      <button class="view-more"><a href="./ceo.html">View More</a></button>
-      </div>
-      <div class="card-container">
-        <div class="card profile-card">
-          <img src="./image/Group 126.png" alt="Speaker 1">
-          <div class="card-content"><h3>George Bee</h3><p>Founder, Resource World</p></div>
-        </div>
-        <div class="card profile-card">
-          <img src="./image/Group 127.png" alt="Speaker 2">
-          <div class="card-content"><h3>Michel Amar</h3><p>CEO, Mining Company</p></div>
-        </div>
-        <div class="card profile-card">
-           <img src="./image/Group 128.png" alt="Speaker 2">
-          <div class="card-content"><h3>Mike Stark</h3><p>CEO, Strikepoint Gold</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Company Profile -->
-    <section>
-      <div class="section-header">
-        <h2>Company Profiles</h2>
-         <button class="view-more"><a href="./company-profile.html">View More</a></button>
-      </div>
-      <div class="card-container">
-        <div class="cards">
-          <img src="./image/phenom.png" alt="Phenom Resources" height="50px">
-          <div class="card-content"><h3>Phenom <br> Resources</h3> <p>profile</p></div>
-        </div>
-        <div class="cards">
-          <img src="./image/download 1.png" alt="Noble Plains">
-          <div class="card-content">
-            <h3>Noble Plains <br> Uranium Corp.</h3>
-            <p>profile</p>
-          </div>
-        </div>
-        <div class="cards">
-          <img src="./image/ASTRA.png" alt="Astra Exploration">
-          <div class="card-content"><h3>Astra <br>Exploration Inc.</h3> <p>profile</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Webinar Recording -->
-    <section>
-      <div class="section-header">
-        <h2>Webinar Recordings</h2>
-        <button class="view-more">View More</button>
-      </div>
-      <div class="card-container">
-                 <div class="video-card">
-  <div class="video-info">
-    <div class="video-thumbnail" data-video="D2S9tbVMDRQ" onclick="loadIframe(this)">
-      <img src="https://img.youtube.com/vi/D2S9tbVMDRQ/mqdefault.jpg" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
+  <div class="section-container">
+    
+    <h2 class="digital-edition">Digital Edition</h2>
+    <div class="underline">
     </div>
-  <h4>U.S Gold Corp Fully Permitted Copper Project in Wyoming</h4>
+
+ <div class="section-header">
+      <h2>Monthly Magzines
+</h2>
+      <div class="view-more">
+        <a href="./magzin.html"><button id="viewMoreBtn">View More</button></a>
+      </div>
+    </div>
+    <div class="magazine-list">
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/1 (2).jpg" alt="June Edition">
+        <div class="edition-label">June Edition</div>
+      </div>
+
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/2 (1).jpg" alt="July Edition">
+        <div class="edition-label">July Edition</div>
+      </div>
+
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/3 (1).jpg" alt="August Edition">
+        <div class="edition-label">August Edition</div>
+      </div>
+
+      <div class="magazine-card">
+          <img src="./image/Ceos cover/Ceos cover/3 (1).jpg" alt="August Edition">
+        <div class="edition-label">September Edition</div>
+      </div>
+    </div>
+
+    
   </div>
-</div>
-
-           <div class="video-card">
-  <div class="video-info">
-    <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="WVSk7YnOiNM" onclick="loadIframe(this)">
-      <img src="./image/vector/mqdefault_6s (1).webp" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
+  <div class="container2">
+     <div class="section-container">
+     <div class="section-header">
+      <h2>Ceo Profile
+</h2>
+      <div class="view-more">
+      <a href="./ceo.html"><button id="viewMoreBtn">View More</button></a>  
+      </div>
     </div>
 
-    <!-- Video title and description -->
-    <h4>
+    <div class="ceo-profile-list">
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="Mati Talika">
+        <div class="ceo-name">MATI TALIKA</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
 
-U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Copy of Zayn Kalyan Scorpio Gold Corp.png" alt="Zayn Kalyan">
+        <div class="ceo-name">ZAYN KALYAN</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Guanjuato Gold Ceo Profile.png" alt="James Anderson">
+        <div class="ceo-name">JAMES ANDERSON</div>
+        <div class="ceo-title">CHAIRMAN & CEO</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Michel Amar Digipower X.png" alt="Michel Amar">
+        <div class="ceo-name">MICHEL AMAR</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Mike Stark Arizona.png" alt="Mike Stark">
+        <div class="ceo-name">MIKE STARK</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="Paul Cowley">
+        <div class="ceo-name">PAUL COWLEY</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
+    </div>
+
+  
+
   
   </div>
-</div>
-          <div class="video-card">
-  <div class="video-info">
-    <!-- Thumbnail preview -->
-    <div class="video-thumbnail" data-video="HNW6ENtSNgs" onclick="loadIframe(this)">
-      <img src="./image/vector/mqdefault_6s.webp" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
+  </div>
+<div class="container3">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>Company Profile</h2>
+      <div class="view-more">
+       <a href="./company-profile.html"><button id="viewMoreBtn">View More</button></a> 
+      </div>
     </div>
 
-    <!-- Video title and description -->
-    <h4>
-‘We have a very good chance of making a new <br>tier one discovery’ Arras Minerals’ Darren Klinck</h4>
-  
+    <div class="profile-list">
+      <div class="profile-card">
+        <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="PHENOM RESOURCES">
+      </div>
+
+      <div class="profile-card">
+        <img src="./image/Ceos cover/Ceos cover/US Gold Company Profile.pdf.png" alt="U.S. GOLD CORP.">
+      </div>
+
+      <div class="profile-card">
+        <img src="./image/Ceos cover/Ceos cover/Scorpio Gold Corp. Company Profile.pdf.png" alt="SCORPIO GOLD CORP.">
+      </div>
+    </div>
+
+
   </div>
 </div>
 
-      </div>
-    </section>
-
-
-  </div>
 </div>
 <!-- Footer Section -->
   <div class="footer-container">
