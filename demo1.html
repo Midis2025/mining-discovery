@@ -3,278 +3,267 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CEO’s Profiles</title>
+  <title>Comments Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Pontano Sans',sans-serif;}
-    body{background:#fff;padding:40px 0;}
-    .section-container{width:90%;max-width:1300px;margin:auto;}
-    .section-title{font-size:26px;font-weight:600;color:#111;}
-    .underline{width:80px;height:3px;background:#c1973d;margin-top:8px;margin-bottom:35px;}
-
-    /* ===== Carousel ===== */
-    .carousel-wrapper{position:relative;overflow:hidden;}
-    .carousel-track{display:flex;transition:transform 0.5s ease-in-out;touch-action:pan-y;}
-    .profile-cards{
-      background:#000;flex:0 0 15.8%;
-      margin-right:20px;border-radius:8px;color:#fff;
-      text-align:center;border:1px solid #333;
-      overflow:hidden;height:267px;cursor:pointer;
-      transition:transform 0.3s ease;
-    }
-    .profile-cards:hover{transform:scale(1.05);}
-    .profile-cards img{width:100%;height:270px;object-fit:cover;border-bottom:1px solid #333;}
-
-    /* ===== Pagination ===== */
-    .pagination{margin-top:25px;display:flex;justify-content:center;align-items:center;gap:10px;}
-    .pagination button{
-      border:1px solid #ccc;background:none;color:#333;
-      padding:6px 11px;border-radius:50%;cursor:pointer;
-      transition:all 0.3s ease;
-    }
-    .pagination button.active,.pagination button:hover{
-      background:#c1973d;color:#fff;border-color:#c1973d;
-    }
-    .pagination i{font-size:12px;}
-
-    /* ===== Profile Section ===== */
-    .profile-section{
-      display:flex;align-items:center;justify-content:center;
-      gap:50px;width:90%;max-width:1200px;margin:60px auto 0;
-    }
-    .profile-section .profile-card img{
-      border:1px solid black;border-radius:12px;
-      width:350px;height:450px;object-fit:cover;
-    }
-    .action-buttons{display:flex;flex-direction:column;align-items:center;gap:15px;}
-    .action-buttons p{font-weight:600;color:#000;margin-bottom:10px;}
-    .btn{
-      background-color:#c0973d;color:#fff;border:none;
-      padding:8px 20px;font-size:14px;border-radius:25px;
-      cursor:pointer;transition:all 0.3s ease;width:130px;text-align:center;
-    }
-    .btn:hover{background-color:#b28428;}
-    .info-box{
-      background:#1b1b1b;color:#fff;border-radius:10px;padding:25px 30px;
-      width:55%;min-height:320px;box-shadow:0 4px 10px rgba(0,0,0,0.3);
-      display:flex;flex-direction:column;justify-content:center;
-    }
-    .info-box h3{color:#c1973d;font-size:20px;margin-bottom:5px;}
-    .info-box h4{font-weight:500;font-size:14px;margin-bottom:15px;color:#d3d3d3;}
-    .info-box p{font-size:14px;line-height:1.6;color:#e5e5e5;text-align:justify;}
-    .divider{height:1px;background-color:#c1973d;width:100%;margin:10px 0 20px;}
-
-    /* ===== Responsive ===== */
-    @media (max-width:992px){
-      .profile-section{flex-direction:column;gap:30px;}
-      .info-box{width:90%;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 40px;
+      color: #3c2f1b;
     }
 
-    /* 📱 Mobile optimization */
-    @media (max-width:768px){
-      .profile-cards{flex:0 0 80%;max-width:80%;height:auto;}
-      .profile-cards img{height:auto;}
-      .profile-section{flex-direction:column;margin-top:40px;}
-      .profile-section .profile-card img{width:100%;max-width:360px;height:auto;}
-      .info-box{width:95%;padding:20px;min-height:auto;}
-      .btn{width:150px;}
+    .comments-section {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #a76f2e;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    .comments-header h2 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .login-dropdown {
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .comment-box textarea {
+      width: 100%;
+      height: 120px;
+      border: 1px solid #bfa27d;
+      border-radius: 5px;
+      padding: 10px;
+      resize: none;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .comment-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .toolbar-icons i {
+      margin-right: 8px;
+      cursor: pointer;
+      color: #5b4633;
+    }
+
+    .comment-box button {
+      background-color: #b58b52;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .comment-box button:hover {
+      background-color: #a3763e;
+    }
+
+    .signup-section {
+      margin-top: 25px;
+    }
+
+    .signup-section p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .share-icons {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 10px;
+    }
+
+    .share-icons i {
+      border: 1px solid #bfa27d;
+      border-radius: 50%;
+      padding: 6px;
+      font-size: 14px;
+      color: #5b4633;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .share-icons i:hover {
+      background: #bfa27d;
+      color: #fff;
+    }
+
+    .input-field {
+      width: 100%;
+      border: 1px solid #bfa27d;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 12px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .acknowledge {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      color: #5b4633;
+      margin-bottom: 20px;
+    }
+
+    .acknowledge input {
+      margin-right: 6px;
+    }
+
+    .or-login {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 14px;
+      color: #5b4633;
+    }
+
+    .login-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .login-icons i {
+      border: 1px solid #bfa27d;
+      border-radius: 50%;
+      padding: 6px;
+      font-size: 14px;
+      color: #5b4633;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .login-icons i:hover {
+      background: #bfa27d;
+      color: #fff;
+    }
+
+    .comments-sort {
+      text-align: right;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #5b4633;
+    }
+
+    .user-comment {
+      border: 1px solid #bfa27d;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 15px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .user-comment .header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      color: #5b4633;
+    }
+
+    .user-comment .username {
+      font-weight: 600;
+    }
+
+    .user-comment .date {
+      font-size: 12px;
+    }
+
+    .user-comment .text {
+      color: #333;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .user-comment .like {
+      font-size: 13px;
+      color: #a76f2e;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-<div class="container1">
-  <div class="section-container">
-    <h2 class="section-title">Companies Profiles</h2>
-    <div class="underline"></div>
+  <div class="comments-section">
+    <div class="comments-header">
+      <h2>Comments</h2>
+      <div class="login-dropdown">Login <i class="fa-solid fa-angle-down"></i></div>
+    </div>
 
-    <div class="carousel-wrapper" id="carouselWrapper">
-      <div class="carousel-track" id="carouselTrack">
+    <p>0 Comments</p>
 
-        <!-- Company Cards -->
-        <div class="profile-cards"
-          data-name="Astra Exploration"
-          data-title="(TSX.V: ASTR)"
-          data-desc="Astra Exploration focuses on advancing high-potential gold and silver projects with modern, responsible exploration practices.">
-          <img src="./image/Ceos cover/Ceos cover/US Gold Company Profile.pdf.png" alt="Astra Exploration">
+    <div class="comment-box">
+      <textarea placeholder="Add comment here..."></textarea>
+      <div class="comment-toolbar">
+        <div class="toolbar-icons">
+          <i class="fa-solid fa-bold"></i>
+          <i class="fa-solid fa-italic"></i>
+          <i class="fa-solid fa-underline"></i>
+          <i class="fa-solid fa-link"></i>
+          <i class="fa-solid fa-quote-left"></i>
+          <i class="fa-regular fa-face-smile"></i>
         </div>
-
-        <div class="profile-cards"
-          data-name="Scorpio Gold Corp."
-          data-title="(TSX.V: SGN)"
-          data-desc="Scorpio Gold Corp. is committed to unlocking the full potential of its Nevada-based assets through strategic exploration and disciplined operations.">
-          <img src="./image/Ceos cover/Ceos cover/Scorpio Gold Corp. Company Profile.pdf.png" alt="Scorpio Gold Corp.">
-        </div>
-
-        <div class="profile-cards"
-          data-name="Phenom Resources Ltd."
-          data-title="(TSX.V: PHNM | US OTCQX®: PHNMF | Frankfurt: 1PY)"
-          data-desc="Phenom Resources Ltd. is a growth-oriented exploration and development company advancing high-value mining projects in North America with innovation and responsible practices.">
-          <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="Phenom Resources">
-        </div>
-
+        <button>Submit</button>
       </div>
     </div>
 
-    <!-- Pagination -->
-    <div class="pagination">
-      <button id="prev"><i class="fa fa-angle-double-left"></i></button>
-      <div id="pageNumbers"></div>
-      <button id="next"><i class="fa fa-angle-double-right"></i></button>
+    <div class="signup-section">
+      <p>Sign up with your Mail ID. 
+        <span class="share-icons">
+          <span>Share</span>
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-x-twitter"></i>
+          <i class="fa-brands fa-linkedin-in"></i>
+          <i class="fa-brands fa-instagram"></i>
+        </span>
+      </p>
+      <input type="text" placeholder="Name*" class="input-field" />
+      <input type="email" placeholder="Email*" class="input-field" />
+      <input type="password" placeholder="Password*" class="input-field" />
+
+      <div class="acknowledge">
+        <input type="checkbox" id="ageCheck" />
+        <label for="ageCheck">Acknowledge I am 18 and older.</label>
+      </div>
+
+      <div class="or-login">Or Login With</div>
+      <div class="login-icons">
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+      </div>
     </div>
-  </div>
-</div>
 
+    <div class="comments-sort">Most Recent <i class="fa-solid fa-angle-down"></i></div>
 
-  <div class="container2">
-    <div class="profile-section">
-      <div class="profile-card" id="mainProfile">
-        <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="George Bee">
+    <div class="user-comment">
+      <div class="header">
+        <div class="username"><i class="fa-regular fa-user"></i> Username</div>
+        <div class="date">MM/DD/YYYY at 00:00</div>
       </div>
-      <div class="action-buttons">
-        <p>About</p>
-        <button class="btn">View PDF</button>
-        <button class="btn">Download PDF</button>
+      <div class="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
       </div>
-      <div class="info-box" id="infoBox">
-        <div class="divider"></div>
-          <h3>Phenom Resources Ltd.</h3>
-        <h4>(TSX.V: PHNM | US OTCQX®: PHNMF | Frankfurt: 1PY)
-.</h4>
-        <p>Phenom Resources Ltd. (TSX.V: PHNM | US OTCQX®: PHNMF | 
-Frankfurt: 1PY) is a growth oriented exploration and development 
-company working towards advancing high value mining projects in North 
-America. With innovation and responsible practices at its core, Phenom 
-Resources is well placed to unlock opportunities in precious and specialty 
-metals. Our Team boasts incredible industry experience, marrying 
-technical know how with a vision for the sustained creation of value. 
-Creating growth opportunities commercially for our shareholders through 
-partnerships, time tested exploration approaches, and being result
-oriented simultaneously benefits the mining industry. Exploration, project 
-advancement, or continual communication with the investment 
-community-Phenom Resources continually pursues opportunities to 
-expand its portfolio and market presence. With integrity and forward
-thinking strategy, we aspire toward a resilient, competitive global resource 
-future.</p>
-        <div class="divider"></div>
-      </div>
+      <div class="like"><i class="fa-regular fa-heart"></i> Like</div>
     </div>
   </div>
-
- <script>
-const track = document.getElementById('carouselTrack');
-const ceoCards = Array.from(document.querySelectorAll('.carousel-track .profile-cards'));
-const mainProfile = document.getElementById('mainProfile').querySelector('img');
-const infoBox = document.getElementById('infoBox');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-const wrapper = document.getElementById('carouselWrapper');
-const pageNumbersContainer = document.getElementById('pageNumbers');
-
-// 🔹 Cards per page based on screen width
-function getCardsPerPage() {
-  if (window.innerWidth <= 480) return 1;
-  if (window.innerWidth <= 768) return 2;
-  if (window.innerWidth <= 1024) return 3;
-  return 6;
-}
-
-let cardsPerPage = getCardsPerPage();
-let currentPage = 0;
-let totalPages = Math.ceil(ceoCards.length / cardsPerPage);
-
-// 🔹 Update carousel position
-function updateCarousel() {
-  const cardWidth = ceoCards[0].offsetWidth + 20;
-  const moveX = cardWidth * cardsPerPage * currentPage;
-  track.style.transform = `translateX(-${moveX}px)`;
-
-  document.querySelectorAll('.page-btn').forEach((btn, idx) => {
-    btn.classList.toggle('active', idx === currentPage);
-  });
-}
-
-// 🔹 Pagination buttons
-function renderPagination() {
-  pageNumbersContainer.innerHTML = '';
-  for (let i = 0; i < totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.textContent = i + 1;
-    btn.classList.add('page-btn');
-    if (i === currentPage) btn.classList.add('active');
-    btn.addEventListener('click', () => {
-      currentPage = i;
-      updateCarousel();
-    });
-    pageNumbersContainer.appendChild(btn);
-  }
-}
-
-// 🔹 Prev / Next
-prevBtn.addEventListener('click', () => {
-  if (currentPage > 0) currentPage--;
-  updateCarousel();
-});
-nextBtn.addEventListener('click', () => {
-  if (currentPage < totalPages - 1) currentPage++;
-  updateCarousel();
-});
-
-// 🔹 Click card → update company profile
-ceoCards.forEach(card => {
-  card.addEventListener('click', () => {
-    const imgSrc = card.querySelector('img').src;
-    const name = card.dataset.name;
-    const title = card.dataset.title;
-    const desc = card.dataset.desc;
-
-    mainProfile.src = imgSrc;
-    infoBox.innerHTML = `
-      <h3>${name}</h3>
-      <h4>${title}</h4>
-      <p>${desc}</p>
-      <div class="divider"></div>
-    `;
-  });
-});
-
-// 🔹 Swipe for mobile
-let startX = 0;
-let isDragging = false;
-
-wrapper.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
-  isDragging = true;
-});
-
-wrapper.addEventListener('touchmove', e => {
-  if (!isDragging) return;
-  const currentX = e.touches[0].clientX;
-  const diff = startX - currentX;
-
-  if (Math.abs(diff) > 50) {
-    if (diff > 0 && currentPage < totalPages - 1) currentPage++;
-    else if (diff < 0 && currentPage > 0) currentPage--;
-    updateCarousel();
-    isDragging = false;
-  }
-});
-
-wrapper.addEventListener('touchend', () => {
-  isDragging = false;
-});
-
-// 🔹 Resize handling
-window.addEventListener('resize', () => {
-  cardsPerPage = getCardsPerPage();
-  totalPages = Math.ceil(ceoCards.length / cardsPerPage);
-  currentPage = 0;
-  renderPagination();
-  updateCarousel();
-});
-
-// 🔹 Initialize
-renderPagination();
-updateCarousel();
-</script>
 </body>
 </html>

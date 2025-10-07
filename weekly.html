@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Weekly Section</title>
+  <title>Newsletter</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     * {
@@ -120,7 +120,7 @@
       color: #8d6d2a;
     }
 
-  .header-buttons {
+   .header-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -144,6 +144,7 @@
   text-align: center;
   box-sizing: border-box;
 }
+
 
     .login-btn {
       background-color:#ae8a4c;
@@ -298,10 +299,9 @@
 /* Tab items */
 .hamburger-menu .menu-tabs p {
   margin: 8px 0;
-        font-weight: bold;
-        font-size: 16px;
-        cursor: pointer;
-        color: #ae8a4c;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .hamburger-menu .menu-tabs p.active {
@@ -721,7 +721,7 @@
 
  
     }
-     #dropdownMenu1 {
+    #dropdownMenu1 {
  display: flex;
  flex-direction: column;
 
@@ -736,11 +736,11 @@
   }
 
   .logo {
-    height: 70px; 
+    height: 70px; /* logo छोटा ताकि navbar compact लगे */
   }
 
   .hamburger {
-     padding-right: 11px;
+    padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
@@ -955,6 +955,21 @@ h3{
     padding-top: 20px;
     padding-bottom: 5px;
   font-size: 20px;
+}
+button[type="submit"] {
+background-color: #AE8A4C;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+}
+button[type="submit"]:hover {
+  transform: scale(1.05);
+
 }
 .heading p{
   color: #AC8A4A;
@@ -1200,6 +1215,9 @@ h3{
 
 /* === Responsive: Tablet === */
 @media (max-width: 992px) {
+  .heading{
+    margin: 0;
+  }
   .container {
     flex-direction: column;
   }
@@ -1506,8 +1524,16 @@ h3{
 <body>
    
   
+ <div class="first-header">
+  <div class="news-slider">
+    <p>THE MINING INVESTMENT EVENT</p>
+    <p>SAVE THE DATE - JUNE 2-4 2026</p>
+    <p>Centre des congrès de Québec | June 2-4, 2026</p>
+  </div>
+</div>
+    
 
-    <header class="main-header">
+     <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1532,7 +1558,7 @@ h3{
         </div>
       </div>
 
-    <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
+<a href="./newss.html?category=evening-chatter">Evening Chatter</a>
       <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
@@ -1622,8 +1648,8 @@ h3{
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p>
-          <p class="tab-btn" data-target="about">SERVICE</p> -->
+          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+           <p class="tab-btn" data-target="about">SERVICE</p> 
           <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
@@ -1634,7 +1660,9 @@ h3{
           <p><a href="./newsynd.html">News Syndication</a></p>
           <p><a href="./branding.html">Digital Branding</a></p>
           <p><a href="./pressoffice.html">Press Office</a></p>
-          <p><a href="https://youtube.com/">Youtube</a></p>
+                          <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+  YouTube
+</a>
           <p><a href="./confrence.html">Conference Media Coverage</a></p>
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
@@ -1649,7 +1677,6 @@ h3{
     </div>
   </div>
 </header>
-
 
 
 
@@ -1767,29 +1794,221 @@ h3{
       <input type="email" id="email" placeholder="Email Address" required>
       <input type="text" id="jobTitle" placeholder="Job Title">
       <input type="text" id="companyName" placeholder="Company Name">
-      <select id="country" required>
-        <option value="">Country</option>
-        <option value="India">India</option>
-        <option value="USA">USA</option>
-        <option value="Canada">Canada</option>
-        <!-- Add more countries if needed -->
-      </select>
+    <select id="country" name="country" required>
+  <option value="">Select Country</option>
+  <option value="Afghanistan">Afghanistan</option>
+  <option value="Albania">Albania</option>
+  <option value="Algeria">Algeria</option>
+  <option value="Andorra">Andorra</option>
+  <option value="Angola">Angola</option>
+  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+  <option value="Argentina">Argentina</option>
+  <option value="Armenia">Armenia</option>
+  <option value="Australia">Australia</option>
+  <option value="Austria">Austria</option>
+  <option value="Azerbaijan">Azerbaijan</option>
+  <option value="Bahamas">Bahamas</option>
+  <option value="Bahrain">Bahrain</option>
+  <option value="Bangladesh">Bangladesh</option>
+  <option value="Barbados">Barbados</option>
+  <option value="Belarus">Belarus</option>
+  <option value="Belgium">Belgium</option>
+  <option value="Belize">Belize</option>
+  <option value="Benin">Benin</option>
+  <option value="Bhutan">Bhutan</option>
+  <option value="Bolivia">Bolivia</option>
+  <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+  <option value="Botswana">Botswana</option>
+  <option value="Brazil">Brazil</option>
+  <option value="Brunei">Brunei</option>
+  <option value="Bulgaria">Bulgaria</option>
+  <option value="Burkina Faso">Burkina Faso</option>
+  <option value="Burundi">Burundi</option>
+  <option value="Cabo Verde">Cabo Verde</option>
+  <option value="Cambodia">Cambodia</option>
+  <option value="Cameroon">Cameroon</option>
+  <option value="Canada">Canada</option>
+  <option value="Central African Republic">Central African Republic</option>
+  <option value="Chad">Chad</option>
+  <option value="Chile">Chile</option>
+  <option value="China">China</option>
+  <option value="Colombia">Colombia</option>
+  <option value="Comoros">Comoros</option>
+  <option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option>
+  <option value="Congo, Republic of the">Congo, Republic of the</option>
+  <option value="Costa Rica">Costa Rica</option>
+  <option value="Croatia">Croatia</option>
+  <option value="Cuba">Cuba</option>
+  <option value="Cyprus">Cyprus</option>
+  <option value="Czech Republic">Czech Republic</option>
+  <option value="Denmark">Denmark</option>
+  <option value="Djibouti">Djibouti</option>
+  <option value="Dominica">Dominica</option>
+  <option value="Dominican Republic">Dominican Republic</option>
+  <option value="Ecuador">Ecuador</option>
+  <option value="Egypt">Egypt</option>
+  <option value="El Salvador">El Salvador</option>
+  <option value="Equatorial Guinea">Equatorial Guinea</option>
+  <option value="Eritrea">Eritrea</option>
+  <option value="Estonia">Estonia</option>
+  <option value="Eswatini">Eswatini</option>
+  <option value="Ethiopia">Ethiopia</option>
+  <option value="Fiji">Fiji</option>
+  <option value="Finland">Finland</option>
+  <option value="France">France</option>
+  <option value="Gabon">Gabon</option>
+  <option value="Gambia">Gambia</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Germany">Germany</option>
+  <option value="Ghana">Ghana</option>
+  <option value="Greece">Greece</option>
+  <option value="Grenada">Grenada</option>
+  <option value="Guatemala">Guatemala</option>
+  <option value="Guinea">Guinea</option>
+  <option value="Guinea-Bissau">Guinea-Bissau</option>
+  <option value="Guyana">Guyana</option>
+  <option value="Haiti">Haiti</option>
+  <option value="Honduras">Honduras</option>
+  <option value="Hungary">Hungary</option>
+  <option value="Iceland">Iceland</option>
+  <option value="India">India</option>
+  <option value="Indonesia">Indonesia</option>
+  <option value="Iran">Iran</option>
+  <option value="Iraq">Iraq</option>
+  <option value="Ireland">Ireland</option>
+  <option value="Israel">Israel</option>
+  <option value="Italy">Italy</option>
+  <option value="Jamaica">Jamaica</option>
+  <option value="Japan">Japan</option>
+  <option value="Jordan">Jordan</option>
+  <option value="Kazakhstan">Kazakhstan</option>
+  <option value="Kenya">Kenya</option>
+  <option value="Kiribati">Kiribati</option>
+  <option value="Korea, North">Korea, North</option>
+  <option value="Korea, South">Korea, South</option>
+  <option value="Kuwait">Kuwait</option>
+  <option value="Kyrgyzstan">Kyrgyzstan</option>
+  <option value="Laos">Laos</option>
+  <option value="Latvia">Latvia</option>
+  <option value="Lebanon">Lebanon</option>
+  <option value="Lesotho">Lesotho</option>
+  <option value="Liberia">Liberia</option>
+  <option value="Libya">Libya</option>
+  <option value="Liechtenstein">Liechtenstein</option>
+  <option value="Lithuania">Lithuania</option>
+  <option value="Luxembourg">Luxembourg</option>
+  <option value="Madagascar">Madagascar</option>
+  <option value="Malawi">Malawi</option>
+  <option value="Malaysia">Malaysia</option>
+  <option value="Maldives">Maldives</option>
+  <option value="Mali">Mali</option>
+  <option value="Malta">Malta</option>
+  <option value="Marshall Islands">Marshall Islands</option>
+  <option value="Mauritania">Mauritania</option>
+  <option value="Mauritius">Mauritius</option>
+  <option value="Mexico">Mexico</option>
+  <option value="Micronesia">Micronesia</option>
+  <option value="Moldova">Moldova</option>
+  <option value="Monaco">Monaco</option>
+  <option value="Mongolia">Mongolia</option>
+  <option value="Montenegro">Montenegro</option>
+  <option value="Morocco">Morocco</option>
+  <option value="Mozambique">Mozambique</option>
+  <option value="Myanmar">Myanmar</option>
+  <option value="Namibia">Namibia</option>
+  <option value="Nauru">Nauru</option>
+  <option value="Nepal">Nepal</option>
+  <option value="Netherlands">Netherlands</option>
+  <option value="New Zealand">New Zealand</option>
+  <option value="Nicaragua">Nicaragua</option>
+  <option value="Niger">Niger</option>
+  <option value="Nigeria">Nigeria</option>
+  <option value="North Macedonia">North Macedonia</option>
+  <option value="Norway">Norway</option>
+  <option value="Oman">Oman</option>
+  <option value="Pakistan">Pakistan</option>
+  <option value="Palau">Palau</option>
+  <option value="Palestine">Palestine</option>
+  <option value="Panama">Panama</option>
+  <option value="Papua New Guinea">Papua New Guinea</option>
+  <option value="Paraguay">Paraguay</option>
+  <option value="Peru">Peru</option>
+  <option value="Philippines">Philippines</option>
+  <option value="Poland">Poland</option>
+  <option value="Portugal">Portugal</option>
+  <option value="Qatar">Qatar</option>
+  <option value="Romania">Romania</option>
+  <option value="Russia">Russia</option>
+  <option value="Rwanda">Rwanda</option>
+  <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+  <option value="Saint Lucia">Saint Lucia</option>
+  <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+  <option value="Samoa">Samoa</option>
+  <option value="San Marino">San Marino</option>
+  <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+  <option value="Saudi Arabia">Saudi Arabia</option>
+  <option value="Senegal">Senegal</option>
+  <option value="Serbia">Serbia</option>
+  <option value="Seychelles">Seychelles</option>
+  <option value="Sierra Leone">Sierra Leone</option>
+  <option value="Singapore">Singapore</option>
+  <option value="Slovakia">Slovakia</option>
+  <option value="Slovenia">Slovenia</option>
+  <option value="Solomon Islands">Solomon Islands</option>
+  <option value="Somalia">Somalia</option>
+  <option value="South Africa">South Africa</option>
+  <option value="South Sudan">South Sudan</option>
+  <option value="Spain">Spain</option>
+  <option value="Sri Lanka">Sri Lanka</option>
+  <option value="Sudan">Sudan</option>
+  <option value="Suriname">Suriname</option>
+  <option value="Sweden">Sweden</option>
+  <option value="Switzerland">Switzerland</option>
+  <option value="Syria">Syria</option>
+  <option value="Taiwan">Taiwan</option>
+  <option value="Tajikistan">Tajikistan</option>
+  <option value="Tanzania">Tanzania</option>
+  <option value="Thailand">Thailand</option>
+  <option value="Timor-Leste">Timor-Leste</option>
+  <option value="Togo">Togo</option>
+  <option value="Tonga">Tonga</option>
+  <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+  <option value="Tunisia">Tunisia</option>
+  <option value="Turkey">Turkey</option>
+  <option value="Turkmenistan">Turkmenistan</option>
+  <option value="Tuvalu">Tuvalu</option>
+  <option value="Uganda">Uganda</option>
+  <option value="Ukraine">Ukraine</option>
+  <option value="United Arab Emirates">United Arab Emirates</option>
+  <option value="United Kingdom">United Kingdom</option>
+  <option value="United States">United States</option>
+  <option value="Uruguay">Uruguay</option>
+  <option value="Uzbekistan">Uzbekistan</option>
+  <option value="Vanuatu">Vanuatu</option>
+  <option value="Vatican City">Vatican City</option>
+  <option value="Venezuela">Venezuela</option>
+  <option value="Vietnam">Vietnam</option>
+  <option value="Yemen">Yemen</option>
+  <option value="Zambia">Zambia</option>
+  <option value="Zimbabwe">Zimbabwe</option>
+</select>
 
-      <div class="checkbox">
+
+      <!-- <div class="checkbox">
         <input type="checkbox" id="agreeToNewsletter" required>
         <label for="agreeToNewsletter">
           I would like to receive the Mining Discovery Review Newsletter & carefully selected 3rd party emails
           <small>Please confirm you would like to receive the Mining Discovery Review newsletter & carefully selected 3rd party emails</small>
         </label>
-      </div>
+      </div> -->
 
       <button type="submit">Join For Free</button>
 
-      <p class="disclaimer">
+      <!-- <p class="disclaimer">
         * Required content<br><br>
         You can unsubscribe from our emails at any time by clicking the link in the footer of any email you receive from us. We will treat your information with respect. For more information about our privacy policy please <a href="#">click here</a>. By clicking above, you agree that we may process your information in accordance with these terms.<br><br>
         We use MailChimp as our marketing automation platform. By clicking above to submit this form, you acknowledge that the information you provide will be transferred to MailChimp for processing in accordance with their <a href="#">Privacy Policy</a> and <a href="#">Terms</a>.
-      </p>
+      </p> -->
     </form>
   </div>
     </div>
@@ -1818,7 +2037,7 @@ h3{
           Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
         </p>
          <div class="search-bar-container-lasts" id="searchContainer">
-           <div class="social-iconss">
+            <div class="social-iconss">
     <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><i class="fab fa-linkedin-in"></i></a>
     <a href="https://www.instagram.com/miningdiscovery"><i class="fab fa-instagram"></i></a>
     <a href="https://x.com/MiningDiscovery"><i class="fab fa-x-twitter"></i></a>
@@ -1835,8 +2054,7 @@ h3{
       </div>
 
       <!-- Center -->
-      
-     <div class="footer-center">
+    <div class="footer-center">
           <ul>
             <li><a href="index.html">HOME</a></li>
             <li><a href="about.html">ABOUT US</a></li>
@@ -1978,10 +2196,9 @@ function clearForm() {
     
     // show extra news</script>
       <script> 
-  
-   function toggleMenu2() {
+  function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2");
+  const hamburger = document.querySelector(".hamburger2"); // aapke hamburger icon class
 
   // Agar already open hai, close karo aur return
   if (menu.style.display === "block") {
@@ -2005,57 +2222,53 @@ document.addEventListener("click", function (event) {
   }
 });
 
-// Tabs logic
+// Select tabs and contents
 const tabs = document.querySelectorAll(".tab-btn");
 const contents = document.querySelectorAll(".menu-content");
 
-tabs.forEach((tab) => {
+tabs.forEach(tab => {
   tab.addEventListener("click", () => {
-    tabs.forEach((t) => t.classList.remove("active"));
-    contents.forEach((c) => c.classList.remove("active"));
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
 
     tab.classList.add("active");
     document.getElementById(tab.dataset.target).classList.add("active");
   });
 });
 
-// PAGE CHECK FOR MAGAZINE
+// --------- FORCE ONLY SERVICES ---------
 document.addEventListener("DOMContentLoaded", function () {
-  const currentPage = window.location.pathname.split("/").pop();
-  const magazinePages = [
-    "magzin.html",
-    "ceo.html",
-    "weekly.html",
-    "company-profile.html",
-    "Digitaledition.html",
-  ];
+  // Hide all tabs except services
+  tabs.forEach(tab => {
+    if (tab.dataset.target !== "about") {   // "about" = Services ka content id
+      tab.style.display = "none";
+    } else {
+      tab.classList.add("active");
+    }
+  });
 
-  if (magazinePages.includes(currentPage)) {
-    // Mobile menu
-    document.querySelectorAll(".menu-content").forEach((el) => (el.style.display = "none"));
-    const magSection = document.getElementById("magazine");
-    if (magSection) magSection.style.display = "flex";
-
-    // Desktop tabs
-    document.querySelectorAll(".tab-content").forEach((el) => (el.style.display = "none"));
-    const magTab = document.getElementById("magazineTab");
-    if (magTab) magTab.style.display = "block";
-
-    // active magazine tab
-    document.querySelectorAll(".tab-btn").forEach((el) => el.classList.remove("active"));
-    document.querySelectorAll(".tab-btn").forEach((el) => {
-      if (el.textContent.trim() === "Magazine") el.classList.add("active");
-    });
-  }
+  // Hide all contents except services
+  contents.forEach(content => {
+    if (content.id !== "about") {
+      content.style.display = "none";
+    } else {
+      content.classList.add("active");
+      content.style.display = "grid";
+    }
+  });
 });
 
-// Mobile dropdown toggle
 function toggleDropdownMobile(id) {
   const dropdown = document.getElementById(id);
   if (dropdown) {
     dropdown.classList.toggle("show");
   }
 }
+
+  
+  
+  
+  
   
   // Sab thumbnails ko select karo
     const thumbs = document.querySelectorAll('.thumb');
