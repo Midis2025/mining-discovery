@@ -2020,11 +2020,37 @@
   </div>
   <script src="./script.js"></script>
    <script>
-        function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-  
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  function toggleMenu() {
+  const header = document.querySelector(".main-header");
+  if (header) header.classList.toggle("mobile-active");
 }
+
+function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+
+  // Agar menu already open hai, click pe close karo
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    return;
+  }
+
+  // Menu open karo
+  menu.style.display = "block";
+
+
+}
+
+// Page ke kisi bhi jagah pe click ho, menu close ho jaye
+document.addEventListener("click", function(event) {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
+
+  // Agar click hamburger ya menu ke andar nahi hai to close karo
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.display = "none";
+  }
+});
+
  function toggleDropdownMobile(id) {
       const dropdown = document.getElementById(id);
       if (dropdown) {

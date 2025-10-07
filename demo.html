@@ -1,181 +1,400 @@
-<!-- ✅ Company Profiles Section -->
-<div class="container1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monthly Magazines | Mining Discovery</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 40px;
+      background-color: #fff;
+      color: #1b1b1b;
+    }
+
+    h2, h3 {
+      margin: 0;
+      font-weight: 600;
+      color: #1b1b1b;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .digital-edition {
+      font-size: 24px;
+      text-decoration: underline;
+      margin-bottom: 10px;
+    }
+
+    .monthly-magazines {
+      font-size: 28px;
+      text-decoration: underline;
+      margin-bottom: 40px;
+    }
+
+    .magazine-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .magazine-card {
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .magazine-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .magazine-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .edition-label {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 0;
+      color: #1b1b1b;
+    }
+
+    .view-more {
+      display: flex;
+      justify-content: center;
+    }
+
+    .view-more button {
+      background: #1b1b1b;
+      color: #fff;
+      padding: 10px 28px;
+      border: none;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .view-more button:hover {
+      background: #3a3a3a;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .monthly-magazines {
+        font-size: 24px;
+      }
+      .magazine-card img {
+        height: 250px;
+      }
+    }
+    
+    .section-container {
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    .ceo-profile-list {
+     display: grid
+;
+    grid-template-columns: repeat(auto-fit, minmax(117px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+    height: 200px;
+    }
+
+    .ceo-card {
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .ceo-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .ceo-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ceo-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1b1b1b;
+      text-align: center;
+      padding: 10px 0 4px;
+    }
+
+    .ceo-title {
+      font-size: 14px;
+      text-align: center;
+      color: #6b6b6b;
+      padding-bottom: 10px;
+    }
+
+    .view-more {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .view-more button {
+      background: #1b1b1b;
+      color: #fff;
+      padding: 10px 28px;
+      border: none;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .view-more button:hover {
+      background: #3a3a3a;
+    }
+
+    hr {
+      border: none;
+      border-bottom: 2px solid #c6a45c;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .ceo-card img {
+        height: 240px;
+      }
+      .ceo-name {
+        font-size: 16px;
+      }
+    }
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .section-header h2 {
+      font-size: 26px;
+      font-weight: 600;
+      text-decoration: underline;
+      margin: 0;
+      color: #1b1b1b;
+    }
+
+    .view-more button {
+      background: #1b1b1b;
+      color: #fff;
+      padding: 10px 28px;
+      border: none;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .view-more button:hover {
+      background: #3a3a3a;
+    }
+
+    .profile-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .profile-card {
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .profile-card img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-info {
+      text-align: left;
+      padding: 12px;
+    }
+
+    .profile-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1b1b1b;
+    }
+
+    .profile-subtitle {
+      font-size: 14px;
+      color: #b18844;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    hr {
+      border: none;
+      border-bottom: 2px solid #c6a45c;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .profile-card img {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
   <div class="section-container">
-    <h2 class="section-title">Companies Profiles</h2>
-    <div class="underline"></div>
+    <h2 class="digital-edition">Digital Edition</h2>
+    <h3 class="monthly-magazines">Monthly Magazines</h3>
 
-    <div class="carousel-wrapper" id="carouselWrapper">
-      <div class="carousel-track" id="carouselTrack">
+    <div class="magazine-list">
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/1 (2).jpg" alt="June Edition">
+        <div class="edition-label">June Edition</div>
+      </div>
 
-        <!-- Company Cards -->
-        <div class="profile-cards"
-          data-name="Astra Exploration"
-          data-title="(TSX.V: ASTR)"
-          data-desc="Astra Exploration focuses on advancing high-potential gold and silver projects with modern, responsible exploration practices.">
-          <img src="./image/Ceos cover/Ceos cover/US Gold Company Profile.pdf.png" alt="Astra Exploration">
-        </div>
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/2 (1).jpg" alt="July Edition">
+        <div class="edition-label">July Edition</div>
+      </div>
 
-        <div class="profile-cards"
-          data-name="Scorpio Gold Corp."
-          data-title="(TSX.V: SGN)"
-          data-desc="Scorpio Gold Corp. is committed to unlocking the full potential of its Nevada-based assets through strategic exploration and disciplined operations.">
-          <img src="./image/Ceos cover/Ceos cover/Scorpio Gold Corp. Company Profile.pdf.png" alt="Scorpio Gold Corp.">
-        </div>
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/3 (1).jpg" alt="August Edition">
+        <div class="edition-label">August Edition</div>
+      </div>
 
-        <div class="profile-cards"
-          data-name="Phenom Resources Ltd."
-          data-title="(TSX.V: PHNM | US OTCQX®: PHNMF | Frankfurt: 1PY)"
-          data-desc="Phenom Resources Ltd. is a growth-oriented exploration and development company advancing high-value mining projects in North America with innovation and responsible practices.">
-          <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="Phenom Resources">
-        </div>
-
+      <div class="magazine-card">
+          <img src="./image/Ceos cover/Ceos cover/3 (1).jpg" alt="August Edition">
+        <div class="edition-label">September Edition</div>
       </div>
     </div>
 
-    <!-- Pagination -->
-    <div class="pagination">
-      <button id="prev"><i class="fa fa-angle-double-left"></i></button>
-      <div id="pageNumbers"></div>
-      <button id="next"><i class="fa fa-angle-double-right"></i></button>
+    <div class="view-more">
+      <button id="viewMoreBtn">View More</button>
     </div>
   </div>
-</div>
+  <div class="container2">
+     <div class="section-container">
+    <h2>CEO Profile</h2>
 
-<!-- ✅ Dynamic Company Info Section -->
-<div class="container2">
-  <div class="profile-section">
-    <div class="profile-card" id="mainProfile">
-      <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="Company Profile">
+    <div class="ceo-profile-list">
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="Mati Talika">
+        <div class="ceo-name">MATI TALIKA</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Copy of Zayn Kalyan Scorpio Gold Corp.png" alt="Zayn Kalyan">
+        <div class="ceo-name">ZAYN KALYAN</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Guanjuato Gold Ceo Profile.png" alt="James Anderson">
+        <div class="ceo-name">JAMES ANDERSON</div>
+        <div class="ceo-title">CHAIRMAN & CEO</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Michel Amar Digipower X.png" alt="Michel Amar">
+        <div class="ceo-name">MICHEL AMAR</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Mike Stark Arizona.png" alt="Mike Stark">
+        <div class="ceo-name">MIKE STARK</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
+
+      <div class="ceo-card">
+        <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="Paul Cowley">
+        <div class="ceo-name">PAUL COWLEY</div>
+        <div class="ceo-title">CEO & DIRECTOR</div>
+      </div>
     </div>
-    <div class="action-buttons">
-      <p>About</p>
-      <button class="btn">View PDF</button>
-      <button class="btn">Download PDF</button>
+
+    <div class="view-more">
+      <button id="viewMoreBtn">View More</button>
     </div>
-    <div class="info-box" id="infoBox">
-      <h3>Phenom Resources Ltd.</h3>
-      <h4>(TSX.V: PHNM | US OTCQX®: PHNMF | Frankfurt: 1PY)</h4>
-      <p>Phenom Resources Ltd. is a growth-oriented exploration and development
-      company advancing high-value mining projects in North America with innovation and responsible practices.</p>
-      <div class="divider"></div>
+
+    <hr />
+  </div>
+  </div>
+<div class="container3">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>Company Profile</h2>
+      <div class="view-more">
+        <button id="viewMoreBtn">View More</button>
+      </div>
     </div>
+
+    <div class="profile-list">
+      <div class="profile-card">
+        <img src="./" alt="PHENOM RESOURCES">
+      </div>
+
+      <div class="profile-card">
+        <img src="https://via.placeholder.com/300x400?text=U.S.+GOLD+CORP." alt="U.S. GOLD CORP.">
+      </div>
+
+      <div class="profile-card">
+        <img src="https://via.placeholder.com/300x400?text=SCORPIO+GOLD+CORP." alt="SCORPIO GOLD CORP.">
+      </div>
+    </div>
+
+    <hr />
   </div>
 </div>
-
-<!-- ✅ Script -->
-<script>
-const track = document.getElementById('carouselTrack');
-const ceoCards = Array.from(document.querySelectorAll('.carousel-track .profile-cards'));
-const mainProfile = document.getElementById('mainProfile').querySelector('img');
-const infoBox = document.getElementById('infoBox');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-const wrapper = document.getElementById('carouselWrapper');
-const pageNumbersContainer = document.getElementById('pageNumbers');
-
-// 🔹 Cards per page based on screen width
-function getCardsPerPage() {
-  if (window.innerWidth <= 480) return 1;
-  if (window.innerWidth <= 768) return 2;
-  if (window.innerWidth <= 1024) return 3;
-  return 6;
-}
-
-let cardsPerPage = getCardsPerPage();
-let currentPage = 0;
-let totalPages = Math.ceil(ceoCards.length / cardsPerPage);
-
-// 🔹 Update carousel position
-function updateCarousel() {
-  const cardWidth = ceoCards[0].offsetWidth + 20;
-  const moveX = cardWidth * cardsPerPage * currentPage;
-  track.style.transform = `translateX(-${moveX}px)`;
-
-  document.querySelectorAll('.page-btn').forEach((btn, idx) => {
-    btn.classList.toggle('active', idx === currentPage);
-  });
-}
-
-// 🔹 Pagination buttons
-function renderPagination() {
-  pageNumbersContainer.innerHTML = '';
-  for (let i = 0; i < totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.textContent = i + 1;
-    btn.classList.add('page-btn');
-    if (i === currentPage) btn.classList.add('active');
-    btn.addEventListener('click', () => {
-      currentPage = i;
-      updateCarousel();
+  <script>
+    document.getElementById('viewMoreBtn').addEventListener('click', () => {
+      alert('Redirecting to all editions...');
+      // You can replace the alert with:
+      // window.location.href = '/all-editions.html';
     });
-    pageNumbersContainer.appendChild(btn);
-  }
-}
-
-// 🔹 Prev / Next
-prevBtn.addEventListener('click', () => {
-  if (currentPage > 0) currentPage--;
-  updateCarousel();
-});
-nextBtn.addEventListener('click', () => {
-  if (currentPage < totalPages - 1) currentPage++;
-  updateCarousel();
-});
-
-// 🔹 Click card → update company profile
-ceoCards.forEach(card => {
-  card.addEventListener('click', () => {
-    const imgSrc = card.querySelector('img').src;
-    const name = card.dataset.name;
-    const title = card.dataset.title;
-    const desc = card.dataset.desc;
-
-    mainProfile.src = imgSrc;
-    infoBox.innerHTML = `
-      <h3>${name}</h3>
-      <h4>${title}</h4>
-      <p>${desc}</p>
-      <div class="divider"></div>
-    `;
-  });
-});
-
-// 🔹 Swipe for mobile
-let startX = 0;
-let isDragging = false;
-
-wrapper.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
-  isDragging = true;
-});
-
-wrapper.addEventListener('touchmove', e => {
-  if (!isDragging) return;
-  const currentX = e.touches[0].clientX;
-  const diff = startX - currentX;
-
-  if (Math.abs(diff) > 50) {
-    if (diff > 0 && currentPage < totalPages - 1) currentPage++;
-    else if (diff < 0 && currentPage > 0) currentPage--;
-    updateCarousel();
-    isDragging = false;
-  }
-});
-
-wrapper.addEventListener('touchend', () => {
-  isDragging = false;
-});
-
-// 🔹 Resize handling
-window.addEventListener('resize', () => {
-  cardsPerPage = getCardsPerPage();
-  totalPages = Math.ceil(ceoCards.length / cardsPerPage);
-  currentPage = 0;
-  renderPagination();
-  updateCarousel();
-});
-
-// 🔹 Initialize
-renderPagination();
-updateCarousel();
-</script>
+  </script>
+</body>
+</html>
