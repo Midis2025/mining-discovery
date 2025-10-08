@@ -1333,7 +1333,7 @@
     width: 10%;
   }
   .container2 {
-    max-width: 1700px;   /* prevent content from stretching too much */
+    max-width: 1600px;   /* prevent content from stretching too much */
     gap: 30px;           /* add more spacing between sections */
     padding: 20px;
   }
@@ -1514,7 +1514,7 @@
 
  @media (min-width: 1920px) {
   .cards {
-    max-width: 1700px;   /* center carousel, prevent stretching */
+    max-width: 1600px;   /* center carousel, prevent stretching */
    
   }
  }
@@ -1969,7 +1969,7 @@ height: auto;
     /* 💻 Large desktop screens (2K / 2560px and above) */
 @media (min-width: 1920px) {
   .sponsored-section {
-    max-width: 1700px;   /* keep content centered */
+    max-width: 1600px;   /* keep content centered */
     
     gap: 30px;
     padding: 40px;
@@ -2262,7 +2262,7 @@ height: auto;
     /* 💻 Large Desktop - 1920px and above (good for 2560x2120 screens) */
 @media (min-width: 1920px) {
   .container5 {
-    max-width: 1700px;   /* center layout */
+    max-width: 1600px;   /* center layout */
     margin: 0 auto;
     gap: 50px;
     padding-top: 60px;
@@ -2895,7 +2895,7 @@ ease;
 
 @media (min-width: 1920px) {
   .section-wrapper{
-    max-width: 1615px;   /* keep content centered */
+    max-width: 1600px;   /* keep content centered */
     
    
   }
@@ -3118,7 +3118,7 @@ ease;
   .section-title {
     font-size: 30px;}
  .slider-container {
- max-width: 1650px;
+ max-width: 1600px;
 }
 
 }
