@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Newsletter</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <style>
-    * {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Edition</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -15,9 +15,9 @@
     body {
       cursor: pointer;
       font-family: 'Pontano Sans', sans-serif;
-      
+    
     }
-        .first-header {
+    .first-header {
   height: 50px;
   overflow: hidden;
   background: black;
@@ -69,7 +69,7 @@
 }
 
 
- .main-header {
+    .main-header {
       margin-bottom: 10px;
       background-color: #fff;
       padding: 5px;
@@ -120,7 +120,7 @@
       color: #8d6d2a;
     }
 
-   .header-buttons {
+  .header-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -299,9 +299,10 @@
 /* Tab items */
 .hamburger-menu .menu-tabs p {
   margin: 8px 0;
-  font-weight: bold;
-  font-size: 15px;
-  cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        color: #ae8a4c;
 }
 
 .hamburger-menu .menu-tabs p.active {
@@ -736,11 +737,11 @@
   }
 
   .logo {
-    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+    height: 70px; 
   }
 
   .hamburger {
-    padding-right: 11px;
+     padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
@@ -842,442 +843,327 @@
 
    
 
-    /* === Main Layout === */
-    /* Base Styles - Desktop (default) */
-.container {
-  /* display: flex; */
-  padding: 30px;
-  /* gap: 20px; */
+ /* === Base Styles (Desktop Default) === */
+ .underline {
+    width: 80px;
+    height: 3px;
+    background: #c1973d;
+    margin-top: 8px;
+    margin-bottom: 35px;
 }
-
-
-.left-sidebar,
-.right-sidebar {
-  width: 280px;
-  height: calc(100vh - 120px);
-  position: sticky;
-  top: 100px;
-  overflow-y: auto;
-  background: #fff;
-
-  border-radius: 6px;
-  padding: 10px;
-
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
-}
-
-.left-sidebar::-webkit-scrollbar,
-.right-sidebar::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari */
-}
-.left-sidebar .box {
-  background: white;
-  padding: 12px;
-  margin-bottom: 15px;
-}
-
-.left-sidebar .box img {
-  width: 100%;
-  height: auto;
-}
-.section-box {
-  border: 1px solid #ddd;
-  background: #fff;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.section-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.section-box img {
-  width: 100%;
-  height: 130px;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
-}
-.section-box p {
-  margin: 10px;
-  font-size: 15px;
-  color: #333;
-  font-weight: 500;
-  line-height: 1.4;
-}
-.section-box  a {
-  color: #000000;          /* black by default */
-  text-decoration: none;   /* optional: remove underline */
-  transition: color 0.3s ease;
-}
-
-.section-box  a:hover {
-  color:#AE8A4C;            /* brown on hover */
-}
-.main-content {
-  width: 60%;
-}
-
-/* h2 {
-  border-bottom: 2px solid #333;
-} */
-
-.main-content h2 {
-  margin-bottom: 15px;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-}
-span{
- color: white;
-}
-.heading{
-  padding: 20px;
-margin: 0 18%;
-  display: flex;
-  flex-direction: column;
-}
- .heading h1{
- font-size:28px;
-  border-bottom: 2px solid #ae8a4c;
-  display: inline-block;
-}
-h3{
-    padding-top: 20px;
-    padding-bottom: 5px;
-  font-size: 20px;
-}
-button[type="submit"] {
-background-color: #AE8A4C;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  font-size: 16px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-}
-button[type="submit"]:hover {
-  transform: scale(1.05);
-
-}
-.heading p{
-  color: #AC8A4A;
-}
-.btn-more,
-.gold-btn {
-  border: 1px solid #AC8A4A;
-  padding: 5px;
-  border-radius: 20px;
-  background-color: white;
-  color: #AC8A4A;
-}
-
-.gold-btn {
-  margin-bottom: 10px;
-}
-
-.heading,
-.report,
-.gold {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-}
-
-.news-card {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-  background: #D9D9D9;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-}
-
-.news-card img {
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
-}
-
-.text-content {
-  padding: 15px;
-}
-
-.right-sidebar {
-  width: 20%;
-  padding: 20px;
- 
-  border-radius: 12px;
-
-}
-
-.card-container{
-
-  display:flex;
-  flex-direction: column;
-  gap: 15px;
-
-}
-
-       .card-border {
-      position: relative;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-   
-     
-    }
-
-    .card-border img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .card-text {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      text-align: center;
-      padding: 10px 0;
-      font-size: 14px;
-    }
-
-    /* Tablet (600px – 899px) → 2 cards per row */
-    @media (min-width: 600px) {
-      .card-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .card-text {
-        font-size: 15px;
-      }
-     
-    }
-
-    /* Desktop (900px and above) → 3 cards per row */
-    @media (min-width: 900px) {
-      .card-container {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .card-text {
-        font-size: 16px;
-      }
+ h2, h3 {
+      margin: 0;
+      font-weight: 600;
+      color: #1b1b1b;
+    
       
     }
 
-.custom-line{
-  width: 540px;
-   border: 1px solid #333;
-    margin-top: 10px;
-}
-/* Tablet */
-@media (max-width: 768px) {
-  .custom-line {
-    width: 80%;
-  }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-  .custom-line {
-    width: 100%;
-  }
-  .left-sidebar{
-    display: none;
-  }
-}
-
-.gold-news {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-bottom: 30px;
-}
-
-.gold-card {
-  flex: 1;
-  min-width: 150px;
-  border-radius: 10px;
- background: #AC8A4A4F;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-
-.gold-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.gold-card p {
-  padding: 10px;
-  font-weight: bold;
-}
-
-
-
-
-    .container2 {
-      max-width: 800px;
+    .section-container {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-      border: 1px solid #ccc;
-      height: fit-content;
     }
 
-    h2 {
-      text-align: center;
-      color: #AE8A4C;
-      font-weight: 500;
-      padding-bottom: 10px;
+    .digital-edition {
+    font-size: 26px;
+    font-weight: 600;
+    color: #111;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      padding-top:10px;
+    .monthly-magazines {
+      font-size: 28px;
+      text-decoration: underline;
+      margin-bottom: 40px;
     }
 
-    input, select {
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      background: #e6e6e6;
-      font-size: 1rem;
+    .magazine-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
     }
 
-    label {
-      font-size: 0.9rem;
-      color: #222;
+    .magazine-card {
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.3s ease;
     }
 
-    .checkbox {
-      /* display: flex; */
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
+    .magazine-card:hover {
+      transform: translateY(-5px);
     }
 
-    .checkbox small {
-      color: red;
+    .magazine-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
       display: block;
     }
 
-    /* button {
-      background-color: #AE8A4C;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    } */
-
-   
-
-    .disclaimer {
-      font-size: 0.8rem;
-      color: #333;
-      margin-top: 20px;
-      padding-bottom: 50px;
+    .edition-label {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 0;
+      color: #1b1b1b;
     }
-
-    .disclaimer a {
-      color: #AE8A4C;
-      text-decoration: none;
-    }
-    .popup-active .checkbox small {
-  opacity: 0;
-  height: 0;
-  margin: 0;
-  overflow: hidden;
-}
-
-
-/* === Responsive: Tablet === */
-@media (max-width: 992px) {
-  .heading{
-    margin: 0;
-  }
-  .container {
-    flex-direction: column;
-  }
-
-  .left-sidebar,
-  .right-sidebar,
-  .main-content {
-    width: 100%;
-  }
-
-  .news-card {
-    flex-direction: column;
-  }
-
-  .news-card img {
-    width: 100%;
-    height: auto;
-  }
-
-  .gold-news {
-    flex-direction: column;
-  }
-
-  .gold-card {
-    width: 100%;
-  }
-}
-
-/* === Responsive: Phone === */
-@media (max-width: 576px) {
-  .container {
-    padding: 15px;
-    gap: 15px;
-  }
-
-  .news-card {
-    gap: 10px;
-  }
-
-  .text-content {
-    padding: 10px;
-  }
-
-  .gold-card img {
-    height: auto;
-  }
-
-  .btn-more,
-  .gold-btn {
-    font-size: 14px;
-    padding: 4px 10px;
-  }
-
-  .gold-news {
-    gap: 15px;
-  }
-}
 
  
-      .footer-container {
+
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .monthly-magazines {
+        font-size: 24px;
+      }
+      .magazine-card img {
+        height: 250px;
+      }
+    }
+    
+    
+   .container2 h2 {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .container2 h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: #111;
+      margin: 8px auto 0;
+    }
+
+    /* ===== Container ===== */
+    .newsletter-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(178px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      justify-items: center;
+    }
+
+    /* ===== Newsletter Cards ===== */
+    .newsletter-card {
+      width: 200px;
+      height: 290px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #fff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .newsletter-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .newsletter-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .main-content .subscribe-access{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+     .main-content .subscribe-btn{
+      background-color: #292929;
+      color: #AE8A4C;
+      width: 500px;
+    }
+
+    /* ===== Popup Overlay ===== */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(2px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-box {
+      background: #2c2c2c;
+      color: #fff;
+      border-radius: 10px;
+      width: 380px;
+      padding: 30px 20px 25px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .popup-box h3 {
+      font-weight: 500;
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #AE8A4C;
+    }
+
+    .popup-box p {
+      font-size: 14px;
+       color: #AE8A4C;
+      margin-bottom: 25px;
+    }
+
+    .popup-box button {
+      border: none;
+      outline: none;
+      background:#AE8A4C;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: 0.3s ease;
+    }
+    .popup-box button a{
+      text-decoration: none;
+      color: white;
+    }
+
+    .popup-box button:hover {
+      background: #AE8A4C;
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-popup:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .newsletter-card {
+        width: 160px;
+        height: 240px;
+      }
+      .popup-box {
+        width: 90%;
+      }
+    }
+    .container3{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+     .newsletter-box {
+      background-color: #292929;
+      color: #bfa27d;
+      border-radius: 8px;
+      padding: 20px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 450px;
+    }
+
+    .newsletter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ae8a4c;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .newsletter-header i {
+      font-size: 13px;
+      color: #ae8a4c;
+      transition: transform 0.3s ease;
+    }
+
+    .newsletter-content {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      transition: max-height 0.3s ease;
+    }
+
+    input[type="email"] {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background-color: #d9d9d9;
+      color: #000;
+      font-size: 14px;
+    }
+
+   .container3 .subscribe-btn {
+      background-color:#ae8a4c;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .container3 .subscribe-btn:hover {
+      background-color: #ae8a4c;
+    }
+
+    /* Optional: Toggle dropdown animation */
+    .collapsed .newsletter-content {
+      display: none;
+    }
+
+    .collapsed i {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 500px) {
+      .newsletter-box {
+        width: 90%;
+      }
+
+      .newsletter-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+     .container3 .subscribe-btn {
+        width: 100%;
+      }
+    }
+
+   
+  .footer-container {
   background-image: url(./image/footer-bg\ 1.png);
   background-size: cover;
   background-position: center;
@@ -1295,7 +1181,7 @@ button[type="submit"]:hover {
     .social-iconss a {
       width: 25px;
       height: 25px;
-      background: #a37b3c;   /* golden brown color */
+      background: #AE8A4C;   /* golden brown color */
       color: #fff;
       border-radius: 50%;
       display: flex;
@@ -1324,9 +1210,8 @@ button[type="submit"]:hover {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  /* max-width: 1300px; */
+ padding-top  :30px ;
   margin: auto;
-  padding-top:20px;
   gap: 30px;
 }
 
@@ -1362,13 +1247,14 @@ button[type="submit"]:hover {
 }
 
 .footer-left .socials i:hover {
-  color: #ae8a4c;
+  color: orange;
 }
 
 .footer-center {
   min-width: 220px;
   padding-left: 20px;
 }
+
 .footer-center ul {
   list-style: none;
   padding: 0;
@@ -1386,13 +1272,15 @@ button[type="submit"]:hover {
 }
 
 .footer-center li:first-child a {
-  
+
+
   font-size: 16px;
 }
 
 .footer-center a:hover {
   color: #AE8A4C;
 }
+
 
 .footer-right {
   flex: 1;
@@ -1441,10 +1329,6 @@ button[type="submit"]:hover {
   font-size: 13px;
   color: #aaa;
 }
-.search-bar-container-lasts{
-  padding-top: 50px;
-}
-
 
 /* -------- RESPONSIVE -------- */
 
@@ -1517,23 +1401,90 @@ button[type="submit"]:hover {
   }
 }
 
- 
     
-  </style>
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      
+      padding: 10px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 960px;
+      max-height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .fp-iframe {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        max-width: 400px;
+        padding: 10px;
+      }
+
+      .fp-iframe {
+        height: 65vh;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        top: 5px;
+        right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .fp-iframe {
+        height: 55vh;
+      }
+    }
+
+    
+ 
+</style>
 </head>
 <body>
-   
-  
- <div class="first-header">
+   <div class="first-header">
   <div class="news-slider">
     <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE - JUNE 2-4 2026</p>
-    <p>Centre des congrès de Québec | June 2-4, 2026</p>
+    <p>SAVE THE DATE - JUNE 2-4-2026</p>
+    <p>Centre des congrès de Québec | June 2-4-2026</p>
   </div>
 </div>
-    
-
-     <header class="main-header">
+   <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1547,10 +1498,10 @@ button[type="submit"]:hover {
       <!-- News Section -->
       <div class="nav-item-with-dropdown">
         <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News  <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News  <i class="fas fa-chevron-down"></i>
         </a>
 
         <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
@@ -1558,7 +1509,7 @@ button[type="submit"]:hover {
         </div>
       </div>
 
-<a href="./newss.html?category=evening-chatter">Evening Chatter</a>
+      <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
       <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
@@ -1594,7 +1545,7 @@ button[type="submit"]:hover {
           <a href="./confrence.html">Conference</a>
         </div>
       </div>
-      <a href="./contact.html">Contact Us</a>
+      <a href="./contant.html">Contact Us</a>
     </div>
 <div class="new">
     <div class="header-buttons" id="headerButtons">
@@ -1648,8 +1599,8 @@ button[type="submit"]:hover {
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
-           <p class="tab-btn" data-target="about">SERVICE</p> 
+          <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <p class="tab-btn" data-target="about">SERVICE</p> -->
           <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
@@ -1660,9 +1611,7 @@ button[type="submit"]:hover {
           <p><a href="./newsynd.html">News Syndication</a></p>
           <p><a href="./branding.html">Digital Branding</a></p>
           <p><a href="./pressoffice.html">Press Office</a></p>
-                          <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
-  YouTube
-</a>
+          <p><a href="https://youtube.com/">Youtube</a></p>
           <p><a href="./confrence.html">Conference Media Coverage</a></p>
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
@@ -1680,10 +1629,11 @@ button[type="submit"]:hover {
 
 
 
+
   <!-- Desktop Tabs -->
   <div class="desktop-tabs" id="desktopTabs">
     <div class="tab-btns">
-      <div class="tab-btn active" onclick="switchTab('newsTab')">News Section</div>
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News </div>
       <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
       <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
     </div>
@@ -1742,35 +1692,29 @@ button[type="submit"]:hover {
   </div>
   
   <!-- Header + Dropdown -->
-  <!-- <div class="topbar">
-    <h1 onclick="serviceDropdown()" id="serviceToggle">
-      Services
+   <!-- <div class="topbar">
+    <h1 onclick="magazineDropdown()" id="magazineToggle">
+      Magazine
       <i class="fas fa-chevron-down"></i>
     </h1>
   </div> -->
-<!-- Dropdown Links -->
-  <!-- <div class="dropdown-links" id="dropdownMenu2">
-    <a href="./service.html">Investor Campaigns</a>
-    <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j">Multimedia & you tube</a>
-    <a href="./newsynd.html">News Syndication</a>
-    <a href="./confrence.html">Conference Media Coverage</a>
-    <a href="./branding.html">Digital Branding</a>
-     <a href="./Global.html">Global Outreach</a>
-    <a href="./media.html">Social Media Growth
-</a>
-    <a href="./podcast.html">Podcast & Interview Features</a>
-    <a href="./letter.html">Newsletter & Email Blasts</a>
-   <a href="./paid.html">Paid Ad Campaigns</a>
-    <a href="./pressoffice.html">Press Office</a>
-
-</div> -->
 
   <!-- Dropdown Links -->
- 
-  <!-- Content Section -->
-  <div class="container">
-    <!-- Left -->
-     <!-- <div class="left-sidebar">
+  <!-- <div class="dropdown-links" id="dropdownMenu3">
+    <a href="./magzin.html">Magazine</a>
+    <a href="./ceo.html">CEO Profile</a>
+    <a href="./weekly.html">Weekly Newsletter</a>
+    <a href="./company-profile.html">Company Profile</a>
+    <a href="./Digitaledition.html">Digital Edition</a>
+    <a href="./webinar.html">Webinar Recording</a>
+
+
+  </div> -->
+
+<div class="page-container">
+
+  <!-- Sidebar -->
+<!-- <div class="left-sidebar">
       <div class="box">
 
         <div id="advertisements"></div>
@@ -1778,248 +1722,88 @@ button[type="submit"]:hover {
 
     </div> -->
 
-    <!-- Main -->
-    <div class="news">
-      <div class="heading">
-        <h1> Weekly Newsletter</h1>
-          <h3>Subscribe to Mining Discovery</h3>
-          <p>Get the latest mining news, market updates, and exclusive insights straight to your inbox every week.</p>
-      </div>
- <div class="container2">
-   
-    <h2>Sign Up for the Mining Discovery Insights Newsletter</h2>
-    <form>
-      <input type="text" id="firstname" placeholder="First Name"  required>
-      <input type="text" id="lastname" placeholder="Last Name" required>
-      <input type="email" id="email" placeholder="Email Address" required>
-      <input type="text" id="jobTitle" placeholder="Job Title">
-      <input type="text" id="companyName" placeholder="Company Name">
-    <select id="country" name="country" required>
-  <option value="">Select Country</option>
-  <option value="Afghanistan">Afghanistan</option>
-  <option value="Albania">Albania</option>
-  <option value="Algeria">Algeria</option>
-  <option value="Andorra">Andorra</option>
-  <option value="Angola">Angola</option>
-  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-  <option value="Argentina">Argentina</option>
-  <option value="Armenia">Armenia</option>
-  <option value="Australia">Australia</option>
-  <option value="Austria">Austria</option>
-  <option value="Azerbaijan">Azerbaijan</option>
-  <option value="Bahamas">Bahamas</option>
-  <option value="Bahrain">Bahrain</option>
-  <option value="Bangladesh">Bangladesh</option>
-  <option value="Barbados">Barbados</option>
-  <option value="Belarus">Belarus</option>
-  <option value="Belgium">Belgium</option>
-  <option value="Belize">Belize</option>
-  <option value="Benin">Benin</option>
-  <option value="Bhutan">Bhutan</option>
-  <option value="Bolivia">Bolivia</option>
-  <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-  <option value="Botswana">Botswana</option>
-  <option value="Brazil">Brazil</option>
-  <option value="Brunei">Brunei</option>
-  <option value="Bulgaria">Bulgaria</option>
-  <option value="Burkina Faso">Burkina Faso</option>
-  <option value="Burundi">Burundi</option>
-  <option value="Cabo Verde">Cabo Verde</option>
-  <option value="Cambodia">Cambodia</option>
-  <option value="Cameroon">Cameroon</option>
-  <option value="Canada">Canada</option>
-  <option value="Central African Republic">Central African Republic</option>
-  <option value="Chad">Chad</option>
-  <option value="Chile">Chile</option>
-  <option value="China">China</option>
-  <option value="Colombia">Colombia</option>
-  <option value="Comoros">Comoros</option>
-  <option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option>
-  <option value="Congo, Republic of the">Congo, Republic of the</option>
-  <option value="Costa Rica">Costa Rica</option>
-  <option value="Croatia">Croatia</option>
-  <option value="Cuba">Cuba</option>
-  <option value="Cyprus">Cyprus</option>
-  <option value="Czech Republic">Czech Republic</option>
-  <option value="Denmark">Denmark</option>
-  <option value="Djibouti">Djibouti</option>
-  <option value="Dominica">Dominica</option>
-  <option value="Dominican Republic">Dominican Republic</option>
-  <option value="Ecuador">Ecuador</option>
-  <option value="Egypt">Egypt</option>
-  <option value="El Salvador">El Salvador</option>
-  <option value="Equatorial Guinea">Equatorial Guinea</option>
-  <option value="Eritrea">Eritrea</option>
-  <option value="Estonia">Estonia</option>
-  <option value="Eswatini">Eswatini</option>
-  <option value="Ethiopia">Ethiopia</option>
-  <option value="Fiji">Fiji</option>
-  <option value="Finland">Finland</option>
-  <option value="France">France</option>
-  <option value="Gabon">Gabon</option>
-  <option value="Gambia">Gambia</option>
-  <option value="Georgia">Georgia</option>
-  <option value="Germany">Germany</option>
-  <option value="Ghana">Ghana</option>
-  <option value="Greece">Greece</option>
-  <option value="Grenada">Grenada</option>
-  <option value="Guatemala">Guatemala</option>
-  <option value="Guinea">Guinea</option>
-  <option value="Guinea-Bissau">Guinea-Bissau</option>
-  <option value="Guyana">Guyana</option>
-  <option value="Haiti">Haiti</option>
-  <option value="Honduras">Honduras</option>
-  <option value="Hungary">Hungary</option>
-  <option value="Iceland">Iceland</option>
-  <option value="India">India</option>
-  <option value="Indonesia">Indonesia</option>
-  <option value="Iran">Iran</option>
-  <option value="Iraq">Iraq</option>
-  <option value="Ireland">Ireland</option>
-  <option value="Israel">Israel</option>
-  <option value="Italy">Italy</option>
-  <option value="Jamaica">Jamaica</option>
-  <option value="Japan">Japan</option>
-  <option value="Jordan">Jordan</option>
-  <option value="Kazakhstan">Kazakhstan</option>
-  <option value="Kenya">Kenya</option>
-  <option value="Kiribati">Kiribati</option>
-  <option value="Korea, North">Korea, North</option>
-  <option value="Korea, South">Korea, South</option>
-  <option value="Kuwait">Kuwait</option>
-  <option value="Kyrgyzstan">Kyrgyzstan</option>
-  <option value="Laos">Laos</option>
-  <option value="Latvia">Latvia</option>
-  <option value="Lebanon">Lebanon</option>
-  <option value="Lesotho">Lesotho</option>
-  <option value="Liberia">Liberia</option>
-  <option value="Libya">Libya</option>
-  <option value="Liechtenstein">Liechtenstein</option>
-  <option value="Lithuania">Lithuania</option>
-  <option value="Luxembourg">Luxembourg</option>
-  <option value="Madagascar">Madagascar</option>
-  <option value="Malawi">Malawi</option>
-  <option value="Malaysia">Malaysia</option>
-  <option value="Maldives">Maldives</option>
-  <option value="Mali">Mali</option>
-  <option value="Malta">Malta</option>
-  <option value="Marshall Islands">Marshall Islands</option>
-  <option value="Mauritania">Mauritania</option>
-  <option value="Mauritius">Mauritius</option>
-  <option value="Mexico">Mexico</option>
-  <option value="Micronesia">Micronesia</option>
-  <option value="Moldova">Moldova</option>
-  <option value="Monaco">Monaco</option>
-  <option value="Mongolia">Mongolia</option>
-  <option value="Montenegro">Montenegro</option>
-  <option value="Morocco">Morocco</option>
-  <option value="Mozambique">Mozambique</option>
-  <option value="Myanmar">Myanmar</option>
-  <option value="Namibia">Namibia</option>
-  <option value="Nauru">Nauru</option>
-  <option value="Nepal">Nepal</option>
-  <option value="Netherlands">Netherlands</option>
-  <option value="New Zealand">New Zealand</option>
-  <option value="Nicaragua">Nicaragua</option>
-  <option value="Niger">Niger</option>
-  <option value="Nigeria">Nigeria</option>
-  <option value="North Macedonia">North Macedonia</option>
-  <option value="Norway">Norway</option>
-  <option value="Oman">Oman</option>
-  <option value="Pakistan">Pakistan</option>
-  <option value="Palau">Palau</option>
-  <option value="Palestine">Palestine</option>
-  <option value="Panama">Panama</option>
-  <option value="Papua New Guinea">Papua New Guinea</option>
-  <option value="Paraguay">Paraguay</option>
-  <option value="Peru">Peru</option>
-  <option value="Philippines">Philippines</option>
-  <option value="Poland">Poland</option>
-  <option value="Portugal">Portugal</option>
-  <option value="Qatar">Qatar</option>
-  <option value="Romania">Romania</option>
-  <option value="Russia">Russia</option>
-  <option value="Rwanda">Rwanda</option>
-  <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-  <option value="Saint Lucia">Saint Lucia</option>
-  <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
-  <option value="Samoa">Samoa</option>
-  <option value="San Marino">San Marino</option>
-  <option value="Sao Tome and Principe">Sao Tome and Principe</option>
-  <option value="Saudi Arabia">Saudi Arabia</option>
-  <option value="Senegal">Senegal</option>
-  <option value="Serbia">Serbia</option>
-  <option value="Seychelles">Seychelles</option>
-  <option value="Sierra Leone">Sierra Leone</option>
-  <option value="Singapore">Singapore</option>
-  <option value="Slovakia">Slovakia</option>
-  <option value="Slovenia">Slovenia</option>
-  <option value="Solomon Islands">Solomon Islands</option>
-  <option value="Somalia">Somalia</option>
-  <option value="South Africa">South Africa</option>
-  <option value="South Sudan">South Sudan</option>
-  <option value="Spain">Spain</option>
-  <option value="Sri Lanka">Sri Lanka</option>
-  <option value="Sudan">Sudan</option>
-  <option value="Suriname">Suriname</option>
-  <option value="Sweden">Sweden</option>
-  <option value="Switzerland">Switzerland</option>
-  <option value="Syria">Syria</option>
-  <option value="Taiwan">Taiwan</option>
-  <option value="Tajikistan">Tajikistan</option>
-  <option value="Tanzania">Tanzania</option>
-  <option value="Thailand">Thailand</option>
-  <option value="Timor-Leste">Timor-Leste</option>
-  <option value="Togo">Togo</option>
-  <option value="Tonga">Tonga</option>
-  <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-  <option value="Tunisia">Tunisia</option>
-  <option value="Turkey">Turkey</option>
-  <option value="Turkmenistan">Turkmenistan</option>
-  <option value="Tuvalu">Tuvalu</option>
-  <option value="Uganda">Uganda</option>
-  <option value="Ukraine">Ukraine</option>
-  <option value="United Arab Emirates">United Arab Emirates</option>
-  <option value="United Kingdom">United Kingdom</option>
-  <option value="United States">United States</option>
-  <option value="Uruguay">Uruguay</option>
-  <option value="Uzbekistan">Uzbekistan</option>
-  <option value="Vanuatu">Vanuatu</option>
-  <option value="Vatican City">Vatican City</option>
-  <option value="Venezuela">Venezuela</option>
-  <option value="Vietnam">Vietnam</option>
-  <option value="Yemen">Yemen</option>
-  <option value="Zambia">Zambia</option>
-  <option value="Zimbabwe">Zimbabwe</option>
-</select>
-
-
-      <!-- <div class="checkbox">
-        <input type="checkbox" id="agreeToNewsletter" required>
-        <label for="agreeToNewsletter">
-          I would like to receive the Mining Discovery Review Newsletter & carefully selected 3rd party emails
-          <small>Please confirm you would like to receive the Mining Discovery Review newsletter & carefully selected 3rd party emails</small>
-        </label>
-      </div> -->
-
-      <button type="submit">Join For Free</button>
-
-      <!-- <p class="disclaimer">
-        * Required content<br><br>
-        You can unsubscribe from our emails at any time by clicking the link in the footer of any email you receive from us. We will treat your information with respect. For more information about our privacy policy please <a href="#">click here</a>. By clicking above, you agree that we may process your information in accordance with these terms.<br><br>
-        We use MailChimp as our marketing automation platform. By clicking above to submit this form, you acknowledge that the information you provide will be transferred to MailChimp for processing in accordance with their <a href="#">Privacy Policy</a> and <a href="#">Terms</a>.
-      </p> -->
-    </form>
-  </div>
+  <!-- Main Content -->
+  <div class="main-content">
+  <div class="section-container">
+    
+    <h2 class="digital-edition">Newsletters</h2>
+    <div class="underline">
     </div>
-  
 
 
-    <!-- Right -->
-   
+    <div class="magazine-list">
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/August 11, 2025.png" alt="June Edition">
+        <div class="edition-label">June Edition</div>
+      </div>
 
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/August 14, 2025.png" alt="July Edition">
+        <div class="edition-label">July Edition</div>
+      </div>
+
+      <div class="magazine-card">
+        <img src="./image/Ceos cover/Ceos cover/August 22, 2025.png" alt="August Edition">
+        <div class="edition-label">August Edition</div>
+      </div>
+
+      <div class="magazine-card">
+          <img src="./image/Ceos cover/Ceos cover/August 5, 2025.png" alt="August Edition">
+        <div class="edition-label">September Edition</div>
+      </div>
+    </div>
+
+     <!-- Subscribe button in center -->
+  <div class="subscribe-access">
+    <button class="subscribe-btn">Subscribe to Access</button>
   </div>
-<!-- Footer Section -->
+  </div>
+  <div class="container2">
+    
+  <h2>Newsletter Stocks</h2>
+
+  <div class="newsletter-container">
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 11, 2025.png" alt=""></div>
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 14, 2025.png" alt=""></div>
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 22, 2025.png" alt=""></div>
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 5, 2025.png" alt=""></div>
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 11, 2025.png" alt=""></div>
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 14, 2025.png" alt=""></div>
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 22, 2025.png" alt=""></div>
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 5, 2025.png" alt=""></div>
+   
+<div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 11, 2025.png" alt=""></div>
+    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 14, 2025.png" alt=""></div>
+    
+  <!-- ===== Popup ===== -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <span class="close-popup" id="closePopup">&times;</span>
+      <h3>Content Restricted</h3>
+      <p>Get this content by subscribing our plan.</p>
+      <div>
+        <button><a href="./sub-btn.html" target="_blank" rel="noopener noreferrer">Login</a></button>
+        <button><a href="./sub.html" target="_blank" rel="noopener noreferrer">View Subscription Plan</a></button>
+      </div>
+    </div>
+  </div>
+  </div>
+<div class="container3">
+ 
+  <div class="newsletter-box" id="newsletterBox">
+    <div class="newsletter-header">
+      <span>Receive our free daily newsletter</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+    <div class="newsletter-content">
+      <input type="email" placeholder="Email address" id="emailInput">
+      <button class="subscribe-btn" id="subscribeBtn">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+</div>
 <!-- Footer Section -->
   <div class="footer-container">
     <div class="footers">
@@ -2049,12 +1833,12 @@ button[type="submit"]:hover {
         <input type="text" id="searchInput" placeholder="Search..." />
         <button class="search-icon"><i class="fas fa-search"></i></button>
       </div>
-     
+      
     </div>
       </div>
 
       <!-- Center -->
-    <div class="footer-center">
+     <div class="footer-center">
           <ul>
             <li><a href="index.html">HOME</a></li>
             <li><a href="about.html">ABOUT US</a></li>
@@ -2067,6 +1851,7 @@ button[type="submit"]:hover {
             <li><a href="">LEGAL NOTICE</a></li>
           </ul>
         </div>
+
     
       
      
@@ -2077,128 +1862,12 @@ button[type="submit"]:hover {
       © 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
     </div>
   </div>
-
-
-  </footer>
-  </div>
+  <script src="./script.js"></script>
+  <script src="./js/news.js"></script>
   <script>
-
-const form = document.querySelector('form');
-const submitBtn = document.querySelector('button[type="submit"]');
-const container = document.querySelector('.container2');
-// Create response div if it doesn't exist
-let responseDiv = document.getElementById('response');
-if (!responseDiv) {
-    responseDiv = document.createElement('div');
-    responseDiv.id = 'response';
-    responseDiv.style.display = 'none';
-    form.parentNode.insertBefore(responseDiv, form.nextSibling);
-}
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-     
-      // Add popup-active class to hide small description
-      container.classList.add('popup-active');
-    
-    // Show loading state
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Joining...';
-    responseDiv.style.display = 'block';
-    responseDiv.className = 'response loading';
-    responseDiv.innerHTML = '<p>Processing your signup...</p>';
-
-    try {
-        // Create the data object structure as per your requirement
-        const requestData = {
-            data: {
-                firstname: document.getElementById('firstname').value,
-                lastname: document.getElementById('lastname').value,
-                email: document.getElementById('email').value,
-                jobTitle: document.getElementById('jobTitle').value,
-                companyName: document.getElementById('companyName').value,
-                country: document.getElementById('country').value,
-                agreeToNewsletter: document.getElementById('agreeToNewsletter').checked ? true : false
-            }
-        };
-
-        // Make the POST request with JSON
-        const response = await fetch('https://acceptable-desire-0cca5bb827.strapiapp.com/api/newsletters', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestData)
-        });
-
-        // Parse response
-        const result = await response.text();
-        let parsedResult;
-        
-        try {
-            parsedResult = JSON.parse(result);
-        } catch (e) {
-            parsedResult = result;
-        }
-
-        // Show response
-        if (response.ok) {
-            responseDiv.className = 'response success';
-            responseDiv.innerHTML = `
-                <h3>🎉 Welcome to Mining Discovery Insights!</h3>
-                <p>Thank you for signing up! You'll receive our newsletter and carefully selected industry updates.</p>
-            `;
-            // Clear form on success
-            form.reset();
-        } else {
-            responseDiv.className = 'response error';
-            responseDiv.innerHTML = `
-                <h3>❌ Signup Failed</h3>
-                <p>Please try again later or contact us directly.</p>
-            `;
-        }
-
-    } catch (error) {
-        responseDiv.className = 'response error';
-        responseDiv.innerHTML = `
-            <h3>❌ Connection Error</h3>
-            <p>Unable to complete signup. Please check your connection and try again.</p>
-        `;
-    } finally {
-        // Reset button state
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Join For Free';
-    }
-});
-
-function clearForm() {
-    form.reset();
-    responseDiv.style.display = 'none';
-}
-
-  </script>
-<script src="./script.js"></script>
-  <script>// show  extra news
-    document.getElementById("showMoreBtn").addEventListener("click", function () {
-      const extraNews = document.querySelectorAll(".extra-news");
-
-      extraNews.forEach(section => {
-        section.style.display = "block"; // Keep natural block layout
-        section.style.opacity = "0"; // Start invisible
-        section.style.transition = "opacity 0.4s ease"; // Smooth fade
-        requestAnimationFrame(() => {
-          section.style.opacity = "1"; // Fade in
-        });
-      });
-
-      this.style.display = "none"; // Hide button after showing
-    });
-    
-    // show extra news</script>
-      <script> 
-  function toggleMenu2() {
+   function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2"); // aapke hamburger icon class
+  const hamburger = document.querySelector(".hamburger2");
 
   // Agar already open hai, close karo aur return
   if (menu.style.display === "block") {
@@ -2222,87 +1891,79 @@ document.addEventListener("click", function (event) {
   }
 });
 
-// Select tabs and contents
+// Tabs logic
 const tabs = document.querySelectorAll(".tab-btn");
 const contents = document.querySelectorAll(".menu-content");
 
-tabs.forEach(tab => {
+tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
+    tabs.forEach((t) => t.classList.remove("active"));
+    contents.forEach((c) => c.classList.remove("active"));
 
     tab.classList.add("active");
     document.getElementById(tab.dataset.target).classList.add("active");
   });
 });
 
-// --------- FORCE ONLY SERVICES ---------
+// PAGE CHECK FOR MAGAZINE
 document.addEventListener("DOMContentLoaded", function () {
-  // Hide all tabs except services
-  tabs.forEach(tab => {
-    if (tab.dataset.target !== "about") {   // "about" = Services ka content id
-      tab.style.display = "none";
-    } else {
-      tab.classList.add("active");
-    }
-  });
+  const currentPage = window.location.pathname.split("/").pop();
+  const magazinePages = [
+    "magzin.html",
+    "ceo.html",
+    "weekly.html",
+    "company-profile.html",
+    "Digitaledition.html",
+  ];
 
-  // Hide all contents except services
-  contents.forEach(content => {
-    if (content.id !== "about") {
-      content.style.display = "none";
-    } else {
-      content.classList.add("active");
-      content.style.display = "grid";
-    }
-  });
+  if (magazinePages.includes(currentPage)) {
+    // Mobile menu
+    document.querySelectorAll(".menu-content").forEach((el) => (el.style.display = "none"));
+    const magSection = document.getElementById("magazine");
+    if (magSection) magSection.style.display = "flex";
+
+    // Desktop tabs
+    document.querySelectorAll(".tab-content").forEach((el) => (el.style.display = "none"));
+    const magTab = document.getElementById("magazineTab");
+    if (magTab) magTab.style.display = "block";
+
+    // active magazine tab
+    document.querySelectorAll(".tab-btn").forEach((el) => el.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach((el) => {
+      if (el.textContent.trim() === "Magazine") el.classList.add("active");
+    });
+  }
 });
 
+// Mobile dropdown toggle
 function toggleDropdownMobile(id) {
   const dropdown = document.getElementById(id);
   if (dropdown) {
     dropdown.classList.toggle("show");
   }
 }
+  
+  
+  
+  
+  
+  // show  extra news
+    document.getElementById("showMoreBtn").addEventListener("click", function () {
+      const extraNews = document.querySelectorAll(".extra-news");
 
-  
-  
-  
-  
-  
-  // Sab thumbnails ko select karo
-    const thumbs = document.querySelectorAll('.thumb');
-    const mainMagazine = document.getElementById('mainMagazine');
-
-    thumbs.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        // Badi magazine ka src update karo
-        mainMagazine.src = thumb.src;
-      });
-    });
-    const toggleBtn = document.querySelector(".toggle-btn");
-    const featuresList = document.querySelector(".features-list");
-    let expanded = false;
-
-    toggleBtn.addEventListener("click", () => {
-      expanded = !expanded;
-
-      if (expanded) {
-        featuresList.querySelectorAll("li").forEach(li => li.style.display = "list-item");
-        toggleBtn.textContent = "View less ▲";
-      } else {
-        featuresList.querySelectorAll("li").forEach((li, index) => {
-          li.style.display = index < 2 ? "list-item" : "none";
+      extraNews.forEach(section => {
+        section.style.display = "block"; // Keep natural block layout
+        section.style.opacity = "0"; // Start invisible
+        section.style.transition = "opacity 0.4s ease"; // Smooth fade
+        requestAnimationFrame(() => {
+          section.style.opacity = "1"; // Fade in
         });
-        toggleBtn.textContent = "View more ▼";
-      }
-    });
-  </script>
+      });
 
-  <script src="./js/advertisment.js"></script>
-  <script src="./js/projects.js"></script>
-  <script src="./js/reports.js"></script>
-  <script src="./js/news.js"></script>
+      this.style.display = "none"; // Hide button after showing
+    });
+    // show extra news</script>
+
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -2321,7 +1982,42 @@ function toggleDropdownMobile(id) {
       
     });
   </script>
+  <script>
+    const popup = document.getElementById('popup');
+    const closePopup = document.getElementById('closePopup');
+    const cards = document.querySelectorAll('.newsletter-card');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        popup.style.display = 'flex';
+      });
+    });
+
+    closePopup.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+     const header = document.querySelector('.newsletter-header');
+    const box = document.getElementById('newsletterBox');
+
+    header.addEventListener('click', () => {
+      box.classList.toggle('collapsed');
+    });
+
+    document.getElementById('subscribeBtn').addEventListener('click', () => {
+      const email = document.getElementById('emailInput').value;
+      if (email.trim() === "") {
+        alert("Please enter your email address.");
+      } else {
+        alert(`Subscribed successfully with: ${email}`);
+      }
+    });
+  </script>
 
 </body>
 </html>
-// weekly

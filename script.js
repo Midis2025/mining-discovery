@@ -339,40 +339,51 @@ async function loadTopMagazines() {
 }
 
 document.addEventListener("DOMContentLoaded", loadTopMagazines);
-// video slider
-function loadIframe(el) {
-  const videoId = el.getAttribute("data-video"); // YouTube video ID
-  const thumbnail = el.querySelector("img").src; // preserve thumbnail
-  const card = el.closest(".video-card");
+ // Video Thumbnail to Iframe Loader
+    function loadIframe(el) {
+      const videoId = el.getAttribute("data-video");
+      const thumbnail = el.querySelector("img").src;
+      const card = el.closest(".video-card");
 
-  const iframeWrapper = document.createElement("div");
-  iframeWrapper.classList.add("video-iframe-wrapper");
+      const iframeWrapper = document.createElement("div");
+      iframeWrapper.classList.add("video-iframe-wrapper");
 
-  iframeWrapper.innerHTML = `
-    <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
-    <button class="close-btn" onclick="closeIframe(this, '${videoId}', '${thumbnail}')">×</button>
-  `;
+      iframeWrapper.innerHTML = `
+        <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+        <button class="close-btn" onclick="closeIframe(this, '${videoId}', '${thumbnail}')">×</button>
+      `;
 
-  el.replaceWith(iframeWrapper);
-}
+      el.replaceWith(iframeWrapper);
+    }
 
-function closeIframe(btn, videoId, thumbnail) {
-  const wrapper = btn.parentElement;
-  const card = wrapper.closest(".video-card");
+    function closeIframe(btn, videoId, thumbnail) {
+      const wrapper = btn.parentElement;
+      const card = wrapper.closest(".video-card");
 
-  card.querySelector(".video-info").insertAdjacentHTML("afterbegin", `
-    <div class="video-thumbnail" data-video="${videoId}" onclick="loadIframe(this)">
-      <img src="${thumbnail}" alt="Video Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
-  `);
+      card.querySelector(".video-info").insertAdjacentHTML("afterbegin", `
+        <div class="video-thumbnail" data-video="${videoId}" onclick="loadIframe(this)">
+          <img src="${thumbnail}" alt="Video Thumbnail">
+          <div class="play-button">▶</div>
+        </div>
+      `);
 
-  wrapper.remove();
-}
+      wrapper.remove();
+    }
 
+    // Video Slider Scroll Logic
+    const slider = document.getElementById("videoSlider");
+    const leftArrow = document.querySelector(".arrow.left");
+    const rightArrow = document.querySelector(".arrow.right");
+
+    leftArrow.addEventListener("click", () => {
+      slider.scrollBy({ left: -320, behavior: "smooth" });
+    });
+
+    rightArrow.addEventListener("click", () => {
+      slider.scrollBy({ left: 320, behavior: "smooth" });
+    });
 

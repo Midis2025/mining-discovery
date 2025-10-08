@@ -1592,131 +1592,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     
 
 
-  /* Popup Overlay */
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.75);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    padding: 15px;
-    box-sizing: border-box;
-  }
-
-  .subscribe-box {
-    position: relative;
-    background: rgba(30, 30, 30, 0.7);
-    border: 1px solid rgba(167, 124, 44, 0.4);
-    backdrop-filter: blur(12px);
-    border-radius: 16px;
-    padding: 30px 25px;
-    max-width: 420px;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    box-shadow: 0 0 25px rgba(167, 124, 44, 0.5);
-  }
-
-  .subscribe-box img {
-    width: 200px;
-    margin-bottom: 15px;
-  }
-
-  .subscribe-box h2 {
-    font-size: 22px;
-    margin: 5px 0 8px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #ffda8b, #ae8a4c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .subscribe-box p {
-    font-size: 14px;
-    color: #ddd;
-    margin-bottom: 20px;
-  }
-
-  .form-group {
-    display: flex;
-    gap: 8px;
-    width: 100%;
-    margin-bottom: 18px;
-  }
-
-  .subscribe-box input[type="email"] {
-    flex: 1;
-    padding: 12px 14px;
-    border-radius: 8px;
-    border: 1px solid #ae8a4c;
-    background: rgba(42, 42, 42, 0.8);
-    color: #fff;
-    font-size: 15px;
-    outline: none;
-  }
-
-  .subscribe-box input::placeholder {
-    color: #bbb;
-  }
-
-  .subscribe-box button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #ffd27d, #ae8a4c);
-    color: #111;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.3s;
-  }
-
-  .subscribe-box button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(193, 151, 76, 0.5);
-  }
-
-  .subscribe-box button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s;
-  }
-
-  .close-btn:hover {
-    transform: rotate(90deg);
-    color: #ffd27d;
-  }
-
-  @media (max-width: 768px) {
-    .subscribe-box {
-      max-width: 95%;
-      padding: 22px 18px;
-    }
-    .form-group {
-      flex-direction: column;
-    }
-    .subscribe-box button {
-      width: 100%;
-    }
-  }
-
+  
 
   </style>
 </head>
@@ -1727,7 +1603,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   <div class="news-slider">
     <p>THE MINING INVESTMENT EVENT</p>
     <p>SAVE THE DATE - JUNE 2-4 2026</p>
-    <p>Centre des congrès de Québec | June 2-4, 2026</p>
+   <p>Centre des congrès de Québec | June 2-4-2026</p>
   </div>
 </div>
     <header class="main-header">
@@ -1744,10 +1620,10 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       <!-- News Section -->
       <div class="nav-item-with-dropdown">
         <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News  <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News  <i class="fas fa-chevron-down"></i>
         </a>
 
         <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
@@ -1845,7 +1721,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <p class="tab-btn active" data-target="news">NEWS SECTION</p>
+          <p class="tab-btn active" data-target="news">NEWS </p>
           <!-- <p class="tab-btn" data-target="about">SERVICE</p>
           <p class="tab-btn" data-target="magazine">MAGAZINE</p> -->
         </div>
@@ -1879,7 +1755,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   <!-- Desktop Tabs -->
   <div class="desktop-tabs" id="desktopTabs">
     <div class="tab-btns">
-      <div class="tab-btn active" onclick="switchTab('newsTab')">News Section</div>
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News </div>
       <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
       <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
     </div>
@@ -1917,7 +1793,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     <ul>
       <li>
         <button onclick="toggleSubmenu('newsSub')">
-          NEWS SECTION <i class="fas fa-chevron-down"></i>
+          NEWS <i class="fas fa-chevron-down"></i>
         </button>
         <ul class="submenu" id="newsSub">
           <li><a href="#">Latest News</a></li>
@@ -1961,8 +1837,8 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       </div>
     </div>
 
-    <!-- Main -->
-   <!-- MAIN CONTENT -->
+
+ 
  <!-- Main Content Area -->
   <div class="main-content" id="newsDetails">
     <h2>Loading news...</h2>

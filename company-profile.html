@@ -1269,7 +1269,7 @@
    <div class="first-header">
   <div class="news-slider">
     <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE - JUNE 2-4 2026</p>
+    <p>SAVE THE DATE - JUNE 2-4-2026</p>
     <p>Centre des congrès de Québec | June 2-4, 2026</p>
   </div>
 </div>
@@ -1287,10 +1287,10 @@
       <!-- News Section -->
       <div class="nav-item-with-dropdown">
         <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News  <i class="fas fa-chevron-down"></i>
         </a>
 
         <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
@@ -1438,36 +1438,14 @@
 
 
         <!-- Main Content -->
-     <div class="container1">
+<div class="container1">
   <div class="section-container">
     <h2 class="section-title">Companies Profiles</h2>
     <div class="underline"></div>
 
     <div class="carousel-wrapper" id="carouselWrapper">
       <div class="carousel-track" id="carouselTrack">
-
-        <!-- Company Cards -->
-        <div class="profile-cards"
-          data-name="Astra Exploration"
-          data-title="(TSX.V: ASTR)"
-          data-desc="Astra Exploration focuses on advancing high-potential gold and silver projects with modern, responsible exploration practices.">
-          <img src="./image/Ceos cover/Ceos cover/US Gold Company Profile.pdf.png" alt="Astra Exploration">
-        </div>
-
-        <div class="profile-cards"
-          data-name="Scorpio Gold Corp."
-          data-title="(TSX.V: SGN)"
-          data-desc="Scorpio Gold Corp. is committed to unlocking the full potential of its Nevada-based assets through strategic exploration and disciplined operations.">
-          <img src="./image/Ceos cover/Ceos cover/Scorpio Gold Corp. Company Profile.pdf.png" alt="Scorpio Gold Corp.">
-        </div>
-
-        <div class="profile-cards"
-          data-name="Phenom Resources Ltd."
-          data-title="(TSX.V: PHNM | US OTCQX®: PHNMF | Frankfurt: 1PY)"
-          data-desc="Phenom Resources Ltd. is a growth-oriented exploration and development company advancing high-value mining projects in North America with innovation and responsible practices.">
-          <img src="./image/Ceos cover/Ceos cover/Phenom ResourcesCompany Profile.pdf.png" alt="Phenom Resources">
-        </div>
-
+        <!-- Company Cards will be injected here -->
       </div>
     </div>
 
@@ -1489,7 +1467,6 @@
       <div class="action-buttons">
         <p>About</p>
         <button class="btn">View PDF</button>
-        <button class="btn">Download PDF</button>
       </div>
       <div class="info-box" id="infoBox">
         <div class="divider"></div>
@@ -1577,124 +1554,11 @@ future.</p>
             </div>
         </div>
         <script src="./script.js"></script>
-        <script src="./js/ceo-profiles.js"></script>
+        <script src="./js/company-profiles.js"></script>
  
- <script>
-const track = document.getElementById('carouselTrack');
-const ceoCards = Array.from(document.querySelectorAll('.carousel-track .profile-cards'));
-const mainProfile = document.getElementById('mainProfile').querySelector('img');
-const infoBox = document.getElementById('infoBox');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-const wrapper = document.getElementById('carouselWrapper');
-const pageNumbersContainer = document.getElementById('pageNumbers');
 
-// 🔹 Cards per page based on screen width
-function getCardsPerPage() {
-  if (window.innerWidth <= 480) return 1;
-  if (window.innerWidth <= 768) return 2;
-  if (window.innerWidth <= 1024) return 3;
-  return 6;
-}
 
-let cardsPerPage = getCardsPerPage();
-let currentPage = 0;
-let totalPages = Math.ceil(ceoCards.length / cardsPerPage);
 
-// 🔹 Update carousel position
-function updateCarousel() {
-  const cardWidth = ceoCards[0].offsetWidth + 20;
-  const moveX = cardWidth * cardsPerPage * currentPage;
-  track.style.transform = `translateX(-${moveX}px)`;
-
-  document.querySelectorAll('.page-btn').forEach((btn, idx) => {
-    btn.classList.toggle('active', idx === currentPage);
-  });
-}
-
-// 🔹 Pagination buttons
-function renderPagination() {
-  pageNumbersContainer.innerHTML = '';
-  for (let i = 0; i < totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.textContent = i + 1;
-    btn.classList.add('page-btn');
-    if (i === currentPage) btn.classList.add('active');
-    btn.addEventListener('click', () => {
-      currentPage = i;
-      updateCarousel();
-    });
-    pageNumbersContainer.appendChild(btn);
-  }
-}
-
-// 🔹 Prev / Next
-prevBtn.addEventListener('click', () => {
-  if (currentPage > 0) currentPage--;
-  updateCarousel();
-});
-nextBtn.addEventListener('click', () => {
-  if (currentPage < totalPages - 1) currentPage++;
-  updateCarousel();
-});
-
-// 🔹 Click card → update company profile
-ceoCards.forEach(card => {
-  card.addEventListener('click', () => {
-    const imgSrc = card.querySelector('img').src;
-    const name = card.dataset.name;
-    const title = card.dataset.title;
-    const desc = card.dataset.desc;
-
-    mainProfile.src = imgSrc;
-    infoBox.innerHTML = `
-      <h3>${name}</h3>
-      <h4>${title}</h4>
-      <p>${desc}</p>
-      <div class="divider"></div>
-    `;
-  });
-});
-
-// 🔹 Swipe for mobile
-let startX = 0;
-let isDragging = false;
-
-wrapper.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
-  isDragging = true;
-});
-
-wrapper.addEventListener('touchmove', e => {
-  if (!isDragging) return;
-  const currentX = e.touches[0].clientX;
-  const diff = startX - currentX;
-
-  if (Math.abs(diff) > 50) {
-    if (diff > 0 && currentPage < totalPages - 1) currentPage++;
-    else if (diff < 0 && currentPage > 0) currentPage--;
-    updateCarousel();
-    isDragging = false;
-  }
-});
-
-wrapper.addEventListener('touchend', () => {
-  isDragging = false;
-});
-
-// 🔹 Resize handling
-window.addEventListener('resize', () => {
-  cardsPerPage = getCardsPerPage();
-  totalPages = Math.ceil(ceoCards.length / cardsPerPage);
-  currentPage = 0;
-  renderPagination();
-  updateCarousel();
-});
-
-// 🔹 Initialize
-renderPagination();
-updateCarousel();
-</script>
 
         <script>
  function toggleMenu2() {

@@ -1,93 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Account Popup Clone</title>
-  <style>
-    body {
-      background: rgba(0,0,0,0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: "Google Sans", Arial, sans-serif;
-    }
-    .popup {
-      background: #fff;
-      border-radius: 10px;
-      width: 400px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      overflow: hidden;
-      animation: fadeIn 0.3s ease;
-    }
-    .header {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      border-bottom: 1px solid #ddd;
-    }
-    .header img {
-      width: 25px;
-      margin-right: 10px;
-    }
-    .header span {
-      font-size: 16px;
-      color: #333;
-    }
-    .account {
-      display: flex;
-      align-items: center;
-      padding: 12px 20px;
-      cursor: pointer;
-    }
-    .account:hover {
-      background: #f7f7f7;
-    }
-    .account img {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      margin-right: 15px;
-    }
-    .account-info h4 {
-      margin: 0;
-      font-weight: 500;
-      color: #202124;
-    }
-    .account-info p {
-      margin: 0;
-      color: #5f6368;
-      font-size: 14px;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.95);}
-      to {opacity: 1; transform: scale(1);}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Playlist Slider</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* video-section */
+.section-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.video-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+}
+
+.video-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.video-card {
+  background: #fff;
+  min-width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+}
+
+.video-thumbnail {
+  position: relative;
+  cursor: pointer;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  background: #000;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: white;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  padding: 20px 25px;
+  pointer-events: none;
+}
+
+.video-info {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.video-info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0 4px;
+  color: #000000;
+}
+
+.video-info h4:hover {
+  color: #ae8a4c;
+}
+
+.arrow {
+  position: absolute;
+  background: #fff;
+  border: none;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.arrow.left { left: -10px; }
+.arrow.right { right: -10px; }
+
+@media (max-width: 768px) {
+  .video-card { min-width: 260px; }
+  .play-button { font-size: 32px; padding: 14px 18px; }
+  .video-info h4 { font-size: 15px; }
+  .arrow.left, .arrow.right { display: none; }
+}
+</style>
 </head>
 <body>
-  <div class="popup">
-    <div class="header">
-      <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png">
-      <span>Sign in to indiatimes.com with google.com</span>
+
+<!-- Video Section -->
+<section class="video-section">
+  <h2 class="section-title">Videos</h2>
+  <div class="slider-container">
+    <button class="arrow left"><i class="fas fa-chevron-left"></i></button>
+
+    <div class="video-slider" id="videoSlider">
+      <!-- Playlist videos will be loaded here -->
     </div>
 
-    <div class="account" onclick="alert('Login with dixitshivi130@gmail.com')">
-      <img src="https://lh3.googleusercontent.com/a/default-user">
-      <div class="account-info">
-        <h4>Shivani Dixit</h4>
-        <p>dixitshivi130@gmail.com</p>
-      </div>
-    </div>
-
-    <div class="account" onclick="alert('Login with shivanidixit133@gmail.com')">
-      <img src="https://lh3.googleusercontent.com/a/default-user">
-      <div class="account-info">
-        <h4>Shivani Dixit</h4>
-        <p>shivanidixit133@gmail.com</p>
-      </div>
-    </div>
+    <button class="arrow right"><i class="fas fa-chevron-right"></i></button>
   </div>
+</section>
+
+<script>
+// ========== YouTube Playlist Loader ==========
+const playlistId = "PLCTPfO_Za-IWMbqjLJjSqabYypBWRJpue";
+const apiKey = "AIzaSyD4--YOUR--API--KEY--HERE"; // ⚠️ Replace with your actual YouTube Data API key
+const slider = document.getElementById("videoSlider");
+
+fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${playlistId}&key=${apiKey}`)
+  .then(res => res.json())
+  .then(data => {
+    data.items.forEach(item => {
+      const videoId = item.snippet.resourceId.videoId;
+      const title = item.snippet.title;
+      const thumbnail = item.snippet.thumbnails.medium.url;
+
+      const card = document.createElement("div");
+      card.classList.add("video-card");
+      card.innerHTML = `
+        <div class="video-info">
+          <div class="video-thumbnail" data-video="${videoId}" onclick="loadIframe(this)">
+            <img src="${thumbnail}" alt="Video Thumbnail">
+            <div class="play-button">▶</div>
+          </div>
+          <h4>${title}</h4>
+        </div>`;
+      slider.appendChild(card);
+    });
+  })
+  .catch(err => console.error("YouTube API Error:", err));
+
+// ========== Iframe Load Function ==========
+function loadIframe(el) {
+  const videoId = el.getAttribute("data-video");
+  const card = el.closest(".video-card");
+  const iframeWrapper = document.createElement("div");
+  iframeWrapper.classList.add("video-iframe-wrapper");
+
+  iframeWrapper.innerHTML = `
+    <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  `;
+  el.replaceWith(iframeWrapper);
+}
+
+// ========== Slider Controls ==========
+const leftBtn = document.querySelector(".arrow.left");
+const rightBtn = document.querySelector(".arrow.right");
+
+leftBtn.addEventListener("click", () => {
+  slider.scrollBy({ left: -320, behavior: "smooth" });
+});
+rightBtn.addEventListener("click", () => {
+  slider.scrollBy({ left: 320, behavior: "smooth" });
+});
+</script>
+
 </body>
 </html>

@@ -360,6 +360,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding-top: 5px;
+  margin-bottom: 5px;
 }
 .search-bar-container-lasts{
   padding-top: 50px;
@@ -3114,9 +3115,12 @@ ease;
   right: -10px;
 }
 @media (min-width: 1920px) {
+  .section-title {
+    font-size: 30px;}
  .slider-container {
  max-width: 1650px;
 }
+
 }
 /* Responsive tweaks */
 @media (max-width: 768px) {
@@ -3152,7 +3156,7 @@ ease;
       height: 4px;
       
       display: block;
-      margin: 10px auto 0;
+      /* margin: 10px auto 0; */
       border-radius: 2px;
     }
 

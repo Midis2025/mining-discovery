@@ -1257,8 +1257,8 @@
    <div class="first-header">
   <div class="news-slider">
     <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE - JUNE 2-4 2026</p>
-    <p>Centre des congrès de Québec | June 2-4, 2026</p>
+ <p>SAVE THE DATE - JUNE 2-4-2026</p>
+ <p>Centre des congrès de Québec | June 2-4-2026</p>
   </div>
 </div>
   <header class="main-header">
@@ -1275,10 +1275,10 @@
       <!-- News Section -->
       <div class="nav-item-with-dropdown">
         <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News  <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News  <i class="fas fa-chevron-down"></i>
         </a>
 
         <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
@@ -1426,71 +1426,60 @@
 
 
         <!-- Main Content -->
-       <div class="container1">
-    <div class="section-container">
-      <h2 class="section-title">CEO’s Profiles</h2>
-      <div class="underline"></div>
+      <!-- CEO Profiles Section -->
+<div class="container1">
+  <div class="section-container">
+    <h2 class="section-title">CEO’s Profiles</h2>
+    <div class="underline"></div>
 
-      <div class="carousel-wrapper" id="carouselWrapper">
-        <div class="carousel-track" id="carouselTrack">
-          <!-- CEO Cards -->
-          <div class="profile-cards" data-name="Brian Miller" data-title="CEO of Astra Exploration" data-desc="Brian Miller brings years of geological and exploration experience to Astra Exploration, guiding the company’s projects with innovation and focus.">
-            <img src="./image/Ceos cover/Ceos cover/Brian Miller Astra Exploration.png" alt="Brian Miller">
-          </div>
-          <div class="profile-cards" data-name="Zayn Kalyan" data-title="CEO of Scorpio Gold Corp" data-desc="Zayn Kalyan leads Scorpio Gold Corp with a vision to expand the company’s resource potential through innovative mining strategies and responsible practices.">
-            <img src="./image/Ceos cover/Ceos cover/Copy of Zayn Kalyan Scorpio Gold Corp.png" alt="Zayn Kalyan">
-          </div>
-          <div class="profile-cards" data-name="George Bee" data-title="President and CEO of U.S. Gold Corp." data-desc="U.S. Gold Corp. underwent a major shift under George Bee’s leadership, moving from exploration to disciplined development, advancing the Copper King project.">
-            <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="George Bee">
-          </div>
-          <div class="profile-cards" data-name="Guanjuato Gold" data-title="CEO of Guanjuato Gold" data-desc="Focused on sustainable gold mining, Guanjuato Gold’s CEO has implemented strong environmental policies and advanced extraction techniques.">
-            <img src="./image/Ceos cover/Ceos cover/Guanjuato Gold Ceo Profile.png" alt="Guanjuato Gold">
-          </div>
-          <div class="profile-cards" data-name="Mati Talika" data-title="CEO of Aurion Resources" data-desc="Mati Talika drives Aurion Resources toward discovery excellence through innovation and integrity in mineral exploration.">
-            <img src="./image/Ceos cover/Ceos cover/Mati Talika Aurion Resources.png" alt="Mati Talika">
-          </div>
-          <div class="profile-cards" data-name="Michel Amar" data-title="CEO of DigipowerX" data-desc="Michel Amar has transformed DigipowerX into a technology-driven company with cutting-edge solutions in the mining tech industry.">
-            <img src="./image/Ceos cover/Ceos cover/Michel Amar Digipower X.png" alt="Michel Amar">
-          </div>
-          <div class="profile-cards" data-name="Mike Stark" data-title="CEO of Arizona Mining" data-desc="Mike Stark oversees Arizona Mining's operations and ensures sustainable resource management.">
-            <img src="./image/Ceos cover/Ceos cover/Mike Stark Arizona.png" alt="Mike Stark">
-          </div>
-          <div class="profile-cards" data-name="Paul Cowley" data-title="CEO of Phenom Resources" data-desc="Paul Cowley leads Phenom Resources in innovative exploration and responsible mining practices.">
-            <img src="./image/Ceos cover/Ceos cover/Paul Cowley Phenom Resources.png" alt="Paul Cowley">
-          </div>
-        </div>
-      </div>
-
-      <div class="pagination">
-        <button id="prev"><i class="fa fa-angle-double-left"></i></button>
-        <button id="next"><i class="fa fa-angle-double-right"></i></button>
+    <div class="carousel-wrapper" id="carouselWrapper">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- Dynamic CEO Cards will be inserted here -->
       </div>
     </div>
-  </div>
 
-  <div class="container2">
-    <div class="profile-section">
-      <div class="profile-card" id="mainProfile">
-        <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="George Bee">
-      </div>
-      <div class="action-buttons">
-        <p>About</p>
-        <button class="btn">View PDF</button>
-        <button class="btn">Download PDF</button>
-      </div>
-      <div class="info-box" id="infoBox">
-  
-        <h3>George Bee</h3>
-        <h4>President and CEO of U.S. Gold Corp.</h4>
-        <p>U.S. Gold Corp. (NASDAQ: USAU) underwent a major shift with the appointment of
+    <div class="pagination">
+      <button id="prev"><i class="fa fa-angle-double-left"></i></button>
+      <button id="next"><i class="fa fa-angle-double-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<div class="container2">
+  <div class="profile-section">
+    <!-- Main CEO Profile -->
+    <div class="profile-card" id="mainProfile">
+      <img src="./image/Ceos cover/Ceos cover/George Bee Us Gold.png" alt="George Bee">
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <p>About</p>
+      <button class="btn" id="viewPdfBtn">View PDF</button>
+    </div>
+
+    <!-- Info Box -->
+    <div class="info-box" id="infoBox">
+      <h3>George Bee</h3>
+      <h4>President and CEO of U.S. Gold Corp.</h4>
+      <p>
+        U.S. Gold Corp. (NASDAQ: USAU) underwent a major shift with the appointment of
         George Bee as President and CEO in August 2020. Bringing over four decades of
         mine-building expertise, Bee redirected the company’s focus from speculative
         exploration to disciplined development, particularly advancing the Copper King
-        project.</p>
-        <div class="divider"></div>
-      </div>
+        project.
+      </p>
+      <div class="divider"></div>
     </div>
   </div>
+  <!-- Carousel Track -->
+  <div id="carouselWrapper">
+    <button id="prev">&#10094;</button>
+    <div id="carouselTrack" class="carousel-track"></div>
+    <button id="next">&#10095;</button>
+  </div>
+</div>
+
         <!-- Footer Section -->
         <div class="footer-container">
             <div class="footers">
@@ -1554,101 +1543,7 @@
         </div>
         <script src="./script.js"></script>
         <script src="./js/ceo-profiles.js"></script>
-   <script>
-    const track = document.getElementById('carouselTrack');
-    const ceoCards = Array.from(document.querySelectorAll('.carousel-track .profile-cards'));
-    const mainProfile = document.getElementById('mainProfile').querySelector('img');
-    const infoBox = document.getElementById('infoBox');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const wrapper = document.getElementById('carouselWrapper');
-
-    // Detect cards per page
-    function getCardsPerPage() {
-      if (window.innerWidth <= 480) return 1;
-      if (window.innerWidth <= 768) return 2;
-      if (window.innerWidth <= 1024) return 3;
-      return 6;
-    }
-
-    let cardsPerPage = getCardsPerPage();
-    let currentPage = 0;
-    let totalPages = Math.ceil(ceoCards.length / cardsPerPage);
-
-    function updateCarousel() {
-      const cardWidth = ceoCards[0].offsetWidth + 20;
-      track.style.transform = `translateX(-${cardWidth * cardsPerPage * currentPage}px)`;
-    }
-
-    // Buttons
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 0) currentPage--;
-      updateCarousel();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      if (currentPage < totalPages - 1) currentPage++;
-      updateCarousel();
-    });
-
-    // Card click → show profile info
-    ceoCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const imgSrc = card.querySelector('img').src;
-        const name = card.dataset.name;
-        const title = card.dataset.title;
-        const desc = card.dataset.desc;
-
-        mainProfile.src = imgSrc;
-        infoBox.innerHTML = `
-          <div class="divider"></div>
-          <h3>${name}</h3>
-          <h4>${title}</h4>
-          <p>${desc}</p>
-          <div class="divider"></div>
-        `;
-      });
-    });
-
-    // Swipe support (for mobile)
-    let startX = 0;
-    let isDragging = false;
-
-    wrapper.addEventListener('touchstart', e => {
-      startX = e.touches[0].clientX;
-      isDragging = true;
-    });
-
-    wrapper.addEventListener('touchmove', e => {
-      if (!isDragging) return;
-      const currentX = e.touches[0].clientX;
-      const diff = startX - currentX;
-
-      if (Math.abs(diff) > 50) { // Swipe threshold
-        if (diff > 0 && currentPage < totalPages - 1) {
-          currentPage++;
-        } else if (diff < 0 && currentPage > 0) {
-          currentPage--;
-        }
-        updateCarousel();
-        isDragging = false;
-      }
-    });
-
-    wrapper.addEventListener('touchend', () => {
-      isDragging = false;
-    });
-
-    // Resize responsiveness
-    window.addEventListener('resize', () => {
-      cardsPerPage = getCardsPerPage();
-      totalPages = Math.ceil(ceoCards.length / cardsPerPage);
-      currentPage = 0;
-      updateCarousel();
-    });
-
-    updateCarousel();
-  </script>
+ 
 
         <script>
  function toggleMenu2() {
