@@ -47,18 +47,24 @@
     <div class="nav-links" id="navMenu">
      <a href="./index.html"> <i class="fa-solid fa-house-chimney"></i></a>
        <!-- News Section -->
-      <div class="nav-item-with-dropdown">
-        <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News  <i class="fas fa-chevron-down"></i>
-        </a>
-        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News <i class="fas fa-chevron-down"></i>
-        </a>
+       <div class="nav-item-with-dropdown news-hover">
+  <a href="./newss.html" class="desktop-link">
+    News <i class="fas fa-chevron-down"></i>
+  </a>
 
-        <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          <div id="dropdownMenu1" class="dropdown-menu-container"></div>
-        </div>
-      </div>
+  <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+    News <i class="fas fa-chevron-down"></i>
+  </a>
+
+  <div class="dropdown-links" id="newsDropdown">
+    <div id="dropdownMenu1" class="dropdown-menu-container">
+      <a href="./latest-news.html">Latest News</a>
+      <a href="./industry-news.html">Industry News</a>
+      <a href="./global-updates.html">Global Updates</a>
+    </div>
+  </div>
+</div>
+
         <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
            <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
@@ -973,6 +979,88 @@ function subscribe() {
       loadWhatsOn();
     });
   </script>
+<script>
+function setupDesktopHover() {
+  if (window.innerWidth < 900) return; // Mobile view stays default, no hover effect
+
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+
+  // Get all tab buttons and menu content dynamically
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const menuContents = document.querySelectorAll('.menu-content');
+
+  // Get nav items dynamically based on desktop-link href
+  const navItems = document.querySelectorAll('.nav-item-with-dropdown > a.desktop-link');
+
+  navItems.forEach(navItem => {
+    const href = navItem.getAttribute('href'); // Get href to match menu content
+
+    // Determine which content to show based on href
+    let targetContentId = '';
+    if (href.includes('newss')) targetContentId = 'news';
+    else if (href.includes('service')) targetContentId = 'about';
+    else if (href.includes('magzin')) targetContentId = 'magazine';
+
+    const targetContent = document.getElementById(targetContentId);
+
+    // Add hover events only for desktop
+    const parentItem = navItem.parentElement;
+    if (!parentItem) return;
+
+    parentItem.addEventListener("mouseenter", () => {
+      hamburgerMenu.style.display = "block";
+
+      // Hide all menu contents
+      menuContents.forEach(content => content.style.display = "none");
+
+      // Show only target content with correct display type
+      if (targetContent) {
+        if (targetContentId === 'about' || targetContentId === 'magazine') {
+          targetContent.style.display = "grid"; // Use grid for Service & Magazine
+          targetContent.style.gridTemplateColumns = "repeat(5, 1fr)"; // 5 columns
+          targetContent.style.gap = "20px"; // space between items
+        } else {
+          targetContent.style.display = "block"; // News stays block
+        }
+      }
+
+      // Hide all tab buttons except the target
+      tabBtns.forEach(btn => {
+        btn.style.display = btn.dataset.target === targetContentId ? "block" : "none";
+      });
+
+      // Set active class on the target tab
+      tabBtns.forEach(btn => btn.classList.remove("active"));
+      const activeBtn = document.querySelector(`.tab-btn[data-target="${targetContentId}"]`);
+      if (activeBtn) activeBtn.classList.add("active");
+    });
+
+    parentItem.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        if (!hamburgerMenu.matches(":hover")) hamburgerMenu.style.display = "none";
+      }, 200);
+    });
+  });
+
+  // Hide menu when mouse leaves menu area
+  hamburgerMenu.addEventListener("mouseleave", () => {
+    hamburgerMenu.style.display = "none";
+    // Restore all tab buttons
+    tabBtns.forEach(btn => btn.style.display = "block");
+  });
+}
+
+// Initial setup
+setupDesktopHover();
+
+// Re-run on resize
+window.addEventListener('resize', setupDesktopHover);
+</script>
+
+
+
+
+
 
 
 

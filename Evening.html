@@ -1820,6 +1820,80 @@ function toggleDropdownMobile(id) {
 }
     
   </script>
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
+  function setupDesktopHover() {
+    if (window.innerWidth < 900) return; // Skip mobile
+
+    const hamburgerMenu = document.getElementById("hamburgerMenu");
+    if (!hamburgerMenu) return; // Exit if menu not present
+
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const menuContents = document.querySelectorAll('.menu-content');
+    const navItems = document.querySelectorAll('.nav-item-with-dropdown > a.desktop-link');
+
+    navItems.forEach(navItem => {
+      const href = navItem.getAttribute('href') || '';
+
+      // Determine target content
+      let targetContentId = '';
+      if (href.includes('newss')) targetContentId = 'news';
+      else if (href.includes('service')) targetContentId = 'about';
+      else if (href.includes('magzin')) targetContentId = 'magazine';
+
+      const targetContent = document.getElementById(targetContentId);
+      if (!targetContent) return;
+
+      const parentItem = navItem.parentElement;
+
+      parentItem.addEventListener("mouseenter", () => {
+        hamburgerMenu.style.display = "block";
+
+        // Hide all menu contents first
+        menuContents.forEach(content => content.style.display = "none");
+
+        // Show only the target section
+        if (targetContentId === 'about' || targetContentId === 'magazine') {
+          targetContent.style.display = "grid"; // Grid layout
+          targetContent.style.gridTemplateColumns = "repeat(5, 1fr)"; // 5 columns
+          targetContent.style.gap = "20px";
+        } else {
+          targetContent.style.display = "block"; // News
+        }
+
+        // Show only the active tab button
+        tabBtns.forEach(btn => {
+          btn.style.display = btn.dataset.target === targetContentId ? "block" : "none";
+          btn.classList.remove("active");
+        });
+
+        const activeBtn = document.querySelector(`.tab-btn[data-target="${targetContentId}"]`);
+        if (activeBtn) activeBtn.classList.add("active");
+      });
+
+      parentItem.addEventListener("mouseleave", () => {
+        setTimeout(() => {
+          if (!hamburgerMenu.matches(":hover")) hamburgerMenu.style.display = "none";
+        }, 200);
+      });
+    });
+
+    // Hide menu when mouse leaves menu area
+    hamburgerMenu.addEventListener("mouseleave", () => {
+      hamburgerMenu.style.display = "none";
+      // Restore all tab buttons
+      tabBtns.forEach(btn => btn.style.display = "block");
+    });
+  }
+
+  // Initial setup
+  setupDesktopHover();
+
+  // Re-run on resize
+  window.addEventListener('resize', setupDesktopHover);
+});
+</script>
+
 
 </body>
 </html>
