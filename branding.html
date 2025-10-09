@@ -254,7 +254,7 @@
       .hamburger-menu {
         display: none;
         position: absolute;
-        top: 143px;
+        top: 166px;
         left: 0;
         width: 100%;
         background: #fff;
@@ -2112,13 +2112,94 @@
     </div>
     <script src="./script.js"></script>
     <script>
-     
+     function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+
+ 
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    return;
+  }
+
+
+  menu.style.display = "block";
+
+ 
+}
+
+
+document.addEventListener("click", function(event) {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
+
+ 
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.display = "none";
+  }
+});
+
+// Tabs functionality
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    // Remove active from all
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+
+    // Add active to clicked
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
+  });
+});
+
+// Mobile dropdown toggle
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
+
+
+      // Fade-in animation when cards come into view
+      const cards = document.querySelectorAll(".offer-card");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      cards.forEach((card) => {
+        observer.observe(card);
+      });
+      const faqs = document.querySelectorAll(".faq-item");
+
+      faqs.forEach((item) => {
+        item.querySelector(".faq-question").addEventListener("click", () => {
+          // If already active → close it
+          if (item.classList.contains("active")) {
+            item.classList.remove("active");
+          } else {
+            // Close all others
+            faqs.forEach((f) => f.classList.remove("active"));
+            // Open current
+            item.classList.add("active");
+          }
+        });
+      });
       function toggleDropdownMobile(id) {
         const dropdown = document.getElementById(id);
         if (dropdown) {
           dropdown.classList.toggle("show");
         }
-           
       }
     </script>
 
@@ -2202,57 +2283,6 @@ document.getElementById("brandingForm").addEventListener("submit", async functio
     alert("❌ Something went wrong. Please try again later.");
   }
 });
-</script>
-<script>
-function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-
- 
-  if (menu.style.display === "block") {
-    menu.style.display = "none";
-    return;
-  }
-
-
-  menu.style.display = "block";
-
- 
-}
-
-
-document.addEventListener("click", function(event) {
-  const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2");
-
- 
-  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-    menu.style.display = "none";
-  }
-});
-
-// Tabs functionality
-const tabs = document.querySelectorAll(".tab-btn");
-const contents = document.querySelectorAll(".menu-content");
-
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    // Remove active from all
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
-
-    // Add active to clicked
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.target).classList.add("active");
-  });
-});
-
-// Mobile dropdown toggle
-function toggleDropdownMobile(id) {
-  const dropdown = document.getElementById(id);
-  if (dropdown) {
-    dropdown.classList.toggle("show");
-  }
-}
 </script>
   </body>
 </html>
