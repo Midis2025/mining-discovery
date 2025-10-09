@@ -555,6 +555,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         .main-content {
           padding: 35px;
+          
         }
 
         article {
@@ -603,6 +604,7 @@ document.addEventListener("DOMContentLoaded", () => {
         article {
           background: #fff !important;
           border-color: #fff !important;
+         
         }
 
         #newsDetails h2,
@@ -610,6 +612,8 @@ document.addEventListener("DOMContentLoaded", () => {
         article .content,
         article .content p {
           color: #000 !important;
+          text-align: justify;
+
         }
 
         .error-container {

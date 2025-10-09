@@ -83,59 +83,54 @@ function serviceDropdown() {
 /* -------------------------
    CAROUSELS
 ------------------------- */
-document.addEventListener("DOMContentLoaded", () => {
-  // Load content
-  loadPopularNews().catch(console.error);
+// document.addEventListener("DOMContentLoaded", () => {
+//   loadPopularNews().catch(console.error);
 
-  // Arrow buttons scroll the track
-  const track = document.getElementById("carousel");
-  const prev = document.getElementById("prev");
-  const next = document.getElementById("next");
+//   const track = document.getElementById("carousel");
+//   const prev = document.getElementById("prev");
+//   const next = document.getElementById("next");
 
-  const STEP = 280; // ~ card width + gap
+//   const STEP = 280; 
 
-  function updateArrows() {
-    if (!track) return;
-    const max = track.scrollWidth - track.clientWidth - 1;
-    prev.disabled = track.scrollLeft <= 0;
-    next.disabled = track.scrollLeft >= max;
-  }
+//   function updateArrows() {
+//     if (!track) return;
+//     const max = track.scrollWidth - track.clientWidth - 1;
+//     prev.disabled = track.scrollLeft <= 0;
+//     next.disabled = track.scrollLeft >= max;
+//   }
 
-  if (track && prev && next) {
-    prev.addEventListener("click", () => {
-      track.scrollBy({ left: -STEP, behavior: "smooth" });
-      setTimeout(updateArrows, 250);
-    });
-    next.addEventListener("click", () => {
-      track.scrollBy({ left: STEP, behavior: "smooth" });
-      setTimeout(updateArrows, 250);
-    });
+//   if (track && prev && next) {
+//     prev.addEventListener("click", () => {
+//       track.scrollBy({ left: -STEP, behavior: "smooth" });
+//       setTimeout(updateArrows, 250);
+//     });
+//     next.addEventListener("click", () => {
+//       track.scrollBy({ left: STEP, behavior: "smooth" });
+//       setTimeout(updateArrows, 250);
+//     });
 
-    // Keyboard support when track is focused
-    track.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") prev.click();
-      if (e.key === "ArrowRight") next.click();
-    });
+//     track.addEventListener("keydown", (e) => {
+//       if (e.key === "ArrowLeft") prev.click();
+//       if (e.key === "ArrowRight") next.click();
+//     });
 
-    // Drag / swipe support (desktop + touch)
-    let isDown = false, startX = 0, startScroll = 0;
-    const start = (clientX) => { isDown = true; startX = clientX; startScroll = track.scrollLeft; };
-    const move = (clientX) => { if (isDown) track.scrollLeft = startScroll - (clientX - startX); };
-    const end  = () => { isDown = false; updateArrows(); };
+//     let isDown = false, startX = 0, startScroll = 0;
+//     const start = (clientX) => { isDown = true; startX = clientX; startScroll = track.scrollLeft; };
+//     const move = (clientX) => { if (isDown) track.scrollLeft = startScroll - (clientX - startX); };
+//     const end  = () => { isDown = false; updateArrows(); };
 
-    track.addEventListener("mousedown", e => { start(e.clientX); });
-    window.addEventListener("mousemove", e => { if (isDown) { move(e.clientX); e.preventDefault(); }});
-    window.addEventListener("mouseup", end);
+//     track.addEventListener("mousedown", e => { start(e.clientX); });
+//     window.addEventListener("mousemove", e => { if (isDown) { move(e.clientX); e.preventDefault(); }});
+//     window.addEventListener("mouseup", end);
 
-    track.addEventListener("touchstart", e => { start(e.touches[0].clientX); }, { passive: true });
-    track.addEventListener("touchmove",  e => { move(e.touches[0].clientX); }, { passive: true });
-    track.addEventListener("touchend", end);
+//     track.addEventListener("touchstart", e => { start(e.touches[0].clientX); }, { passive: true });
+//     track.addEventListener("touchmove",  e => { move(e.touches[0].clientX); }, { passive: true });
+//     track.addEventListener("touchend", end);
 
-    // Keep arrows in sync on manual scroll
-    track.addEventListener("scroll", () => requestAnimationFrame(updateArrows));
-    updateArrows();
-  }
-});
+//     track.addEventListener("scroll", () => requestAnimationFrame(updateArrows));
+//     updateArrows();
+//   }
+// });
 
 /* -------------------------
    ANIMATED SEARCH TEXT

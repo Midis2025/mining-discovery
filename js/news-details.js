@@ -976,6 +976,7 @@ async function loadNewsDetails() {
                     color: #333;
                     font-weight: 700;
                     line-height: 1.6;
+                    text-align: justify;
                 }
                 
                 .full-description p {
@@ -1339,7 +1340,7 @@ async function loadNewsDetails() {
                     }
                     
                     .full-description p {
-                        text-align: left;
+                        // text-align: left;
                     }
                 }
                 

@@ -264,7 +264,7 @@
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 160px;
+  top: 166px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -704,6 +704,7 @@
     background-color: #f5f5f5;
     color: #ae8a4c;
   }
+ 
 }
 
     
@@ -2080,86 +2081,33 @@
   </script>
 
 <script>
-// ===== Desktop hover dropdown =====
-if (window.innerWidth >= 900) {
-  const hamburgerMenu = document.getElementById("hamburgerMenu");
-  const tabs = document.querySelectorAll(".tab-btn");
-
-  const hoverMap = {
-    newsDropdown: 'news',
-    magazineDropdown: 'magazine',
-    serviceDropdown: 'about'
-  };
-
-  function showHamburgerSection(sectionId) {
-    document.querySelectorAll('.menu-content').forEach(c => c.classList.remove('active'));
-    document.getElementById(sectionId).classList.add('active');
-
-    tabs.forEach(t => t.classList.remove('active'));
-    tabs.forEach(t => { if(t.dataset.target === sectionId) t.classList.add('active'); });
-
-    hamburgerMenu.style.display = 'block';
-  }
-
-  // Desktop nav links hover
-  document.querySelectorAll('.nav-item-with-dropdown .desktop-link').forEach(link => {
-    const idMatch = link.getAttribute('onmouseenter').match(/'(\w+)'/);
-    if(!idMatch) return;
-    const dropdownId = idMatch[1];
-    const sectionId = hoverMap[dropdownId];
-
-    link.addEventListener('mouseenter', () => {
-      showHamburgerSection(sectionId);
-    });
-
-    link.addEventListener('mouseleave', () => {
-      setTimeout(() => {
-        if (!hamburgerMenu.matches(':hover')) {
-          hamburgerMenu.style.display = 'none';
-        }
-      }, 200);
-    });
-  });
-
-  hamburgerMenu.addEventListener('mouseleave', () => {
-    hamburgerMenu.style.display = 'none';
-  });
-}
-
-// ===== Mobile hamburger click (existing) =====
-function toggleMenu2() {
+    function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
-  if (menu.style.display === "block") {
-    menu.style.display = "none";
-  } else {
-    // Show ALL content in mobile click
-    document.querySelectorAll('.menu-content').forEach(c => c.classList.add('active'));
-    document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
-    menu.style.display = "block";
-  }
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
 
-// ===== Tabs switching (existing) =====
-const tabs = document.querySelectorAll(".tab-btn");
-const contents = document.querySelectorAll(".menu-content");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
 
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
 
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.target).classList.add("active");
   });
-});
-
-// ===== Mobile dropdown toggle (existing) =====
-function toggleDropdownMobile(id) {
-  const dropdown = document.getElementById(id);
-  if (dropdown) {
-    dropdown.classList.toggle("show");
-  }
-}
+ function toggleDropdownMobile(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+  
 </script>
 
 </body>

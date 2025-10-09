@@ -72,7 +72,7 @@
 }
 
 
-        .main-header {
+         .main-header {
       margin-bottom: 10px;
       background-color: #fff;
       padding: 5px;
@@ -123,7 +123,7 @@
       color: #8d6d2a;
     }
 
-   .header-buttons {
+.header-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -147,6 +147,7 @@
   text-align: center;
   box-sizing: border-box;
 }
+
 
     .login-btn {
       background-color:#ae8a4c;
@@ -264,7 +265,7 @@
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 143px;
+  top: 160px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -300,11 +301,10 @@
 
 /* Tab items */
 .hamburger-menu .menu-tabs p {
-   margin: 8px 0;
-        font-weight: bold;
-        font-size: 16px;
-        cursor: pointer;
-        color: #ae8a4c;
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .hamburger-menu .menu-tabs p.active {
@@ -433,12 +433,6 @@
     display: none;
   }
   
-    #dropdownMenu1 {
- display: flex;
- flex-direction: column;
-
- 
-    }
 
   /* Nav links & buttons toggle only */
   .nav-links,
@@ -724,9 +718,18 @@
       .header-buttons {
         display: none;
       }
-    
-  
-   
+      #dropdownMenu {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
+    #dropdownMenu1 {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
      .header-top {
     display: flex;
     justify-content: space-between; /* logo left, hamburger right */
@@ -736,11 +739,11 @@
   }
 
   .logo {
-    height: 70px; /* logo छोटा ताकि navbar compact लगे */
+    height: 70px; 
   }
 
   .hamburger {
-     padding-right: 11px;
+    padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
@@ -838,6 +841,7 @@
   .desktop-link { display: none; }
   .mobile-toggle { display: block; }
 }
+
 
 
    .section-container{width:90%;max-width:1300px;margin:auto;}
@@ -1273,7 +1277,7 @@
     <p>Centre des congrès de Québec | June 2-4, 2026</p>
   </div>
 </div>
-  <header class="main-header">
+   <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1283,14 +1287,14 @@
     </button>
 
     <div class="nav-links" id="navMenu">
-     
+      
       <!-- News Section -->
       <div class="nav-item-with-dropdown">
         <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News <i class="fas fa-chevron-down"></i>
+          News Section <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News  <i class="fas fa-chevron-down"></i>
+          News Section <i class="fas fa-chevron-down"></i>
         </a>
 
         <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
@@ -1298,7 +1302,7 @@
         </div>
       </div>
 
-     <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
+  <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
       <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
@@ -1389,8 +1393,8 @@
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <!-- <p class="tab-btn active" data-target="news">NEWS SECTION</p>
-          <p class="tab-btn" data-target="about">SERVICE</p> -->
+          <p class="tab-btn active" data-target="news">NEWS </p>
+          <p class="tab-btn" data-target="about">SERVICE</p>
           <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
@@ -1416,6 +1420,68 @@
     </div>
   </div>
 </header>
+
+  <!-- Desktop Tabs -->
+  <div class="desktop-tabs" id="desktopTabs">
+    <div class="tab-btns">
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News </div>
+      <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
+      <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
+    </div>
+  <!-- Collapsible News Section below header -->
+<div id="newsSectionPage" class="collapsible-section">
+  <div class="news-section-content">
+    <a href="#">Latest News</a><br>
+    <a href="#">Precious Metals</a><br>
+    <a href="#">Evening Chatter</a><br>
+    <a href="#">Research Reports</a><br>
+    <a href="#">Gold News</a><br>
+    <a href="#">Corporate News</a><br>
+    <a href="#">Announcement</a><br>
+    <a href="#">Sponsored Post</a><br>
+  </div>
+</div>
+
+    <div class="tab-content" id="servicesTab">
+      <a href="./service.html">Investor Campaign</a><br>
+      <a href="./newsynd.html">News Syndication</a><br>
+      <a href="./branding.html">Digital Branding</a><br>
+    </div>
+    <div class="tab-content" id="magazineTab">
+      <a href="./ceo.html">CEO Profile</a><br>
+      <a href="./weekly.html">Newsletter</a><br>
+      <a href="./company-profile.html">Company Profile</a><br>
+    </div>
+  </div>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="close-btn" onclick="closeMenu()">
+      <i class="fas fa-times"></i>
+    </div>
+    <ul>
+      <li>
+        <button onclick="toggleSubmenu('newsSub')">
+          NEWS SECTION <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="submenu" id="newsSub">
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Precious Metals</a></li>
+          <li><a href="#">Evening Chatter</a></li>
+          <li><a href="#">Research Reports</a></li>
+          <li><a href="#">Gold News</a></li>
+          <li><a href="#">Corporate News</a></li>
+          <li><a href="#">Announcement</a></li>
+          <li><a href="#">Sponsored Post</a></li>
+        </ul>
+      </li>
+      <li><a href="./service.html">Services</a></li>
+      <li><a href="./magzin.html">Magazine</a></li>
+      <li><a href="./contant.html">Contact Us</a></li>
+      <li><a href="./about.html">About Us</a></li>
+    </ul>
+  </div>
+
 
     <!-- <div class="topbar">
         <h1 onclick="magazineDropdown()" id="magazineToggle">
@@ -1562,75 +1628,27 @@ future.</p>
 
 
         <script>
- function toggleMenu2() {
+  function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2");
-
-  // Agar already open hai, close karo aur return
-  if (menu.style.display === "block") {
-    menu.style.display = "none";
-    return;
-  }
-
-  // Menu open karo
-  menu.style.display = "block";
-
- 
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
 
-// Click anywhere on page to close menu
-document.addEventListener("click", function (event) {
-  const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
 
-  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-    menu.style.display = "none";
-  }
-});
-
-// Tabs logic
-const tabs = document.querySelectorAll(".tab-btn");
-const contents = document.querySelectorAll(".menu-content");
-
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    tabs.forEach((t) => t.classList.remove("active"));
-    contents.forEach((c) => c.classList.remove("active"));
-
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.target).classList.add("active");
-  });
-});
-
-// PAGE CHECK FOR MAGAZINE
-document.addEventListener("DOMContentLoaded", function () {
-  const currentPage = window.location.pathname.split("/").pop();
-  const magazinePages = [
-    "magzin.html",
-    "ceo.html",
-    "weekly.html",
-    "company-profile.html",
-    "Digitaledition.html",
-  ];
-
-  if (magazinePages.includes(currentPage)) {
-    // Mobile menu
-    document.querySelectorAll(".menu-content").forEach((el) => (el.style.display = "none"));
-    const magSection = document.getElementById("magazine");
-    if (magSection) magSection.style.display = "flex";
-
-    // Desktop tabs
-    document.querySelectorAll(".tab-content").forEach((el) => (el.style.display = "none"));
-    const magTab = document.getElementById("magazineTab");
-    if (magTab) magTab.style.display = "block";
-
-    // active magazine tab
-    document.querySelectorAll(".tab-btn").forEach((el) => el.classList.remove("active"));
-    document.querySelectorAll(".tab-btn").forEach((el) => {
-      if (el.textContent.trim() === "Magazine") el.classList.add("active");
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
     });
-  }
-});
+
+  });
+
 
 // Mobile dropdown toggle
 function toggleDropdownMobile(id) {
@@ -1639,6 +1657,8 @@ function toggleDropdownMobile(id) {
     dropdown.classList.toggle("show");
   }
 }
+  
+  
             // Toggle mobile menu
             function toggleMenu() {
                 const navMenu = document.getElementById('navMenu');

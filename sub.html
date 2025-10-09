@@ -263,7 +263,7 @@
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 143px;
+  top: 166px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -1819,7 +1819,8 @@
           <li>Full article search & archives</li>
           <li>Cancel anytime (monthly subscription model)</li>
         </ul>
-        <button>Subscribe for 49$</button>
+       <button onclick="goToRegister('Essential Plan', '$49 / month', ['Unlimited access to all magazine issues', 'Full article search & archives', 'Cancel anytime'])">Subscribe $49</button>
+  
       </div>
 
       <!-- Advanced Plan (highlighted) -->
@@ -1831,7 +1832,8 @@
           <li>Access to premium “insight” reports or dossier downloads</li>
           <li>4-month bundled subscription (cost advantage vs monthly)</li>
         </ul>
-        <button>Subscribe for 149$</button>
+        <button onclick="goToRegister('Advanced Plan', '$149 / 4 months', ['Exclusive CEO profiles', 'Exclusive company insights', '4-month bundled access'])">Subscribe $149</button>
+  
       </div>
 
       <!-- Premium Plan -->
@@ -2123,7 +2125,12 @@ cards.forEach(card => {
   });
 });
 
-
+function goToRegister(planName, planPrice, features) {
+      // Convert features array into URL-safe string
+      const encodedFeatures = encodeURIComponent(JSON.stringify(features));
+      // Redirect with query parameters
+      window.location.href = `./demo.html?plan=${encodeURIComponent(planName)}&price=${encodeURIComponent(planPrice)}&features=${encodedFeatures}`;
+    }
   </script>
 
 </body>

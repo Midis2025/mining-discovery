@@ -2196,109 +2196,57 @@ function clearForm() {
     });
     
     // show extra news</script>
-      <script> 
-  function toggleMenu2() {
+   <script>
+function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2"); // aapke hamburger icon class
 
-  // Agar already open hai, close karo aur return
+ 
   if (menu.style.display === "block") {
     menu.style.display = "none";
     return;
   }
 
-  // Menu open karo
+
   menu.style.display = "block";
 
  
 }
 
-// Click anywhere on page to close menu
-document.addEventListener("click", function (event) {
+
+document.addEventListener("click", function(event) {
   const menu = document.getElementById("hamburgerMenu");
   const hamburger = document.querySelector(".hamburger2");
 
+ 
   if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
     menu.style.display = "none";
   }
 });
 
-// Select tabs and contents
+// Tabs functionality
 const tabs = document.querySelectorAll(".tab-btn");
 const contents = document.querySelectorAll(".menu-content");
 
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
+    // Remove active from all
     tabs.forEach(t => t.classList.remove("active"));
     contents.forEach(c => c.classList.remove("active"));
 
+    // Add active to clicked
     tab.classList.add("active");
     document.getElementById(tab.dataset.target).classList.add("active");
   });
 });
 
-// --------- FORCE ONLY SERVICES ---------
-document.addEventListener("DOMContentLoaded", function () {
-  // Hide all tabs except services
-  tabs.forEach(tab => {
-    if (tab.dataset.target !== "about") {   // "about" = Services ka content id
-      tab.style.display = "none";
-    } else {
-      tab.classList.add("active");
-    }
-  });
-
-  // Hide all contents except services
-  contents.forEach(content => {
-    if (content.id !== "about") {
-      content.style.display = "none";
-    } else {
-      content.classList.add("active");
-      content.style.display = "grid";
-    }
-  });
-});
-
+// Mobile dropdown toggle
 function toggleDropdownMobile(id) {
   const dropdown = document.getElementById(id);
   if (dropdown) {
     dropdown.classList.toggle("show");
   }
 }
-
-  
-  
-  
-  
-  
-  // Sab thumbnails ko select karo
-    const thumbs = document.querySelectorAll('.thumb');
-    const mainMagazine = document.getElementById('mainMagazine');
-
-    thumbs.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        // Badi magazine ka src update karo
-        mainMagazine.src = thumb.src;
-      });
-    });
-    const toggleBtn = document.querySelector(".toggle-btn");
-    const featuresList = document.querySelector(".features-list");
-    let expanded = false;
-
-    toggleBtn.addEventListener("click", () => {
-      expanded = !expanded;
-
-      if (expanded) {
-        featuresList.querySelectorAll("li").forEach(li => li.style.display = "list-item");
-        toggleBtn.textContent = "View less ▲";
-      } else {
-        featuresList.querySelectorAll("li").forEach((li, index) => {
-          li.style.display = index < 2 ? "list-item" : "none";
-        });
-        toggleBtn.textContent = "View more ▼";
-      }
-    });
-  </script>
+</script>
 
   <script src="./js/advertisment.js"></script>
   <script src="./js/projects.js"></script>

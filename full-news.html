@@ -76,7 +76,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 
 
     
-.main-header {
+   .main-header {
       margin-bottom: 10px;
       background-color: #fff;
       padding: 5px;
@@ -126,6 +126,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     .nav-links a:hover {
       color: #8d6d2a;
     }
+
 .header-buttons {
   display: flex;
   gap: 10px;
@@ -150,6 +151,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   text-align: center;
   box-sizing: border-box;
 }
+
 
     .login-btn {
       background-color:#ae8a4c;
@@ -489,16 +491,14 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       position: relative;
     }
 
- .topbar h1 {
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  flex: 1; /* make it take full space in flexbox */
-}
-.topbar h1:hover{
-  color: #ae8a4c;
-}
-
+    .topbar h1 {
+      font-size: 20px;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
 
     .topbar h1 i {
       font-size: 12px;
@@ -728,7 +728,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 
  
     }
-     #dropdownMenu1 {
+    #dropdownMenu1 {
  display: flex;
  flex-direction: column;
 
@@ -747,13 +747,12 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   }
 
   .hamburger {
-   padding-right: 11px;
+    padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
     border: none;
     color: #ae8a4c;
-    
   }
 
   /* nav links column में */
@@ -847,10 +846,6 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   .mobile-toggle { display: block; }
 }
 
-
-   
-
-   
 
 
 
@@ -1616,14 +1611,14 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     </button>
 
     <div class="nav-links" id="navMenu">
-     
+      
       <!-- News Section -->
       <div class="nav-item-with-dropdown">
         <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News  <i class="fas fa-chevron-down"></i>
+          News Section <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News  <i class="fas fa-chevron-down"></i>
+          News Section <i class="fas fa-chevron-down"></i>
         </a>
 
         <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
@@ -1631,7 +1626,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
         </div>
       </div>
 
-      <a href="./morning.html">Evening Chatter</a>
+  <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
       <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
@@ -1668,7 +1663,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
         </div>
       </div>
        <a href="./about.html">About Us</a>
-      <a href="./contact.html">Contact Us</a>
+     <a href="./contact.html">Contact Us</a>
     </div>
 <div class="new">
     <div class="header-buttons" id="headerButtons">
@@ -1723,8 +1718,8 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       <div class="menu-row">
         <div class="menu-tabs">
           <p class="tab-btn active" data-target="news">NEWS </p>
-          <!-- <p class="tab-btn" data-target="about">SERVICE</p>
-          <p class="tab-btn" data-target="magazine">MAGAZINE</p> -->
+          <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
           <p><a href="./newss.html" id="dropdownMenu"></a></p>
@@ -1738,20 +1733,17 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
           <p><a href="./confrence.html">Conference Media Coverage</a></p>
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
-        <!-- <div class="menu-content" id="magazine">
+        <div class="menu-content" id="magazine">
            <a href="./magzin.html">Magazine</a>
           <p><a href="./ceo.html">CEO Profile</a></p>
           <p><a href="./weekly.html">Newsletter</a></p>
           <p><a href="./company-profile.html">Company Profile</a></p>
           <p><a href="./Digitaledition.html">Digital Edition</a></p>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
 </header>
-
-
-
 
   <!-- Desktop Tabs -->
   <div class="desktop-tabs" id="desktopTabs">
@@ -1794,7 +1786,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     <ul>
       <li>
         <button onclick="toggleSubmenu('newsSub')">
-          NEWS <i class="fas fa-chevron-down"></i>
+          NEWS SECTION <i class="fas fa-chevron-down"></i>
         </button>
         <ul class="submenu" id="newsSub">
           <li><a href="#">Latest News</a></li>
@@ -1813,6 +1805,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       <li><a href="./about.html">About Us</a></li>
     </ul>
   </div>
+
 
 
 
@@ -1952,23 +1945,10 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 <script src="./script.js"></script>
   <script src="./js/full-news.js"></script>
    <script>
-        function toggleMenu2() {
+       function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
   menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
- function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
-     function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
-  
  // Select tabs and contents
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".menu-content");
@@ -1983,7 +1963,20 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       tab.classList.add("active");
       document.getElementById(tab.dataset.target).classList.add("active");
     });
+
   });
+
+
+// Mobile dropdown toggle
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
+  
+  
+  
     </script>
       <script src="./js/advertisment.js"></script>
   <script src="./js/projects.js"></script>

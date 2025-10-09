@@ -168,3 +168,9 @@ window.addEventListener('resize', () => {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', fetchCeoProfiles);
+
+
+
+// dropdown 
+
+
