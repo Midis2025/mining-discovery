@@ -1508,8 +1508,8 @@
       <div class="menu-row">
         <div class="menu-tabs">
           <p class="tab-btn active" data-target="news">NEWS</p>
-          <!-- <p class="tab-btn" data-target="about">SERVICE</p>
-          <p class="tab-btn" data-target="magazine">MAGAZINE</p> -->
+          <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
           <p><a href="./newss.html" id="dropdownMenu"></a></p>
@@ -1770,32 +1770,40 @@
     });
   </script>
   <script>
-    function toggleMenu2() {
+  
+function toggleMenu() {
+  const header = document.querySelector(".main-header");
+  if (header) header.classList.toggle("mobile-active");
+}
+
+
+function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
 
-  // Agar menu already open hai, click pe close karo
+ 
   if (menu.style.display === "block") {
     menu.style.display = "none";
     return;
   }
 
-  // Menu open karo
+
   menu.style.display = "block";
 
-    }
+ 
+}
 
-// Page ke kisi bhi jagah pe click ho, menu close ho jaye
+
 document.addEventListener("click", function(event) {
   const menu = document.getElementById("hamburgerMenu");
   const hamburger = document.querySelector(".hamburger2");
 
-  // Agar click hamburger ya menu ke andar nahi hai to close karo
+ 
   if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
     menu.style.display = "none";
   }
 });
 
-// Tabs logic (aapka original)
+// Tabs functionality
 const tabs = document.querySelectorAll(".tab-btn");
 const contents = document.querySelectorAll(".menu-content");
 
@@ -1818,80 +1826,86 @@ function toggleDropdownMobile(id) {
     dropdown.classList.toggle("show");
   }
 }
-    
+
+
+
   </script>
  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  function setupDesktopHover() {
-    if (window.innerWidth < 900) return; // Skip mobile
+function setupDesktopHover() {
+  if (window.innerWidth < 900) return; // Mobile view stays default, no hover effect
 
-    const hamburgerMenu = document.getElementById("hamburgerMenu");
-    if (!hamburgerMenu) return; // Exit if menu not present
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
 
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const menuContents = document.querySelectorAll('.menu-content');
-    const navItems = document.querySelectorAll('.nav-item-with-dropdown > a.desktop-link');
+  // Get all tab buttons and menu content dynamically
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const menuContents = document.querySelectorAll('.menu-content');
 
-    navItems.forEach(navItem => {
-      const href = navItem.getAttribute('href') || '';
+  // Get nav items dynamically based on desktop-link href
+  const navItems = document.querySelectorAll('.nav-item-with-dropdown > a.desktop-link');
 
-      // Determine target content
-      let targetContentId = '';
-      if (href.includes('newss')) targetContentId = 'news';
-      else if (href.includes('service')) targetContentId = 'about';
-      else if (href.includes('magzin')) targetContentId = 'magazine';
+  navItems.forEach(navItem => {
+    const href = navItem.getAttribute('href'); // Get href to match menu content
 
-      const targetContent = document.getElementById(targetContentId);
-      if (!targetContent) return;
+    // Determine which content to show based on href
+    let targetContentId = '';
+    if (href.includes('newss')) targetContentId = 'news';
+    else if (href.includes('service')) targetContentId = 'about';
+    else if (href.includes('magzin')) targetContentId = 'magazine';
 
-      const parentItem = navItem.parentElement;
+    const targetContent = document.getElementById(targetContentId);
 
-      parentItem.addEventListener("mouseenter", () => {
-        hamburgerMenu.style.display = "block";
+    // Add hover events only for desktop
+    const parentItem = navItem.parentElement;
+    if (!parentItem) return;
 
-        // Hide all menu contents first
-        menuContents.forEach(content => content.style.display = "none");
+    parentItem.addEventListener("mouseenter", () => {
+      hamburgerMenu.style.display = "block";
 
-        // Show only the target section
+      // Hide all menu contents
+      menuContents.forEach(content => content.style.display = "none");
+
+      // Show only target content with correct display type
+      if (targetContent) {
         if (targetContentId === 'about' || targetContentId === 'magazine') {
-          targetContent.style.display = "grid"; // Grid layout
+          targetContent.style.display = "grid"; // Use grid for Service & Magazine
           targetContent.style.gridTemplateColumns = "repeat(5, 1fr)"; // 5 columns
-          targetContent.style.gap = "20px";
+          targetContent.style.gap = "20px"; // space between items
         } else {
-          targetContent.style.display = "block"; // News
+          targetContent.style.display = "block"; // News stays block
         }
+      }
 
-        // Show only the active tab button
-        tabBtns.forEach(btn => {
-          btn.style.display = btn.dataset.target === targetContentId ? "block" : "none";
-          btn.classList.remove("active");
-        });
-
-        const activeBtn = document.querySelector(`.tab-btn[data-target="${targetContentId}"]`);
-        if (activeBtn) activeBtn.classList.add("active");
+      // Hide all tab buttons except the target
+      tabBtns.forEach(btn => {
+        btn.style.display = btn.dataset.target === targetContentId ? "block" : "none";
       });
 
-      parentItem.addEventListener("mouseleave", () => {
-        setTimeout(() => {
-          if (!hamburgerMenu.matches(":hover")) hamburgerMenu.style.display = "none";
-        }, 200);
-      });
+      // Set active class on the target tab
+      tabBtns.forEach(btn => btn.classList.remove("active"));
+      const activeBtn = document.querySelector(`.tab-btn[data-target="${targetContentId}"]`);
+      if (activeBtn) activeBtn.classList.add("active");
     });
 
-    // Hide menu when mouse leaves menu area
-    hamburgerMenu.addEventListener("mouseleave", () => {
-      hamburgerMenu.style.display = "none";
-      // Restore all tab buttons
-      tabBtns.forEach(btn => btn.style.display = "block");
+    parentItem.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        if (!hamburgerMenu.matches(":hover")) hamburgerMenu.style.display = "none";
+      }, 200);
     });
-  }
+  });
 
-  // Initial setup
-  setupDesktopHover();
+  // Hide menu when mouse leaves menu area
+  hamburgerMenu.addEventListener("mouseleave", () => {
+    hamburgerMenu.style.display = "none";
+    // Restore all tab buttons
+    tabBtns.forEach(btn => btn.style.display = "block");
+  });
+}
 
-  // Re-run on resize
-  window.addEventListener('resize', setupDesktopHover);
-});
+// Initial setup
+setupDesktopHover();
+
+// Re-run on resize
+window.addEventListener('resize', setupDesktopHover);
 </script>
 
 

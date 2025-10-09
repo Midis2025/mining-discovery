@@ -1952,28 +1952,65 @@ function toggleDropdownMobile(id) {
         loadLatestNews();
       });
     </script>
-    <script>
+  <script>
 if (window.innerWidth >= 900) {
-  const magazineItem = document.querySelector(".nav-item-with-dropdown.magazine-hover");
   const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const tabBtns = hamburgerMenu.querySelectorAll(".tab-btn");
+  const menuContents = hamburgerMenu.querySelectorAll(".menu-content");
 
-  magazineItem.addEventListener("mouseenter", () => {
+  const hoverItems = [
+    {
+      selector: ".nav-item-with-dropdown.news-hover",
+      tab: "news",
+    },
+    {
+      selector: ".nav-item-with-dropdown.service-hover",
+      tab: "about",
+    },
+    {
+      selector: ".nav-item-with-dropdown.magazine-hover",
+      tab: "magazine",
+    },
+  ];
+
+  function showMenu(tabId) {
     hamburgerMenu.style.display = "block";
-  });
 
-  magazineItem.addEventListener("mouseleave", () => {
+    menuContents.forEach((content) => {
+      content.classList.remove("active");
+      if (content.id === tabId) {
+        content.classList.add("active");
+      }
+    });
+
+    tabBtns.forEach((btn) => {
+      btn.classList.remove("active");
+      if (btn.dataset.target === tabId) {
+        btn.classList.add("active");
+      }
+    });
+  }
+
+  function hideMenu() {
     setTimeout(() => {
       if (!hamburgerMenu.matches(":hover")) {
         hamburgerMenu.style.display = "none";
       }
     }, 200);
+  }
+
+  hoverItems.forEach(({ selector, tab }) => {
+    const item = document.querySelector(selector);
+    if (item) {
+      item.addEventListener("mouseenter", () => showMenu(tab));
+      item.addEventListener("mouseleave", hideMenu);
+    }
   });
 
-  hamburgerMenu.addEventListener("mouseleave", () => {
-    hamburgerMenu.style.display = "none";
-  });
+  hamburgerMenu.addEventListener("mouseleave", hideMenu);
 }
 </script>
+
 
   </body>
 </html>

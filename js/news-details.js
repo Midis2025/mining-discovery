@@ -923,7 +923,7 @@ async function loadNewsDetails() {
                 
                 .category-tag {
                     display: inline-block;
-                    background-color: #007bff;
+                    background-color:#ae8a4c;
                     color: white;
                     padding: 5px 12px;
                     border-radius: 4px;
@@ -933,7 +933,6 @@ async function loadNewsDetails() {
                 }
                 
                 .news-detail h1 {
-                    font-size: clamp(1.75rem, 4vw, 2.5rem);
                     font-weight: bold;
                     color: #333;
                     line-height: 1.2;
