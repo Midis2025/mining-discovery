@@ -71,7 +71,7 @@
 }
 
 
- .main-header {
+   .main-header {
       margin-bottom: 10px;
       background-color: #fff;
       padding: 5px;
@@ -87,7 +87,7 @@
 
     .logo-social {
       
-  padding-top: 6px;
+    padding-top: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -122,7 +122,7 @@
       color: #8d6d2a;
     }
 
-   .header-buttons {
+.header-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -146,6 +146,7 @@
   text-align: center;
   box-sizing: border-box;
 }
+
 
     .login-btn {
       background-color:#ae8a4c;
@@ -722,7 +723,7 @@
 
  
     }
-       #dropdownMenu1 {
+    #dropdownMenu1 {
  display: flex;
  flex-direction: column;
 
@@ -737,11 +738,11 @@
   }
 
   .logo {
-    height: 70px;
+    height: 70px; 
   }
 
   .hamburger {
-        padding-right: 11px;
+    padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
@@ -840,8 +841,6 @@
   .mobile-toggle { display: block; }
 }
 
-
-   
 
    
  
@@ -1667,7 +1666,7 @@
 
 
 
- <header class="main-header">
+    <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1677,14 +1676,14 @@
     </button>
 
     <div class="nav-links" id="navMenu">
-     
+      
       <!-- News Section -->
-    <div class="nav-item-with-dropdown news-hover">
+      <div class="nav-item-with-dropdown">
         <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
           News <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News  <i class="fas fa-chevron-down"></i>
+          News <i class="fas fa-chevron-down"></i>
         </a>
 
         <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
@@ -1692,7 +1691,7 @@
         </div>
       </div>
 
-     <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
+  <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
       <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
@@ -1784,8 +1783,8 @@
       <div class="menu-row">
         <div class="menu-tabs">
           <p class="tab-btn active" data-target="news">NEWS </p>
-          <!-- <p class="tab-btn" data-target="about">SERVICE</p>
-          <p class="tab-btn" data-target="magazine">MAGAZINE</p> -->
+          <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
         <div class="menu-content active" id="news">
           <p><a href="./newss.html" id="dropdownMenu"></a></p>
@@ -1810,9 +1809,6 @@
     </div>
   </div>
 </header>
-
-
-
 
   <!-- Desktop Tabs -->
   <div class="desktop-tabs" id="desktopTabs">
@@ -1841,7 +1837,6 @@
       <a href="./branding.html">Digital Branding</a><br>
     </div>
     <div class="tab-content" id="magazineTab">
-       <a href="./magzin.html">Magazine</a>
       <a href="./ceo.html">CEO Profile</a><br>
       <a href="./weekly.html">Newsletter</a><br>
       <a href="./company-profile.html">Company Profile</a><br>
@@ -1856,7 +1851,7 @@
     <ul>
       <li>
         <button onclick="toggleSubmenu('newsSub')">
-          NEWS  <i class="fas fa-chevron-down"></i>
+          NEWS SECTION <i class="fas fa-chevron-down"></i>
         </button>
         <ul class="submenu" id="newsSub">
           <li><a href="#">Latest News</a></li>
@@ -2026,60 +2021,7 @@
   if (header) header.classList.toggle("mobile-active");
 }
 
-function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
 
-  // Agar menu already open hai, click pe close karo
-  if (menu.style.display === "block") {
-    menu.style.display = "none";
-    return;
-  }
-
-  // Menu open karo
-  menu.style.display = "block";
-
-
-}
-
-// Page ke kisi bhi jagah pe click ho, menu close ho jaye
-document.addEventListener("click", function(event) {
-  const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2");
-
-  // Agar click hamburger ya menu ke andar nahi hai to close karo
-  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-    menu.style.display = "none";
-  }
-});
-
- function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
-     function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
-  
- // Select tabs and contents
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".menu-content");
-
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
-
-      // Add active to clicked
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
-    });
-  });
     </script>
   <script>// show  extra news
     document.getElementById("showMoreBtn").addEventListener("click", function () {
@@ -2136,26 +2078,87 @@ document.addEventListener("click", function(event) {
       
     });
   </script>
+
 <script>
+// ===== Desktop hover dropdown =====
 if (window.innerWidth >= 900) {
-  const newsItem = document.querySelector(".nav-item-with-dropdown.news-hover");
   const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const tabs = document.querySelectorAll(".tab-btn");
 
-  newsItem.addEventListener("mouseenter", () => {
-    hamburgerMenu.style.display = "block";
+  const hoverMap = {
+    newsDropdown: 'news',
+    magazineDropdown: 'magazine',
+    serviceDropdown: 'about'
+  };
+
+  function showHamburgerSection(sectionId) {
+    document.querySelectorAll('.menu-content').forEach(c => c.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+
+    tabs.forEach(t => t.classList.remove('active'));
+    tabs.forEach(t => { if(t.dataset.target === sectionId) t.classList.add('active'); });
+
+    hamburgerMenu.style.display = 'block';
+  }
+
+  // Desktop nav links hover
+  document.querySelectorAll('.nav-item-with-dropdown .desktop-link').forEach(link => {
+    const idMatch = link.getAttribute('onmouseenter').match(/'(\w+)'/);
+    if(!idMatch) return;
+    const dropdownId = idMatch[1];
+    const sectionId = hoverMap[dropdownId];
+
+    link.addEventListener('mouseenter', () => {
+      showHamburgerSection(sectionId);
+    });
+
+    link.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        if (!hamburgerMenu.matches(':hover')) {
+          hamburgerMenu.style.display = 'none';
+        }
+      }, 200);
+    });
   });
 
-  newsItem.addEventListener("mouseleave", () => {
-    setTimeout(() => {
-      if (!hamburgerMenu.matches(":hover")) {
-        hamburgerMenu.style.display = "none";
-      }
-    }, 200);
+  hamburgerMenu.addEventListener('mouseleave', () => {
+    hamburgerMenu.style.display = 'none';
   });
+}
 
-  hamburgerMenu.addEventListener("mouseleave", () => {
-    hamburgerMenu.style.display = "none";
+// ===== Mobile hamburger click (existing) =====
+function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    // Show ALL content in mobile click
+    document.querySelectorAll('.menu-content').forEach(c => c.classList.add('active'));
+    document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+    menu.style.display = "block";
+  }
+}
+
+// ===== Tabs switching (existing) =====
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
   });
+});
+
+// ===== Mobile dropdown toggle (existing) =====
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
 }
 </script>
 
