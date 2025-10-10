@@ -173,7 +173,7 @@
 .search-bar-bg {
   background-color: #292929;
   height: 24px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   
   width: 100%;
   overflow: hidden;
@@ -272,6 +272,12 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 30px 50px;
   z-index: 999;
+  transition: all 0.3s ease;
+}
+
+/* When active */
+.hamburger-menu.show {
+  display: block;
 }
 #dropdownMenu {
   display: grid;
@@ -1586,31 +1592,28 @@ function toggleMenu() {
   if (header) header.classList.toggle("mobile-active");
 }
 
+
 function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
+  if (!menu) return;
 
-  // Agar menu already open hai, click pe close karo
-  if (menu.style.display === "block") {
-    menu.style.display = "none";
-    return;
-  }
-
-  // Menu open karo
-  menu.style.display = "block";
-
-
+  // Toggle a consistent class instead of inline display
+  menu.classList.toggle("show");
 }
 
-
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function (event) {
   const menu = document.getElementById("hamburgerMenu");
   const hamburger = document.querySelector(".hamburger2");
 
-  // Agar click hamburger ya menu ke andar nahi hai to close karo
+  if (!menu || !hamburger) return;
+
+  // Close if clicked outside
   if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-    menu.style.display = "none";
+    menu.classList.remove("show");
   }
 });
+
+
 
 // Dropdown toggle for mobile
 function toggleDropdown(e) {

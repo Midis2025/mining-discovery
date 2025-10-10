@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bottom Subscribe Popup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f8f8f8;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .content {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    /* Disable scroll when popup is open */
+    body.popup-open {
+      overflow: hidden;
+    }
+
+    /* ===== POPUP STYLES ===== */
+    .subscribe-popup {
+      position: fixed;
+      left: 0;
+      bottom: -100%;
+      width: 100%;
+      background: #292929;
+      /* border-top-left-radius: 20px; */
+      /* border-top-right-radius: 20px; */
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 9999;
+      transition: bottom 1s ease;
+    }
+
+    .subscribe-popup.active {
+      bottom: 0;
+    }
+
+    .popup-inner {
+      max-width: 600px;
+      margin: auto;
+      padding: 35px 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .popup-inner h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #ae8a4c;
+    }
+
+    .popup-inner p {
+      font-size: 15px;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 1000;
+      margin-bottom: 5px;
+  color: #ae8a4c;
+    }
+
+    input[type="email"] {
+      width: 85%;
+      max-width: 380px;
+      padding: 12px 14px;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s ease;
+      background: #fdfdfd;
+    }
+
+    input[type="email"]:focus {
+      border-color: #000;
+      background: #fff;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      background: linear-gradient(135deg, #ae8a4c);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+        padding: 15px 155px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+
+
+
+    /* Dark overlay behind popup */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease;
+      z-index: 9998;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Small decorative line */
+    .popup-inner::before {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: #ccc;
+      border-radius: 2px;
+      margin: 0 auto 10px;
+      display: block;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+      .popup-inner {
+        padding: 25px 15px;
+      }
+      input[type="email"] {
+        width: 100%;
+      }
+      .popup-inner h2 {
+        font-size: 20px;
+      }
+      .popup-inner p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Scroll Down to Trigger the Popup</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt orci in nisl feugiat, non porta eros aliquam.</p>
+    <p>Keep scrolling to see the popup appear slowly from the bottom...</p>
+    <div style="height:2000px;"></div>
+  </div>
+
+<!-- Dark overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- POPUP BAR -->
+  <div class="subscribe-popup" id="subscribePopup">
+    <div class="popup-inner">
+      <div class="text-content">
+        <h2>Create a free account, or log in.</h2>
+        <p>Gain access to limited free articles, news alerts, select newsletters, podcasts and some daily games.</p>
+      </div>
+
+      <form id="subscribeForm">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+        <button type="submit">Continue</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let lastScrollY = 0;
+    const popup = document.getElementById('subscribePopup');
+    const overlay = document.getElementById('overlay');
+    const body = document.body;
+    let popupShown = false;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+
+      // Trigger popup once after scrolling 400px down
+      if (currentScroll > 400 && !popupShown && currentScroll > lastScrollY) {
+        popup.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('popup-open'); // disable page scroll
+        popupShown = true;
+      }
+
+      lastScrollY = currentScroll;
+    });
+
+    // Handle form submission
+    document.getElementById('subscribeForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+
+      if (email === "") {
+        alert("Please enter your email address.");
+        return;
+      }
+
+      alert(`Thank you for subscribing, ${email}!`);
+
+      // Hide popup and allow scrolling again
+      popup.classList.remove('active');
+      overlay.classList.remove('active');
+      body.classList.remove('popup-open');
+    });
+  </script>
+</body>
+</html>
