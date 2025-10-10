@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Evening Chatter</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Register Your Account</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
     }
 
     body {
-      cursor: pointer;
-      font-family: 'Pontano Sans', sans-serif;
-      background: white;
+      background-color: #fff;
+      color: #222;
     }
-
-    .first-header {
+     .first-header {
   height: 50px;
   overflow: hidden;
   background: black;
@@ -70,12 +69,10 @@
   text-decoration: underline;
 }
 
-
-
-.main-header {
+ .main-header {
       margin-bottom: 10px;
       background-color: #fff;
-      padding: 5px;
+      /* padding: 5px; */
       border-bottom: 1px solid #ddd;
     }
 
@@ -88,7 +85,7 @@
 
     .logo-social {
       
-  padding-top: 6px;
+    padding-top: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -123,7 +120,7 @@
       color: #8d6d2a;
     }
 
-   .header-buttons {
+    .header-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -147,6 +144,9 @@
   text-align: center;
   box-sizing: border-box;
 }
+.fa-solid {
+    font-weight: 900;
+    color: #ae8a4c}
 
     .login-btn {
       background-color:#ae8a4c;
@@ -169,9 +169,6 @@
 .search-bar-container-lasts{
   padding-top: 50px;
 }
-.fa-solid {
-    font-weight: 900;
-    color: #ae8a4c}
 
 .search-bar-bg {
   background-color: #292929;
@@ -267,7 +264,7 @@
 .hamburger-menu {
   display: none;
   position: absolute;
-  top: 160px;
+  top: 164px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -733,18 +730,23 @@
     width: 100%;
     gap: 27%;
   }
+  #dropdownMenu1{
+  display: flex;
+  flex-direction: column;
+}
+   
 
   .logo {
-    height: 70px;
+    height: 70px; 
   }
 
   .hamburger {
-        padding-right: 11px;
     display: block;
     font-size: 24px;
     background: none;
     border: none;
     color: #ae8a4c;
+    padding-right: 11px;
   }
 
   /* nav links column में */
@@ -839,562 +841,203 @@
 }
 
 
-   
 
-   
-   
-
-
-/* drop-down */
-
-
-    /* === Main Layout === */
-    /* Base Styles - Desktop (default) */
-    .container {
-      display: flex;
+    .register-section {
+      max-width: 1100px;
+      margin: 60px auto;
       padding: 20px;
-      gap: 20px;
-    }
-
-    .left-sidebar,
-    .right-sidebar {
-      width: 180px;
-      height: calc(100vh - 120px);
-      position: sticky;
-      top: 100px;
-      overflow-y: auto;
-      background: #fff;
-     
-      border-radius: 6px;
-      padding: 10px;
-
-      /* Hide scrollbar */
-      scrollbar-width: none;
-      /* Firefox */
-      -ms-overflow-style: none;
-      /* IE & Edge */
-    }
-
-    .left-sidebar::-webkit-scrollbar,
-    .right-sidebar::-webkit-scrollbar {
-      display: none;
-      /* Chrome, Safari */
-    }
-
-    .left-sidebar .box {
-      background: white;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-
-    .left-sidebar .box img {
-      width: 100%;
-      height: auto;
-    }
-
-    .main-content {
-      width: 60%;
-           height: calc(400vh - 120px);
-  position: sticky;
-  top: 100px;
-  overflow-y: auto;
-  background: #fff;
- 
-  border-radius: 6px;
- 
-
-  /* Hide scrollbar */
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
-      width: 60%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
     }
 
     h2 {
-      border-bottom: 2px solid #333;
-    }
-
-    .main-content h2 {
-      margin-bottom: 15px;
-      text-transform: capitalize;
-    }
-
-    .btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: white;
-    }
-
-    span {
-      color: #8d6d2a;
-    }
-
-    a {
-      color: #8d6d2a;
-      text-decoration: none;
-    }
-    .fa-solid{
-      padding-left: 10px;
-    }
-
-    .btn-more,
-    .gold-btn {
-      border: 1px solid #AC8A4A;
-      padding: 5px;
-      border-radius: 20px;
-      background-color: white;
-      color: #AC8A4A;
-    }
-
-    .gold-btn {
+      width: 100%;
+      font-size: 26px;
+      font-weight:normal;
       margin-bottom: 10px;
+      color: #111;
+      text-align: left;
     }
 
-    .heading,
-    .report,
-    .gold {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .news-card {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
-  
-      border-radius: 10px;
-    
-
-    }
-
-    .news-card img {
-      width: 205px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .text-content {
-      padding: 10px;
-    }
-
-    .text-content p {
-      padding-top: 10px;
-      line-height: 26px;
-    }
-
-    .right-sidebar {
-      width: 20%;
-      padding: 20px;
-
-      border-radius: 12px;
-      
-    }
-
-    .section-box {
-      border: 1px solid #ddd;
+    /* Left box */
+    .subscription-box {
+      flex: 1 1 600px;
       background: #fff;
-      margin-bottom: 20px;
       border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .section-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .section-box img {
-      width: 100%;
-      height: 130px;
-      object-fit: cover;
-      border-bottom: 1px solid #eee;
-    }
-
-    .section-box p {
-      margin: 10px;
-      font-size: 15px;
-      color: #333;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-
-    .gold-news {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-bottom: 30px;
-    }
-
-    .gold-card {
-      flex: 1;
-      min-width: 150px;
-      border-radius: 10px;
-      background: #AC8A4A4F;
-      border: 1px solid #ddd;
-      text-align: center;
-    }
-
-    .gold-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .gold-card p {
-      padding: 10px;
-      font-weight: bold;
-    }
-
-    .custom-line {
-      width: 540px;
-      border: 1px solid #333;
-      margin-top: 10px;
-    }
-
-    /* Tablet */
-    @media (max-width: 768px) {
-      .custom-line {
-        width: 80%;
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 480px) {
-      .custom-line {
-        width: 100%;
-      }
-
-      .left-sidebar {
-        display: none;
-      }
-    }
-
-    /* === Responsive: Tablet === */
-    @media (max-width: 992px) {
-      .container {
-        flex-direction: column;
-      }
-
-
-      .right-sidebar,
-      .main-content {
-        width: 100%;
-      }
-
-      .left-sidebar {
-        display: none;
-      }
-
-      .news-card {
-        flex-direction: column;
-      }
-
-      .news-card img {
-        width: 100%;
-        height: auto;
-      }
-
-      .gold-news {
-        flex-direction: column;
-      }
-
-      .gold-card {
-        width: 100%;
-      }
-    }
-
-    /* === Responsive: Phone === */
-    @media (max-width: 576px) {
-      .container {
-        padding: 15px;
-        gap: 15px;
-      }
-
-      .news-card {
-        gap: 10px;
-      }
-
-      .text-content {
-        padding: 10px;
-      }
-
-      .gold-card img {
-        height: auto;
-      }
-
-      .btn-more,
-      .gold-btn {
-        font-size: 14px;
-        padding: 4px 10px;
-      }
-
-      .gold-news {
-        gap: 15px;
-      }
-    }
-
-    .footer-container {
-      background-image: url(./image/footer-bg\ 1.png);
-      background-size: cover;
-      background-position: center;
-      padding: 60px 100px 30px;
-      color: #fff;
-      position: relative;
-     
-    }
-
-   .social-iconss {
-      display: flex;
-      gap: 15px;
-      padding-bottom: 10px;
-    }
-
-    .social-iconss a {
-      width: 25px;
-      height: 25px;
-      background: #a37b3c;   /* golden brown color */
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      text-decoration: none;
+      border-top: 4px solid #b58a43;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 35px 40px;
       transition: 0.3s;
     }
 
-    .social-iconss a:hover {
-      background: #c89f5d;   /* lighter gold on hover */
-      transform: scale(1.1);
-    }
-    .divider {
-      width: 1px;
-      background: #444;
-      height: 60%;
-      position: absolute;
-      left: 50%;
-      top: 10%;
+    .subscription-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
     }
 
-    .footer-content {
+    .subscription-box h3 {
+      color: #b58a43;
+      font-size: 20px;
+      font-weight:normal;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .subscription-box form {
       display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      /* max-width: 1300px; */
-      margin: auto;
-      padding-top: 20px;
-      gap: 30px;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    .footer-left {
-      flex: 1;
-      min-width: 280px;
-      padding-right: 40px;
+    /* 🟡 Input half-color effect */
+    .subscription-box input,
+    .subscription-box select {
+      padding: 12px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+      background: linear-gradient(to right, rgba(181,138,67,0.15) 50%, #fff 50%);
+      background-size: 200% 100%;
+      background-position: left bottom;
+      transition: all 0.4s ease;
     }
 
-    .social-iconss img {
-      height: 24px;
+    /* Focused input animation */
+    .subscription-box input:focus,
+    .subscription-box select:focus {
+      border-color: #b58a43;
+      background-position: right bottom;
+      box-shadow: 0 0 6px rgba(181,138,67,0.4);
     }
 
-    .footer-left p {
-      font-size: 20px;
-
-
-
-      max-width: 580px;
-      color: #ddd;
-    }
-
-    .footer-left .socials {
-      margin-top: 20px;
-    }
-
-    .footer-left .socials i {
-      margin-right: 15px;
-      font-size: 20px;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .footer-left .socials i:hover {
-      color: orange;
-    }
-
-    .footer-center {
-      min-width: 220px;
-      padding-left: 20px;
-    }
-
-    .footer-center ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-center li {
-      margin-bottom: 12px;
-    }
-
-    .footer-center a {
+    .subscription-box button {
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 14px;
       font-size: 15px;
-      color: #ccc;
-      text-decoration: none;
-      transition: color 0.3s;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .footer-center li:first-child a {
-    
-      font-size: 16px;
+    .subscription-box button:hover {
+      background: #b58a43;
     }
 
-    .footer-center a:hover {
-      color: #AE8A4C;
+    .note {
+      text-align: center;
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
+      line-height: 1.4;
     }
 
-    .footer-right {
-      flex: 1;
-      min-width: 280px;
-      padding-left: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .footer-right img {
-      height: 60px;
-      width: 100px;
-      object-fit: contain;
-      padding: 10px;
+    /* Right box */
+    .plan-box {
+      flex: 1 1 350px;
       background: #fff;
       border-radius: 10px;
-      transition: transform 0.3s;
-    }
-
-    .footer-right img:hover {
-      transform: scale(1.05);
-    }
-
-    .search-boxs {
-      position: relative;
-      width: 180px;
-
-    }
-
-    .search-boxs input {
-      width: 100%;
-      height: 25px;
-      padding: 5px 15px;
-      padding-right: 35px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      outline: none;
-    }
-
-
-    .footer-bottom {
+      border-top: 4px solid #b58a43;
+      padding: 30px 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
-      margin-top: 40px;
-      font-size: 13px;
-      color: #aaa;
+      transition: 0.3s;
     }
 
-    /* -------- RESPONSIVE -------- */
-
-    @media (max-width: 1024px) {
-      .footer-container {
-        padding: 50px 30px 25px;
-      }
-
-      .footer-content {
-        gap: 25px;
-      }
+    .plan-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
     }
 
-    @media (max-width: 768px) {
+    .plan-box h3 {
+      color: #b58a43;
+      font-size: 20px;
+      font-weight:normal;
+      margin-bottom: 10px;
+    }
 
-      .footer-container {
-        padding: 40px 20px 20px;
+    .plan-box ul {
+      list-style: disc;
+      text-align: left;
+      padding-left: 25px;
+      margin: 15px 0;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .plan-box button {
+      margin-top: 20px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .plan-box button:hover {
+      background: #b58a43;
+    }
+
+    /* Bottom navigation */
+    .bottom-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding-left: 150px;
+    }
+
+    .bottom-buttons button {
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 30px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .bottom-buttons button:hover {
+      background: #b58a43;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .bottom-buttons{
+        padding-left:0;
       }
-
-      .footer-content {
+      .register-section {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 40px;
+        align-items: center;
       }
-
-      .footer-left,
-      .footer-center,
-      .footer-right {
-        padding: 0;
-        min-width: 100%;
-      }
-
-      .footer-right {
-        justify-content: flex-start;
-      }
-
-      .divider {
-        display: none;
-      }
-
-      .footer-left p {
-        max-width: 100%;
-      }
-
-      .search-boxs {
-        width: 50%;
-      }
-
-    }
-
-    @media (max-width: 480px) {
-
-      .footer-left img,
-      .footer-right img {
-        height: 26px;
-        width: 29px;
-      }
-
-      .footer-left p {
-        font-size: 14px;
-      }
-
-      .footer-center li,
-      .footer-left .socials i {
-        font-size: 14px;
-      }
-
-      .footer-center li:first-child {
-        font-size: 15px;
-      }
-
-      .footer-bottom {
-        font-size: 12px;
-        margin-top: 30px;
+      .subscription-box, .plan-box {
+        width: 100%;
+        max-width: 550px;
       }
     }
   </style>
 </head>
-
 <body>
-<div class="first-header">
+   <header class="main-header">
+    <div class="first-header">
   <div class="news-slider">
     <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE - JUNE 2-4 2026</p>
+     <p>SAVE THE DATE - JUNE 2-4-2026</p>
     <p>Centre des congrès de Québec | June 2-4-2026</p>
   </div>
 </div>
- 
-
- 
-    <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1404,23 +1047,26 @@
     </button>
 
     <div class="nav-links" id="navMenu">
-          <a href="./index.html"> <i class="fa-solid fa-house-chimney"></i></a>
-      <!-- News Section -->
-      <div class="nav-item-with-dropdown">
-        <a href="./newss.html" class="desktop-link" data-target="news" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
-        </a>
-        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
-        </a>
+     <a href="./index.html"> <i class="fa-solid fa-house-chimney"></i></a>
+       <!-- News Section -->
+       <div class="nav-item-with-dropdown news-hover">
+  <a href="./newss.html" class="desktop-link" data-target="news">News <i class="fas fa-chevron-down"></i> </a>
 
-        <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          <div id="dropdownMenu1" class="dropdown-menu-container"></div>
-        </div>
-      </div>
+  <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+    News <i class="fas fa-chevron-down"></i>
+  </a>
 
-     <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
-      <!-- Magazine Section -->
+  <div class="dropdown-links" id="newsDropdown">
+    <div id="dropdownMenu1" class="dropdown-menu-container">
+      <a href="./latest-news.html">Latest News</a>
+      <a href="./industry-news.html">Industry News</a>
+      <a href="./global-updates.html">Global Updates</a>
+    </div>
+  </div>
+</div>
+
+        <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
+           <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" data-target="magazine" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
           Magazine <i class="fas fa-chevron-down"></i>
@@ -1437,6 +1083,10 @@
           <a href="./weekly.html">Newsletter</a>
         </div>
       </div>
+    
+    
+
+   
     
       <!-- Service Section -->
       <div class="nav-item-with-dropdown">
@@ -1456,7 +1106,7 @@
         </div>
       </div>
        <a href="./about.html">About Us</a>
-    <a href="./contact.html">Contact Us</a>
+     <a href="./contact.html">Contact Us</a>
     </div>
 <div class="new">
     <div class="header-buttons" id="headerButtons">
@@ -1522,7 +1172,9 @@
           <p><a href="./newsynd.html">News Syndication</a></p>
           <p><a href="./branding.html">Digital Branding</a></p>
           <p><a href="./pressoffice.html">Press Office</a></p>
-          <p><a href="https://youtube.com/">Youtube</a></p>
+          <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+ You tube
+</a></p>
           <p><a href="./confrence.html">Conference Media Coverage</a></p>
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
@@ -1540,11 +1192,10 @@
 
 
 
-
   <!-- Desktop Tabs -->
   <div class="desktop-tabs" id="desktopTabs">
     <div class="tab-btns">
-      <div class="tab-btn active" onclick="switchTab('newsTab')">News</div>
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News </div>
       <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
       <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
     </div>
@@ -1568,6 +1219,7 @@
       <a href="./branding.html">Digital Branding</a><br>
     </div>
     <div class="tab-content" id="magazineTab">
+       <a href="./magzin.html">Magazine</a>
       <a href="./ceo.html">CEO Profile</a><br>
       <a href="./weekly.html">Newsletter</a><br>
       <a href="./company-profile.html">Company Profile</a><br>
@@ -1582,7 +1234,7 @@
     <ul>
       <li>
         <button onclick="toggleSubmenu('newsSub')">
-          NEWS <i class="fas fa-chevron-down"></i>
+          NEWS  <i class="fas fa-chevron-down"></i>
         </button>
         <ul class="submenu" id="newsSub">
           <li><a href="#">Latest News</a></li>
@@ -1602,177 +1254,295 @@
     </ul>
   </div>
 
+ <section class="register-section">
+  <h2>Registered Your Account</h2>
 
-
-  <!-- Header + Dropdown -->
-
-
-  <!-- Dropdown Links -->
-  <!-- <div class="dropdown-links" id="dropdownMenu">
-    <a href="./newss.html">Latest News</a>
-    <a href="./gold.html">Gold News</a>
-    <a href="./silver.html">Silver News</a>
-    <a href="./cooper.html">Copper News</a>
-    <a href="./metal.html">Precious Metals</a>
-    <a href="./corporate.html">Corporate News</a>
-    <a href="./world.html">World News</a>
-    <a href="./leader.html">Leadership Thoughts</a>
-    <a href="./morning.html">Evening Chatter</a>
-    <a href="./Announcement.html">Announcement</a>
-    <a href="./popular.html">Popular This Week</a>
-    <a href="./project.html">Projects</a>
-    <a href="./research.html">Research Reports</a>
-    <a href="./Sponsored.html">Sponsored Post</a>
-  </div> -->
-
-  <!-- Content Section -->
-  <div class="container">
-    <!-- Left -->
-    <div class="left-sidebar">
-      <div class="box" id="advertisements">
-        <img src="./image/mrngbanner.webp" alt="">
-      </div>
-      <div class="box">
-
-        <img src="./image/mrngbanner2.webp" alt="">
-      </div>
-    </div>
-
-    <!-- Main -->
-    <div class="main-content">
-      <h2>Evening Chatter</h2>
-
-      <div id="morningChatterNews"></div>
-
-
-
-
-      <div class="btn"><button type="button" class="btn-more" id="showMoreBtn">show more</button></div>
-
-    </div>
-
-    <!-- Right -->
-     <div class="right-sidebar">
-      <div class="heading">
-        <h3>Projects</h3>
-        <a href=""><button type="button" class="gold-btn">show more<i
-              class="fa-solid fa-arrow-right"></i></button>
-        </a>
-      </div>
-      <div class="card-container">
-        <div class="card-border">
-          <div id="projects"></div>
-        </div>
-
-
-
-
-        <div class="heading">
-          <h3>Reports</h3>
-          <a href=""><button type="button" class="gold-btn">show more<i
-                class="fa-solid fa-arrow-right"></i></button>
-          </a>
-        </div>
-      </div>
-      <div class="card-border">
-        <div id="reports"></div>
-      </div>
-
-    </div>
+  <div class="subscription-box">
+    <h3>Complete Your Subscription</h3>
+    <form id="subscriptionForm">
+      <input type="text" placeholder="First Name*" required />
+      <input type="text" placeholder="Last Name*" required />
+      <input type="email" placeholder="Email Address*" required />
+      <input type="password" placeholder="Password*" required />
+      <input type="password" placeholder="Confirm Password*" required />
+      <input type="text" placeholder="Phone*" required />
+      <input type="text" placeholder="Job Title (optional)" />
+      <input type="text" placeholder="Company Name (optional)" />
+    <select id="country" name="country" required>
+  <option value="">Select Country</option>
+  <option value="Afghanistan">Afghanistan</option>
+  <option value="Albania">Albania</option>
+  <option value="Algeria">Algeria</option>
+  <option value="Andorra">Andorra</option>
+  <option value="Angola">Angola</option>
+  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+  <option value="Argentina">Argentina</option>
+  <option value="Armenia">Armenia</option>
+  <option value="Australia">Australia</option>
+  <option value="Austria">Austria</option>
+  <option value="Azerbaijan">Azerbaijan</option>
+  <option value="Bahamas">Bahamas</option>
+  <option value="Bahrain">Bahrain</option>
+  <option value="Bangladesh">Bangladesh</option>
+  <option value="Barbados">Barbados</option>
+  <option value="Belarus">Belarus</option>
+  <option value="Belgium">Belgium</option>
+  <option value="Belize">Belize</option>
+  <option value="Benin">Benin</option>
+  <option value="Bhutan">Bhutan</option>
+  <option value="Bolivia">Bolivia</option>
+  <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+  <option value="Botswana">Botswana</option>
+  <option value="Brazil">Brazil</option>
+  <option value="Brunei">Brunei</option>
+  <option value="Bulgaria">Bulgaria</option>
+  <option value="Burkina Faso">Burkina Faso</option>
+  <option value="Burundi">Burundi</option>
+  <option value="Cabo Verde">Cabo Verde</option>
+  <option value="Cambodia">Cambodia</option>
+  <option value="Cameroon">Cameroon</option>
+  <option value="Canada">Canada</option>
+  <option value="Central African Republic">Central African Republic</option>
+  <option value="Chad">Chad</option>
+  <option value="Chile">Chile</option>
+  <option value="China">China</option>
+  <option value="Colombia">Colombia</option>
+  <option value="Comoros">Comoros</option>
+  <option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option>
+  <option value="Congo, Republic of the">Congo, Republic of the</option>
+  <option value="Costa Rica">Costa Rica</option>
+  <option value="Croatia">Croatia</option>
+  <option value="Cuba">Cuba</option>
+  <option value="Cyprus">Cyprus</option>
+  <option value="Czech Republic">Czech Republic</option>
+  <option value="Denmark">Denmark</option>
+  <option value="Djibouti">Djibouti</option>
+  <option value="Dominica">Dominica</option>
+  <option value="Dominican Republic">Dominican Republic</option>
+  <option value="Ecuador">Ecuador</option>
+  <option value="Egypt">Egypt</option>
+  <option value="El Salvador">El Salvador</option>
+  <option value="Equatorial Guinea">Equatorial Guinea</option>
+  <option value="Eritrea">Eritrea</option>
+  <option value="Estonia">Estonia</option>
+  <option value="Eswatini">Eswatini</option>
+  <option value="Ethiopia">Ethiopia</option>
+  <option value="Fiji">Fiji</option>
+  <option value="Finland">Finland</option>
+  <option value="France">France</option>
+  <option value="Gabon">Gabon</option>
+  <option value="Gambia">Gambia</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Germany">Germany</option>
+  <option value="Ghana">Ghana</option>
+  <option value="Greece">Greece</option>
+  <option value="Grenada">Grenada</option>
+  <option value="Guatemala">Guatemala</option>
+  <option value="Guinea">Guinea</option>
+  <option value="Guinea-Bissau">Guinea-Bissau</option>
+  <option value="Guyana">Guyana</option>
+  <option value="Haiti">Haiti</option>
+  <option value="Honduras">Honduras</option>
+  <option value="Hungary">Hungary</option>
+  <option value="Iceland">Iceland</option>
+  <option value="India">India</option>
+  <option value="Indonesia">Indonesia</option>
+  <option value="Iran">Iran</option>
+  <option value="Iraq">Iraq</option>
+  <option value="Ireland">Ireland</option>
+  <option value="Israel">Israel</option>
+  <option value="Italy">Italy</option>
+  <option value="Jamaica">Jamaica</option>
+  <option value="Japan">Japan</option>
+  <option value="Jordan">Jordan</option>
+  <option value="Kazakhstan">Kazakhstan</option>
+  <option value="Kenya">Kenya</option>
+  <option value="Kiribati">Kiribati</option>
+  <option value="Korea, North">Korea, North</option>
+  <option value="Korea, South">Korea, South</option>
+  <option value="Kuwait">Kuwait</option>
+  <option value="Kyrgyzstan">Kyrgyzstan</option>
+  <option value="Laos">Laos</option>
+  <option value="Latvia">Latvia</option>
+  <option value="Lebanon">Lebanon</option>
+  <option value="Lesotho">Lesotho</option>
+  <option value="Liberia">Liberia</option>
+  <option value="Libya">Libya</option>
+  <option value="Liechtenstein">Liechtenstein</option>
+  <option value="Lithuania">Lithuania</option>
+  <option value="Luxembourg">Luxembourg</option>
+  <option value="Madagascar">Madagascar</option>
+  <option value="Malawi">Malawi</option>
+  <option value="Malaysia">Malaysia</option>
+  <option value="Maldives">Maldives</option>
+  <option value="Mali">Mali</option>
+  <option value="Malta">Malta</option>
+  <option value="Marshall Islands">Marshall Islands</option>
+  <option value="Mauritania">Mauritania</option>
+  <option value="Mauritius">Mauritius</option>
+  <option value="Mexico">Mexico</option>
+  <option value="Micronesia">Micronesia</option>
+  <option value="Moldova">Moldova</option>
+  <option value="Monaco">Monaco</option>
+  <option value="Mongolia">Mongolia</option>
+  <option value="Montenegro">Montenegro</option>
+  <option value="Morocco">Morocco</option>
+  <option value="Mozambique">Mozambique</option>
+  <option value="Myanmar">Myanmar</option>
+  <option value="Namibia">Namibia</option>
+  <option value="Nauru">Nauru</option>
+  <option value="Nepal">Nepal</option>
+  <option value="Netherlands">Netherlands</option>
+  <option value="New Zealand">New Zealand</option>
+  <option value="Nicaragua">Nicaragua</option>
+  <option value="Niger">Niger</option>
+  <option value="Nigeria">Nigeria</option>
+  <option value="North Macedonia">North Macedonia</option>
+  <option value="Norway">Norway</option>
+  <option value="Oman">Oman</option>
+  <option value="Pakistan">Pakistan</option>
+  <option value="Palau">Palau</option>
+  <option value="Palestine">Palestine</option>
+  <option value="Panama">Panama</option>
+  <option value="Papua New Guinea">Papua New Guinea</option>
+  <option value="Paraguay">Paraguay</option>
+  <option value="Peru">Peru</option>
+  <option value="Philippines">Philippines</option>
+  <option value="Poland">Poland</option>
+  <option value="Portugal">Portugal</option>
+  <option value="Qatar">Qatar</option>
+  <option value="Romania">Romania</option>
+  <option value="Russia">Russia</option>
+  <option value="Rwanda">Rwanda</option>
+  <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+  <option value="Saint Lucia">Saint Lucia</option>
+  <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+  <option value="Samoa">Samoa</option>
+  <option value="San Marino">San Marino</option>
+  <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+  <option value="Saudi Arabia">Saudi Arabia</option>
+  <option value="Senegal">Senegal</option>
+  <option value="Serbia">Serbia</option>
+  <option value="Seychelles">Seychelles</option>
+  <option value="Sierra Leone">Sierra Leone</option>
+  <option value="Singapore">Singapore</option>
+  <option value="Slovakia">Slovakia</option>
+  <option value="Slovenia">Slovenia</option>
+  <option value="Solomon Islands">Solomon Islands</option>
+  <option value="Somalia">Somalia</option>
+  <option value="South Africa">South Africa</option>
+  <option value="South Sudan">South Sudan</option>
+  <option value="Spain">Spain</option>
+  <option value="Sri Lanka">Sri Lanka</option>
+  <option value="Sudan">Sudan</option>
+  <option value="Suriname">Suriname</option>
+  <option value="Sweden">Sweden</option>
+  <option value="Switzerland">Switzerland</option>
+  <option value="Syria">Syria</option>
+  <option value="Taiwan">Taiwan</option>
+  <option value="Tajikistan">Tajikistan</option>
+  <option value="Tanzania">Tanzania</option>
+  <option value="Thailand">Thailand</option>
+  <option value="Timor-Leste">Timor-Leste</option>
+  <option value="Togo">Togo</option>
+  <option value="Tonga">Tonga</option>
+  <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+  <option value="Tunisia">Tunisia</option>
+  <option value="Turkey">Turkey</option>
+  <option value="Turkmenistan">Turkmenistan</option>
+  <option value="Tuvalu">Tuvalu</option>
+  <option value="Uganda">Uganda</option>
+  <option value="Ukraine">Ukraine</option>
+  <option value="United Arab Emirates">United Arab Emirates</option>
+  <option value="United Kingdom">United Kingdom</option>
+  <option value="United States">United States</option>
+  <option value="Uruguay">Uruguay</option>
+  <option value="Uzbekistan">Uzbekistan</option>
+  <option value="Vanuatu">Vanuatu</option>
+  <option value="Vatican City">Vatican City</option>
+  <option value="Venezuela">Venezuela</option>
+  <option value="Vietnam">Vietnam</option>
+  <option value="Yemen">Yemen</option>
+  <option value="Zambia">Zambia</option>
+  <option value="Zimbabwe">Zimbabwe</option>
+</select>
+      <button type="submit">Create Your Account</button>
+    </form>
+    <p class="note">
+      Your payment is securely processed with 256-bit encryption. Cancel anytime. No hidden fees.
+    </p>
   </div>
 
-
-  <!-- Footer Section -->
-  <div class="footer-container">
-    <div class="footers">
-      <img src="./discoverylogo.jpg" alt="Mining Discovery Logo" height="70px" />
-    </div>
-    <div class="footer-content">
-
-
-
-      <!-- Left -->
-
-      <div class="footer-left">
-
-        <p>
-          Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an
-          interactive mining website for mining companies, mining associations and mining executives globally.
-        </p>
-        <div class="search-bar-container-lasts" id="searchContainer">
-            <div class="social-iconss">
-    <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><i class="fab fa-linkedin-in"></i></a>
-    <a href="https://www.instagram.com/miningdiscovery"><i class="fab fa-instagram"></i></a>
-    <a href="https://x.com/MiningDiscovery"><i class="fab fa-x-twitter"></i></a>
-    <a href="https://www.youtube.com/@miningdiscovery"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><i class="fab fa-facebook-f"></i></a>
+  <div class="plan-box" id="selectedPlanBox">
+    <h3 id="planTitle">Selected Plan</h3>
+    <ul id="planDetails"></ul>
+    <button id="confirmPlanBtn">Confirm Plan</button>
   </div>
 
-          <div class="search-boxs">
-            <input type="text" id="searchInput" placeholder="Search..." />
-            <button class="search-icon"><i class="fas fa-search"></i></button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Center -->
- <div class="footer-center">
-          <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="about.html">ABOUT US</a></li>
-           <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
-  MULTIMEDIA VIDEOS
-</a></li>
-            <li><a href="sub.html">SUBSCRIPTION</a></li>
-            <li><a href="./magzin.html">MAGAZINES</a></li>
-            <li><a href="">COMMENT GUIDELINE</a></li>
-            <li><a href="">LEGAL NOTICE</a></li>
-          </ul>
-        </div>
-
-
-    </div>
-
-    <div class="footer-bottom">
-      © 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
-    </div>
+  <!-- Centered buttons -->
+  <div class="bottom-buttons">
+    <a href="sub.html#plan"><button>Choose Plan</button></a>
+    <button>Payment</button>
   </div>
+</section>
 
 
-  </footer>
-  </div>
+  
 
-
-  <!-- <script src="./script.js"></script> -->
-  <script src="./script.js"></script>
-  <script src="./js/news.js"></script>
-  <script src="./js/advertisment.js"></script>
-  <script src="./js/morningchatter.js"></script>
-  <script src="./js/projects.js"></script>
-   <script src="./js/reports.js"></script>
-
-
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    loadAdvertisements();
-    loadProjects();
-    loadReports();
-    newsCategory();
-
-    // call the chatter widget here
-    loadMorningChatter();
-  });
-</script>
-
-   <script src="./js/latestNews.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      loadLatestNews();
-      
+    document.getElementById("subscriptionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("✅ Your account has been successfully created!");
+    });
+
+    document.getElementById("startFreeBtn").addEventListener("click", () => {
+      alert("🎉 You selected the Basic (Free) Plan!");
     });
   </script>
+  <script>
+  // Read the selected plan from the URL
+  const params = new URLSearchParams(window.location.search);
+  const planName = params.get("plan") || "Basic Plan";
+  const planPrice = params.get("price") || "$0";
 
+  const planTitle = document.getElementById("planTitle");
+  const planDetails = document.getElementById("planDetails");
+  const confirmBtn = document.getElementById("confirmPlanBtn");
+
+  // Plan details data (for auto display)
+  const planData = {
+    "Basic Plan": [
+      "Unlimited access to daily news articles (free-to-read section)",
+      "First 4 issues of our magazine (digital)",
+      "Weekly curated newsletters"
+    ],
+    "Essential Plan": [
+      "Unlimited access to all magazine issues",
+      "Unlimited weekly newsletters and special briefings",
+      "Full article search & archives",
+      "Cancel anytime (monthly subscription model)"
+    ],
+    "Advanced Plan": [
+      "Exclusive access to CEO profiles (insights into leadership)",
+      "Exclusive access to company profiles (sector deep dives)",
+      "Access to premium “insight” reports or dossier downloads",
+      "4-month bundled subscription (cost advantage vs monthly)"
+    ],
+    "Premium Plan": [
+      "Full 12-month uninterrupted access",
+      "Best value per month among all plans",
+      "Priority support & bonus perks (e.g. early access to new features)"
+    ]
+  };
+
+  // Update page dynamically
+  planTitle.textContent = `${planName} (${planPrice})`;
+  planDetails.innerHTML = planData[planName]
+    ? planData[planName].map(item => `<li>${item}</li>`).join("")
+    : "<li>Plan details not available</li>";
+
+  confirmBtn.textContent = planName === "Basic Plan" ? "Start Free" : `Subscribe to ${planName}`;
+</script>
 <script>
 if (window.innerWidth >= 900) {
   const desktopLinks = document.querySelectorAll(".desktop-link");
@@ -1809,8 +1579,158 @@ if (window.innerWidth >= 900) {
   });
 }
 </script>
+<script>
+
+function toggleMenu() {
+  const header = document.querySelector(".main-header");
+  if (header) header.classList.toggle("mobile-active");
+}
+
+function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+
+  // Agar menu already open hai, click pe close karo
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    return;
+  }
+
+  // Menu open karo
+  menu.style.display = "block";
 
 
+}
 
+
+document.addEventListener("click", function(event) {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
+
+  // Agar click hamburger ya menu ke andar nahi hai to close karo
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.display = "none";
+  }
+});
+
+// Dropdown toggle for mobile
+function toggleDropdown(e) {
+  const isMobile = window.matchMedia('(max-width: 899px)').matches;
+
+  if (!isMobile) {
+    if (e) e.preventDefault();
+    return;
+  }
+
+  const dropdown = document.getElementById("dropdownMenu");
+  const header = document.getElementById("newsToggle");
+  if (dropdown) dropdown.classList.toggle("show");
+  if (header) header.classList.toggle("rotate");
+}
+
+// Tabs logic
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
+  });
+});
+
+// Mobile dropdown toggle
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
+
+// Desktop dropdown hover
+function showDesktopDropdown(id) {
+  if (window.innerWidth >= 900) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      dropdown.classList.add("show");
+    }
+  }
+}
+
+function hideDesktopDropdown(id) {
+  if (window.innerWidth >= 900) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      dropdown.classList.remove("show");
+    }
+  }
+}
+
+
+// Show popup only once in lifetime (until localStorage is cleared)
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById("popup2");
+
+  if (!popup) return;
+
+  // Sirf tab dikhana jab user ne pehli baar site open ki hai
+  if (!localStorage.getItem("subscribedPopupShown")) {
+    setTimeout(() => {
+      popup.style.display = "flex"; // show popup
+      localStorage.setItem("subscribedPopupShown", "true"); // flag save
+    }, 3000); // delay (3 sec)
+  } else {
+    popup.style.display = "none"; // dusri baar kabhi show na ho
+  }
+});
+
+function closePopup() {
+  const popup = document.getElementById("popup2");
+  if (popup) popup.style.display = "none";
+}
+
+function subscribe() {
+  const email = document.getElementById("email").value;
+  if (email.trim() !== "") {
+    alert("Thanks for subscribing: " + email);
+    closePopup();
+  } else {
+    alert("Please enter a valid email.");
+  }
+}
+
+</script>
+<script src="./script.js"></script>
+  <script src="./js/subscriber.js"> </script>
+  <script src="./js/latestNews.js"></script>
+  <script src="./js/news.js"></script>
+  <script src="./js/popularNews.js"></script>
+  <script src="./js/copperNews.js"></script>
+  <script src="./js/preciousMetal.js"></script>
+  <script src="./js/worldNews.js"></script>
+  <script src="./js/coporateNews.js"></script>
+  <script src="./js/advertisment.js"></script>
+  <script src="./js/annoucements.js"></script>
+  <script src="./js/whatsOn.js"></script>
+  <script src="./js/Home-Advertisments.js"></script>
+  <script src="./js/sponsoredPost.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadLatestNews();
+      loadPopularNews();
+      loadCopperNews();
+      loadPreciousMetalNews();
+      loadWorldNews();
+      loadCorporateNews();
+      loadAdvertisements();
+      loadAnnouncements();
+      loadWhatsOn();
+    });
+  </script>
+
+ <script src="./js/news.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>

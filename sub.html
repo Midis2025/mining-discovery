@@ -108,6 +108,9 @@
       flex-wrap: wrap;
       
     }
+    .fa-solid {
+    font-weight: 900;
+    color: #ae8a4c}
 
     .nav-links a {
 
@@ -1579,7 +1582,7 @@
     </button>
 
     <div class="nav-links" id="navMenu">
-    
+         <a href="./index.html"> <i class="fa-solid fa-house-chimney"></i></a>
       <!-- News Section -->
       <div class="nav-item-with-dropdown">
            
@@ -1796,8 +1799,8 @@
   </section>
     </div>
      
-  <div class="container2"  id="plan">
-     <section class="plans-section">
+<div class="container2" id="plan">
+  <section class="plans-section">
     <div class="plans-container">
       
       <!-- Basic Plan -->
@@ -1808,7 +1811,7 @@
           <li>First 4 issues of our magazine (digital)</li>
           <li>Weekly curated newsletters</li>
         </ul>
-        <button>Start Free</button>
+        <button onclick="selectPlan('Basic Plan', '$0')">Start Free</button>
       </div>
 
       <!-- Essential Plan -->
@@ -1820,10 +1823,10 @@
           <li>Full article search & archives</li>
           <li>Cancel anytime (monthly subscription model)</li>
         </ul>
-        <button>Subscribe for 49$</button>
+        <button onclick="selectPlan('Essential Plan', '$49 / month')">Subscribe for 49$</button>
       </div>
 
-      <!-- Advanced Plan (highlighted) -->
+      <!-- Advanced Plan -->
       <div class="plan-card advanced">
         <h3>Advanced Plan <span>$149 / 4 months</span></h3>
         <ul>
@@ -1832,7 +1835,7 @@
           <li>Access to premium “insight” reports or dossier downloads</li>
           <li>4-month bundled subscription (cost advantage vs monthly)</li>
         </ul>
-        <button>Subscribe for 149$</button>
+        <button onclick="selectPlan('Advanced Plan', '$149 / 4 months')">Subscribe for 149$</button>
       </div>
 
       <!-- Premium Plan -->
@@ -1843,12 +1846,21 @@
           <li>Best value per month among all plans</li>
           <li>Priority support & bonus perks (e.g. early access to new features)</li>
         </ul>
-        <button>Subscribe for 299$</button>
+        <button onclick="selectPlan('Premium Plan', '$299 / year')">Subscribe for 299$</button>
       </div>
 
     </div>
   </section>
-  </div>
+</div>
+
+<script>
+  function selectPlan(planName, planPrice) {
+    // Redirect to registration page with plan info in URL
+    const url = `register.html?plan=${encodeURIComponent(planName)}&price=${encodeURIComponent(planPrice)}`;
+    window.location.href = url;
+  }
+</script>
+
   <div class="container3">
     
   <section class="access-section">
