@@ -1560,7 +1560,7 @@
           <div class="nav-item-with-dropdown">
             <a
               href="./newss.html"
-              class="desktop-link"
+            class="desktop-link" data-target="news"
               onmouseenter="showDesktopDropdown('newsDropdown')"
               onmouseleave="hideDesktopDropdown('newsDropdown')"
             >
@@ -1588,7 +1588,7 @@
           <div class="nav-item-with-dropdown">
             <a
               href="./magzin.html"
-              class="desktop-link"
+           class="desktop-link" data-target="magazine"
               onmouseenter="showDesktopDropdown('magazineDropdown')"
               onmouseleave="hideDesktopDropdown('magazineDropdown')"
             >
@@ -1620,7 +1620,7 @@
           <div class="nav-item-with-dropdown">
             <a
               href="./service.html"
-              class="desktop-link"
+            class="desktop-link" data-target="about" 
               onmouseenter="showDesktopDropdown('serviceDropdown')"
               onmouseleave="hideDesktopDropdown('serviceDropdown')"
             >
@@ -2283,6 +2283,42 @@ document.getElementById("brandingForm").addEventListener("submit", async functio
     alert("❌ Something went wrong. Please try again later.");
   }
 });
+</script>
+<script>
+  if (window.innerWidth >= 900) {
+  const desktopLinks = document.querySelectorAll(".desktop-link");
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  function removeActive() {
+    contents.forEach(c => c.classList.remove("active"));
+    tabs.forEach(t => t.classList.remove("active"));
+  }
+
+  desktopLinks.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+      const target = link.dataset.target; // news / about / magazine
+      hamburgerMenu.style.display = "block";
+      removeActive();
+
+      // Show proper content
+      const content = document.getElementById(target);
+      if(content) content.classList.add("active");
+
+      // Highlight corresponding tab
+      tabs.forEach(tab => {
+        if(tab.dataset.target === target) tab.classList.add("active");
+      });
+    });
+  });
+
+  // Hide menu on mouse leave
+  hamburgerMenu.addEventListener("mouseleave", () => {
+    hamburgerMenu.style.display = "none";
+    removeActive();
+  });
+}
 </script>
   </body>
 </html>

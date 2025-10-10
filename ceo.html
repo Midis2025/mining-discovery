@@ -1612,31 +1612,85 @@
         <script>
  function toggleMenu2() {
   const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+
+  // Agar menu already open hai, click pe close karo
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    return;
+  }
+
+  // Menu open karo
+  menu.style.display = "block";
+
+
 }
- // Select tabs and contents
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".menu-content");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
 
-      // Add active to clicked
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
-    });
+document.addEventListener("click", function(event) {
+  const menu = document.getElementById("hamburgerMenu");
+  const hamburger = document.querySelector(".hamburger2");
 
+  // Agar click hamburger ya menu ke andar nahi hai to close karo
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    menu.style.display = "none";
+  }
+});
+
+// Dropdown toggle for mobile
+function toggleDropdown(e) {
+  const isMobile = window.matchMedia('(max-width: 899px)').matches;
+
+  if (!isMobile) {
+    if (e) e.preventDefault();
+    return;
+  }
+
+  const dropdown = document.getElementById("dropdownMenu");
+  const header = document.getElementById("newsToggle");
+  if (dropdown) dropdown.classList.toggle("show");
+  if (header) header.classList.toggle("rotate");
+}
+
+// Tabs logic
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".menu-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
   });
- function toggleDropdownMobile(id) {
-      const dropdown = document.getElementById(id);
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
+});
+
+// Mobile dropdown toggle
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
+
+// Desktop dropdown hover
+function showDesktopDropdown(id) {
+  if (window.innerWidth >= 900) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      dropdown.classList.add("show");
     }
-  
+  }
+}
+
+function hideDesktopDropdown(id) {
+  if (window.innerWidth >= 900) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      dropdown.classList.remove("show");
+    }
+  }
+}
+
             // Toggle mobile menu
             function toggleMenu() {
                 const navMenu = document.getElementById('navMenu');

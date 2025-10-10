@@ -1614,11 +1614,11 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       
       <!-- News Section -->
       <div class="nav-item-with-dropdown">
-        <a href="./newss.html" class="desktop-link" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+        <a href="./newss.html" class="desktop-link" data-target="news" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          News  <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News Section <i class="fas fa-chevron-down"></i>
+          News  <i class="fas fa-chevron-down"></i>
         </a>
 
         <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
@@ -1629,7 +1629,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
       <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
-        <a href="./magzin.html" class="desktop-link" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+        <a href="./magzin.html" class="desktop-link" data-target="magazine" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
           Magazine <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
@@ -1647,7 +1647,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     
       <!-- Service Section -->
       <div class="nav-item-with-dropdown">
-        <a href="./service.html" class="desktop-link" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+        <a href="./service.html" class="desktop-link" data-target="about" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
           Service <i class="fas fa-chevron-down"></i>
         </a>
         <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
@@ -1975,7 +1975,40 @@ function toggleDropdownMobile(id) {
   }
 }
   
-  
+  if (window.innerWidth >= 900) {
+  const desktopLinks = document.querySelectorAll(".desktop-link");
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  function removeActive() {
+    contents.forEach(c => c.classList.remove("active"));
+    tabs.forEach(t => t.classList.remove("active"));
+  }
+
+  desktopLinks.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+      const target = link.dataset.target; // news / about / magazine
+      hamburgerMenu.style.display = "block";
+      removeActive();
+
+      // Show proper content
+      const content = document.getElementById(target);
+      if(content) content.classList.add("active");
+
+      // Highlight corresponding tab
+      tabs.forEach(tab => {
+        if(tab.dataset.target === target) tab.classList.add("active");
+      });
+    });
+  });
+
+  // Hide menu on mouse leave
+  hamburgerMenu.addEventListener("mouseleave", () => {
+    hamburgerMenu.style.display = "none";
+    removeActive();
+  });
+}
   
     </script>
       <script src="./js/advertisment.js"></script>
