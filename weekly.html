@@ -1753,7 +1753,6 @@
     </div>
   </div> -->
 <div class="container3">
- 
   <div class="newsletter-box" id="newsletterBox">
     <div class="newsletter-header">
       <span>Receive our free daily newsletter</span>
@@ -1764,6 +1763,9 @@
       <input type="email" placeholder="Email address" id="emailInput">
       <button class="subscribe-btn" id="subscribeBtn">Subscribe</button>
     </div>
+
+    <!-- Success / error message -->
+    <div id="newsletterMessage" style="margin-top: 10px; color: green; display: none;"></div>
   </div>
 </div>
 
@@ -1932,42 +1934,58 @@ function toggleDropdownMobile(id) {
       
     });
   </script>
-  <!-- <script>
-    const popup = document.getElementById('popup');
-    const closePopup = document.getElementById('closePopup');
-    const cards = document.querySelectorAll('.newsletter-card');
+ <script>
+  // Grab elements
+  const emailInput = document.getElementById("emailInput");
+  const subscribeBtn = document.getElementById("subscribeBtn");
+  const messageDiv = document.getElementById("newsletterMessage");
 
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        popup.style.display = 'flex';
+  // Function to subscribe
+  async function subscribeEmail() {
+    const email = emailInput.value.trim();
+
+    if (!email) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      const res = await fetch("https://admins.miningdiscovery.com/api/subscribers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ data: { email } }) // Strapi expects { data: { email } }
       });
-    });
 
-    closePopup.addEventListener('click', () => {
-      popup.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === popup) {
-        popup.style.display = 'none';
-      }
-    });
-     const header = document.querySelector('.newsletter-header');
-    const box = document.getElementById('newsletterBox');
-
-    header.addEventListener('click', () => {
-      box.classList.toggle('collapsed');
-    });
-
-    document.getElementById('subscribeBtn').addEventListener('click', () => {
-      const email = document.getElementById('emailInput').value;
-      if (email.trim() === "") {
-        alert("Please enter your email address.");
+      if (res.ok) {
+        messageDiv.style.color = "green";
+        messageDiv.textContent = "Thank you for subscribing!";
+        messageDiv.style.display = "block";
+        emailInput.value = ""; // Clear input
       } else {
-        alert(`Subscribed successfully with: ${email}`);
+        const errorData = await res.json();
+        messageDiv.style.color = "red";
+        messageDiv.textContent = "Subscription failed: " + (errorData.error || "Unknown error");
+        messageDiv.style.display = "block";
       }
-    });
-  </script> -->
+    } catch (err) {
+      console.error("Error subscribing:", err);
+      messageDiv.style.color = "red";
+      messageDiv.textContent = "Something went wrong. Please try again later.";
+      messageDiv.style.display = "block";
+    }
+  }
 
+  // Subscribe on button click
+  subscribeBtn.addEventListener("click", subscribeEmail);
+
+  // Subscribe on pressing Enter in the input
+  emailInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      subscribeEmail();
+    }
+  });
+</script>
 </body>
 </html>
