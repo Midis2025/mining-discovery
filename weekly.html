@@ -1725,56 +1725,23 @@
   <div class="main-content">
   <div class="section-container">
     
-    <h2 class="digital-edition">Newsletters</h2>
+    <!-- <h2 class="digital-edition">Newsletters</h2>
     <div class="underline">
     </div>
 
 
-    <div class="magazine-list">
-      <div class="magazine-card">
-        <img src="./image/Ceos cover/Ceos cover/August 11, 2025.png" alt="June Edition">
-        <div class="edition-label">June Edition</div>
-      </div>
+   <div class="magazine-list" id="magazineList"></div>
 
-      <div class="magazine-card">
-        <img src="./image/Ceos cover/Ceos cover/August 14, 2025.png" alt="July Edition">
-        <div class="edition-label">July Edition</div>
-      </div>
-
-      <div class="magazine-card">
-        <img src="./image/Ceos cover/Ceos cover/August 22, 2025.png" alt="August Edition">
-        <div class="edition-label">August Edition</div>
-      </div>
-
-      <div class="magazine-card">
-          <img src="./image/Ceos cover/Ceos cover/August 5, 2025.png" alt="August Edition">
-        <div class="edition-label">September Edition</div>
-      </div>
-    </div>
-
-     <!-- Subscribe button in center -->
   <div class="subscribe-access">
     <button class="subscribe-btn">Subscribe to Access</button>
+  </div> -->
   </div>
-  </div>
-  <div class="container2">
-    
-  <h2>Newsletter Stocks</h2>
+ <div class="container2" id="newsletterContainer">
+  <h2>Newsletters</h2>
+</div>
 
-  <div class="newsletter-container">
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 11, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 14, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 22, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 5, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 11, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 14, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 22, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 5, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 11, 2025.png" alt=""></div>
-    <div class="newsletter-card"><img src="./image/Ceos cover/Ceos cover/August 14, 2025.png" alt=""></div>
-    
   <!-- ===== Popup ===== -->
-  <div class="popup-overlay" id="popup">
+  <!-- <div class="popup-overlay" id="popup">
     <div class="popup-box">
       <span class="close-popup" id="closePopup">&times;</span>
       <h3>Content Restricted</h3>
@@ -1784,8 +1751,7 @@
         <button><a href="./sub.html" target="_blank" rel="noopener noreferrer">View Subscription Plan</a></button>
       </div>
     </div>
-  </div>
-  </div>
+  </div> -->
 <div class="container3">
  
   <div class="newsletter-box" id="newsletterBox">
@@ -1861,6 +1827,7 @@
     </div>
   </div>
   <script src="./script.js"></script>
+  <script src="./js/newsletter.js"></script>
   <script src="./js/news.js"></script>
   <script>
    function toggleMenu2() {
@@ -1965,7 +1932,7 @@ function toggleDropdownMobile(id) {
       
     });
   </script>
-  <script>
+  <!-- <script>
     const popup = document.getElementById('popup');
     const closePopup = document.getElementById('closePopup');
     const cards = document.querySelectorAll('.newsletter-card');
@@ -2000,7 +1967,7 @@ function toggleDropdownMobile(id) {
         alert(`Subscribed successfully with: ${email}`);
       }
     });
-  </script>
+  </script> -->
 
 </body>
 </html>
