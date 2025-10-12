@@ -83,12 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 min-height: 60vh;
                 background: #f9f9f9;
             }
+               .content{
+               text-align: justify;
+               }
 
             #newsDetails {
-                width: 100%;
+                width: 65%;
                 background: #fff;
                 border-radius: clamp(8px, 2vw, 12px);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                 overflow: hidden;
                 border: 1px solid #fff;
             }
@@ -412,7 +415,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 justify-content: center;
                 gap: 15px;
             }
-
+a{
+color:#ae8a4c;
+}
             .login-icons i {
                 border: 1px solid #bfa27d;
                 border-radius: 50%;
@@ -608,13 +613,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <div class="signup-section">
-                    <p>Sign up with your Mail ID. 
+                  
                         <span class="share-icons">
                             <span>Share</span>
-                            <i class="fa-brands fa-facebook-f" title="Share on Facebook"></i>
-                            <i class="fa-brands fa-x-twitter" title="Share on Twitter"></i>
-                            <i class="fa-brands fa-linkedin-in" title="Share on LinkedIn"></i>
-                            <i class="fa-brands fa-instagram" title="Share on Instagram"></i>
+                         
                         </span>
                     </p>
                     <input type="text" placeholder="Name*" class="input-field" />
@@ -742,7 +744,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (innerContainer) {
             innerContainer.innerHTML = `
                 <div class="text-content" style="padding-top: 15px;">
-                    <h2 style="color: #4CAF50; margin-bottom: 5px;">✓ Subscription Successful!</h2>
+                    <h2 style="color: #ae8a4c; margin-bottom: 5px;">✓ Subscription Successful!</h2>
                     <p style="margin-bottom: 25px; color: #fff;">Thank you! You can now continue reading.</p>
                 </div>
                 <button onclick="window.closePopup()" style="
@@ -930,7 +932,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const processedDescription = processDescription(description);
 
         const sourceIndicator = source && !source.includes('cache') ? `
-            <span style="background: #e8f5e8; color: #2e7d32; padding: clamp(2px, 1vw, 4px) clamp(4px, 1.5vw, 8px); border-radius: 3px; font-size: clamp(10px, 2vw, 12px);">
+            <span style="background: #e8f5e8; color: #ae8a4c; padding: clamp(2px, 1vw, 4px) clamp(4px, 1.5vw, 8px); border-radius: 3px; font-size: clamp(10px, 2vw, 12px);">
                 Source: ${source}
             </span>
         ` : '';

@@ -1544,39 +1544,43 @@
       display: none;
     }
 
-    .team-card {
- 
+.team-card {
   background: white;
-  
-  border-radius: 6px;
-  border: 1px solid black;
-  
-  flex-shrink: 0;
-  border-radius: 12px;   /* <-- duplicate, overrides 6px above */
-  border: 1px solid #ddd; /* <-- overrides black border */
+  border: 1px solid #ddd;
+  border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 286px;
+
+  width: 280px;      /* 👈 fixed width */
+  height: 100%;     /* 👈 fixed height (same for all) */
+  overflow: hidden;  /* 👈 prevents overflow */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  text-transform: lowercase;
 }
 
-    .team-card img {
-      width: 100%;
-  height: 240px;
-  object-fit: cover;
+/* 👇 Image section – same size for all cards */
+.team-card img {
+  width: 100%;
+  height: 240px;         /* 👈 fixed height for all images */
+  object-fit: cover;     /* 👈 crops image nicely */
   border-radius: 10px;
   margin-bottom: 12px;
+}
 
-    }
 
-  .team-card p {
-    padding: 5px;
+ .team-card p {
+  padding: 5px 10px;
   font-size: 15px;
   color: #222;
   margin-bottom: 10px;
   line-height: 1.5;
   font-weight: 500;
+  flex-grow: 1; /* keeps spacing balanced */
 }
+
 
 .team-card small {
 padding-left: 5px;
@@ -2566,16 +2570,7 @@ ease;
       border-radius: 20px;
       padding: 5px;
     }
-    .box1{
-      border: 1px solid black;
-      border-radius: 10px;
-      background-color: #d9d9d9;
-    }
-    .box2{
-       border: 1px solid black;
-       border-radius: 10px;
-       background-color: #d9d9d9;
-    }
+  
    .content {
   text-align: center;
 }
@@ -2586,8 +2581,8 @@ ease;
   margin: 10px auto; /* auto margins for extra centering */
   display: inline-block;
   border-radius: 20px;
-  background-color: #000;
-  border:1px solid black;
+  background-color:white;
+  border:1px solid #ae8a4c;
 }
 
 .card-news a {
@@ -2619,7 +2614,7 @@ ease;
 .box2 {
   border: 1px solid black;
   border-radius: 10px;
-  background-color: #d9d9d9;
+  /* background-color: #d9d9d9; */
 }
 
 .content {

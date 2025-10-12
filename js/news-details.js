@@ -92,7 +92,7 @@ function showSubscriptionSuccess() {
     if (innerContainer) {
         innerContainer.innerHTML = `
             <div class="text-content" style="padding-top: 15px;">
-                <h2 style="color: #4CAF50; margin-bottom: 5px;">✓ Subscription Successful!</h2>
+                <h2 style="color: #ae8a4c; margin-bottom: 5px;">✓ Subscription Successful!</h2>
                 <p style="margin-bottom: 25px;">Thank you! You can now continue reading.</p>
             </div>
             <button onclick="window.closePopup()" style="
@@ -395,13 +395,10 @@ function renderNewCommentsSection(newsId) {
                 </div>
 
                 <div class="signup-section">
-                    <p>Sign up with your Mail ID. 
+                  
                         <span class="share-icons">
                             <span>Share</span>
-                            <i class="fa-brands fa-facebook-f"></i>
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <i class="fa-brands fa-linkedin-in"></i>
-                            <i class="fa-brands fa-instagram"></i>
+                         
                         </span>
                     </p>
                     <input type="text" id="commentNameField" name="name" placeholder="Name*" class="input-field" required/>
@@ -810,6 +807,7 @@ async function loadNewsDetails() {
                     outline: none; 
                     background: transparent; 
                     box-sizing: border-box;
+                     font-family: 'Pontano Sans', sans-serif;
                 }
                 .comment-toolbar {
                     display: flex; 

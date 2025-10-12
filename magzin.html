@@ -1147,7 +1147,7 @@ background-color: #ae8a4c;
         margin-top: 8px;
         padding: 8px 12px;
         font-size: 13px;
-        background: #111;
+        background:#ae8a4c;
         color: white;
         border: none;
         border-radius: 4px;
@@ -1761,10 +1761,10 @@ background-color: #ae8a4c;
     <a href="https://www.youtube.com/@miningdiscovery"><i class="fab fa-youtube"></i></a>
     <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><i class="fab fa-facebook-f"></i></a>
   </div>
-            <div class="search-boxs">
+            <!-- <div class="search-boxs">
               <input type="text" id="searchInput" placeholder="Search..." />
               <button class="search-icon"><i class="fas fa-search"></i></button>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -1806,35 +1806,56 @@ function toggleDropdownMobile(id) {
     dropdown.classList.toggle("show");
   }
 }
+document.addEventListener("click", (e) => {
+  const card = e.target.closest(".edition-card"); // clicked card ya child element
+  if (!card) return; // agar card nahi, exit
 
-      // Sab thumbnails ko select karo
-      const thumbs = document.querySelectorAll(".thumb");
-      const mainMagazine = document.getElementById("mainMagazine");
+  // magazine cover element
+  const magazineCover = document.getElementById("magazine-detail");
+  if (magazineCover) {
+    magazineCover.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+});
 
-      thumbs.forEach((thumb) => {
-        thumb.addEventListener("click", () => {
-          mainMagazine.src = thumb.src;
-        });
-      });
-      const toggleBtn = document.querySelector(".toggle-btn");
-      const featuresList = document.querySelector(".features-list");
-      let expanded = false;
+   // Sab thumbnails ko select karo
+const thumbs = document.querySelectorAll(".thumb");
+const mainMagazine = document.getElementById("mainMagazine");
 
-      toggleBtn.addEventListener("click", () => {
-        expanded = !expanded;
+// Main magazine ka section (scroll yahan tak le aana hai)
+const mainSection = document.querySelector(".main-magazine-section") || mainMagazine;
 
-        if (expanded) {
-          featuresList
-            .querySelectorAll("li")
-            .forEach((li) => (li.style.display = "list-item"));
-          toggleBtn.textContent = "View less ▲";
-        } else {
-          featuresList.querySelectorAll("li").forEach((li, index) => {
-            li.style.display = index < 2 ? "list-item" : "none";
-          });
-          toggleBtn.textContent = "View more ▼";
-        }
-      });
+thumbs.forEach((thumb) => {
+  thumb.addEventListener("click", () => {
+    // Main image update karo
+    mainMagazine.src = thumb.src;
+
+    // Smooth scroll to big magazine section
+    mainSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+});
+
+// "View more / View less" toggle
+const toggleBtn = document.querySelector(".toggle-btn");
+const featuresList = document.querySelector(".features-list");
+let expanded = false;
+
+toggleBtn.addEventListener("click", () => {
+  expanded = !expanded;
+
+  if (expanded) {
+    featuresList.querySelectorAll("li").forEach((li) => (li.style.display = "list-item"));
+    toggleBtn.textContent = "View less ▲";
+  } else {
+    featuresList.querySelectorAll("li").forEach((li, index) => {
+      li.style.display = index < 2 ? "list-item" : "none";
+    });
+    toggleBtn.textContent = "View more ▼";
+  }
+});
+
     </script>
     <script src="./js/magazine.js"></script>
     <script src="script.js"></script>

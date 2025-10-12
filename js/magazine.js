@@ -29,6 +29,7 @@ async function loadMagazines() {
       // Click → show magazine details
       card.addEventListener("click", () => showMagazineDetail(mag));
       container.appendChild(card);
+      
 
       // Show first magazine by default
       if (index === 0) showMagazineDetail(mag);
