@@ -1558,7 +1558,7 @@
   flex-direction: column;
   justify-content: flex-start;
   text-align: center;
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
 }
 
 /* 👇 Image section – same size for all cards */
@@ -1876,21 +1876,31 @@ height: auto;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
     }
+.card1 {
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Centers content horizontally */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid white;
 
-    .card1 {
-      color: white;
-      padding: 15px;
-      border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border: 1px solid white;
-      border-radius: 10px;
-    }
+  /* 👇 Set same height and width for all cards */
+  width: 200px;
+  height: 300px;
+
+  /* Optional: Prevent content overflow */
+  overflow: hidden;
+  align-items: flex-start;
+}
+
+/* Ensure images scale properly within fixed card size */
 .card1 img {
   width: 100%;
-  height: auto;   /* original ratio में image दिखेगी */
+  height: 100px; /* Fixed image height */
+  object-fit: cover; /* Prevents distortion */
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -1948,27 +1958,37 @@ height: auto;
       }
     }
 
-    @media (max-width: 480px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-      .left-ad{
-        display: none;
-      }
+   @media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .left-ad h3 {
-        font-size: 16px;
-      }
+  .card1 {
+    width: 100%;
+    height: auto;
+  }
 
-      .post-text {
-        font-size: 14px;
-      }
+  .card1 img {
+    height: 150px;
+  }
 
-      .card h4 {
-        font-size: 13px;
-      }
-    }
-  
+  .card1 h4 {
+    font-size: 13px;
+  }
+
+  .left-ad {
+    display: none;
+  }
+
+  .left-ad h3 {
+    font-size: 16px;
+  }
+
+  .post-text {
+    font-size: 15px;
+  }
+}
+
     
     /* 💻 Large desktop screens (2K / 2560px and above) */
 @media (min-width: 1920px) {
