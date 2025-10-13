@@ -145,7 +145,7 @@ function showMessage(message, type = 'info') {
     top: 20px;
     right: 20px;
     padding: 12px 20px;
-    background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#2196f3'};
+    background: ${type === 'success' ? '#ae8a4c' : type === 'error' ? '#ae8a4c' : '#ae8a4c'};
     color: white;
     border-radius: 4px;
     z-index: 10000;
