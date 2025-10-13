@@ -23,7 +23,12 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   font-family: 'Poppins', sans-serif !important;
 }
 
-    .first-header {
+   .first-header {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* topbar always above */
   height: 50px;
   overflow: hidden;
   background: black;
@@ -75,11 +80,15 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 }
 
 
-    
    .main-header {
+      position: fixed;
+
+  left: 0;
+  width: 100%;
+  z-index: 999; /* slightly below first-header */
       margin-bottom: 10px;
       background-color: #fff;
-      padding: 5px;
+      /* padding: 5px; */
       border-bottom: 1px solid #ddd;
     }
 
@@ -106,6 +115,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   
       
     }
+   
    
 
     .nav-links {
@@ -855,8 +865,9 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     /* === Main Layout === */
     /* Base Styles - Desktop (default) */
     .container {
+      padding-top: 200px;
       display: flex;
-      padding: 30px;
+      /* padding: 30px; */
       gap: 20px;
     }
 
@@ -879,6 +890,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 .left-sidebar::-webkit-scrollbar,
 .right-sidebar::-webkit-scrollbar {
   display: none;   */
+ 
 }
 
     .left-sidebar .box {
@@ -1597,14 +1609,14 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 
 <body>
 
- <div class="first-header">
+ <header class="main-header">
+    <div class="first-header">
   <div class="news-slider">
     <p>THE MINING INVESTMENT EVENT</p>
-    <p>SAVE THE DATE - JUNE 2-4 2026</p>
-   <p>Centre des congrès de Québec | June 2-4-2026</p>
+     <p>SAVE THE DATE - JUNE 2-4-2026</p>
+    <p>Centre des congrès de Québec | June 2-4-2026</p>
   </div>
 </div>
-    <header class="main-header">
   <div class="header-top">
     <div class="logo-social">
       <a href="./index.html"><img src="./image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
@@ -1614,23 +1626,26 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     </button>
 
     <div class="nav-links" id="navMenu">
-           <a href="./index.html"> <i class="fa-solid fa-house-chimney"></i></a>
-      <!-- News Section -->
-      <div class="nav-item-with-dropdown">
-        <a href="./newss.html" class="desktop-link" data-target="news" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          News  <i class="fas fa-chevron-down"></i>
-        </a>
-        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
-          News  <i class="fas fa-chevron-down"></i>
-        </a>
+     <a href="./index.html"> <i class="fa-solid fa-house-chimney"></i></a>
+       <!-- News Section -->
+       <div class="nav-item-with-dropdown news-hover">
+  <a href="./newss.html" class="desktop-link" data-target="news">News <i class="fas fa-chevron-down"></i> </a>
 
-        <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
-          <div id="dropdownMenu1" class="dropdown-menu-container"></div>
-        </div>
-      </div>
+  <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+    News <i class="fas fa-chevron-down"></i>
+  </a>
 
-  <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
-      <!-- Magazine Section -->
+  <div class="dropdown-links" id="newsDropdown">
+    <div id="dropdownMenu1" class="dropdown-menu-container">
+      <a href="./latest-news.html">Latest News</a>
+      <a href="./industry-news.html">Industry News</a>
+      <a href="./global-updates.html">Global Updates</a>
+    </div>
+  </div>
+</div>
+
+        <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
+           <!-- Magazine Section -->
       <div class="nav-item-with-dropdown">
         <a href="./magzin.html" class="desktop-link" data-target="magazine" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
           Magazine <i class="fas fa-chevron-down"></i>
@@ -1647,6 +1662,10 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
           <a href="./weekly.html">Newsletter</a>
         </div>
       </div>
+    
+    
+
+   
     
       <!-- Service Section -->
       <div class="nav-item-with-dropdown">
@@ -1720,7 +1739,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     <div id="hamburgerMenu" class="hamburger-menu">
       <div class="menu-row">
         <div class="menu-tabs">
-          <p class="tab-btn active" data-target="news">NEWS </p>
+          <p class="tab-btn active" data-target="news">NEWS</p>
           <p class="tab-btn" data-target="about">SERVICE</p>
           <p class="tab-btn" data-target="magazine">MAGAZINE</p>
         </div>
@@ -1732,7 +1751,9 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
           <p><a href="./newsynd.html">News Syndication</a></p>
           <p><a href="./branding.html">Digital Branding</a></p>
           <p><a href="./pressoffice.html">Press Office</a></p>
-          <p><a href="https://youtube.com/">Youtube</a></p>
+          <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+ You tube
+</a></p>
           <p><a href="./confrence.html">Conference Media Coverage</a></p>
           <p><a href="./letter.html">Newsletter & Email Blast</a></p>
         </div>
