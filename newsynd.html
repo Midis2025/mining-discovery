@@ -2299,89 +2299,91 @@ async function submitCTA() {
 }
 </script>
 <script>
-function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-
- 
-  if (menu.style.display === "block") {
-    menu.style.display = "none";
-    return;
-  }
-
-
-  menu.style.display = "block";
-
- 
-}
-
-
-document.addEventListener("click", function(event) {
-  const menu = document.getElementById("hamburgerMenu");
-  const hamburger = document.querySelector(".hamburger2");
-
- 
-  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-    menu.style.display = "none";
-  }
-});
-
-// Tabs functionality
-const tabs = document.querySelectorAll(".tab-btn");
-const contents = document.querySelectorAll(".menu-content");
-
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    // Remove active from all
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
-
-    // Add active to clicked
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.target).classList.add("active");
-  });
-});
-
-// Mobile dropdown toggle
-function toggleDropdownMobile(id) {
-  const dropdown = document.getElementById(id);
-  if (dropdown) {
-    dropdown.classList.toggle("show");
-  }
-}
-if (window.innerWidth >= 900) {
-  const desktopLinks = document.querySelectorAll(".desktop-link");
+document.addEventListener("DOMContentLoaded", function () {
   const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const hamburgerBtn = document.querySelector(".hamburger2");
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".menu-content");
+  const desktopLinks = document.querySelectorAll(".desktop-link");
 
-  function removeActive() {
-    contents.forEach(c => c.classList.remove("active"));
+  // ------------------ Helper Functions ------------------
+  function deactivateAll() {
     tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
   }
 
-  desktopLinks.forEach(link => {
-    link.addEventListener("mouseenter", () => {
-      const target = link.dataset.target; // news / about / magazine
+  function activateTab(id) {
+    deactivateAll();
+    const tab = document.querySelector(`.tab-btn[data-target="${id}"]`);
+    const content = document.getElementById(id);
+    if (tab) tab.classList.add("active");
+    if (content) content.classList.add("active");
+  }
+
+  // ------------------ MOBILE: Hamburger Toggle ------------------
+  function toggleHamburgerMenu() {
+    if (!hamburgerMenu) return;
+    hamburgerMenu.classList.toggle("open");
+
+    if (hamburgerMenu.classList.contains("open")) {
       hamburgerMenu.style.display = "block";
-      removeActive();
 
-      // Show proper content
-      const content = document.getElementById(target);
-      if(content) content.classList.add("active");
+      // Activate first tab by default
+      const firstTab = tabs[0];
+      if (firstTab) activateTab(firstTab.dataset.target);
+    } else {
+      hamburgerMenu.style.display = "none";
+      deactivateAll();
+    }
+  }
 
-      // Highlight corresponding tab
-      tabs.forEach(tab => {
-        if(tab.dataset.target === target) tab.classList.add("active");
-      });
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener("click", toggleHamburgerMenu);
+  }
+
+  // Close hamburger when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!hamburgerMenu || !hamburgerBtn) return;
+    if (!hamburgerMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
+      hamburgerMenu.classList.remove("open");
+      hamburgerMenu.style.display = "none";
+      deactivateAll();
+    }
+  });
+
+  // ------------------ Tabs Click (Mobile + Desktop) ------------------
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      activateTab(tab.dataset.target);
     });
   });
 
-  // Hide menu on mouse leave
-  hamburgerMenu.addEventListener("mouseleave", () => {
-    hamburgerMenu.style.display = "none";
-    removeActive();
-  });
-}
+  // ------------------ DESKTOP: Hover Dropdown ------------------
+  if (window.innerWidth >= 900) {
+    desktopLinks.forEach(link => {
+      link.addEventListener("mouseenter", () => {
+        const target = link.dataset.target;
+        if (!hamburgerMenu) return;
+        hamburgerMenu.style.display = "block";
+        activateTab(target);
+      });
+    });
+
+    // Hide menu on mouse leave
+    if (hamburgerMenu) {
+      hamburgerMenu.addEventListener("mouseleave", () => {
+        hamburgerMenu.style.display = "none";
+        deactivateAll();
+      });
+    }
+  }
+
+  // ------------------ MOBILE: Dropdown inside Hamburger ------------------
+  window.toggleDropdownMobile = function (id) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) dropdown.classList.toggle("show");
+  };
+});
 </script>
 </body>
 </html>

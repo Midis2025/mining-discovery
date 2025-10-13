@@ -1652,70 +1652,91 @@ future.</p>
 
 
         <script>
-  function toggleMenu2() {
-  const menu = document.getElementById("hamburgerMenu");
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
- // Select tabs and contents
+  document.addEventListener("DOMContentLoaded", function () {
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const hamburgerBtn = document.querySelector(".hamburger2");
   const tabs = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".menu-content");
+  const desktopLinks = document.querySelectorAll(".desktop-link");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active from all
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
+  // ------------------ Helper Functions ------------------
+  function deactivateAll() {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+  }
 
-      // Add active to clicked
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.target).classList.add("active");
-    });
+  function activateTab(id) {
+    deactivateAll();
+    const tab = document.querySelector(`.tab-btn[data-target="${id}"]`);
+    const content = document.getElementById(id);
+    if (tab) tab.classList.add("active");
+    if (content) content.classList.add("active");
+  }
 
+  // ------------------ MOBILE: Hamburger Toggle ------------------
+  function toggleHamburgerMenu() {
+    if (!hamburgerMenu) return;
+    hamburgerMenu.classList.toggle("open");
+
+    if (hamburgerMenu.classList.contains("open")) {
+      hamburgerMenu.style.display = "block";
+
+      // Activate first tab by default
+      const firstTab = tabs[0];
+      if (firstTab) activateTab(firstTab.dataset.target);
+    } else {
+      hamburgerMenu.style.display = "none";
+      deactivateAll();
+    }
+  }
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener("click", toggleHamburgerMenu);
+  }
+
+  // Close hamburger when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!hamburgerMenu || !hamburgerBtn) return;
+    if (!hamburgerMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
+      hamburgerMenu.classList.remove("open");
+      hamburgerMenu.style.display = "none";
+      deactivateAll();
+    }
   });
 
+  // ------------------ Tabs Click (Mobile + Desktop) ------------------
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      activateTab(tab.dataset.target);
+    });
+  });
 
-// Mobile dropdown toggle
-function toggleDropdownMobile(id) {
-  const dropdown = document.getElementById(id);
-  if (dropdown) {
-    dropdown.classList.toggle("show");
+  // ------------------ DESKTOP: Hover Dropdown ------------------
+  if (window.innerWidth >= 900) {
+    desktopLinks.forEach(link => {
+      link.addEventListener("mouseenter", () => {
+        const target = link.dataset.target;
+        if (!hamburgerMenu) return;
+        hamburgerMenu.style.display = "block";
+        activateTab(target);
+      });
+    });
+
+    // Hide menu on mouse leave
+    if (hamburgerMenu) {
+      hamburgerMenu.addEventListener("mouseleave", () => {
+        hamburgerMenu.style.display = "none";
+        deactivateAll();
+      });
+    }
   }
-}
-  
-  
-            // Toggle mobile menu
-            function toggleMenu() {
-                const navMenu = document.getElementById('navMenu');
-                const headerButtons = document.getElementById('headerButtons');
-                const searchContainer = document.getElementById('searchContainer');
-                const header = document.querySelector('.main-header');
 
-                header.classList.toggle('mobile-active');
-            }
-
-            // Toggle dropdown menu
-            function toggleDropdown() {
-                const dropdownMenu = document.getElementById('dropdownMenu');
-                const newsToggle = document.getElementById('newsToggle');
-
-                dropdownMenu.classList.toggle('show');
-                newsToggle.classList.toggle('rotate');
-            }
-
-            // Animated search placeholder
-            const searchTexts = ['Search gold prices', 'Search mining news', 'Search companies', 'Search stocks'];
-            let currentIndex = 0;
-
-            function animateSearchText() {
-                const animatedText = document.getElementById('animatedText');
-                if (animatedText) {
-                    animatedText.textContent = searchTexts[currentIndex];
-                    currentIndex = (currentIndex + 1) % searchTexts.length;
-                }
-            }
-
-            // Change text every 3 seconds
-            setInterval(animateSearchText, 3000);
+  // ------------------ MOBILE: Dropdown inside Hamburger ------------------
+  window.toggleDropdownMobile = function (id) {
+    const dropdown = document.getElementById(id);
+    if (dropdown) dropdown.classList.toggle("show");
+  };
+});
         </script>
         <script src="./js/news.js"></script>
         <script src="./js/latestNews.js"></script>
