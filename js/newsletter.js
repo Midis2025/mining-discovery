@@ -1,64 +1,119 @@
-const container = document.getElementById("newsletterContainer");
+const API_BASE = 'https://admins.miningdiscovery.com/api';
 
-async function fetchNewsletters() {
+// Fetch categories
+async function fetchCategories() {
+  const loading = document.getElementById('loadingCategories');
+  const error = document.getElementById('errorMessage');
+  loading.classList.remove('hidden');
+  error.classList.add('hidden');
+
   try {
-    const res = await fetch("https://admins.miningdiscovery.com/api/post-newsletters?populate=*");
-    const data = await res.json();
+    const res = await fetch(`${API_BASE}/newsletter-categories?populate=*`);
+    const { data } = await res.json();
 
-    // Group newsletters by category
-    const grouped = data.data.reduce((acc, newsletter) => {
-      const category = newsletter.newsletter_category.name;
-      if (!acc[category]) acc[category] = {
-        newsletters: [],
-        updatedAt: newsletter.newsletter_category.updatedAt || newsletter.newsletter_category.createdAt
-      };
-      acc[category].newsletters.push(newsletter);
-      return acc;
-    }, {});
+    if (!data || data.length === 0) return;
 
-    // Sort categories by latest updatedAt (newest month first)
-    const sortedCategories = Object.entries(grouped)
-      .sort(([, a], [, b]) => new Date(b.updatedAt) - new Date(a.updatedAt));
+    // Sort categories by publishedAt descending to get latest first
+    const sortedCategories = data.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
-    // Render categories and newsletters
-    sortedCategories.forEach(([categoryName, catData]) => {
-      const newsletters = catData.newsletters;
+    displayCategories(sortedCategories);
 
-      // Category title
-      const catTitle = document.createElement("h3");
-      catTitle.textContent = categoryName;
-      container.appendChild(catTitle);
+    // Show latest month newsletters by default
+    showNewsletters(sortedCategories[0]);
 
-      // Newsletter container
-      const newsletterDiv = document.createElement("div");
-      newsletterDiv.className = "newsletter-container";
-
-      newsletters.forEach(news => {
-        const card = document.createElement("div");
-        card.className = "newsletter-card";
-
-        const img = document.createElement("img");
-        img.src = news.coverImage 
-          ? news.coverImage.url 
-          : "https://via.placeholder.com/150x200?text=No+Image";
-        img.alt = news.title;
-        img.style.cursor = "pointer";
-
-        // Open PDF in new tab on click
-        img.onclick = () => {
-          window.open(news.pdfFile.url, "_blank");
-        };
-
-        card.appendChild(img);
-        newsletterDiv.appendChild(card);
-      });
-
-      container.appendChild(newsletterDiv);
-    });
-
-  } catch (error) {
-    console.error("Error fetching newsletters:", error);
+  } catch (err) {
+    showError('Failed to load categories: ' + err.message);
+  } finally {
+    loading.classList.add('hidden');
   }
 }
 
-fetchNewsletters();
+// Display category cards
+function displayCategories(categories) {
+  const container = document.getElementById('categoriesList');
+  container.innerHTML = '';
+
+  categories.forEach(category => {
+    const card = document.createElement('div');
+    card.className = 'magazine-card';
+    card.onclick = () => showNewsletters(category);
+
+    const img = document.createElement('img');
+    const imgUrl = category?.coverImage?.url ||
+                   category?.coverImage?.formats?.medium?.url ||
+                   'placeholder.jpg';
+    img.src = imgUrl;
+    img.alt = category?.name || 'Newsletter Category';
+
+    const label = document.createElement('div');
+    label.className = 'edition-label';
+    label.textContent = category?.name || 'Unnamed Category';
+
+    card.append(img, label);
+    container.appendChild(card);
+  });
+}
+
+// Load newsletters inline
+async function showNewsletters(category) {
+  const section = document.getElementById('newslettersSection');
+  const title = document.getElementById('categoryTitle');
+  const list = document.getElementById('newslettersList');
+  const loading = document.getElementById('loadingNewsletters');
+
+  section.classList.remove('hidden');
+  list.innerHTML = '';
+  title.textContent = 'Newsletter Stocks';
+  loading.classList.remove('hidden');
+
+  try {
+    const categoryId = category.id;
+    const res = await fetch(`${API_BASE}/post-newsletters?filters[newsletter_category][id][$eq]=${categoryId}&populate=*`);
+    const { data } = await res.json();
+
+    if (!data || data.length === 0) {
+      list.innerHTML = '<p style="color:white;text-align:center;">No newsletters found for this category.</p>';
+      return;
+    }
+
+    data.forEach(newsletter => {
+      const card = document.createElement('div');
+      card.className = 'newsletter-card';
+      card.onclick = () => openPDFInNewTab(newsletter);
+
+      const img = document.createElement('img');
+      const imgUrl = newsletter?.coverImage?.url ||
+                     newsletter?.coverImage?.formats?.medium?.url ||
+                     'placeholder.jpg';
+      img.src = imgUrl;
+      img.alt = newsletter?.title || 'Newsletter';
+
+      card.appendChild(img);
+      list.appendChild(card);
+    });
+  } catch (err) {
+    showError('Failed to load newsletters: ' + err.message);
+  } finally {
+    loading.classList.add('hidden');
+  }
+}
+
+// Open PDF in a new tab
+function openPDFInNewTab(newsletter) {
+  const pdfUrl = newsletter?.pdfFile?.url;
+  if (pdfUrl) {
+    window.open(pdfUrl, '_blank');
+  } else {
+    alert('PDF not available for this newsletter.');
+  }
+}
+
+// Show error message
+function showError(message) {
+  const errorEl = document.getElementById('errorMessage');
+  errorEl.textContent = message;
+  errorEl.classList.remove('hidden');
+}
+
+// Initialize
+fetchCategories();
