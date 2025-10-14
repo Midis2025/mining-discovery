@@ -1633,6 +1633,7 @@ padding-left: 5px;
 
   .team-card small {
     font-size: 15px;     /* slightly bigger subtitle */
+    padding-bottom: 15px;
   }
 
   .nav {
@@ -1717,7 +1718,7 @@ padding-left: 5px;
   }
 
   .team-card {
-    width: 170px;
+    width: 300px;
   }
 
   .team-card img {
@@ -2037,7 +2038,7 @@ height: auto;
   .card1 {
    
                     padding: 20px;
-        height: 380px;
+        height: 395px;
         width: 300px;
     
   }
