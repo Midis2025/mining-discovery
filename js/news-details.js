@@ -1135,6 +1135,7 @@ async function loadNewsDetails() {
                     .news-detail, 
                     body .main-content { 
                         padding: 12px; 
+                        padding-top:50px;
                     }
                     .comments-section { 
                         padding: 0 12px; 
