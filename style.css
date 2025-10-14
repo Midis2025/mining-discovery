@@ -1331,7 +1331,7 @@
 ;
     justify-content: center;
     align-items: flex-start;
-    width: 10%;
+    width: 4%;
   }
   .container2 {
     max-width: 1700px;   /* prevent content from stretching too much */
