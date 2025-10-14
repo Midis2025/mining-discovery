@@ -2,7 +2,7 @@ async function loadWhatsOn() {
   const url =
     "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=whats-on&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][populate][image]=true";
 
-  const container = document.getElementById("whatsOn");
+  const container = document.getElementById("what's On");
   if (!container) return;
 
   try {

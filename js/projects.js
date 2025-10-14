@@ -1,20 +1,29 @@
 async function loadProjects() {
-  const url =
-    "https://acceptable-desire-0cca5bb827.strapiapp.com/api/projects?populate[project_image]=true";
+  const url = "https://admins.miningdiscovery.com/api/projects?populate[project_image]=true";
   const projectsContainer = document.getElementById("projects");
+
+  if (!projectsContainer) {
+    console.warn("Projects container not found");
+    return;
+  }
 
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const payload = await res.json();
-    console.log("payload", payload.data);
+    console.log("✅ Projects loaded:", payload.data?.length || 0);
 
-    let sections = payload.data;
+    let sections = payload.data || [];
+
+    if (sections.length === 0) {
+      projectsContainer.innerHTML = '<p style="text-align:center; color:#999;">No projects available</p>';
+      return;
+    }
 
     const view = sections.map((item) => {
       return `
        <div class="section-box">
-          <img src="${item.project_image?.url || ""}" alt="">
+          <img src="${item.project_image?.url || ""}" alt="${item.project_title || "Project"}">
           <p>
             <a href="full-news.html?id=${item.id}" class="project-link" data-id="${item.id}">
               ${item.project_title || ""}
@@ -36,7 +45,10 @@ async function loadProjects() {
       });
     });
   } catch (err) {
-    console.error(err);
-    projectsContainer.innerHTML = `<p style="color:#b00">Failed to load news.</p>`;
+    console.error("❌ Error loading projects:", err);
+    projectsContainer.innerHTML = `<p style="color:#b00; text-align:center;">Failed to load projects.</p>`;
   }
 }
+
+// Make function globally accessible
+window.loadProjects = loadProjects;

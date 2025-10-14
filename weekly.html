@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Edition</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
- <script async crossorigin="anonymous"
+ <script defer crossorigin="anonymous"
     data-clerk-publishable-key="pk_test_YW11c2luZy1rYXR5ZGlkLTQ0LmNsZXJrLmFjY291bnRzLmRldiQ"
     src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
 </script>
@@ -1754,7 +1754,7 @@
 
     <!-- Subscribe button -->
     <div class="subscribe-access">
-      <button class="subscribe-btn">Subscribe to Access</button>
+      <!-- <button class="subscribe-btn">Subscribe to Access</button> -->
     </div>
 
     <!-- Newsletters Inline -->
@@ -1776,7 +1776,7 @@
       <p>Get this content by subscribing our plan.</p>
       <div>
         <button><a href="./sub-btn.html" target="_blank" rel="noopener noreferrer">Login</a></button>
-        <button><a href="./sub.html" target="_blank" rel="noopener noreferrer">View Subscription Plan</a></button>
+        <!-- <button><a href="./sub.html" target="_blank" rel="noopener noreferrer">View Subscription Plan</a></button> -->
       </div>
     </div>
   </div>
@@ -1837,7 +1837,7 @@
            <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
   MULTIMEDIA VIDEOS
 </a></li>
-            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <!-- <li><a href="sub.html">SUBSCRIPTION</a></li> -->
             <li><a href="./magzin.html">MAGAZINES</a></li>
             <li><a href="">COMMENT GUIDELINE</a></li>
             <li><a href="">LEGAL NOTICE</a></li>
@@ -1854,7 +1854,16 @@
       © 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
     </div>
   </div>
+  <!-- Cache Manager -->
+  <script src="./js/cache-manager.js"></script>
+  <script src="./js/cached-fetch-wrapper.js"></script>
+
+  <!-- Helper Functions -->
+  <script src="./js/helper.js"></script>
+
+  <!-- Core Scripts -->
   <script src="./script.js"></script>
+  <script src="./js/header-dropdown.js"></script>
   <script src="./js/news.js"></script>
   <script>
    function toggleMenu2() {
@@ -1942,24 +1951,27 @@ function toggleDropdownMobile(id) {
     // show extra news</script>
 
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-      loadAdvertisements();
-      loadProjects();
-      loadReports();
-      newsCategory();
-
-    });
-  </script>
-     <script src="./js/latestNews.js"></script>
+  <script src="./js/latestNews.js"></script>
      <script src="./js/newsletter.js"></script>
+     <script src="./js/universal-page-loader.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      loadLatestNews();
-      
-    });
+    // Initialize universal loader for newsletter page
+    if (typeof UniversalPageLoader !== 'undefined') {
+      const loader = new UniversalPageLoader({
+        critical: [
+          { func: 'loadLatestNews', container: 'latestNews' },
+          { func: 'loadNewsletter', container: 'newsletterContainer' }
+        ],
+        nonCritical: [
+          { func: 'loadAdvertisements', container: 'advertisements' },
+          { func: 'loadProjects', container: 'projectContainer' },
+          { func: 'loadReports', container: 'reportContainer' },
+          { func: 'newsCategory', container: 'newsCategories' }
+        ]
+      });
+      loader.init();
+    }
   </script>
   <script>
   const subscribeBtn = document.getElementById('subscribeBtn');

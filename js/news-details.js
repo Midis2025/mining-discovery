@@ -496,21 +496,143 @@ function showMessage(message, type) {
 function initBackToTop() {
     const backToTopBtn = document.getElementById('backToTop');
     if (!backToTopBtn) { return; }
-    
+
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) { backToTopBtn.classList.add('show'); } 
+        if (window.pageYOffset > 300) { backToTopBtn.classList.add('show'); }
         else { backToTopBtn.classList.remove('show'); }
     });
-    
+
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+}
+
+// --- Share Functionality ---
+function initShareButton() {
+    const shareBtn = document.getElementById('shareBtn');
+    const shareDropdown = document.getElementById('shareDropdown');
+
+    if (!shareBtn || !shareDropdown) return;
+
+    // Toggle dropdown
+    shareBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        shareDropdown.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!shareBtn.contains(e.target) && !shareDropdown.contains(e.target)) {
+            shareDropdown.classList.remove('active');
+        }
+    });
+
+    // Handle share options
+    const shareOptions = shareDropdown.querySelectorAll('.share-option');
+    shareOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.preventDefault();
+            const platform = option.getAttribute('data-platform');
+            handleShare(platform);
+            shareDropdown.classList.remove('active');
+        });
+    });
+}
+
+function handleShare(platform) {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.querySelector('.news-detail h1')?.textContent || 'Check out this article');
+
+    let shareUrl = '';
+
+    switch(platform) {
+        case 'facebook':
+            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            break;
+        case 'twitter':
+            shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+            break;
+        case 'linkedin':
+            shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+            break;
+        case 'whatsapp':
+            shareUrl = `https://wa.me/?text=${title}%20${url}`;
+            break;
+        case 'copy':
+            copyToClipboard(window.location.href);
+            return;
+    }
+
+    if (shareUrl) {
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showCopyFeedback();
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+        // Fallback method
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            showCopyFeedback();
+        } catch (err) {
+            console.error('Fallback copy failed:', err);
+        }
+        document.body.removeChild(textarea);
+    });
+}
+
+function showCopyFeedback() {
+    const feedback = document.createElement('div');
+    feedback.className = 'copy-feedback';
+    feedback.textContent = 'Link copied to clipboard!';
+    document.body.appendChild(feedback);
+
+    setTimeout(() => {
+        feedback.remove();
+    }, 3000);
 }
 
 
 // ---------------------------------------------------------------------------------
 // CORE FUNCTION: loadNewsDetails (Corrected order for comment section)
 // ---------------------------------------------------------------------------------
+
+// Simple rich text renderer
+function renderRichText(richTextData) {
+    if (!richTextData) return '';
+
+    // If it's already a string, return it
+    if (typeof richTextData === 'string') {
+        return formatPlainDescription(richTextData);
+    }
+
+    // Handle Strapi rich text format
+    if (Array.isArray(richTextData)) {
+        return richTextData.map(block => {
+            if (block.type === 'paragraph') {
+                const text = block.children?.map(child => child.text || '').join('') || '';
+                return `<p>${text}</p>`;
+            }
+            if (block.type === 'heading') {
+                const text = block.children?.map(child => child.text || '').join('') || '';
+                const level = block.level || 2;
+                return `<h${level}>${text}</h${level}>`;
+            }
+            return '';
+        }).join('');
+    }
+
+    return formatPlainDescription(JSON.stringify(richTextData));
+}
 
 async function loadNewsDetails() {
     const { id, category } = getQueryParams();
@@ -522,34 +644,74 @@ async function loadNewsDetails() {
         return;
     }
 
+    // Show skeleton loader
+    container.innerHTML = `
+        <div class="skeleton-loader">
+            <div class="skeleton-header">
+                <div class="skeleton-tag"></div>
+                <div class="skeleton-title"></div>
+                <div class="skeleton-meta">
+                    <div class="skeleton-text-short"></div>
+                    <div class="skeleton-text-short"></div>
+                </div>
+            </div>
+            <div class="skeleton-image"></div>
+            <div class="skeleton-body">
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text-short"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text-short"></div>
+            </div>
+        </div>
+    `;
+
     try {
         let newsSection = null;
-        let categorySlug = null;
+        let categorySlug = category;
 
-        // Data fetching logic... (assume successful fetch)
-        const url = `${API_ROOT}/api/news-categories?populate[news_sections][populate]=*`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        
-        if (data?.data && Array.isArray(data.data)) {
-            for (const categoryItem of data.data) {
-                let sections = categoryItem?.news_sections;
-                if (!Array.isArray(sections) && categoryItem?.attributes?.news_sections) {
-                    const v4Data = categoryItem.attributes.news_sections.data || [];
-                    sections = v4Data.map((x) => ({ id: x.id, documentId: x.documentId, ...x.attributes }));
-                }
-                if (Array.isArray(sections)) {
-                    const found = sections.find(section => section.id?.toString() === id || section.documentId?.toString() === id);
-                    if (found) {
-                        newsSection = found;
-                        categorySlug = categoryItem.slug || categoryItem?.attributes?.slug;
-                        break;
+        // OPTIMIZED: Try to fetch directly by documentId first (much faster!)
+        try {
+            const directUrl = `${API_ROOT}/api/news-sections/${id}?populate=*`;
+            const directRes = await fetch(directUrl);
+
+            if (directRes.ok) {
+                const directData = await directRes.json();
+                newsSection = directData.data || directData;
+                console.log('✅ Fast fetch successful');
+            }
+        } catch (err) {
+            console.log('Direct fetch failed, trying full search...');
+        }
+
+        // Fallback: If direct fetch fails, search through categories (slower but more thorough)
+        if (!newsSection) {
+            const url = `${API_ROOT}/api/news-categories?populate[news_sections][populate]=*`;
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+
+            if (data?.data && Array.isArray(data.data)) {
+                for (const categoryItem of data.data) {
+                    let sections = categoryItem?.news_sections;
+                    if (!Array.isArray(sections) && categoryItem?.attributes?.news_sections) {
+                        const v4Data = categoryItem.attributes.news_sections.data || [];
+                        sections = v4Data.map((x) => ({ id: x.id, documentId: x.documentId, ...x.attributes }));
+                    }
+                    if (Array.isArray(sections)) {
+                        const found = sections.find(section => section.id?.toString() === id || section.documentId?.toString() === id);
+                        if (found) {
+                            newsSection = found;
+                            categorySlug = categoryItem.slug || categoryItem?.attributes?.slug || category;
+                            break;
+                        }
                     }
                 }
             }
         }
-        
+
         if (!newsSection) { throw new Error('News article not found'); }
 
         updateTopbarTitle(newsSection.title);
@@ -582,6 +744,38 @@ async function loadNewsDetails() {
                     <div class="news-meta">
                         ${newsSection.author ? `<span class="author">${newsSection.author}</span>` : ''}
                         ${publishDate ? `<span class="publish-date">${publishDate}</span>` : ''}
+
+                        <div class="share-button-container">
+                            <button class="share-btn" id="shareBtn">
+                                <i class="fa-solid fa-share-nodes"></i>
+                                <span>Share</span>
+                            </button>
+                            <div class="share-dropdown" id="shareDropdown">
+                                <h4>Share this article</h4>
+                                <div class="share-options">
+                                    <a href="#" class="share-option facebook" data-platform="facebook">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                        <span>Facebook</span>
+                                    </a>
+                                    <a href="#" class="share-option twitter" data-platform="twitter">
+                                        <i class="fa-brands fa-twitter"></i>
+                                        <span>Twitter</span>
+                                    </a>
+                                    <a href="#" class="share-option linkedin" data-platform="linkedin">
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                    <a href="#" class="share-option whatsapp" data-platform="whatsapp">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                    <a href="#" class="share-option copy" data-platform="copy">
+                                        <i class="fa-solid fa-link"></i>
+                                        <span>Copy Link</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -605,594 +799,12 @@ async function loadNewsDetails() {
             </div>
 
             ${renderNewCommentsSection(id)}
-            
+
             <button id="backToTop" class="back-to-top" title="Back to top">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 19V5M5 12l7-7 7 7"/>
                 </svg>
             </button>
-            
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Pontano+Sans:wght@300;400;600;700&display=swap');
-                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'); 
-                @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'); 
-                
-                /* ======================================================= */
-                /* BASE STYLES */
-                /* ======================================================= */
-                * { box-sizing: border-box; }
-                body { font-family: 'Pontano Sans', sans-serif; margin: 0; padding: 0; }
-                body.popup-open { overflow: hidden; }
-            
-                .news-detail { 
-                    max-width: 800px; 
-                    margin: 0 auto; 
-                    padding: clamp(12px, 3vw, 20px); 
-                    font-family: 'Pontano Sans', sans-serif; 
-                }
-                
-                /* --- ARTICLE STYLES --- */
-                .news-header { margin-bottom: clamp(20px, 4vw, 30px); }
-                .category-tag { 
-                    display: inline-block; 
-                    background-color:#ae8a4c; 
-                    color: white; 
-                    padding: clamp(4px, 1vw, 5px) clamp(8px, 2vw, 12px); 
-                    border-radius: 4px; 
-                    font-size: clamp(10px, 2vw, 12px); 
-                    font-weight: bold; 
-                    margin-bottom: clamp(10px, 2vw, 15px); 
-                }
-                .news-detail h1 { 
-                    font-weight: bold; 
-                    color: #333; 
-                    line-height: 1.2; 
-                    margin-bottom: clamp(10px, 2vw, 15px); 
-                    word-wrap: break-word; 
-                    font-size: clamp(1.5rem, 4vw, 2rem);
-                }
-                .news-meta { 
-                    display: flex; 
-                    flex-wrap: wrap; 
-                    gap: clamp(10px, 2vw, 15px); 
-                    color: #666; 
-                    font-size: clamp(12px, 2vw, 14px); 
-                    margin-bottom: clamp(15px, 3vw, 20px); 
-                }
-                .news-image { 
-                    margin-bottom: clamp(20px, 4vw, 30px); 
-                    text-align: center; 
-                }
-                .news-image img { 
-                    width: 100%; 
-                    max-width: 100%; 
-                    height: auto; 
-                    border-radius: clamp(6px, 1.5vw, 8px); 
-                    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-                }
-                .news-body { line-height: 1.6; color: #333; }
-                .short-description { margin-bottom: clamp(18px, 3vw, 25px); }
-                .short-description p { 
-                    font-size: clamp(0.95rem, 2.5vw, 1.1rem); 
-                    color: #333; 
-                    font-weight: 700; 
-                    line-height: 1.6; 
-                    text-align: justify; 
-                }
-                
-                .full-description { max-height: none !important; overflow: visible !important; opacity: 1 !important; }
-
-                .full-description p { 
-                    margin-bottom: clamp(12px, 2vw, 15px); 
-                    font-size: clamp(0.9rem, 2vw, 1rem); 
-                    text-align: justify; 
-                }
-                .full-description h1, .full-description h2, .full-description h3, .full-description h4, .full-description h5, .full-description h6 { 
-                    margin-top: clamp(18px, 3vw, 25px); 
-                    margin-bottom: clamp(12px, 2vw, 15px); 
-                    color: #333; 
-                    word-wrap: break-word; 
-                    font-size: clamp(1.2rem, 3vw, 1.5rem);
-                }
-                .full-description ul, .full-description ol { 
-                    margin: clamp(12px, 2vw, 15px) 0; 
-                    padding-left: clamp(20px, 3vw, 25px); 
-                }
-                .full-description li { 
-                    margin-bottom: 5px; 
-                    font-size: clamp(0.9rem, 2vw, 1rem);
-                }
-                
-                /* --- Back to Top & Messages --- */
-                .message-popup { 
-                    position: fixed; 
-                    top: clamp(10px, 2vw, 20px); 
-                    right: clamp(10px, 2vw, 20px); 
-                    left: clamp(10px, 2vw, 20px); 
-                    max-width: clamp(300px, 80vw, 400px); 
-                    margin: 0 auto; 
-                    padding: clamp(12px, 2vw, 15px) clamp(15px, 2.5vw, 20px); 
-                    border-radius: clamp(6px, 1vw, 8px); 
-                    color: white; 
-                    font-weight: 600; 
-                    font-size: clamp(0.8rem, 2vw, 0.95rem); 
-                    z-index: 1000; 
-                    animation: slideIn 0.3s ease; 
-                    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-                }
-                .message-popup.success { background: #28a745; }
-                .message-popup.error { background: #dc3545; }
-                @keyframes slideIn { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-                .back-to-top { 
-                    position: fixed; 
-                    bottom: clamp(20px, 3vw, 30px); 
-                    right: clamp(20px, 3vw, 30px); 
-                    width: clamp(45px, 8vw, 50px); 
-                    height: clamp(45px, 8vw, 50px); 
-                    background: #9a6b2f; 
-                    color: white; 
-                    border: none; 
-                    border-radius: 50%; 
-                    cursor: pointer; 
-                    display: flex; 
-                    align-items: center; 
-                    justify-content: center; 
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-                    opacity: 0; 
-                    visibility: hidden; 
-                    transform: translateY(20px); 
-                    transition: all 0.3s ease; 
-                    z-index: 999; 
-                }
-                .back-to-top svg {
-                    width: clamp(20px, 4vw, 24px);
-                    height: clamp(20px, 4vw, 24px);
-                }
-                .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
-                .back-to-top:hover { background: #7a5525; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
-                .back-to-top:active { transform: translateY(-1px); }
-                
-                /* ======================================================= */
-                /* NEW COMMENT SECTION STYLES */
-                /* ======================================================= */
-
-                .comments-section {
-                    max-width: 800px;
-                    margin: clamp(30px, 5vw, 40px) auto; 
-                    padding: 0 clamp(12px, 3vw, 20px);
-                    font-family: 'Poppins', sans-serif;
-                    color: #3c2f1b;
-                }
-                .comments-header {
-                    display: flex; 
-                    justify-content: space-between; 
-                    align-items: center;
-                    flex-wrap: wrap;
-                    gap: 10px;
-                    color: #a76f2e; 
-                    border-bottom: 1px solid #ddd; 
-                    padding-bottom: clamp(6px, 1.5vw, 8px); 
-                    margin-bottom: clamp(15px, 3vw, 20px);
-                }
-                .comments-header h2 { 
-                    font-size: clamp(20px, 4vw, 24px); 
-                    font-weight: 600; 
-                    margin: 0;
-                }
-                .login-dropdown { 
-                    font-size: clamp(13px, 2.5vw, 15px); 
-                    cursor: pointer; 
-                }
-                
-                #comment-count-text {
-                    font-size: clamp(13px, 2.5vw, 15px);
-                    margin-bottom: 15px;
-                }
-
-                .comment-box {
-                    border: 1px solid #bfa27d; 
-                    border-radius: clamp(6px, 1.5vw, 8px); 
-                    padding: 0;
-                    background: #fff; 
-                    margin-bottom: clamp(15px, 3vw, 20px); 
-                    overflow: hidden;
-                }
-                .comment-box textarea {
-                    width: 100%; 
-                    height: clamp(100px, 20vw, 120px); 
-                    border: none; 
-                    padding: clamp(8px, 2vw, 10px); 
-                    resize: none;
-                    font-size: clamp(13px, 2.5vw, 15px); 
-                    outline: none; 
-                    background: transparent; 
-                    box-sizing: border-box;
-                     font-family: 'Pontano Sans', sans-serif;
-                }
-                .comment-toolbar {
-                    display: flex; 
-                    justify-content: space-between; 
-                    align-items: center;
-                    flex-wrap: wrap;
-                    gap: 10px;
-                    border-top: 1px solid #bfa27d; 
-                    padding: clamp(6px, 1.5vw, 8px) clamp(8px, 2vw, 10px); 
-                    box-sizing: border-box;
-                }
-                .toolbar-icons { 
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: clamp(4px, 1vw, 8px);
-                }
-                .toolbar-icons i { 
-                    cursor: pointer; 
-                    color: #5b4633; 
-                    font-size: clamp(12px, 2.5vw, 14px);
-                }
-                .comment-box button {
-                    background-color: #b58b52; 
-                    color: #fff; 
-                    border: none; 
-                    border-radius: clamp(4px, 1vw, 5px);
-                    padding: clamp(6px, 1.5vw, 8px) clamp(15px, 3vw, 20px); 
-                    cursor: pointer; 
-                    font-size: clamp(12px, 2.5vw, 14px); 
-                    transition: background-color 0.3s;
-                    white-space: nowrap;
-                }
-                .comment-box button:hover:not(:disabled) { background-color: #a3763e; }
-                .comment-box button:disabled { background-color: #ccc; cursor: not-allowed; }
-
-                .signup-section { 
-                    margin-top: clamp(20px, 4vw, 25px); 
-                }
-                .signup-section p { 
-                    font-size: clamp(12px, 2.5vw, 14px); 
-                    margin-bottom: clamp(8px, 2vw, 10px); 
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    gap: 10px;
-                }
-                .share-icons { 
-                    display: inline-flex; 
-                    align-items: center; 
-                    gap: clamp(6px, 1.5vw, 10px); 
-                    flex-wrap: wrap;
-                }
-                .share-icons i {
-                    border: 1px solid #bfa27d; 
-                    border-radius: 50%; 
-                    padding: clamp(5px, 1vw, 6px);
-                    font-size: clamp(12px, 2.5vw, 14px); 
-                    color: #5b4633; 
-                    transition: 0.3s; 
-                    cursor: pointer;
-                }
-                .share-icons i:hover { background: #bfa27d; color: #fff; }
-
-                .input-field {
-                    width: 100%; 
-                    border: 1px solid #bfa27d; 
-                    border-radius: clamp(4px, 1vw, 5px);
-                    padding: clamp(8px, 2vw, 10px); 
-                    margin-bottom: clamp(10px, 2vw, 12px); 
-                    outline: none; 
-                    font-size: clamp(12px, 2.5vw, 14px);
-                }
-
-                .acknowledge { 
-                    display: flex; 
-                    align-items: center; 
-                    font-size: clamp(11px, 2.5vw, 13px); 
-                    color: #5b4633; 
-                    margin-bottom: clamp(15px, 3vw, 20px); 
-                }
-                .acknowledge input { 
-                    margin-right: clamp(4px, 1vw, 6px); 
-                    flex-shrink: 0;
-                }
-                .or-login { 
-                    text-align: center; 
-                    margin: clamp(8px, 2vw, 10px) 0; 
-                    font-size: clamp(12px, 2.5vw, 14px); 
-                    color: #5b4633; 
-                }
-                .login-icons { 
-                    display: flex; 
-                    justify-content: center; 
-                    gap: clamp(12px, 2.5vw, 15px); 
-                    flex-wrap: wrap;
-                }
-                .login-icons i {
-                    border: 1px solid #bfa27d; 
-                    border-radius: 50%; 
-                    padding: clamp(5px, 1vw, 6px);
-                    font-size: clamp(12px, 2.5vw, 14px); 
-                    color: #5b4633; 
-                    transition: 0.3s; 
-                    cursor: pointer;
-                }
-                .login-icons i:hover { background: #bfa27d; color: #fff; }
-
-                .comments-sort { 
-                    text-align: right; 
-                    margin-top: clamp(20px, 4vw, 25px); 
-                    font-size: clamp(12px, 2.5vw, 14px); 
-                    color: #5b4633; 
-                }
-                .user-comment {
-                    border: 1px solid #bfa27d; 
-                    border-radius: clamp(8px, 2vw, 10px); 
-                    padding: clamp(12px, 2.5vw, 15px);
-                    margin-top: clamp(12px, 2.5vw, 15px); 
-                    font-size: clamp(12px, 2.5vw, 14px); 
-                    background: #fff;
-                }
-                .user-comment .header { 
-                    display: flex; 
-                    justify-content: space-between; 
-                    flex-wrap: wrap;
-                    gap: 8px;
-                    margin-bottom: 5px; 
-                    color: #5b4633; 
-                }
-                .user-comment .username { 
-                    font-weight: 600; 
-                    font-size: clamp(12px, 2.5vw, 14px);
-                }
-                .user-comment .date { 
-                    font-size: clamp(11px, 2vw, 12px); 
-                }
-                .user-comment .text { 
-                    color: #333; 
-                    margin-bottom: clamp(8px, 2vw, 10px); 
-                    line-height: 1.5; 
-                    word-wrap: break-word; 
-                    font-size: clamp(12px, 2.5vw, 14px);
-                }
-                .user-comment .like { 
-                    font-size: clamp(11px, 2.5vw, 13px); 
-                    color: #a76f2e; 
-                    cursor: pointer; 
-                }
-                
-                /* ======================================================= */
-                /* POPUP STYLES (from your provided HTML/CSS) */
-                /* ======================================================= */
-
-                .subscribe-popup {
-                    position: fixed; 
-                    left: 0; 
-                    bottom: -100%; 
-                    width: 100%; 
-                    background: #292929;
-                    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4); 
-                    z-index: 9999;
-                    transition: bottom 1s ease; 
-                    font-family: 'Inter', sans-serif;
-                }
-                .subscribe-popup.active { bottom: 0; }
-                .popup-inner {
-                    max-width: 600px; 
-                    margin: auto; 
-                    padding: clamp(25px, 4vw, 35px) clamp(15px, 3vw, 25px); 
-                    display: flex;
-                    flex-direction: column; 
-                    gap: clamp(12px, 2vw, 16px); 
-                    text-align: center;
-                }
-                .popup-inner .text-content {
-                    width: 100%;
-                }
-                .popup-inner h2 { 
-                    font-size: clamp(18px, 3.5vw, 22px); 
-                    font-weight: 700; 
-                    margin-bottom: clamp(4px, 1vw, 6px); 
-                    color: #ae8a4c; 
-                    line-height: 1.3;
-                }
-                .popup-inner p { 
-                    font-size: clamp(13px, 2.5vw, 15px); 
-                    color: #fff; 
-                    margin-bottom: clamp(14px, 2.5vw, 18px); 
-                    line-height: 1.5;
-                }
-                .popup-inner form { 
-                    display: flex; 
-                    flex-direction: column; 
-                    align-items: center; 
-                    width: 100%; 
-                }
-                .popup-inner label { 
-                    font-size: clamp(11px, 2vw, 13px); 
-                    font-weight: 1000; 
-                    margin-bottom: 5px; 
-                    color: #ae8a4c; 
-                }
-                .popup-inner input[type="email"] {
-                    width: 100%; 
-                    max-width: 380px; 
-                    padding: clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 14px); 
-                    border: 1.5px solid #ccc;
-                    border-radius: clamp(8px, 1.5vw, 10px); 
-                    font-size: clamp(12px, 2.5vw, 14px); 
-                    outline: none; 
-                    transition: all 0.3s ease; 
-                    background: #fdfdfd;
-                    box-sizing: border-box;
-                }
-                .popup-inner input[type="email"]:focus { 
-                    border-color: #000; 
-                    background: #fff; 
-                    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1); 
-                }
-                .popup-inner button {
-                    background: #ae8a4c; 
-                    color: #fff; 
-                    border: none; 
-                    border-radius: clamp(8px, 1.5vw, 10px);
-                    padding: clamp(12px, 2.5vw, 15px) clamp(40px, 10vw, 155px); 
-                    font-size: clamp(13px, 2.5vw, 15px); 
-                    font-weight: 600; 
-                    cursor: pointer;
-                    transition: all 0.3s ease; 
-                    margin-top: clamp(8px, 2vw, 10px); 
-                    letter-spacing: 0.5px;
-                    width: 100%; 
-                    max-width: 380px;
-                    box-sizing: border-box;
-                }
-                .popup-inner button:hover:not(:disabled) { background: #9a6b2f; }
-                .popup-inner button:disabled { background: #6c757d; }
-
-                .overlay {
-                    position: fixed; 
-                    inset: 0; 
-                    background: rgba(0, 0, 0, 0.7); 
-                    opacity: 0;
-                    visibility: hidden; 
-                    transition: opacity 0.6s ease; 
-                    z-index: 9998;
-                }
-                .overlay.active { opacity: 1; visibility: visible; }
-                .popup-inner::before {
-                    content: ""; 
-                    width: clamp(50px, 10vw, 60px); 
-                    height: clamp(3px, 0.6vw, 4px); 
-                    background: #ccc; 
-                    border-radius: 2px;
-                    margin: 0 auto clamp(8px, 2vw, 10px); 
-                    display: block;
-                }
-                #popup-message-container { 
-                    width: 100%; 
-                    max-width: 380px; 
-                    margin: -5px auto 0; 
-                }
-                
-                /* ======================================================= */
-                /* RESPONSIVE BREAKPOINTS */
-                /* ======================================================= */
-                
-                @media (max-width: 768px) {
-                    .comments-header {
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
-                    
-                    .toolbar-icons {
-                        order: 1;
-                        width: 100%;
-                    }
-                    
-                    .comment-box button {
-                        order: 2;
-                        width: 100%;
-                        margin-top: 8px;
-                    }
-                    
-                    .comment-toolbar {
-                        flex-direction: column;
-                        align-items: stretch;
-                    }
-                    
-                    .signup-section p {
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
-                    
-                    .share-icons {
-                        margin-left: 0;
-                    }
-                }
-                
-                @media (max-width: 600px) {
-                    .popup-inner { 
-                        padding: clamp(20px, 4vw, 25px) clamp(12px, 3vw, 15px); 
-                    }
-                    .popup-inner input[type="email"], 
-                    .popup-inner button { 
-                        width: 100%; 
-                        max-width: 100%; 
-                        padding-left: clamp(12px, 2.5vw, 14px); 
-                        padding-right: clamp(12px, 2.5vw, 14px); 
-                    }
-                    .popup-inner h2 { 
-                        font-size: clamp(17px, 3.5vw, 20px); 
-                    }
-                    .popup-inner p { 
-                        font-size: clamp(12px, 2.5vw, 14px); 
-                    }
-                    
-                    .news-meta {
-                        flex-direction: column;
-                        gap: 8px;
-                    }
-                }
-                
-                @media (max-width: 480px) {
-                    .news-detail, 
-                    body .main-content { 
-                        padding: 12px; 
-                        padding-top:50px;
-                    }
-                    .comments-section { 
-                        padding: 0 12px; 
-                    }
-                    
-                    .back-to-top {
-                        bottom: 15px;
-                        right: 15px;
-                        width: 45px;
-                        height: 45px;
-                    }
-                    
-                    .user-comment .header {
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
-                }
-                
-                @media (max-width: 360px) {
-                    .news-detail h1 {
-                        font-size: 1.3rem;
-                    }
-                    
-                    .category-tag {
-                        font-size: 10px;
-                        padding: 4px 8px;
-                    }
-                    
-                    .comments-header h2 {
-                        font-size: 18px;
-                    }
-                    
-                    .comment-box textarea {
-                        height: 90px;
-                    }
-                }
-                
-                /* Landscape orientation adjustments for mobile */
-                @media (max-height: 500px) and (orientation: landscape) {
-                    .popup-inner {
-                        padding: 15px 20px;
-                        gap: 10px;
-                    }
-                    
-                    .popup-inner h2 {
-                        margin-bottom: 3px;
-                    }
-                    
-                    .popup-inner p {
-                        margin-bottom: 10px;
-                    }
-                    
-                    .comment-box textarea {
-                        height: 80px;
-                    }
-                }
-            </style>
         `;
         
         // --- Final Initialization ---
@@ -1213,6 +825,7 @@ async function loadNewsDetails() {
 
             // Other features
             initBackToTop();
+            initShareButton();
             initializeScrollPopup();
             
         }, 100);

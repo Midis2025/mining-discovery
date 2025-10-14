@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mining Discovery</title>
   
-<script async crossorigin="anonymous"
+<script defer crossorigin="anonymous"
     data-clerk-publishable-key="pk_test_YW11c2luZy1rYXR5ZGlkLTQ0LmNsZXJrLmFjY291bnRzLmRldiQ"
     src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
 </script>
@@ -670,80 +670,40 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
     </div>
     <!-- Top Logo Slider -->
 
-    <div class="logo-slider">
+    <!-- Two-Row Marquee Logo Slider -->
+    <div class="logo-slider-wrapper">
 
-      <div class="slider-track" id="sliderTrack">
-        <!-- Loop starts -->
-        <div class="slide">
-          <img src="./image/ASTRA.png" alt="Astra" width="130" height="100" />
+      <!-- Top Row - Scrolls LEFT -->
+      <div class="logo-slider-row">
+        <div class="slider-track scroll-left">
+          <!-- First half of brands (4 brands for 8 total) -->
+          <div class="slide"><img src="./image/ASTRA.png" alt="ASTRA" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/ARRAS 1.png" alt="ARRAS" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/Aurion.png" alt="Aurion" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/arizona  1.png" alt="Arizona Mining" width="130" height="100" /></div>
 
+          <!-- Duplicate for seamless loop -->
+          <div class="slide"><img src="./image/ASTRA.png" alt="ASTRA" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/ARRAS 1.png" alt="ARRAS" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/Aurion.png" alt="Aurion" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/arizona  1.png" alt="Arizona Mining" width="130" height="100" /></div>
         </div>
-        <div class="slide">
-          <img src="./image/ARRAS 1.png" alt="Astra" width="130" height="100" />
-        </div>
+      </div>
 
-        <div class="slide">
-          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
-        </div>
-        <!-- Repeat again for smooth loop -->
-        <div class="slide">
-          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/image (5).png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
-        </div>
+      <!-- Bottom Row - Scrolls RIGHT -->
+      <div class="logo-slider-row">
+        <div class="slider-track scroll-right">
+          <!-- Second half of brands (4 brands) -->
+          <div class="slide"><img src="./image/loyalist icon black-04 1.png" alt="Loyalist" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/vector/image (7).png" alt="Partner Brand" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/image (5).png" alt="Partner Brand" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/image (6).png" alt="Partner Brand" width="130" height="100" /></div>
 
-        <div class="slide">
-           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
-        </div>
-
-        <div class="slide">
-          <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
-        </div>
-        <!-- Repeat again for smooth loop -->
-        <div class="slide">
-          <img src="./image/ASTRA (1) 1.png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
-        </div>
-<div class="slide">
-          <img src="./image/ASTRA.png" alt="Astra" width="130" height="100" />
-
-        </div>
-        <div class="slide">
-          <img src="./image/ARRAS 1.png" alt="Astra" width="130" height="100" />
-        </div>
-
-        <div class="slide">
-          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-          <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
-        </div>
-        <div class="slide">
-           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+          <!-- Duplicate for seamless loop -->
+          <div class="slide"><img src="./image/loyalist icon black-04 1.png" alt="Loyalist" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/vector/image (7).png" alt="Partner Brand" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/image (5).png" alt="Partner Brand" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/image (6).png" alt="Partner Brand" width="130" height="100" /></div>
         </div>
       </div>
 
@@ -793,7 +753,7 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
            <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
   MULTIMEDIA VIDEOS
 </a></li>
-            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <!-- <li><a href="sub.html">SUBSCRIPTION</a></li> -->
             <li><a href="./magzin.html">MAGAZINES</a></li>
             <li><a href="">COMMENT GUIDELINE</a></li>
             <li><a href="">LEGAL NOTICE</a></li>
@@ -942,7 +902,17 @@ function subscribe() {
 </script>
 
   <script src="./script.js"></script>
+  <script src="./js/header-dropdown.js"></script>
   <script src="./js/subscriber.js"> </script>
+
+  <!-- Cache Manager - MUST load before other API scripts -->
+  <script src="./js/cache-manager.js"></script>
+  <script src="./js/cached-fetch-wrapper.js"></script>
+
+  <!-- Helper Functions - MUST load before API scripts that use them -->
+  <script src="./js/helper.js"></script>
+
+  <!-- API Loading Scripts -->
   <script src="./js/latestNews.js"></script>
   <script src="./js/news.js"></script>
   <script src="./js/popularNews.js"></script>
@@ -956,19 +926,8 @@ function subscribe() {
   <script src="./js/Home-Advertisments.js"></script>
   <script src="./js/sponsoredPost.js"></script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      loadLatestNews();
-      loadPopularNews();
-      loadCopperNews();
-      loadPreciousMetalNews();
-      loadWorldNews();
-      loadCorporateNews();
-      loadAdvertisements();
-      loadAnnouncements();
-      loadWhatsOn();
-    });
-  </script>
+  <!-- Smooth Loader - Loads all content with buttery smooth transitions and caching -->
+  <script src="./js/smooth-loader.js"></script>
 <script>
   
 </script>
