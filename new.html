@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advisor Cards</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+    }
+
+    .advisor-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 60px 20px;
+    }
+
+    .advisor-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 500px;
+      padding: 25px 25px 30px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .advisor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .advisor-image {
+      width: 120px;
+      height: 120px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      position: absolute;
+      right: 25px;
+      top: 25px;
+    }
+
+    /* Example placeholder images (replace with your real ones) */
+    .advisor-card:nth-child(1) .advisor-image {
+      background-image: url("./image/Company Logo/l.PNG");
+    }
+
+    .advisor-card:nth-child(2) .advisor-image {
+  background-image: url("./image/Company Logo/cris.jpg");
+  background-size: contain;       /* or cover, depending on preference */
+  background-position: center;    /* keeps image centered */
+  background-repeat: no-repeat;
+  background-color: #f4f4f4;      /* optional, fills gaps if using contain */
+}
+
+    .advisor-content {
+      margin-top: 110px;
+    }
+
+    .advisor-content h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .advisor-content p {
+      color: #333;
+      font-size: 15px;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    /* Tablet screens (landscape tablets, small laptops) */
+    @media (max-width: 1024px) {
+      .advisor-section {
+        padding: 50px 30px;
+        gap: 20px;
+      }
+
+      .advisor-card {
+        width: 45%;
+      }
+
+      .advisor-content {
+        margin-top: 140px;
+      }
+    }
+
+    /* Mobile screens */
+    @media (max-width: 768px) {
+      .advisor-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 15px;
+      }
+
+      .advisor-card {
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .advisor-image {
+        position: static;
+        margin: 0 auto 20px;
+        display: block;
+      }
+
+      .advisor-content {
+        margin-top: 0;
+      }
+
+      .advisor-content h3 {
+        text-align: center;
+      }
+    }
+
+    /* Extra small screens (phones under 400px) */
+    @media (max-width: 400px) {
+      .advisor-card {
+        padding: 20px;
+      }
+
+      .advisor-content p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .advisor-image {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="advisor-section">
+    <div class="advisor-card">
+      <div class="advisor-image"></div>
+      <div class="advisor-content">
+        <h3>Laura Stein</h3>
+        <p>
+          <strong>Mining Discovery Advisor, Laura Stein</strong> is one of the predecessors with
+          50-plus years of exceptional global mining industry experience. There exists a lighter shade
+          in her operational experience and knowledge matrix across mineral and market boundaries in
+          exploration, project development, and strategic advisory operations. Laura has been reputed
+          for the singular ability to guide projects through discovery and development while staying
+          true to her principles out of respect for the challenge put in front of her. Designing a full
+          range of support and services, she enables Mining Discovery in the identification, evaluation,
+          and advancement of promising mineral opportunities with confidence and transparency.
+        </p>
+      </div>
+    </div>
+
+    <div class="advisor-card">
+      <div class="advisor-image"></div>
+      <div class="advisor-content">
+        <h3>Chris Powell</h3>
+        <p>
+          <strong>A Mining Discovery Advisor,</strong> Chris Powell has decades of experience
+          in journalism and in the precious metals markets. He is Connecticut-based and his background
+          includes 56 years at the Journal Inquirer, 44 of them as managing editor, while still writing
+          influential political columns. Chris is also a founding member of the Gold Anti-Trust Action
+          Committee (GATA), and its secretary/treasurer, an organization formed for the purpose of exposing
+          and combating gold market manipulations by the central banks. Through his writings for the GATA
+          Dispatch as well as his international advocacy, Chris has been an active voice against uncertainty
+          and for fair dealing in the gold and mineral markets. With his profound expertise and commitment,
+          he takes a great interest in Mining Discovery’s mandate in the early-stage mineral exploration and discovery.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

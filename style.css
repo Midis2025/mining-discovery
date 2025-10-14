@@ -1273,6 +1273,7 @@
 
   .fullweb {
     flex-direction: row;
+    justify-content: center;
   }
 
   .container2 {
