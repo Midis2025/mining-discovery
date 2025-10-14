@@ -934,243 +934,154 @@
       }
 
     /* Team card */
+
     .team-card {
       display: flex;
       align-items: flex-start;
-      background: #eaeaea; /* light grey */
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 40px;
-      width: 600px;
-      max-width: 90%;
-
-      /* initial hidden state */
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px;
+      gap: 25px;
+      width: 100%;
+      max-width: 950px;
+      margin-bottom: 55px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
       opacity: 0;
-      transform: translateX(100px);
-      transition: all 0.8s ease;
+      transform: translateY(50px);
+      animation: fadeUp 0.8s ease forwards;
     }
-    .team-card .image {
-  width: 200px;
-  height: 200px;
-  border-radius: 12px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  flex-shrink: 0;
-}
 
-
-    /* For second card (image right side) */
     .team-card.reverse {
       flex-direction: row-reverse;
-      transform: translateX(-100px); /* opposite direction */
+      animation-delay: 0.3s;
     }
 
-    /* When card becomes visible */
-    .team-card.show {
+    /* Subtle gold glowing border on hover */
+    .team-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 2px;
+      background: linear-gradient(135deg, #c7a86d, #ae8a4c);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .team-card:hover::before {
       opacity: 1;
-      transform: translateX(0);
     }
 
-    /* Image placeholder */
-    /* .team-card .image {
-      width: 120px;
-      height: 120px;
-      background: #333;
-      border-radius: 4px;
+    .team-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(174, 138, 76, 0.3);
+    }
+
+    /* Animation */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Image */
+    .team-card .image {
+      width: 160px;
+      height: 200px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
       flex-shrink: 0;
-    } */
+      position: relative;
+      overflow: hidden;
+    }
 
-    /* Text area */
+    .team-card .image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
+    }
+
+    /* Content */
     .team-card .content {
-      margin-left: 20px;
-      margin-right: 20px;
-    }
-
-    .team-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .team-card p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #333;
+      flex: 1;
       text-align: justify;
     }
 
-    .team-card p strong {
-      font-weight: 600;
+    .team-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #222;
     }
 
-/* Team card */
+    .team-card p b {
+      color: #ae8a4c;
+      font-weight: 700;
+    }
 
+    .team-card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 10px;
+    }
 
-/* Hover effect for desktop */
-.team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
+    /* Individual Images */
+    .team-card .image {
+      background-image: url("https://www.midis.in/image/Untitled%20design%20(3).png");
+    }
 
-/* Reverse card */
-/* Team card */
-.team-card {
-  display: flex;
-  align-items: flex-start;
-  background: #eaeaea; /* light grey */
-  border-radius: 8px;
-  padding: 20px;
-  gap: 20px;
-  width: 100%;
-  max-width: 900px; /* keeps it centered */
-  box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .team-card.reverse .image {
+      background-image: url("https://www.midis.in/image/e3fbadcb-f3f0-489d-baa7-16f46eee0757.jpg");
+    }
 
-  /* Animation */
-  opacity: 0;
-  transform: translateX(100px); /* start from right */
-  animation: slideInRight 0.8s ease forwards;
-}
+    /* Responsive */
+    @media (max-width: 900px) {
+      .team-card,
+      .team-card.reverse {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-.team-card.reverse {
-  flex-direction: row-reverse;
+      .team-card .image {
+        width: 130px;
+        height: 160px;
+      }
 
-  /* Animation for reverse card */
-  opacity: 0;
-  transform: translateX(-100px); /* start from left */
-  animation: slideInLeft 0.8s ease forwards;
-  animation-delay: 0.3s; /* small delay for staggered effect */
-}
+      .team-card .content {
+        text-align: center;
+      }
+    }
 
-/* Keyframes */
-@keyframes slideInRight {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+    @media (max-width: 480px) {
+      .team-section h2 {
+        font-size: 28px;
+      }
 
-@keyframes slideInLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+      .team-card {
+        padding: 20px;
+      }
 
+      .team-card .image {
+        width: 110px;
+        height: 140px;
+      }
 
-/* Image */
-.team-card .image,
-.team-card.reverse .image {
-  width: 130px;
-  height: 180px;
-  border-radius: 6px;
-  flex-shrink: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Individual images */
-.team-card .image {
-  background-image: url("https://www.midis.in/image/Untitled%20design%20(3).png");
-}
-
-.team-card.reverse .image {
-  background-image: url("https://www.midis.in/image/e3fbadcb-f3f0-489d-baa7-16f46eee0757.jpg");
-}
-
-/* Text */
-.team-card .content {
-  flex: 1;
-}
-
-.team-card h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.team-card p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #333;
-  text-align: justify;
-}
-
-.team-card p strong {
-  font-weight: 600;
-}
-
-/* Tablet view */
-@media (max-width: 1024px) {
-  .team-card {
-    max-width: 95%;
-  }
-
-  .team-card .image {
-    width: 120px;
-    height: 120px;
-  }
-
-  .team-card h3 {
-    font-size: 16px;
-  }
-
-  .team-card p {
-    font-size: 14px;
-  }
-}
-
-/* Mobile view */
-@media (max-width: 768px) {
-  .team-card,
-  .team-card.reverse {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-
-  .team-card .image {
-    margin-bottom: 15px;
-    width: 100px;
-    height: 100px;
-  }
-
-  .team-card .content {
-    margin: 0;
-  }
-
-  .team-card h3 {
-    font-size: 15px;
-  }
-
-  .team-card p {
-    font-size: 13px;
-    text-align: center; /* center text on smaller devices */
-  }
-}
-
-/* Very small screens */
-@media (max-width: 480px) {
-  .team-card {
-    padding: 15px;
-    gap: 15px;
-  }
-
-  .team-card .image {
-   width: 102px;
-        height: 166px;
-  }
-
-  .team-card h3 {
-    font-size: 14px;
-  }
-
-  .team-card p {
-    font-size: 12px;
-  }
-}
+      .team-card p {
+        font-size: 13px;
+      }
+    }
     /* container3 */
      /* Container for advisor cards */
     .container3 h2{
@@ -1206,21 +1117,32 @@
       padding: 60px 20px;
     }
 
-    .advisor-card {
-          background: #eaeaea;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.advisor-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       width: 500px;
-      padding: 25px 25px 30px;
-      display: flex;
-      flex-direction: column;
+      padding: 30px 25px 35px;
       position: relative;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+      border: 1px solid #ddd;
+      overflow: hidden;
+    }
+
+    .advisor-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #ae8a4c, #c4a15e, #ae8a4c);
     }
 
     .advisor-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      border-color: #ae8a4c;
     }
 
     .advisor-image {
@@ -1228,70 +1150,78 @@
       height: 120px;
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      border-radius: 8px;
+      border-radius: 12px;
       position: absolute;
       right: 25px;
       top: 25px;
+      border: 3px solid #ae8a4c;
+      transition: transform 0.4s ease;
     }
 
-    /* Example placeholder images (replace with your real ones) */
+    .advisor-card:hover .advisor-image {
+      transform: scale(1.05);
+    }
+
+    /* Image placeholders */
     .advisor-card:nth-child(1) .advisor-image {
       background-image: url("./image/Company Logo/l.PNG");
     }
 
     .advisor-card:nth-child(2) .advisor-image {
-  background-image: url("./image/Company Logo/cris.jpg");
-  background-size: contain;       /* or cover, depending on preference */
-  background-position: center;    /* keeps image centered */
-  background-repeat: no-repeat;
-  background-color: #f4f4f4;      /* optional, fills gaps if using contain */
-}
+      background-image: url("./image/Company Logo/cris.jpg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #fff;
+    }
 
     .advisor-content {
       margin-top: 110px;
     }
 
     .advisor-content h3 {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
+      color: #ae8a4c;
       margin-bottom: 10px;
-      color: #111;
+      border-left: 4px solid #ae8a4c;
+      padding-left: 10px;
+      letter-spacing: 0.5px;
     }
 
     .advisor-content p {
       color: #333;
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.8;
       text-align: justify;
     }
 
     strong {
+      color: #ae8a4c;
       font-weight: 600;
     }
 
-    /* Tablet screens (landscape tablets, small laptops) */
-    @media (max-width: 1024px) {
-      .advisor-section {
-        padding: 50px 30px;
-        gap: 20px;
-      }
+    /* Floating gold glow */
+    .advisor-card:hover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(174, 138, 76, 0.15), transparent 70%);
+      pointer-events: none;
+    }
 
+    /* Responsive Design */
+    @media (max-width: 1024px) {
       .advisor-card {
         width: 45%;
       }
-
-      .advisor-content {
-        margin-top: 140px;
-      }
     }
 
-    /* Mobile screens */
     @media (max-width: 768px) {
-      .advisor-section {
+      body {
         flex-direction: column;
         align-items: center;
-        padding: 40px 15px;
+        
       }
 
       .advisor-card {
@@ -1307,14 +1237,18 @@
 
       .advisor-content {
         margin-top: 0;
+        text-align: center;
       }
 
       .advisor-content h3 {
         text-align: center;
+        border-left: none;
+        border-bottom: 3px solid #ae8a4c;
+        display: inline-block;
+        padding-bottom: 4px;
       }
     }
 
-    /* Extra small screens (phones under 400px) */
     @media (max-width: 400px) {
       .advisor-card {
         padding: 20px;
@@ -2104,35 +2038,34 @@
     <h2>Management Team</h2>
 
     <!-- Card 1 -->
-    <div class="team-card">
- <div class="image">
-
- </div>
-      <div class="content">
-        <h3>Gaurav Sharma</h3>
-        <p>
-          <strong>Gaurav Sharma is a Founder of Mining Discovery</strong>, bringing a word to the know-how
-          in media technology, communication, and mining networks to innovate on exploration. With a unique
-          technical insight and connectivity with the industry, he has developed platforms that serve as a bridge
-          from discovery to opportunity.
-        </p>
-      </div>
+   <div class="team-card">
+    <div class="image"></div>
+    <div class="content">
+      <h3>Gaurav Sharma</h3>
+      <p><b>Founder, Mining Discovery</b></p>
+      <p>
+        Gaurav Sharma is the founder of Mining Discovery, a platform that bridges innovation and communication in the global mining industry. His leadership drives content strategy, digital presence, and international outreach across markets.
+      </p>
+      <p>
+        His strategic vision has transformed Mining Discovery into not just a media hub but a platform for digital growth. Gaurav has expanded the brand into marketing, PR, eCommerce, and web development, strengthening its global footprint.
+      </p>
     </div>
+  </div>
 
-    <!-- Card 2 -->
-    <div class="team-card reverse">
-     <div class="image">
-
-     </div>
-      <div class="content">
-        <h3>Sagar Bakshi</h3>
-        <p>
-          <strong>Sagar Bakshi is a Co-founder of Mining Discovery</strong>, brings with him a strong foothold
-          in resource journalism, editorial direction, and market strategy. As someone who has analyzed global
-          mining developments for years, he brings a sharp lens toward industry trends and opportunities.
-        </p>
-      </div>
+  <!-- Card 2 -->
+  <div class="team-card reverse">
+    <div class="image"></div>
+    <div class="content">
+      <h3>Sagar Bakshi</h3>
+      <p><b>Director & Co-Founder, Mining Discovery</b></p>
+      <p>
+        Sagar Bakshi, Co-Founder and Director, leads Mining Discovery with a vision to connect and empower the mining community worldwide. His expertise in digital marketing, branding, and business strategy ensures impactful industry engagement.
+      </p>
+      <p>
+        Under his direction, the platform offers advanced marketing, event promotions, PR, and content solutions. His forward-thinking approach has built long-term partnerships, expanding Mining Discovery’s influence across sectors.
+      </p>
     </div>
+  </div>
   </div>
 </div>
 
