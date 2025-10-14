@@ -2034,8 +2034,11 @@ height: auto;
   }
 
   .card1 {
-    padding: 20px;
-            height: 340px;
+   
+                    padding: 20px;
+        height: 380px;
+        width: 300px;
+    
   }
 
   .card1 img {
