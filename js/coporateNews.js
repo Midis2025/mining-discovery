@@ -31,7 +31,7 @@ async function loadCorporateNews() {
               : title}
           </p>
           <small>${date}</small><br>
-          <div class="author">By: ${escapeHtml(author)}</div>
+          <div class="author"> ${escapeHtml(author)}</div>
         </div>
       `;
     });

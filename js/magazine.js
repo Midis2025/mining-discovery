@@ -80,7 +80,7 @@ function showMagazineDetail(mag) {
       <img src="${imgUrl}" alt="${title}" id="mainMagazine" />
       <div class="btns">
         <button class="btn" onclick="window.open('${pdfUrl}', '_blank')">Download PDF</button>
-        <button class="btn subscribe">Subscribe to Get the Access</button>
+       
       </div>
     </div>
   `;

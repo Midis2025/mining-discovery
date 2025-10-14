@@ -50,7 +50,7 @@ async function loadWhatsOn() {
               }
               <br>
               <small>${dateStr}</small>
-              <div class="author">By: ${escapeHtml(author || "Unknown")}</div>
+              <div class="author"> ${escapeHtml(author || "Unknown")}</div>
             </li>
           </ul>
         `;

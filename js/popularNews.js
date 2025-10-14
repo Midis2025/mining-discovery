@@ -43,7 +43,7 @@ async function loadPopularNews() {
             <p>${escapeHtml(title)}</p>
             <div class="meta">
               <small>${date}</small>
-              <small>${author ? `By: ${escapeHtml(author)}` : ""}</small>
+              <small>${author ? ` ${escapeHtml(author)}` : ""}</small>
             </div>
           </div>
         </a>

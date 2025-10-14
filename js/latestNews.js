@@ -134,7 +134,7 @@ const url =
             <div class="main-card-content">
               <h2>${title}</h2>
               <p>${description}</p>
-              <p class="date"><span>${dateStr}</span> By: ${author}</p>
+              <p class="date"><span>${dateStr}</span> ${author}</p>
             </div>
           </div>
         `;

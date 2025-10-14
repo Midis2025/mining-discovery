@@ -35,7 +35,7 @@ async function loadWorldNews() {
           </p>
           ${description ? `<p class="description">${escapeHtml(description)}</p>` : ""}
           <small>${date}</small>
-          <div class="author">By: ${escapeHtml(author)}</div>
+          <div class="author">${escapeHtml(author)}</div>
           ${
             docId
               ? `<a href="news-details.html?id=${docId}">

@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             .main-content {
-                width: 100%;
+                // width: 100%;
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: clamp(15px, 3vw, 30px);
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
                }
 
             #newsDetails {
-                width: 65%;
+                // width: 65%;
                 background: #fff;
                 border-radius: clamp(8px, 2vw, 12px);
                 // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             #newsDetails h2 {
                 font-size: clamp(1.2rem, 3vw, 1.8rem);
-                padding: clamp(15px, 3vw, 25px);
+                // padding: clamp(15px, 3vw, 25px);
                 text-align: center;
                 color: #000;
             }
