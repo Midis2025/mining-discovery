@@ -2620,19 +2620,7 @@ ease;
 }
 
 
-.magazines-wrapper {
-  display: flex;
-  gap: 20px;
 
-}
-
-.magazine img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 20px;
-  padding: 5px;
-}
 
 .box1,
 .box2 {
@@ -2806,17 +2794,18 @@ ease;
   }
 
   /* Magazine Grid */
-  .magazine {
-    gap: 20px;
-    grid-template-rows: repeat(2fr);
+   .magazines-wrapper {
+    max-width: 1650px;
+    margin: 0 auto;
+    gap: 30px;
   }
 
   .magazine img {
     height: 360px;
   }
 
-  /* Box adjustments */
-  .box1, .box2 {
+  .box1,
+  .box2 {
     border-radius: 14px;
   }
 

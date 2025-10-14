@@ -8,7 +8,7 @@ const url =
   "&populate[news_sections][fields][3]=short_description" +
   "&populate[news_sections][populate][image]=true" +
   "&pagination[page]=1" +          // 👈 first page
-  "&pagination[pageSize]=12";      // 👈 12 items per page (CHANGED)
+  "&pagination[pageSize]=10";      // 👈 10 items per page (CHANGED)
 
 
   const latestNewsContainer = document.getElementById("latestNews");
@@ -87,13 +87,13 @@ const url =
       createdAt: s.createdAt
     })));
 
-    const topTwelve = sortedSections.slice(0, 12);  // CHANGED: now gets top 12
+    const topTen = sortedSections.slice(0, 10);  // CHANGED: now gets top 10
 
     /* ========================
        Render Featured Main Card (Newest News)
     ========================= */
-    if (mainCardContainer && topTwelve.length > 0) {
-      const featuredItem = topTwelve[0]; // This is guaranteed to be the newest
+    if (mainCardContainer && topTen.length > 0) {
+      const featuredItem = topTen[0]; // This is guaranteed to be the newest
       
       console.log("=== MAIN CARD RENDERING ===");
       console.log("Featured item being rendered:", featuredItem.title);
@@ -152,9 +152,9 @@ const url =
     }
 
     /* ========================
-       Render Remaining Latest Items (2nd-12th newest)
+       Render Remaining Latest Items (2nd-10th newest)
     ========================= */
-    const remainingItems = topTwelve.slice(1);  // CHANGED: now includes up to 11 remaining items
+    const remainingItems = topTen.slice(1);  // CHANGED: now includes up to 9 remaining items
     if (latestNewsContainer) {
       latestNewsContainer.innerHTML = remainingItems
         .map((item) => {
@@ -194,10 +194,10 @@ const url =
     }
 
     /* ========================
-       Render Ticker News Titles (All top 12)
+       Render Ticker News Titles (All top 10)
     ========================= */
     if (tickerContainer) {
-      const tickerItems = topTwelve  // CHANGED: now includes all 12 items
+      const tickerItems = topTen  // CHANGED: now includes all 10 items
         .map((item) => {
           const title = item.title || "Untitled";
           const docId = item.documentId || "";
@@ -226,10 +226,10 @@ const url =
 
     // Optional: Log the featured item for debugging
     console.log("Featured news item details:", {
-      title: topTwelve[0]?.title,
-      publish_on: topTwelve[0]?.publish_on,
-      publishedAt: topTwelve[0]?.publishedAt,
-      createdAt: topTwelve[0]?.createdAt
+      title: topTen[0]?.title,
+      publish_on: topTen[0]?.publish_on,
+      publishedAt: topTen[0]?.publishedAt,
+      createdAt: topTen[0]?.createdAt
     });
     
   } catch (err) {
