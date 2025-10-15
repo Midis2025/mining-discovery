@@ -816,11 +816,7 @@ function renderNewCommentsSection(newsId) {
                         <label for="ageCheck">Acknowledge I am 18 and older.</label>
                     </div>
 
-                    <div class="or-login">Or Login With</div>
-                    <div class="login-icons">
-                        <i class="fa-brands fa-google"></i>
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </div>
+                  
                 </div>
             </form>
 

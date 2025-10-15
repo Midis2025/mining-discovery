@@ -1139,6 +1139,7 @@
   overflow: hidden;
   border: 1px solid black;
   min-width: 280px;
+  align-self: flex-start;
 }
 
 .main-card img {
@@ -1189,12 +1190,43 @@
 .latest-section {
   flex: 1;
   min-width: 280px;
+  display: flex;
+  flex-direction: column;
 }
 
 .latest-section h3 {
   text-align: center;
   font-size: 20px;
   margin-bottom: 15px;
+}
+
+/* Desktop: Make latest news scrollable */
+@media (min-width: 900px) {
+  #latestNews {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
+  }
+
+  /* Custom scrollbar styling */
+  #latestNews::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  #latestNews::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  #latestNews::-webkit-scrollbar-thumb {
+    background: #ae8a4c;
+    border-radius: 10px;
+  }
+
+  #latestNews::-webkit-scrollbar-thumb:hover {
+    background: #8a6a3c;
+  }
 }
 
 .latest-item {
@@ -2781,6 +2813,17 @@ ease;
   
    .content {
   text-align: center;
+  padding: 15px;
+}
+
+.content h4 {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
 }
 
 .content button {
@@ -2851,6 +2894,16 @@ ease;
   .magazine img {
     height: auto;            /* prevent image cutoff */
     max-height: 450px;       /* control height */
+  }
+
+  .content {
+    padding: 12px;
+  }
+
+  .content h4 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 8px 0;
   }
 
   .content button {

@@ -628,11 +628,7 @@ color:#ae8a4c;
                         <label for="ageCheck">Acknowledge I am 18 and older.</label>
                     </div>
 
-                    <div class="or-login">Or Login With</div>
-                    <div class="login-icons">
-                        <i class="fa-brands fa-google" title="Login with Google"></i>
-                        <i class="fa-brands fa-facebook-f" title="Login with Facebook"></i>
-                    </div>
+                   
                 </div>
 
                 <div class="comments-sort">Most Recent <i class="fa-solid fa-angle-down"></i></div>

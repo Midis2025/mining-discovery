@@ -325,12 +325,12 @@ function displayComments(newsId) {
 // ✅ Handle comment form submission (adapted for new form fields)
 function handleCommentSubmission(newsId) {
     const form = document.getElementById('newCommentForm');
-    
+
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const commentTextarea = form.querySelector('textarea');
         const nameInput = document.getElementById('commentNameField');
         const emailInput = document.getElementById('commentEmailField');
@@ -339,7 +339,7 @@ function handleCommentSubmission(newsId) {
         const comment = commentTextarea.value.trim();
         const name = nameInput.value.trim();
         const email = emailInput.value.trim();
-        
+
         if (!comment || !name || !email) {
             showMessage('Please fill in Name, Email, and Comment.', 'error');
             return;
@@ -351,24 +351,135 @@ function handleCommentSubmission(newsId) {
 
         commentButton.disabled = true;
         commentButton.textContent = 'Posting...';
-        
-        setTimeout(() => {
-            try {
+
+        try {
+            // POST comment to Strapi API
+            const apiURL = `${CONFIG.API_BASE_URL}/comments`;
+
+            // Try to get the numeric ID if available
+            const newsSectionId = currentNewsSection?.id || newsId;
+            const newsSectionDocumentId = currentNewsSection?.documentId || newsId;
+
+            // Strapi v5 payload - try with numeric ID first, then documentId
+            const payload = {
+                data: {
+                    comment: comment,
+                    name: name,
+                    email: email,
+                    news_section: newsSectionId // Try numeric ID first
+                }
+            };
+
+            console.log('Posting comment to:', apiURL);
+            console.log('Available IDs - Numeric:', newsSectionId, 'DocumentId:', newsSectionDocumentId);
+            console.log('Payload:', JSON.stringify(payload, null, 2));
+
+            const response = await fetch(apiURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            console.log('API Response Status:', response.status);
+
+            // If 500 error with numeric ID, try with documentId instead
+            if (response.status === 500 && newsSectionId !== newsSectionDocumentId) {
+                console.warn('500 error with numeric ID, retrying with documentId...');
+
+                const retryPayload = {
+                    data: {
+                        comment: comment,
+                        name: name,
+                        email: email,
+                        news_section: newsSectionDocumentId
+                    }
+                };
+
+                console.log('Retry Payload:', JSON.stringify(retryPayload, null, 2));
+
+                const retryResponse = await fetch(apiURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(retryPayload)
+                });
+
+                console.log('Retry Response Status:', retryResponse.status);
+
+                if (!retryResponse.ok) {
+                    const retryErrorText = await retryResponse.text();
+                    console.error('Retry API Error Response:', retryErrorText);
+                    throw new Error(`Failed to post comment (Status ${retryResponse.status}). ${retryErrorText.substring(0, 100)}`);
+                }
+
+                const retryData = await retryResponse.json();
+                console.log('Comment posted successfully (retry):', retryData);
+
+                // Success with documentId
                 const newComment = saveComment(newsId, { name, email, comment });
                 allComments.unshift(newComment);
                 renderCommentsList();
-                
-                commentTextarea.value = ''; // Only clear the comment text
-                
+                commentTextarea.value = '';
                 showMessage('Comment posted successfully!', 'success');
-            } catch (error) {
-                console.error('Error posting comment:', error);
-                showMessage('Error posting comment. Please try again.', 'error');
-            } finally {
-                commentButton.disabled = false;
-                commentButton.textContent = 'Submit';
+                return; // Exit early on success
             }
-        }, 500); // Simulated API delay
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('API Error Response:', errorText);
+
+                let errorMessage = `Failed to post comment (Status ${response.status}).`;
+
+                try {
+                    const errorData = JSON.parse(errorText);
+                    console.error('Parsed Error Data:', errorData);
+
+                    // More detailed error extraction
+                    if (errorData.error) {
+                        if (errorData.error.details) {
+                            console.error('Error Details:', errorData.error.details);
+                        }
+                        errorMessage = errorData.error.message || errorMessage;
+                    } else {
+                        errorMessage = errorData.message || errorMessage;
+                    }
+                } catch (e) {
+                    console.error('Failed to parse error response:', e);
+                    if (errorText.length > 0) {
+                        errorMessage = `Failed to post comment. Details: ${errorText.substring(0, 100)}`;
+                    }
+                }
+                throw new Error(errorMessage);
+            }
+
+            const responseData = await response.json();
+            console.log('Comment posted successfully:', responseData);
+
+            // Save comment locally and update UI
+            const newComment = saveComment(newsId, { name, email, comment });
+            allComments.unshift(newComment);
+            renderCommentsList();
+
+            // Clear only the comment textarea, keep name and email
+            commentTextarea.value = '';
+
+            showMessage('Comment posted successfully!', 'success');
+
+        } catch (error) {
+            console.error('Error posting comment:', error);
+            showMessage(
+                error.message.includes('Failed to fetch') || error.message.includes('NetworkError')
+                    ? 'Network error. Please check your connection and try again.'
+                    : `Error posting comment: ${error.message}`,
+                'error'
+            );
+        } finally {
+            commentButton.disabled = false;
+            commentButton.textContent = 'Submit';
+        }
     });
 }
 
@@ -408,19 +519,14 @@ function renderNewCommentsSection(newsId) {
                     </p>
                     <input type="text" id="commentNameField" name="name" placeholder="Name*" class="input-field" required/>
                     <input type="email" id="commentEmailField" name="email" placeholder="Email*" class="input-field" required/>
-                    <input type="password" id="commentPasswordField" placeholder="Password*" class="input-field" />
+                    
 
                     <div class="acknowledge">
                         <input type="checkbox" id="ageCheck" />
                         <label for="ageCheck">Acknowledge I am 18 and older.</label>
                     </div>
 
-                    <div class="or-login">Or Login With</div>
-                    <div class="login-icons">
-                        <i class="fa-brands fa-google"></i>
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </div>
-                </div>
+                   
             </form>
 
             <div class="comments-sort">Most Recent <i class="fa-solid fa-angle-down"></i></div>
@@ -639,6 +745,9 @@ function renderRichText(richTextData) {
     return formatPlainDescription(JSON.stringify(richTextData));
 }
 
+// Global variable to store news section IDs
+let currentNewsSection = null;
+
 async function loadNewsDetails() {
     const { id, category } = getQueryParams();
     const container = document.getElementById("newsDetails");
@@ -718,6 +827,14 @@ async function loadNewsDetails() {
         }
 
         if (!newsSection) { throw new Error('News article not found'); }
+
+        // Store the complete newsSection data for comment submission
+        currentNewsSection = {
+            id: newsSection.id,
+            documentId: newsSection.documentId || id,
+            title: newsSection.title
+        };
+        console.log('Current News Section:', currentNewsSection);
 
         updateTopbarTitle(newsSection.title);
 

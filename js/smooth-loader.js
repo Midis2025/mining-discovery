@@ -20,7 +20,7 @@ const SMOOTH_CONFIG = {
 
   // Content loading order
   critical: [
-    { func: 'loadLatestNews', container: 'latestNews' },
+    { func: 'loadLatestNews', containers: ['mainCard', 'latestNews'] },
     { func: 'loadPopularNews', container: 'carousel' }
   ],
   nonCritical: [
@@ -161,6 +161,7 @@ const SmoothLoadingStates = {
 
   getSkeletonHTML(containerId) {
     const skeletons = {
+      'mainCard': this.createSkeletonItems(1, 'mainCard'),
       'latestNews': this.createSkeletonItems(5, 'list'),
       'carousel': this.createSkeletonItems(4, 'card'),
       'copperNews': this.createSkeletonItems(5, 'list'),
@@ -177,6 +178,18 @@ const SmoothLoadingStates = {
 
   createSkeletonItems(count, type) {
     const templates = {
+      mainCard: `
+        <div class="skeleton-main-card" style="width: 100%; border-radius: 12px; overflow: hidden; background: #fff;">
+          <div class="skeleton-image" style="height: 400px; width: 100%; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: skeleton-shimmer 1.5s ease-in-out infinite;"></div>
+          <div class="skeleton-content" style="padding: 20px;">
+            <div class="skeleton-line" style="height: 32px; width: 90%; margin-bottom: 15px; border-radius: 6px;"></div>
+            <div class="skeleton-line" style="height: 18px; width: 100%; margin-bottom: 10px;"></div>
+            <div class="skeleton-line" style="height: 18px; width: 95%; margin-bottom: 10px;"></div>
+            <div class="skeleton-line" style="height: 18px; width: 80%; margin-bottom: 20px;"></div>
+            <div class="skeleton-line short" style="height: 16px; width: 40%;"></div>
+          </div>
+        </div>`,
+
       list: `
         <div class="skeleton-item" style="margin-bottom: 15px;">
           <div class="skeleton-line" style="width: 85%;"></div>
@@ -207,14 +220,19 @@ const SmoothLoadingStates = {
 // ============================================
 // Smooth Content Wrapper
 // ============================================
-async function smoothExecute(funcName, containerId) {
+async function smoothExecute(funcName, containerIdOrIds) {
   const startTime = Date.now();
 
+  // Support both single container and multiple containers
+  const containerIds = Array.isArray(containerIdOrIds) ? containerIdOrIds : (containerIdOrIds ? [containerIdOrIds] : []);
+
   try {
-    // Show skeleton with smooth fade-in
-    if (containerId) {
-      SmoothLoadingStates.show(containerId);
-    }
+    // Show skeleton with smooth fade-in for all containers
+    containerIds.forEach(containerId => {
+      if (containerId) {
+        SmoothLoadingStates.show(containerId);
+      }
+    });
 
     // Check if function exists
     if (typeof window[funcName] !== 'function') {
@@ -233,9 +251,11 @@ async function smoothExecute(funcName, containerId) {
     // Wait for both load and minimum time
     await Promise.all([loadPromise, minTimePromise]);
 
-    // Smoothly hide skeleton and show content
-    if (containerId) {
-      await SmoothLoadingStates.hide(containerId);
+    // Smoothly hide skeleton and show content for all containers
+    for (const containerId of containerIds) {
+      if (containerId) {
+        await SmoothLoadingStates.hide(containerId);
+      }
     }
 
     const duration = Date.now() - startTime;
@@ -246,9 +266,11 @@ async function smoothExecute(funcName, containerId) {
   } catch (error) {
     console.error(`❌ Error in ${funcName}:`, error.message);
 
-    if (containerId) {
-      SmoothLoadingStates.hide(containerId, false);
-    }
+    containerIds.forEach(containerId => {
+      if (containerId) {
+        SmoothLoadingStates.hide(containerId, false);
+      }
+    });
 
     return { status: 'error', funcName, error: error.message };
   }
@@ -259,7 +281,7 @@ async function smoothExecute(funcName, containerId) {
 // ============================================
 async function loadContentSmoothly(items) {
   const promises = items.map(item =>
-    smoothExecute(item.func, item.container)
+    smoothExecute(item.func, item.containers || item.container)
   );
 
   const results = await Promise.allSettled(promises);

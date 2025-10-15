@@ -55,10 +55,11 @@ const CATEGORY_ORDER = [
 
 // Populate dropdown menu
 function populateHeaderDropdown(categories) {
+  const dropdownMenu = document.getElementById("dropdownMenu");
   const dropdownMenu1 = document.getElementById("dropdownMenu1");
 
-  if (!dropdownMenu1) {
-    console.warn("dropdownMenu1 not found in header");
+  if (!dropdownMenu && !dropdownMenu1) {
+    console.warn("Neither dropdownMenu nor dropdownMenu1 found in header");
     return;
   }
 
@@ -96,18 +97,41 @@ function populateHeaderDropdown(categories) {
     return a.title.localeCompare(b.title);
   });
 
-  // Clear existing content
-  dropdownMenu1.innerHTML = "";
+  // Populate dropdownMenu (hamburger menu NEWS tab)
+  if (dropdownMenu) {
+    // If dropdownMenu is an <a> tag, replace it with a nav element
+    if (dropdownMenu.tagName.toLowerCase() === "a") {
+      const nav = document.createElement("nav");
+      nav.id = dropdownMenu.id;
+      dropdownMenu.replaceWith(nav);
+    }
 
-  // Add menu items
-  menuItems.forEach((item) => {
-    const a = document.createElement("a");
-    a.textContent = item.title;
-    a.href = item.href;
-    a.dataset.slug = item.slug;
-    a.className = "dropdown-item";
-    dropdownMenu1.appendChild(a);
-  });
+    const menu = document.getElementById("dropdownMenu");
+    menu.innerHTML = "";
+
+    menuItems.forEach((item) => {
+      const a = document.createElement("a");
+      a.textContent = item.title;
+      a.href = item.href;
+      a.dataset.slug = item.slug;
+      a.className = "dropdown-item";
+      menu.appendChild(a);
+    });
+  }
+
+  // Populate dropdownMenu1 (nav dropdown)
+  if (dropdownMenu1) {
+    dropdownMenu1.innerHTML = "";
+
+    menuItems.forEach((item) => {
+      const a = document.createElement("a");
+      a.textContent = item.title;
+      a.href = item.href;
+      a.dataset.slug = item.slug;
+      a.className = "dropdown-item";
+      dropdownMenu1.appendChild(a);
+    });
+  }
 
   console.log(`Header dropdown populated with ${menuItems.length} categories in custom order`);
 }
