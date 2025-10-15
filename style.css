@@ -1679,11 +1679,11 @@
 
 
 .team-card small {
-padding-left: 5px;
-    padding-bottom: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
   font-size: 13px;
   color: #ae8a4c;
-  /* font-style: italic; */
+  margin: 0;            /* remove any default margin */
 }
 
 .nav {
@@ -1728,11 +1728,14 @@ padding-left: 5px;
 
   .team-card small {
     font-size: 15px;     /* slightly bigger subtitle */
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
   }
 
   .nav {
    display: none;
+  }
+  .meta{
+    padding-bottom: 15px;
   }
 }
 
@@ -2599,7 +2602,7 @@ h2 {
   text-decoration: none;
     border: 1px solid #ae8a4c;
     color: #AE8A4C;
-    /* padding: 6px 12px; */
+    padding: 6px 12px;
     border-radius: 30px;
     cursor: pointer;
     font-weight: bold;
