@@ -95,15 +95,19 @@ function showSubscriptionSuccess() {
                 <h2 style="color: #ae8a4c; margin-bottom: 5px;">✓ Subscription Successful!</h2>
                 <p style="margin-bottom: 25px;">Thank you! You can now continue reading.</p>
             </div>
-            <button onclick="window.closePopup()" style="
-                background: linear-gradient(135deg, #ffd27d, #ae8a4c);
-                color: #111;
-                font-weight: bold;
-                padding: 12px 100px;
-                width: 85%;
-                max-width: 380px;
-        
-            ">Continue Reading</button>
+             <div style="display: flex; justify-content: center;">
+        <button onclick="window.closePopup()" style="
+          background: linear-gradient(135deg, #ffd27d, #ae8a4c);
+          color: #111;
+          font-weight: bold;
+          padding: 12px 100px;
+          width: 85%;
+          max-width: 380px;
+          border: none;
+          border-radius: 30px;
+          cursor: pointer;
+        ">Continue Reading</button>
+      </div>
         `;
     }
     
