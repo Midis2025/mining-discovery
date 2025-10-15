@@ -123,12 +123,22 @@ async function fetchCeoProfiles() {
 
 // Carousel buttons
 prevBtn.addEventListener('click', () => {
-  if (currentPage > 0) currentPage--;
+  if (currentPage > 0) {
+    currentPage--;
+  } else {
+    // Loop back to last page
+    currentPage = totalPages - 1;
+  }
   updateCarousel();
 });
 
 nextBtn.addEventListener('click', () => {
-  if (currentPage < totalPages - 1) currentPage++;
+  if (currentPage < totalPages - 1) {
+    currentPage++;
+  } else {
+    // Loop back to first page
+    currentPage = 0;
+  }
   updateCarousel();
 });
 

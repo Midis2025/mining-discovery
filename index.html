@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mining Discovery</title>
   
-<script async crossorigin="anonymous"
+<script defer crossorigin="anonymous"
     data-clerk-publishable-key="pk_test_YW11c2luZy1rYXR5ZGlkLTQ0LmNsZXJrLmFjY291bnRzLmRldiQ"
     src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
 </script>
@@ -322,7 +322,13 @@
             <!-- Banner image will be injected here -->
           </div>
 
-        <h2>Gold News</h2>
+
+      <div class="section-headers">
+  <h2>Gold News</h2>
+  <a href="https://www.youtube.com/@u.s.goldcorp.6878/featured" target="_blank" rel="noopener noreferrer">
+    <div class="more-btn">More →</div>
+  </a>
+</div>
           <div class="cards">
              <div class="card"></div>
           </div>
@@ -410,7 +416,9 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
 
             </div>
 
-
+  <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="more-btn">
+    More →
+  </a>
 
           
           </div>
@@ -425,7 +433,12 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
 
 
         <div class="task">
-          <h2>Precious Metals</h2>
+        <div class="section-header">
+    <h2>Precious Metals</h2>
+    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="more-btn">
+      More →
+    </a>
+  </div>
           <div class="precious-metals" id="preciousMetalNews">
             <img src="./image/slidr1.png">
             <div class="world-news">
@@ -439,14 +452,18 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
 
           </div>
 
-
           <!-- World News -->
 
 
 
         </div>
        <div class="task">
-  <h2>World News</h2>
+ <div class="section-header">
+    <h2>World News</h2>
+    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="more-btn">
+      More →
+    </a>
+  </div>
   <div class="precious-metals" id="worldNews">
     <img src="./image/slidr1.png">
     <div class="world-news">
@@ -457,9 +474,10 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
       <small>30th April 2025</small>
        <small>By: Mining Discovery</small>
   
-      <button class="more-btn">More &gt;</button>
+      
     </div>
   </div>
+ 
 </div>
 
 
@@ -474,7 +492,9 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
               <small>30th April 2025</small><br>
               <div class="author">By: Michael Clark</div>
             </div>
-
+ <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="more-btn">
+    More →
+  </a>
         
 
           </div>
@@ -670,7 +690,43 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
     </div>
     <!-- Top Logo Slider -->
 
-    <div class="logo-slider">
+    <!-- Two-Row Marquee Logo Slider -->
+    <div class="logo-slider-wrapper">
+
+      <!-- Top Row - Scrolls LEFT -->
+      <!-- <div class="logo-slider-row">
+        <div class="slider-track scroll-left"> -->
+          <!-- First half of brands (4 brands for 8 total) -->
+          <!-- <div class="slide"><img src="./image/ASTRA.png" alt="ASTRA" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/ARRAS 1.png" alt="ARRAS" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/Aurion.png" alt="Aurion" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/arizona  1.png" alt="Arizona Mining" width="130" height="100" /></div> -->
+
+          <!-- Duplicate for seamless loop -->
+          <!-- <div class="slide"><img src="./image/ASTRA.png" alt="ASTRA" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/ARRAS 1.png" alt="ARRAS" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/Aurion.png" alt="Aurion" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/arizona  1.png" alt="Arizona Mining" width="130" height="100" /></div>
+        </div>
+      </div> -->
+
+      <!-- Bottom Row - Scrolls RIGHT -->
+      <!-- <div class="logo-slider-row">
+        <div class="slider-track scroll-right"> -->
+          <!-- Second half of brands (4 brands) -->
+          <!-- <div class="slide"><img src="./image/loyalist icon black-04 1.png" alt="Loyalist" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/vector/image (7).png" alt="Partner Brand" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/image (5).png" alt="Partner Brand" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/image (6).png" alt="Partner Brand" width="130" height="100" /></div> -->
+
+          <!-- Duplicate for seamless loop -->
+          <!-- <div class="slide"><img src="./image/loyalist icon black-04 1.png" alt="Loyalist" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/vector/image (7).png" alt="Partner Brand" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/image (5).png" alt="Partner Brand" width="130" height="100" /></div>
+          <div class="slide"><img src="./image/image (6).png" alt="Partner Brand" width="130" height="100" /></div>
+        </div> -->
+      <!-- </div> -->
+         <div class="logo-slider">
 
       <div class="slider-track" id="sliderTrack">
         <!-- Loop starts -->
@@ -748,6 +804,8 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
       </div>
 
     </div>
+
+    </div>
     <!-- Footer Section -->
     <div class="footer-container">
       <div class="footers">
@@ -793,7 +851,7 @@ U.S. Gold Corp. Sustainable Mining in America’s Heartland</h4>
            <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
   MULTIMEDIA VIDEOS
 </a></li>
-            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <!-- <li><a href="sub.html">SUBSCRIPTION</a></li> -->
             <li><a href="./magzin.html">MAGAZINES</a></li>
             <li><a href="">COMMENT GUIDELINE</a></li>
             <li><a href="">LEGAL NOTICE</a></li>
@@ -942,7 +1000,17 @@ function subscribe() {
 </script>
 
   <script src="./script.js"></script>
+  <script src="./js/header-dropdown.js"></script>
   <script src="./js/subscriber.js"> </script>
+
+  <!-- Cache Manager - MUST load before other API scripts -->
+  <script src="./js/cache-manager.js"></script>
+  <script src="./js/cached-fetch-wrapper.js"></script>
+
+  <!-- Helper Functions - MUST load before API scripts that use them -->
+  <script src="./js/helper.js"></script>
+
+  <!-- API Loading Scripts -->
   <script src="./js/latestNews.js"></script>
   <script src="./js/news.js"></script>
   <script src="./js/popularNews.js"></script>
@@ -956,19 +1024,8 @@ function subscribe() {
   <script src="./js/Home-Advertisments.js"></script>
   <script src="./js/sponsoredPost.js"></script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      loadLatestNews();
-      loadPopularNews();
-      loadCopperNews();
-      loadPreciousMetalNews();
-      loadWorldNews();
-      loadCorporateNews();
-      loadAdvertisements();
-      loadAnnouncements();
-      loadWhatsOn();
-    });
-  </script>
+  <!-- Smooth Loader - Loads all content with buttery smooth transitions and caching -->
+  <script src="./js/smooth-loader.js"></script>
 <script>
   
 </script>

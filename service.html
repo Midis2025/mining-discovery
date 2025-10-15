@@ -1414,62 +1414,75 @@
       margin: 5px auto;
     }
 
-    .logo-slider {
-
+    /* Two-Row Marquee Logo Slider */
+    .logo-slider-wrapper {
       overflow: hidden;
-      white-space: nowrap;
-      padding: 20px 0;
-      position: relative;
+      padding: 30px 0;
+      background: white;
     }
 
-    .logo-slider h2 {
-      text-align: center;
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 20px;
-    }
+     .logo-slider {
+ 
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 20px 0;
+  position: relative;
+}
 
-    .slider-track {
-      display: flex;
-      width: calc(260px * 20);
-      /* 10 original + 10 duplicated */
-      animation: scroll 40s linear infinite;
-    }
+.logo-slider h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
 
-    .heads {
-      text-align: center;
-      border-bottom: 2px solid black;
-      padding-bottom: 12px;
-    }
+.slider-track {
+  display: flex;
+  width: calc(260px * 20); /* 10 original + 10 duplicated */
+  animation: scroll 40s linear infinite;
+}
 
-    .slide {
-      width: 190px;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px 10px;
-      border: 1px solid black;
-      border-radius: 10px;
-      margin: 20px;
-    }
+.heads{
+  text-align: center;
+  border-bottom: 2px solid black;
+  padding-bottom: 12px;
+}
+.slide {
+     width: 190px;
+    flex-shrink: 0;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+}
 
-    .slide img {
-      max-width: 100%;
-      max-height: 70px;
-      object-fit: contain;
-    }
+.slide img {
+  max-width: 100%;
+  max-height: 70px;
+  object-fit: contain;
+}
 
-    /* Smooth scroll keyframes */
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
+/* Smooth scroll keyframes */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
-      100% {
-        transform: translateX(-50%);
-      }
-    }
+
+
+.heads{
+  text-align: center;
+  border-bottom: 2px solid black;
+  padding-bottom: 12px;
+}
 
     /* Small Phones */
     @media (max-width: 480px) {
@@ -2449,84 +2462,119 @@
     <h1>Brands we are working with</h1>
 
   </div>
-  <div class="logo-slider">
+  <!-- Two-Row Marquee Logo Slider -->
+  <div class="logo-slider-wrapper">
 
-    <div class="slider-track" id="sliderTrack">
-      <!-- Loop starts -->
-      <div class="slide">
-        <img src="./image/ASTRA.png" alt="Astra" width="130" height="100" />
+    <!-- Top Row - Scrolls LEFT -->
+    <!-- <div class="logo-slider-row">
+      <div class="slider-track scroll-left"> -->
+        <!-- First half of brands (4 brands for 8 total) -->
+        <!-- <div class="slide"><img src="./image/ASTRA.png" alt="ASTRA" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/ARRAS 1.png" alt="ARRAS" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/Aurion.png" alt="Aurion" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/arizona  1.png" alt="Arizona Mining" width="130" height="100" /></div> -->
 
+        <!-- Duplicate for seamless loop -->
+        <!-- <div class="slide"><img src="./image/ASTRA.png" alt="ASTRA" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/ARRAS 1.png" alt="ARRAS" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/Aurion.png" alt="Aurion" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/arizona  1.png" alt="Arizona Mining" width="130" height="100" /></div>
       </div>
-      <div class="slide">
-        <img src="./image/ARRAS 1.png" alt="Astra" width="130" height="100" />
+    </div> -->
+
+    <!-- Bottom Row - Scrolls RIGHT -->
+    <!-- <div class="logo-slider-row"> -->
+      <!-- <div class="slider-track scroll-right"> -->
+        <!-- Second half of brands (4 brands) -->
+        <!-- <div class="slide"><img src="./image/loyalist icon black-04 1.png" alt="Loyalist" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/vector/image (7).png" alt="Partner Brand" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/image (5).png" alt="Partner Brand" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/image (6).png" alt="Partner Brand" width="130" height="100" /></div> -->
+
+        <!-- Duplicate for seamless loop -->
+        <!-- <div class="slide"><img src="./image/loyalist icon black-04 1.png" alt="Loyalist" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/vector/image (7).png" alt="Partner Brand" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/image (5).png" alt="Partner Brand" width="130" height="100" /></div>
+        <div class="slide"><img src="./image/image (6).png" alt="Partner Brand" width="130" height="100" /></div>
+      </div> -->
+    <!-- </div> -->
+   <div class="logo-slider">
+
+      <div class="slider-track" id="sliderTrack">
+        <!-- Loop starts -->
+        <div class="slide">
+          <img src="./image/ASTRA.png" alt="Astra" width="130" height="100" />
+
+        </div>
+        <div class="slide">
+          <img src="./image/ARRAS 1.png" alt="Astra" width="130" height="100" />
+        </div>
+
+        <div class="slide">
+          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+        </div>
+        <!-- Repeat again for smooth loop -->
+        <div class="slide">
+          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/image (5).png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
+        </div>
+
+        <div class="slide">
+           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+        </div>
+
+        <div class="slide">
+          <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <!-- Repeat again for smooth loop -->
+        <div class="slide">
+          <img src="./image/ASTRA (1) 1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
+        </div>
+<div class="slide">
+          <img src="./image/ASTRA.png" alt="Astra" width="130" height="100" />
+
+        </div>
+        <div class="slide">
+          <img src="./image/ARRAS 1.png" alt="Astra" width="130" height="100" />
+        </div>
+
+        <div class="slide">
+          <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+          <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
+        </div>
+        <div class="slide">
+           <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
+        </div>
       </div>
 
-      <div class="slide">
-        <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/loyalist icon black-04 1.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
-      </div>
-      <!-- Repeat again for smooth loop -->
-      <div class="slide">
-        <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/image (5).png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
-      </div>
-
-      <div class="slide">
-        <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
-      </div>
-
-      <div class="slide">
-        <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
-      </div>
-      <!-- Repeat again for smooth loop -->
-      <div class="slide">
-        <img src="./image/ASTRA (1) 1.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/Aurion.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/image (5).png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/download 1.png" alt="Astra" width="130" height="100" />
-      </div>
-      <div class="slide">
-        <img src="./image/image (6).png" alt="Astra" width="130" height="100" />
-      </div>
-
-      <div class="slide">
-        <img src="./image/vector/image (7).png" alt="Astra" width="130" height="100" />
-      </div>
-
-      <div class="slide">
-        <img src="./image/arizona  1.png" alt="Astra" width="130" height="100" />
-      </div>
     </div>
 
   </div>
@@ -2574,7 +2622,7 @@
            <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
   MULTIMEDIA VIDEOS
 </a></li>
-            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <!-- <li><a href="sub.html">SUBSCRIPTION</a></li> -->
             <li><a href="./magzin.html">MAGAZINES</a></li>
             <li><a href="">COMMENT GUIDELINE</a></li>
             <li><a href="">LEGAL NOTICE</a></li>
@@ -2593,6 +2641,7 @@
     </div>
   </div>
   <script src="./script.js"></script>
+  <script src="./js/header-dropdown.js"></script>
   <script src="./js/news.js"></script>
   <script>
 

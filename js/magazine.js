@@ -72,7 +72,6 @@ function showMagazineDetail(mag) {
         ${featuresHtml}
       </ul>
       <div class="button">
-        <button class="btn subscribe">Subscribe to Get the Access</button>
            <button class="btn" onclick="window.open('${pdfUrl}', '_blank')">Download PDF</button>
       </div>
     </div>

@@ -1030,7 +1030,7 @@
         gap: 25px;
       }
 
-      .offer-card {
+      .offer-cards {
         background: #222;
         color: #fff;
         border-radius: 10px;
@@ -1042,12 +1042,12 @@
         transition: all 0.6s ease;
       }
 
-      .offer-card.visible {
+      .offer-cards.visible {
         transform: translateY(0);
         opacity: 1;
       }
 
-      .offer-card h3 {
+      .offer-cards h3 {
         font-size: 18px;
         color: #ae8a4c;
         margin-bottom: 10px;
@@ -1638,7 +1638,7 @@
 <div class="new">
     <div class="header-buttons" id="headerButtons">
    
-      <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a>
+      <!-- <a href="./sub.html"><button class="subscribe-btn">Subscribe</button></a> -->
     <!-- call all pages -->
         <button class="login-btn" id="loginBtn" >Login</button>
 
@@ -1849,7 +1849,7 @@
         </p>
 
         <div class="offer-grid">
-          <div class="offer-card">
+          <div class="offer-cards">
             <h3>Press Distribution & Article Content</h3>
             <p>
               Project announcements, sustainability stories, and investor-ready
@@ -1857,7 +1857,7 @@
             </p>
           </div>
 
-          <div class="offer-card">
+          <div class="offer-cards">
             <h3>Meta & Google Ads</h3>
             <p>
               Targeted campaigns to ensure your updates reach decision-makers
@@ -1865,7 +1865,7 @@
             </p>
           </div>
 
-          <div class="offer-card">
+          <div class="offer-cards">
             <h3>YouTube & Multimedia Management</h3>
             <p>
               Corporate updates, interviews, event coverage, and investor
@@ -1873,7 +1873,7 @@
             </p>
           </div>
 
-          <div class="offer-card">
+          <div class="offer-cards">
             <h3>Website Development & UX</h3>
             <p>
               Investor-ready websites: responsive, optimized, and aligned with
@@ -1881,7 +1881,7 @@
             </p>
           </div>
 
-          <div class="offer-card">
+          <div class="offer-cards">
             <h3>Email Campaigns & Newsletters</h3>
             <p>
               Stakeholder updates designed to build loyalty and keep investors
@@ -2081,7 +2081,7 @@
            <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
   MULTIMEDIA VIDEOS
 </a></li>
-            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <!-- <li><a href="sub.html">SUBSCRIPTION</a></li> -->
             <li><a href="./magzin.html">MAGAZINES</a></li>
             <li><a href="">COMMENT GUIDELINE</a></li>
             <li><a href="">LEGAL NOTICE</a></li>
@@ -2095,6 +2095,7 @@
       </div>
     </div>
     <script src="./script.js"></script>
+  <script src="./js/header-dropdown.js"></script>
     <script>
    document.addEventListener("DOMContentLoaded", function () {
   const hamburgerMenu = document.getElementById("hamburgerMenu");

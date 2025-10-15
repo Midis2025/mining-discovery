@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>News-Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-   <script async crossorigin="anonymous"
+   <script defer crossorigin="anonymous"
     data-clerk-publishable-key="pk_test_YW11c2luZy1rYXR5ZGlkLTQ0LmNsZXJrLmFjY291bnRzLmRldiQ"
     src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
 </script>
@@ -2028,7 +2028,7 @@
            <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
   MULTIMEDIA VIDEOS
 </a></li>
-            <li><a href="sub.html">SUBSCRIPTION</a></li>
+            <!-- <li><a href="sub.html">SUBSCRIPTION</a></li> -->
             <li><a href="./magzin.html">MAGAZINES</a></li>
             <li><a href="">COMMENT GUIDELINE</a></li>
             <li><a href="">LEGAL NOTICE</a></li>
@@ -2047,7 +2047,16 @@
 
   </footer>
   </div>
+  <!-- Cache Manager - Load first for caching support -->
+  <script src="./js/cache-manager.js"></script>
+  <script src="./js/cached-fetch-wrapper.js"></script>
+
+  <!-- Helper Functions -->
+  <script src="./js/helper.js"></script>
+
+  <!-- Core Scripts -->
   <script src="./script.js"></script>
+  <script src="./js/header-dropdown.js"></script>
    <script>
   function toggleMenu() {
   const header = document.querySelector(".main-header");
@@ -2073,44 +2082,15 @@
     });
     // show extra news</script>
 
+  <!-- News Page Scripts -->
   <script src="./js/advertisment.js"></script>
   <script src="./js/projects.js"></script>
   <script src="./js/reports.js"></script>
   <script src="./js/news.js"></script>
+  <script src="./js/latestNews.js"></script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-      loadAdvertisements();
-      loadProjects();
-      loadReports();
-      newsCategory();
-
-      NewsWidget.init({
-      pageSize: 5,
-      categorySlug: "latest-news",
-      useCache: true,      
-      selectors: {
-        containerId: "newsContainer",
-        nextNewsId: "nextNewsContainer",
-        mostReadSelector: ".cards",
-        categoryTitleId: "categoryTitle",
-        nextCategoryTitleId: "nextCategoryTitle",
-        showMoreSelector: ".btn-more",
-        dropdownToggleId: "dropdownToggle",
-        dropdownMenuId: "dropdownMenu"
-      }
-    });
-
-    });
-  </script>
-   <script src="./js/latestNews.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      loadLatestNews();
-      
-    });
-  </script>
+  <!-- Optimized Smooth Loader - Handles all loading with smooth transitions -->
+  <script src="./js/newss-optimized.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {

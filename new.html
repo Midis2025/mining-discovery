@@ -3,232 +3,189 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Leadership Team</title>
+  <title>Advisor Cards</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: "Inter", sans-serif;
     }
 
     body {
-      background: linear-gradient(180deg, #f8f8f6, #eceae6);
-      color: #222;
+      background: #f4f4f4;
+    }
+
+    .advisor-section {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 25px;
       padding: 60px 20px;
     }
 
-    .team-section {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .team-section h2 {
-      font-size: 38px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: #ae8a4c;
-      letter-spacing: 0.5px;
-    }
-
-    .team-section p {
-      font-size: 16px;
-      color: #555;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Team Card */
-    .team-card {
-      display: flex;
-      align-items: flex-start;
+    .advisor-card {
       background: #fff;
-      border-radius: 20px;
-      padding: 28px;
-      gap: 25px;
-      width: 100%;
-      max-width: 950px;
-      margin-bottom: 55px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    .team-card.reverse {
-      flex-direction: row-reverse;
-      animation-delay: 0.3s;
-    }
-
-    /* Subtle gold glowing border on hover */
-    .team-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 20px;
-      padding: 2px;
-      background: linear-gradient(135deg, #c7a86d, #ae8a4c);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .team-card:hover::before {
-      opacity: 1;
-    }
-
-    .team-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 12px 35px rgba(174, 138, 76, 0.3);
-    }
-
-    /* Animation */
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Image */
-    .team-card .image {
-      width: 160px;
-      height: 200px;
       border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 500px;
+      padding: 25px 25px 30px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .advisor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .advisor-image {
+      width: 120px;
+      height: 120px;
       background-size: cover;
       background-position: center;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .team-card .image::after {
-      content: "";
+      background-repeat: no-repeat;
+      border-radius: 8px;
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
+      right: 25px;
+      top: 25px;
     }
 
-    /* Content */
-    .team-card .content {
-      flex: 1;
+    /* Example placeholder images (replace with your real ones) */
+    .advisor-card:nth-child(1) .advisor-image {
+      background-image: url("./image/Company Logo/l.PNG");
+    }
+
+    .advisor-card:nth-child(2) .advisor-image {
+  background-image: url("./image/Company Logo/cris.jpg");
+  background-size: contain;       /* or cover, depending on preference */
+  background-position: center;    /* keeps image centered */
+  background-repeat: no-repeat;
+  background-color: #f4f4f4;      /* optional, fills gaps if using contain */
+}
+
+    .advisor-content {
+      margin-top: 110px;
+    }
+
+    .advisor-content h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .advisor-content p {
+      color: #333;
+      font-size: 15px;
+      line-height: 1.7;
       text-align: justify;
     }
 
-    .team-card h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #222;
+    strong {
+      font-weight: 600;
     }
 
-    .team-card p b {
-      color: #ae8a4c;
-      font-weight: 700;
+    /* Tablet screens (landscape tablets, small laptops) */
+    @media (max-width: 1024px) {
+      .advisor-section {
+        padding: 50px 30px;
+        gap: 20px;
+      }
+
+      .advisor-card {
+        width: 45%;
+      }
+
+      .advisor-content {
+        margin-top: 140px;
+      }
     }
 
-    .team-card p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #444;
-      margin-bottom: 10px;
-    }
-
-    /* Individual Images */
-    .team-card .image {
-      background-image: url("https://www.midis.in/image/Untitled%20design%20(3).png");
-    }
-
-    .team-card.reverse .image {
-      background-image: url("https://www.midis.in/image/e3fbadcb-f3f0-489d-baa7-16f46eee0757.jpg");
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .team-card,
-      .team-card.reverse {
+    /* Mobile screens */
+    @media (max-width: 768px) {
+      .advisor-section {
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        padding: 40px 15px;
       }
 
-      .team-card .image {
-        width: 130px;
-        height: 160px;
+      .advisor-card {
+        width: 100%;
+        max-width: 500px;
       }
 
-      .team-card .content {
+      .advisor-image {
+        position: static;
+        margin: 0 auto 20px;
+        display: block;
+      }
+
+      .advisor-content {
+        margin-top: 0;
+      }
+
+      .advisor-content h3 {
         text-align: center;
       }
     }
 
-    @media (max-width: 480px) {
-      .team-section h2 {
-        font-size: 28px;
-      }
-
-      .team-card {
+    /* Extra small screens (phones under 400px) */
+    @media (max-width: 400px) {
+      .advisor-card {
         padding: 20px;
       }
 
-      .team-card .image {
-        width: 110px;
-        height: 140px;
+      .advisor-content p {
+        font-size: 14px;
+        line-height: 1.6;
       }
 
-      .team-card p {
-        font-size: 13px;
+      .advisor-image {
+        width: 100px;
+        height: 100px;
       }
     }
   </style>
 </head>
 <body>
-
-  <div class="team-section">
-    <h2>Meet Our Leadership</h2>
-    <p>Our leaders blend innovation, vision, and excellence to guide Mining Discovery toward global success.</p>
-  </div>
-
-  <!-- Card 1 -->
-  <div class="team-card">
-    <div class="image"></div>
-    <div class="content">
-      <h3>Gaurav Sharma</h3>
-      <p><b>Founder, Mining Discovery</b></p>
-      <p>
-        Gaurav Sharma is the founder of Mining Discovery, a platform that bridges innovation and communication in the global mining industry. His leadership drives content strategy, digital presence, and international outreach across markets.
-      </p>
-      <p>
-        His strategic vision has transformed Mining Discovery into not just a media hub but a platform for digital growth. Gaurav has expanded the brand into marketing, PR, eCommerce, and web development, strengthening its global footprint.
-      </p>
+  <section class="advisor-section">
+    <div class="advisor-card">
+      <div class="advisor-image"></div>
+      <div class="advisor-content">
+        <h3>Laura Stein</h3>
+        <p>
+          <strong>Mining Discovery Advisor, Laura Stein</strong> is one of the predecessors with
+          50-plus years of exceptional global mining industry experience. There exists a lighter shade
+          in her operational experience and knowledge matrix across mineral and market boundaries in
+          exploration, project development, and strategic advisory operations. Laura has been reputed
+          for the singular ability to guide projects through discovery and development while staying
+          true to her principles out of respect for the challenge put in front of her. Designing a full
+          range of support and services, she enables Mining Discovery in the identification, evaluation,
+          and advancement of promising mineral opportunities with confidence and transparency.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Card 2 -->
-  <div class="team-card reverse">
-    <div class="image"></div>
-    <div class="content">
-      <h3>Sagar Bakshi</h3>
-      <p><b>Director & Co-Founder, Mining Discovery</b></p>
-      <p>
-        Sagar Bakshi, Co-Founder and Director, leads Mining Discovery with a vision to connect and empower the mining community worldwide. His expertise in digital marketing, branding, and business strategy ensures impactful industry engagement.
-      </p>
-      <p>
-        Under his direction, the platform offers advanced marketing, event promotions, PR, and content solutions. His forward-thinking approach has built long-term partnerships, expanding Mining Discovery’s influence across sectors.
-      </p>
+    <div class="advisor-card">
+      <div class="advisor-image"></div>
+      <div class="advisor-content">
+        <h3>Chris Powell</h3>
+        <p>
+          <strong>A Mining Discovery Advisor,</strong> Chris Powell has decades of experience
+          in journalism and in the precious metals markets. He is Connecticut-based and his background
+          includes 56 years at the Journal Inquirer, 44 of them as managing editor, while still writing
+          influential political columns. Chris is also a founding member of the Gold Anti-Trust Action
+          Committee (GATA), and its secretary/treasurer, an organization formed for the purpose of exposing
+          and combating gold market manipulations by the central banks. Through his writings for the GATA
+          Dispatch as well as his international advocacy, Chris has been an active voice against uncertainty
+          and for fair dealing in the gold and mineral markets. With his profound expertise and commitment,
+          he takes a great interest in Mining Discovery’s mandate in the early-stage mineral exploration and discovery.
+        </p>
+      </div>
     </div>
-  </div>
-
+  </section>
 </body>
 </html>

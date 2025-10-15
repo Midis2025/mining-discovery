@@ -37,7 +37,8 @@ async function loadCopperNews() {
         </div>`;
     });
 
-    copperNewsContainer.innerHTML += view.join("");
+    // Replace skeleton with actual content (use = instead of +=)
+    copperNewsContainer.innerHTML = view.join("");
   } catch (err) {
     console.error(err);
     copperNewsContainer.innerHTML = `<p style="color:#b00">Failed to load news.</p>`;

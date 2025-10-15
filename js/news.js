@@ -445,7 +445,7 @@ async function fetchAndRenderGoldNews() {
                style="cursor: pointer;">
             <div class="head-sec"><p>${escapeHTML(item.title)}</p></div>
             <p class="center">${escapeHTML(truncateWords(item.short_description || '', 20))}</p>
-            <small>${fmtDate(item.publish_on)}<br/>By: ${escapeHTML(item.author || "ARRAS MINERALS")}</small>
+            <small>${fmtDate(item.publish_on)}<br/> ${escapeHTML(item.author || "ARRAS MINERALS")}</small>
           </div>
         `
         )
@@ -552,6 +552,24 @@ async function fetchAndRenderCategory(slug, page = 1, append = false) {
 /********************************************************************
  * Dropdown Menu (Navigation)
  ********************************************************************/
+// Define custom order for categories (same as header-dropdown.js)
+const CATEGORY_ORDER_NEWS = [
+  'latest-news',
+  'gold-news',
+  'silver-news',
+  'copper-news',
+  'precious-metals',
+  'corporate-news',
+  'world-news',
+  'leadership-thoughts',
+  'morning-chatter',
+  'announcement',
+  'popular-this-week',
+  'projects',
+  'research-reports',
+  'sponsored-post'
+];
+
 function generateDropdownMenu(categories) {
   const dropdownMenu = document.getElementById("dropdownMenu");
   const dropdownMenu1 = document.getElementById("dropdownMenu1");
@@ -568,6 +586,26 @@ function generateDropdownMenu(categories) {
       href: `newss.html?category=${encodeURIComponent(slug)}`
     };
   }).filter(Boolean);
+
+  // Sort menu items according to CATEGORY_ORDER_NEWS
+  menuItems.sort((a, b) => {
+    const indexA = CATEGORY_ORDER_NEWS.indexOf(a.slug);
+    const indexB = CATEGORY_ORDER_NEWS.indexOf(b.slug);
+
+    // If both are in the order list, sort by position
+    if (indexA !== -1 && indexB !== -1) {
+      return indexA - indexB;
+    }
+
+    // If only A is in the list, A comes first
+    if (indexA !== -1) return -1;
+
+    // If only B is in the list, B comes first
+    if (indexB !== -1) return 1;
+
+    // If neither is in the list, maintain original order (alphabetical fallback)
+    return a.title.localeCompare(b.title);
+  });
 
   if (dropdownMenu) {
     if (dropdownMenu.tagName.toLowerCase() === "a") {
