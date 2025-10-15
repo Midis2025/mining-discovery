@@ -1578,6 +1578,33 @@
       text-decoration: underline;
       color: #AE8A4C;
     }
+    
+/* Responsive text size for smaller phones */
+
+/* ==================== PHONE SCREENS ==================== */
+@media (max-width: 600px) {
+  .section-headers h2 {
+  
+    margin-right: 35%; /* gap from button */
+  }
+
+  .more-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .section-headers h2 {
+    
+  }
+
+  .more-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
 
  @media (min-width: 1920px) {
   .cards {
@@ -1585,6 +1612,8 @@
    
   }
  }
+
+ 
 /* container3 */
   
 
@@ -1848,6 +1877,27 @@ padding-left: 5px;
   /* font-size: 23px; */
   color: #000;
   border-bottom: none;
+}
+
+/* ===== PHONE SCREENS ===== */
+@media (max-width: 600px) {
+  .sections-header h2 {
+    
+    margin-right: 30%; /* gap between heading and button */
+  }
+
+  .more-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+ 
+  .more-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
 }
     .sponsored-section {
       display: flex;
@@ -2549,7 +2599,7 @@ h2 {
   text-decoration: none;
     border: 1px solid #ae8a4c;
     color: #AE8A4C;
-    padding: 6px 12px;
+    /* padding: 6px 12px; */
     border-radius: 30px;
     cursor: pointer;
     font-weight: bold;
@@ -2651,6 +2701,29 @@ ease;
 .world-news a:hover {
   color:#ae8a4c;            /* brown on hover */
 }
+
+/* ===================== RESPONSIVE PHONE SCREENS ===================== */
+@media (max-width: 600px) {
+  .section-header h2 {
+ 
+    margin-right: 20%; /* gap between heading and button */
+  }
+
+  .more-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  
+
+  .more-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
     /* Split Section */
     .split-section {
       display: flex;
