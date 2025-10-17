@@ -1203,7 +1203,7 @@
 /* Desktop: Make latest news scrollable */
 @media (min-width: 900px) {
   #latestNews {
-    max-height: 600px;
+    max-height: 700px;
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 5px;
@@ -1886,7 +1886,7 @@
 
     .container4 {
       background-color: black;
-      margin: 10px 0;
+      margin: 10px 20px;
       padding: 0;
     }
     .popular .black{
@@ -2090,12 +2090,12 @@ height: auto;
     }
 
     .container6 {
-      background-color: white;
-      margin: 10px 0;
-      padding: 0 15px;
-      max-width: 1300px;
-      margin: 10px auto;
-    }
+       background-color: white;
+    margin: 10px 0;
+    /* padding: 0 15px; */
+    max-width: 1300px;
+    margin: 10px auto;
+}
   
 
     /* 🔁 Responsive Breakpoints */
