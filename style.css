@@ -1510,12 +1510,12 @@
       padding: 0 15px;
     }
 
-    .banner {
+    .banners {
       width: 100%;
       margin-bottom: 10px;
     }
 
-    .banner img {
+    .banners img {
       width: 100%;
       height: auto;
       border: 1px solid #ccc;
