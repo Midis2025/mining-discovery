@@ -384,7 +384,7 @@ function handleCardClick(event) {
     }
   } else if (docId && docId !== "null" && docId !== "") {
     console.log('Opening news details for:', docId);
-    window.location.href = `news-details.html?id=${docId}`;
+    window.location.href = `/page/article/${docId}`;
   } else {
     console.warn('No PDF or document ID available');
   }
@@ -583,7 +583,7 @@ function generateDropdownMenu(categories) {
     return {
       title,
       slug,
-      href: `newss.html?category=${encodeURIComponent(slug)}`
+      href: `/page/${encodeURIComponent(slug)}`
     };
   }).filter(Boolean);
 

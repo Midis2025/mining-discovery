@@ -73,7 +73,7 @@ function populateHeaderDropdown(categories) {
     return {
       title,
       slug,
-      href: `newss.html?category=${encodeURIComponent(slug)}`
+      href: `/page/${encodeURIComponent(slug)}`
     };
   }).filter(Boolean);
 
