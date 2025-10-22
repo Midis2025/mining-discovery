@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>News-Details</title>
     <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/image/Ceos cover/Ceos cover/mD new logo 4 (3) (1).png">
+  <link rel="icon" type="image/png" href="../../image/Ceos cover/Ceos cover/mD new logo 4 (3) (1).png">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
    <script async crossorigin="anonymous"
@@ -2412,14 +2412,14 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 </div>
   <div class="header-top">
     <div class="logo-social">
-      <a href="../index.html"><img src="../image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+      <a href="../../index.html"><img src="../../image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
     </div>
     <button class="hamburger" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
     </button>
 
     <div class="nav-links" id="navMenu">
-     <a href="../index.html"> <i class="fa-solid fa-house-chimney"></i></a>
+     <a href="../../index.html"> <i class="fa-solid fa-house-chimney"></i></a>
        <!-- News Section -->
        <div class="nav-item-with-dropdown news-hover">
   <a href="/newss.html" class="desktop-link" data-target="news">News <i class="fas fa-chevron-down"></i> </a>
@@ -2503,11 +2503,11 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 
   <div class="search-bar-container" id="searchContainer">
     <!-- <div class="social-icons">
-      <a href="https://www.linkedin.com/"><img src="../image/Group.png"></a>
-      <a href="https://www.instagram.com/miningdiscovery"><img src="../image/Group (4).png"></a>
-      <a href="https://x.com/MiningDiscovery"><img src="../image/Group (1).png"></a>
-      <a href="https://www.youtube.com/@miningdiscovery"><img src="../image/Group (2).png"></a>
-      <a href="https://www.facebook.com/"><img src="../image/Group (3).png"></a>
+      <a href="https://www.linkedin.com/"><img src="../../image/Group.png"></a>
+      <a href="https://www.instagram.com/miningdiscovery"><img src="../../image/Group (4).png"></a>
+      <a href="https://x.com/MiningDiscovery"><img src="../../image/Group (1).png"></a>
+      <a href="https://www.youtube.com/@miningdiscovery"><img src="../../image/Group (2).png"></a>
+      <a href="https://www.facebook.com/"><img src="../../image/Group (3).png"></a>
     </div> -->
 
     <div class="search-bar-bg">
@@ -2653,7 +2653,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   <!-- Footer Section -->
   <div class="footer-container">
     <div class="footers">
-       <img src="../discoverylogo.jpg" alt="Mining Discovery Logo"  height="70px" />
+       <img src="../../discoverylogo.jpg" alt="Mining Discovery Logo"  height="70px" />
     </div>
     <div class="footer-content">
 
@@ -2709,15 +2709,33 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   </div>
   </div>
   
-  <script src="../script.js"></script>
-  <script src="../js/news-details.js"></script>
-   <script src="../js/news.js"></script>
+  <script src="../../script.js"></script>
+  <script>
+    // Handle URL path-based article IDs for /page/article/article-id format
+    (function() {
+      const pathParts = window.location.pathname.split('/').filter(Boolean);
+      const articleIndex = pathParts.indexOf('article');
+
+      if (articleIndex !== -1 && pathParts[articleIndex + 1]) {
+        const articleId = pathParts[articleIndex + 1];
+
+        // If no query parameter exists, add it from the URL path
+        const urlParams = new URLSearchParams(window.location.search);
+        if (!urlParams.has('id')) {
+          const newUrl = `${window.location.pathname}?id=${articleId}${window.location.hash}`;
+          window.history.replaceState({}, '', newUrl);
+        }
+      }
+    })();
+  </script>
+  <script src="../../js/news-details.js"></script>
+   <script src="../../js/news.js"></script>
 
 
 
-  <script src="../js/advertisment.js"></script>
-  <script src="../js/projects.js"></script>
-  <script src="../js/reports.js"></script>
+  <script src="../../js/advertisment.js"></script>
+  <script src="../../js/projects.js"></script>
+  <script src="../../js/reports.js"></script>
  
 
 
@@ -2921,7 +2939,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   </script>
   
 
-     <script src="../js/latestNews.js"></script>
+     <script src="../../js/latestNews.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       loadLatestNews();
