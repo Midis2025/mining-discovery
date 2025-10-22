@@ -30,7 +30,7 @@ async function loadCopperNews() {
         <div class="right-box">
           <h4>
             ${docId 
-              ? `<a href="news-details.html?id=${docId}" class="copper-link">${title}</a>` 
+              ? `<a href="/page/article/${docId}" class="copper-link">${title}</a>` 
               : title}
           </h4>
           <span>${date}  |  ${escapeHtml(author)}</span>

@@ -232,7 +232,7 @@ function handleCardClick(event) {
       
     } else if (docId && docId.trim() !== '' && docId !== 'null') {
       console.log('Opening news details for:', docId);
-      window.location.href = `news-details.html?id=${docId}`;
+      window.location.href = `/page/article/${docId}`;
     } else {
       console.warn('No PDF or document ID available for this card');
       alert('No PDF or detailed content available for this item.');

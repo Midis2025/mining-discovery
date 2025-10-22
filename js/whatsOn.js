@@ -45,7 +45,7 @@ async function loadWhatsOn() {
             <li>
               ${
                 docId
-                  ? `<a href="news-details.html?id=${docId}" class="whats-link">${escapeHtml(title)}</a>`
+                  ? `<a href="/page/article/${docId}" class="whats-link">${escapeHtml(title)}</a>`
                   : escapeHtml(title)
               }
               <br>

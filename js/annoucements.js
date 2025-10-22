@@ -45,7 +45,7 @@ async function loadAnnouncements() {
             <li>
               ${
                 docId
-                  ? `<a href="news-details.html?id=${docId}" class="announcement-link">${escapeHtml(title)}</a>`
+                  ? `<a href="/page/article/${docId}" class="announcement-link">${escapeHtml(title)}</a>`
                   : escapeHtml(title)
               }
               <br>

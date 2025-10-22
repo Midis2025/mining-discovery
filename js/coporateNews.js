@@ -27,7 +27,7 @@ async function loadCorporateNews() {
         <div class="card-news">
           <p>
             ${docId 
-              ? `<a href="news-details.html?id=${docId}" class="corporate-link">${title}</a>` 
+              ? `<a href="/page/article/${docId}" class="corporate-link">${title}</a>` 
               : title}
           </p>
           <small>${date}</small><br>

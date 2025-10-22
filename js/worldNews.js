@@ -30,7 +30,7 @@ async function loadWorldNews() {
         <div class="world-news">
           <p>
             ${docId 
-              ? `<a href="news-details.html?id=${docId}" class="world-link">${title}</a>` 
+              ? `<a href="/page/article/${docId}" class="world-link">${title}</a>` 
               : title}
           </p>
           ${description ? `<p class="description">${escapeHtml(description)}</p>` : ""}
@@ -38,7 +38,7 @@ async function loadWorldNews() {
           <div class="author">${escapeHtml(author)}</div>
           ${
             docId
-              ? `<a href="news-details.html?id=${docId}">
+              ? `<a href="/page/article/${docId}">
                 </a>`
               : ""
           }

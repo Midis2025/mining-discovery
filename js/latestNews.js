@@ -143,7 +143,7 @@ const url =
         const featuredCard = mainCardContainer.querySelector(".featured-card");
         if (featuredCard && docId) {
           featuredCard.addEventListener("click", () => {
-            window.location.href = `news-details.html?id=${docId}`;
+            window.location.href = `/page/article/${docId}`;
           });
         }
         
@@ -187,7 +187,7 @@ const url =
         if (id) {
           item.style.cursor = "pointer";
           item.addEventListener("click", () => {
-            window.location.href = `news-details.html?id=${id}`;
+            window.location.href = `/page/article/${id}`;
           });
         }
       });
@@ -218,7 +218,7 @@ const url =
         if (id) {
           el.style.cursor = "pointer";
           el.addEventListener("click", () => {
-            window.location.href = `news-details.html?id=${id}`;
+            window.location.href = `/page/article/${id}`;
           });
         }
       });

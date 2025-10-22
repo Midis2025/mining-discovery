@@ -34,7 +34,7 @@ async function loadPopularNews() {
       
       // Get the article ID (try both v4 and v5 Strapi formats)
       const articleId = item.id || item.documentId;
-      const detailUrl = `news-details.html?id=${articleId}`;
+      const detailUrl = `/page/article/${articleId}`;
 
       return `
         <a href="${detailUrl}" class="team-card-link" style="text-decoration: none; color: inherit; display: block;">

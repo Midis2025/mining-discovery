@@ -30,7 +30,7 @@ async function loadPreciousMetalNews() {
         <div class="world-news">
           <p>
             ${docId 
-              ? `<a href="news-details.html?id=${docId}" class="precious-link">${title}</a>` 
+              ? `<a href="/page/article/${docId}" class="precious-link">${title}</a>` 
               : title}
           </p>
           ${description ? `<p class="description">${escapeHtml(description)}</p>` : ""}
@@ -38,7 +38,7 @@ async function loadPreciousMetalNews() {
           <div class="author"> ${escapeHtml(author)}</div>
           ${
             docId
-              ? `<a href="news-details.html?id=${docId}"></a>`
+              ? `<a href="/page/article/${docId}"></a>`
               : ""
           }
         </div>
