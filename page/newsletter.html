@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Weekly Newsletters</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/image/Ceos cover/Ceos cover/mD new logo 4 (3) (1).png">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <script defer crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_YW11c2luZy1rYXR5ZGlkLTQ0LmNsZXJrLmFjY291bnRzLmRldiQ"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
+</script>
+<style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      cursor: pointer;
+      font-family: 'Pontano Sans', sans-serif;
+    
+    }
+    .first-header {
+  height: 50px;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.fa-solid {
+    font-weight: 900;
+    color: #ae8a4c}
+
+/* Wrapper for sliding lines */
+.news-slider {
+  position: relative;
+  width: 100%;
+  height: 50px;
+}
+
+/* Each line setup */
+.news-slider p {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  left: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideUp 12s ease-in-out infinite;
+}
+
+/* Each line delay for sequence */
+.news-slider p:nth-child(1) { animation-delay: 0s; }
+.news-slider p:nth-child(2) { animation-delay: 4s; }
+.news-slider p:nth-child(3) { animation-delay: 8s; }
+
+/* Animation: bottom → center → top */
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateY(100%); }   /* below */
+  10%  { opacity: 1; transform: translateY(0); }      /* center */
+  25%  { opacity: 1; transform: translateY(0); }      /* stay center */
+  35%  { opacity: 0; transform: translateY(-100%); }  /* slide up */
+  100% { opacity: 0; transform: translateY(100%); }   /* reset below */
+}
+
+.first-header:hover p {
+  text-decoration: underline;
+}
+
+
+         .main-header {
+      margin-bottom: 10px;
+      background-color: #fff;
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo-social {
+      
+    padding-top: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding-left: 12px;
+    }
+
+    .logo {
+      height: 100px;
+ 
+  
+      
+    }
+   
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      
+    }
+
+    .nav-links a {
+
+      text-decoration: none;
+      color: #000;
+   
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #8d6d2a;
+    }
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-right: 16px;
+}
+
+  
+.login-btn,
+.subscribe-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;      /* same width */
+  padding: 8px 16px;     /* same padding */
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+    .login-btn {
+      background-color:#ae8a4c;
+    }
+
+    .subscribe-btn {
+     background-color: #ae8a4c;
+    }
+    .new{
+      display: flex;
+    }
+
+   
+ .search-bar-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 5px;
+}
+.search-bar-container-lasts{
+  padding-top: 50px;
+}
+
+.search-bar-bg {
+  background-color: #292929;
+  height: 24px;
+  /* border-radius: 20px; */
+  
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-loop 50s linear infinite;
+      padding-top: 3px;
+      gap: 24px;
+}
+
+.scrolling-content {
+  display: flex;
+  white-space: nowrap;
+  color: white;
+  gap: 24px;
+  font-size: 12px;
+}
+
+.up {
+  color: #22ed00;
+}
+.down {
+  color: #ff0000;
+}
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+.search-box {
+      position: relative;
+      width: 140px;
+    
+      
+    }
+
+    .search-box input {
+      width: 90%;
+      height: 25px;
+      padding: 5px 15px;
+      padding-right: 35px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* search aur hamburger ke beech gap */
+}
+
+.search-box {
+  flex: 1; /* search box full width le le, hamburger ke sath */
+}
+
+.hamburger2 {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: block; /* laptop/mobile dono pe visible */
+  padding-right:20px ;
+    color: #ae8a4c; /* golden color */
+}
+.hamburger-menu {
+  display: none;
+  position: absolute;
+  top: 160px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 30px 50px;
+  z-index: 999;
+}
+#dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
+}
+
+/* Tabs */
+/* Tabs + content wrapper ek row me */
+.hamburger-menu .menu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Tabs left me column wise */
+.hamburger-menu .menu-tabs {
+  display: flex;
+  flex-direction: column; /* tabs ek ke niche ek */
+  min-width: 200px; /* thoda fix width rakho */
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+/* Tab items */
+.hamburger-menu .menu-tabs p {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hamburger-menu .menu-tabs p.active {
+  color: #ae8a4c;
+}
+
+/* Content right side me */
+.hamburger-menu .menu-content {
+  flex: 1;
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 40px;
+}
+
+.hamburger-menu .menu-content.active {
+  display: grid;
+}
+.menu-content a{
+  text-decoration: none;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .hamburger2 {
+    display: none; /* phone screen pe hide ho jayega */
+  }
+ 
+}
+
+
+
+
+
+
+    /* Animated text */
+    .animated-text-container {
+       position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 12px;
+    overflow: hidden;
+    height: 20px;
+}
+    
+
+    .animated-text-container span {
+      display: block;
+      animation: slideText 3s ease-in-out infinite;
+    }
+
+    @keyframes slideText {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      10% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      40% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+    }
+
+    /* Hide animated text when user types */
+    .search-box input:focus + .animated-text-container,
+    .search-box input:not(:placeholder-shown) + .animated-text-container {
+      display: none;
+    }
+ 
+
+    .social-icons {
+      
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 16px;
+    
+      
+    }
+
+    .social-icons i {
+     background-color: black;
+      
+     
+      color: #ae8a4c;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ae8a4c;
+    }
+
+    @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  /* Search-bar always visible */
+  .search-bar-container {
+    display: flex !important; /* hamesha visible rahe */
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .social-icons{
+    display: none;
+  }
+  
+
+  /* Nav links & buttons toggle only */
+  .nav-links,
+  .header-buttons {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  /* On hamburger click, show nav-links + header-buttons + search + social-icons */
+   .mobile-active .nav-links,
+  .mobile-active .header-buttons,
+  .mobile-active .search-bar-container,
+  .mobile-active .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .mobile-active .search-bar-bg,
+.mobile-active .scrolling-track,
+.mobile-active .social-icons {
+  display: none !important;
+}
+
+  .nav-links a {
+    padding: 8px 0;
+  }
+
+  .search-box {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .search-box {
+   display: none;
+  }
+
+  .search-bar-bg {
+    width: 100%;
+  }
+}
+/* main-header */
+/* === Header / Dropdown Toggle === */
+    .topbar {
+      background: #1f1f1f;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .topbar h1 {
+      font-size: 20px;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .topbar h1 i {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .topbar h1.rotate i {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-links {
+      display: none;
+      /* background: #1f1f1f; */
+      padding: 10px 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 14px;
+      border-top: 1px solid #333;
+    }
+
+    .dropdown-links a {
+      color:black;
+      text-decoration: none;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
+
+    .dropdown-links a:hover,
+    .dropdown-links a.active {
+      color:#ae8a4c;
+      border-bottom: 2px solid #ae8a4c;
+      padding-bottom: 3px;
+    }
+
+    .dropdown-links.show {
+      display: flex;
+    }
+/* Overlay Menu (mobile) */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      transition: left 0.3s ease;
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .menu-overlay.open {
+      left: 0;
+    }
+
+    .menu-overlay .close-btn {
+      text-align: right;
+      padding: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+.menu-overlay .submenu {
+  display: none;
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+.menu-overlay .submenu li {
+  margin-bottom: 5px;
+}
+
+.menu-overlay {
+  overflow-y: auto; /* page scroll enable */
+}
+    .menu-overlay ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-overlay ul li a,
+    .menu-overlay ul li button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      text-decoration: none;
+      color: #333;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul li button .fa-chevron-down {
+      float: right;
+    }
+
+    .submenu {
+      display: none;
+      background: #f9f9f9;
+    }
+
+    .submenu li a {
+      padding-left: 32px;
+      font-size: 14px;
+    }
+
+    /* Desktop Tabs Menu */
+    .desktop-tabs {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .desktop-tabs .tab-content {
+      display: none;
+      padding: 16px;
+    }
+
+    .desktop-tabs .tab-content.active {
+      display: block;
+    }
+
+    .desktop-tabs .tab-btns {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid #eee;
+      padding: 0 16px;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn {
+      cursor: pointer;
+      padding: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn.active {
+      border-bottom: 2px solid #ae8a4c;
+      color: #ae8a4c;
+    }
+    /* Dropdown rotation */
+#newsToggle i {
+  transition: transform 0.3s ease;
+}
+
+#newsToggle.rotate i {
+  transform: rotate(180deg);
+}
+
+/* Dropdown items */
+.dropdown-links {
+  display: none;
+  flex-direction: column;
+  padding-left: 20px;
+  gap: 10px;
+}
+
+.dropdown-links.show {
+  display: flex;
+}
+
+/* Navigation item with dropdown wrapper */
+.nav-item-with-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Desktop dropdown positioning */
+@media (min-width: 900px) {
+  .nav-item-with-dropdown .dropdown-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 1000;
+    padding: 15px;
+  }
+
+  .nav-item-with-dropdown .dropdown-links.show {
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a {
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a:hover {
+    background-color: #f5f5f5;
+    color: #ae8a4c;
+  }
+}
+
+    
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .nav-links,
+      .header-buttons {
+        display: none;
+      }
+      #dropdownMenu {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
+    #dropdownMenu1 {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
+     .header-top {
+    display: flex;
+    justify-content: space-between; /* logo left, hamburger right */
+    align-items: center;
+    width: 100%;
+    gap: 27%;
+  }
+
+  .logo {
+    height: 70px; 
+  }
+
+  .hamburger {
+    padding-right: 11px;
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #ae8a4c;
+  }
+
+  /* nav links column में */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background: #fff;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+    width: 100%;
+    /* border-bottom: 1px solid #eee; */
+    color: #000;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+
+  .mobile-active .nav-links {
+    display: flex;
+  }
+
+ 
+  .header-buttons {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .mobile-active .header-buttons {
+    display: flex;
+  }
+
+  /* Search aur ticker remove in mobile */
+  /* .search-bar-container {
+    display: none !important;
+  } */
+
+  /* dropdown links accordion style */
+  .dropdown-links {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  .dropdown-links.show {
+    display: flex;
+  }
+
+  .dropdown-links a {
+    padding: 8px 0;
+    border: none;
+    font-size: 14px;
+  }
+  }
+    /* Hide News Section dropdown on desktop */
+/* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
+@media (min-width: 900px) {
+  #newsToggle {
+    cursor: pointer;        /* not pointer */
+    pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
+  }
+  #newsToggle i {
+  transition: transform 0.3s ease;
+  display: none;
+}
+  .nav-links a i.fas.fa-chevron-down {
+    display: none;
+  }
+    .desktop-link { display: inline-block; }
+  .mobile-toggle { display: none; }
+
+
+  /* ensure dropdown panel is not shown on desktop even if .show gets added */
+
+}
+
+/* Mobile: hide main link, show mobile toggle */
+@media (max-width: 991px) {
+  .desktop-link { display: none; }
+  .mobile-toggle { display: block; }
+}
+
+
+ /* === Base Styles (Desktop Default) === */
+ .underline {
+    width: 80px;
+    height: 3px;
+    background: #c1973d;
+    margin-top: 8px;
+    margin-bottom: 35px;
+}
+ h2, h3 {
+         font-size: 26px;
+    font-weight: 600;
+    color: #111;
+    
+      
+    }
+    .category-title{
+         font-size: 26px;
+    font-weight: 600;
+    color: #111;
+    }
+   .category-title::after {
+      content: "";
+      display: block;
+      width: 120px;
+      height: 2px;
+      background:#AE8A4C;
+      /* margin: 10px auto 25px auto; */
+    }
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .digital-edition {
+    font-size: 26px;
+    font-weight: 600;
+    color: #111;
+    }
+
+    .monthly-magazines {
+      font-size: 28px;
+      text-decoration: underline;
+      margin-bottom: 40px;
+    }
+
+    .magazine-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .magazine-card {
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .magazine-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .magazine-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .edition-label {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 0;
+      color: #1b1b1b;
+    }
+
+ 
+
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .monthly-magazines {
+        font-size: 24px;
+      }
+      .magazine-card img {
+        height: 250px;
+      }
+    }
+    
+    
+   .container2 h2 {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .container2 h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: #111;
+      margin: 8px auto 0;
+    }
+
+    /* ===== Container ===== */
+    .newsletter-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(178px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      justify-items: center;
+    }
+
+    /* ===== Newsletter Cards ===== */
+    .newsletter-card {
+      width: 200px;
+      height: 290px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #fff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .newsletter-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .newsletter-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .main-content .subscribe-access{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+     .main-content .subscribe-btn{
+      background-color: #292929;
+      color: #AE8A4C;
+      width: 500px;
+    }
+
+    /* ===== Popup Overlay ===== */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(2px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-box {
+      background: #2c2c2c;
+      color: #fff;
+      border-radius: 10px;
+      width: 380px;
+      padding: 30px 20px 25px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .popup-box h3 {
+      font-weight: 500;
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #AE8A4C;
+    }
+
+    .popup-box p {
+      font-size: 14px;
+       color: #AE8A4C;
+      margin-bottom: 25px;
+    }
+
+    .popup-box button {
+      border: none;
+      outline: none;
+      background:#AE8A4C;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: 0.3s ease;
+    }
+    .popup-box button a{
+      text-decoration: none;
+      color: white;
+    }
+
+    .popup-box button:hover {
+      background: #AE8A4C;
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-popup:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .newsletter-card {
+        width: 160px;
+        height: 240px;
+      }
+      .popup-box {
+        width: 90%;
+      }
+    }
+    .container3{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+     .newsletter-box {
+      background-color: #292929;
+      color: #bfa27d;
+      border-radius: 8px;
+      padding: 20px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 450px;
+    }
+
+    .newsletter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ae8a4c;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .newsletter-header i {
+      font-size: 13px;
+      color: #ae8a4c;
+      transition: transform 0.3s ease;
+    }
+
+    .newsletter-content {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      transition: max-height 0.3s ease;
+    }
+
+    input[type="email"] {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background-color: #d9d9d9;
+      color: #000;
+      font-size: 14px;
+    }
+
+   .container3 .subscribe-btn {
+      background-color:#ae8a4c;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .container3 .subscribe-btn:hover {
+      background-color: #ae8a4c;
+    }
+
+    /* Optional: Toggle dropdown animation */
+    .collapsed .newsletter-content {
+      display: none;
+    }
+
+    .collapsed i {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 500px) {
+      .newsletter-box {
+        width: 90%;
+      }
+
+      .newsletter-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+     .container3 .subscribe-btn {
+        width: 100%;
+      }
+    }
+
+   
+  .footer-container {
+  background-image: url(./image/footer-bg\ 1.png);
+  background-size: cover;
+  background-position: center;
+  padding: 60px 100px 30px;
+  color: #fff;
+  position: relative;
+ 
+}
+.social-iconss {
+      display: flex;
+      gap: 15px;
+      padding-bottom: 10px;
+    }
+
+    .social-iconss a {
+      width: 25px;
+      height: 25px;
+      background: #AE8A4C;   /* golden brown color */
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social-iconss a:hover {
+      background: #c89f5d;   /* lighter gold on hover */
+      transform: scale(1.1);
+    }
+
+.divider {
+  width: 1px;
+  background: #444;
+  height: 60%;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+ padding-top  :30px ;
+  margin: auto;
+  gap: 30px;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 280px;
+  padding-right: 40px;
+}
+
+.social-iconss img {
+  height: 24px;
+}
+
+.footer-left p {
+  font-size: 20px;
+  
+  
+
+  max-width: 580px;
+  color: #ddd;
+}
+
+.footer-left .socials {
+  margin-top: 20px;
+}
+
+.footer-left .socials i {
+  margin-right: 15px;
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-left .socials i:hover {
+  color: orange;
+}
+
+.footer-center {
+  min-width: 220px;
+  padding-left: 20px;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center li {
+  margin-bottom: 12px;
+}
+
+.footer-center a {
+  font-size: 15px;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-center li:first-child a {
+
+
+  font-size: 16px;
+}
+
+.footer-center a:hover {
+  color: #AE8A4C;
+}
+
+
+.footer-right {
+  flex: 1;
+  min-width: 280px;
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-right img {
+  height: 60px;
+  width: 100px;
+  object-fit: contain;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.footer-right img:hover {
+  transform: scale(1.05);
+}
+
+.search-boxs {
+  position: relative;
+  width: 180px;
+ 
+}
+
+.search-boxs input {
+  width: 100%;
+  height: 25px;
+  padding: 5px 15px;
+  padding-right: 35px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* -------- RESPONSIVE -------- */
+
+@media (max-width: 1024px) {
+  .footer-container {
+    padding: 50px 30px 25px;
+  }
+  .footer-content {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+ 
+  .footer-container {
+    padding: 40px 20px 20px;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    padding: 0;
+    min-width: 100%;
+  }
+
+  .footer-right {
+    justify-content: flex-start;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .footer-left p {
+    max-width: 100%;
+  }
+
+  .search-boxs {
+    width: 50%;
+  }
+ 
+}
+
+@media (max-width: 480px) {
+  .footer-left img,
+  .footer-right img {
+    height: 26px;
+    width: 29px;
+  }
+
+  .footer-left p {
+    font-size: 14px;
+  }
+
+  .footer-center li,
+  .footer-left .socials i {
+    font-size: 14px;
+  }
+
+  .footer-center li:first-child {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    margin-top: 30px;
+  }
+}
+
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      
+      padding: 10px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 960px;
+      max-height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .fp-iframe {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        max-width: 400px;
+        padding: 10px;
+      }
+
+      .fp-iframe {
+        height: 65vh;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        top: 5px;
+        right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .fp-iframe {
+        height: 55vh;
+      }
+    }
+
+    
+ 
+</style>
+</head>
+<body>
+   <div class="first-header">
+  <div class="news-slider">
+    <p>THE MINING INVESTMENT EVENT</p>
+    <p>SAVE THE DATE - JUNE 2-4-2026</p>
+    <p>Centre des congrès de Québec | June 2-4-2026</p>
+  </div>
+</div>
+   <header class="main-header">
+  <div class="header-top">
+    <div class="logo-social">
+      <a href="../index.html"><img src="../image/LOGO FOR Print.png" alt="Mining Discovery Logo" class="logo" /></a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navMenu">
+           <a href="../index.html"> <i class="fa-solid fa-house-chimney"></i></a>
+      <!-- News Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="/newss.html" class="desktop-link" data-target="news" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          News  <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('newsDropdown')">
+          News <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <div class="dropdown-links" id="newsDropdown" onmouseenter="showDesktopDropdown('newsDropdown')" onmouseleave="hideDesktopDropdown('newsDropdown')">
+          <div id="dropdownMenu1" class="dropdown-menu-container"></div>
+        </div>
+      </div>
+
+  <a href="/page/evening-chatter">Evening Chatter</a>
+      <!-- Magazine Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="/magazine"  class="desktop-link" data-target="magazine" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <div class="dropdown-links" id="magazineDropdown" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+           <a href="/magazine">Magazine</a>
+          <a href="/page/ceo-profiles">CEO Profile</a>
+          <a href="/page/company-profile">Company Profile</a>
+          <a href="/page/digital-edition">Digital Edition</a>
+          <a href="/page/newsletter">Newsletter</a>
+        </div>
+      </div>
+    
+      <!-- Service Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="/service.html" class="desktop-link" data-target="about" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <div class="dropdown-links" id="serviceDropdown" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+          <a href="/page/investor-campaign">Investor Campaign</a>
+          <a href="/page/news-syndication">News Syndication</a>
+          <a href="/page/digital-branding">Digital Branding</a>
+          <a href="/page/press-office">Press Office</a>
+          <a href="/page/conference-media-coverage">Conference</a>
+        </div>
+      </div>
+       <a href="/page/about-us">About Us</a>
+     <a href="/page/contact-us">Contact Us</a>
+    </div>
+<div class="new">
+    <div class="header-buttons" id="headerButtons">
+   
+    <!-- call all pages -->
+        <button class="login-btn" id="loginBtn" >Login</button>
+
+        <!-- User Profile -->
+        <div id="userProfile" style="display:none;"></div>
+        <!-- call all pages -->
+    </div>
+       <div class="search-box-wrapper">
+      <!-- <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div> -->
+
+      <button class="hamburger2" onclick="toggleMenu2()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</div>
+  
+
+  <div class="search-bar-container" id="searchContainer">
+    <!-- <div class="social-icons">
+      <a href="https://www.linkedin.com/"><img src="../image/Group.png"></a>
+      <a href="https://www.instagram.com/miningdiscovery"><img src="../image/Group (4).png"></a>
+      <a href="https://x.com/MiningDiscovery"><img src="../image/Group (1).png"></a>
+      <a href="https://www.youtube.com/@miningdiscovery"><img src="../image/Group (2).png"></a>
+      <a href="https://www.facebook.com/"><img src="../image/Group (3).png"></a>
+    </div> -->
+
+    <div class="search-bar-bg">
+      <div class="scrolling-track" id="newsTicker"></div>
+    </div>
+
+    <!-- <div class="search-box-wrapper">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder=" " />
+        <button class="search-icon" onclick="searchNews()"><i class="fas fa-search"></i></button>
+      </div>
+
+      <button class="hamburger2" onclick="toggleMenu2()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div> -->
+
+    <div id="hamburgerMenu" class="hamburger-menu">
+      <div class="menu-row">
+        <div class="menu-tabs">
+          <p class="tab-btn active" data-target="news">NEWS </p>
+          <p class="tab-btn" data-target="about">SERVICE</p>
+          <p class="tab-btn" data-target="magazine">MAGAZINE</p>
+        </div>
+        <div class="menu-content active" id="news">
+          <p><a href="/newss.html" id="dropdownMenu"></a></p>
+        </div>
+        <div class="menu-content" id="about">
+          <p><a href="/page/investor-campaign">Investor Campaign</a></p>
+          <p><a href="/page/news-syndication">News Syndication</a></p>
+          <p><a href="/page/digital-branding">Digital Branding</a></p>
+          <p><a href="/page/press-office">Press Office</a></p>
+          <p><a href="https://youtube.com/">Youtube</a></p>
+          <p><a href="/page/conference-media-coverage">Conference Media Coverage</a></p>
+          <p><a href="/page/newsletter-email-blasts">Newsletter & Email Blast</a></p>
+        </div>
+        <div class="menu-content" id="magazine">
+           <a href="/magazine">Magazine</a>
+          <p><a href="/page/ceo-profiles">CEO Profile</a></p>
+          <p><a href="/page/newsletter">Newsletter</a></p>
+          <p><a href="/page/company-profile">Company Profile</a></p>
+          <p><a href="/page/digital-edition">Digital Edition</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <!-- Desktop Tabs -->
+  <div class="desktop-tabs" id="desktopTabs">
+    <div class="tab-btns">
+      <div class="tab-btn active" onclick="switchTab('newsTab')">News </div>
+      <div class="tab-btn" onclick="switchTab('servicesTab')">Services</div>
+      <div class="tab-btn" onclick="switchTab('magazineTab')">Magazine</div>
+    </div>
+  <!-- Collapsible News Section below header -->
+<div id="newsSectionPage" class="collapsible-section">
+  <div class="news-section-content">
+    <a href="#">Latest News</a><br>
+    <a href="#">Precious Metals</a><br>
+    <a href="#">Evening Chatter</a><br>
+    <a href="#">Research Reports</a><br>
+    <a href="#">Gold News</a><br>
+    <a href="#">Corporate News</a><br>
+    <a href="#">Announcement</a><br>
+    <a href="#">Sponsored Post</a><br>
+  </div>
+</div>
+
+    <div class="tab-content" id="servicesTab">
+      <a href="/page/investor-campaign">Investor Campaign</a><br>
+      <a href="/page/news-syndication">News Syndication</a><br>
+      <a href="/page/digital-branding">Digital Branding</a><br>
+    </div>
+    <div class="tab-content" id="magazineTab">
+      <a href="/page/ceo-profiles">CEO Profile</a><br>
+      <a href="/page/newsletter">Newsletter</a><br>
+      <a href="/page/company-profile">Company Profile</a><br>
+    </div>
+  </div>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="close-btn" onclick="closeMenu()">
+      <i class="fas fa-times"></i>
+    </div>
+    <ul>
+      <li>
+        <button onclick="toggleSubmenu('newsSub')">
+          NEWS SECTION <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="submenu" id="newsSub">
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Precious Metals</a></li>
+          <li><a href="#">Evening Chatter</a></li>
+          <li><a href="#">Research Reports</a></li>
+          <li><a href="#">Gold News</a></li>
+          <li><a href="#">Corporate News</a></li>
+          <li><a href="#">Announcement</a></li>
+          <li><a href="#">Sponsored Post</a></li>
+        </ul>
+      </li>
+      <li><a href="/service.html">Services</a></li>
+      <li><a href="/magazine">Magazine</a></li>
+      <li><a href="/contant.html">Contact Us</a></li>
+      <li><a href="/page/about-us">About Us</a></li>
+    </ul>
+  </div>
+
+  
+  <!-- Header + Dropdown -->
+   <!-- <div class="topbar">
+    <h1 onclick="magazineDropdown()" id="magazineToggle">
+      Magazine
+      <i class="fas fa-chevron-down"></i>
+    </h1>
+  </div> -->
+
+  <!-- Dropdown Links -->
+  <!-- <div class="dropdown-links" id="dropdownMenu3">
+    <a href="/magazine">Magazine</a>
+    <a href="/page/ceo-profiles">CEO Profile</a>
+    <a href="/page/newsletter">Weekly Newsletter</a>
+    <a href="/page/company-profile">Company Profile</a>
+    <a href="/page/digital-edition">Digital Edition</a>
+    <a href="/webinar.html">Webinar Recording</a>
+
+
+  </div> -->
+
+<div class="page-container">
+
+  <!-- Sidebar -->
+<!-- <div class="left-sidebar">
+      <div class="box">
+
+        <div id="advertisements"></div>
+      </div>
+
+    </div> -->
+
+  <!-- Main Content -->
+<div class="main-content">
+  <div class="section-container">
+    <h1 class="digital-edition">Newsletters</h1>
+    <div class="underline"></div>
+
+    <!-- Loading + error -->
+    <div id="loadingCategories" class="loading"></div>
+    <div id="errorMessage" class="error hidden"></div>
+
+    <!-- Categories View -->
+    <div id="categoriesView">
+      <div class="magazine-list" id="categoriesList"></div>
+    </div>
+
+    <!-- Subscribe button -->
+    <div class="subscribe-access">
+      <!-- <button class="subscribe-btn">Subscribe to Access</button> -->
+    </div>
+
+    <!-- Newsletters Inline -->
+    <div id="newslettersSection" class="newsletters-section hidden">
+      <h3 id="categoryTitle" class="category-title">Newsletter Stocks</h3>
+      <div id="loadingNewsletters" class="loading hidden"></div>
+      <div class="newsletter-container" id="newslettersList"></div>
+    </div>
+  </div>
+</div>
+
+
+
+   <!-- ===== Popup ===== -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <span class="close-popup" id="closePopup">&times;</span>
+      <h3>Content Restricted</h3>
+      <p>Get this content by subscribing our plan.</p>
+      <div>
+        <button><a href="/sub-btn.html" target="_blank" rel="noopener noreferrer">Login</a></button>
+      </div>
+    </div>
+  </div>
+<div class="container3">
+ 
+  <div class="newsletter-box" id="newsletterBox">
+    <div class="newsletter-header">
+      <span>Receive our free daily newsletter</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+    <div class="newsletter-content">
+      <input type="email" placeholder="Email address" id="emailInput">
+      <button class="subscribe-btn" id="subscribeBtn">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- Footer Section -->
+  <div class="footer-container">
+    <div class="footers">
+       <img src="../discoverylogo.jpg" alt="Mining Discovery Logo"  height="70px" />
+    </div>
+    <div class="footer-content">
+
+     
+   
+      <!-- Left -->
+        
+      <div class="footer-left">
+       
+        <p>
+          Mining Discovery provides daily mining news, a weekly mining newsletter, a monthly mining magazine and an interactive mining website for mining companies, mining associations and mining executives globally.
+        </p>
+         <div class="search-bar-container-lasts" id="searchContainer">
+            <div class="social-iconss">
+    <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHsYiU58w2EiwAAAZktLsGYe6nDP2w7OfMwPNzqcEoA4ZG05MgtNNGFaD3But5J1Vd8bFq24SaRmmKjpUT4XrTkaMT6UZfGbSyPPsfo4nB9sMT-YVLl-xbV4UsltmRLwLeB3jU=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F78297700%2Fadmin%2Fpage-posts%2Fpublished%2F"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/miningdiscovery"><i class="fab fa-instagram"></i></a>
+    <a href="https://x.com/MiningDiscovery"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://www.youtube.com/@miningdiscovery"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/confirmemail.php?next=https%3A%2F%2Fwww.facebook.com%2Fgetminingnews#"><i class="fab fa-facebook-f"></i></a>
+  </div>
+
+      <div class="search-boxs">
+        <input type="text" id="searchInput" placeholder="Search..." />
+        <button class="search-icon"><i class="fas fa-search"></i></button>
+      </div>
+      
+    </div>
+      </div>
+
+      <!-- Center -->
+     <div class="footer-center">
+          <ul>
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="/page/about-us">ABOUT US</a></li>
+           <li>                      <a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
+  MULTIMEDIA VIDEOS
+</a></li>
+            <li><a href="/magazine">MAGAZINES</a></li>
+            <li><a href="">COMMENT GUIDELINE</a></li>
+            <li><a href="">LEGAL NOTICE</a></li>
+          </ul>
+        </div>
+
+    
+      
+     
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Mining Discovery – Daily Mining Updates – Design by Mining Discovery.
+    </div>
+  </div>
+  <!-- Cache Manager -->
+  <script src="../js/cache-manager.js"></script>
+  <script src="../js/cached-fetch-wrapper.js"></script>
+
+  <!-- Helper Functions -->
+  <script src="../js/helper.js"></script>
+
+  <!-- Core Scripts -->
+  <script src="../script.js"></script>
+  <script src="../js/header-dropdown.js"></script>
+  <script src="../js/news.js"></script>
+  <script>
+   function toggleMenu2() {
+  const menu = document.getElementById("hamburgerMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+ // Select tabs and contents
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      // Add active to clicked
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.target).classList.add("active");
+    });
+
+  });
+
+
+// Mobile dropdown toggle
+function toggleDropdownMobile(id) {
+  const dropdown = document.getElementById(id);
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+}
+  if (window.innerWidth >= 900) {
+  const desktopLinks = document.querySelectorAll(".desktop-link");
+  const hamburgerMenu = document.getElementById("hamburgerMenu");
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".menu-content");
+
+  function removeActive() {
+    contents.forEach(c => c.classList.remove("active"));
+    tabs.forEach(t => t.classList.remove("active"));
+  }
+
+  desktopLinks.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+      const target = link.dataset.target; // news / about / magazine
+      hamburgerMenu.style.display = "block";
+      removeActive();
+
+      // Show proper content
+      const content = document.getElementById(target);
+      if(content) content.classList.add("active");
+
+      // Highlight corresponding tab
+      tabs.forEach(tab => {
+        if(tab.dataset.target === target) tab.classList.add("active");
+      });
+    });
+  });
+
+  // Hide menu on mouse leave
+  hamburgerMenu.addEventListener("mouseleave", () => {
+    hamburgerMenu.style.display = "none";
+    removeActive();
+  });
+}
+  
+  
+  
+  
+  // show  extra news
+    document.getElementById("showMoreBtn").addEventListener("click", function () {
+      const extraNews = document.querySelectorAll(".extra-news");
+
+      extraNews.forEach(section => {
+        section.style.display = "block"; // Keep natural block layout
+        section.style.opacity = "0"; // Start invisible
+        section.style.transition = "opacity 0.4s ease"; // Smooth fade
+        requestAnimationFrame(() => {
+          section.style.opacity = "1"; // Fade in
+        });
+      });
+
+      this.style.display = "none"; // Hide button after showing
+    });
+    // show extra news</script>
+
+
+  <script src="../js/latestNews.js"></script>
+     <script src="../js/newsletter.js"></script>
+     <script src="../js/universal-page-loader.js"></script>
+
+  <script>
+    // Initialize universal loader for newsletter page
+    if (typeof UniversalPageLoader !== 'undefined') {
+      const loader = new UniversalPageLoader({
+        critical: [
+          { func: 'loadLatestNews', container: 'latestNews' },
+          { func: 'loadNewsletter', container: 'newsletterContainer' }
+        ],
+        nonCritical: [
+          { func: 'loadAdvertisements', container: 'advertisements' },
+          { func: 'loadProjects', container: 'projectContainer' },
+          { func: 'loadReports', container: 'reportContainer' },
+          { func: 'newsCategory', container: 'newsCategories' }
+        ]
+      });
+      loader.init();
+    }
+  </script>
+  <script>
+  const subscribeBtn = document.getElementById('subscribeBtn');
+  const emailInput = document.getElementById('emailInput');
+
+  subscribeBtn.addEventListener('click', async () => {
+    const email = emailInput.value.trim();
+
+    if (!email) {
+      alert('Please enter your email address.');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://admins.miningdiscovery.com/api/subscribers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data: { email } })
+      });
+
+      if (response.ok) {
+        alert('Subscribed successfully!');
+        emailInput.value = '';
+      } else {
+        const errorData = await response.json();
+        alert('Subscription failed: ' + (errorData.error?.message || 'Unknown error'));
+      }
+    } catch (err) {
+      console.error(err);
+      alert('An error occurred. Please try again later.');
+    }
+  });
+</script>
+
+</body>
+</html>
