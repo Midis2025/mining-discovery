@@ -9,7 +9,8 @@
     { "source": "/conference", "destination": "/confrence.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/digital-edition", "destination": "/Digitaledition.html" },
-    { "source": "/news-Syndication", "destination": "/newss.html" },
+ 
+        { "source": "/news-Syndication", "destination": "/newsynd.html" },
     { "source": "/evening", "destination": "/Evening.html" },
     { "source": "/full-news", "destination": "/full-news.html" },
     { "source": "/game", "destination": "/game.html" },
