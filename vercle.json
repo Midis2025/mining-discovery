@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
+    { "source": "/", "destination": "./index.html" },
     { "source": "/about", "destination": "/about.html" },
     { "source": "/branding", "destination": "/branding.html" },
     { "source": "/ceo", "destination": "/ceo.html" },
@@ -34,7 +34,7 @@
   ],
 
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "./index.html", "destination": "/", "permanent": true },
     { "source": "/about.html", "destination": "/about", "permanent": true },
     { "source": "/branding.html", "destination": "/branding", "permanent": true },
     { "source": "/ceo.html", "destination": "/ceo", "permanent": true },
