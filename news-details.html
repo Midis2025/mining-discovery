@@ -125,6 +125,7 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       
     }
    
+   
 
     .nav-links {
       display: flex;
@@ -144,8 +145,11 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
     .nav-links a:hover {
       color: #8d6d2a;
     }
+    .fa-solid {
+    font-weight: 900;
+    color: #ae8a4c}
 
-   .header-buttons {
+.header-buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -509,15 +513,14 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
       position: relative;
     }
 
-   .topbar h1 {
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  flex: 1; /* make it take full space in flexbox */
-}
-.topbar h1:hover{
-  color: #ae8a4c;
-}
+    .topbar h1 {
+      font-size: 20px;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
 
     .topbar h1 i {
       font-size: 12px;
@@ -711,8 +714,9 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   }
 
   .nav-item-with-dropdown .dropdown-links.show {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
   }
 
   .nav-item-with-dropdown .dropdown-links a {
@@ -741,6 +745,12 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
         display: none;
       }
       #dropdownMenu {
+ display: flex;
+ flex-direction: column;
+
+ 
+    }
+    #dropdownMenu1 {
  display: flex;
  flex-direction: column;
 
@@ -859,7 +869,6 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 }
 
 
-   
 
    
  
@@ -2429,8 +2438,42 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
 </div>
 
         <a href="./newss.html?category=evening-chatter">Evening Chatter</a>
-        <a href="./magzin.html">Magazine</a>
-        <a href="./service.html">Service</a>
+                <!-- Magazine Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="./magzin.html" class="desktop-link" data-target="magazine" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('magazineDropdown')">
+          Magazine <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <div class="dropdown-links" id="magazineDropdown" onmouseenter="showDesktopDropdown('magazineDropdown')" onmouseleave="hideDesktopDropdown('magazineDropdown')">
+           <a href="./magzin.html">Magazine</a>
+          <a href="./ceo.html">CEO Profile</a>
+          <a href="./company-profile.html">Company Profile</a>
+          <a href="./Digitaledition.html">Digital Edition</a>
+          <a href="./weekly.html">Newsletter</a>
+        </div>
+      </div>
+        <!-- <a href="./magzin.html">Magazine</a> -->
+        <!-- <a href="./service.html">Service</a> -->
+           <!-- Service Section -->
+      <div class="nav-item-with-dropdown">
+        <a href="./service.html" class="desktop-link" data-target="about" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="mobile-toggle" onclick="toggleDropdownMobile('serviceDropdown')">
+          Service <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <div class="dropdown-links" id="serviceDropdown" onmouseenter="showDesktopDropdown('serviceDropdown')" onmouseleave="hideDesktopDropdown('serviceDropdown')">
+          <a href="./service.html">Investor Campaign</a>
+          <a href="./newsynd.html">News Syndication</a>
+          <a href="./branding.html">Digital Branding</a>
+          <a href="./pressoffice.html">Press Office</a>
+          <a href="./confrence.html">Conference</a>
+        </div>
+      </div>
         <a href="./about.html">About Us</a>
         <a href="./contact.html">Contact Us</a>
     </div>

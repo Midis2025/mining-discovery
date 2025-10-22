@@ -66,7 +66,7 @@ function showMagazineDetail(mag) {
   detailContainer.innerHTML = `
     <div class="magazine-info">
       <h3>${title} (${publishDate})</h3>
-      <p class="produced-by">Produced by Mining Discovery</p>
+      <h3 class="produced-by">Produced by Mining Discovery</h3>
       <p class="desc">${description}</p>
       <ul class="features-list">
         ${featuresHtml}
