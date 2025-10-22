@@ -516,6 +516,12 @@ function resetPopupContent() {
 }
 
 function isUserSubscribed() {
+    // Check if user is logged in with Clerk
+    if (window.Clerk && window.Clerk.user) {
+        return true; // User is logged in, consider them subscribed
+    }
+
+    // Otherwise check session storage
     return sessionStorage.getItem(CONFIG.SUBSCRIPTION_KEY) === 'true';
 }
 
