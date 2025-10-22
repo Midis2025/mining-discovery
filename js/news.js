@@ -60,9 +60,39 @@ function truncateWords(str, maxWords = 15) {
 }
 
 function getSlugFromURL() {
+  // First, try to get from query parameter
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("category");
-  return (slug && slug.trim()) ? decodeURIComponent(slug.trim()) : "latest-news";
+  if (slug && slug.trim()) {
+    return decodeURIComponent(slug.trim());
+  }
+
+  // If no query parameter, detect from URL path
+  const pathname = window.location.pathname;
+  const pathParts = pathname.split('/').filter(Boolean);
+
+  // Check if we're in /page/ folder
+  const pageIndex = pathParts.indexOf('page');
+  if (pageIndex !== -1 && pathParts[pageIndex + 1]) {
+    const pageName = pathParts[pageIndex + 1];
+    // Remove .html extension if present
+    const categorySlug = pageName.replace('.html', '');
+
+    // List of valid category pages
+    const validCategories = [
+      'latest-news', 'gold-news', 'silver-news', 'copper-news',
+      'precious-metals', 'corporate-news', 'world-news', 'leadership-thoughts',
+      'announcement', 'popular-this-week', 'projects', 'sponsored-post',
+      'evening-chatter', 'research-reports', 'whats-on'
+    ];
+
+    if (validCategories.includes(categorySlug)) {
+      return categorySlug;
+    }
+  }
+
+  // Default to latest-news
+  return "latest-news";
 }
 
 function setActiveMenuItem(slug) {
