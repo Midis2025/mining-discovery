@@ -84,7 +84,7 @@
     { "source": "/weekly-newsletters", "destination": "/page/newsletter", "permanent": true },
     { "source": "/service", "destination": "/page/service", "permanent": true },
 
-    { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true }
+    { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true },
         { "source": "/home", "destination": "/", "permanent": true },
     { "source": "/old-game", "destination": "/game", "permanent": true },
     { "source": "/old-game2", "destination": "/game2", "permanent": true }
