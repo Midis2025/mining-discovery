@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pacman Game</title>
+   <!-- Canonical (recommended) -->
+  <link rel="canonical" href="https://www.miningdiscovery.com/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://www.miningdiscovery.com/image/Ceos%20cover/Ceos%20cover/mD%20new%20logo%204%20%283%29%20%281%29.png">
+
+  
+  <!-- ✅ Open Graph (For Facebook, LinkedIn, WhatsApp, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mining Discovery" />
+  <meta property="og:title" content="Mining Discovery - Explore the World of Mining" />
+  <meta property="og:description" content="Mining Discovery brings you the latest mining news, discoveries, and industry trends from around the world." />
+  <meta property="og:url" content="https://www.miningdiscovery.com/" />
+  <meta property="og:image" content="https://www.miningdiscovery.com/image/logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mining Discovery - Explore the World of Mining" />
+  <meta name="twitter:description" content="Stay updated with the latest in mining, technology, and innovation." />
+  <meta name="twitter:image" content="https://www.miningdiscovery.com/image/logo.png" />
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.miningdiscovery.com/image/logo.png" />
+
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: hsl(220, 13%, 9%);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: hsl(48, 100%, 67%);
+  text-shadow: 0 0 20px hsl(48, 100%, 67%);
+}
+
+.instructions {
+  color: hsl(220, 9%, 65%);
+  font-size: 1rem;
+}
+
+.stats-container {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background-color: hsl(220, 13%, 12%);
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(221, 83%, 53%);
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: hsl(220, 9%, 65%);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: hsl(48, 100%, 67%);
+}
+
+.stat-value.level {
+  color: hsl(221, 83%, 53%);
+}
+
+.stat-value.win {
+  color: hsl(48, 100%, 67%);
+}
+
+.stat-value.game-over {
+  color: hsl(0, 100%, 60%);
+}
+
+.game-board-container {
+  border: 2px solid hsl(221, 83%, 53%);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: hsl(220, 13%, 12%);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+}
+
+.cell {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell.wall {
+  background-color: hsl(221, 83%, 53%);
+  border: 1px solid hsl(221, 83%, 53%);
+}
+
+.cell.empty {
+  background-color: hsl(220, 13%, 9%);
+}
+
+.dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.pacman {
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: hsl(48, 100%, 67%);
+  border-radius: 50%;
+  border: 2px solid hsla(48, 100%, 67%, 0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.restart-container {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.restart-button {
+  background-color: hsl(48, 100%, 67%);
+  color: black;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.restart-button:hover {
+  background-color: hsl(48, 100%, 60%);
+}
+
+.mobile-controls {
+  display: none;
+  margin-top: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.middle-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-btn {
+  background: hsl(221, 83%, 53%);
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.control-btn:active {
+  background: hsl(221, 100%, 60%);
+}
+
+@media (max-width: 768px) {
+  .mobile-controls {
+    display: flex;
+  }
+
+  .cell {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .pacman {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  .dot {
+    width: 0.2rem;
+    height: 0.2rem;
+  }
+
+  .game-board-container {
+    transform: scale(0.8); /* Shrinks the entire board */
+    transform-origin: top center;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .stats-container {
+    
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1rem 1.5rem;
+  }
+
+  .restart-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+
+</style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="header">
+      <h1 class="title">PACMAN</h1>
+       </div>
+
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-label">Score</div>
+        <div class="stat-value" id="score">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Level</div>
+        <div class="stat-value level" id="level">1</div>
+      </div>
+      <div class="stat-card" id="status-card" style="display: none;">
+        <div class="stat-label">Status</div>
+        <div class="stat-value" id="status"></div>
+      </div>
+    </div>
+
+    <div class="game-board-container">
+      <div id="game-board" class="game-board"></div>
+    </div>
+
+    <div class="mobile-controls">
+      <button class="control-btn up" data-dir="up">▲</button>
+      <div class="middle-row">
+        <button class="control-btn left" data-dir="left">◀</button>
+        <button class="control-btn down" data-dir="down">▼</button>
+        <button class="control-btn right" data-dir="right">▶</button>
+      </div>
+    </div>
+
+    <div class="restart-container" id="restart-container" style="display: none;">
+      <button id="restart-btn" class="restart-button">Play Again</button>
+    </div>
+  </div>
+<script>
+  // Game constants and state
+const MAZE = [
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1],
+    [1,0,1,1,0,1,1,1,0,1,1,0,1,1,1,0,1,1,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,1,1,0,1,0,1,1,1,1,1,1,0,1,0,1,1,0,1],
+    [1,0,0,0,0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,1],
+    [1,1,1,1,0,1,1,1,2,1,1,2,1,1,1,0,1,1,1,1],
+    [2,2,2,1,0,1,2,2,2,2,2,2,2,2,1,0,1,2,2,2],
+    [1,1,1,1,0,1,2,1,1,2,2,1,1,2,1,0,1,1,1,1],
+    [0,0,0,0,0,2,2,1,2,2,2,2,1,2,2,0,0,0,0,0],
+    [1,1,1,1,0,1,2,1,1,1,1,1,1,2,1,0,1,1,1,1],
+    [2,2,2,1,0,1,2,2,2,2,2,2,2,2,1,0,1,2,2,2],
+    [1,1,1,1,0,1,1,1,2,1,1,2,1,1,1,0,1,1,1,1],
+    [1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1],
+    [1,0,1,1,0,1,1,1,0,1,1,0,1,1,1,0,1,1,0,1],
+    [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
+    [1,1,0,1,0,1,0,1,1,1,1,1,1,0,1,0,1,0,1,1],
+    [1,0,0,0,0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,1],
+    [1,0,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+];
+
+const INITIAL_PACMAN_POSITION = { x: 9, y: 15 };
+
+let gameState = {
+    pacman: { ...INITIAL_PACMAN_POSITION },
+    score: 0,
+    dots: [],
+    gameOver: false,
+    gameWon: false,
+    level: 1
+};
+
+let direction = 'right';
+let gameInterval = null;
+
+// DOM elements
+const gameBoard = document.getElementById('game-board');
+const scoreElement = document.getElementById('score');
+const levelElement = document.getElementById('level');
+const statusCard = document.getElementById('status-card');
+const statusElement = document.getElementById('status');
+const restartContainer = document.getElementById('restart-container');
+const restartButton = document.getElementById('restart-btn');
+
+// Initialize dots from maze
+function initializeDots() {
+    return MAZE.map(row => row.map(cell => cell === 0));
+}
+
+// Initialize game
+function initGame() {
+    gameState = {
+        pacman: { ...INITIAL_PACMAN_POSITION },
+        score: 0,
+        dots: initializeDots(),
+        gameOver: false,
+        gameWon: false,
+        level: 1
+    };
+    direction = 'right';
+    
+    renderGame();
+    updateUI();
+    
+    if (gameInterval) {
+        clearInterval(gameInterval);
+    }
+    gameInterval = setInterval(movePacman, 200);
+    
+    showToast("New game started!");
+}
+
+// Render the game board
+function renderGame() {
+    gameBoard.innerHTML = '';
+    
+    MAZE.forEach((row, y) => {
+        row.forEach((cell, x) => {
+            const cellElement = document.createElement('div');
+            cellElement.className = 'cell';
+            
+            const isPacman = gameState.pacman.x === x && gameState.pacman.y === y;
+            const hasDot = gameState.dots[y] && gameState.dots[y][x];
+            
+            if (cell === 1) {
+                cellElement.classList.add('wall');
+            } else {
+                cellElement.classList.add('empty');
+            }
+            
+            // Add dot
+            if (hasDot && !isPacman) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                cellElement.appendChild(dot);
+            }
+            
+            // Add Pacman
+            if (isPacman) {
+                const pacman = document.createElement('div');
+                pacman.className = 'pacman';
+                cellElement.appendChild(pacman);
+            }
+            
+            gameBoard.appendChild(cellElement);
+        });
+    });
+}
+
+// Update UI elements
+function updateUI() {
+    scoreElement.textContent = gameState.score.toLocaleString();
+    levelElement.textContent = gameState.level;
+    
+    if (gameState.gameOver || gameState.gameWon) {
+        statusCard.style.display = 'block';
+        statusElement.textContent = gameState.gameWon ? 'YOU WIN!' : 'GAME OVER';
+        statusElement.className = `stat-value ${gameState.gameWon ? 'win' : 'game-over'}`;
+        restartContainer.style.display = 'block';
+        
+        if (gameInterval) {
+            clearInterval(gameInterval);
+            gameInterval = null;
+        }
+    } else {
+        statusCard.style.display = 'none';
+        restartContainer.style.display = 'none';
+    }
+}
+
+// Move Pacman
+function movePacman() {
+    if (gameState.gameOver || gameState.gameWon) return;
+    
+    const { pacman } = gameState;
+    let newX = pacman.x;
+    let newY = pacman.y;
+    
+    // Calculate new position based on direction
+    switch (direction) {
+        case 'up':
+            newY = Math.max(0, pacman.y - 1);
+            break;
+        case 'down':
+            newY = Math.min(MAZE.length - 1, pacman.y + 1);
+            break;
+        case 'left':
+            newX = Math.max(0, pacman.x - 1);
+            break;
+        case 'right':
+            newX = Math.min(MAZE[0].length - 1, pacman.x + 1);
+            break;
+    }
+    
+    // Check for wall collision
+    if (MAZE[newY][newX] === 1) {
+        return; // Don't move if hitting a wall
+    }
+    
+    // Update pacman position
+    gameState.pacman = { x: newX, y: newY };
+    
+    // Check if pacman eats a dot
+    if (gameState.dots[newY][newX]) {
+        gameState.dots[newY][newX] = false;
+        gameState.score += 10;
+    }
+    
+    // Check win condition (all dots eaten)
+    const hasDotsLeft = gameState.dots.some(row => row.some(dot => dot));
+    if (!hasDotsLeft) {
+        gameState.gameWon = true;
+        showToast("Congratulations! You won!");
+    }
+    
+    renderGame();
+    updateUI();
+}
+
+// Handle keyboard input
+function handleKeyPress(event) {
+    switch (event.key) {
+        case 'ArrowUp':
+            event.preventDefault();
+            direction = 'up';
+            break;
+        case 'ArrowDown':
+            event.preventDefault();
+            direction = 'down';
+            break;
+        case 'ArrowLeft':
+            event.preventDefault();
+            direction = 'left';
+            break;
+        case 'ArrowRight':
+            event.preventDefault();
+            direction = 'right';
+            break;
+        case ' ':
+            event.preventDefault();
+            if (gameState.gameOver || gameState.gameWon) {
+                initGame();
+            }
+            break;
+    }
+}
+
+// Simple toast notification
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: hsl(220, 13%, 12%);
+        color: hsl(0, 0%, 100%);
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid hsl(221, 83%, 53%);
+        z-index: 1000;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        animation: slideInRight 0.3s ease-out;
+    `;
+    toast.textContent = message;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, 300);
+    }, 2000);
+}
+
+// Add CSS for toast animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
+
+// Event listeners
+document.addEventListener('keydown', handleKeyPress);
+restartButton.addEventListener('click', initGame);
+
+// Initialize the game when the page loads
+document.addEventListener('DOMContentLoaded', initGame);
+// Mobile touch controls
+document.querySelectorAll('.control-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    direction = button.getAttribute('data-dir');
+  });
+});
+
+</script>
+</body>
+</html>
