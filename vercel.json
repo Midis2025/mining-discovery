@@ -15,7 +15,8 @@
     { "source": "/page/projects", "destination": "/page/projects.html" },
     { "source": "/page/sponsored-post", "destination": "/page/sponsored-post.html" },
     { "source": "/page/evening-chatter", "destination": "/page/evening-chatter.html" },
-    { "source": "/page/research-reports", "destination": "/page/research-reports.html" },
+{ "source": "/page/research-reports", "destination": "/page/research-report.html" },
+
     { "source": "/page/whats-on", "destination": "/page/whats-on.html" },
     
 
@@ -86,7 +87,9 @@
     { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true },
         { "source": "/pacman.html", "destination": "/pacman", "permanent": true },
     { "source": "/bird.html", "destination": "/flappy-bird", "permanent": true },
-    { "source": "/Sudoku.html", "destination": "/sudoku", "permanent": true }
+    { "source": "/Sudoku.html", "destination": "/sudoku", "permanent": true },
+    { "source": "/page/research-reports.html", "destination": "/page/research-report", "permanent": true }
+
 
     
   ]
