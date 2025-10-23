@@ -41,7 +41,12 @@
     { "source": "/game", "destination": "/game.html" },
     { "source": "/game-page", "destination": "/gamepage.html" },
     { "source": "/popup", "destination": "/popup.html" },
-    { "source": "/demo", "destination": "/demo.html" }
+    { "source": "/demo", "destination": "/demo.html" },
+
+     { "source": "/", "destination": "/game/index.html" },
+    { "source": "/game", "destination": "/game/index.html" },
+    { "source": "/game/hello", "destination": "/game/hello.html" },
+    { "source": "/game2", "destination": "/game2/index.html" }
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
@@ -80,5 +85,8 @@
     { "source": "/service", "destination": "/page/service", "permanent": true },
 
     { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true }
+        { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/old-game", "destination": "/game", "permanent": true },
+    { "source": "/old-game2", "destination": "/game2", "permanent": true }
   ]
 }
