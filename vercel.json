@@ -40,7 +40,11 @@
     { "source": "/register", "destination": "/register.html" },
 
     { "source": "/popup", "destination": "/popup.html" },
-    { "source": "/demo", "destination": "/demo.html" }
+    { "source": "/demo", "destination": "/demo.html" },
+        { "source": "/pacman", "destination": "/pacman.html" },
+    { "source": "/bird", "destination": "/bird.html" },
+    { "source": "/sudoku", "destination": "/sudoku.html" }
+
 
   ],
   "redirects": [
@@ -79,7 +83,11 @@
     { "source": "/weekly-newsletters", "destination": "/page/newsletter", "permanent": true },
     { "source": "/service", "destination": "/page/service", "permanent": true },
 
-    { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true }
+    { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true },
+        { "source": "/pacman.html", "destination": "/pacman", "permanent": true },
+    { "source": "/bird.html", "destination": "/bird", "permanent": true },
+    { "source": "/sudoku.html", "destination": "/sudoku", "permanent": true }
+
     
   ]
 }
