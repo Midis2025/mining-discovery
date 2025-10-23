@@ -39,8 +39,10 @@
     { "source": "/subscribe", "destination": "/sub.html" },
     { "source": "/register", "destination": "/register.html" },
      { "source": "/game", "destination": "/game/index.html" },
-    { "source": "/game/hello", "destination": "/game/hello.html" },
+    { "source": "/game/*", "destination": "/game/index.html" },
     { "source": "/game2", "destination": "/game2/index.html" },
+    { "source": "/game2/*", "destination": "/game2/index.html" },
+
     { "source": "/game-page", "destination": "/gamepage.html" },
 
     { "source": "/popup", "destination": "/popup.html" },
@@ -50,6 +52,12 @@
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
+
+
+        { "source": "/game.html", "destination": "/game", "permanent": true },
+    { "source": "/game/index.html", "destination": "/game", "permanent": true },
+    { "source": "/game2/index.html", "destination": "/game2", "permanent": true },
+
 
     { "source": "/newss.html", "destination": "/page/latest-news", "permanent": true },
     { "source": "/news.html", "destination": "/page/latest-news", "permanent": true },
