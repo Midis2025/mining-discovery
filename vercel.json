@@ -1,9 +1,7 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/pacman", "destination": "/pacman.html" },
-    { "source": "/sudoku", "destination": "/Sudoku.html" },
-    { "source": "/bird", "destination": "/bird.html" },
+  
     { "source": "/page/latest-news", "destination": "/page/latest-news.html" },
     { "source": "/page/gold-news", "destination": "/page/gold-news.html" },
     { "source": "/page/silver-news", "destination": "/page/silver-news.html" },
@@ -40,15 +38,10 @@
     { "source": "/service", "destination": "/service.html" },
     { "source": "/subscribe", "destination": "/sub.html" },
     { "source": "/register", "destination": "/register.html" },
-    { "source": "/game", "destination": "/game.html" },
-    { "source": "/game-page", "destination": "/gamepage.html" },
-    { "source": "/popup", "destination": "/popup.html" },
-    { "source": "/demo", "destination": "/demo.html" },
 
-     { "source": "/", "destination": "/game/index.html" },
-    { "source": "/game", "destination": "/game/index.html" },
-    { "source": "/game/hello", "destination": "/game/hello.html" },
-    { "source": "/game2", "destination": "/game2/index.html" }
+    { "source": "/popup", "destination": "/popup.html" },
+    { "source": "/demo", "destination": "/demo.html" }
+
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },

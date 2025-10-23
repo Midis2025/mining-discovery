@@ -30,9 +30,8 @@ async function loadMagazines() {
       card.addEventListener("click", () => showMagazineDetail(mag));
       container.appendChild(card);
       
-
-      // Show first magazine by default
-      if (index === 0) showMagazineDetail(mag);
+      // Show last magazine (latest) by default
+      if (index === magazines.length - 1) showMagazineDetail(mag);
     });
   } catch (err) {
     console.error("Error loading magazines:", err);
@@ -66,7 +65,7 @@ function showMagazineDetail(mag) {
   detailContainer.innerHTML = `
     <div class="magazine-info">
       <h3>${title} (${publishDate})</h3>
-      <h3 class="produced-by">Produced by Mining Discovery</h3>
+      <p class="produced-by">Produced by Mining Discovery</p>
       <p class="desc">${description}</p>
       <ul class="features-list">
         ${featuresHtml}
