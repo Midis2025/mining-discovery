@@ -17,6 +17,7 @@
     { "source": "/page/evening-chatter", "destination": "/page/evening-chatter.html" },
     { "source": "/page/research-reports", "destination": "/page/research-reports.html" },
     { "source": "/page/whats-on", "destination": "/page/whats-on.html" },
+    
 
     { "source": "/magazine", "destination": "/magzin.html" },
     { "source": "/page/ceo-profiles", "destination": "/page/ceo-profiles.html" },
@@ -76,6 +77,7 @@
     { "source": "/company-profile", "destination": "/page/company-profile", "permanent": true },
     { "source": "/digital-edition", "destination": "/page/digital-edition", "permanent": true },
     { "source": "/weekly-newsletters", "destination": "/page/newsletter", "permanent": true },
+    { "source": "/service", "destination": "/page/service", "permanent": true },
 
     { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true }
   ]
