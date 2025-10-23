@@ -42,8 +42,8 @@
     { "source": "/popup", "destination": "/popup.html" },
     { "source": "/demo", "destination": "/demo.html" },
         { "source": "/pacman", "destination": "/pacman.html" },
-    { "source": "/bird", "destination": "/bird.html" },
-    { "source": "/Sudoku", "destination": "/Sudoku.html" }
+    { "source": "/flappy-bird", "destination": "/bird.html" },
+    { "source": "/sudoku", "destination": "/Sudoku.html" }
 
 
   ],
@@ -85,8 +85,8 @@
 
     { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true },
         { "source": "/pacman.html", "destination": "/pacman", "permanent": true },
-    { "source": "/bird.html", "destination": "/bird", "permanent": true },
-    { "source": "/Sudoku.html", "destination": "/Sudoku", "permanent": true }
+    { "source": "/bird.html", "destination": "/flappy-bird", "permanent": true },
+    { "source": "/Sudoku.html", "destination": "/sudoku", "permanent": true }
 
     
   ]
