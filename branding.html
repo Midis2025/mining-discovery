@@ -1385,6 +1385,7 @@
       .faq-container {
         max-width: 700px;
         width: 100%;
+        margin-bottom: 30px;
       }
 
       .faq-container h2 {
@@ -2374,6 +2375,27 @@ document.getElementById("brandingForm").addEventListener("submit", async functio
     alert("❌ Something went wrong. Please try again later.");
   }
 });
+
+ const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+    question.addEventListener("click", () => {
+      item.classList.toggle("active");
+      const answer = item.querySelector(".faq-answer");
+      const icon = question.querySelector("span");
+
+      if (item.classList.contains("active")) {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        icon.textContent = "−";
+      } else {
+        answer.style.maxHeight = null;
+        icon.textContent = "+";
+      }
+    });
+  });
+
+
 </script>
 <!-- <script>
   if (window.innerWidth >= 900) {
