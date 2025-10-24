@@ -524,7 +524,7 @@
 
 @media (max-width: 768px) {
   .hamburger2 {
-    display: none; /* phone screen pe hide ho jayega */
+    display: none; /*hide on phone screen */
   }
  
 }
@@ -618,7 +618,7 @@
 
   /* Search-bar always visible */
   .search-bar-container {
-    display: flex !important; /* hamesha visible rahe */
+    display: flex !important; /* always visible */
     width: 100%;
     flex-direction: row;
     align-items: center;
@@ -736,8 +736,8 @@
       height: 100%;
       background: #fff;
       transition: left 0.3s ease;
-      /* z-index: 999;
-      overflow-y: auto; */
+      z-index: 999;
+      overflow-y: auto;
     }
 
     .menu-overlay.open {
@@ -867,8 +867,6 @@
   display: inline-block;
 }
 
-
-
 /* Desktop dropdown positioning */
 @media (min-width: 900px) {
   .nav-item-with-dropdown .dropdown-links {
@@ -947,7 +945,7 @@
     padding-right: 11px;
   }
 
-  /* nav links column में */
+  /* nav links column */
   .nav-links {
     display: none;
     flex-direction: column;
