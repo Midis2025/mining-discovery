@@ -26,6 +26,7 @@ function serviceDropdown() {
       dropdown.classList.toggle("show");
       header.classList.toggle("rotate");
     }
+    
 
     
     // login functionality
