@@ -869,46 +869,47 @@
        /* Section Styling */
     .about-section {
       text-align: center;
-      padding: 60px 20px;
+      padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
     }
 
     /* Title */
     .about-section h1 {
-      font-size: 26px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
+  font-size: 42px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #222;
+  line-height: 1.2;
+}
 
-    /* Underline below heading */
-    .about-section h1::after {
-      content: "";
-      display: block;
-      width: 120px;
-      height: 2px;
-      background:#AE8A4C;
-      margin: 10px auto 25px auto;
-    }
+.about-section h1::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  background: #AE8A4C;
+  margin: 20px auto 30px auto;
+}
 
-    /* Paragraphs */
-    .about-section p {
-      font-size: 16px;
-      color: #333;
-      margin-bottom: 20px;
-    }
+.about-section p {
+  font-size: 17px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
 
-    /* Bold names */
-    .about-section strong {
-      font-weight: 700;
-    }
+.about-section strong {
+  font-weight: 700;
+  color:#AE8A4C;
+}
 
-    /* Highlighted keywords */
-    .about-section .highlight {
-      font-weight: 600;
-    
-    }
+.about-section .highlight {
+  font-weight: 600;
+  color:#AE8A4C;
+}
+
     /* container2 */
      /* Heading */
  
@@ -1065,6 +1066,14 @@
       .team-card .content {
         text-align: center;
       }
+       .about-section h1 {
+    font-size: 32px;
+  }
+
+  .about-section p {
+    font-size: 16px;
+  }
+
     }
 
     @media (max-width: 480px) {
@@ -1084,6 +1093,19 @@
       .team-card p {
         font-size: 13px;
       }
+        .about-section h1 {
+    font-size: 24px;
+  }
+
+  .about-section h1::after {
+    width: 80px;
+    margin: 15px auto 25px auto;
+  }
+
+  .about-section p {
+    font-size: 14px;
+  }
+
     }
     /* container3 */
      /* Container for advisor cards */

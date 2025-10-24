@@ -334,51 +334,76 @@ async function loadTopMagazines() {
 }
 
 document.addEventListener("DOMContentLoaded", loadTopMagazines);
- // Video Thumbnail to Iframe Loader
-    function loadIframe(el) {
-      const videoId = el.getAttribute("data-video");
-      const thumbnail = el.querySelector("img").src;
-      const card = el.closest(".video-card");
 
-      const iframeWrapper = document.createElement("div");
-      iframeWrapper.classList.add("video-iframe-wrapper");
+   // Video Thumbnail to Iframe Loader
+let currentPlayingIframe = null; // Track the currently playing video
 
-      iframeWrapper.innerHTML = `
-        <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-        <button class="close-btn" onclick="closeIframe(this, '${videoId}', '${thumbnail}')">×</button>
-      `;
+function loadIframe(el) {
+  const videoId = el.getAttribute("data-video");
+  const thumbnail = el.querySelector("img").src;
+  const card = el.closest(".video-card");
 
-      el.replaceWith(iframeWrapper);
-    }
+  // Stop currently playing video if exists
+  if (currentPlayingIframe) {
+    closeCurrentVideo();
+  }
 
-    function closeIframe(btn, videoId, thumbnail) {
-      const wrapper = btn.parentElement;
-      const card = wrapper.closest(".video-card");
+  const iframeWrapper = document.createElement("div");
+  iframeWrapper.classList.add("video-iframe-wrapper");
 
-      card.querySelector(".video-info").insertAdjacentHTML("afterbegin", `
-        <div class="video-thumbnail" data-video="${videoId}" onclick="loadIframe(this)">
-          <img src="${thumbnail}" alt="Video Thumbnail">
-          <div class="play-button">▶</div>
-        </div>
-      `);
+  iframeWrapper.innerHTML = `
+    <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+    <button class="close-btn" onclick="closeIframe(this, '${videoId}', '${thumbnail}')">×</button>
+  `;
 
-      wrapper.remove();
-    }
+  el.replaceWith(iframeWrapper);
+  
+  // Store reference to current playing iframe wrapper
+  currentPlayingIframe = {
+    wrapper: iframeWrapper,
+    videoId: videoId,
+    thumbnail: thumbnail
+  };
+}
 
-    // Video Slider Scroll Logic
-    const slider = document.getElementById("videoSlider");
-    const leftArrow = document.querySelector(".arrow.left");
-    const rightArrow = document.querySelector(".arrow.right");
+function closeIframe(btn, videoId, thumbnail) {
+  const wrapper = btn.parentElement;
+  const card = wrapper.closest(".video-card");
 
-    leftArrow.addEventListener("click", () => {
-      slider.scrollBy({ left: -320, behavior: "smooth" });
-    });
+  card.querySelector(".video-info").insertAdjacentHTML("afterbegin", `
+    <div class="video-thumbnail" data-video="${videoId}" onclick="loadIframe(this)">
+      <img src="${thumbnail}" alt="Video Thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+  `);
 
-    rightArrow.addEventListener("click", () => {
-      slider.scrollBy({ left: 320, behavior: "smooth" });
-    });
+  wrapper.remove();
+  
+  // Clear current playing reference
+  currentPlayingIframe = null;
+}
 
+// Helper function to close currently playing video
+function closeCurrentVideo() {
+  if (!currentPlayingIframe) return;
+  
+  const { wrapper, videoId, thumbnail } = currentPlayingIframe;
+  const card = wrapper.closest(".video-card");
+
+  if (card) {
+    card.querySelector(".video-info").insertAdjacentHTML("afterbegin", `
+      <div class="video-thumbnail" data-video="${videoId}" onclick="loadIframe(this)">
+        <img src="${thumbnail}" alt="Video Thumbnail">
+        <div class="play-button">▶</div>
+      </div>
+    `);
+
+    wrapper.remove();
+  }
+  
+  currentPlayingIframe = null;
+}
