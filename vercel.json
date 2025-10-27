@@ -88,8 +88,7 @@
         { "source": "/pacman.html", "destination": "/pacman", "permanent": true },
     { "source": "/bird.html", "destination": "/flappy-bird", "permanent": true },
     { "source": "/Sudoku.html", "destination": "/sudoku", "permanent": true },
-    { "source": "/page/research-reports.html", "destination": "/page/Research-Report", "permanent": true },
-    { "source": "/service.html", "destination": "/service", "permanent": true }
+      { "source": "/service.html", "destination": "/service", "permanent": true }
 
 
 
