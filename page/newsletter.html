@@ -977,7 +977,7 @@
     }
 
     /* ===== Newsletter Cards ===== */
-    .newsletter-card {
+    /* .newsletter-card {
       width: 200px;
       height: 290px;
       border: 1px solid #ddd;
@@ -986,7 +986,32 @@
       cursor: pointer;
       background: #fff;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+    } */
+
+    .newsletter-title {
+  color: #2b2b2b;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 8px 6px;
+  line-height: 1.4;
+  word-break: break-word;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+
+  /* subtle modern touches */
+  background: linear-gradient(180deg, #ffffff 60%, #f6f6f6 100%);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+}
+
+/* optional hover effect for interactivity */
+.newsletter-card:hover .newsletter-title {
+  color: #c49a2c;              /* accent tone (goldish) */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
 
     .newsletter-card:hover {
       transform: translateY(-4px);
@@ -1632,9 +1657,7 @@
           <p><a href="/page/news-syndication">News Syndication</a></p>
           <p><a href="/page/digital-branding">Digital Branding</a></p>
           <p><a href="/page/press-office">Press Office</a></p>
-           <p><a href="https://youtube.com/@miningdiscovery?si=t0TMA3H1QN-Jgu0j" target="_blank" rel="noopener noreferrer">
- YouTube
-</a></p>
+          <p><a href="https://youtube.com/">Youtube</a></p>
           <p><a href="/page/conference-media-coverage">Conference Media Coverage</a></p>
           <p><a href="/page/newsletter-email-blasts">Newsletter & Email Blast</a></p>
         </div>
