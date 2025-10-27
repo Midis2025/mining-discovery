@@ -1,5 +1,6 @@
 async function loadProjects() {
-  const url = "https://admins.miningdiscovery.com/api/projects?populate[project_image]=true";
+  const API_ROOT = "https://admins.miningdiscovery.com";
+  const url = `${API_ROOT}/api/projects?populate[project_image]=true`;
   const projectsContainer = document.getElementById("projects");
 
   if (!projectsContainer) {
@@ -21,11 +22,13 @@ async function loadProjects() {
     }
 
     const view = sections.map((item) => {
+      const imageUrl = item.project_image?.url || "";
+      const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `${API_ROOT}${imageUrl}`;
       return `
        <div class="section-box">
-          <img src="${item.project_image?.url || ""}" alt="${item.project_title || "Project"}">
+          <img src="${fullImageUrl}" alt="${item.project_title || "Project"}">
           <p>
-            <a href="full-news.html?id=${item.id}" class="project-link" data-id="${item.id}">
+            <a href="/full-news.html?id=${item.id}" class="project-link" data-id="${item.id}">
               ${item.project_title || ""}
             </a>
           </p>
@@ -41,7 +44,7 @@ async function loadProjects() {
         e.preventDefault();
         const projectId = link.getAttribute("data-id");
         // Navigate to full-news page
-        window.location.href = `full-news.html?id=${projectId}`;
+        window.location.href = `/full-news.html?id=${projectId}`;
       });
     });
   } catch (err) {
