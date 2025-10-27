@@ -15,7 +15,7 @@
     { "source": "/page/projects", "destination": "/page/projects.html" },
     { "source": "/page/sponsored-post", "destination": "/page/sponsored-post.html" },
     { "source": "/page/evening-chatter", "destination": "/page/evening-chatter.html" },
-{ "source": "/page/Research-Reports", "destination": "/page/research-reports.html" },
+  { "source": "/page/research-reports", "destination": "/page/research-reports.html" },
 
     { "source": "/page/whats-on", "destination": "/page/whats-on.html" },
     
