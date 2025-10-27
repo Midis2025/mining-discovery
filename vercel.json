@@ -82,13 +82,15 @@
     { "source": "/company-profile", "destination": "/page/company-profile", "permanent": true },
     { "source": "/digital-edition", "destination": "/page/digital-edition", "permanent": true },
     { "source": "/weekly-newsletters", "destination": "/page/newsletter", "permanent": true },
-    { "source": "/service", "destination": "/page/service", "permanent": true },
+ 
 
     { "source": "/news-details.html", "destination": "/page/latest-news", "permanent": true },
         { "source": "/pacman.html", "destination": "/pacman", "permanent": true },
     { "source": "/bird.html", "destination": "/flappy-bird", "permanent": true },
     { "source": "/Sudoku.html", "destination": "/sudoku", "permanent": true },
-    { "source": "/page/research-reports.html", "destination": "/page/research-report", "permanent": true }
+    { "source": "/page/research-reports.html", "destination": "/page/research-report", "permanent": true },
+    { "source": "/service.html", "destination": "/service", "permanent": true }
+
 
 
     
