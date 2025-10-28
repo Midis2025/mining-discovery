@@ -1,9 +1,13 @@
-const API_BASE = 'https://admins.miningdiscovery.com/api';
+/* ================= config ================= */
+const HOST = 'https://admins.miningdiscovery.com';
+const API_BASE = `${HOST}/api`;   // API endpoints
+/* ========================================= */
 
-/* ================= helpers ================= */
+/* ================ helpers ================= */
 function toAbsoluteUrl(url) {
   if (!url) return null;
-  return url.startsWith('http') ? url : `${API_BASE}${url}`;
+  // Strapi asset URLs are usually like /uploads/...
+  return url.startsWith('http') ? url : `${HOST}${url}`;
 }
 
 // Safely read fields whether your API returns flat objects or Strapi-style nested attributes
@@ -12,12 +16,10 @@ function getAttr(obj, path, fallback = undefined) {
 }
 
 function getTitle(item) {
-  // newsletter/post title (your date like "June 1")
   return item?.title ?? getAttr(item, 'attributes.title') ?? 'Untitled';
 }
 
 function getCoverImageUrl(item) {
-  // Common shapes: flat; nested with formats.medium; nested data->attributes
   const flatMedium = getAttr(item, 'coverImage.formats.medium.url');
   const flatUrl = getAttr(item, 'coverImage.url');
   const nestedMedium = getAttr(item, 'attributes.coverImage.data.attributes.formats.medium.url');
@@ -46,9 +48,81 @@ function getCategoryCoverUrl(cat) {
 function getPublishedAt(item) {
   return item?.publishedAt ?? getAttr(item, 'attributes.publishedAt') ?? null;
 }
+
+/* Resolve the best timestamp for a newsletter for reliable sorting */
+function getBestDate(item) {
+  // 1) canonical fields
+  const fields = [
+    getPublishedAt(item),
+    getAttr(item, 'date'),
+    getAttr(item, 'attributes.date'),
+    getAttr(item, 'publishDate'),
+    getAttr(item, 'attributes.publishDate'),
+    getAttr(item, 'createdAt'),
+    getAttr(item, 'attributes.createdAt'),
+    getAttr(item, 'updatedAt'),
+    getAttr(item, 'attributes.updatedAt'),
+  ];
+  for (const d of fields) {
+    const t = Date.parse(d);
+    if (!isNaN(t)) return t;
+  }
+
+  // 2) parse from title like "September 8, 2025", "September 8 2025", "Sep 8, 2025", "Sept 8"
+  const title = getTitle(item);
+  const monthNames = "(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)";
+  const re = new RegExp(`${monthNames}\\s+(\\d{1,2})?(?:,?\\s*(\\d{4}))?`, "i");
+  const m = title.match(re);
+  if (m) {
+    const monthStr = m[1];
+    const day = m[2] ? parseInt(m[2], 10) : 1;
+    const yearHint =
+      Date.parse(getPublishedAt(item)) ? new Date(getPublishedAt(item)).getFullYear()
+      : (new Date()).getFullYear();
+    const year = m[3] ? parseInt(m[3], 10) : yearHint;
+
+    const months = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,sept:8,oct:9,nov:10,dec:11};
+    const lc = monthStr.toLowerCase();
+    const key = /sept/.test(lc) ? 'sept' : lc.slice(0,3);
+    const monthIdx = months[key];
+    if (monthIdx != null) {
+      const dt = new Date(year, monthIdx, day);
+      const t = dt.getTime();
+      if (!isNaN(t)) return t;
+    }
+  }
+
+  // 3) last resort
+  return 0;
+}
+
+/* Inject minimal CSS to force row-major ordering (prevents masonry/columns scrambling) */
+let _rowGridInjected = false;
+function ensureRowMajorGrid(listEl) {
+  if (!_rowGridInjected) {
+    const css = `
+      #newslettersList.row-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        grid-auto-flow: row dense;
+        gap: 24px;
+      }
+      #newslettersList { 
+        column-count: initial !important;
+        column-gap: normal !important;
+      }
+      #newslettersList .newsletter-card { break-inside: avoid; }
+    `;
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+    _rowGridInjected = true;
+  }
+  listEl.classList.add('row-grid');
+}
 /* =========================================== */
 
-// Fetch categories
+/* ============== fetch categories ============== */
 async function fetchCategories() {
   const loading = document.getElementById('loadingCategories');
   const error = document.getElementById('errorMessage');
@@ -61,16 +135,14 @@ async function fetchCategories() {
 
     if (!data || data.length === 0) return;
 
-    // Sort categories by publishedAt descending to get latest first
+    // latest first
     const sortedCategories = data.sort(
       (a, b) => new Date(getPublishedAt(b) || 0) - new Date(getPublishedAt(a) || 0)
     );
 
     displayCategories(sortedCategories);
-
-    // Show latest month newsletters by default
+    // default: show latest category
     showNewsletters(sortedCategories[0]);
-
   } catch (err) {
     showError('Failed to load categories: ' + err.message);
   } finally {
@@ -78,7 +150,7 @@ async function fetchCategories() {
   }
 }
 
-// Display category cards
+/* ============ display category cards ============ */
 function displayCategories(categories) {
   const container = document.getElementById('categoriesList');
   container.innerHTML = '';
@@ -101,7 +173,7 @@ function displayCategories(categories) {
   });
 }
 
-// Load newsletters inline (shows title under each newsletter)
+/* ============== load newsletters for category ============== */
 async function showNewsletters(category) {
   const section = document.getElementById('newslettersSection');
   const titleEl = document.getElementById('categoryTitle');
@@ -125,27 +197,29 @@ async function showNewsletters(category) {
       return;
     }
 
-    // Optional: sort by publishedAt desc so latest first
-    const sorted = data.sort(
-      (a, b) => new Date(getPublishedAt(b) || 0) - new Date(getPublishedAt(a) || 0)
-    );
+    // Sort latest → oldest by robust timestamp
+    const sorted = data
+      .map(n => ({ n, ts: getBestDate(n) }))
+      .sort((a, b) => b.ts - a.ts)
+      .map(x => x.n);
 
-    sorted.forEach(newsletter => {
+    // Force row-major visual order
+    ensureRowMajorGrid(list);
+
+    const frag = document.createDocumentFragment();
+    sorted.forEach((newsletter, idx) => {
       const card = document.createElement('div');
       card.className = 'newsletter-card';
       card.onclick = () => openPDFInNewTab(newsletter);
+      card.style.order = String(idx);  // preserve DOM order in flex/grid if any
 
-      // Cover image
       const img = document.createElement('img');
       img.src = getCoverImageUrl(newsletter);
       img.alt = getTitle(newsletter);
 
-      // Title (your date like "June 1")
       const caption = document.createElement('div');
       caption.className = 'newsletter-title';
       caption.textContent = getTitle(newsletter);
-
-      // Make sure it’s readable even on white backgrounds
       caption.style.color = '#111';
       caption.style.textAlign = 'center';
       caption.style.fontSize = '14px';
@@ -155,8 +229,9 @@ async function showNewsletters(category) {
 
       card.appendChild(img);
       card.appendChild(caption);
-      list.appendChild(card);
+      frag.appendChild(card);
     });
+    list.appendChild(frag);
   } catch (err) {
     showError('Failed to load newsletters: ' + err.message);
   } finally {
@@ -164,7 +239,7 @@ async function showNewsletters(category) {
   }
 }
 
-// Open PDF in a new tab
+/* ============== actions & errors ============== */
 function openPDFInNewTab(newsletter) {
   const pdfUrl = getPdfUrl(newsletter);
   if (pdfUrl) {
@@ -174,12 +249,11 @@ function openPDFInNewTab(newsletter) {
   }
 }
 
-// Show error message
 function showError(message) {
   const errorEl = document.getElementById('errorMessage');
   errorEl.textContent = message;
   errorEl.classList.remove('hidden');
 }
 
-// Initialize
+/* init */
 fetchCategories();

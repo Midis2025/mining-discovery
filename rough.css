@@ -1,0 +1,962 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Pontano Sans', sans-serif;
+   
+    
+    }
+    small{
+      font-size: 11px;
+    color: #ae8a4c;
+    }
+    
+
+
+
+.first-header {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* topbar always above */
+  height: 50px;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Wrapper for sliding lines */
+.news-slider {
+  position: relative;
+  width: 100%;
+  height: 50px;
+}
+
+/* Each line setup */
+.news-slider p {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  left: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideUp 12s ease-in-out infinite;
+}
+
+/* Each line delay for sequence */
+.news-slider p:nth-child(1) { animation-delay: 0s; }
+.news-slider p:nth-child(2) { animation-delay: 4s; }
+.news-slider p:nth-child(3) { animation-delay: 8s; }
+
+/* Animation: bottom → center → top */
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateY(100%); }   /* below */
+  10%  { opacity: 1; transform: translateY(0); }      /* center */
+  25%  { opacity: 1; transform: translateY(0); }      /* stay center */
+  35%  { opacity: 0; transform: translateY(-100%); }  /* slide up */
+  100% { opacity: 0; transform: translateY(100%); }   /* reset below */
+}
+
+.first-header:hover p {
+  text-decoration: underline;
+}
+
+
+   .main-header {
+      position: fixed;
+
+  left: 0;
+  width: 100%;
+  z-index: 999; /* slightly below first-header */
+      margin-bottom: 10px;
+      background-color: #fff;
+      /* padding: 5px; */
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo-social {
+      
+    padding-top: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding-left: 12px;
+    }
+
+    .logo {
+      height: 100px;
+ 
+  
+      
+    }
+   
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      
+    }
+
+    .nav-links a {
+
+      text-decoration: none;
+      color: #000;
+   
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #8d6d2a;
+    }
+
+    .header-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-right: 16px;
+}
+.fa-solid {
+    font-weight: 900;
+    color: #ae8a4c}
+  
+.login-btn,
+.subscribe-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;      /* same width */
+  padding: 8px 16px;     /* same padding */
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+    .login-btn {
+      background-color:#ae8a4c;
+    }
+
+    .subscribe-btn {
+     background-color: #ae8a4c;
+    }
+    .new{
+      display: flex;
+    }
+
+   
+ .search-bar-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+.search-bar-container-lasts{
+  padding-top: 50px;
+}
+
+.search-bar-bg {
+  background-color: #292929;
+  height: 24px;
+  /* border-radius: 20px; */
+  
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-loop 50s linear infinite;
+      padding-top: 3px;
+      gap: 24px;
+}
+
+.scrolling-content {
+  display: flex;
+  white-space: nowrap;
+  color: white;
+  gap: 24px;
+  font-size: 12px;
+}
+
+.up {
+  color: #22ed00;
+}
+.down {
+  color: #ff0000;
+}
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+.search-box {
+      position: relative;
+      width: 140px;
+    
+      
+    }
+
+    .search-box input {
+      width: 90%;
+      height: 25px;
+      padding: 5px 15px;
+      padding-right: 35px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .search-box-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* search aur hamburger ke beech gap */
+}
+
+.search-box {
+  flex: 1; /* search box full width le le, hamburger ke sath */
+}
+
+.hamburger2 {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: block; /* laptop/mobile dono pe visible */
+  padding-right:20px ;
+    color: #ae8a4c; /* golden color */
+}
+.hamburger-menu {
+  display: none;
+  position: absolute;
+  top: 160px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 30px 50px;
+  z-index: 999;
+}
+#dropdownMenu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 3 neat columns */
+  gap: 20px;
+  padding: 15px;
+  min-width: 600px;  /* keeps dropdown wide and aligned */
+}
+
+/* Tabs */
+/* Tabs + content wrapper ek row me */
+.hamburger-menu .menu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Tabs left me column wise */
+.hamburger-menu .menu-tabs {
+  display: flex;
+  flex-direction: column; /* tabs ek ke niche ek */
+  min-width: 200px; /* thoda fix width rakho */
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+/* Tab items */
+.hamburger-menu .menu-tabs p {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hamburger-menu .menu-tabs p.active {
+  color: #ae8a4c;
+}
+
+/* Content right side me */
+.hamburger-menu .menu-content {
+  flex: 1;
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 40px;
+}
+
+.hamburger-menu .menu-content.active {
+  display: grid;
+}
+.menu-content a{
+  text-decoration: none;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .hamburger2 {
+    display: none; /*hide on phone screen */
+  }
+ 
+}
+
+
+
+
+
+
+    /* Animated text */
+    .animated-text-container {
+       position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    font-size: 12px;
+    overflow: hidden;
+    height: 20px;
+}
+    
+
+    .animated-text-container span {
+      display: block;
+      animation: slideText 3s ease-in-out infinite;
+    }
+
+    @keyframes slideText {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      10% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      40% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+    }
+
+    /* Hide animated text when user types */
+    .search-box input:focus + .animated-text-container,
+    .search-box input:not(:placeholder-shown) + .animated-text-container {
+      display: none;
+    }
+ 
+
+    .social-icons {
+      
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 16px;
+    
+      
+    }
+
+    .social-icons i {
+     background-color: black;
+      
+     
+      color: #ae8a4c;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ae8a4c;
+    }
+
+    @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  /* Search-bar always visible */
+  .search-bar-container {
+    display: flex !important; /* always visible */
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .social-icons{
+    display: none;
+  }
+  
+
+  /* Nav links & buttons toggle only */
+  .nav-links,
+  .header-buttons {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  /* On hamburger click, show nav-links + header-buttons + search + social-icons */
+   .mobile-active .nav-links,
+  .mobile-active .header-buttons,
+  .mobile-active .search-bar-container,
+  .mobile-active .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .mobile-active .search-bar-bg,
+.mobile-active .scrolling-track,
+.mobile-active .social-icons {
+  display: none !important;
+}
+
+  .nav-links a {
+    padding: 8px 0;
+  }
+
+  .search-box {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .search-box {
+   display: none;
+  }
+
+  .search-bar-bg {
+    width: 100%;
+  }
+}
+/* main-header */
+/* === Header / Dropdown Toggle === */
+    .topbar {
+      background: #1f1f1f;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .topbar h1 {
+      font-size: 20px;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .topbar h1 i {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .topbar h1.rotate i {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-links {
+      display: none;
+      /* background: #1f1f1f; */
+      padding: 10px 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 14px;
+      border-top: 1px solid #333;
+    }
+
+    .dropdown-links a {
+      color:black;
+      text-decoration: none;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
+
+    .dropdown-links a:hover,
+    .dropdown-links a.active {
+      color:#ae8a4c;
+      border-bottom: 2px solid #ae8a4c;
+      padding-bottom: 3px;
+    }
+
+    .dropdown-links.show {
+      display: flex;
+    }
+/* Overlay Menu (mobile) */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      transition: left 0.3s ease;
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .menu-overlay.open {
+      left: 0;
+    }
+
+    .menu-overlay .close-btn {
+      text-align: right;
+      padding: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+.menu-overlay .submenu {
+  display: none;
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+.menu-overlay .submenu li {
+  margin-bottom: 5px;
+}
+
+.menu-overlay {
+  overflow-y: auto; /* page scroll enable */
+}
+    .menu-overlay ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-overlay ul li a,
+    .menu-overlay ul li button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      text-decoration: none;
+      color: #333;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .menu-overlay ul li button .fa-chevron-down {
+      float: right;
+    }
+
+    .submenu {
+      display: none;
+      background: #f9f9f9;
+    }
+
+    .submenu li a {
+      padding-left: 32px;
+      font-size: 14px;
+    }
+
+    /* Desktop Tabs Menu */
+    .desktop-tabs {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .desktop-tabs .tab-content {
+      display: none;
+      padding: 16px;
+    }
+
+    .desktop-tabs .tab-content.active {
+      display: block;
+    }
+
+    .desktop-tabs .tab-btns {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid #eee;
+      padding: 0 16px;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn {
+      cursor: pointer;
+      padding: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .desktop-tabs .tab-btns .tab-btn.active {
+      border-bottom: 2px solid #ae8a4c;
+      color: #ae8a4c;
+    }
+    /* Dropdown rotation */
+#newsToggle i {
+  transition: transform 0.3s ease;
+}
+
+#newsToggle.rotate i {
+  transform: rotate(180deg);
+}
+
+/* Dropdown items */
+.dropdown-links {
+  display: none;
+  flex-direction: column;
+  padding-left: 20px;
+  gap: 10px;
+}
+
+.dropdown-links.show {
+  display: flex;
+}
+
+/* Navigation item with dropdown wrapper */
+.nav-item-with-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Desktop dropdown positioning */
+@media (min-width: 900px) {
+  .nav-item-with-dropdown .dropdown-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 1000;
+    padding: 15px;
+  }
+
+  .nav-item-with-dropdown .dropdown-links.show {
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a {
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+
+  .nav-item-with-dropdown .dropdown-links a:hover {
+    background-color: #f5f5f5;
+    color: #ae8a4c;
+  }
+}
+
+    
+/* ==============================
+   TIMES OF INDIA - PREMIUM MOBILE HEADER
+============================== */
+@media (max-width: 768px) {
+
+  /* 1️⃣ HEADER BASE */
+  #dropdownMenu1{
+    display: flex;
+    flex-direction: column;
+  }
+  .main-header {
+    position: relative !important;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    backdrop-filter: blur(6px);
+  }
+
+  /* 2️⃣ NEWS STRIP - Elegant Gold Highlight */
+  .first-header {
+    background: linear-gradient(90deg, #fefefe 0%, #f9f7f0 100%);
+    border-bottom: 1px solid rgba(174, 138, 76, 0.25);
+    padding: 10px 16px;
+  }
+
+  .news-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .news-slider p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+    border-bottom: 1px dashed rgba(174, 138, 76, 0.2);
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+  }
+
+  .news-slider p:last-child {
+    border-bottom: none;
+  }
+
+  .news-slider p:hover {
+    color: #ae8a4c;
+  }
+
+  /* 3️⃣ HEADER TOP (Logo + Hamburger) */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+  }
+
+  .logo {
+    height: 65px;
+    transition: transform 0.35s ease, filter 0.3s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  .hamburger {
+    font-size: 28px;
+    color: #ae8a4c;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.35s ease, color 0.3s ease;
+  }
+
+  .hamburger:hover {
+    color: #c8a75d;
+    transform: rotate(90deg);
+  }
+
+  /* 4️⃣ MENU OVERLAY */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #fff 0%, #faf8f2 100%);
+    z-index: 999;
+    overflow-y: auto;
+    transition: left 0.4s ease;
+  }
+
+  .menu-overlay.open {
+    left: 0;
+  }
+
+  /* Close Button */
+  .menu-overlay .close-btn {
+    text-align: right;
+    padding: 16px 20px;
+  }
+
+  .menu-overlay .close-btn button {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #ae8a4c;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .menu-overlay .close-btn button:hover {
+    color: #c8a75d;
+    transform: rotate(90deg);
+  }
+
+  /* NAV LINKS - Refined List */
+  .menu-overlay .nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 24px;
+    animation: fadeSlideIn 0.5s ease;
+  }
+
+  .menu-overlay .nav-links a {
+    font-size: 17px;
+    font-weight: 500;
+    color: #222;
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .menu-overlay .nav-links a:hover {
+    color: #ae8a4c;
+    padding-left: 12px;
+  }
+
+  /* 5️⃣ DROPDOWN LINKS (Animated Accordion) */
+  .dropdown-links {
+    display: none;
+    flex-direction: column;
+    padding-left: 18px;
+    background: #f9f9f9;
+    border-left: 3px solid #ae8a4c;
+    border-radius: 6px;
+    margin-top: 6px;
+    animation: dropdownFade 0.3s ease;
+  }
+
+  .dropdown-links.show {
+    display: flex;
+  }
+
+  .dropdown-links a {
+    font-size: 15px;
+    color: #444;
+    padding: 8px 0;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .dropdown-links a:hover {
+    color: #ae8a4c;
+    padding-left: 8px;
+  }
+
+  /* 6️⃣ HEADER BUTTONS - Premium Gradient */
+  .menu-overlay .header-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 22px 24px 40px;
+    gap: 14px;
+  }
+
+  .header-buttons button {
+    background: linear-gradient(135deg, #ae8a4c, #d7b869);
+    color: #fff;
+    border: none;
+    padding: 13px 0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 14px rgba(174, 138, 76, 0.35);
+    transition: all 0.35s ease;
+  }
+
+  .header-buttons button:hover {
+    background: linear-gradient(135deg, #c7a95e, #f1da9a);
+    transform: translateY(-2px);
+  }
+
+  /* ✨ Animations */
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes dropdownFade {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+
+    /* Hide News Section dropdown on desktop */
+/* Desktop: make it appear non-interactive and ensure dropdown hidden by default */
+@media (min-width: 900px) {
+  #newsToggle {
+    cursor: pointer;        /* not pointer */
+    pointer-events: auto;   /* keep link focusable if you want; we block behavior in JS */
+  }
+  #newsToggle i {
+  transition: transform 0.3s ease;
+  display: none;
+}
+  .nav-links a i.fas.fa-chevron-down {
+    display: none;
+  }
+    .desktop-link { display: inline-block; }
+  .mobile-toggle { display: none; }
+
+
+  /* ensure dropdown panel is not shown on desktop even if .show gets added */
+
+}
+
+/* Mobile: hide main link, show mobile toggle */
+@media (max-width: 991px) {
+  .desktop-link { display: none; }
+  .mobile-toggle { display: block; }
+}
+
