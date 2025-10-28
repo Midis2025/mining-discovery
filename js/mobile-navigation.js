@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
  * Set active tab based on current page
  */
 function initializeTabBar() {
-  const currentPath = window.location.pathname;
+  const currentPath = window.location.pathname.toLowerCase();
   const tabItems = document.querySelectorAll('.tab-item');
 
   tabItems.forEach(tab => {
@@ -53,27 +53,37 @@ function initializeTabBar() {
     // Remove active class from all tabs
     tab.classList.remove('active');
 
-    // Add active class to current page tab
-    if (href && href !== '#') {
-      // Check for exact match or partial match
-      if (currentPath === href ||
-          (currentPath.includes(href) && href.length > 1)) {
-        tab.classList.add('active');
-      }
+    // Skip tabs that trigger actions (like # links)
+    if (!href || href === '#') {
+      return;
     }
 
-    // Special case for home page
-    if (href === '/index.html' && (currentPath === '/' || currentPath === '/index.html' || currentPath === '')) {
+    // Normalize href to get the actual page name
+    const normalizedHref = href.toLowerCase().replace(/^\.\.?\//g, '/').replace(/^\//g, '');
+    const normalizedPath = currentPath.replace(/^\//g, '');
+
+    // Check for home page
+    if ((normalizedHref.includes('index.html') || href === '/') &&
+        (normalizedPath === '' || normalizedPath === 'index.html' || currentPath === '/' || currentPath.includes('index.html'))) {
       tab.classList.add('active');
+      return;
     }
 
-    // Special case for magazine
-    if (href === '/magazine' && (currentPath.includes('magazine') || currentPath.includes('magzin'))) {
+    // Check for magazine page
+    if ((normalizedHref.includes('magazine') || normalizedHref.includes('magzin')) &&
+        (normalizedPath.includes('magazine') || normalizedPath.includes('magzin'))) {
       tab.classList.add('active');
+      return;
     }
 
-    // Special case for services
-    if (href === '/service.html' && currentPath.includes('service')) {
+    // Check for service page
+    if (normalizedHref.includes('service') && normalizedPath.includes('service')) {
+      tab.classList.add('active');
+      return;
+    }
+
+    // Generic match for other pages
+    if (normalizedPath.includes(normalizedHref) && normalizedHref.length > 1) {
       tab.classList.add('active');
     }
   });
@@ -83,7 +93,7 @@ function initializeTabBar() {
  * Set active sidebar item based on current category page
  */
 function initializeSidebar() {
-  const currentPath = window.location.pathname;
+  const currentPath = window.location.pathname.toLowerCase();
   const sidebarItems = document.querySelectorAll('.sidebar-item');
 
   sidebarItems.forEach(item => {
@@ -92,8 +102,14 @@ function initializeSidebar() {
     // Remove active class
     item.classList.remove('active');
 
+    if (!href) return;
+
+    // Normalize paths for comparison
+    const normalizedHref = href.toLowerCase().replace(/^\.\.?\//g, '/');
+    const normalizedPath = currentPath;
+
     // Add active class if current page matches
-    if (href && currentPath.includes(href)) {
+    if (normalizedPath.includes(normalizedHref)) {
       item.classList.add('active');
     }
   });
