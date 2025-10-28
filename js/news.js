@@ -255,8 +255,8 @@ function buildNewsCard({ title, author, publish_on, short_description, imageUrl,
   const imgSrc = imageUrl || "./image/pexels-castorlystock-5139206 1.png";
   const safeDocId = escapeHTML(docId || "");
   const safePdfUrl = pdfUrl ? escapeHTML(pdfUrl) : "";
-  
-  const dataAttrs = `data-doc-id="${safeDocId}"${safePdfUrl ? ` data-pdf-url="${safePdfUrl}"` : ''}`;
+
+  const dataAttrs = `data-doc-id="${safeDocId}" data-title="${safeTitle.replace(/"/g, '&quot;')}"${safePdfUrl ? ` data-pdf-url="${safePdfUrl}"` : ''}`;
   
   // Add PDF indicator if PDF is available
   const pdfIndicator = safePdfUrl ? '<span class="pdf-badge" title="PDF available"></span>' : '';
@@ -281,8 +281,8 @@ function buildNextNewsCard({ title, short_description, imageUrl, docId, pdfUrl }
   const imgSrc = imageUrl || "./image/pexels-castorlystock-5139206 1.png";
   const safeDocId = escapeHTML(docId || "");
   const safePdfUrl = pdfUrl ? escapeHTML(pdfUrl) : "";
-  
-  const dataAttrs = `data-doc-id="${safeDocId}"${safePdfUrl ? ` data-pdf-url="${safePdfUrl}"` : ''}`;
+
+  const dataAttrs = `data-doc-id="${safeDocId}" data-title="${safeTitle.replace(/"/g, '&quot;')}"${safePdfUrl ? ` data-pdf-url="${safePdfUrl}"` : ''}`;
   
   // Add PDF indicator
   const pdfIndicator = safePdfUrl ? '<span class="pdf-badge" title="PDF available">📄</span>' : '';
@@ -384,8 +384,9 @@ function handleCardClick(event) {
   const card = event.currentTarget;
   const pdfUrl = card.getAttribute("data-pdf-url");
   const docId = card.getAttribute("data-doc-id");
+  const title = card.getAttribute("data-title");
 
-  console.log('Card clicked - PDF URL:', pdfUrl, 'Doc ID:', docId);
+  console.log('Card clicked - PDF URL:', pdfUrl, 'Doc ID:', docId, 'Title:', title);
 
   // Priority: PDF first, then news details
   if (isValidPdfUrl(pdfUrl)) {
