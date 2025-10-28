@@ -2330,5 +2330,113 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   </script>
+
+<!-- ======================================== -->
+<!-- MOBILE NAVIGATION: TAB BAR & SIDEBAR    -->
+<!-- ======================================== -->
+
+<!-- Mobile Sidebar for News Categories -->
+<div class="mobile-sidebar" id="mobileSidebar">
+  <div class="sidebar-header">
+    <h3>News Categories</h3>
+    <button class="sidebar-close" onclick="closeSidebar()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="sidebar-content" id="sidebarNewsCategories">
+    <a href="./page/latest-news" class="sidebar-item">
+      <i class="fas fa-newspaper"></i>
+      <span>Latest News</span>
+    </a>
+    <a href="./page/gold-news" class="sidebar-item">
+      <i class="fas fa-coins"></i>
+      <span>Gold News</span>
+    </a>
+    <a href="./page/silver-news" class="sidebar-item">
+      <i class="fas fa-circle"></i>
+      <span>Silver News</span>
+    </a>
+    <a href="./page/copper-news" class="sidebar-item">
+      <i class="fas fa-industry"></i>
+      <span>Copper News</span>
+    </a>
+    <a href="./page/precious-metals" class="sidebar-item">
+      <i class="fas fa-gem"></i>
+      <span>Precious Metals</span>
+    </a>
+    <a href="./page/corporate-news" class="sidebar-item">
+      <i class="fas fa-building"></i>
+      <span>Corporate News</span>
+    </a>
+    <a href="./page/world-news" class="sidebar-item">
+      <i class="fas fa-globe"></i>
+      <span>World News</span>
+    </a>
+    <a href="./page/leadership-thoughts" class="sidebar-item">
+      <i class="fas fa-user-tie"></i>
+      <span>Leadership Thoughts</span>
+    </a>
+    <a href="./page/research-reports" class="sidebar-item">
+      <i class="fas fa-file-alt"></i>
+      <span>Research Reports</span>
+    </a>
+    <a href="./page/announcement" class="sidebar-item">
+      <i class="fas fa-bullhorn"></i>
+      <span>Announcements</span>
+    </a>
+    <a href="./page/evening-chatter" class="sidebar-item">
+      <i class="fas fa-comments"></i>
+      <span>Evening Chatter</span>
+    </a>
+    <a href="./page/popular-this-week" class="sidebar-item">
+      <i class="fas fa-fire"></i>
+      <span>Popular This Week</span>
+    </a>
+    <a href="./page/projects" class="sidebar-item">
+      <i class="fas fa-project-diagram"></i>
+      <span>Projects</span>
+    </a>
+    <a href="./page/sponsored-post" class="sidebar-item">
+      <i class="fas fa-ad"></i>
+      <span>Sponsored Post</span>
+    </a>
+    <a href="./page/whats-on" class="sidebar-item">
+      <i class="fas fa-calendar-alt"></i>
+      <span>What's On</span>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- Mobile Bottom Tab Bar -->
+<nav class="mobile-tab-bar">
+  <a href="./index.html" class="tab-item">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+  </a>
+  <a href="#" class="tab-item" onclick="openSidebar(); return false;">
+    <i class="fas fa-newspaper"></i>
+    <span>News</span>
+  </a>
+  <a href="./magazine" class="tab-item">
+    <i class="fas fa-book"></i>
+    <span>Magazine</span>
+  </a>
+  <a href="./service.html" class="tab-item">
+    <i class="fas fa-briefcase"></i>
+    <span>Services</span>
+  </a>
+  <a href="#" class="tab-item" onclick="toggleMenu(); return false;">
+    <i class="fas fa-bars"></i>
+    <span>More</span>
+  </a>
+</nav>
+
+<!-- Mobile Navigation Script -->
+<script src="./js/mobile-navigation.js"></script>
+
+
 </body>
 </html>

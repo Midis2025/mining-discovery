@@ -6,8 +6,8 @@
 
     body {
       font-family: 'Pontano Sans', sans-serif;
-   
-    
+
+
     }
     small{
       font-size: 11px;
@@ -279,7 +279,7 @@
     }
 
     .logo-social {
-      
+
     padding-top: 6px;
       display: flex;
       justify-content: center;
@@ -1326,7 +1326,7 @@
 /* Large Phones (<=768px) */
 @media (max-width: 768px) {
   .main-container {
-    /* padding-top: 120px; */
+    padding-top: 0px;
   }
 
   
@@ -3907,7 +3907,261 @@ ease;
 
 
 
-                         
+/* ========================================
+   MOBILE BOTTOM TAB BAR - APP LIKE NAVIGATION
+   ======================================== */
+
+.mobile-tab-bar {
+  display: none; /* Hidden by default, shown on mobile */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  padding: 8px 0 max(8px, env(safe-area-inset-bottom)); /* Safe area for iOS notch */
+  border-top: 1px solid #e0e0e0;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-decoration: none;
+  color: #666;
+  padding: 6px 4px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab-item i {
+  font-size: 22px;
+  margin-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+.tab-item span {
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tab-item:hover,
+.tab-item.active {
+  color: #ae8a4c;
+}
+
+.tab-item.active i {
+  transform: scale(1.1);
+}
+
+.tab-item:active {
+  transform: scale(0.95);
+}
+
+/* Ripple effect on tap */
+.tab-item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(174, 138, 76, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.tab-item:active::before {
+  width: 50px;
+  height: 50px;
+}
+
+/* ========================================
+   MOBILE SIDEBAR FOR NEWS CATEGORIES
+   ======================================== */
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 1100;
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.mobile-sidebar.active {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #ae8a4c 0%, #c9a861 100%);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-close:hover {
+  transform: rotate(90deg);
+}
+
+.sidebar-content {
+  padding: 10px 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+  background: #f5f5f5;
+  border-left-color: #ae8a4c;
+  color: #ae8a4c;
+}
+
+.sidebar-item i {
+  font-size: 18px;
+  width: 30px;
+  margin-right: 15px;
+  color: #ae8a4c;
+}
+
+.sidebar-item span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+/* Show tab bar only on mobile */
+@media (max-width: 768px) {
+  .mobile-tab-bar {
+    display: flex;
+  }
+
+  /* Add padding to body to prevent content from going under tab bar */
+  body {
+    padding-bottom: 70px;
+  }
+
+  /* Hide the hamburger menu icon on mobile when we have tab bar */
+  .hamburger {
+    display: block; /* Keep it for "More" functionality */
+  }
+
+  /* Make header more compact on mobile */
+  .main-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .logo {
+    height: 60px !important;
+  }
+
+  /* Hide desktop navigation completely on mobile */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 1000;
+    padding-top: 60px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-active .nav-links {
+    transform: translateX(0);
+  }
+}
+
+/* Hide tab bar on desktop */
+@media (min-width: 769px) {
+  .mobile-tab-bar {
+    display: none !important;
+  }
+
+  .mobile-sidebar {
+    display: none !important;
+  }
+
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mobile-tab-bar {
+    display: none;
+  }
+}
+
+
  /* footer */
  
  
