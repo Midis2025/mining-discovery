@@ -719,93 +719,103 @@
 
     
 /* ==============================
-   TIMES OF INDIA STYLE MOBILE HEADER
+   TIMES OF INDIA - PREMIUM MOBILE HEADER
 ============================== */
 @media (max-width: 768px) {
 
-  /* 1️⃣ HEADER - scrolls naturally */
+  /* 1️⃣ HEADER BASE */
+  #dropdownMenu1{
+    display: flex;
+    flex-direction: column;
+  }
   .main-header {
     position: relative !important;
     width: 100%;
     background: #fff;
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     z-index: 100;
+    backdrop-filter: blur(6px);
   }
 
-  /* 2️⃣ NEWS STRIP - TOI Style */
+  /* 2️⃣ NEWS STRIP - Elegant Gold Highlight */
   .first-header {
-    width: 100%;
-    background: #f8f8f8;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 14px;
+    background: linear-gradient(90deg, #fefefe 0%, #f9f7f0 100%);
+    border-bottom: 1px solid rgba(174, 138, 76, 0.25);
+    padding: 10px 16px;
   }
 
   .news-slider {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     text-align: left;
   }
 
   .news-slider p {
     margin: 0;
     font-size: 14px;
-    font-weight: 500;
-    color: #222;
+    font-weight: 600;
+    color: #333;
     line-height: 1.4;
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    border-bottom: 1px dashed rgba(174, 138, 76, 0.2);
     padding-bottom: 6px;
+    transition: color 0.3s ease;
   }
 
   .news-slider p:last-child {
     border-bottom: none;
   }
 
-  /* 3️⃣ HEADER TOP SECTION (Logo + Hamburger) */
+  .news-slider p:hover {
+    color: #ae8a4c;
+  }
+
+  /* 3️⃣ HEADER TOP (Logo + Hamburger) */
   .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
-    width: 100%;
+    padding: 12px 18px;
     background: #fff;
     border-bottom: 1px solid #eee;
   }
 
   .logo {
     height: 65px;
-    transition: transform 0.3s ease;
+    transition: transform 0.35s ease, filter 0.3s ease;
   }
 
   .logo:hover {
     transform: scale(1.05);
+    filter: brightness(1.1);
   }
 
   .hamburger {
-    font-size: 26px;
+    font-size: 28px;
     color: #ae8a4c;
     border: none;
     background: none;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.35s ease, color 0.3s ease;
   }
 
-  .hamburger:active {
+  .hamburger:hover {
+    color: #c8a75d;
     transform: rotate(90deg);
   }
 
-  /* 4️⃣ MOBILE MENU OVERLAY */
+  /* 4️⃣ MENU OVERLAY */
   .menu-overlay {
     position: fixed;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: linear-gradient(180deg, #fff 0%, #faf8f2 100%);
     z-index: 999;
     overflow-y: auto;
-    transition: left 0.35s ease;
+    transition: left 0.4s ease;
   }
 
   .menu-overlay.open {
@@ -815,39 +825,47 @@
   /* Close Button */
   .menu-overlay .close-btn {
     text-align: right;
-    padding: 16px;
+    padding: 16px 20px;
   }
 
   .menu-overlay .close-btn button {
     background: none;
     border: none;
-    font-size: 26px;
+    font-size: 28px;
     color: #ae8a4c;
     cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
   }
 
-  /* NAV LINKS - Column List */
+  .menu-overlay .close-btn button:hover {
+    color: #c8a75d;
+    transform: rotate(90deg);
+  }
+
+  /* NAV LINKS - Refined List */
   .menu-overlay .nav-links {
     display: flex;
     flex-direction: column;
-    padding: 10px 22px;
+    padding: 10px 24px;
+    animation: fadeSlideIn 0.5s ease;
   }
 
   .menu-overlay .nav-links a {
     font-size: 17px;
+    font-weight: 500;
     color: #222;
     text-decoration: none;
     padding: 14px 0;
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
   }
 
   .menu-overlay .nav-links a:hover {
     color: #ae8a4c;
-    padding-left: 10px;
+    padding-left: 12px;
   }
 
-  /* DROPDOWN LINKS (Accordion style) */
+  /* 5️⃣ DROPDOWN LINKS (Animated Accordion) */
   .dropdown-links {
     display: none;
     flex-direction: column;
@@ -856,6 +874,7 @@
     border-left: 3px solid #ae8a4c;
     border-radius: 6px;
     margin-top: 6px;
+    animation: dropdownFade 0.3s ease;
   }
 
   .dropdown-links.show {
@@ -864,38 +883,51 @@
 
   .dropdown-links a {
     font-size: 15px;
-    color: #333;
+    color: #444;
     padding: 8px 0;
+    transition: color 0.3s ease, padding-left 0.3s ease;
   }
 
   .dropdown-links a:hover {
     color: #ae8a4c;
+    padding-left: 8px;
   }
 
-  /* HEADER BUTTONS */
+  /* 6️⃣ HEADER BUTTONS - Premium Gradient */
   .menu-overlay .header-buttons {
     display: flex;
     flex-direction: column;
-    padding: 18px 22px;
-    gap: 12px;
+    padding: 22px 24px 40px;
+    gap: 14px;
   }
 
   .header-buttons button {
-    background: linear-gradient(135deg, #ae8a4c, #d5b76a);
+    background: linear-gradient(135deg, #ae8a4c, #d7b869);
     color: #fff;
     border: none;
-    padding: 12px 0;
-    border-radius: 8px;
+    padding: 13px 0;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(174, 138, 76, 0.3);
-    transition: all 0.3s ease;
+    box-shadow: 0 5px 14px rgba(174, 138, 76, 0.35);
+    transition: all 0.35s ease;
   }
 
   .header-buttons button:hover {
-    background: linear-gradient(135deg, #c9a85b, #f2d88a);
-    transform: scale(1.03);
+    background: linear-gradient(135deg, #c7a95e, #f1da9a);
+    transform: translateY(-2px);
+  }
+
+  /* ✨ Animations */
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes dropdownFade {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
