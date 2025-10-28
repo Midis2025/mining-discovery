@@ -143,7 +143,10 @@ const url =
         const featuredCard = mainCardContainer.querySelector(".featured-card");
         if (featuredCard && docId) {
           featuredCard.addEventListener("click", () => {
-            window.location.href = `/page/article/${docId}`;
+            const slug = typeof createArticleSlug === 'function'
+              ? createArticleSlug(title, docId)
+              : docId;
+            window.location.href = `/page/article/${slug}`;
           });
         }
         
@@ -171,7 +174,7 @@ const url =
             : "";
 
           return `
-            <div class="latest-item" data-id="${docId}">
+            <div class="latest-item" data-id="${docId}" data-title="${title.replace(/"/g, '&quot;')}">
               <p class="latest-title">${title}</p>
               <p class="date">${dateStr}${
             author ? ` <span class="author">By: ${author}</span>` : ""
@@ -184,10 +187,14 @@ const url =
       // Make all latest items clickable
       latestNewsContainer.querySelectorAll(".latest-item").forEach((item) => {
         const id = item.getAttribute("data-id");
+        const title = item.getAttribute("data-title");
         if (id) {
           item.style.cursor = "pointer";
           item.addEventListener("click", () => {
-            window.location.href = `/page/article/${id}`;
+            const slug = typeof createArticleSlug === 'function' && title
+              ? createArticleSlug(title, id)
+              : id;
+            window.location.href = `/page/article/${slug}`;
           });
         }
       });
@@ -202,7 +209,7 @@ const url =
           const title = item.title || "Untitled";
           const docId = item.documentId || "";
           return `
-            <div class="scrolling-content" data-id="${docId}">
+            <div class="scrolling-content" data-id="${docId}" data-title="${title.replace(/"/g, '&quot;')}">
               <p>${title}</p>
             </div>
           `;
@@ -215,10 +222,14 @@ const url =
       // Make ticker items clickable
       tickerContainer.querySelectorAll(".scrolling-content").forEach((el) => {
         const id = el.getAttribute("data-id");
+        const title = el.getAttribute("data-title");
         if (id) {
           el.style.cursor = "pointer";
           el.addEventListener("click", () => {
-            window.location.href = `/page/article/${id}`;
+            const slug = typeof createArticleSlug === 'function' && title
+              ? createArticleSlug(title, id)
+              : id;
+            window.location.href = `/page/article/${slug}`;
           });
         }
       });

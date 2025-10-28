@@ -2711,17 +2711,28 @@ body, p, h1, h2, h3, h4, h5, h6, li, a, span, button {
   
   <script src="../../script.js"></script>
   <script>
-    // Handle URL path-based article IDs for /page/article/article-id format
+    // Handle URL path-based article slugs for /page/article/title-slug-id format
     (function() {
       const pathParts = window.location.pathname.split('/').filter(Boolean);
       const articleIndex = pathParts.indexOf('article');
 
       if (articleIndex !== -1 && pathParts[articleIndex + 1]) {
-        const articleId = pathParts[articleIndex + 1];
+        const slug = pathParts[articleIndex + 1];
 
-        // If no query parameter exists, add it from the URL path
+        // Extract document ID from slug
+        // Slug format: "gold-prices-rise-2024-abc123" -> ID is "abc123" (last part)
+        const extractDocIdFromSlug = (slug) => {
+          if (!slug) return '';
+          const parts = slug.split('-');
+          // The ID is the last part after the final hyphen
+          return parts[parts.length - 1] || slug;
+        };
+
+        const articleId = extractDocIdFromSlug(slug);
+
+        // If no query parameter exists, add it from the extracted ID
         const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams.has('id')) {
+        if (!urlParams.has('id') && articleId) {
           const newUrl = `${window.location.pathname}?id=${articleId}${window.location.hash}`;
           window.history.replaceState({}, '', newUrl);
         }

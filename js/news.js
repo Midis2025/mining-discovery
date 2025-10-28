@@ -414,7 +414,7 @@ function handleCardClick(event) {
     }
   } else if (docId && docId !== "null" && docId !== "") {
     console.log('Opening news details for:', docId);
-    window.location.href = `/page/article/${docId}`;
+    const articleSlug = typeof createArticleSlug === 'function' && title ? createArticleSlug(title, docId) : docId; window.location.href = `/page/article/${articleSlug}`;
   } else {
     console.warn('No PDF or document ID available');
   }

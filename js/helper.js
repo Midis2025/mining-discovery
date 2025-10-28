@@ -32,3 +32,38 @@ function formatDate(iso) {
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
+/**
+ * Create SEO-friendly article slug from title and document ID
+ * @param {string} title - Article title
+ * @param {string} docId - Document ID
+ * @returns {string} URL-safe slug like "gold-prices-rise-2024-abc123"
+ */
+function createArticleSlug(title, docId) {
+  if (!title || !docId) return docId || '';
+  
+  // Create slug from title
+  const titleSlug = title
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')  // Remove special characters
+    .replace(/\s+/g, '-')       // Replace spaces with hyphens
+    .replace(/-+/g, '-')        // Replace multiple hyphens with single
+    .replace(/^-+|-+$/g, '')    // Remove leading/trailing hyphens
+    .substring(0, 60);          // Limit length to 60 chars
+  
+  // Combine title slug with docId
+  return titleSlug ? `${titleSlug}-${docId}` : docId;
+}
+
+/**
+ * Extract document ID from article slug
+ * @param {string} slug - Article slug like "gold-prices-rise-2024-abc123"
+ * @returns {string} Document ID (last part after final hyphen)
+ */
+function extractDocIdFromSlug(slug) {
+  if (!slug) return '';
+  
+  // The docId is the last part after the final hyphen
+  const parts = slug.split('-');
+  return parts[parts.length - 1] || slug;
+}
