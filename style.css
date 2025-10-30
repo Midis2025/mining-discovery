@@ -2054,49 +2054,58 @@ height: auto;
       font-size: 13px;
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-    }
+   
+   .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  align-items: start; /* ensures all cards align neatly */
+}
+
 .card1 {
   color: white;
   padding: 15px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center; /* Centers content horizontally */
+  justify-content: flex-start;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid white;
-
-  /* 👇 Set same height and width for all cards */
-  width: 200px;
-  height: 300px;
-
-  /* Optional: Prevent content overflow */
+  background: #111; /* optional background */
+  width: 100%;
+  height: auto;
   overflow: hidden;
-  align-items: flex-start;
+  transition: transform 0.3s ease;
 }
 
-/* Ensure images scale properly within fixed card size */
+.card1:hover {
+  transform: translateY(-5px);
+}
+
 .card1 img {
   width: 100%;
-  height: 100px; /* Fixed image height */
-  object-fit: cover; /* Prevents distortion */
+  height: 150px; /* keeps image consistent */
+  object-fit: cover;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
-    .card1 h4 {
-      font-size: 14px;
-      margin-bottom: 10px;
-      color: white;
-      flex-grow: 1;
-    }
-    .card1 h4:hover{
-      color: #ae8a4c;
-    }
+/* ✅ Limit text to 3 lines */
+.card1 h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: white;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* show only 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card1 h4:hover {
+  color: #ae8a4c;
+}
+
 
     .container6 {
        background-color: white;
