@@ -1,7 +1,7 @@
 async function loadSponsoredPosts() {
   try {
     const url =
-      "https://admins.miningdiscovery.com/api/news-categories" +
+      "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories" +
       "?filters[slug][$eq]=sponsored-post&populate[news_sections][populate]=*";
 
     const res = await fetch(url);

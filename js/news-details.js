@@ -1,4 +1,4 @@
-const API_ROOT = "https://admins.miningdiscovery.com";
+const API_ROOT = "https://acceptable-desire-0cca5bb827.strapiapp.com";
 
 // --- Configuration ---
 const CONFIG = {
@@ -818,22 +818,25 @@ async function loadNewsDetails() {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
 
-            if (data?.data && Array.isArray(data.data)) {
-                for (const categoryItem of data.data) {
-                    let sections = categoryItem?.news_sections;
-                    if (!Array.isArray(sections) && categoryItem?.attributes?.news_sections) {
-                        const v4Data = categoryItem.attributes.news_sections.data || [];
-                        sections = v4Data.map((x) => ({ id: x.id, documentId: x.documentId, ...x.attributes }));
-                    }
-                    if (Array.isArray(sections)) {
-                        const found = sections.find(section => section.id?.toString() === id || section.documentId?.toString() === id);
-                        if (found) {
-                            newsSection = found;
-                            categorySlug = categoryItem.slug || categoryItem?.attributes?.slug || category;
-                            break;
+                if (data?.data && Array.isArray(data.data)) {
+                    for (const categoryItem of data.data) {
+                        let sections = categoryItem?.news_sections;
+                        if (!Array.isArray(sections) && categoryItem?.attributes?.news_sections) {
+                            const v4Data = categoryItem.attributes.news_sections.data || [];
+                            sections = v4Data.map((x) => ({ id: x.id, documentId: x.documentId, ...x.attributes }));
+                        }
+                        if (Array.isArray(sections)) {
+                            const found = sections.find(section => section.id?.toString() === id || section.documentId?.toString() === id);
+                            if (found) {
+                                newsSection = found;
+                                categorySlug = categoryItem.slug || categoryItem?.attributes?.slug || category;
+                                break;
+                            }
                         }
                     }
                 }
+            } catch (fallbackErr) {
+                console.error('Category search failed:', fallbackErr.message);
             }
         }
 
