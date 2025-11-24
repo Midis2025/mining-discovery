@@ -24,13 +24,13 @@ async function loadSponsoredPosts() {
     // 🟢 Top Post - fully clickable
     const top = posts[0];
     topPostContainer.innerHTML = `
-      <div class="sec1 clickable-post" data-url=".//page/article/${top.id}&category=sponsored-post" style="cursor: pointer;">
+      <div class="sec1 clickable-post" data-url=".//page/article/${top.id}?category=sponsored-post" style="cursor: pointer;">
         <img src="${top.image?.url || top.image?.formats?.small?.url || './image/placeholder.jpg'}" />
       </div>
-      <div class="sec2 clickable-post" data-url=".//page/article/${top.id}&category=sponsored-post" style="cursor: pointer;">
+      <div class="sec2 clickable-post" data-url=".//page/article/${top.id}?category=sponsored-post" style="cursor: pointer;">
         <span class="tag">SPONSORED POST</span>
         <p class="post-text">${top.short_description || ''}</p>
-        <a href=".//page/article/${top.id}&category=sponsored-post">
+        <a href=".//page/article/${top.id}?category=sponsored-post">
           <button class="btn-more">More → </button>
         </a>
       </div>
@@ -41,11 +41,11 @@ async function loadSponsoredPosts() {
       .slice(1, 6)
       .map(
         (post) => `
-          <div class="card1 clickable-post" data-url=".//page/article/${post.id}&category=sponsored-post" style="cursor: pointer;">
+          <div class="card1 clickable-post" data-url=".//page/article/${post.id}?category=sponsored-post" style="cursor: pointer;">
             <img src="${post.image?.url || post.image?.formats?.small?.url || './image/placeholder.jpg'}" />
             <span class="tag-post">SPONSORED POST</span>
             <h4>${post.title}</h4>
-            <a href=".//page/article/${post.id}&category=sponsored-post">
+            <a href=".//page/article/${post.id}?category=sponsored-post">
               <button class="btn-more">More →</button>
             </a>
           </div>
