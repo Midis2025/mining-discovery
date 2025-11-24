@@ -962,7 +962,7 @@ async function loadNewsDetails() {
             // Other features
             initBackToTop();
             initShareButton();
-            initializeScrollPopup();
+            // initializeScrollPopup(); // Subscription popup disabled for now
             
         }, 100);
         
