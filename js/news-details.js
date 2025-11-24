@@ -795,23 +795,28 @@ async function loadNewsDetails() {
         // OPTIMIZED: Try to fetch directly by documentId first (much faster!)
         try {
             const directUrl = `${API_ROOT}/api/news-sections/${id}?populate=*`;
+            console.log('Attempting direct fetch from:', directUrl);
             const directRes = await fetch(directUrl);
 
             if (directRes.ok) {
                 const directData = await directRes.json();
                 newsSection = directData.data || directData;
                 console.log('✅ Fast fetch successful');
+            } else {
+                console.log('Direct fetch returned status:', directRes.status);
             }
         } catch (err) {
-            console.log('Direct fetch failed, trying full search...');
+            console.warn('Direct fetch failed:', err.message);
         }
 
         // Fallback: If direct fetch fails, search through categories (slower but more thorough)
         if (!newsSection) {
             const url = `${API_ROOT}/api/news-categories?populate[news_sections][populate]=*`;
-            const res = await fetch(url);
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const data = await res.json();
+            console.log('Attempting category search from:', url);
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
 
             if (data?.data && Array.isArray(data.data)) {
                 for (const categoryItem of data.data) {
@@ -960,8 +965,16 @@ async function loadNewsDetails() {
         
     } catch (err) {
         console.error('Error loading news details:', err);
+        console.error('Error message:', err.message);
+        console.error('Error stack:', err.stack);
         updateTopbarTitle("Error Loading News");
-        document.getElementById("newsDetails").innerHTML = `<p style="color:#b00">Failed to load news: ${err.message}</p>`;
+        
+        let errorMessage = err.message;
+        if (err.message.includes('Failed to fetch')) {
+            errorMessage = 'Network error: Unable to reach the server. Please check your connection.';
+        }
+        
+        document.getElementById("newsDetails").innerHTML = `<p style="color:#b00">Failed to load news: ${errorMessage}</p>`;
     }
 }
 

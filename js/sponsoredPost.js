@@ -72,7 +72,12 @@ async function loadSponsoredPosts() {
     });
 
   } catch (err) {
-    console.error("Error loading sponsored posts", err);
+    console.error("Error loading sponsored posts:", err);
+    console.error("Error message:", err.message);
+    const topPostContainer = document.getElementById("sponsoredTop");
+    const gridContainer = document.getElementById("sponsoredGrid");
+    if (topPostContainer) topPostContainer.innerHTML = "<p>Error loading sponsored posts</p>";
+    if (gridContainer) gridContainer.innerHTML = "";
   }
 }
 
