@@ -21,7 +21,8 @@ const SMOOTH_CONFIG = {
   // Content loading order
   critical: [
     { func: 'loadLatestNews', containers: ['mainCard', 'latestNews'] },
-    { func: 'loadPopularNews', container: 'carousel' }
+    { func: 'loadPopularNews', container: 'carousel' },
+    { func: 'loadSponsoredPosts', containers: ['sponsoredTop', 'sponsoredGrid'] }
   ],
   nonCritical: [
     { func: 'loadCopperNews', container: 'copperNews' },
@@ -164,6 +165,8 @@ const SmoothLoadingStates = {
       'mainCard': this.createSkeletonItems(1, 'mainCard'),
       'latestNews': this.createSkeletonItems(5, 'list'),
       'carousel': this.createSkeletonItems(4, 'card'),
+      'sponsoredTop': this.createSkeletonItems(1, 'sponsoredTop'),
+      'sponsoredGrid': this.createSkeletonItems(5, 'card'),
       'copperNews': this.createSkeletonItems(5, 'list'),
       'preciousMetalNews': this.createSkeletonItems(4, 'list'),
       'worldNews': this.createSkeletonItems(4, 'list'),
@@ -201,6 +204,17 @@ const SmoothLoadingStates = {
           <div class="skeleton-image" style="height: 150px; margin-bottom: 10px;"></div>
           <div class="skeleton-line" style="width: 90%;"></div>
           <div class="skeleton-line short" style="width: 70%;"></div>
+        </div>`,
+
+      sponsoredTop: `
+        <div class="skeleton-sponsored" style="display: flex; gap: 20px; margin-bottom: 20px;">
+          <div class="skeleton-image" style="height: 300px; width: 40%; border-radius: 8px;"></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+            <div class="skeleton-line" style="width: 100%; height: 24px;"></div>
+            <div class="skeleton-line" style="width: 95%; height: 18px;"></div>
+            <div class="skeleton-line" style="width: 90%; height: 18px;"></div>
+            <div class="skeleton-line" style="width: 70%; height: 18px;"></div>
+          </div>
         </div>`,
 
       ad: `

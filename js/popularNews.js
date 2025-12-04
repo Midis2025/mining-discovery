@@ -1,14 +1,37 @@
 async function loadPopularNews() {
-  const url =
-    "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=silver-news&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][populate][image]=true";
-
   const container = document.getElementById("carousel");
   if (!container) return;
 
+  const url =
+    "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=silver-news&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][populate][image]=true";
+
+  const fetchWithRetry = async (urlToFetch, retries = 3, timeout = 10000) => {
+    for (let attempt = 0; attempt < retries; attempt++) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+        
+        const res = await fetch(urlToFetch, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        
+        if (!data?.data?.[0]) {
+          throw new Error("Invalid response structure");
+        }
+        
+        return data;
+      } catch (err) {
+        console.warn(`Attempt ${attempt + 1} failed for silver news:`, err.message);
+        if (attempt === retries - 1) throw err;
+        await new Promise(resolve => setTimeout(resolve, 1000 * (attempt + 1)));
+      }
+    }
+  };
+
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const payload = await res.json();
+    const payload = await fetchWithRetry(url);
 
     // Strapi v5 (flat) or v4 (attributes) shape
     let sections = payload?.data?.[0]?.news_sections;
@@ -18,7 +41,7 @@ async function loadPopularNews() {
     }
 
     if (!sections?.length) {
-      container.innerHTML = `<p>No news found.</p>`;
+      container.innerHTML = `<p style="color:#999; text-align:center;">No silver news available.</p>`;
       return;
     }
 
@@ -33,11 +56,22 @@ async function loadPopularNews() {
       const imgUrl = getImageUrl(item) || "./image/slider2.png";
       
       // Get the article ID (try both v4 and v5 Strapi formats)
-      const articleId = item.id || item.documentId;
-      const detailUrl = `/page/article/${articleId}`;
+      const articleId = item.documentId || item.id;
+      if (!articleId) {
+        return `
+          <div class="team-card">
+            <img src="${imgUrl}" alt="card" loading="lazy" />
+            <p>${escapeHtml(title)}</p>
+            <div class="meta">
+              <small>${date}</small>
+              <small>${author ? ` ${escapeHtml(author)}` : ""}</small>
+            </div>
+          </div>
+        `;
+      }
 
       return `
-        <a href="${detailUrl}" class="team-card-link" style="text-decoration: none; color: inherit; display: block;">
+        <a href="/page/article/${articleId}" class="team-card-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="team-card">
             <img src="${imgUrl}" alt="card" loading="lazy" />
             <p>${escapeHtml(title)}</p>
@@ -53,8 +87,21 @@ async function loadPopularNews() {
     container.innerHTML = cardsHtml;
 
   } catch (err) {
-    console.error(err);
-    container.innerHTML = `<p style="color:#b00">Failed to load news.</p>`;
+    console.error("Error loading silver news:", err);
+    container.innerHTML = `
+      <div style="padding: 15px; text-align: center;">
+        <p style="color: #b00; margin-bottom: 10px;">Failed to load silver news.</p>
+        <button onclick="loadPopularNews()" style="
+          background: #ae8a4c;
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 13px;
+        ">Retry</button>
+      </div>
+    `;
   }
 }
 

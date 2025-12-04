@@ -9,7 +9,7 @@ async function loadPreciousMetalNews() {
   const url =
     "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=precious-metals&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][fields][3]=short_description&populate[news_sections][populate][image]=true";
 
-  const fetchWithRetry = async (urlToFetch, retries = 3, timeout = 8000) => {
+  const fetchWithRetry = async (urlToFetch, retries = 3, timeout = 10000) => {
     for (let attempt = 0; attempt < retries; attempt++) {
       try {
         const controller = new AbortController();
