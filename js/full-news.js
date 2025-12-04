@@ -4,11 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Configuration ---
     const CONFIG = {
         API_BASE_URL: `${API_ROOT}/api`,
-        CACHE_DURATION: 5 * 60 * 1000, // 5 minutes
-        REQUEST_TIMEOUT: 8000, // 8 seconds
+        CACHE_DURATION: 10 * 60 * 1000, // 10 minutes (increased for better performance)
+        REQUEST_TIMEOUT: 15000, // 15 seconds (increased from 8 for reliability)
         EXTERNAL_SCRIPTS: ['./js/advertisment.js', './js/projects.js', './js/reports.js'],
         SCROLL_THRESHOLD: 40, // Show popup at 40% scroll
-        SUBSCRIPTION_KEY: 'mining_discovery_subscribed'
+        SUBSCRIPTION_KEY: 'mining_discovery_subscribed',
+        RETRY_ATTEMPTS: 3, // Number of retries for failed requests
+        RETRY_DELAY: 1000 // Base retry delay in milliseconds
     };
 
     // --- Cache and State Variables ---
@@ -864,27 +866,62 @@ color:#ae8a4c;
         }
     }
 
+    async function fetchWithRetry(url, options = {}, retries = CONFIG.RETRY_ATTEMPTS) {
+        let lastError;
+        
+        for (let attempt = 0; attempt < retries; attempt++) {
+            try {
+                const response = await fetchWithTimeout(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response;
+            } catch (error) {
+                lastError = error;
+                console.warn(`Fetch attempt ${attempt + 1}/${retries} failed for ${url}:`, error.message);
+                
+                // Don't retry on abort or if it's the last attempt
+                if (attempt < retries - 1 && error.name !== 'AbortError') {
+                    const delay = CONFIG.RETRY_DELAY * Math.pow(2, attempt); // Exponential backoff
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+        
+        throw lastError || new Error('Failed to fetch after multiple attempts');
+    }
+
     async function fetchFromMultipleEndpoints(contentId) {
         const endpoints = [
             { name: 'projects', url: `${CONFIG.API_BASE_URL}/projects`, cache: 'projectsCache' },
             { name: 'reports', url: `${CONFIG.API_BASE_URL}/reports`, cache: 'reportsCache' }
         ];
 
-        for (const endpoint of endpoints) {
-            try {
-                const filteredUrl = `${endpoint.url}?filters[id][$eq]=${contentId}`;
-                const response = await fetchWithTimeout(filteredUrl);
-                
-                if (response.ok) {
-                    const data = await response.json();
+        // First, try direct filtered requests in parallel
+        const filteredRequests = endpoints.map(endpoint => 
+            fetchWithRetry(`${endpoint.url}?filters[id][$eq]=${contentId}`)
+                .then(response => response.json())
+                .then(data => {
                     const items = data.data || data;
                     if (Array.isArray(items) && items.length > 0) {
                         return { item: items[0], source: endpoint.name };
                     }
-                }
-            } catch (error) { /* ignore filtered errors */ }
+                    return null;
+                })
+                .catch(error => {
+                    console.warn(`Failed to fetch from ${endpoint.name}:`, error.message);
+                    return null;
+                })
+        );
+
+        const results = await Promise.all(filteredRequests);
+        const foundItem = results.find(r => r !== null);
+        
+        if (foundItem) {
+            return foundItem;
         }
 
+        // If not found, try cached data if valid
         if (isCacheValid()) {
             if (projectsCache) {
                 const item = projectsCache.find(p => p.id == contentId || p.id === parseInt(contentId));
@@ -896,26 +933,35 @@ color:#ae8a4c;
             }
         }
 
-        for (const endpoint of endpoints) {
-            try {
-                const response = await fetchWithTimeout(endpoint.url);
-                
-                if (!response.ok) continue;
-                
-                const data = await response.json();
-                const items = data.data || data;
-                
-                if (!Array.isArray(items)) continue;
+        // Finally, fetch full lists in parallel if not cached
+        const fullRequests = endpoints.map(endpoint =>
+            fetchWithRetry(endpoint.url)
+                .then(response => response.json())
+                .then(data => ({ endpoint, data }))
+                .catch(error => {
+                    console.warn(`Failed full fetch from ${endpoint.name}:`, error.message);
+                    return null;
+                })
+        );
 
-                if (endpoint.name === 'projects') projectsCache = items;
-                else if (endpoint.name === 'reports') reportsCache = items;
-                
-                cacheTimestamp = Date.now();
+        const fullResults = await Promise.all(fullRequests);
+        
+        for (const result of fullResults) {
+            if (!result) continue;
+            
+            const { endpoint, data } = result;
+            const items = data.data || data;
+            
+            if (!Array.isArray(items)) continue;
 
-                const item = items.find(p => p.id == contentId || p.id === parseInt(contentId));
-                
-                if (item) return { item, source: endpoint.name };
-            } catch (error) { /* ignore full request errors */ }
+            if (endpoint.name === 'projects') projectsCache = items;
+            else if (endpoint.name === 'reports') reportsCache = items;
+            
+            cacheTimestamp = Date.now();
+
+            const item = items.find(p => p.id == contentId || p.id === parseInt(contentId));
+            
+            if (item) return { item, source: endpoint.name };
         }
 
         throw new Error(`Content with ID ${contentId} not found in any endpoint`);
@@ -994,7 +1040,15 @@ color:#ae8a4c;
             
             setTimeout(initializeScrollPopup, 1000);
         } catch (error) {
-            showError(container, "Error Loading Content", error.message, true, contentId);
+            console.error("Error loading news details:", error);
+            
+            // Provide helpful error message
+            let errorMessage = error.message;
+            if (error.message.includes('Failed to fetch') || error.message.includes('AbortError')) {
+                errorMessage = 'Network timeout or connection error. Please check your internet connection and try again.';
+            }
+            
+            showError(container, "Error Loading Content", errorMessage, true, contentId);
         }
     }
 
@@ -1030,8 +1084,14 @@ color:#ae8a4c;
         const modules = ["loadAdvertisements", "loadProjects", "loadReports"];
         modules.forEach(fnName => {
             try {
-                if (typeof window[fnName] === "function") { window[fnName](); }
-            } catch (error) { console.error(`Error initializing ${fnName}:`, error); }
+                if (typeof window[fnName] === "function") { 
+                    window[fnName](); 
+                } else {
+                    console.warn(`Module not available: ${fnName}`);
+                }
+            } catch (error) { 
+                console.error(`Error initializing ${fnName}:`, error); 
+            }
         });
     }
     
