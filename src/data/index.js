@@ -5,7 +5,7 @@ export const HEADER = [
   },
   {
     title: "News Section",
-    path: "/news/latest-news",
+    path: "/news/latest-news", 
   },
   {
     title: "Morning Chatter",
@@ -24,6 +24,7 @@ export const HEADER = [
     path: "/contact",
   },
 ];
+
 
 export const SOCIAL_LINKS = [
   {
@@ -68,7 +69,7 @@ export const FOOTER = [
   },
   {
     title: "Subscription",
-    path: "/subscription",
+    path: "/subscribe",
   },
   {
     title: "Apps",
@@ -77,7 +78,7 @@ export const FOOTER = [
   {
     title: "Comment Guideline",
     path: "/comment-guideline",
-  },
+  },   
   {
     title: "Legal Notice",
     path: "/legal-notice",
@@ -99,4 +100,79 @@ export const NEWS_SECTIONS = [
   { title: "Projects", slug: "projects" },
   { title: "Research Reports", slug: "research-reports" },
   { title: "Sponsored Post", slug: "sponsored-post" },
+];
+
+export const SERVICES_SECTIONS = [
+  {
+    title: "Investor Campaigns",
+    slug: "investor-campaigns",
+  },
+  {
+    title: "Multimedia & YouTube",
+    slug: "multimedia-youtube",
+  },
+  {
+    title: "News Syndication",
+    slug: "news-syndication",
+  },
+  {
+    title: "Conference Media Coverage",
+    slug: "conference-media-coverage",
+  },
+  {
+    title: "Digital Branding",
+    slug: "digital-branding",
+  },
+  {
+    title: "Global Outreach",
+    slug: "global-outreach",
+  },
+  {
+    title: "Social Media Growth",
+    slug: "social-media-growth",
+  },
+  {
+    title: "Podcast & Interview Features",
+    slug: "podcast-interview-features",
+  },
+  {
+    title: "Newsletter & Email Blasts",
+    slug: "newsletter-email-blasts",
+  },
+  {
+    title: "Paid Ad Campaigns",
+    slug: "paid-ad-campaigns",
+  },
+  {
+    title: "Press Office",
+    slug: "press-office",
+  },
+];
+
+
+export const MAGAZINE_SECTIONS = [
+  {
+    title: "Magazine",
+    slug: "magazine",
+  },
+  {
+    title: "CEO Profile",
+    slug: "ceo-profile",
+  },
+  {
+    title: "Newsletter",
+    slug: "newsletter",
+  },
+  {
+    title: "Company Profile",
+    slug: "company-profile",
+  },
+  {
+    title: "Digital Edition",
+    slug: "digital-edition",
+  },
+  {
+    title: "Webinar Recording",
+    slug: "webinar-recording",
+  },
 ];

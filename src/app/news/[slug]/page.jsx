@@ -7,13 +7,17 @@ import SlugTabs from "@/components/slug-tabs";
 
 export default async function News({ params }) {
   const slug = await params.slug;
+console.log('slug', slug)
+
 
   const adData = await getData("advertisements");
   const projectData = await getData("projects");
   const reportData = await getData("reports");
   const newsData = await getData("news-categories");
 
-   const categories = newsData?.data?.map((item) => ({
+  console.log('newsData.data', newsData.data)
+
+   const categories = newsData.data.map((item) => ({
     id: item.id,
     title: item.category,
     slug: item.slug,
@@ -43,9 +47,7 @@ export default async function News({ params }) {
     <main>
       <section className="bg-black-bg">
         <div className="container mx-auto px-4 py-4">
-          <h1 className="text-white text-2xl md:text-3xl font-bold mb-6">
-            News 
-          </h1>
+        
           <SlugTabs categories={categories} basePath="/news" />
         </div>
       </section>
@@ -53,12 +55,12 @@ export default async function News({ params }) {
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Left Sidebar - Ads (Hidden on mobile, shown on desktop) */}
-          <aside className="hidden lg:block lg:w-64 xl:w-80 flex-shrink-0">
+          <aside className="hidden lg:block  flex-shrink-0">
             <div className="space-y-4">
               {adData.data.map((ad, index) => (
                 <Advertisment 
                   key={index} 
-                  image={`${process.env.STRAPI_URL}${ad.ads_image.url}`} 
+                  image={ad.ads_image.url} 
                   alt={ad.altText} 
                 />
               ))}
@@ -94,7 +96,7 @@ export default async function News({ params }) {
                 {adData.data.slice(0, 4).map((ad, index) => (
                   <Advertisment 
                     key={index} 
-                    image={`${process.env.STRAPI_URL}${ad.ads_image.url}`} 
+                    image={ad.ads_image.url} 
                     alt={ad.altText} 
                   />
                 ))}
@@ -114,7 +116,7 @@ export default async function News({ params }) {
                   {projectData.data.map((project, index) => (
                     <Projects 
                       key={index} 
-                      image={`${process.env.STRAPI_URL}${project.project_image.url}`} 
+                      image={project.project_image.url} 
                       alt={project.title} 
                       description={project.project_title}
                     />
@@ -131,7 +133,7 @@ export default async function News({ params }) {
                   {reportData.data.map((report, index) => (
                     <Reports 
                       key={index} 
-                      image={`${process.env.STRAPI_URL}${report.reports_image.url}`} 
+                      image={report.reports_image.url} 
                       alt={report.title} 
                       description={report.title}
                     />

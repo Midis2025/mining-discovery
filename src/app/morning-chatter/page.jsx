@@ -8,12 +8,21 @@ export default async function MorningChatter() {
   const adData = await getData("advertisements");
   const projectData = await getData("projects");
   const reportData = await getData("reports");
-  const newsData = await getData("news-categories");
+  // const newsData = await getData("news-categories");
+
+
+  const morningChatter = await fetch(
+    "https://acceptable-desire-0cca5bb827.strapiapp.com/api/news-categories?filters[slug][$eq]=morning-chatter&populate[news_sections][fields][0]=title&populate[news_sections][fields][1]=author&populate[news_sections][fields][2]=publish_on&populate[news_sections][fields][3]=short_description"
+  );
+
+  const morningChatterData = await morningChatter.json();
+
+  console.log('morningChatterData', morningChatterData)
 
   // ✅ Find Morning Chatter category
-  const morningChatterCategory = newsData.data.find(
-    (category) => category.category === "Morning Chatter"
-  );
+  // const morningChatterCategory = newsData.data.find(
+  //   (category) => category.category === "Morning Chatter"
+  // );
 
   return (
     <main>
@@ -29,12 +38,12 @@ export default async function MorningChatter() {
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Left Sidebar - Ads (Hidden on mobile, shown on desktop) */}
-          <aside className="hidden lg:block lg:w-64 xl:w-80 flex-shrink-0">
+          <aside className="hidden lg:block   flex-shrink-0">
             <div className="space-y-4">
               {adData.data.map((ad, index) => (
                 <Advertisment
                   key={index}
-                  image={`${process.env.STRAPI_URL}${ad.ads_image.url}`}
+                  image={ad.ads_image.url}
                   alt={ad.altText}
                 />
               ))}
@@ -44,15 +53,15 @@ export default async function MorningChatter() {
           {/* Main Content - News Sections */}
           <main className="flex-1 mt-4 lg:mt-0">
             <div className="border-b-2 mb-6">
-              {morningChatterCategory && (
+             
                 <h2 className="text-xl md:text-2xl font-semibold pb-2">
-                  {morningChatterCategory.category}
+                  Morning Chatter
                 </h2>
-              )}
+            
             </div>
 
-            <div className="space-y-4">
-              {morningChatterCategory?.news_sections?.map((newsSection) => (
+            <div className="space-y-4 ">
+              {morningChatterData.data[0].news_sections?.map((newsSection) => (
                 <div key={newsSection.id} className="mb-6">
                   <NewsCards
                     newsId={newsSection.documentId}
@@ -72,7 +81,7 @@ export default async function MorningChatter() {
                 {adData.data.slice(0, 4).map((ad, index) => (
                   <Advertisment
                     key={index}
-                    image={`${process.env.STRAPI_URL}${ad.ads_image.url}`}
+                    image={ad.ads_image.url}
                     alt={ad.altText}
                   />
                 ))}
@@ -92,7 +101,7 @@ export default async function MorningChatter() {
                   {projectData.data.map((project, index) => (
                     <Projects
                       key={index}
-                      image={`${process.env.STRAPI_URL}${project.project_image.url}`}
+                      image={project.project_image.url}
                       alt={project.title}
                       description={project.project_title}
                     />
@@ -109,7 +118,7 @@ export default async function MorningChatter() {
                   {reportData.data.map((report, index) => (
                     <Reports
                       key={index}
-                      image={`${process.env.STRAPI_URL}${report.reports_image.url}`}
+                      image={report.reports_image.url}
                       alt={report.title}
                       description={report.title}
                     />

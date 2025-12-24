@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [new URL('http://localhost:1337/uploads/**')],
-  },
+images: {
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "acceptable-desire-0cca5bb827.media.strapiapp.com",
+      pathname: "/uploads/**",
+    },
+  ],
+},
+
 };
 
 export default nextConfig;

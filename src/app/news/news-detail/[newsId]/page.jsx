@@ -70,16 +70,15 @@ export default async function NewsDetailsPage({ params }) {
 
               {/* Hero Image */}
               {news.image && (
-                <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] rounded-xl overflow-hidden my-6">
-                  <Image
-                    src={`${process.env.STRAPI_URL}${news.image.formats?.large?.url || news.image.url}`}
-                    alt={news.image.alternativeText || news.title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              )}
+  <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] rounded-xl overflow-hidden my-6">
+    <img
+      src={news.image.formats?.large?.url || news.image.url}
+      alt={news.image.alternativeText || news.title}
+      className="object-cover w-full h-full"
+    />
+  </div>
+)}
+
 
               {/* Main Description */}
               <section className="prose prose-sm md:prose-lg max-w-none text-gray-700 leading-relaxed mt-6">

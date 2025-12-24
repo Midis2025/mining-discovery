@@ -14,9 +14,9 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full bg-white shadow-sm ">
+    <header className="w-full bg-white shadow-sm border-b pb-4 ">
       <div className="mx-auto container px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
+        <div className="flex justify-between items-center h-16 md:h-20 ">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image 
@@ -64,7 +64,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="md:hidden p-2 rounded-md text-primary hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

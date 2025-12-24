@@ -1,10 +1,22 @@
-import Image from "next/image";
+import { getData } from "@/lib/getData";
 import React from "react";
 
-export default function Advertisment({ image, alt }) {
+export default async function Advertisment() {
+  const adData = await getData("advertisements");
+
+
   return (
-    <div className=" flex flex-col gap-4 py-4">
-      <Image src={image} alt={"ad-images"} width={212} height={625} />
+    <div >
+      {adData.data.map((ad, index) => (
+        <img
+          key={index}
+          src={ad.ads_image.url}
+          alt={ad.alt || "ad-image"}
+          width={212}
+          height={625}
+          className="object-contain mb-8"
+        />
+      ))}
     </div>
   );
 }
