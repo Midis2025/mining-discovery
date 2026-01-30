@@ -231,8 +231,9 @@ function handleCardClick(event) {
       }
       
     } else if (docId && docId.trim() !== '' && docId !== 'null') {
-      console.log('Opening news details for:', docId);
-      const articleSlug = typeof createArticleSlug === 'function' && title ? createArticleSlug(title, docId) : docId; window.location.href = `/page/article/${articleSlug}`;
+      console.log('No PDF available — opening full news page for:', docId);
+      // Navigate to full-news page with id so full-news.js can load the article
+      window.location.href = `/full-news.html?id=${encodeURIComponent(docId)}`;
     } else {
       console.warn('No PDF or document ID available for this card');
       alert('No PDF or detailed content available for this item.');
