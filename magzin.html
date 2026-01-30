@@ -1309,6 +1309,45 @@ background-color: #ae8a4c;
         .dropdown-heading { font-size: 20px; }
       }
 
+      /* Make edition cards look like the attached design on phones */
+      @media (max-width: 428px) {
+        .editions-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 8px 12px;
+          align-items: stretch;
+        }
+
+        .edition-card {
+          max-width: 420px; /* keeps card readable on larger phones */
+          margin: 0 auto; /* center the card */
+          border-radius: 16px;
+          padding: 14px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+          background: #fff;
+        }
+
+        .edition-card img.thumb {
+          width: 100%;
+          height: auto;
+          border-radius: 10px;
+          display: block;
+          object-fit: cover;
+          aspect-ratio: 3 / 4;
+        }
+
+        .edition-card h3 {
+          margin: 12px 0 8px;
+          font-size: 18px;
+        }
+
+        .edition-card .btn {
+          display: block;
+          width: 60%;
+          margin: 12px auto 0;
+        }
+      }
+
       /* Mid small screens: iPhone 12/13/14/15 (width ~390px) */
       @media (max-width: 390px) {
         .first-header { height: 42px; }
